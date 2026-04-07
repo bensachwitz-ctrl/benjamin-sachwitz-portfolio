@@ -1629,6 +1629,139 @@ footer {
 /* ---- PROJECT CARD image positioning ---- */
 .proj-img { position: relative; overflow: hidden; }
 
+/* ============================================================
+   VISUAL UPGRADE — Timeline card images, Legacy strip, Skills visual
+   ============================================================ */
+
+/* ---- TIMELINE CARD IMAGES ---- */
+.tl-card { flex-direction: column; }
+.tl-card-img {
+  width: 100%;
+  height: 190px;
+  min-height: 190px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: block;
+}
+.tl-card-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(8,10,15,0.15) 0%, rgba(8,10,15,0.72) 100%);
+  pointer-events: none;
+}
+.tl-card-img-label {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(248,249,250,0.85);
+  z-index: 2;
+}
+.tl-item:hover .tl-card-img img,
+.tl-item:hover .tl-card-img { filter: brightness(1.08); }
+
+/* ---- LEGACY STRIP — cinematic divider ---- */
+.legacy-strip {
+  position: relative;
+  height: 320px;
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.legacy-strip-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(8,10,15,0.88) 0%,
+    rgba(115,0,10,0.28) 50%,
+    rgba(8,10,15,0.88) 100%);
+}
+.legacy-strip-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 680px;
+}
+.legacy-strip-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--frost);
+  line-height: 1.45;
+  margin: 0 0 1rem;
+}
+.legacy-strip-attr {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--garnet-bright);
+  border-top: 1px solid rgba(115,0,10,0.35);
+  padding-top: .75rem;
+}
+
+/* ---- SKILLS SECTION visual strip ---- */
+.skills-visual-strip {
+  width: 100%;
+  height: 170px;
+  background-size: cover;
+  background-position: center 60%;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.skills-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(8,10,15,0.95) 0%,
+    rgba(8,10,15,0.60) 50%,
+    rgba(8,10,15,0.95) 100%);
+}
+.skills-visual-text {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+.svt-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--garnet-bright);
+  display: block;
+  margin-bottom: .5rem;
+}
+.svt-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  color: var(--frost);
+  line-height: 1.3;
+}
+
+/* ---- PROJECT CARD IMAGE height boost ---- */
+.proj-img { height: 220px !important; }
+
 /* ---- MOBILE RESPONSIVE FINAL ---- */
 @media (max-width:768px) {
   #about, #timeline, .edu-section, #skills, #projects,
@@ -1637,9 +1770,14 @@ footer {
   .edu-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .skills-bars-grid { grid-template-columns: 1fr; }
+  .legacy-strip { background-attachment: scroll; height: 260px; }
+  .tl-card-img { height: 150px; min-height: 150px; }
+  .skills-visual-strip { height: 130px; }
 }
 @media (max-width:480px) {
   #about, #timeline, .edu-section, #skills, #projects,
   #certifications, #schedule, #contact { padding: 3rem 0; }
   .about-stats { grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
+  .legacy-strip { height: 220px; }
+  .legacy-strip-quote { font-size: 1.25rem; }
 }
