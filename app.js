@@ -661,24 +661,119 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   }, { passive: true });
 })();
 
-/* ---- PILL TOOLTIP ON HOVER ---- */
-(function initPillHighlight() {
-  document.querySelectorAll('.pill-hot').forEach(pill => {
-    pill.title = 'Core expertise area';
+/* ---- RIPPLE EFFECT on buttons ---- */
+(function initRipple() {
+  function ripple(e) {
+    const btn  = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 2.2;
+    const x    = e.clientX - rect.left - size / 2;
+    const y    = e.clientY - rect.top  - size / 2;
+    const el   = document.createElement('span');
+    el.style.cssText = `
+      position:absolute;border-radius:50%;pointer-events:none;z-index:10;
+      width:${size}px;height:${size}px;left:${x}px;top:${y}px;
+      background:rgba(255,255,255,0.14);
+      transform:scale(0);animation:rippleAnim 0.6s ease forwards;
+    `;
+    btn.appendChild(el);
+    setTimeout(() => el.remove(), 700);
+  }
+  document.querySelectorAll('.btn-primary,.btn-outline,.btn-book,.btn-gcal,.form-submit,.book-float-btn').forEach(btn => {
+    btn.style.position = 'relative';
+    btn.style.overflow = 'hidden';
+    btn.addEventListener('click', ripple);
   });
 })();
 
-/* ---- SECTION ENTRY GLOW ---- */
-(function initSectionGlow() {
-  const tl = document.querySelectorAll('.tl-item');
-  if (!tl.length) return;
+/* ---- STAGGERED GRID REVEALS ---- */
+(function initStaggerChildren() {
+  // Project cards stagger in sequence when their grid enters view
+  const grid = document.querySelector('.projects-grid');
+  if (!grid) return;
+  const cards = grid.querySelectorAll('.project-card');
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('tl-item-glow');
-        obs.unobserve(e.target);
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('visible'), i * 90);
+        });
+        obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.3 });
-  tl.forEach(el => obs.observe(el));
+  }, { threshold: 0.1 });
+  obs.observe(grid);
+})();
+
+/* ---- TYPING COUNTER — hero section numbers that count ---- */
+(function initCounterFormatted() {
+  // Secondary pass for [data-count] elements that use different format
+  document.querySelectorAll('.impact-num[data-count]').forEach(el => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const target  = +el.dataset.count;
+        const suffix  = el.dataset.suffix || '';
+        const dur     = 1600;
+        let   start   = null;
+        function step(ts) {
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / dur, 1);
+          const v = Math.floor(1 - Math.pow(1-p, 3)) * target + Math.floor(p * target * (1 - Math.pow(1-p,3)));
+          el.textContent = Math.floor(p * target) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    obs.observe(el);
+  });
+})();
+
+/* ---- SECTION PROGRESS — dots in nav ---- */
+(function initSectionDots() {
+  const ids = ['hero','about','timeline','education','skills','projects','certifications','schedule','contact'];
+  const links = document.querySelectorAll('.nav-links a[href^="#"]');
+  let last = '';
+  window.addEventListener('scroll', () => {
+    let current = '';
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY + window.innerHeight / 3 >= el.offsetTop) current = id;
+    });
+    if (current === last) return;
+    last = current;
+    links.forEach(a => {
+      const matches = a.getAttribute('href') === '#' + current;
+      a.classList.toggle('active', matches);
+    });
+  }, { passive: true });
+})();
+
+/* ---- TIMELINE ITEM GLOW on entry ---- */
+(function initTimelineGlow() {
+  document.querySelectorAll('.tl-item').forEach(item => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          item.querySelector('.tl-dot')?.classList.add('tl-dot-glow');
+          obs.unobserve(item);
+        }
+      });
+    }, { threshold: 0.4 });
+    obs.observe(item);
+  });
+})();
+
+/* ---- ABOUT SECTION hover glow on edu badge ---- */
+(function initEduBadge() {
+  const badge = document.querySelector('.about-edu-badge');
+  if (!badge) return;
+  badge.addEventListener('mouseenter', () => {
+    badge.style.background = 'linear-gradient(135deg,rgba(115,0,10,.16),rgba(0,33,71,.20))';
+  });
+  badge.addEventListener('mouseleave', () => {
+    badge.style.background = '';
+  });
 })();

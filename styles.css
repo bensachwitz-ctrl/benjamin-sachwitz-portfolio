@@ -1296,3 +1296,275 @@ section .container { padding-top: 0; }
 section {
   transition: background-position .1s linear;
 }
+
+/* ============================================================
+   DESIGN SYSTEM v5 — Unified Flow, Depth, Micro-Interactions
+   ============================================================ */
+
+/* ---- REVEAL SYSTEM: Spring easing + scale for organic feel ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px) scale(0.985);
+  transition:
+    opacity  0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.reveal-delay-1 { transition-delay: 0.10s !important; }
+.reveal-delay-2 { transition-delay: 0.20s !important; }
+.reveal-delay-3 { transition-delay: 0.30s !important; }
+
+/* Staggered project cards */
+.projects-grid .project-card { transition-delay: 0s; }
+.projects-grid .project-card:nth-child(2) { transition-delay: 0.08s; }
+.projects-grid .project-card:nth-child(3) { transition-delay: 0.16s; }
+.projects-grid .project-card:nth-child(4) { transition-delay: 0.24s; }
+
+/* Staggered timeline items */
+.tl-track .tl-item:nth-child(2) { transition-delay: 0.08s; }
+.tl-track .tl-item:nth-child(3) { transition-delay: 0.16s; }
+.tl-track .tl-item:nth-child(4) { transition-delay: 0.24s; }
+
+/* Staggered stat cards */
+.about-stats .stat-card:nth-child(2) { transition-delay: 0.08s; }
+.about-stats .stat-card:nth-child(3) { transition-delay: 0.16s; }
+
+/* ---- SECTION RHYTHM — uniform padding across all sections ---- */
+#about, #timeline, .edu-section, #skills, #projects,
+#certifications, #schedule, #contact { padding: 6rem 0; }
+
+/* ---- UNIFIED GLASS CARD DEPTH ---- */
+/* All major interactive cards share one shadow & hover system */
+.tl-card,
+.project-card,
+.edu-item-card,
+.stat-card,
+.cert-card,
+.ccard,
+.contact-form,
+.cal-placeholder {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition:
+    border-color 0.28s ease,
+    box-shadow   0.28s ease,
+    transform    0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tl-card:hover,
+.project-card:hover,
+.edu-item-card:hover,
+.cert-card:hover,
+.ccard:hover,
+.stat-card:hover {
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(115,0,10,0.18),
+              inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+/* ---- SHIMMER SWEEP on card hover ---- */
+.tl-card,
+.project-card,
+.edu-item-card {
+  position: relative;
+  overflow: hidden;
+}
+.tl-card::after,
+.project-card::after,
+.edu-item-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,0.04) 45%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.04) 55%,
+    transparent 100%
+  );
+  pointer-events: none;
+  transition: left 0.55s ease;
+  z-index: 3;
+}
+.tl-card:hover::after,
+.project-card:hover::after,
+.edu-item-card:hover::after {
+  left: 160%;
+}
+
+/* ---- RIPPLE ANIMATION (triggered by JS) ---- */
+@keyframes rippleAnim {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* ---- BUTTON SYSTEM — consistent across all CTAs ---- */
+.btn-primary, .btn-outline, .btn-book, .btn-gcal, .form-submit, .book-float-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background    0.25s ease,
+    transform     0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow    0.25s ease,
+    letter-spacing 0.25s ease;
+}
+.btn-primary:hover, .btn-gcal:hover   { transform: translateY(-3px) scale(1.02); }
+.btn-outline:hover, .btn-book:hover   { transform: translateY(-2px); }
+.btn-primary:active, .btn-gcal:active { transform: translateY(0) scale(0.97); }
+.btn-outline:active, .btn-book:active { transform: translateY(0) scale(0.97); }
+.form-submit:hover                    { transform: translateY(-2px); }
+.form-submit:active                   { transform: translateY(0) scale(0.98); }
+
+/* ---- SECTION HEADER left accent line ---- */
+.section-label {
+  position: relative;
+}
+
+/* ---- TIMELINE — active card pulse ---- */
+.tl-card-active {
+  border-color: rgba(115,0,10,0.4) !important;
+  box-shadow: 0 0 0 1px rgba(115,0,10,0.15), 0 8px 32px rgba(0,0,0,0.3) !important;
+}
+
+/* ---- SKILL BARS — glow on fill ---- */
+.skill-bar-fill {
+  background: linear-gradient(90deg, var(--garnet) 0%, #C03040 60%, #D64550 100%);
+  box-shadow: 0 0 8px rgba(115,0,10,0.4);
+}
+.skill-bar-track { border-radius: 100px; background: rgba(255,255,255,0.06); }
+
+/* ---- HERO SECTION polish ---- */
+.hero-cta-row .btn-primary {
+  box-shadow: 0 8px 28px rgba(115,0,10,0.45);
+}
+.hero-cta-row .btn-primary:hover {
+  box-shadow: 0 14px 40px rgba(115,0,10,0.60);
+}
+
+/* ---- LOGO STRIP — consistent hover ---- */
+.logo-item {
+  transition: opacity 0.2s ease;
+}
+.logo-strip:hover .logo-item { opacity: 0.6; }
+.logo-strip:hover .logo-item:hover { opacity: 1; }
+
+/* ---- SECTION BACKGROUND overlays — cohesive depth ---- */
+#timeline, .edu-section, #skills, #projects, #certifications, #schedule, #contact {
+  background-attachment: fixed;
+}
+@media (max-width: 768px) {
+  #timeline, .edu-section, #skills, #projects, #certifications, #schedule, #contact {
+    background-attachment: scroll;
+  }
+}
+
+/* ---- SCROLL PROGRESS BAR enhanced ---- */
+#scroll-progress {
+  height: 3px;
+  background: linear-gradient(90deg, var(--garnet) 0%, #D64550 50%, var(--garnet-l) 100%);
+  box-shadow: 0 0 10px rgba(115,0,10,0.5);
+  border-radius: 0 3px 3px 0;
+}
+
+/* ---- CURSOR GLOW expanded ---- */
+#cursor-glow {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(115,0,10,0.07) 0%, transparent 65%);
+  transition: opacity 0.4s ease;
+}
+
+/* ---- HERO AVATAR — outer ring pulse ---- */
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1);    opacity: 0.4; }
+  50%       { transform: scale(1.08); opacity: 0.12; }
+}
+.hero-avatar-wrap::after {
+  animation: ringPulse 3.5s ease-in-out infinite;
+}
+
+/* ---- TAB BUTTON — active indicator ---- */
+.tab-btn.active {
+  position: relative;
+}
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 2px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 1px;
+}
+
+/* ---- CERT CARDS — shimmer on hover ---- */
+.cert-card { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), border-color 0.25s ease, box-shadow 0.25s ease; }
+.cert-card:hover { transform: translateY(-3px) scale(1.01); }
+
+/* ---- EDU ITEMS — slide right on hover ---- */
+.edu-item-card { transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; }
+.edu-item-card:hover { transform: translateX(6px); }
+
+/* ---- CONTACT LAYOUT spacing ---- */
+.contact-layout { margin-top: 2.5rem; }
+
+/* ---- FOOTER — subtle gradient ---- */
+footer {
+  background: linear-gradient(to bottom, var(--dark2), var(--dark));
+}
+.footer-logo span { color: var(--garnet-bright); }
+
+/* ---- SCHEDULE SECTION calendar placeholder ---- */
+.cal-placeholder-inner svg { color: var(--garnet-bright); }
+.cal-placeholder-inner h3 { font-size: 1.5rem; }
+
+/* ---- PROJECT IMAGE OVERLAY on hover ---- */
+.proj-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(8,10,15,0.85) 100%);
+  pointer-events: none;
+}
+
+/* ---- CERTIFICATIONS — stage height ---- */
+.certs-stage { height: 520px; }
+
+/* ---- ABOUT EDU BADGE — hover glow ---- */
+.about-edu-badge {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.about-edu-badge:hover {
+  border-color: rgba(115,0,10,0.4);
+  box-shadow: 0 4px 20px rgba(115,0,10,0.12);
+}
+
+/* ---- FLOATING BOOK BUTTON — scale spring ---- */
+.book-float-btn { transition: background 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; }
+.book-float-btn:hover { transform: translateY(-4px) scale(1.04); }
+
+/* ---- TIMELINE DOT GLOW on entry ---- */
+.tl-dot-glow {
+  border-color: rgba(115,0,10,0.7) !important;
+  box-shadow: 0 0 0 4px rgba(115,0,10,0.1), 0 0 24px rgba(115,0,10,0.4) !important;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ---- PROJECT CARD image positioning ---- */
+.proj-img { position: relative; overflow: hidden; }
+
+/* ---- MOBILE RESPONSIVE FINAL ---- */
+@media (max-width:768px) {
+  #about, #timeline, .edu-section, #skills, #projects,
+  #certifications, #schedule, #contact { padding: 4rem 0; }
+  .about-stats { grid-template-columns: repeat(3,1fr); gap: .6rem; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-bars-grid { grid-template-columns: 1fr; }
+}
+@media (max-width:480px) {
+  #about, #timeline, .edu-section, #skills, #projects,
+  #certifications, #schedule, #contact { padding: 3rem 0; }
+  .about-stats { grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
+}
