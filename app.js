@@ -105,7 +105,7 @@ function resetBars(container) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, particles = [], animId;
-  const N = 60;
+  const N = 35;
 
   function resize() {
     W = canvas.width  = canvas.offsetWidth;
@@ -162,6 +162,10 @@ function resetBars(container) {
   }
 
   window.addEventListener('resize', () => { resize(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { cancelAnimationFrame(animId); }
+    else { draw(); }
+  });
   init();
 })();
 
@@ -218,16 +222,20 @@ function resetBars(container) {
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.01, rootMargin: '120px 0px 120px 0px' });
   items.forEach(el => obs.observe(el));
 
-  // Also immediately reveal anything already in the viewport on load
-  setTimeout(() => {
+  // Reveal anything already on screen at load + on every scroll (belt+suspenders)
+  function revealInView() {
     items.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) el.classList.add('visible');
+      if (!el.classList.contains('visible')) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 120) el.classList.add('visible');
+      }
     });
-  }, 100);
+  }
+  setTimeout(revealInView, 80);
+  window.addEventListener('scroll', revealInView, { passive: true });
 })();
 
 /* ---- STAT COUNTER ANIMATION ---- */
