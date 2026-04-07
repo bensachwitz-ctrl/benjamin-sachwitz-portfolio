@@ -389,6 +389,7 @@ ul { list-style:none; }
 }
 .proj-tag-london { background:rgba(115,0,10,.2); border-color:rgba(115,0,10,.4); color:rgba(220,80,80,.9); }
 .proj-tag-dev { background:rgba(250,166,26,.15); border-color:rgba(250,166,26,.3); color:#f5a623; }
+.proj-tag-edu { background:rgba(0,33,71,.3); border-color:rgba(0,100,200,.4); color:#60a5fa; }
 .proj-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; }
 .proj-num { font-family:'Cormorant Garamond',serif; font-size:.9rem; font-weight:700; color:rgba(255,255,255,.15); margin-bottom:.4rem; }
 .proj-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:var(--frost); line-height:1.3; margin-bottom:.75rem; }
