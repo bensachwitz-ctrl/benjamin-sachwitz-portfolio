@@ -438,39 +438,62 @@ function resetBars(container) {
   const col2 = document.getElementById('certs-col-2');
   if (!col1 || !col2) return;
 
+  // SVG icon helpers — white stroke on garnet-navy gradient bg
+  const IC = {
+    ai:      `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+    shield:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    anchor:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="22"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>`,
+    globe:   `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    truck:   `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+    tree:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 20 2 20"/><line x1="12" y1="20" x2="12" y2="22"/></svg>`,
+    chart:   `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>`,
+    gear:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
+    signal:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+    lock:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+    govt:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>`,
+    dollar:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    grad:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
+    book:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+    star:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    target:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+    linkedin:`<svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+    code:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    rocket:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`,
+  };
+
   const CERTS = [
     // Tech / AI
-    { icon: '🤖', name: 'Learning Microsoft 365 Copilot',                  issuer: 'Microsoft / LinkedIn Learning' },
-    { icon: '✨', name: 'Generative AI Skills for Creative Content',        issuer: 'LinkedIn Learning' },
-    { icon: '💡', name: 'Introduction to Prompt Engineering for GenAI',     issuer: 'LinkedIn Learning' },
-    { icon: '📊', name: 'Qlik Learning Ready, Set, Go!',                    issuer: 'Qlik' },
-    { icon: '☁️', name: 'Cert Prep: Salesforce Certified Administrator',    issuer: 'Salesforce / LinkedIn Learning' },
+    { icon: IC.ai,      name: 'Learning Microsoft 365 Copilot',               issuer: 'Microsoft / LinkedIn Learning' },
+    { icon: IC.ai,      name: 'Generative AI Skills for Creative Content',     issuer: 'LinkedIn Learning' },
+    { icon: IC.ai,      name: 'Introduction to Prompt Engineering for GenAI',  issuer: 'LinkedIn Learning' },
+    { icon: IC.chart,   name: 'Qlik Learning Ready, Set, Go!',                 issuer: 'Qlik Analytics' },
+    { icon: IC.gear,    name: 'Salesforce Certified Administrator Prep',        issuer: 'Salesforce / LinkedIn Learning' },
     // Insurance / Professional
-    { icon: '🛡️', name: 'Property & Casualty License',                     issuer: 'South Carolina DOI' },
-    { icon: '⚓', name: 'Marine & Property Risk Placement',                  issuer: 'Price Forbes / Lloyd\'s of London' },
-    { icon: '🌐', name: 'Lloyd\'s of London Market Orientation',             issuer: 'LM TOM / Price Forbes' },
-    { icon: '🚛', name: 'Commercial Trucking Risk (E&S)',                   issuer: 'Swamp Fox Agency' },
-    { icon: '🌲', name: 'Logging & Forestry Risk Specialist',               issuer: 'Swamp Fox / SC Timber Producers Assoc.' },
-    { icon: '📋', name: 'FMCSA & CAB Fleet Safety Analysis',                issuer: 'Swamp Fox Agency' },
-    { icon: '⚙️', name: 'Applied Epic Agency Management System',            issuer: 'Applied Systems' },
-    { icon: '📡', name: 'Samsara Telematics & Fleet Data',                  issuer: 'Samsara' },
+    { icon: IC.shield,  name: 'Property & Casualty License',                   issuer: 'South Carolina DOI · Active' },
+    { icon: IC.anchor,  name: 'Marine & Property Risk Placement',              issuer: 'Price Forbes / Lloyd\'s of London' },
+    { icon: IC.globe,   name: 'Lloyd\'s of London Market Orientation',          issuer: 'LM TOM / Price Forbes' },
+    { icon: IC.truck,   name: 'Commercial Trucking Risk (E&S)',                issuer: 'Swamp Fox Agency' },
+    { icon: IC.tree,    name: 'Logging & Forestry Risk Specialist',            issuer: 'Swamp Fox / SC Timber Producers Assoc.' },
+    { icon: IC.chart,   name: 'FMCSA & CAB Fleet Safety Analysis',             issuer: 'Swamp Fox Agency' },
+    { icon: IC.gear,    name: 'Applied Epic Agency Management System',         issuer: 'Applied Systems' },
+    { icon: IC.signal,  name: 'Samsara Telematics & Fleet Data',               issuer: 'Samsara' },
     // Tech / Sales
-    { icon: '🔐', name: 'Federal Cybersecurity & IT Sales',                 issuer: 'Carahsoft Technology Corp.' },
-    { icon: '🏛️', name: 'Public Sector Sales — Intel Team',                 issuer: 'Carahsoft Technology Corp.' },
-    { icon: '📈', name: 'B2B Pipeline Development',                         issuer: 'Carahsoft' },
+    { icon: IC.lock,    name: 'Federal Cybersecurity & IT Sales',              issuer: 'Carahsoft Technology Corp.' },
+    { icon: IC.govt,    name: 'Public Sector Sales — Intel Team',              issuer: 'Carahsoft Technology Corp.' },
+    { icon: IC.dollar,  name: 'B2B Pipeline Development',                      issuer: 'Carahsoft Technology Corp.' },
     // Education
-    { icon: '🎓', name: 'B.S. Risk Management & Insurance',                 issuer: 'Darla Moore School of Business — USC' },
-    { icon: '📐', name: 'Financial Planning & Services',                    issuer: 'University of South Carolina' },
+    { icon: IC.grad,    name: 'B.S. Risk Management & Insurance',              issuer: 'Darla Moore School of Business — USC' },
+    { icon: IC.book,    name: 'Financial Planning & Services',                 issuer: 'University of South Carolina' },
     // Operations
-    { icon: '🏆', name: 'Masters Tournament Operations Staff',              issuer: 'Augusta National Golf Club' },
-    { icon: '🎯', name: 'High-Volume Hospitality — Precision Execution',    issuer: 'Augusta National' },
+    { icon: IC.star,    name: 'Masters Tournament Operations Staff',           issuer: 'Augusta National Golf Club' },
+    { icon: IC.target,  name: 'High-Volume Hospitality — Precision Execution', issuer: 'Augusta National' },
     // LinkedIn Top Skills
-    { icon: '🔗', name: 'Underwriting — Top LinkedIn Skill',                issuer: 'LinkedIn Skill Assessment' },
-    { icon: '🌍', name: 'Global Risk Placement — Top LinkedIn Skill',       issuer: 'LinkedIn Skill Assessment' },
-    { icon: '📦', name: 'Insurance Brokerage — Top LinkedIn Skill',         issuer: 'LinkedIn Skill Assessment' },
+    { icon: IC.linkedin,name: 'Underwriting — Top LinkedIn Skill',             issuer: 'LinkedIn Skill Assessment' },
+    { icon: IC.linkedin,name: 'Global Risk Placement — Top LinkedIn Skill',    issuer: 'LinkedIn Skill Assessment' },
+    { icon: IC.linkedin,name: 'Insurance Brokerage — Top LinkedIn Skill',      issuer: 'LinkedIn Skill Assessment' },
     // Web / Personal
-    { icon: '💻', name: 'Web Development: HTML / CSS / JavaScript',         issuer: 'Self-Directed / GitHub Projects' },
-    { icon: '🚀', name: 'Brand Ambassador — Digital Growth',                issuer: 'SSprinting' },
+    { icon: IC.code,    name: 'Web Development: HTML / CSS / JavaScript',      issuer: 'Self-Directed / GitHub Projects' },
+    { icon: IC.rocket,  name: 'Brand Ambassador — Digital Growth',             issuer: 'SSprinting' },
   ];
 
   function buildCertCard(cert) {
@@ -705,31 +728,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   obs.observe(grid);
 })();
 
-/* ---- TYPING COUNTER — hero section numbers that count ---- */
-(function initCounterFormatted() {
-  // Secondary pass for [data-count] elements that use different format
-  document.querySelectorAll('.impact-num[data-count]').forEach(el => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const target  = +el.dataset.count;
-        const suffix  = el.dataset.suffix || '';
-        const dur     = 1600;
-        let   start   = null;
-        function step(ts) {
-          if (!start) start = ts;
-          const p = Math.min((ts - start) / dur, 1);
-          const v = Math.floor(1 - Math.pow(1-p, 3)) * target + Math.floor(p * target * (1 - Math.pow(1-p,3)));
-          el.textContent = Math.floor(p * target) + suffix;
-          if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-        obs.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    obs.observe(el);
-  });
-})();
+/* ---- COUNTER (general-purpose, used by .stat-number[data-target]) ---- */
+// initCounters() above handles .stat-number[data-target]. No dead code here.
 
 /* ---- SECTION PROGRESS — dots in nav ---- */
 (function initSectionDots() {
