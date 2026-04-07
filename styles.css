@@ -238,20 +238,34 @@ ul { list-style:none; }
 .about-parallax-bg { display:none; }
 .about-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:3.5rem; align-items:start; }
 .about-image-col { display:flex; flex-direction:column; gap:1rem; }
-.about-image-main { position:relative; border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/5; }
-.about-img { width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+.about-image-main {
+  position:relative; border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:3/4;
+  box-shadow:0 24px 60px rgba(0,0,0,0.55);
+}
+.about-img {
+  width:100%; height:100%; object-fit:cover;
+  object-position: center 10%; /* London photo — show face/upper body */
+  transition:transform .6s ease;
+}
 .about-image-main:hover .about-img { transform:scale(1.04); }
-.about-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,10,15,.75) 0%,transparent 55%); }
+.about-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,10,15,.75) 0%,transparent 50%); }
 .about-img-tag {
   position:absolute; bottom:16px; left:16px; display:flex; align-items:center; gap:10px;
-  background:rgba(0,0,0,.6); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.65); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.12);
   border-radius:12px; padding:10px 14px;
 }
 .about-img-tag img.tag-logo { width:32px; height:32px; object-fit:contain; border-radius:6px; }
 .tag-title { display:block; font-size:12px; font-weight:700; color:var(--frost); }
 .tag-sub { display:block; font-size:10px; color:var(--text-muted); margin-top:1px; }
-.about-image-secondary { position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/7; }
-.about-img-sec { width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+.about-image-secondary {
+  position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/8;
+  box-shadow:0 12px 36px rgba(0,0,0,0.4);
+}
+.about-img-sec {
+  width:100%; height:100%; object-fit:cover;
+  object-position: center top; /* Graduation photo — always show faces at top */
+  transition:transform .6s ease;
+}
 .about-image-secondary:hover .about-img-sec { transform:scale(1.04); }
 .about-sec-tag {
   position:absolute; bottom:10px; left:14px; display:flex; align-items:center; gap:8px;
@@ -270,7 +284,7 @@ ul { list-style:none; }
 .edu-icon { width:38px; height:38px; border-radius:8px; background:var(--dark); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:1px solid var(--glass-border); }
 .edu-school { font-size:13px; font-weight:700; color:var(--frost); margin-bottom:2px; }
 .edu-degree { font-size:11px; color:var(--text-muted); }
-.about-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:.5rem; }
+.about-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; margin-bottom:1.5rem; }
 .stat-card {
   border-radius:var(--radius); padding:1.2rem; text-align:center; backdrop-filter:blur(8px);
   transition:border-color var(--T),transform var(--T),box-shadow var(--T);
@@ -280,19 +294,7 @@ ul { list-style:none; }
 .stat-number { display:block; line-height:1.1; }
 .stat-label { display:block; font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin-top:4px; }
 
-/* Impact Numbers Row */
-.impact-row {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.4rem;
-  padding:1.2rem 1.5rem; border-radius:var(--radius-lg);
-  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09);
-  backdrop-filter:blur(8px);
-}
-.impact-item { text-align:center; }
-.impact-num {
-  display:block; font-family:'Cormorant Garamond',serif; font-size:1.8rem;
-  font-weight:700; color:var(--garnet-bright); line-height:1;
-}
-.impact-lbl { display:block; font-size:9px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin-top:4px; }
+/* Impact row removed — stats section eliminated */
 
 /* ============================================================
    TIMELINE
@@ -998,19 +1000,7 @@ input:focus-visible, textarea:focus-visible {
 }
 .strip-photo:hover .strip-caption { opacity:1; }
 
-/* ============================================================
-   EDUCATION — PHOTO CARD VARIANT
-   ============================================================ */
-.edu-item-card--photo {
-  background-size:cover; background-position:center top;
-  position:relative; overflow:hidden; min-height:100px;
-}
-.edu-card-photo-overlay {
-  position:absolute; inset:0;
-  background:linear-gradient(135deg, rgba(10,12,18,0.82) 0%, rgba(10,12,18,0.65) 100%);
-  z-index:0;
-}
-.edu-item-card--photo > * { position:relative; z-index:1; }
+/* edu-item-card--photo variant removed — consistent dark cards throughout */
 
 /* ============================================================
    COMPREHENSIVE REACTIVITY — :active states & cursor
@@ -1141,26 +1131,11 @@ button { cursor:pointer; }
    FINAL POLISH — Image Alignment, Text Readability, Spacing
    ============================================================ */
 
-/* ---- ABOUT — Image column alignment ---- */
+/* ---- ABOUT — Image column spacing ---- */
 .about-image-col { gap: 1.2rem; }
-.about-image-main {
-  aspect-ratio: 4/5;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.55);
-  transition: transform .5s ease, box-shadow .5s ease;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.about-image-main:hover { transform: translateY(-4px); box-shadow: 0 32px 80px rgba(0,0,0,0.65); }
-.about-image-secondary {
-  aspect-ratio: 16/7;
-  box-shadow: 0 12px 36px rgba(0,0,0,0.4);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.about-img { width:100%; height:100%; object-fit:cover; object-position: center 20%; }
-.about-img-sec { width:100%; height:100%; object-fit:cover; object-position: center 30%; }
+.about-image-main:hover { transform: translateY(-4px); box-shadow: 0 32px 80px rgba(0,0,0,0.65); transition: transform .5s ease, box-shadow .5s ease; }
 
-/* ---- ABOUT — Photo strip alignment ---- */
+/* ---- ABOUT — Photo strip ---- */
 .about-photo-strip {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -1178,7 +1153,7 @@ button { cursor:pointer; }
 .strip-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center top; /* always show faces */
   transition: transform .5s ease;
   display: block;
 }
@@ -1191,19 +1166,14 @@ button { cursor:pointer; }
   background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
 }
 
-/* ---- STATS CARDS ---- */
-.about-stats { gap: .75rem; margin-top: 1.5rem; }
+/* ---- STATS CARDS — authoritative in original block above ---- */
 .stat-card {
   border: 1px solid rgba(255,255,255,0.08) !important;
   background: rgba(255,255,255,0.04) !important;
   padding: 1.1rem;
 }
-.stat-card:hover {
-  border-color: rgba(115,0,10,0.35) !important;
-  background: rgba(255,255,255,0.06) !important;
-}
-.stat-number { font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight:700; color:var(--frost); }
-.stat-label { font-size: 9.5px; color: var(--text-muted); }
+.stat-card:hover { border-color: rgba(115,0,10,0.35) !important; }
+.stat-number { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight:700; color:var(--frost); }
 
 /* ---- TIMELINE ---- */
 .tl-track::before {
@@ -1219,18 +1189,7 @@ button { cursor:pointer; }
   background-size: cover;
 }
 
-/* ---- EDUCATION MILESTONE — photo card alignment ---- */
-.edu-item-card--photo {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.25rem;
-  background-size: cover;
-  background-position: center top;
-  position: relative;
-}
-.edu-item-card--photo .edu-item-icon,
-.edu-item-card--photo > div:not(.edu-card-photo-overlay) { position: relative; z-index: 1; }
+/* edu-item-card--photo removed — all milestone cards use consistent dark/glass style */
 
 /* ---- CERTIFICATIONS HEADER ---- */
 .cert-hdr { margin-bottom: 2.5rem; }
