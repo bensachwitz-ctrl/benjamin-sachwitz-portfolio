@@ -587,17 +587,65 @@
       <h2 class="section-title reveal">Book a Call</h2>
       <p class="section-sub reveal reveal-delay-1" style="max-width:480px;margin:0 auto;">30 minutes — commercial risk consultation, career conversation, referral, or introduction. Pick a time below.</p>
     </div>
-    <div class="cal-embed-wrapper reveal">
-      <div class="cal-placeholder">
-        <div class="cal-placeholder-inner">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <h3>Schedule a Meeting</h3>
-          <p>Connect your Cal.com or Calendly account to show a live booking calendar here. See SETUP_INSTRUCTIONS.md for the 10-minute activation steps.</p>
-          <a href="https://calendar.google.com/calendar/u/0/r/eventedit?add=bensachwitz%40outlook.com&text=Call%20with%20Ben%20Sachwitz&dur=30" target="_blank" rel="noopener" class="btn-gcal">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Book via Google Calendar (Active Now)
-          </a>
+    <div class="booking-card reveal">
+      <div class="booking-topics">
+        <div class="booking-topic">
+          <div class="btopic-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="btopic-text">
+            <span class="btopic-title">Commercial Risk</span>
+            <span class="btopic-sub">Trucking, logging, E&amp;S placements</span>
+          </div>
         </div>
+        <div class="booking-topic">
+          <div class="btopic-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="btopic-text">
+            <span class="btopic-title">Career Conversation</span>
+            <span class="btopic-sub">Insurance, RMI, London market path</span>
+          </div>
+        </div>
+        <div class="booking-topic">
+          <div class="btopic-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="btopic-text">
+            <span class="btopic-title">Referral &amp; Introduction</span>
+            <span class="btopic-sub">Agent connections, broker relationships</span>
+          </div>
+        </div>
+        <div class="booking-topic">
+          <div class="btopic-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="btopic-text">
+            <span class="btopic-title">InsurTech &amp; Innovation</span>
+            <span class="btopic-sub">Loss control, AI workflows, agency digital</span>
+          </div>
+        </div>
+      </div>
+      <div class="booking-cta-block">
+        <div class="booking-meta">
+          <span class="bmeta-pill">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 minutes
+          </span>
+          <span class="bmeta-pill">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.82v6.362a1 1 0 0 1-1.447.894L15 14M5 18h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg>
+            Video or Phone
+          </span>
+          <span class="bmeta-pill">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            EST / Flexible
+          </span>
+        </div>
+        <a href="mailto:bensachwitz@outlook.com?subject=Meeting%20Request%20%E2%80%94%20Ben%20Sachwitz&body=Hi%20Ben%2C%0A%0AI'd%20like%20to%20schedule%20a%2030-minute%20call%20to%20discuss%3A%0A%0A%5BYour%20topic%5D%0A%0AAvailability%3A%0A%5BYour%20availability%5D%0A%0AThanks" class="btn-gcal magnetic">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Request a Meeting
+        </a>
+        <p class="booking-confirm-note">Typically responds within one business day</p>
       </div>
     </div>
     <div class="schedule-direct-row">
