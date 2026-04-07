@@ -575,4 +575,101 @@ footer { background:var(--dark2); border-top:1px solid var(--glass-border); padd
   .tl-card { grid-template-columns:1fr; }
   .tl-card-img { width:100%; height:120px; }
   .tl-card-body { padding:1rem 1.2rem; }
+  .skills-bars-grid { grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+#scroll-progress {
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg, var(--garnet), #c0392b, var(--garnet-l));
+  z-index:9999; transition:width 0.1s linear;
+  box-shadow:0 0 8px rgba(115,0,10,0.7);
+}
+
+/* ============================================================
+   CURSOR GLOW
+   ============================================================ */
+#cursor-glow {
+  position:fixed; width:320px; height:320px;
+  border-radius:50%; pointer-events:none; z-index:0;
+  background:radial-gradient(circle, rgba(115,0,10,0.08) 0%, transparent 70%);
+  transform:translate(-50%,-50%);
+  transition:opacity 0.3s ease;
+  opacity:0;
+}
+
+/* ============================================================
+   TYPEWRITER
+   ============================================================ */
+.typewriter-text {
+  color:var(--garnet);
+  border-right:2px solid var(--garnet);
+  padding-right:3px;
+  animation:blink-cursor 0.8s step-end infinite;
+  white-space:nowrap;
+}
+@keyframes blink-cursor {
+  0%,100% { border-color:var(--garnet); }
+  50%      { border-color:transparent; }
+}
+
+/* ============================================================
+   RESUME BUTTON
+   ============================================================ */
+.btn-resume {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:12px 24px; border-radius:var(--radius);
+  border:1px solid rgba(115,0,10,0.4);
+  color:var(--text-muted); font-size:13px; font-weight:600;
+  font-family:'Montserrat',sans-serif; letter-spacing:.04em;
+  transition:all var(--T); cursor:pointer;
+  background:transparent;
+}
+.btn-resume:hover {
+  border-color:var(--garnet); color:var(--garnet);
+  background:rgba(115,0,10,0.08);
+}
+
+/* ============================================================
+   SKILL PROGRESS BARS
+   ============================================================ */
+.skills-bars-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:2.5rem 3rem;
+  padding:0.5rem 0 1rem;
+}
+.sbar-col { display:flex; flex-direction:column; gap:0.6rem; }
+.sbar-group-label {
+  font-size:10px; font-weight:700; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--garnet);
+  margin-bottom:0.8rem;
+}
+.skill-bar-item { display:flex; flex-direction:column; gap:6px; }
+.skill-bar-header {
+  display:flex; justify-content:space-between; align-items:center;
+}
+.skill-bar-name {
+  font-size:13px; font-weight:500; color:var(--text); letter-spacing:.01em;
+}
+.skill-bar-pct {
+  font-size:11px; font-weight:700; color:var(--garnet);
+  font-variant-numeric:tabular-nums;
+}
+.skill-bar-track {
+  height:5px; background:rgba(255,255,255,0.07);
+  border-radius:100px; overflow:hidden;
+}
+.skill-bar-fill {
+  height:100%; width:0%; border-radius:100px;
+  background:linear-gradient(90deg, var(--garnet), var(--garnet-l));
+  transition:width 1.1s cubic-bezier(0.4,0,0.2,1);
+  box-shadow:0 0 6px rgba(115,0,10,0.5);
+}
+.skill-bar-fill.animated {
+  /* width set via JS */
+}
+
+@media (max-width:680px) {
+  .skills-bars-grid { grid-template-columns:1fr; gap:1.5rem; }
 }

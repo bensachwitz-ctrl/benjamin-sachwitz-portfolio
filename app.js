@@ -2,7 +2,102 @@
    BENJAMIN SACHWITZ — app.js
    Canvas particles | Scroll effects | Gallery lightbox |
    Cert scroller | Stat counters | Skills tabs | Form handler | Nav
+   + Scroll progress bar | Cursor glow | Typewriter | Skill bars
    ============================================================ */
+
+/* ---- SCROLL PROGRESS BAR ---- */
+(function initScrollProgress() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const scrolled  = document.documentElement.scrollTop || document.body.scrollTop;
+    const maxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (maxHeight > 0 ? (scrolled / maxHeight) * 100 : 0) + '%';
+  }, { passive: true });
+})();
+
+/* ---- CURSOR GLOW ---- */
+(function initCursorGlow() {
+  const glow = document.getElementById('cursor-glow');
+  if (!glow || window.matchMedia('(pointer:coarse)').matches) return;
+  let mx = 0, my = 0, cx = 0, cy = 0, raf;
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    glow.style.opacity = '1';
+  });
+  document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function tick() {
+    cx = lerp(cx, mx, 0.08);
+    cy = lerp(cy, my, 0.08);
+    glow.style.left = cx + 'px';
+    glow.style.top  = cy + 'px';
+    raf = requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+/* ---- TYPEWRITER EFFECT ---- */
+(function initTypewriter() {
+  const el = document.getElementById('typewriter');
+  if (!el) return;
+  const phrases = [
+    'Assistant Underwriter',
+    'Lloyd\'s Trained Broker',
+    'E&S Risk Specialist',
+    'Federal Sales Pro',
+    'Darla Moore \'25',
+    'InsurTech Builder',
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const SPEED_TYPE  = 65;
+  const SPEED_DEL   = 35;
+  const PAUSE_FULL  = 2200;
+  const PAUSE_EMPTY = 400;
+
+  function tick() {
+    const current = phrases[pi];
+    if (!deleting) {
+      el.textContent = current.substring(0, ci + 1);
+      ci++;
+      if (ci === current.length) {
+        deleting = true;
+        setTimeout(tick, PAUSE_FULL);
+        return;
+      }
+      setTimeout(tick, SPEED_TYPE);
+    } else {
+      el.textContent = current.substring(0, ci - 1);
+      ci--;
+      if (ci === 0) {
+        deleting = false;
+        pi = (pi + 1) % phrases.length;
+        setTimeout(tick, PAUSE_EMPTY);
+        return;
+      }
+      setTimeout(tick, SPEED_DEL);
+    }
+  }
+  // Start after hero entrance animation completes
+  setTimeout(tick, 1200);
+})();
+
+/* ---- SKILL BAR ANIMATION ---- */
+function animateBarsIn(container) {
+  container.querySelectorAll('.skill-bar-fill').forEach((fill, i) => {
+    const target = fill.dataset.width;
+    setTimeout(() => {
+      fill.style.width = target + '%';
+      fill.classList.add('animated');
+    }, i * 80);
+  });
+}
+function resetBars(container) {
+  container.querySelectorAll('.skill-bar-fill').forEach(fill => {
+    fill.style.width = '0%';
+    fill.classList.remove('animated');
+  });
+}
 
 /* ---- CANVAS PARTICLE FIELD ---- */
 (function initCanvas() {
@@ -162,15 +257,31 @@
   const tabPanes = document.querySelectorAll('.tab-pane');
   if (!tabBtns.length) return;
 
+  // Animate bars in active tab when skills section enters view
+  const skillsSection = document.getElementById('skills');
+  if (skillsSection) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const activePane = document.querySelector('.tab-pane.active');
+          if (activePane) animateBarsIn(activePane);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    obs.observe(skillsSection);
+  }
+
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.dataset.tab;
 
-      // Deactivate all
+      // Deactivate all — reset bars
       tabBtns.forEach(b => b.classList.remove('active'));
       tabPanes.forEach(p => {
         p.classList.remove('active');
         p.style.animation = '';
+        resetBars(p);
       });
 
       // Activate selected
@@ -178,9 +289,10 @@
       const pane = document.getElementById('tab-' + target);
       if (pane) {
         pane.classList.add('active');
-        // Re-trigger animation
         void pane.offsetWidth;
         pane.style.animation = 'fadeSlideIn 0.4s ease forwards';
+        // Stagger bar animation
+        setTimeout(() => animateBarsIn(pane), 120);
       }
     });
   });

@@ -18,6 +18,12 @@
 </head>
 <body>
 
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- CURSOR GLOW -->
+<div id="cursor-glow" aria-hidden="true"></div>
+
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
@@ -53,7 +59,7 @@
       <img src="Images/1749487469361.jpg" alt="Benjamin Sachwitz" class="hero-avatar">
     </div>
     <h1 class="hero-name reveal-hero reveal-hero-3">Benjamin <span class="accent">Sachwitz</span></h1>
-    <p class="hero-subtitle reveal-hero reveal-hero-4">Insurance &amp; Risk Professional &nbsp;·&nbsp; Summerville, SC</p>
+    <p class="hero-subtitle reveal-hero reveal-hero-4"><span id="typewriter" class="typewriter-text">Assistant Underwriter</span> &nbsp;·&nbsp; Summerville, SC</p>
     <div class="hero-credential-bar reveal-hero reveal-hero-5">
       <span class="hcred-pill">E&amp;S Non-Admitted</span>
       <span class="hcred-dot"></span>
@@ -67,6 +73,7 @@
       <a href="#about" class="btn-primary magnetic">About Me</a>
       <a href="#timeline" class="btn-outline magnetic">My Career</a>
       <a href="#schedule" class="btn-book magnetic">Book a Call</a>
+      <a href="Images/Benjamin_Sachwitz_Resume.pdf" download="Benjamin_Sachwitz_Resume.pdf" class="btn-resume magnetic">Resume &darr;</a>
     </div>
     <div class="hero-social-row reveal-hero reveal-hero-7">
       <a href="https://linkedin.com/in/benjaminsachwitz" target="_blank" rel="noopener" class="hsocial" aria-label="LinkedIn">
@@ -298,84 +305,68 @@
       </button>
     </div>
     <div class="tab-pane active" id="tab-underwriting">
-      <div class="skills-grid-pills">
-        <div class="skill-pill-group">
-          <div class="spg-title">Core Insurance</div>
-          <div class="pills">
-            <span class="pill pill-hot">E&amp;S / Non-Admitted Market</span>
-            <span class="pill pill-hot">Lloyd's Binding Authority</span>
-            <span class="pill pill-hot">Commercial Trucking</span>
-            <span class="pill pill-hot">Logging &amp; Forestry Risk</span>
-            <span class="pill">Marine Insurance</span>
-            <span class="pill">Property Insurance</span>
-            <span class="pill">P&amp;C Licensed (SC)</span>
-            <span class="pill">Reinsurance Basics</span>
-          </div>
+      <div class="skills-bars-grid">
+        <div class="sbar-col">
+          <div class="sbar-group-label">Core Insurance</div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">E&amp;S / Non-Admitted Market</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Commercial Trucking Risk</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Lloyd's Binding Authority</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Logging &amp; Forestry Risk</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">P&amp;C Licensed — South Carolina</span><span class="skill-bar-pct">100%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="100"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Marine &amp; Property Insurance</span><span class="skill-bar-pct">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div></div>
         </div>
-        <div class="skill-pill-group">
-          <div class="spg-title">Technical Analysis</div>
-          <div class="pills">
-            <span class="pill pill-hot">Loss Run Analysis</span>
-            <span class="pill pill-hot">FMCSA &amp; CAB Reports</span>
-            <span class="pill pill-hot">Frequency / Severity Trends</span>
-            <span class="pill pill-hot">5-Year Longitudinal Profiling</span>
-            <span class="pill">Carrier Negotiations</span>
-            <span class="pill">Renewal Support</span>
-            <span class="pill">Coverage Reviews</span>
-            <span class="pill">Client Communication</span>
-          </div>
+        <div class="sbar-col">
+          <div class="sbar-group-label">Technical Analysis</div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Loss Run Analysis</span><span class="skill-bar-pct">93%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="93"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">FMCSA &amp; CAB Reports</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Frequency / Severity Profiling</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Carrier Negotiations</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Coverage Reviews &amp; Renewals</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Reinsurance Basics</span><span class="skill-bar-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></div>
         </div>
       </div>
     </div>
     <div class="tab-pane" id="tab-tech">
-      <div class="skills-grid-pills">
-        <div class="skill-pill-group">
-          <div class="spg-title">Insurance Systems</div>
-          <div class="pills">
-            <span class="pill pill-hot">Applied Epic AMS</span>
-            <span class="pill pill-hot">Samsara Telematics</span>
-            <span class="pill pill-hot">Qlik Analytics</span>
-            <span class="pill">Salesforce CRM</span>
-            <span class="pill">Microsoft 365 Copilot</span>
-            <span class="pill">Excel (Advanced)</span>
-          </div>
+      <div class="skills-bars-grid">
+        <div class="sbar-col">
+          <div class="sbar-group-label">Insurance Systems</div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Applied Epic AMS</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Samsara Telematics</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Qlik Analytics</span><span class="skill-bar-pct">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Salesforce CRM</span><span class="skill-bar-pct">72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Microsoft 365 Copilot</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Excel (Advanced)</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
         </div>
-        <div class="skill-pill-group">
-          <div class="spg-title">Development &amp; AI</div>
-          <div class="pills">
-            <span class="pill pill-hot">Prompt Engineering</span>
-            <span class="pill pill-hot">Generative AI (Claude / GPT)</span>
-            <span class="pill">HTML / CSS / JavaScript</span>
-            <span class="pill">GitHub &amp; Version Control</span>
-            <span class="pill">Digital Marketing</span>
-            <span class="pill">SEO / GEO Optimization</span>
-          </div>
+        <div class="sbar-col">
+          <div class="sbar-group-label">Development &amp; AI</div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Generative AI (Claude / GPT)</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Prompt Engineering</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">HTML / CSS / JavaScript</span><span class="skill-bar-pct">74%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="74"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">GitHub &amp; Version Control</span><span class="skill-bar-pct">76%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="76"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">SEO / GEO Optimization</span><span class="skill-bar-pct">72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Digital Marketing</span><span class="skill-bar-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div></div>
         </div>
       </div>
     </div>
     <div class="tab-pane" id="tab-sales">
-      <div class="skills-grid-pills">
-        <div class="skill-pill-group">
-          <div class="spg-title">Sales Skills</div>
-          <div class="pills">
-            <span class="pill pill-hot">Global Risk Placement</span>
-            <span class="pill pill-hot">Federal Sales (Public Sector)</span>
-            <span class="pill pill-hot">Business Development</span>
-            <span class="pill">Lead Qualification</span>
-            <span class="pill">Pipeline Management</span>
-            <span class="pill">Vendor Relations</span>
-          </div>
+      <div class="skills-bars-grid">
+        <div class="sbar-col">
+          <div class="sbar-group-label">Sales &amp; Placement</div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Global Risk Placement</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Federal Sales (Public Sector)</span><span class="skill-bar-pct">84%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="84"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Business Development</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Lead Qualification</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Pipeline Management</span><span class="skill-bar-pct">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Vendor Relations</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
         </div>
-        <div class="skill-pill-group">
-          <div class="spg-title">Client Management</div>
-          <div class="pills">
-            <span class="pill pill-hot">Account Management</span>
-            <span class="pill pill-hot">Carrier &amp; Client Negotiations</span>
-            <span class="pill">Strategic Planning</span>
-            <span class="pill">Event Coordination</span>
-            <span class="pill">Brand Management</span>
-            <span class="pill">Public Sector Outreach</span>
-          </div>
+        <div class="sbar-col">
+          <div class="sbar-group-label">Client Management</div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Account Management</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Carrier &amp; Client Negotiations</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Client Communication</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Strategic Planning</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Event Coordination</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Public Sector Outreach</span><span class="skill-bar-pct">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div></div>
         </div>
       </div>
     </div>
