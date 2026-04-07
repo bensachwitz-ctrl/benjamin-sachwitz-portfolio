@@ -5,6 +5,106 @@
    + Scroll progress bar | Cursor glow | Typewriter | Skill bars
    ============================================================ */
 
+/* ============================================================
+   3D CARD TILT
+   ============================================================ */
+(function init3DTilt() {
+  const STRENGTH = 10; // max degrees
+  function applyTilt(card, e) {
+    const rect = card.getBoundingClientRect();
+    const cx   = rect.left + rect.width  / 2;
+    const cy   = rect.top  + rect.height / 2;
+    const dx   = (e.clientX - cx) / (rect.width  / 2);
+    const dy   = (e.clientY - cy) / (rect.height / 2);
+    const rotX = (-dy * STRENGTH).toFixed(2);
+    const rotY = ( dx * STRENGTH).toFixed(2);
+    card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
+    card.style.boxShadow = `${-dx * 20}px ${dy * 18}px 70px rgba(0,0,0,0.55), 0 0 30px rgba(115,0,10,0.18)`;
+  }
+  function resetTilt(card) {
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  }
+  function attachTilt(card) {
+    card.addEventListener('mousemove',  e => applyTilt(card, e), { passive: true });
+    card.addEventListener('mouseleave', ()  => resetTilt(card));
+    card.addEventListener('touchstart', ()  => resetTilt(card), { passive: true });
+  }
+  // Attach immediately to any existing cards
+  document.querySelectorAll('[data-tilt]').forEach(attachTilt);
+  // Watch for new cards added after DOM ready (reveal animations)
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll('[data-tilt]:not([data-tilt-init])').forEach(card => {
+      card.setAttribute('data-tilt-init','');
+      attachTilt(card);
+    });
+  });
+  observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] });
+  // Mark existing
+  document.querySelectorAll('[data-tilt]').forEach(c => c.setAttribute('data-tilt-init',''));
+})();
+
+/* ============================================================
+   HERO PARALLAX MOUSE TRACKING
+   ============================================================ */
+(function initHeroParallax() {
+  const hero    = document.getElementById('hero');
+  if (!hero) return;
+  const avatar  = hero.querySelector('.hero-avatar-wrap');
+  const nameGrp = hero.querySelector('.hero-name-group');
+  const credBar = hero.querySelector('.hero-credential-bar');
+  let raf = null;
+  let tx = 0, ty = 0;
+
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const dx = ((e.clientX - rect.left) / rect.width  - 0.5) * 2; // -1 to 1
+    const dy = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+    tx = dx; ty = dy;
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: true });
+
+  hero.addEventListener('mouseleave', () => {
+    tx = 0; ty = 0;
+    if (!raf) raf = requestAnimationFrame(tick);
+  });
+
+  function tick() {
+    raf = null;
+    if (avatar)  avatar.style.transform  = `translate(${tx * 14}px, ${ty * 9}px)`;
+    if (nameGrp) nameGrp.style.transform = `translate(${tx * 7}px, ${ty * 5}px)`;
+    if (credBar) credBar.style.transform  = `translate(${tx * 4}px, ${ty * 3}px)`;
+  }
+})();
+
+/* ============================================================
+   ANIMATED STAT COUNTERS
+   ============================================================ */
+(function initCounters() {
+  const els = document.querySelectorAll('[data-count]');
+  if (!els.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el      = entry.target;
+      const target  = parseFloat(el.dataset.count);
+      const suffix  = el.dataset.suffix || '';
+      const dur     = 1400; // ms
+      const step    = 16;
+      const inc     = target / (dur / step);
+      let   current = 0;
+      const isInt   = Number.isInteger(target);
+      const timer   = setInterval(() => {
+        current += inc;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = (isInt ? Math.floor(current) : current.toFixed(1)) + suffix;
+      }, step);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  els.forEach(el => obs.observe(el));
+})();
+
 /* ---- SCROLL PROGRESS BAR ---- */
 (function initScrollProgress() {
   const bar = document.getElementById('scroll-progress');

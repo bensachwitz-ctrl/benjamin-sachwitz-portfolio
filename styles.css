@@ -11,12 +11,14 @@
   --navy:          #002147;
   --navy-l:        #003070;
   --frost:         #F8F9FA;
-  --dark:          #13161F;
-  --dark2:         #181B27;
-  --dark3:         #1D2030;
-  --dark4:         #232638;
-  --glass:         rgba(255,255,255,0.08);
-  --glass-border:  rgba(255,255,255,0.13);
+  --dark:          #1E2240;
+  --dark2:         #252A4A;
+  --dark3:         #2B3055;
+  --dark4:         #333A62;
+  --glass:         rgba(255,255,255,0.10);
+  --glass-border:  rgba(255,255,255,0.18);
+  --glow-garnet:   0 0 60px rgba(115,0,10,0.25);
+  --glow-navy:     0 0 60px rgba(0,33,71,0.35);
   --accent:        #73000A;
   --text:          #DDE0EA;
   --text-muted:    #7A8098;
@@ -230,7 +232,7 @@ ul { list-style:none; }
 #about {
   padding:5rem 0;
   background:
-    linear-gradient(135deg, rgba(19,22,31,0.86) 0%, rgba(19,22,31,0.74) 55%, rgba(115,0,10,0.18) 100%),
+    linear-gradient(135deg, rgba(30,34,64,0.82) 0%, rgba(30,34,64,0.68) 55%, rgba(115,0,10,0.20) 100%),
     url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=70') center/cover no-repeat;
   position:relative; overflow:hidden;
 }
@@ -271,13 +273,27 @@ ul { list-style:none; }
 .edu-degree { font-size:11px; color:var(--text-muted); }
 .about-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:.5rem; }
 .stat-card {
-  background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius);
-  padding:1.2rem; text-align:center; backdrop-filter:blur(8px);
-  transition:border-color var(--T),transform var(--T);
+  border-radius:var(--radius); padding:1.2rem; text-align:center; backdrop-filter:blur(8px);
+  transition:border-color var(--T),transform var(--T),box-shadow var(--T);
+  cursor:default;
 }
-.stat-card:hover { border-color:rgba(115,0,10,.45); transform:translateY(-4px); }
-.stat-number { display:block; font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:700; color:var(--garnet); line-height:1.1; }
+.stat-card:hover { border-color:rgba(115,0,10,.45) !important; }
+.stat-number { display:block; line-height:1.1; }
 .stat-label { display:block; font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin-top:4px; }
+
+/* Impact Numbers Row */
+.impact-row {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.4rem;
+  padding:1.2rem 1.5rem; border-radius:var(--radius-lg);
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09);
+  backdrop-filter:blur(8px);
+}
+.impact-item { text-align:center; }
+.impact-num {
+  display:block; font-family:'Cormorant Garamond',serif; font-size:1.8rem;
+  font-weight:700; color:var(--garnet); line-height:1;
+}
+.impact-lbl { display:block; font-size:9px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); margin-top:4px; }
 
 /* ============================================================
    TIMELINE
@@ -285,7 +301,7 @@ ul { list-style:none; }
 #timeline {
   padding:5rem 0;
   background:
-    linear-gradient(180deg, rgba(19,22,31,0.88) 0%, rgba(19,22,31,0.76) 50%, rgba(19,22,31,0.88) 100%),
+    linear-gradient(180deg, rgba(30,34,64,0.84) 0%, rgba(30,34,64,0.72) 50%, rgba(30,34,64,0.84) 100%),
     url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=70') center/cover no-repeat;
 }
 .tl-track { position:relative; padding-left:80px; }
@@ -329,7 +345,7 @@ ul { list-style:none; }
 #skills {
   padding:5rem 0;
   background:
-    linear-gradient(135deg, rgba(15,17,24,0.87) 0%, rgba(19,22,31,0.80) 100%),
+    linear-gradient(135deg, rgba(25,28,50,0.84) 0%, rgba(30,34,64,0.76) 100%),
     url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=70') center/cover no-repeat;
 }
 .skills-tabs {
@@ -367,7 +383,7 @@ ul { list-style:none; }
 #projects {
   padding:5rem 0;
   background:
-    linear-gradient(180deg, rgba(19,22,31,0.88) 0%, rgba(19,22,31,0.80) 100%),
+    linear-gradient(180deg, rgba(30,34,64,0.84) 0%, rgba(30,34,64,0.76) 100%),
     url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&q=70') center/cover no-repeat;
 }
 .projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
@@ -434,7 +450,7 @@ ul { list-style:none; }
 #certifications {
   padding:5rem 0;
   background:
-    linear-gradient(135deg, rgba(19,22,31,0.87) 0%, rgba(0,33,71,0.28) 100%),
+    linear-gradient(135deg, rgba(30,34,64,0.82) 0%, rgba(0,33,71,0.35) 100%),
     url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1920&q=70') center/cover no-repeat;
   overflow:hidden;
 }
@@ -503,7 +519,7 @@ ul { list-style:none; }
 #contact {
   padding:5rem 0;
   background:
-    linear-gradient(180deg, rgba(19,22,31,0.88) 0%, rgba(115,0,10,0.14) 50%, rgba(19,22,31,0.88) 100%),
+    linear-gradient(180deg, rgba(30,34,64,0.84) 0%, rgba(115,0,10,0.18) 50%, rgba(30,34,64,0.84) 100%),
     url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=70') center/cover no-repeat;
 }
 .contact-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:3rem; margin-top:3rem; align-items:start; }
@@ -595,7 +611,12 @@ footer { background:var(--dark2); border-top:1px solid var(--glass-border); padd
 /* ============================================================
    RESPONSIVE — 480px
    ============================================================ */
+@media (max-width:768px) {
+  .impact-row { grid-template-columns:repeat(2,1fr); }
+}
 @media (max-width:480px) {
+  .impact-row { grid-template-columns:repeat(2,1fr); gap:.75rem; padding:.9rem 1rem; }
+  .impact-num { font-size:1.5rem; }
   .hero-name { font-size:2.6rem; }
   .hero-avatar-wrap { width:150px; height:150px; }
   .section-title { font-size:1.8rem; }
@@ -707,3 +728,201 @@ footer { background:var(--dark2); border-top:1px solid var(--glass-border); padd
 @media (max-width:680px) {
   .skills-bars-grid { grid-template-columns:1fr; gap:1.5rem; }
 }
+
+/* ============================================================
+   3D CARD TILT SYSTEM
+   ============================================================ */
+[data-tilt] {
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.08s linear, box-shadow 0.08s linear;
+  will-change: transform;
+}
+[data-tilt]:hover { box-shadow: 0 28px 80px rgba(0,0,0,0.5), var(--glow-garnet); }
+[data-tilt] * { transform: translateZ(0); }
+[data-tilt] .tilt-raise { transform: translateZ(20px); }
+[data-tilt] .tilt-raise-sm { transform: translateZ(10px); }
+
+/* ============================================================
+   AMBIENT GLOW ACCENTS
+   ============================================================ */
+#hero::before {
+  content:''; position:absolute; left:50%; top:60%; width:600px; height:400px;
+  background:radial-gradient(ellipse, rgba(115,0,10,0.18) 0%, transparent 70%);
+  transform:translate(-50%,-50%); pointer-events:none; z-index:0;
+}
+#hero::after {
+  content:''; position:absolute; left:20%; top:30%; width:400px; height:300px;
+  background:radial-gradient(ellipse, rgba(0,33,71,0.25) 0%, transparent 70%);
+  transform:translate(-50%,-50%); pointer-events:none; z-index:0;
+}
+
+/* ============================================================
+   ENHANCED HERO PARALLAX LAYERS
+   ============================================================ */
+.hero-center { position:relative; z-index:1; }
+.hero-avatar-wrap {
+  transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+  will-change: transform;
+}
+.hero-name-group {
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  will-change: transform;
+}
+
+/* ============================================================
+   STAT CARD ENHANCED GLOW
+   ============================================================ */
+.stat-card {
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  border:1px solid var(--glass-border);
+}
+.stat-card::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 0%, rgba(115,0,10,0.18) 0%, transparent 70%);
+  opacity:0; transition:opacity 0.3s ease;
+}
+.stat-card:hover::before { opacity:1; }
+.stat-number {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem, 3vw, 2.2rem);
+  font-weight:700; color:var(--frost);
+  line-height:1;
+  background: linear-gradient(135deg, var(--frost), rgba(248,249,250,0.75));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   PROJECT CARD DEPTH ENHANCEMENT
+   ============================================================ */
+.project-card {
+  transform-origin: center center;
+  will-change: transform;
+  background: linear-gradient(135deg, rgba(43,48,85,0.9), rgba(37,42,74,0.85));
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.project-card::after {
+  content:''; position:absolute; inset:0; border-radius:inherit;
+  background:linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* ============================================================
+   TIMELINE CARD DEPTH
+   ============================================================ */
+.tl-card {
+  background: linear-gradient(135deg, rgba(43,48,85,0.85), rgba(37,42,74,0.80)) !important;
+  border:1px solid rgba(255,255,255,0.12) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ============================================================
+   SKILLS TAB PANEL GLASS
+   ============================================================ */
+.skill-pill-group {
+  background: linear-gradient(135deg, rgba(43,48,85,0.7), rgba(37,42,74,0.6)) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.skills-tabs {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+}
+
+/* ============================================================
+   FLOATING BADGE ANIMATION
+   ============================================================ */
+@keyframes floatBadge {
+  0%,100% { transform:translateY(0px); }
+  50%      { transform:translateY(-6px); }
+}
+.about-img-tag  { animation:floatBadge 4s ease-in-out infinite; }
+.about-sec-tag  { animation:floatBadge 4s ease-in-out infinite 1.2s; }
+
+/* ============================================================
+   ENHANCED SCROLL CUE PULSE
+   ============================================================ */
+.hero-scroll-cue {
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity:.5; transform:translateY(0); }
+  50%      { opacity:1; transform:translateY(6px); }
+}
+
+/* ============================================================
+   LOGO STRIP ENHANCED
+   ============================================================ */
+.logo-strip {
+  background: linear-gradient(90deg, rgba(30,34,64,0.95) 0%, rgba(37,42,74,0.97) 50%, rgba(30,34,64,0.95) 100%) !important;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.logo-item img {
+  filter: brightness(0.9) saturate(1.1);
+  transition: filter var(--T), transform var(--T);
+}
+.logo-item:hover img { filter:brightness(1.1) saturate(1.2); transform:scale(1.05); }
+
+/* ============================================================
+   NAVBAR SCROLLED ENHANCED
+   ============================================================ */
+.navbar.scrolled {
+  background: rgba(30,34,64,0.94) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+/* ============================================================
+   CERT CARD GLASS
+   ============================================================ */
+.cert-card {
+  background: linear-gradient(135deg, rgba(43,48,85,0.75), rgba(37,42,74,0.65)) !important;
+  border: 1px solid rgba(255,255,255,0.13) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.cert-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(115,0,10,0.4) !important;
+}
+
+/* ============================================================
+   CONTACT CARD GLASS
+   ============================================================ */
+.ccard {
+  background: linear-gradient(135deg, rgba(43,48,85,0.6), rgba(37,42,74,0.5)) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ============================================================
+   FORM ENHANCED
+   ============================================================ */
+.contact-form {
+  background: linear-gradient(135deg, rgba(43,48,85,0.5), rgba(37,42,74,0.4));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.form-group input, .form-group textarea {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  color: var(--frost) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+.form-group input:focus, .form-group textarea:focus {
+  border-color: rgba(115,0,10,0.6) !important;
+  box-shadow: 0 0 0 3px rgba(115,0,10,0.12) !important;
+  outline: none !important;
+}
+.form-title { color: var(--frost); font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; margin-bottom:1.5rem; }
