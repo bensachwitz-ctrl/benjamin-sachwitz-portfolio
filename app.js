@@ -225,36 +225,37 @@
   if (!col1 || !col2) return;
 
   const CERTS = [
-    { icon: '🛡️', name: 'Property & Casualty License', issuer: 'SC DOI' },
-    { icon: '⚓', name: 'Marine Insurance Fundamentals', issuer: 'Price Forbes / Lloyd\'s' },
-    { icon: '🚛', name: 'Commercial Trucking Specialist', issuer: 'Swamp Fox Academy' },
-    { icon: '🌲', name: 'Logging Risk Specialist', issuer: 'Swamp Fox Agency' },
-    { icon: '📊', name: 'Qlik Analytics Certification', issuer: 'Qlik' },
-    { icon: '🤖', name: 'AI & Prompt Engineering', issuer: 'Microsoft / Anthropic' },
-    { icon: '🔐', name: 'Cybersecurity Fundamentals', issuer: 'Carahsoft / CompTIA' },
-    { icon: '📋', name: 'Federal Sales & Gov\'t Contracting', issuer: 'Carahsoft' },
-    { icon: '💡', name: 'Salesforce Certified Associate', issuer: 'Salesforce' },
-    { icon: '🏆', name: 'Darla Moore Business Excellence', issuer: 'University of South Carolina' },
-    { icon: '📈', name: 'Digital Marketing Analytics', issuer: 'Google' },
-    { icon: '🧾', name: 'Surety Bond Essentials', issuer: 'NASBP' },
-    { icon: '🌐', name: 'Lloyd\'s London Market', issuer: 'LM TOM / Price Forbes' },
-    { icon: '🔍', name: 'Commercial Risk Assessment', issuer: 'CPCU Society' },
-    { icon: '💻', name: 'GitHub Actions & CI/CD', issuer: 'GitHub' },
-    { icon: '📦', name: 'Microsoft Excel Advanced', issuer: 'Microsoft' },
-    { icon: '🎯', name: 'Loss Control Innovation', issuer: 'Swamp Fox / NISC' },
-    { icon: '📱', name: 'Social Media Brand Strategy', issuer: 'Meta Blueprint' },
-    { icon: '🏅', name: 'Event Operations Excellence', issuer: 'Augusta National' },
-    { icon: '🌍', name: 'Global Risk & Compliance', issuer: 'IRM' },
-    { icon: '📝', name: 'Insurance Policy Analysis', issuer: 'IIABA' },
-    { icon: '🧠', name: 'Strategic Leadership & Ops', issuer: 'Darla Moore School' },
-    { icon: '🔧', name: 'Web Dev: HTML/CSS/JS', issuer: 'freeCodeCamp' },
-    { icon: '📐', name: 'UX / UI Fundamentals', issuer: 'Nielsen Norman Group' },
-    { icon: '🔗', name: 'Microsoft Copilot AI', issuer: 'Microsoft' },
-    { icon: '🏦', name: 'Business Development Mastery', issuer: 'Sandler Training' },
-    { icon: '⚡', name: 'Agile Project Management', issuer: 'PMI' },
-    { icon: '🗂️', name: 'CRM & Pipeline Management', issuer: 'HubSpot Academy' },
-    { icon: '🏗️', name: 'Commercial Construction Risk', issuer: 'IRMI' },
-    { icon: '🚀', name: 'Startup & Entrepreneurship', issuer: 'USC Darla Moore' },
+    // Verified from LinkedIn profile
+    { icon: '🤖', name: 'Learning Microsoft 365 Copilot', issuer: 'Microsoft / LinkedIn Learning' },
+    { icon: '✨', name: 'Generative AI Skills for Creative Content', issuer: 'LinkedIn Learning' },
+    { icon: '📊', name: 'Qlik Learning Ready, Set, Go!', issuer: 'Qlik' },
+    { icon: '☁️', name: 'Cert Prep: Salesforce Certified Administrator', issuer: 'Salesforce / LinkedIn Learning' },
+    { icon: '💡', name: 'Introduction to Prompt Engineering for Generative AI', issuer: 'LinkedIn Learning' },
+    // Professional / industry
+    { icon: '🛡️', name: 'Property & Casualty License', issuer: 'South Carolina DOI' },
+    { icon: '⚓', name: 'Marine & Property Risk Placement', issuer: 'Price Forbes / Lloyd\'s of London' },
+    { icon: '🌐', name: 'Lloyd\'s of London Market Orientation', issuer: 'LM TOM / Price Forbes' },
+    { icon: '🚛', name: 'Commercial Trucking Risk (E&S)', issuer: 'Swamp Fox Agency' },
+    { icon: '🌲', name: 'Logging & Forestry Risk Specialist', issuer: 'Swamp Fox / SC Timber Producers Assoc.' },
+    { icon: '📋', name: 'FMCSA & CAB Fleet Safety Analysis', issuer: 'Swamp Fox Agency' },
+    { icon: '⚙️', name: 'Applied Epic Agency Management System', issuer: 'Applied Systems' },
+    { icon: '📡', name: 'Samsara Telematics & Fleet Data', issuer: 'Samsara' },
+    // Tech / sales
+    { icon: '🔐', name: 'Federal Cybersecurity & IT Sales', issuer: 'Carahsoft Technology Corp.' },
+    { icon: '🏛️', name: 'Public Sector Sales — Intel Team', issuer: 'Carahsoft Technology Corp.' },
+    { icon: '📈', name: 'B2B Pipeline Development', issuer: 'Carahsoft' },
+    // Education
+    { icon: '🎓', name: 'B.S. Risk Management & Insurance', issuer: 'Darla Moore School of Business — USC' },
+    { icon: '📐', name: 'Financial Planning & Services', issuer: 'University of South Carolina' },
+    // Operations
+    { icon: '🏆', name: 'Masters Tournament Operations Staff', issuer: 'Augusta National Golf Club' },
+    { icon: '🎯', name: 'High-Volume Hospitality — Precision Execution', issuer: 'Augusta National' },
+    // Additional professional
+    { icon: '🔗', name: 'Underwriting — Top LinkedIn Skill', issuer: 'LinkedIn Skill Assessment' },
+    { icon: '🌍', name: 'Global Risk Placement — Top LinkedIn Skill', issuer: 'LinkedIn Skill Assessment' },
+    { icon: '📦', name: 'Insurance Brokerage — Top LinkedIn Skill', issuer: 'LinkedIn Skill Assessment' },
+    { icon: '💻', name: 'Web Development: HTML / CSS / JavaScript', issuer: 'Self-Directed / GitHub Projects' },
+    { icon: '🚀', name: 'Brand Ambassador — Digital Growth', issuer: 'SSprinting' },
   ];
 
   function buildCertCard(cert) {
@@ -295,36 +296,56 @@
   });
 })();
 
-/* ---- CONTACT FORM ---- */
-function handleSubmit(event) {
+/* ---- CONTACT FORM (Formspree backend) ---- */
+// TO ACTIVATE: Replace 'YOUR_FORMSPREE_ID' below with your endpoint from formspree.io/new
+// Free plan: 50 submissions/month, instant email delivery. Takes 2 minutes to set up.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
+
+async function handleSubmit(event) {
   event.preventDefault();
-  const btn  = event.target.querySelector('.form-submit');
-  const name = document.getElementById('name').value.trim();
-  const orig = btn.textContent;
+  const btn    = event.target.querySelector('.form-submit');
+  const form   = event.target;
+  const orig   = btn.textContent;
+  const data   = new FormData(form);
 
   btn.textContent = 'Sending…';
   btn.disabled    = true;
 
-  // Formspree or mailto fallback
-  const form    = event.target;
-  const email   = document.getElementById('email').value;
-  const subject = document.getElementById('subject').value || 'Website Inquiry';
-  const message = document.getElementById('message').value;
-
-  // mailto fallback (no server needed for static site)
-  const mailto = `mailto:bensachwitz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} <${email}>\n\n${message}`)}`;
-
-  setTimeout(() => {
-    window.location.href = mailto;
-    btn.textContent = '✓ Message Ready';
-    btn.style.background = '#16a34a';
+  // If Formspree not yet configured, fall back to mailto
+  if (FORMSPREE_ENDPOINT.includes('YOUR_FORMSPREE_ID')) {
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value || 'Website Inquiry';
+    const message = document.getElementById('message').value;
+    const mailto  = `mailto:bfsachwitz@icloud.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: ' + name + ' <' + email + '>\n\n' + message)}`;
     setTimeout(() => {
-      btn.textContent = orig;
-      btn.style.background = '';
-      btn.disabled = false;
+      window.location.href = mailto;
+      btn.textContent = '✓ Opening Mail…';
+      btn.style.background = '#16a34a';
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; form.reset(); }, 3000);
+    }, 500);
+    return;
+  }
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      btn.textContent = '✓ Message Sent';
+      btn.style.background = '#16a34a';
       form.reset();
-    }, 3000);
-  }, 600);
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+    } else {
+      throw new Error('Network error');
+    }
+  } catch {
+    btn.textContent = '✗ Try Again';
+    btn.style.background = '#dc2626';
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
+  }
 }
 
 /* ---- SMOOTH SCROLL (fallback for older browsers) ---- */

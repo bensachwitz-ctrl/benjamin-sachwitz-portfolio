@@ -1020,6 +1020,101 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   SCHEDULE — REDESIGNED
+   ============================================================ */
+#schedule {
+  padding: 8rem 0;
+  background: var(--dark2);
+}
+.schedule-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.schedule-intro {
+  color: var(--text-muted);
+  font-size: 14px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.cal-embed-wrapper {
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+}
+.cal-placeholder {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.cal-placeholder-inner {
+  text-align: center;
+  padding: 3rem;
+}
+.cal-placeholder-inner svg {
+  color: var(--garnet);
+  margin: 0 auto 1rem;
+  opacity: 0.7;
+}
+.cal-placeholder-inner h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--frost);
+  margin-bottom: 0.5rem;
+}
+.cal-placeholder-inner p {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 300px;
+  margin: 0 auto;
+}
+.schedule-direct-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 14px 32px;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  backdrop-filter: blur(8px);
+}
+.sdr-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+}
+.sdr-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--garnet);
+  margin-bottom: 2px;
+}
+.sdr-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--frost);
+  transition: color var(--transition);
+}
+.sdr-val:hover { color: var(--garnet); }
+.sdr-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--glass-border);
+  flex-shrink: 0;
+}
+
+/* ============================================================
    CONTACT
    ============================================================ */
 #contact {
@@ -1238,6 +1333,93 @@ footer {
   background: var(--garnet-l);
   transform: translateY(-3px);
   box-shadow: 0 14px 40px rgba(115,0,10,0.6);
+}
+
+/* ============================================================
+   HERO CREDENTIAL BAR
+   ============================================================ */
+.hero-credential-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 10px 20px;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+.hcred {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+}
+.hcred-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--garnet);
+  line-height: 1.1;
+}
+.hcred-lbl {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.hcred-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--glass-border);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   ABOUT — EDUCATION BADGE
+   ============================================================ */
+.about-edu-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(115,0,10,0.08), rgba(0,33,71,0.12));
+  border: 1px solid rgba(115,0,10,0.2);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.edu-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--garnet), var(--navy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.edu-school {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--frost);
+  margin-bottom: 2px;
+}
+.edu-degree {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   TIMELINE SUBHEAD
+   ============================================================ */
+.tl-subhead {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: -0.5rem;
 }
 
 /* ============================================================
