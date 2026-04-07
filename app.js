@@ -311,31 +311,36 @@ function resetBars(container) {
   }
 })();
 
-/* ---- SCROLL REVEAL ---- */
+/* ---- SCROLL REVEAL — Nuclear-proof multi-trigger system ---- */
 (function initReveal() {
   const items = document.querySelectorAll('.reveal');
   if (!items.length) return;
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.01, rootMargin: '120px 0px 120px 0px' });
-  items.forEach(el => obs.observe(el));
 
-  // Reveal anything already on screen at load + on every scroll (belt+suspenders)
   function revealInView() {
+    const vh = window.innerHeight;
     items.forEach(el => {
       if (!el.classList.contains('visible')) {
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight + 120) el.classList.add('visible');
+        // Reveal if top is within viewport + generous 300px buffer below
+        if (rect.top < vh + 300) {
+          el.classList.add('visible');
+        }
       }
     });
   }
-  setTimeout(revealInView, 80);
+
+  // Belt, suspenders, AND a backup parachute — multiple trigger points
+  revealInView();                             // immediate on script parse
+  setTimeout(revealInView, 100);             // after first paint
+  setTimeout(revealInView, 400);             // after fonts load
+  setTimeout(revealInView, 900);             // after images settle
+  window.addEventListener('load', revealInView);             // after all resources
   window.addEventListener('scroll', revealInView, { passive: true });
+  window.addEventListener('resize', revealInView, { passive: true });
+  window.addEventListener('orientationchange', revealInView);
+
+  // Nuclear fallback: ALL elements visible at 2.5s regardless
+  setTimeout(() => items.forEach(el => el.classList.add('visible')), 2500);
 })();
 
 /* ---- STAT COUNTER ANIMATION ---- */
@@ -616,4 +621,64 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       card.style.transition = 'transform 0.4s ease';
     });
   });
+})();
+
+/* ---- SECTION PARALLAX BACKGROUNDS ---- */
+(function initParallax() {
+  const sections = document.querySelectorAll('#about, #timeline, #skills, #projects, #certifications, #schedule, #contact, .edu-section');
+  let ticking = false;
+  function update() {
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      const vh   = window.innerHeight;
+      // Only process sections near viewport
+      if (rect.bottom < -200 || rect.top > vh + 200) return;
+      const progress = (vh - rect.top) / (vh + rect.height); // 0 at entry, 1 at exit
+      const shift    = (progress - 0.5) * 40; // max ±20px
+      sec.style.backgroundPositionY = `calc(50% + ${shift}px)`;
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+})();
+
+/* ---- ACTIVE NAV HIGHLIGHT (section tracking) ---- */
+(function initActiveNav() {
+  const sectionIds = ['hero','about','timeline','education','skills','projects','certifications','schedule','contact'];
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (window.scrollY + 100 >= el.offsetTop) current = id;
+    });
+    links.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }, { passive: true });
+})();
+
+/* ---- PILL TOOLTIP ON HOVER ---- */
+(function initPillHighlight() {
+  document.querySelectorAll('.pill-hot').forEach(pill => {
+    pill.title = 'Core expertise area';
+  });
+})();
+
+/* ---- SECTION ENTRY GLOW ---- */
+(function initSectionGlow() {
+  const tl = document.querySelectorAll('.tl-item');
+  if (!tl.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('tl-item-glow');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  tl.forEach(el => obs.observe(el));
 })();
