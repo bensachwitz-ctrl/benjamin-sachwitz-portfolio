@@ -1,7 +1,7 @@
 /* ============================================================
    BENJAMIN SACHWITZ — app.js
    Canvas particles | Scroll effects | Gallery lightbox |
-   Cert scroller | Stat counters | Form handler | Nav
+   Cert scroller | Stat counters | Skills tabs | Form handler | Nav
    ============================================================ */
 
 /* ---- CANVAS PARTICLE FIELD ---- */
@@ -17,9 +17,7 @@
     H = canvas.height = canvas.offsetHeight;
   }
 
-  function Particle() {
-    this.reset();
-  }
+  function Particle() { this.reset(); }
   Particle.prototype.reset = function() {
     this.x  = Math.random() * W;
     this.y  = Math.random() * H;
@@ -83,39 +81,41 @@
 
   window.addEventListener('scroll', () => {
     const sy = window.scrollY;
-    navbar.classList.toggle('scrolled', sy > 40);
+    if (navbar) navbar.classList.toggle('scrolled', sy > 40);
     if (bookFloat) bookFloat.classList.toggle('show', sy > 600);
   }, { passive: true });
 
   hamburger && hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+    navLinks && navLinks.classList.toggle('open');
   });
 
   navLinks && navLinks.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
-      hamburger.classList.remove('open');
+      hamburger && hamburger.classList.remove('open');
       navLinks.classList.remove('open');
     }
   });
 
   // Active link via IntersectionObserver
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        links.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-50% 0px -45% 0px' });
-
-  sections.forEach(s => obs.observe(s));
+  if (sections.length) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(a => a.classList.remove('active'));
+          const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-50% 0px -45% 0px' });
+    sections.forEach(s => obs.observe(s));
+  }
 })();
 
 /* ---- SCROLL REVEAL ---- */
 (function initReveal() {
   const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -135,16 +135,16 @@
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const el     = entry.target;
-      const target = +el.dataset.target;
-      const suffix = el.dataset.suffix || '';
+      const el       = entry.target;
+      const target   = +el.dataset.target;
+      const suffix   = el.dataset.suffix || '';
       const duration = 1800;
-      let start = null;
+      let start      = null;
 
       function step(timestamp) {
         if (!start) start = timestamp;
         const progress = Math.min((timestamp - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
+        const eased    = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
         if (progress < 1) requestAnimationFrame(step);
       }
@@ -154,6 +154,36 @@
   }, { threshold: 0.5 });
 
   counters.forEach(c => obs.observe(c));
+})();
+
+/* ---- SKILLS TABS ---- */
+(function initSkillsTabs() {
+  const tabBtns  = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  if (!tabBtns.length) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+
+      // Deactivate all
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanes.forEach(p => {
+        p.classList.remove('active');
+        p.style.animation = '';
+      });
+
+      // Activate selected
+      btn.classList.add('active');
+      const pane = document.getElementById('tab-' + target);
+      if (pane) {
+        pane.classList.add('active');
+        // Re-trigger animation
+        void pane.offsetWidth;
+        pane.style.animation = 'fadeSlideIn 0.4s ease forwards';
+      }
+    });
+  });
 })();
 
 /* ---- GALLERY LIGHTBOX ---- */
@@ -169,7 +199,7 @@
   let current = 0;
 
   function getSrcs() {
-    return items.map(el => el.dataset.src || el.querySelector('img').src);
+    return items.map(el => el.dataset.src || (el.querySelector('img') && el.querySelector('img').src) || '');
   }
 
   function open(idx) {
@@ -198,17 +228,13 @@
     lbImg.src = srcs[current];
   }
 
-  items.forEach((item, i) => {
-    item.addEventListener('click', () => open(i));
-  });
+  items.forEach((item, i) => item.addEventListener('click', () => open(i)));
 
   lbClose && lbClose.addEventListener('click', close);
   lbPrev  && lbPrev.addEventListener('click', prev);
   lbNext  && lbNext.addEventListener('click', next);
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) close();
-  });
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
 
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('active')) return;
@@ -225,37 +251,38 @@
   if (!col1 || !col2) return;
 
   const CERTS = [
-    // Verified from LinkedIn profile
-    { icon: '🤖', name: 'Learning Microsoft 365 Copilot', issuer: 'Microsoft / LinkedIn Learning' },
-    { icon: '✨', name: 'Generative AI Skills for Creative Content', issuer: 'LinkedIn Learning' },
-    { icon: '📊', name: 'Qlik Learning Ready, Set, Go!', issuer: 'Qlik' },
-    { icon: '☁️', name: 'Cert Prep: Salesforce Certified Administrator', issuer: 'Salesforce / LinkedIn Learning' },
-    { icon: '💡', name: 'Introduction to Prompt Engineering for Generative AI', issuer: 'LinkedIn Learning' },
-    // Professional / industry
-    { icon: '🛡️', name: 'Property & Casualty License', issuer: 'South Carolina DOI' },
-    { icon: '⚓', name: 'Marine & Property Risk Placement', issuer: 'Price Forbes / Lloyd\'s of London' },
-    { icon: '🌐', name: 'Lloyd\'s of London Market Orientation', issuer: 'LM TOM / Price Forbes' },
-    { icon: '🚛', name: 'Commercial Trucking Risk (E&S)', issuer: 'Swamp Fox Agency' },
-    { icon: '🌲', name: 'Logging & Forestry Risk Specialist', issuer: 'Swamp Fox / SC Timber Producers Assoc.' },
-    { icon: '📋', name: 'FMCSA & CAB Fleet Safety Analysis', issuer: 'Swamp Fox Agency' },
-    { icon: '⚙️', name: 'Applied Epic Agency Management System', issuer: 'Applied Systems' },
-    { icon: '📡', name: 'Samsara Telematics & Fleet Data', issuer: 'Samsara' },
-    // Tech / sales
-    { icon: '🔐', name: 'Federal Cybersecurity & IT Sales', issuer: 'Carahsoft Technology Corp.' },
-    { icon: '🏛️', name: 'Public Sector Sales — Intel Team', issuer: 'Carahsoft Technology Corp.' },
-    { icon: '📈', name: 'B2B Pipeline Development', issuer: 'Carahsoft' },
+    // Tech / AI
+    { icon: '🤖', name: 'Learning Microsoft 365 Copilot',                  issuer: 'Microsoft / LinkedIn Learning' },
+    { icon: '✨', name: 'Generative AI Skills for Creative Content',        issuer: 'LinkedIn Learning' },
+    { icon: '💡', name: 'Introduction to Prompt Engineering for GenAI',     issuer: 'LinkedIn Learning' },
+    { icon: '📊', name: 'Qlik Learning Ready, Set, Go!',                    issuer: 'Qlik' },
+    { icon: '☁️', name: 'Cert Prep: Salesforce Certified Administrator',    issuer: 'Salesforce / LinkedIn Learning' },
+    // Insurance / Professional
+    { icon: '🛡️', name: 'Property & Casualty License',                     issuer: 'South Carolina DOI' },
+    { icon: '⚓', name: 'Marine & Property Risk Placement',                  issuer: 'Price Forbes / Lloyd\'s of London' },
+    { icon: '🌐', name: 'Lloyd\'s of London Market Orientation',             issuer: 'LM TOM / Price Forbes' },
+    { icon: '🚛', name: 'Commercial Trucking Risk (E&S)',                   issuer: 'Swamp Fox Agency' },
+    { icon: '🌲', name: 'Logging & Forestry Risk Specialist',               issuer: 'Swamp Fox / SC Timber Producers Assoc.' },
+    { icon: '📋', name: 'FMCSA & CAB Fleet Safety Analysis',                issuer: 'Swamp Fox Agency' },
+    { icon: '⚙️', name: 'Applied Epic Agency Management System',            issuer: 'Applied Systems' },
+    { icon: '📡', name: 'Samsara Telematics & Fleet Data',                  issuer: 'Samsara' },
+    // Tech / Sales
+    { icon: '🔐', name: 'Federal Cybersecurity & IT Sales',                 issuer: 'Carahsoft Technology Corp.' },
+    { icon: '🏛️', name: 'Public Sector Sales — Intel Team',                 issuer: 'Carahsoft Technology Corp.' },
+    { icon: '📈', name: 'B2B Pipeline Development',                         issuer: 'Carahsoft' },
     // Education
-    { icon: '🎓', name: 'B.S. Risk Management & Insurance', issuer: 'Darla Moore School of Business — USC' },
-    { icon: '📐', name: 'Financial Planning & Services', issuer: 'University of South Carolina' },
+    { icon: '🎓', name: 'B.S. Risk Management & Insurance',                 issuer: 'Darla Moore School of Business — USC' },
+    { icon: '📐', name: 'Financial Planning & Services',                    issuer: 'University of South Carolina' },
     // Operations
-    { icon: '🏆', name: 'Masters Tournament Operations Staff', issuer: 'Augusta National Golf Club' },
-    { icon: '🎯', name: 'High-Volume Hospitality — Precision Execution', issuer: 'Augusta National' },
-    // Additional professional
-    { icon: '🔗', name: 'Underwriting — Top LinkedIn Skill', issuer: 'LinkedIn Skill Assessment' },
-    { icon: '🌍', name: 'Global Risk Placement — Top LinkedIn Skill', issuer: 'LinkedIn Skill Assessment' },
-    { icon: '📦', name: 'Insurance Brokerage — Top LinkedIn Skill', issuer: 'LinkedIn Skill Assessment' },
-    { icon: '💻', name: 'Web Development: HTML / CSS / JavaScript', issuer: 'Self-Directed / GitHub Projects' },
-    { icon: '🚀', name: 'Brand Ambassador — Digital Growth', issuer: 'SSprinting' },
+    { icon: '🏆', name: 'Masters Tournament Operations Staff',              issuer: 'Augusta National Golf Club' },
+    { icon: '🎯', name: 'High-Volume Hospitality — Precision Execution',    issuer: 'Augusta National' },
+    // LinkedIn Top Skills
+    { icon: '🔗', name: 'Underwriting — Top LinkedIn Skill',                issuer: 'LinkedIn Skill Assessment' },
+    { icon: '🌍', name: 'Global Risk Placement — Top LinkedIn Skill',       issuer: 'LinkedIn Skill Assessment' },
+    { icon: '📦', name: 'Insurance Brokerage — Top LinkedIn Skill',         issuer: 'LinkedIn Skill Assessment' },
+    // Web / Personal
+    { icon: '💻', name: 'Web Development: HTML / CSS / JavaScript',         issuer: 'Self-Directed / GitHub Projects' },
+    { icon: '🚀', name: 'Brand Ambassador — Digital Growth',                issuer: 'SSprinting' },
   ];
 
   function buildCertCard(cert) {
@@ -274,7 +301,7 @@
   const group1 = CERTS.slice(0, half);
   const group2 = CERTS.slice(half);
 
-  // Duplicate for seamless loop
+  // Duplicate for seamless infinite loop
   [...group1, ...group1].forEach(c => col1.appendChild(buildCertCard(c)));
   [...group2, ...group2].forEach(c => col2.appendChild(buildCertCard(c)));
 })();
@@ -284,10 +311,10 @@
   document.querySelectorAll('.btn-primary, .btn-gcal, .form-submit').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
-      const cx = rect.left + rect.width  / 2;
-      const cy = rect.top  + rect.height / 2;
-      const dx = (e.clientX - cx) * 0.25;
-      const dy = (e.clientY - cy) * 0.25;
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      const dx   = (e.clientX - cx) * 0.25;
+      const dy   = (e.clientY - cy) * 0.25;
       btn.style.transform = `translate(${dx}px, ${dy}px)`;
     });
     btn.addEventListener('mouseleave', () => {
@@ -303,48 +330,61 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
 
 async function handleSubmit(event) {
   event.preventDefault();
-  const btn    = event.target.querySelector('.form-submit');
-  const form   = event.target;
-  const orig   = btn.textContent;
-  const data   = new FormData(form);
+  const btn  = event.target.querySelector('.form-submit');
+  const form = event.target;
+  const orig = btn.textContent;
+  const data = new FormData(form);
 
   btn.textContent = 'Sending…';
   btn.disabled    = true;
 
-  // If Formspree not yet configured, fall back to mailto
+  // Fallback to mailto if Formspree not yet configured
   if (FORMSPREE_ENDPOINT.includes('YOUR_FORMSPREE_ID')) {
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value || 'Website Inquiry';
-    const message = document.getElementById('message').value;
-    const mailto  = `mailto:bfsachwitz@icloud.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: ' + name + ' <' + email + '>\n\n' + message)}`;
+    const name    = (document.getElementById('name')    || {}).value || '';
+    const email   = (document.getElementById('email')   || {}).value || '';
+    const subject = (document.getElementById('subject') || {}).value || 'Website Inquiry';
+    const message = (document.getElementById('message') || {}).value || '';
+    const mailto  = `mailto:bensachwitz@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: ' + name.trim() + ' <' + email + '>\n\n' + message)}`;
     setTimeout(() => {
       window.location.href = mailto;
-      btn.textContent = '✓ Opening Mail…';
+      btn.textContent      = '✓ Opening Mail…';
       btn.style.background = '#16a34a';
-      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; form.reset(); }, 3000);
+      setTimeout(() => {
+        btn.textContent      = orig;
+        btn.style.background = '';
+        btn.disabled         = false;
+        form.reset();
+      }, 3000);
     }, 500);
     return;
   }
 
   try {
     const res = await fetch(FORMSPREE_ENDPOINT, {
-      method: 'POST',
-      body: data,
+      method:  'POST',
+      body:    data,
       headers: { 'Accept': 'application/json' }
     });
     if (res.ok) {
-      btn.textContent = '✓ Message Sent';
+      btn.textContent      = '✓ Message Sent';
       btn.style.background = '#16a34a';
       form.reset();
-      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+      setTimeout(() => {
+        btn.textContent      = orig;
+        btn.style.background = '';
+        btn.disabled         = false;
+      }, 4000);
     } else {
       throw new Error('Network error');
     }
   } catch {
-    btn.textContent = '✗ Try Again';
+    btn.textContent      = '✗ Try Again';
     btn.style.background = '#dc2626';
-    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
+    setTimeout(() => {
+      btn.textContent      = orig;
+      btn.style.background = '';
+      btn.disabled         = false;
+    }, 3000);
   }
 }
 
@@ -357,3 +397,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+/* ---- TIMELINE HOVER DEPTH ---- */
+(function initTimelineHover() {
+  document.querySelectorAll('.tl-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      document.querySelectorAll('.tl-item').forEach(i => i.classList.add('dimmed'));
+      item.classList.remove('dimmed');
+      item.classList.add('focused');
+    });
+    item.addEventListener('mouseleave', () => {
+      document.querySelectorAll('.tl-item').forEach(i => {
+        i.classList.remove('dimmed', 'focused');
+      });
+    });
+  });
+})();
+
+/* ---- PROJECT CARD TILT ---- */
+(function initCardTilt() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect   = card.getBoundingClientRect();
+      const x      = e.clientX - rect.left;
+      const y      = e.clientY - rect.top;
+      const cx     = rect.width  / 2;
+      const cy     = rect.height / 2;
+      const rotateX = ((y - cy) / cy) * -6;
+      const rotateY = ((x - cx) / cx) *  6;
+      card.style.transform    = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      card.style.transition   = 'transform 0.1s ease';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform  = '';
+      card.style.transition = 'transform 0.4s ease';
+    });
+  });
+})();
