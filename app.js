@@ -414,61 +414,16 @@ function resetBars(container) {
   });
 })();
 
-/* ---- GALLERY LIGHTBOX ---- */
-(function initGallery() {
-  const items    = Array.from(document.querySelectorAll('.gallery-item'));
-  const lightbox = document.getElementById('lightbox');
-  const lbImg    = document.getElementById('lb-img');
-  const lbClose  = document.getElementById('lb-close');
-  const lbPrev   = document.getElementById('lb-prev');
-  const lbNext   = document.getElementById('lb-next');
-  if (!lightbox || !items.length) return;
-
-  let current = 0;
-
-  function getSrcs() {
-    return items.map(el => el.dataset.src || (el.querySelector('img') && el.querySelector('img').src) || '');
-  }
-
-  function open(idx) {
-    current = idx;
-    const srcs = getSrcs();
-    lbImg.src = srcs[current];
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function close() {
-    lightbox.classList.remove('active');
-    lbImg.src = '';
-    document.body.style.overflow = '';
-  }
-
-  function prev() {
-    const srcs = getSrcs();
-    current = (current - 1 + srcs.length) % srcs.length;
-    lbImg.src = srcs[current];
-  }
-
-  function next() {
-    const srcs = getSrcs();
-    current = (current + 1) % srcs.length;
-    lbImg.src = srcs[current];
-  }
-
-  items.forEach((item, i) => item.addEventListener('click', () => open(i)));
-
-  lbClose && lbClose.addEventListener('click', close);
-  lbPrev  && lbPrev.addEventListener('click', prev);
-  lbNext  && lbNext.addEventListener('click', next);
-
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape')     close();
-    if (e.key === 'ArrowLeft')  prev();
-    if (e.key === 'ArrowRight') next();
+/* ---- STRIP PHOTO ZOOM (About section personal photos) ---- */
+(function initStripPhotos() {
+  const strips = document.querySelectorAll('.strip-photo');
+  strips.forEach(photo => {
+    photo.addEventListener('mouseenter', () => {
+      photo.style.borderColor = 'rgba(115,0,10,0.45)';
+    });
+    photo.addEventListener('mouseleave', () => {
+      photo.style.borderColor = '';
+    });
   });
 })();
 

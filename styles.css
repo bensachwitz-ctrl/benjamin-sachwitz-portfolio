@@ -972,3 +972,167 @@ input:focus-visible, textarea:focus-visible {
   outline:2px solid var(--garnet-bright);
   outline-offset:0;
 }
+
+/* ============================================================
+   ABOUT — PERSONAL PHOTO STRIP
+   ============================================================ */
+.about-photo-strip {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; margin-top:1.5rem;
+}
+.strip-photo {
+  position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:4/3;
+  cursor:pointer; border:1px solid var(--glass-border);
+}
+.strip-photo img {
+  width:100%; height:100%; object-fit:cover; object-position:center top;
+  transition:transform .5s cubic-bezier(0.25,0.46,0.45,0.94);
+  display:block;
+}
+.strip-photo:hover img { transform:scale(1.08); }
+.strip-caption {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:6px 8px; font-size:9px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--frost);
+  background:linear-gradient(to top, rgba(0,0,0,.7), transparent);
+  transition:opacity var(--T);
+}
+.strip-photo:hover .strip-caption { opacity:1; }
+
+/* ============================================================
+   EDUCATION — PHOTO CARD VARIANT
+   ============================================================ */
+.edu-item-card--photo {
+  background-size:cover; background-position:center top;
+  position:relative; overflow:hidden; min-height:100px;
+}
+.edu-card-photo-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(10,12,18,0.82) 0%, rgba(10,12,18,0.65) 100%);
+  z-index:0;
+}
+.edu-item-card--photo > * { position:relative; z-index:1; }
+
+/* ============================================================
+   COMPREHENSIVE REACTIVITY — :active states & cursor
+   ============================================================ */
+
+/* Buttons — pressed state */
+.btn-primary:active     { transform:translateY(0) scale(0.97); box-shadow:none; }
+.btn-outline:active     { transform:translateY(0) scale(0.97); }
+.btn-book:active        { transform:translateY(0) scale(0.97); }
+.btn-resume:active      { transform:scale(0.97); }
+.form-submit:active     { transform:scale(0.98); box-shadow:none; }
+.book-float-btn:active  { transform:translateY(0) scale(0.97); }
+.btn-gcal:active        { transform:scale(0.97); }
+.tab-btn:active         { transform:scale(0.97); }
+
+/* Nav links */
+.nav-links a:active { color:var(--frost); background:rgba(255,255,255,0.12); }
+.nav-links .nav-cta:active { background:var(--garnet-l); transform:scale(0.97); }
+
+/* Social links */
+.hsocial:active { transform:translateY(0) scale(0.96); }
+.csoc-btn:active { transform:scale(0.96); }
+
+/* Logo strip items */
+.logo-item { cursor:default; }
+.logo-item:hover span { color:var(--frost); }
+
+/* Timeline cards */
+.tl-item { cursor:default; }
+.tl-card { cursor:default; }
+
+/* Project cards */
+.project-card { cursor:default; }
+.proj-link:hover { letter-spacing:.08em; color:var(--garnet-bright); }
+.proj-link:active { opacity:.7; }
+
+/* Education milestone cards */
+.edu-item-card { cursor:default; }
+
+/* Stat cards */
+.stat-card { cursor:default; }
+
+/* Cert cards */
+.cert-card { cursor:pointer; }
+
+/* Credential pills in hero */
+.hcred-pill { cursor:default; }
+
+/* Contact links */
+.ccard-row {
+  display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text);
+  padding:4px 0; border-bottom:1px solid transparent;
+  transition:color var(--T), border-color var(--T);
+}
+.ccard-row:hover { color:var(--frost); border-color:rgba(115,0,10,0.25); }
+.ccard-row:active { color:var(--garnet-bright); }
+
+/* Hamburger */
+.hamburger:hover span { background:var(--frost); }
+.hamburger:active { opacity:.7; }
+
+/* Footer links */
+.footer-links a {
+  transition:color var(--T);
+}
+.footer-links a:hover { color:var(--garnet-bright); }
+.footer-links a:active { opacity:.7; }
+
+/* Strip photos */
+.strip-photo:active img { transform:scale(1.05); }
+
+/* Scroll cue (hidden but in case re-enabled) */
+.hero-scroll-cue:active { opacity:.5; }
+
+/* Make sure ALL anchor tags that are links have pointer cursor */
+a[href] { cursor:pointer; }
+button { cursor:pointer; }
+
+/* Form inputs — enhanced states */
+.form-group input, .form-group textarea {
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease !important;
+}
+.form-group input:hover, .form-group textarea:hover {
+  border-color:rgba(255,255,255,0.22) !important;
+  background:rgba(255,255,255,0.08) !important;
+}
+.form-submit:hover {
+  background:var(--garnet-l);
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(115,0,10,0.45);
+}
+
+/* Hamburger menu items (mobile) */
+#nav-links a:active { background:rgba(115,0,10,0.15); }
+
+/* Schedule SDR val links */
+.sdr-val { cursor:pointer; }
+.sdr-val:active { opacity:.7; }
+
+/* About edu badge */
+.about-edu-badge { cursor:default; }
+
+/* Impact items */
+.impact-item { cursor:default; }
+
+/* Section labels — not clickable, no pointer */
+.section-label { cursor:default; }
+.tl-loc-pill { cursor:default; }
+.tl-year { cursor:default; }
+.tl-tags span { cursor:default; }
+.proj-num { cursor:default; }
+
+/* Project card — full card hover lift already exists via data-tilt */
+/* Add smooth border glow on hover */
+.project-card:hover {
+  border-color:rgba(115,0,10,0.30) !important;
+}
+
+/* Timeline card hover — slightly more dramatic */
+.tl-card:hover {
+  border-color:rgba(115,0,10,0.30) !important;
+}
+
+/* Gallery CSS removed — clean up stale references */
+.gallery-masonry, .gallery-item, .gallery-overlay, .lightbox { display:none !important; }
