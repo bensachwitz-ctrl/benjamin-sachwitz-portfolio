@@ -218,8 +218,16 @@ function resetBars(container) {
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
   items.forEach(el => obs.observe(el));
+
+  // Also immediately reveal anything already in the viewport on load
+  setTimeout(() => {
+    items.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 100);
 })();
 
 /* ---- STAT COUNTER ANIMATION ---- */
