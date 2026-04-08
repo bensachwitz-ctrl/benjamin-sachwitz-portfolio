@@ -28,7 +28,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 --glass:rgba(12,18,36,0.6);--glass-b:rgba(79,172,254,0.1);
 --txt:#e0e4ef;--txt2:#8892b0;--dim:#5a6380;
 --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
---ease:cubic-bezier(0.16,1,0.3,1);
+--ease:cubic-bezier(0.16,1,0.3,1);--ease-smooth:cubic-bezier(0.25,1,0.5,1);--ease-snap:cubic-bezier(0.22,1,0.36,1);
 }
 
 /* === SCROLL PROGRESS === */
@@ -66,7 +66,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .hero{position:relative;min-height:200vh;overflow:hidden}
 .hero-sky{position:absolute;top:0;left:0;right:0;height:100vh;background:linear-gradient(180deg,#020510 0%,#050b1e 20%,#0a1535 40%,#0f1d45 60%,#162555 80%,#1a2d60 100%);z-index:0}
 .hero-stars{position:absolute;top:0;left:0;right:0;height:100vh;z-index:1;pointer-events:none}
-.hero-city{position:absolute;top:90vh;left:0;right:0;height:120vh;z-index:2;background:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80&fit=crop') center top/cover no-repeat}
+.hero-city{position:absolute;top:90vh;left:0;right:0;height:120vh;z-index:2;background:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=2560&q=85&fit=crop&auto=format') center top/cover no-repeat}
 .hero-city::before{content:'';position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(180deg,#1a2d60,transparent);z-index:1}
 .hero-city::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(0deg,var(--deep),transparent);z-index:1}
 #particles{position:absolute;top:0;left:0;right:0;height:100vh;z-index:3;pointer-events:none}
@@ -104,7 +104,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 
 /* === ABOUT === */
 .about{padding:7rem 2rem 6rem}
-.about .sbg{background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&fit=crop')}
+.about .sbg{background-image:url('https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=2560&q=85&fit=crop&auto=format')}
 .about .sov{background:rgba(5,8,22,.84)}
 .about-g{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .pf{position:relative;width:100%;max-width:380px;aspect-ratio:3/4;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
@@ -124,7 +124,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 
 /* === SERVICES === */
 .services{padding:6rem 2rem 7rem}
-.services .sbg{background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&fit=crop')}
+.services .sbg{background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2560&q=85&fit=crop&auto=format')}
 .services .sov{background:rgba(5,8,22,.87)}
 .shdr{text-align:center;margin-bottom:4rem}
 .shdr h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
@@ -150,7 +150,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 
 /* === CAREER === */
 .career{padding:6rem 2rem 7rem}
-.career .sbg{background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80&fit=crop')}
+.career .sbg{background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=2560&q=85&fit=crop&auto=format')}
 .career .sov{background:rgba(5,8,22,.86)}
 .cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1100px;margin:0 auto}
 .cc{border-radius:20px;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-b);transition:all .4s var(--ease);transform-style:preserve-3d;cursor:pointer}
@@ -174,7 +174,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 
 /* === PHOTOS === */
 .photos{padding:6rem 0 7rem}
-.photos .sbg{background-image:url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=80&fit=crop')}
+.photos .sbg{background-image:url('https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=2560&q=85&fit=crop&auto=format')}
 .photos .sov{background:rgba(5,8,22,.82)}
 .photo-rows{display:flex;flex-direction:column;gap:0}
 .prow{display:flex;align-items:stretch;min-height:42vh;overflow:hidden}
@@ -201,7 +201,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 
 /* === CONNECT === */
 .connect{padding:7rem 2rem}
-.connect .sbg{background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=80&fit=crop')}
+.connect .sbg{background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=2560&q=85&fit=crop&auto=format')}
 .connect .sov{background:rgba(5,8,22,.88)}
 .con-in{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:3}
 .con-in h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;background:linear-gradient(135deg,#fff,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
@@ -247,6 +247,29 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .flinks a{color:var(--dim);transition:color .3s}
 .flinks a:hover{color:var(--accent)}
 .flinks svg{width:17px;height:17px}
+
+/* === ANIMATION ENHANCEMENTS === */
+.btn:active,.pill:active,.mbtn:active,.cal-btn:active{transform:scale(.95)!important;transition-duration:.1s}
+.nav-logo{transition:transform .3s var(--ease-smooth),opacity .3s}
+.nav-logo:hover{transform:scale(1.08)}
+.blob{animation:blobFloat 8s ease-in-out infinite}
+.b2{animation-delay:-4s;animation-duration:10s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(12px,-18px) scale(1.05)}50%{transform:translate(-8px,14px) scale(.97)}75%{transform:translate(14px,8px) scale(1.03)}}
+.modal-form input:focus,.modal-form textarea:focus,.modal-form select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,172,254,.08),0 0 20px rgba(79,172,254,.06)}
+.svc-icon svg,.pill svg{transition:transform .3s var(--ease-smooth)}
+.svc:hover .svc-icon svg{transform:rotate(6deg) scale(1.1)}
+.pill:hover svg{transform:scale(1.15)}
+.stat-v{will-change:transform}.svc{will-change:transform,border-color}.cc{will-change:transform}.pill{will-change:transform}
+.hero-stars,.hero-city,#particles{will-change:transform}
+.hero-tag .typewriter-cursor{display:inline-block;width:2px;height:1.1em;background:var(--accent);margin-left:2px;vertical-align:text-bottom;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.form-success{display:inline-flex;align-items:center;gap:.5rem;color:#00b894;font-weight:600}
+.form-success svg{animation:checkDraw .5s var(--ease-smooth) forwards}
+@keyframes checkDraw{0%{transform:scale(0) rotate(-45deg);opacity:0}60%{transform:scale(1.2) rotate(0deg);opacity:1}100%{transform:scale(1) rotate(0deg);opacity:1}}
+.sec .sbg{transition:transform .1s linear;will-change:transform}
+.cc-img img,.ppnl img,.coli img{will-change:transform}
+.nav-links a{transition:color .3s var(--ease-smooth)}
+.svc,.cc,.pill,.btn{-webkit-tap-highlight-color:transparent}
 
 /* === ACCESSIBILITY === */
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.rvs{opacity:1;transform:none}.hero-loc,.hero-name,.hero-tag,.hero-btns,.scroll-ind{opacity:1;animation:none}}
@@ -406,7 +429,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
     <div class="cgrid">
       <div class="cc rvs" style="transition-delay:.1s" onclick="toggleExpand(this)">
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=600&q=80&fit=crop" alt="Augusta National golf course" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=85&fit=crop&auto=format" alt="Augusta National golf course" loading="lazy">
           <img class="logo" src="Images/augustanational_logo.jpg" alt="Augusta National logo">
         </div>
         <div class="cc-body">
@@ -418,7 +441,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
       </div>
       <div class="cc rvs" style="transition-delay:.2s" onclick="toggleExpand(this)">
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=600&q=80&fit=crop" alt="Washington DC Capitol building" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=800&q=85&fit=crop&auto=format" alt="Washington DC Capitol building" loading="lazy">
           <img class="logo" src="Images/carahsoft_logo.jpg" alt="Carahsoft logo">
         </div>
         <div class="cc-body">
@@ -430,7 +453,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
       </div>
       <div class="cc rvs" style="transition-delay:.3s" onclick="toggleExpand(this)">
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80&fit=crop" alt="London skyline" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=85&fit=crop&auto=format" alt="London skyline" loading="lazy">
           <img class="logo" src="Images/price_forbes_logo.jpg" alt="Price Forbes logo">
         </div>
         <div class="cc-body">
@@ -442,7 +465,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
       </div>
       <div class="cc rvs" style="transition-delay:.4s" onclick="toggleExpand(this)">
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&q=80&fit=crop" alt="South Carolina marsh landscape" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85&fit=crop&auto=format" alt="South Carolina marsh landscape" loading="lazy">
           <img class="logo" src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox Agency logo">
         </div>
         <div class="cc-body">
@@ -631,9 +654,53 @@ function handleBook(e){
   const subj=encodeURIComponent('Call Request: '+t+' — '+n);
   const body=encodeURIComponent('From: '+n+' ('+em+')\nTopic: '+t+'\n\n'+(m||'[No message — just wants to connect]'));
   window.location.href='mailto:ben@swampfoxagency.com?subject='+subj+'&body='+body;
-  const btn=document.getElementById('mBtn');btn.textContent='Sent!';btn.style.background='linear-gradient(135deg,#00b894,#00cec9)';
-  setTimeout(()=>{btn.textContent='Send Request';btn.style.background='';f.reset();closeModal()},2500);
+  const btn=document.getElementById('mBtn');
+  btn.innerHTML='<span class="form-success"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg> Sent!</span>';
+  btn.style.background='linear-gradient(135deg,#00b894,#00cec9)';
+  setTimeout(()=>{btn.innerHTML='Send Request';btn.style.background='';f.reset();closeModal()},2500);
 }
+
+/* ===== TYPEWRITER ===== */
+(function(){
+  const tag=document.querySelector('.hero-tag');
+  if(!tag||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const html=tag.innerHTML;
+  const textNode=tag.childNodes[tag.childNodes.length-1];
+  if(!textNode||!textNode.textContent)return;
+  const lines=tag.innerHTML.split('<br>');
+  if(lines.length<2)return;
+  const lastLine=lines[lines.length-1];
+  const stripped=lastLine.replace(/<[^>]*>/g,'');
+  tag.innerHTML=lines.slice(0,-1).join('<br>')+'<br><span class="tw-line"></span><span class="typewriter-cursor"></span>';
+  const twLine=tag.querySelector('.tw-line');
+  let i=0;
+  function type(){
+    if(i<stripped.length){twLine.textContent+=stripped.charAt(i);i++;setTimeout(type,40+Math.random()*30)}
+    else{const cur=tag.querySelector('.typewriter-cursor');if(cur)setTimeout(()=>cur.style.animation='blink 1s step-end 3',3000)}
+  }
+  setTimeout(type,1200);
+})();
+
+/* ===== PARALLAX SECTION BGs ===== */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const bgs=document.querySelectorAll('.sec .sbg');
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(!ticking){requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      bgs.forEach(bg=>{
+        const sec=bg.parentElement;
+        const rect=sec.getBoundingClientRect();
+        if(rect.top<window.innerHeight&&rect.bottom>0){
+          const offset=(rect.top/window.innerHeight)*-30;
+          bg.style.transform='translateY('+offset+'px) scale(1.05)';
+        }
+      });
+      ticking=false;
+    });ticking=true}
+  },{passive:true});
+})();
 
 /* ===== RIPPLE ===== */
 document.querySelectorAll('.btn,.pill,.mbtn,.cal-btn').forEach(b=>{b.addEventListener('click',function(e){const r=this.getBoundingClientRect(),s=Math.max(r.width,r.height),el=document.createElement('span');el.classList.add('ripple');el.style.width=el.style.height=s+'px';el.style.left=(e.clientX-r.left-s/2)+'px';el.style.top=(e.clientY-r.top-s/2)+'px';this.appendChild(el);el.addEventListener('animationend',()=>el.remove())})});
