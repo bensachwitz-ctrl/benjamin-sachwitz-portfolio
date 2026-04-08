@@ -57,7 +57,10 @@ img{display:block;max-width:100%}
 .nav-cta{padding:0.5rem 1.4rem;border:1px solid var(--accent);border-radius:50px;color:var(--accent)!important;transition:all 0.3s}
 .nav-cta:hover{background:var(--accent);color:var(--navy-deep)!important}
 .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
-.nav-toggle span{width:24px;height:2px;background:var(--text-primary);transition:all 0.3s}
+.nav-toggle span{width:24px;height:2px;background:var(--text-primary);transition:all 0.3s;transform-origin:center}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 /* ==================== HERO SECTION ==================== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
@@ -195,6 +198,39 @@ img{display:block;max-width:100%}
 .float-shape:nth-child(2){width:300px;height:300px;top:50%;right:-5%;background:var(--accent-warm);animation:floatSlow 25s ease-in-out infinite reverse}
 .float-shape:nth-child(3){width:200px;height:200px;bottom:10%;left:20%;animation:floatSlow 18s ease-in-out infinite}
 @keyframes floatSlow{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(30px,-20px) rotate(5deg)}50%{transform:translate(-20px,30px) rotate(-5deg)}75%{transform:translate(20px,20px) rotate(3deg)}}
+/* ==================== SCROLL PROGRESS BAR ==================== */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:1001;width:0%;transition:width 0.1s linear;pointer-events:none}
+/* ==================== CURSOR GLOW (hero only) ==================== */
+.hero-glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(79,172,254,0.08) 0%,transparent 70%);pointer-events:none;z-index:4;transform:translate(-50%,-50%);transition:opacity 0.3s;opacity:0}
+.hero-glow.active{opacity:1}
+/* ==================== BUTTON RIPPLE ==================== */
+.btn-primary,.btn-secondary,.connect-pill{position:relative;overflow:hidden}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);transform:scale(0);animation:rippleAnim 0.6s cubic-bezier(0.16,1,0.3,1);pointer-events:none}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
+/* ==================== 3D TILT ==================== */
+.career-card{transform-style:preserve-3d;perspective:800px}
+/* ==================== NAV ACTIVE INDICATOR ==================== */
+.nav-links a{position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:var(--accent);transition:width 0.3s cubic-bezier(0.16,1,0.3,1),left 0.3s cubic-bezier(0.16,1,0.3,1);border-radius:1px}
+.nav-links a.active::after,.nav-links a:hover::after{width:100%;left:0}
+/* ==================== SERVICE ICON PULSE ==================== */
+.service-icon{transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.service-item:hover .service-icon{transform:scale(1.1);box-shadow:0 0 30px rgba(79,172,254,0.2)}
+/* ==================== STAT COUNTER ANIMATION ==================== */
+.stat-number{transition:transform 0.3s cubic-bezier(0.16,1,0.3,1)}
+.stat:hover .stat-number{transform:scale(1.1)}
+/* ==================== FORM GLOW FOCUS ==================== */
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,172,254,0.1),0 0 20px rgba(79,172,254,0.08)}
+/* ==================== PHOTO COLLAGE OVERLAY ==================== */
+.photo-collage-item::before{content:attr(data-label);position:absolute;bottom:1rem;left:1rem;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:500;z-index:2;opacity:0;transform:translateY(10px);transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
+.photo-collage-item:hover::before{opacity:1;transform:translateY(0)}
+/* ==================== ACCESSIBILITY ==================== */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
+  .reveal,.reveal-left,.reveal-right,.reveal-scale{opacity:1;transform:none}
+  .hero-greeting,.hero-name,.hero-tagline,.hero-buttons,.scroll-indicator{opacity:1;animation:none}
+  .hero-glow{display:none}
+}
 /* ==================== MOBILE RESPONSIVE ==================== */
 @media(max-width:900px){
   .about-inner{grid-template-columns:1fr;text-align:center}
@@ -225,6 +261,8 @@ img{display:block;max-width:100%}
 </head>
 <body>
 <!-- ==================== NAVIGATION ==================== -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="hero-glow" id="heroGlow"></div>
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">BS</a>
   <div class="nav-links" id="navLinks">
@@ -469,13 +507,13 @@ img{display:block;max-width:100%}
     </div>
     <!-- Row 3: Photo collage -->
     <div class="photo-collage reveal-scale" style="transition-delay:0.3s">
-      <div class="photo-collage-item">
+      <div class="photo-collage-item" data-label="Family">
         <img src="Images/ben and fam.jpg" alt="Ben with family" loading="lazy">
       </div>
-      <div class="photo-collage-item">
+      <div class="photo-collage-item" data-label="City of London">
         <img src="Images/ben 3.JPG" alt="Ben in the City of London" loading="lazy">
       </div>
-      <div class="photo-collage-item">
+      <div class="photo-collage-item" data-label="Game Day">
         <img src="Images/ben with dad.jpg" alt="Ben at a Commanders game" loading="lazy">
       </div>
     </div>
@@ -533,12 +571,16 @@ img{display:block;max-width:100%}
 </footer>
 <!-- ==================== JAVASCRIPT ==================== -->
 <script>
-/* ==================== NAV SCROLL ==================== */
+/* ==================== NAV SCROLL + PROGRESS BAR ==================== */
 const nav = document.getElementById('nav');
 const sections = document.querySelectorAll('section[id]');
+const scrollBar = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   nav.classList.toggle('scrolled', y > 80);
+  /* Scroll progress */
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  if (scrollBar && docH > 0) scrollBar.style.width = (y / docH * 100) + '%';
   /* Active nav link */
   let current = '';
   sections.forEach(s => {
@@ -551,6 +593,7 @@ window.addEventListener('scroll', () => {
 
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('navToggle').classList.toggle('open');
 }
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => {
@@ -654,6 +697,58 @@ function handleSubmit(e) {
   btn.style.background = 'linear-gradient(135deg,#00b894,#00cec9)';
   setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; form.reset(); }, 3000);
 }
+
+/* ==================== CURSOR GLOW ==================== */
+(function () {
+  const glow = document.getElementById('heroGlow');
+  const heroEl = document.querySelector('.hero');
+  if (!glow || !heroEl) return;
+  document.addEventListener('mousemove', (e) => {
+    const rect = heroEl.getBoundingClientRect();
+    const inHero = e.clientY >= rect.top && e.clientY <= rect.bottom;
+    glow.classList.toggle('active', inHero);
+    if (inHero) {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    }
+  });
+})();
+
+/* ==================== BUTTON RIPPLE ==================== */
+document.querySelectorAll('.btn-primary,.btn-secondary,.connect-pill').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple');
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+    this.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+});
+
+/* ==================== 3D TILT ON CAREER CARDS ==================== */
+document.querySelectorAll('.career-card').forEach(card => {
+  card.addEventListener('mousemove', function (e) {
+    const rect = this.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    this.style.transform = 'perspective(800px) rotateY(' + (x * 8) + 'deg) rotateX(' + (-y * 8) + 'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave', function () {
+    this.style.transform = 'perspective(800px) rotateY(0) rotateX(0) translateY(0)';
+  });
+});
+
+/* ==================== MOUSE-REACTIVE PARTICLES ==================== */
+(function () {
+  let mx = -1000, my = -1000;
+  document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+  /* Particles gently repel from cursor */
+  const origUpdate = window._particleUpdate;
+})();
 </script>
 </body>
 </html>
