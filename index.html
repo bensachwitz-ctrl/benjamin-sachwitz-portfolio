@@ -72,7 +72,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .hero-city::before{content:'';position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(180deg,#1a2d60,transparent);z-index:1}
 .hero-city::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(0deg,var(--deep),transparent);z-index:1}
 #particles{position:absolute;top:0;left:0;right:0;height:100vh;z-index:3;pointer-events:none}
-.hero-content{position:fixed;top:50%;left:0;transform:translateY(-50%);z-index:10;text-align:left;max-width:750px;padding:0 2rem 0 clamp(2rem,8vw,8rem);width:100%;pointer-events:none}
+.hero-content{position:fixed;top:50%;left:0;transform:translateY(-50%);z-index:10;text-align:left;max-width:55%;padding:0 2rem 0 clamp(3rem,6vw,7rem);width:100%;pointer-events:none}
+.hero-photos{position:fixed;top:50%;right:clamp(2rem,5vw,6rem);transform:translateY(-50%);z-index:8;display:grid;grid-template-columns:1fr 1fr;gap:.8rem;max-width:340px;opacity:0;animation:fu 1.2s 1.1s forwards}
+.hero-photos .hp{border-radius:16px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 12px 40px rgba(0,0,0,.5);border:2px solid rgba(79,172,254,.1);transition:all .5s var(--ease)}
+.hero-photos .hp:nth-child(2){transform:translateY(2rem)}
+.hero-photos .hp:nth-child(3){transform:translateY(-1rem)}
+.hero-photos .hp img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.hero-photos .hp:hover img{transform:scale(1.08)}
+.hero-photos .hp:hover{border-color:rgba(79,172,254,.3);box-shadow:0 16px 50px rgba(79,172,254,.15)}
 .hero-content.hidden{opacity:0}
 .hero-content>*{pointer-events:auto}
 .hero-loc{font-size:clamp(.82rem,1.5vw,1rem);font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;opacity:0;animation:fu 1s .3s forwards}
@@ -373,6 +380,51 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.rvs{opacity:1;transform:none}.hero-loc,.hero-name,.hero-tag,.hero-btns,.scroll-ind{opacity:1;animation:none}}
 
 /* === RESPONSIVE === */
+/* === CERTIFICATIONS MARQUEE === */
+.certs{padding:4.5rem 2rem 4rem}
+.certs .sbg{background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=2560&q=85&fit=crop&auto=format')}
+.certs .sov{background:rgba(5,8,22,.9)}
+.cert-marquee{position:relative;overflow:hidden;max-width:1200px;margin:0 auto;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.cert-row{display:flex;gap:1rem;animation:marquee 60s linear infinite;width:max-content}
+.cert-row.reverse{animation-direction:reverse;animation-duration:55s}
+.cert-chip{flex-shrink:0;padding:.6rem 1.2rem;border-radius:50px;background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--glass-b);font-size:.78rem;color:var(--txt);font-weight:500;white-space:nowrap;display:flex;align-items:center;gap:.5rem;transition:all .3s var(--ease);cursor:default}
+.cert-chip:hover{border-color:var(--accent);transform:scale(1.05);box-shadow:0 4px 16px rgba(79,172,254,.15)}
+.cert-chip .cc-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.cert-chip .cc-dot.ins{background:var(--accent)}
+.cert-chip .cc-dot.ai{background:var(--accent2)}
+.cert-chip .cc-dot.biz{background:var(--warm)}
+.cert-chip .cc-dot.tech{background:#ffd700}
+.cert-count{text-align:center;margin-top:2rem;color:var(--dim);font-size:.85rem;letter-spacing:.05em}
+.cert-count span{color:var(--accent);font-weight:700;font-size:1.1rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* === T-REX GAME === */
+.trex-toggle{position:fixed;bottom:1.5rem;right:1.5rem;z-index:1500;width:48px;height:48px;border-radius:50%;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s var(--ease);color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.trex-toggle:hover{transform:scale(1.1);border-color:var(--accent);box-shadow:0 6px 24px rgba(79,172,254,.2)}
+.trex-container{position:fixed;bottom:5rem;right:1.5rem;z-index:1500;width:380px;border-radius:20px;background:rgba(8,12,28,.95);backdrop-filter:blur(20px);border:1px solid var(--glass-b);overflow:hidden;transform:scale(0) translateY(20px);transform-origin:bottom right;transition:all .4s var(--ease);opacity:0;pointer-events:none;box-shadow:0 16px 50px rgba(0,0,0,.5)}
+.trex-container.open{transform:scale(1) translateY(0);opacity:1;pointer-events:auto}
+.trex-header{padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(79,172,254,.08)}
+.trex-header span{font-size:.75rem;color:var(--accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.trex-header .trex-score{font-family:var(--serif);font-size:.85rem;color:var(--txt)}
+.trex-canvas-wrap{position:relative}
+#trexCanvas{display:block;width:100%;height:160px;background:#0a0e1a}
+.trex-gameover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,8,22,.88);opacity:0;pointer-events:none;transition:all .4s var(--ease)}
+.trex-gameover.show{opacity:1;pointer-events:auto}
+.trex-gameover h4{font-family:var(--serif);font-size:1.2rem;color:var(--accent);margin-bottom:.3rem}
+.trex-gameover p{font-size:.8rem;color:var(--txt2);margin-bottom:1rem}
+.trex-gameover .trex-cta{padding:.6rem 1.5rem;border-radius:50px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--deep);font-weight:600;font-size:.82rem;cursor:pointer;transition:all .3s var(--ease);border:none;font-family:var(--sans)}
+.trex-gameover .trex-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,172,254,.3)}
+.trex-footer{padding:.5rem 1rem;text-align:center;font-size:.68rem;color:var(--dim);border-top:1px solid rgba(79,172,254,.08)}
+
+/* === MAGNETIC GLOW EFFECT === */
+.glow-card{position:relative;overflow:hidden}
+.glow-card::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(79,172,254,.12),transparent 70%);pointer-events:none;opacity:0;transition:opacity .4s;transform:translate(-50%,-50%);z-index:0}
+.glow-card:hover::after{opacity:1}
+
+/* === FLOATING ACTION PULSE === */
+@keyframes floatPulse{0%,100%{box-shadow:0 4px 16px rgba(0,0,0,.3),0 0 0 0 rgba(79,172,254,.3)}50%{box-shadow:0 4px 16px rgba(0,0,0,.3),0 0 0 8px rgba(79,172,254,0)}}
+.trex-toggle{animation:floatPulse 3s ease-in-out infinite}
+
 @media(max-width:900px){
 .about-g{grid-template-columns:1fr;text-align:center}
 .about-photo{display:flex;justify-content:center}.pf{max-width:260px}
@@ -389,6 +441,9 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .sec .sbg{background-attachment:scroll}
 .hero-city{background-attachment:scroll}
 .modal-form .fr{flex-direction:column}
+.hero-photos{display:none}
+.hero-content{max-width:100%}
+.trex-container{width:320px;right:1rem;bottom:4.5rem}
 }
 @media(max-width:640px){
 .nav-links{display:none;position:fixed;inset:0;background:rgba(5,8,22,.97);flex-direction:column;justify-content:center;align-items:center;gap:2rem;backdrop-filter:blur(20px)}
@@ -416,6 +471,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
   <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
     <a href="#education">Education</a>
+    <a href="#certifications">Certs</a>
     <a href="#services">What I Do</a>
     <a href="#career">Career</a>
     <a href="#expertise">Skills</a>
@@ -448,6 +504,12 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
         LinkedIn
       </a>
     </div>
+  </div>
+  <div class="hero-photos" id="heroPhotos">
+    <div class="hp"><img src="Images/ben 2.JPG" alt="Ben at Lloyd's of London" loading="lazy"></div>
+    <div class="hp"><img src="Images/250de2e8-d077-48de-9e15-bf20436e4112.jpg" alt="Ben in suit" loading="lazy"></div>
+    <div class="hp"><img src="Images/ben grad.jpg" alt="Ben USC graduation" loading="lazy"></div>
+    <div class="hp"><img src="Images/ben 4.png" alt="Ben at formal event" loading="lazy"></div>
   </div>
 </section>
 
@@ -518,6 +580,134 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs sec" id="certifications">
+  <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
+  <div class="si">
+    <div class="shdr rv"><h2>Certifications & Training</h2><p>Always learning. 70+ professional certifications and counting.</p></div>
+    <div class="cert-marquee rv" style="transition-delay:.1s">
+      <div class="cert-row" id="certRow1">
+        <div class="cert-chip"><span class="cc-dot ins"></span>SC Property & Casualty Producer</div>
+        <div class="cert-chip"><span class="cc-dot ins"></span>SC Surety & Marine Lines</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Google AI Essentials</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Claude 101</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Claude Code in Action</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Salesforce Admin Cert Prep</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Qlik Certified Partner Sales</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>AI Productivity Hacks</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Machine Learning Foundations</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics Foundations</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics: Sales Data</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Excel for FP&A</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Excel with Copilot</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Prompt Engineering</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>What Is Generative AI?</div>
+        <!-- duplicated for seamless loop -->
+        <div class="cert-chip"><span class="cc-dot ins"></span>SC Property & Casualty Producer</div>
+        <div class="cert-chip"><span class="cc-dot ins"></span>SC Surety & Marine Lines</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Google AI Essentials</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Claude 101</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Claude Code in Action</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Salesforce Admin Cert Prep</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Qlik Certified Partner Sales</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>AI Productivity Hacks</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Machine Learning Foundations</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics Foundations</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics: Sales Data</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Excel for FP&A</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Excel with Copilot</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Prompt Engineering</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>What Is Generative AI?</div>
+      </div>
+    </div>
+    <div class="cert-marquee rv" style="transition-delay:.2s;margin-top:1rem">
+      <div class="cert-row reverse" id="certRow2">
+        <div class="cert-chip"><span class="cc-dot ai"></span>Getting Started with AI</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to AI</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Copilot in PowerPoint</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Microsoft 365 Copilot</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Streamlining Work with Copilot</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Learning Data Analytics 1 & 2</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Career Skills in Data Analytics</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Fundamentals</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Strategies in New World</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Sales Presentations with AI Boost</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Foundations</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Strategic Negotiation</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiating with Agility</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Service Excellence</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Influence Skills for Leaders</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Digital Literacy</div>
+        <!-- duplicated for seamless loop -->
+        <div class="cert-chip"><span class="cc-dot ai"></span>Getting Started with AI</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to AI</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Copilot in PowerPoint</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Microsoft 365 Copilot</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Streamlining Work with Copilot</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Learning Data Analytics 1 & 2</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Career Skills in Data Analytics</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Fundamentals</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Strategies in New World</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Sales Presentations with AI Boost</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Foundations</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Strategic Negotiation</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiating with Agility</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Service Excellence</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Influence Skills for Leaders</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>Digital Literacy</div>
+      </div>
+    </div>
+    <div class="cert-marquee rv" style="transition-delay:.3s;margin-top:1rem">
+      <div class="cert-row" id="certRow3" style="animation-duration:65s">
+        <div class="cert-chip"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Program Management for IT</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>IT Strategy</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>IT Architecture</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>IT Asset Management</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Building Resilience</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Handling Workplace Change</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Teamwork Essentials</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Ethics in Age of Generative AI</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI for Creative Content</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Claude Cowork</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Build Generative AI Productivity Skills</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Becoming an Agile Coach</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Lean Six Sigma Projects</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Business Etiquette</div>
+        <!-- duplicated for seamless loop -->
+        <div class="cert-chip"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Program Management for IT</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>IT Strategy</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>IT Architecture</div>
+        <div class="cert-chip"><span class="cc-dot tech"></span>IT Asset Management</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Building Resilience</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Handling Workplace Change</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Teamwork Essentials</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Ethics in Age of Generative AI</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI for Creative Content</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Claude Cowork</div>
+        <div class="cert-chip"><span class="cc-dot ai"></span>Build Generative AI Productivity Skills</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Becoming an Agile Coach</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Lean Six Sigma Projects</div>
+        <div class="cert-chip"><span class="cc-dot biz"></span>Business Etiquette</div>
+      </div>
+    </div>
+    <p class="cert-count rv" style="transition-delay:.4s"><span>70+</span> certifications across Insurance, AI/ML, Data Analytics, Leadership, and Technology</p>
   </div>
 </section>
 
@@ -843,6 +1033,27 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
+<!-- T-REX GAME -->
+<div class="trex-toggle" id="trexToggle" onclick="toggleTrex()" title="Play a game">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 2h4v4M15 9l6.1-6.1M10.6 9.6l-8.1 8.1a2.1 2.1 0 103 3l8.1-8.1"/><path d="M12 6l4.5 4.5M8 14l2 2"/></svg>
+</div>
+<div class="trex-container" id="trexBox">
+  <div class="trex-header">
+    <span>Runner</span>
+    <span class="trex-score" id="trexScoreDisp">Score: 0</span>
+  </div>
+  <div class="trex-canvas-wrap">
+    <canvas id="trexCanvas" width="380" height="160"></canvas>
+    <div class="trex-gameover" id="trexGameover">
+      <h4>Let's Connect</h4>
+      <p>You scored <span id="trexFinalScore">0</span> points</p>
+      <button class="trex-cta" onclick="openModal()">Book a Call</button>
+      <button class="trex-cta" style="margin-top:.5rem;background:transparent;border:1px solid var(--accent);color:var(--accent)" onclick="startTrex()">Play Again</button>
+    </div>
+  </div>
+  <div class="trex-footer">Space / Tap to jump &middot; Avoid obstacles</div>
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="flinks">
@@ -1047,6 +1258,112 @@ document.querySelectorAll('.btn,.pill,.mbtn,.cal-btn').forEach(b=>{b.addEventLis
 
 /* ===== 3D TILT ===== */
 document.querySelectorAll('.cc').forEach(c=>{c.addEventListener('mousemove',function(e){const r=this.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;this.style.transform='perspective(800px) rotateY('+(x*6)+'deg) rotateX('+(-y*6)+'deg) translateY(-4px)'});c.addEventListener('mouseleave',function(){this.style.transform=''})});
+
+/* ===== HERO PHOTOS PARALLAX + FADE ===== */
+(function(){
+  const hp=document.getElementById('heroPhotos');
+  if(!hp)return;
+  window.addEventListener('scroll',()=>{
+    const vh=window.innerHeight;
+    const fade=Math.max(0,1-window.scrollY/(vh*0.85));
+    hp.style.opacity=fade;
+  },{passive:true});
+})();
+
+/* ===== GLOW CARD MOUSE TRACKING ===== */
+document.querySelectorAll('.svc,.proj,.exp-cell,.cert-item').forEach(el=>{
+  el.addEventListener('mousemove',function(e){
+    const r=this.getBoundingClientRect();
+    this.style.setProperty('--gx',(e.clientX-r.left)+'px');
+    this.style.setProperty('--gy',(e.clientY-r.top)+'px');
+  });
+});
+
+/* ===== T-REX RUNNER GAME ===== */
+let trexOpen=false;
+function toggleTrex(){
+  trexOpen=!trexOpen;
+  document.getElementById('trexBox').classList.toggle('open',trexOpen);
+  if(trexOpen&&!trexRunning)startTrex();
+}
+let trexRunning=false,trexRaf,trexScore=0;
+function startTrex(){
+  const cv=document.getElementById('trexCanvas');if(!cv)return;
+  const ctx=cv.getContext('2d');
+  cv.width=380;cv.height=160;
+  document.getElementById('trexGameover').classList.remove('show');
+  trexScore=0;trexRunning=true;
+  // game state
+  const dino={x:40,y:120,w:20,h:24,vy:0,jumping:false,grounded:true};
+  let obstacles=[],spawnTimer=0,speed=3,frame=0;
+  const ground=140;
+  function jump(){if(dino.grounded){dino.vy=-8;dino.grounded=false;dino.jumping=true}}
+  function onKey(e){if((e.code==='Space'||e.key===' ')&&trexRunning){e.preventDefault();jump()}}
+  function onTouch(){if(trexRunning)jump()}
+  document.addEventListener('keydown',onKey);
+  cv.addEventListener('touchstart',onTouch);
+  cv.addEventListener('click',onTouch);
+  function spawnOb(){
+    const h=15+Math.random()*20;
+    obstacles.push({x:cv.width,y:ground-h,w:12+Math.random()*8,h:h});
+  }
+  function gameOver(){
+    trexRunning=false;cancelAnimationFrame(trexRaf);
+    document.removeEventListener('keydown',onKey);
+    cv.removeEventListener('touchstart',onTouch);
+    cv.removeEventListener('click',onTouch);
+    document.getElementById('trexFinalScore').textContent=trexScore;
+    document.getElementById('trexGameover').classList.add('show');
+  }
+  function loop(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    // ground
+    ctx.strokeStyle='rgba(79,172,254,.2)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(0,ground);ctx.lineTo(cv.width,ground);ctx.stroke();
+    // ground dots
+    for(let i=0;i<cv.width;i+=20){
+      const ox=(frame*speed)%20;
+      ctx.fillStyle='rgba(79,172,254,.1)';
+      ctx.fillRect(i-ox,ground+4,1,1);
+    }
+    // dino physics
+    dino.vy+=0.5;dino.y+=dino.vy;
+    if(dino.y>=ground-dino.h){dino.y=ground-dino.h;dino.vy=0;dino.grounded=true;dino.jumping=false}
+    // draw dino (runner silhouette)
+    ctx.fillStyle='var(--accent)';ctx.fillStyle='#4facfe';
+    ctx.fillRect(dino.x,dino.y,dino.w,dino.h);
+    ctx.fillRect(dino.x+4,dino.y-6,12,6);// head
+    // legs animation
+    const legPhase=Math.sin(frame*.3);
+    ctx.fillRect(dino.x+2,dino.y+dino.h,4,6+legPhase*3);
+    ctx.fillRect(dino.x+14,dino.y+dino.h,4,6-legPhase*3);
+    // obstacles
+    spawnTimer++;
+    if(spawnTimer>60+Math.random()*40){spawnOb();spawnTimer=0}
+    obstacles.forEach(o=>{
+      o.x-=speed;
+      ctx.fillStyle='rgba(240,147,251,.7)';
+      ctx.fillRect(o.x,o.y,o.w,o.h);
+      // collision
+      if(dino.x+dino.w>o.x+3&&dino.x<o.x+o.w-3&&dino.y+dino.h>o.y+3){gameOver();return}
+    });
+    obstacles=obstacles.filter(o=>o.x>-30);
+    // score
+    trexScore=Math.floor(frame/5);
+    document.getElementById('trexScoreDisp').textContent='Score: '+trexScore;
+    // speed up over time
+    if(frame%300===0&&speed<7)speed+=.2;
+    frame++;
+    if(trexRunning)trexRaf=requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+/* ===== PAUSE CERT MARQUEE ON HOVER ===== */
+document.querySelectorAll('.cert-row').forEach(row=>{
+  row.addEventListener('mouseenter',()=>row.style.animationPlayState='paused');
+  row.addEventListener('mouseleave',()=>row.style.animationPlayState='running');
+});
 </script>
 </body>
 </html>
