@@ -91,6 +91,17 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 
+/* === SCROLL DOWN INDICATOR === */
+.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fu 1s 2s forwards}
+.scroll-ind span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.scroll-ind .scroll-arrow{width:20px;height:20px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:scrollBounce 2s ease-in-out infinite;opacity:.6}
+@keyframes scrollBounce{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:.8}}
+
+/* === BACK TO TOP === */
+.btt{position:fixed;bottom:1.5rem;left:1.5rem;z-index:1500;width:44px;height:44px;border-radius:50%;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;color:var(--accent);cursor:pointer;transition:all .4s var(--ease);opacity:0;pointer-events:none;transform:translateY(10px)}
+.btt.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.btt:hover{background:rgba(79,172,254,.15);border-color:var(--accent);transform:translateY(-2px)}
+
 /* === PAGE LOADER === */
 .page-loader{position:fixed;inset:0;background:var(--deep);z-index:9998;display:flex;align-items:center;justify-content:center;transition:opacity .6s var(--ease),visibility .6s}
 .page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
@@ -511,6 +522,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .hero-portrait{margin:0 auto;width:clamp(180px,40vw,240px)}
 .hero-btns{justify-content:center}
 .trex-container{width:320px;right:1rem;bottom:4.5rem}
+.scroll-ind{bottom:1.5rem}
 }
 @media(max-width:640px){
 .nav-links{display:none;position:fixed;inset:0;background:rgba(5,8,22,.97);flex-direction:column;justify-content:center;align-items:center;gap:2rem;backdrop-filter:blur(20px)}
@@ -520,6 +532,8 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .hero-portrait{width:clamp(160px,50vw,200px)}
 .pills{flex-direction:column;align-items:center}
 .carousel-slide{flex:0 0 80%;min-width:200px}
+.trex-container{width:calc(100vw - 2rem);right:1rem;bottom:4rem}
+.btt{bottom:1rem;left:1rem;width:38px;height:38px}
 .exp-grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
 .ring-wrap{width:70px;height:70px}
 .ring-wrap svg{width:70px;height:70px}
@@ -581,7 +595,13 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
       <span class="hp-badge">P&C Licensed &middot; Moore School of Business</span>
     </div>
   </div>
+  <div class="scroll-ind" id="scrollInd"><span>Scroll</span><div class="scroll-arrow"></div></div>
 </section>
+
+<!-- BACK TO TOP -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
 <!-- ABOUT -->
 <section class="about sec" id="about">
@@ -1150,6 +1170,7 @@ function updateNavIndicator(){
   ind.style.left=(r.left-pr.left)+'px';
   ind.style.width=r.width+'px';
 }
+const btt=document.getElementById('btt'),scrollInd=document.getElementById('scrollInd');
 window.addEventListener('scroll',()=>{
   const y=window.scrollY;nav.classList.toggle('scrolled',y>80);
   const dh=document.documentElement.scrollHeight-window.innerHeight;
@@ -1157,6 +1178,8 @@ window.addEventListener('scroll',()=>{
   let cur='';secs.forEach(s=>{if(y>=s.offsetTop-200)cur=s.id});
   document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
   updateNavIndicator();
+  if(btt)btt.classList.toggle('show',y>600);
+  if(scrollInd)scrollInd.style.opacity=y>200?'0':'';
 },{passive:true});
 
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
@@ -1304,25 +1327,32 @@ document.querySelectorAll('.ppnl img,.coli img').forEach(img=>{img.style.cursor=
   counters.forEach(c=>cObs.observe(c));
 })();
 
-/* ===== TYPEWRITER ===== */
+/* ===== TYPEWRITER (CYCLES) ===== */
 (function(){
   const tag=document.querySelector('.hero-tag');
   if(!tag||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  const html=tag.innerHTML;
-  const textNode=tag.childNodes[tag.childNodes.length-1];
-  if(!textNode||!textNode.textContent)return;
   const lines=tag.innerHTML.split('<br>');
   if(lines.length<2)return;
-  const lastLine=lines[lines.length-1];
-  const stripped=lastLine.replace(/<[^>]*>/g,'');
+  const phrases=['Building relationships that protect what matters most.','Turning complex risks into clear strategies.','Global perspective. Local commitment.'];
   tag.innerHTML=lines.slice(0,-1).join('<br>')+'<br><span class="tw-line"></span><span class="typewriter-cursor"></span>';
   const twLine=tag.querySelector('.tw-line');
-  let i=0;
-  function type(){
-    if(i<stripped.length){twLine.textContent+=stripped.charAt(i);i++;setTimeout(type,40+Math.random()*30)}
-    else{const cur=tag.querySelector('.typewriter-cursor');if(cur)setTimeout(()=>cur.style.animation='blink 1s step-end 3',3000)}
+  let phraseIdx=0;
+  function typePhrase(){
+    const text=phrases[phraseIdx];let i=0;twLine.textContent='';
+    function type(){
+      if(i<text.length){twLine.textContent+=text.charAt(i);i++;setTimeout(type,35+Math.random()*25)}
+      else{setTimeout(erasePhrase,3000)}
+    }
+    type();
   }
-  setTimeout(type,1200);
+  function erasePhrase(){
+    function erase(){
+      if(twLine.textContent.length>0){twLine.textContent=twLine.textContent.slice(0,-1);setTimeout(erase,20)}
+      else{phraseIdx=(phraseIdx+1)%phrases.length;setTimeout(typePhrase,400)}
+    }
+    erase();
+  }
+  setTimeout(typePhrase,1200);
 })();
 
 /* ===== PARALLAX SECTION BGs ===== */
@@ -1494,6 +1524,18 @@ document.querySelectorAll('.svc,.proj,.exp-cell').forEach(c=>{
 document.querySelectorAll('.cert-row').forEach(row=>{
   row.addEventListener('mouseenter',()=>row.style.animationPlayState='paused');
   row.addEventListener('mouseleave',()=>row.style.animationPlayState='running');
+});
+
+/* ===== KEYBOARD CAROUSEL NAVIGATION ===== */
+document.addEventListener('keydown',e=>{
+  const photos=document.getElementById('photos');
+  if(!photos)return;
+  const rect=photos.getBoundingClientRect();
+  const inView=rect.top<window.innerHeight&&rect.bottom>0;
+  if(inView){
+    if(e.key==='ArrowRight'){scrollCar(1);e.preventDefault()}
+    if(e.key==='ArrowLeft'){scrollCar(-1);e.preventDefault()}
+  }
 });
 
 /* ===== PAGE LOAD + NAV INDICATOR INIT ===== */
