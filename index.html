@@ -42,12 +42,7 @@
   </button>
 </header>
 
-<!-- Mobile nav overlay -->
-<div class="mob-nav-overlay" id="mob-nav-overlay"></div>
-
-<!-- ============================================================
-     HERO
-     ============================================================ -->
+<!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
@@ -60,9 +55,9 @@
       <span id="typewriter"></span><span class="tw-cursor">|</span>
     </p>
     <div class="hero-pills reveal">
-      <span class="pill">E&amp;S Non-Admitted</span>
+      <span class="pill">E&S Non-Admitted</span>
       <span class="pill">Lloyd's Trained</span>
-      <span class="pill">P&amp;C Licensed</span>
+      <span class="pill">P&C Licensed</span>
       <span class="pill">Darla Moore '25</span>
     </div>
     <div class="hero-ctas reveal">
@@ -77,108 +72,106 @@
   </div>
 </section>
 
-<!-- ============ PARALLAX DIVIDER ============ -->
-<div class="parallax-strip" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80&fit=crop')">
-  <div class="ps-overlay"></div>
-  <div class="ps-text">Global Markets &middot; London &middot; Washington D.C. &middot; South Carolina</div>
-</div>
-
-<!-- ============================================================
-     ABOUT
-     ============================================================ -->
-<section class="section" id="about">
-  <div class="container">
+<!-- ============ ABOUT ============ -->
+<section class="section has-bg" id="about" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
     <span class="section-label reveal">About</span>
     <h2 class="section-title reveal">Built on the World's Toughest Markets.</h2>
 
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>Risk Management & Insurance graduate from the University of South Carolina's Darla Moore School of Business — finished December 2025, one full semester ahead of schedule. My foundation was built at Lloyd's of London through Price Forbes, where I supported Marine and Property underwriting teams across the full placement cycle.</p>
+        <p>Risk Management &amp; Insurance graduate from the University of South Carolina's Darla Moore School of Business — finished December 2025, one full semester ahead of schedule. My foundation was built at Lloyd's of London through Price Forbes, where I supported Marine and Property underwriting teams across the full placement cycle.</p>
         <p>At Swamp Fox Agency, I work in the E&S non-admitted market on some of the most complex risks in P&C — commercial trucking and logging across the Southeast. I analyze loss runs, interpret FMCSA and CAB fleet safety data, prepare Lloyd's binding authority submissions, and manage carrier negotiations using Applied Epic and Samsara telematics.</p>
         <p>Before insurance, I spent two-plus years in federal tech sales at Carahsoft and two seasons on operations staff at The Masters Tournament at Augusta National. I also build AI-powered tools and digital platforms to modernize how agencies operate.</p>
 
         <div class="about-stats">
-          <div class="astat"><div class="astat-val">E&S</div><div class="astat-lbl">Non-Admitted Market</div></div>
-          <div class="astat"><div class="astat-val">Lloyd's</div><div class="astat-lbl">Market Trained</div></div>
-          <div class="astat"><div class="astat-val">P&C</div><div class="astat-lbl">SC Licensed Producer</div></div>
-          <div class="astat"><div class="astat-val">Moore</div><div class="astat-lbl">B.S. RMI Dec 2025</div></div>
+          <div class="astat reveal">
+            <div class="astat-val">5+</div>
+            <div class="astat-lbl">Markets Served</div>
+          </div>
+          <div class="astat reveal">
+            <div class="astat-val">60+</div>
+            <div class="astat-lbl">Active Accounts</div>
+          </div>
+          <div class="astat reveal">
+            <div class="astat-val">3</div>
+            <div class="astat-lbl">Risk Lines</div>
+          </div>
+          <div class="astat reveal">
+            <div class="astat-val">2</div>
+            <div class="astat-lbl">Continents</div>
+          </div>
         </div>
       </div>
 
-      <div class="about-carousel reveal">
-        <div class="carousel-wrap">
-          <div class="carousel-track" id="carousel-track">
-            <div class="car-slide active"><img src="Images/ben 2.JPG" alt="London office" style="image-orientation:from-image"><div class="car-caption">Price Forbes &middot; Lloyd's of London</div></div>
-            <div class="car-slide"><img src="Images/ben 4.png" alt="Formal event"><div class="car-caption">Washington D.C. Era</div></div>
-            <div class="car-slide"><img src="Images/ben grad.jpg" alt="Graduation" style="image-orientation:from-image"><div class="car-caption">Darla Moore &middot; December 2025</div></div>
-            <div class="car-slide"><img src="Images/ben and fam.jpg" alt="Family" style="image-orientation:from-image"><div class="car-caption">Family</div></div>
-            <div class="car-slide"><img src="Images/ben with dad.jpg" alt="Commanders game" style="image-orientation:from-image"><div class="car-caption">Washington Commanders &middot; D.C.</div></div>
-            <div class="car-slide"><img src="Images/250de2e8-d077-48de-9e15-bf20436e4112.jpg" alt="Event" style="image-orientation:from-image"><div class="car-caption">Professional Event</div></div>
-            <div class="car-slide"><img src="Images/ben 3.JPG" alt="London" style="image-orientation:from-image"><div class="car-caption">City of London &middot; 2025</div></div>
-            <div class="car-slide"><img src="Images/ben with cap.jpg" alt="Capitals game" style="image-orientation:from-image"><div class="car-caption">Washington Capitals</div></div>
-          </div>
-          <div class="car-dots" id="car-dots"></div>
-          <button class="car-arrow car-prev" id="car-prev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
-          <button class="car-arrow car-next" id="car-next" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+      <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="carousel-track">
+          <div class="car-slide active"><img src="Images/ben 2.JPG" alt="Lloyd's of London" style="image-orientation:from-image"/><div class="car-caption">Lloyd's of London</div></div>
+          <div class="car-slide"><img src="Images/ben 4.png" alt="D.C. formal event" style="image-orientation:from-image"/><div class="car-caption">D.C. Formal Event</div></div>
+          <div class="car-slide"><img src="Images/ben grad.jpg" alt="Graduation" style="image-orientation:from-image"/><div class="car-caption">Graduation — Darla Moore</div></div>
+          <div class="car-slide"><img src="Images/ben and fam.jpg" alt="Family" style="image-orientation:from-image"/><div class="car-caption">Family</div></div>
+          <div class="car-slide"><img src="Images/ben with dad.jpg" alt="Commanders game" style="image-orientation:from-image"/><div class="car-caption">Commanders Game</div></div>
+          <div class="car-slide"><img src="Images/ben 3.JPG" alt="City of London" style="image-orientation:from-image"/><div class="car-caption">City of London</div></div>
+          <div class="car-slide"><img src="Images/ben with cap.jpg" alt="Capitals game" style="image-orientation:from-image"/><div class="car-caption">Capitals Game</div></div>
         </div>
+        <div class="car-dots" id="car-dots"></div>
+        <button class="car-arrow car-prev" id="car-prev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="car-arrow car-next" id="car-next" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PARALLAX ============ -->
-<div class="parallax-strip" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1600&q=80&fit=crop')">
-  <div class="ps-overlay"></div>
-  <div class="ps-text">From the Lloyd's Floor to the Low Country</div>
-</div>
-
-<!-- ============================================================
-     CAREER
-     ============================================================ -->
-<section class="section section-alt" id="career">
-  <div class="container">
-    <span class="section-label reveal">Career Path</span>
-    <h2 class="section-title reveal">The Journey</h2>
-    <p class="section-sub reveal">Augusta &rarr; Washington D.C. &rarr; London &rarr; Moncks Corner, SC</p>
+<!-- ============ CAREER ============ -->
+<section class="section has-bg" id="career" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
+    <span class="section-label reveal">Experience</span>
+    <h2 class="section-title reveal">Career Timeline</h2>
 
     <div class="logo-marquee reveal">
       <div class="marquee-track">
-        <div class="m-item"><img src="Images/augustanational_logo.jpg" alt="Augusta National"><span>Augusta National</span></div>
-        <div class="m-item"><img src="Images/carahsoft_logo.jpg" alt="Carahsoft"><span>Carahsoft</span></div>
-        <div class="m-item"><img src="Images/price_forbes_logo.jpg" alt="Price Forbes"><span>Price Forbes</span></div>
-        <div class="m-item"><img src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox"><span>Swamp Fox</span></div>
-        <div class="m-item"><img src="Images/uofsc_logo.jpg" alt="USC"><span>USC</span></div>
-        <div class="m-item"><img src="Images/augustanational_logo.jpg" alt="Augusta National"><span>Augusta National</span></div>
-        <div class="m-item"><img src="Images/carahsoft_logo.jpg" alt="Carahsoft"><span>Carahsoft</span></div>
-        <div class="m-item"><img src="Images/price_forbes_logo.jpg" alt="Price Forbes"><span>Price Forbes</span></div>
-        <div class="m-item"><img src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox"><span>Swamp Fox</span></div>
-        <div class="m-item"><img src="Images/uofsc_logo.jpg" alt="USC"><span>USC</span></div>
+        <div class="m-item"><img src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox"/><span>Swamp Fox</span></div>
+        <div class="m-item"><img src="Images/price_forbes_logo.jpg" alt="Price Forbes"/><span>Price Forbes</span></div>
+        <div class="m-item"><img src="Images/carahsoft_logo.jpg" alt="Carahsoft"/><span>Carahsoft</span></div>
+        <div class="m-item"><img src="Images/augustanational_logo.jpg" alt="Augusta"/><span>Augusta</span></div>
+        <div class="m-item"><img src="Images/uofsc_logo.jpg" alt="USC"/><span>USC</span></div>
+        <div class="m-item"><img src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox"/><span>Swamp Fox</span></div>
+        <div class="m-item"><img src="Images/price_forbes_logo.jpg" alt="Price Forbes"/><span>Price Forbes</span></div>
+        <div class="m-item"><img src="Images/carahsoft_logo.jpg" alt="Carahsoft"/><span>Carahsoft</span></div>
+        <div class="m-item"><img src="Images/augustanational_logo.jpg" alt="Augusta"/><span>Augusta</span></div>
+        <div class="m-item"><img src="Images/uofsc_logo.jpg" alt="USC"/><span>USC</span></div>
       </div>
     </div>
 
     <div class="career-grid">
       <div class="career-card reveal" data-tilt>
-        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=700&q=75&fit=crop')">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=700&q=75&fit=crop')">
           <div class="cc-overlay"></div>
           <img src="Images/augustanational_logo.jpg" alt="" class="cc-logo">
         </div>
         <div class="cc-body">
-          <span class="cc-date">2023 -- 2024</span>
-          <h3 class="cc-role">Operations Staff</h3>
-          <p class="cc-company">Augusta National Golf Club &middot; The Masters Tournament</p>
-          <p class="cc-desc">Returning staff for two consecutive seasons. High-stakes event logistics — supply chain, concessions, and hospitality — delivering flawless execution at one of sport's most exclusive venues.</p>
-          <div class="cc-tags"><span>Elite Operations</span><span>Augusta National</span></div>
+          <span class="cc-date">2023 -- 2025</span>
+          <h3 class="cc-role">Tournament Operations Staff</h3>
+          <p class="cc-company">Augusta National Golf Club</p>
+          <p class="cc-desc">Two-plus seasons on operations staff at The Masters Tournament. Coordinated logistics, managed spectator flow, and worked directly with tournament leadership on strategic planning.</p>
+          <div class="cc-tags"><span>Event Mgmt</span><span>Operations</span><span>Leadership</span></div>
         </div>
       </div>
 
       <div class="career-card reveal" data-tilt>
-        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=700&q=75&fit=crop')">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=700&q=75&fit=crop')">
           <div class="cc-overlay"></div>
           <img src="Images/carahsoft_logo.jpg" alt="" class="cc-logo">
         </div>
         <div class="cc-body">
           <span class="cc-date">2023 -- 2025</span>
-          <h3 class="cc-role">BDR Intern — Intel & Public Sector</h3>
+          <h3 class="cc-role">BDR Intern — Intel &amp; Public Sector</h3>
           <p class="cc-company">Carahsoft Technology Corp.</p>
           <p class="cc-desc">Two-plus years at a $2.5B GSA contract holder. Supported the Intelligence Community team with outreach, federal event coordination, lead qualification, and vendor-agency alignment for cybersecurity and data analytics programs.</p>
           <div class="cc-tags"><span>Federal Sales</span><span>Intelligence Community</span><span>Cybersecurity</span></div>
@@ -186,13 +179,13 @@
       </div>
 
       <div class="career-card reveal" data-tilt>
-        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=700&q=75&fit=crop')">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1513050754489-85a9897f8cac?w=700&q=75&fit=crop')">
           <div class="cc-overlay"></div>
           <img src="Images/price_forbes_logo.jpg" alt="" class="cc-logo" style="background:#f5a623;padding:2px;">
         </div>
         <div class="cc-body">
           <span class="cc-date">July -- August 2025</span>
-          <h3 class="cc-role">Marine & Property — Lloyd's Placement</h3>
+          <h3 class="cc-role">Marine &amp; Property — Lloyd's Placement</h3>
           <p class="cc-company">Price Forbes &middot; Lloyd's of London</p>
           <p class="cc-desc">Selected for a placement with Price Forbes — a specialist Lloyd's broker with 130+ years of history. Marine and Property risk submissions, underwriter negotiations, and specialty placement at the global market level.</p>
           <div class="cc-tags"><span>Lloyd's of London</span><span>Marine</span><span>Specialty Risk</span></div>
@@ -216,33 +209,26 @@
   </div>
 </section>
 
-<!-- ============ PARALLAX ============ -->
-<div class="parallax-strip" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80&fit=crop')">
-  <div class="ps-overlay"></div>
-  <div class="ps-text">Darla Moore School of Business &middot; University of South Carolina</div>
-</div>
-
-<!-- ============================================================
-     EDUCATION
-     ============================================================ -->
-<section class="section" id="education">
-  <div class="container">
+<!-- ============ EDUCATION ============ -->
+<section class="section has-bg" id="education" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
     <span class="section-label reveal">Background</span>
-    <h2 class="section-title reveal">Education & Milestones</h2>
+    <h2 class="section-title reveal">Education &amp; Milestones</h2>
 
     <div class="edu-timeline">
       <div class="edu-item reveal">
         <div class="edu-year">2000 -- 2018</div>
         <div class="edu-card">
           <svg class="edu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          <div><h3>McLean, Virginia</h3><p>Born & raised 15 miles from Washington D.C. — surrounded by federal professionals, defense contractors, and tech executives.</p></div>
+          <div><h3>McLean, Virginia</h3><p>Born &amp; raised 15 miles from Washington D.C. — surrounded by federal professionals, defense contractors, and tech executives.</p></div>
         </div>
       </div>
       <div class="edu-item reveal">
         <div class="edu-year">2022 -- 2025</div>
         <div class="edu-card">
           <img src="Images/uofsc_logo.jpg" alt="USC" class="edu-logo">
-          <div><h3>Darla Moore School of Business</h3><p>B.S. Risk Management & Insurance. Graduated December 2025, one semester early. #1 ranked International Business program for 24+ years.</p></div>
+          <div><h3>Darla Moore School of Business</h3><p>B.S. Risk Management &amp; Insurance. Graduated December 2025, one semester early. #1 ranked International Business program for 24+ years.</p></div>
         </div>
       </div>
       <div class="edu-item reveal">
@@ -256,108 +242,101 @@
         <div class="edu-year">2026</div>
         <div class="edu-card">
           <svg class="edu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <div><h3>South Carolina P&C License</h3><p>Active Property & Casualty producer license. Operating in the E&S non-admitted market at the only agency endorsed by the SC Timber Producers Association.</p></div>
+          <div><h3>South Carolina P&amp;C License</h3><p>Active Property &amp; Casualty producer license. Operating in the E&S non-admitted market at the only agency endorsed by the SC Timber Producers Association.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SKILLS
-     ============================================================ -->
-<section class="section section-alt" id="skills">
-  <div class="container">
+<!-- ============ SKILLS ============ -->
+<section class="section has-bg" id="skills" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
     <span class="section-label reveal">Expertise</span>
     <h2 class="section-title reveal">What I Bring</h2>
 
-    <div class="skills-visual reveal" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&q=80&fit=crop')">
-      <div class="sv-overlay"></div>
-      <div class="sv-text">Underwriting &middot; Technology &middot; Business Development</div>
-    </div>
-
     <div class="skills-tabs reveal">
-      <button class="sk-tab active" data-sk="underwriting">Underwriting & Risk</button>
-      <button class="sk-tab" data-sk="tech">Technology & Systems</button>
-      <button class="sk-tab" data-sk="sales">Sales & Business Dev</button>
+      <button class="sk-tab active" data-sk="insurance">Insurance &amp; Risk</button>
+      <button class="sk-tab" data-sk="tech">Technology</button>
+      <button class="sk-tab" data-sk="sales">Sales &amp; Business Dev</button>
     </div>
 
-    <div class="sk-pane active" id="sk-underwriting">
+    <div class="sk-pane active" id="sk-insurance">
       <div class="sk-grid">
-        <div class="sk-col">
-          <div class="sk-group">Core Insurance</div>
-          <div class="sk-bar"><span class="sk-name">E&S / Non-Admitted Market</span><span class="sk-pct">95%</span><div class="sk-track"><div class="sk-fill" data-w="95"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Commercial Trucking Risk</span><span class="sk-pct">95%</span><div class="sk-track"><div class="sk-fill" data-w="95"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Lloyd's Binding Authority</span><span class="sk-pct">90%</span><div class="sk-track"><div class="sk-fill" data-w="90"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Logging & Forestry Risk</span><span class="sk-pct">90%</span><div class="sk-track"><div class="sk-fill" data-w="90"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">P&C Licensed — SC</span><span class="sk-pct">100%</span><div class="sk-track"><div class="sk-fill" data-w="100"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Marine & Property</span><span class="sk-pct">78%</span><div class="sk-track"><div class="sk-fill" data-w="78"></div></div></div>
+        <div class="sk-card-group reveal">
+          <div class="sk-group">Core Insurance Expertise</div>
+          <div class="sk-bar"><span class="sk-name">E&S / Non-Admitted Market</span><div class="sk-track"><div class="sk-fill" style="width:95%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Commercial Trucking Risk</span><div class="sk-track"><div class="sk-fill" style="width:95%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Lloyd's Binding Authority</span><div class="sk-track"><div class="sk-fill" style="width:90%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Logging &amp; Forestry Risk</span><div class="sk-track"><div class="sk-fill" style="width:90%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">P&amp;C Licensed — SC</span><div class="sk-track"><div class="sk-fill" style="width:100%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Marine &amp; Property</span><div class="sk-track"><div class="sk-fill" style="width:78%"></div></div></div>
         </div>
-        <div class="sk-col">
+        <div class="sk-card-group reveal">
           <div class="sk-group">Technical Analysis</div>
-          <div class="sk-bar"><span class="sk-name">Loss Run Analysis</span><span class="sk-pct">93%</span><div class="sk-track"><div class="sk-fill" data-w="93"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">FMCSA & CAB Reports</span><span class="sk-pct">88%</span><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Frequency / Severity</span><span class="sk-pct">88%</span><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Carrier Negotiations</span><span class="sk-pct">85%</span><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Coverage Reviews</span><span class="sk-pct">82%</span><div class="sk-track"><div class="sk-fill" data-w="82"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Reinsurance Basics</span><span class="sk-pct">70%</span><div class="sk-track"><div class="sk-fill" data-w="70"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Loss Run Analysis</span><div class="sk-track"><div class="sk-fill" style="width:93%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">FMCSA &amp; CAB Reports</span><div class="sk-track"><div class="sk-fill" style="width:88%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Frequency / Severity</span><div class="sk-track"><div class="sk-fill" style="width:88%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Carrier Negotiations</span><div class="sk-track"><div class="sk-fill" style="width:85%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Coverage Reviews</span><div class="sk-track"><div class="sk-fill" style="width:82%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Reinsurance Basics</span><div class="sk-track"><div class="sk-fill" style="width:70%"></div></div></div>
         </div>
       </div>
     </div>
 
     <div class="sk-pane" id="sk-tech">
       <div class="sk-grid">
-        <div class="sk-col">
+        <div class="sk-card-group reveal">
           <div class="sk-group">Insurance Systems</div>
-          <div class="sk-bar"><span class="sk-name">Applied Epic AMS</span><span class="sk-pct">88%</span><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Samsara Telematics</span><span class="sk-pct">82%</span><div class="sk-track"><div class="sk-fill" data-w="82"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Qlik Analytics</span><span class="sk-pct">75%</span><div class="sk-track"><div class="sk-fill" data-w="75"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Salesforce CRM</span><span class="sk-pct">72%</span><div class="sk-track"><div class="sk-fill" data-w="72"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Microsoft 365</span><span class="sk-pct">82%</span><div class="sk-track"><div class="sk-fill" data-w="82"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Excel (Advanced)</span><span class="sk-pct">85%</span><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Applied Epic AMS</span><div class="sk-track"><div class="sk-fill" style="width:88%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Samsara Telematics</span><div class="sk-track"><div class="sk-fill" style="width:82%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Qlik Analytics</span><div class="sk-track"><div class="sk-fill" style="width:75%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Salesforce CRM</span><div class="sk-track"><div class="sk-fill" style="width:72%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Microsoft 365</span><div class="sk-track"><div class="sk-fill" style="width:82%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Excel (Advanced)</span><div class="sk-track"><div class="sk-fill" style="width:85%"></div></div></div>
         </div>
-        <div class="sk-col">
-          <div class="sk-group">Development & AI</div>
-          <div class="sk-bar"><span class="sk-name">Generative AI (Claude)</span><span class="sk-pct">90%</span><div class="sk-track"><div class="sk-fill" data-w="90"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Prompt Engineering</span><span class="sk-pct">88%</span><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">HTML / CSS / JS</span><span class="sk-pct">74%</span><div class="sk-track"><div class="sk-fill" data-w="74"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">GitHub & Version Control</span><span class="sk-pct">76%</span><div class="sk-track"><div class="sk-fill" data-w="76"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">SEO / GEO</span><span class="sk-pct">72%</span><div class="sk-track"><div class="sk-fill" data-w="72"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Digital Marketing</span><span class="sk-pct">70%</span><div class="sk-track"><div class="sk-fill" data-w="70"></div></div></div>
+        <div class="sk-card-group reveal">
+          <div class="sk-group">Development &amp; AI</div>
+          <div class="sk-bar"><span class="sk-name">Generative AI (Claude)</span><div class="sk-track"><div class="sk-fill" style="width:90%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Prompt Engineering</span><div class="sk-track"><div class="sk-fill" style="width:88%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">HTML / CSS / JS</span><div class="sk-track"><div class="sk-fill" style="width:74%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">GitHub &amp; Version Control</span><div class="sk-track"><div class="sk-fill" style="width:76%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">SEO / GEO</span><div class="sk-track"><div class="sk-fill" style="width:72%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Digital Marketing</span><div class="sk-track"><div class="sk-fill" style="width:70%"></div></div></div>
         </div>
       </div>
     </div>
 
     <div class="sk-pane" id="sk-sales">
       <div class="sk-grid">
-        <div class="sk-col">
-          <div class="sk-group">Sales & Placement</div>
-          <div class="sk-bar"><span class="sk-name">Global Risk Placement</span><span class="sk-pct">88%</span><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Federal Sales</span><span class="sk-pct">84%</span><div class="sk-track"><div class="sk-fill" data-w="84"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Business Development</span><span class="sk-pct">85%</span><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Lead Qualification</span><span class="sk-pct">82%</span><div class="sk-track"><div class="sk-fill" data-w="82"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Pipeline Management</span><span class="sk-pct">78%</span><div class="sk-track"><div class="sk-fill" data-w="78"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Vendor Relations</span><span class="sk-pct">80%</span><div class="sk-track"><div class="sk-fill" data-w="80"></div></div></div>
+        <div class="sk-card-group reveal">
+          <div class="sk-group">Sales &amp; Placement</div>
+          <div class="sk-bar"><span class="sk-name">Global Risk Placement</span><div class="sk-track"><div class="sk-fill" style="width:88%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Federal Sales</span><div class="sk-track"><div class="sk-fill" style="width:84%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Business Development</span><div class="sk-track"><div class="sk-fill" style="width:85%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Lead Qualification</span><div class="sk-track"><div class="sk-fill" style="width:82%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Pipeline Management</span><div class="sk-track"><div class="sk-fill" style="width:78%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Vendor Relations</span><div class="sk-track"><div class="sk-fill" style="width:80%"></div></div></div>
         </div>
-        <div class="sk-col">
+        <div class="sk-card-group reveal">
           <div class="sk-group">Client Management</div>
-          <div class="sk-bar"><span class="sk-name">Account Management</span><span class="sk-pct">92%</span><div class="sk-track"><div class="sk-fill" data-w="92"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Carrier Negotiations</span><span class="sk-pct">88%</span><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Client Communication</span><span class="sk-pct">92%</span><div class="sk-track"><div class="sk-fill" data-w="92"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Strategic Planning</span><span class="sk-pct">80%</span><div class="sk-track"><div class="sk-fill" data-w="80"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Event Coordination</span><span class="sk-pct">85%</span><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
-          <div class="sk-bar"><span class="sk-name">Public Sector Outreach</span><span class="sk-pct">78%</span><div class="sk-track"><div class="sk-fill" data-w="78"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Account Management</span><div class="sk-track"><div class="sk-fill" style="width:92%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Carrier Negotiations</span><div class="sk-track"><div class="sk-fill" style="width:88%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Client Communication</span><div class="sk-track"><div class="sk-fill" style="width:92%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Strategic Planning</span><div class="sk-track"><div class="sk-fill" style="width:80%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Event Coordination</span><div class="sk-track"><div class="sk-fill" style="width:85%"></div></div></div>
+          <div class="sk-bar"><span class="sk-name">Public Sector Outreach</span><div class="sk-track"><div class="sk-fill" style="width:78%"></div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     PORTFOLIO
-     ============================================================ -->
-<section class="section" id="portfolio">
-  <div class="container">
+<!-- ============ PORTFOLIO ============ -->
+<section class="section has-bg" id="portfolio" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
     <span class="section-label reveal">Portfolio</span>
     <h2 class="section-title reveal">Selected Work</h2>
 
@@ -366,8 +345,8 @@
         <div class="port-img" style="background-image:url('https://images.unsplash.com/photo-1543248939-ff40856f65d4?w=700&q=75&fit=crop')"><span class="port-tag">Active</span></div>
         <div class="port-body">
           <span class="port-num">01</span>
-          <h3>E&S Commercial Trucking & Logging</h3>
-          <p>Day-to-day underwriting in the Excess & Surplus non-admitted market. Loss runs, FMCSA data, Lloyd's binding authority submissions for Southeast trucking and logging.</p>
+          <h3>E&S Commercial Trucking &amp; Logging</h3>
+          <p>Day-to-day underwriting in the Excess &amp; Surplus non-admitted market. Loss runs, FMCSA data, Lloyd's binding authority submissions for Southeast trucking and logging.</p>
           <div class="port-tags"><span>E&S Market</span><span>Lloyd's Auth.</span><span>Applied Epic</span></div>
         </div>
       </div>
@@ -393,7 +372,7 @@
         <div class="port-img" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=75&fit=crop')"><span class="port-tag port-dev">In Dev</span></div>
         <div class="port-body">
           <span class="port-num">04</span>
-          <h3>Swamp Fox Digital & Loss Control Hub</h3>
+          <h3>Swamp Fox Digital &amp; Loss Control Hub</h3>
           <p>AI-assisted agency infrastructure — conversion-optimized web presence and internal loss control platform centralizing inspection data and automating reports.</p>
           <div class="port-tags"><span>InsurTech</span><span>AI Dev</span><span>Loss Control</span><span>GitHub</span></div>
         </div>
@@ -402,22 +381,14 @@
   </div>
 </section>
 
-<!-- ============ PARALLAX ============ -->
-<div class="parallax-strip" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&q=80&fit=crop')">
-  <div class="ps-overlay"></div>
-  <div class="ps-text">AI-Powered Workflows &middot; Claude &middot; Anthropic Certified</div>
-</div>
-
-<!-- ============================================================
-     AI TOOLKIT
-     ============================================================ -->
-<section class="section section-alt" id="toolkit">
-  <div class="container">
+<!-- ============ AI TOOLKIT ============ -->
+<section class="section has-bg" id="toolkit" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
     <span class="section-label reveal">AI Toolkit</span>
     <h2 class="section-title reveal">Built with Claude</h2>
     <p class="section-sub reveal">Anthropic-certified. Trained on Claude Code, Claude Cowork, and agentic development workflows.</p>
 
-    <!-- Courses -->
     <div class="tk-courses reveal">
       <div class="tk-course-card">
         <div class="tk-badge">Completed</div>
@@ -439,7 +410,6 @@
       </div>
     </div>
 
-    <!-- Agent Capabilities -->
     <h3 class="tk-section-hdr reveal">Agent Capabilities</h3>
     <div class="tk-agents reveal">
       <div class="tk-agent">
@@ -454,7 +424,7 @@
       </div>
       <div class="tk-agent">
         <div class="tk-agent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h4>Data & Analytics</h4>
+        <h4>Data &amp; Analytics</h4>
         <p>SQL, dashboards, statistical analysis, data visualization, pipeline reporting</p>
       </div>
       <div class="tk-agent">
@@ -469,7 +439,7 @@
       </div>
       <div class="tk-agent">
         <div class="tk-agent-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h4>Research & Search</h4>
+        <h4>Research &amp; Search</h4>
         <p>Market research, account intelligence, enterprise search, knowledge synthesis</p>
       </div>
     </div>
@@ -480,13 +450,12 @@
   </div>
 </section>
 
-<!-- ============================================================
-     CREDENTIALS
-     ============================================================ -->
-<section class="section section-dark" id="credentials">
-  <div class="container">
+<!-- ============ CREDENTIALS ============ -->
+<section class="section has-bg" id="credentials" style="background-image:url('https://images.unsplash.com/photo-1423666639041-f56000c27a7a?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
     <span class="section-label reveal">Credentials</span>
-    <h2 class="section-title reveal">Built & Certified</h2>
+    <h2 class="section-title reveal">Built &amp; Certified</h2>
     <p class="section-sub reveal">Licenses, field-earned expertise, and platforms across insurance, technology, and operations.</p>
     <div class="certs-stage">
       <div class="certs-col certs-up" id="certs-col-1"></div>
@@ -495,30 +464,22 @@
   </div>
 </section>
 
-<!-- ============ PARALLAX ============ -->
-<div class="parallax-strip" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80&fit=crop')">
-  <div class="ps-overlay"></div>
-  <div class="ps-text">Let's Build Something Together</div>
-</div>
-
-<!-- ============================================================
-     CONTACT
-     ============================================================ -->
-<section class="section" id="contact">
-  <div class="container">
+<!-- ============ CONTACT ============ -->
+<section class="section has-bg" id="contact" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&q=80&fit=crop');background-size:cover;background-position:center;background-attachment:fixed">
+  <div class="section-overlay"></div>
+  <div class="container section-inner">
     <span class="section-label reveal">Get In Touch</span>
     <h2 class="section-title reveal">Let's Connect</h2>
 
     <div class="contact-grid">
-      <!-- Left: info -->
       <div class="contact-info reveal">
         <div class="ci-card">
           <h3>Book a Conversation</h3>
           <div class="ci-topics">
             <div class="ci-topic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><strong>Commercial Risk</strong><span>Trucking, logging, E&S placements</span></div></div>
             <div class="ci-topic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><div><strong>Career Conversation</strong><span>Insurance, RMI, London market path</span></div></div>
-            <div class="ci-topic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div><strong>Referral & Introduction</strong><span>Agent connections, broker relationships</span></div></div>
-            <div class="ci-topic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div><strong>InsurTech & Innovation</strong><span>AI workflows, agency digital, loss control</span></div></div>
+            <div class="ci-topic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div><strong>Referral &amp; Introduction</strong><span>Agent connections, broker relationships</span></div></div>
+            <div class="ci-topic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div><strong>InsurTech &amp; Innovation</strong><span>AI workflows, agency digital, loss control</span></div></div>
           </div>
           <div class="ci-meta">
             <span>30 min</span><span>Video or Phone</span><span>EST / Flexible</span>
@@ -545,7 +506,6 @@
         </div>
       </div>
 
-      <!-- Right: form -->
       <div class="contact-form-wrap reveal">
         <h3>Send a Message</h3>
         <form id="contact-form">

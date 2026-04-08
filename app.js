@@ -1,6 +1,7 @@
 /* =============================================================
    BENJAMIN SACHWITZ — app.js
-   Top-nav scroll site · 2026
+   Dark portfolio site with particles, carousel, reveal, 3D cards
+   2026
    ============================================================= */
 (function () {
   'use strict';
@@ -16,8 +17,8 @@
     { icon: 'gavel', label: 'Surety Bonds', sub: 'Contract & Commercial' },
     { icon: 'building', label: 'Commercial Property', sub: 'Risk Assessment' },
     { icon: 'code', label: 'GitHub Development', sub: 'AI-Driven Workflows' },
-    { icon: 'federal', label: 'Federal Tech Sales', sub: 'Carahsoft · DC' },
-    { icon: 'usc', label: 'Moore School Graduate', sub: 'Darla Moore · USC' },
+    { icon: 'federal', label: 'Federal Tech Sales', sub: 'Carahsoft & DC' },
+    { icon: 'usc', label: 'Moore School Graduate', sub: 'Darla Moore & USC' },
     { icon: 'masters', label: 'Augusta National', sub: 'Masters Tournament Ops' },
   ];
   const IC = {
@@ -38,17 +39,14 @@
   /* ──── 1. NAVBAR SCROLL ──── */
   const topnav = document.getElementById('topnav');
   const progressBar = document.getElementById('scroll-progress');
-  const sections = document.querySelectorAll('.section, .hero');
+  const sections = document.querySelectorAll('[id="hero"], [id="about"], [id="career"], [id="education"], [id="skills"], [id="portfolio"], [id="toolkit"], [id="credentials"], [id="contact"]');
   const navLinks = document.querySelectorAll('.nav-link');
 
   function onScroll() {
     const sy = window.scrollY;
-    // Sticky
     topnav.classList.toggle('scrolled', sy > 60);
-    // Progress
     const h = document.documentElement.scrollHeight - window.innerHeight;
     if (progressBar && h > 0) progressBar.style.width = (sy / h * 100) + '%';
-    // Active link
     let current = '';
     sections.forEach(s => {
       if (sy >= s.offsetTop - 200) current = s.id;
@@ -190,7 +188,7 @@
     window.addEventListener('resize', init);
   }
 
-  /* ──── 8. SKILL TABS + BARS ──── */
+  /* ──── 8. SKILL TABS ──── */
   const skTabs = document.querySelectorAll('.sk-tab');
   const skPanes = document.querySelectorAll('.sk-pane');
   skTabs.forEach(t => t.addEventListener('click', () => {
@@ -198,22 +196,7 @@
     skPanes.forEach(x => x.classList.remove('active'));
     t.classList.add('active');
     document.getElementById('sk-' + t.dataset.sk)?.classList.add('active');
-    animateBars();
   }));
-
-  let barsAnimated = false;
-  function animateBars() {
-    document.querySelectorAll('.sk-pane.active .sk-fill').forEach(f => {
-      f.style.width = f.dataset.w + '%';
-    });
-    barsAnimated = true;
-  }
-  const skillsSection = document.getElementById('skills');
-  if (skillsSection) {
-    new IntersectionObserver((e) => {
-      if (e[0].isIntersecting && !barsAnimated) animateBars();
-    }, { threshold: 0.2 }).observe(skillsSection);
-  }
 
   /* ──── 9. CERTS ──── */
   let certsBuilt = false;
