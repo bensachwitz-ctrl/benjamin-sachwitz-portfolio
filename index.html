@@ -15,11 +15,11 @@
 <link rel="canonical" href="https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Inter',system-ui,sans-serif;background:#050816;color:#e0e4ef;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:'Outfit',system-ui,sans-serif;background:#050816;color:#e0e4ef;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cursor:pointer;border:none;font-family:inherit}
 
 :root{
@@ -27,7 +27,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 --accent:#4facfe;--accent2:#00f2fe;--warm:#f093fb;
 --glass:rgba(12,18,36,0.6);--glass-b:rgba(79,172,254,0.1);
 --txt:#e0e4ef;--txt2:#8892b0;--dim:#5a6380;
---serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+--serif:'Playfair Display',Georgia,serif;--sans:'Outfit',system-ui,sans-serif;
 --ease:cubic-bezier(0.16,1,0.3,1);--ease-smooth:cubic-bezier(0.25,1,0.5,1);--ease-snap:cubic-bezier(0.22,1,0.36,1);
 }
 
@@ -70,27 +70,27 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .hero-city::before{content:'';position:absolute;top:0;left:0;right:0;height:30%;background:linear-gradient(180deg,#1a2d60,transparent);z-index:1}
 .hero-city::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(0deg,var(--deep),transparent);z-index:1}
 #particles{position:absolute;top:0;left:0;right:0;height:100vh;z-index:3;pointer-events:none}
-.hero-content{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;max-width:900px;padding:0 2rem;width:100%;pointer-events:none}
+.hero-content{position:fixed;top:50%;left:0;transform:translateY(-50%);z-index:10;text-align:left;max-width:750px;padding:0 2rem 0 clamp(2rem,8vw,8rem);width:100%;pointer-events:none}
 .hero-content.hidden{opacity:0}
 .hero-content>*{pointer-events:auto}
 .hero-loc{font-size:clamp(.82rem,1.5vw,1rem);font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;opacity:0;animation:fu 1s .3s forwards}
 .hero-name{font-family:var(--serif);font-size:clamp(3rem,8vw,6.5rem);font-weight:700;line-height:1.05;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff,#c8d6e5,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:0;animation:fu 1s .5s forwards}
 .hero-tag{font-size:clamp(1rem,2vw,1.2rem);color:var(--txt2);font-weight:300;letter-spacing:.04em;line-height:1.6;margin-bottom:2.5rem;opacity:0;animation:fu 1s .7s forwards}
 .hero-tag span{color:var(--accent);font-weight:500}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fu 1s .9s forwards}
-.scroll-ind{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fu 1s 1.2s forwards;transition:opacity .4s}
-.scroll-ind.hidden{opacity:0!important}
-.scroll-ind span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-.scroll-ind .line{width:1px;height:40px;background:linear-gradient(180deg,var(--accent),transparent);animation:pulse 2s ease-in-out infinite}
+.hero-btns{display:flex;gap:1rem;justify-content:flex-start;flex-wrap:wrap;opacity:0;animation:fu 1s .9s forwards}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* === NOISE TEXTURE OVERLAY === */
+.noise{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
 
 /* === SECTION BG SYSTEM === */
 .sec{position:relative;overflow:hidden}
 .sec .sbg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
 .sec .sov{position:absolute;inset:0;z-index:1}
-.sec .bt{position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,var(--deep),transparent);z-index:2}
-.sec .bb{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(0deg,var(--deep),transparent);z-index:2}
+.sec .sov::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(79,172,254,.04) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(240,147,251,.03) 0%,transparent 50%);pointer-events:none}
+.sec .bt{position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(180deg,var(--deep),transparent);z-index:2}
+.sec .bb{position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(0deg,var(--deep),transparent);z-index:2}
 .sec .si{position:relative;z-index:3}
 
 /* === BUTTONS === */
@@ -103,7 +103,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 @keyframes rip{to{transform:scale(4);opacity:0}}
 
 /* === ABOUT === */
-.about{padding:7rem 2rem 6rem}
+.about{padding:5rem 2rem 4rem}
 .about .sbg{background-image:url('https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=2560&q=85&fit=crop&auto=format')}
 .about .sov{background:rgba(5,8,22,.84)}
 .about-g{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
@@ -123,7 +123,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .stat-l{font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-top:.3rem}
 
 /* === SERVICES === */
-.services{padding:6rem 2rem 7rem}
+.services{padding:4.5rem 2rem 4rem}
 .services .sbg{background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2560&q=85&fit=crop&auto=format')}
 .services .sov{background:rgba(5,8,22,.87)}
 .shdr{text-align:center;margin-bottom:4rem}
@@ -149,12 +149,19 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .svc.expanded .svc-toggle svg{transform:rotate(180deg)}
 
 /* === CAREER === */
-.career{padding:6rem 2rem 7rem}
+.career{padding:4.5rem 2rem 4rem}
 .career .sbg{background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=2560&q=85&fit=crop&auto=format')}
 .career .sov{background:rgba(5,8,22,.86)}
-.cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1100px;margin:0 auto}
-.cc{border-radius:20px;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-b);transition:all .4s var(--ease);transform-style:preserve-3d;cursor:pointer}
+.tl-wrap{position:relative;max-width:1200px;margin:0 auto;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:1rem}
+.tl-wrap::-webkit-scrollbar{display:none}
+.tl-track{display:flex;gap:2rem;padding:2rem 3rem;min-width:max-content;position:relative}
+.tl-track::before{content:'';position:absolute;top:100px;left:3rem;right:3rem;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--warm),var(--accent));z-index:0}
+.tl-dot{position:absolute;top:92px;width:18px;height:18px;border-radius:50%;background:var(--deep);border:2px solid var(--accent);z-index:1;left:50%;transform:translateX(-50%);transition:all .3s var(--ease)}
+.cc{width:280px;flex-shrink:0;border-radius:20px;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-b);transition:all .4s var(--ease);transform-style:preserve-3d;cursor:pointer;position:relative}
 .cc:hover{border-color:rgba(79,172,254,.25);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.tl-nav{display:flex;justify-content:center;gap:1rem;margin-top:1.5rem}
+.tl-btn{width:44px;height:44px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;color:var(--accent);cursor:pointer;transition:all .3s var(--ease)}
+.tl-btn:hover{background:rgba(79,172,254,.15);border-color:var(--accent)}
 .cc-img{height:160px;overflow:hidden;position:relative}
 .cc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .cc:hover .cc-img img{transform:scale(1.08)}
@@ -173,10 +180,24 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .cc.expanded .cc-expand svg{transform:rotate(180deg)}
 
 /* === PHOTOS === */
-.photos{padding:6rem 0 7rem}
+.photos{padding:4.5rem 0 4rem}
 .photos .sbg{background-image:url('https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=2560&q=85&fit=crop&auto=format')}
 .photos .sov{background:rgba(5,8,22,.82)}
 .photo-rows{display:flex;flex-direction:column;gap:0}
+/* === PHOTO CAROUSEL === */
+.carousel-wrap{position:relative;max-width:1200px;margin:2rem auto 0;padding:0 2rem;overflow:hidden}
+.carousel-track{display:flex;gap:1rem;transition:transform .5s var(--ease-smooth);will-change:transform}
+.carousel-slide{flex:0 0 calc(33.333% - .67rem);min-width:280px;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/5;cursor:pointer}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.carousel-slide:hover img{transform:scale(1.05)}
+.carousel-slide::after{content:attr(data-cap);position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1rem .8rem;background:linear-gradient(0deg,rgba(5,8,22,.85),transparent);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:500;opacity:0;transform:translateY(8px);transition:all .4s var(--ease)}
+.carousel-slide:hover::after{opacity:1;transform:translateY(0)}
+.car-nav{display:flex;justify-content:center;gap:1rem;margin-top:1.5rem}
+.car-btn{width:44px;height:44px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;color:var(--accent);cursor:pointer;transition:all .3s var(--ease)}
+.car-btn:hover{background:rgba(79,172,254,.15);border-color:var(--accent)}
+.car-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
+.car-dot{width:8px;height:8px;border-radius:50%;background:var(--dim);cursor:pointer;transition:all .3s}
+.car-dot.active{background:var(--accent);transform:scale(1.3)}
 .prow{display:flex;align-items:stretch;min-height:42vh;overflow:hidden}
 .prow:nth-child(even){flex-direction:row-reverse}
 .ppnl{flex:1;position:relative;overflow:hidden;min-height:300px}
@@ -200,7 +221,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .coli:hover::before{opacity:1;transform:translateY(0)}
 
 /* === CONNECT === */
-.connect{padding:7rem 2rem}
+.connect{padding:4.5rem 2rem}
 .connect .sbg{background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=2560&q=85&fit=crop&auto=format')}
 .connect .sov{background:rgba(5,8,22,.88)}
 .con-in{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:3}
@@ -249,7 +270,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .flinks svg{width:17px;height:17px}
 
 /* === EDUCATION === */
-.edu{padding:6rem 2rem 7rem}
+.edu{padding:4.5rem 2rem 4rem}
 .edu .sbg{background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=2560&q=85&fit=crop&auto=format')}
 .edu .sov{background:rgba(5,8,22,.88)}
 .edu-g{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
@@ -272,25 +293,25 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .cert-item p{font-size:.78rem;color:var(--dim);margin-top:.2rem}
 
 /* === EXPERTISE MATRIX === */
-.expertise{padding:6rem 2rem 7rem}
+.expertise{padding:4.5rem 2rem 4rem}
 .expertise .sbg{background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=2560&q=85&fit=crop&auto=format')}
 .expertise .sov{background:rgba(5,8,22,.9)}
-.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1100px;margin:0 auto}
-.exp-cell{padding:1.8rem 1.4rem;border-radius:18px;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-b);text-align:center;transition:all .4s var(--ease);cursor:default;position:relative;overflow:hidden}
-.exp-cell::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:all .4s var(--ease);transform:translateX(-50%)}
-.exp-cell:hover::after{width:80%}
+.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.exp-cell{padding:1.8rem 1.2rem;border-radius:18px;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-b);text-align:center;transition:all .4s var(--ease);cursor:default;position:relative;overflow:hidden}
 .exp-cell:hover{border-color:rgba(79,172,254,.2);transform:translateY(-5px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
-.exp-cell .exp-icon{width:48px;height:48px;margin:0 auto .8rem;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(79,172,254,.08),rgba(0,242,254,.04));border:1px solid rgba(79,172,254,.06);transition:all .4s var(--ease)}
-.exp-cell:hover .exp-icon{background:linear-gradient(135deg,rgba(79,172,254,.18),rgba(0,242,254,.08));transform:scale(1.1);box-shadow:0 0 24px rgba(79,172,254,.15)}
-.exp-cell h4{font-family:var(--serif);font-size:.95rem;color:var(--txt);margin-bottom:.4rem}
-.exp-cell p{font-size:.78rem;color:var(--dim);line-height:1.5}
-.exp-cell .exp-lvl{display:inline-block;margin-top:.7rem;padding:.25rem .7rem;border-radius:50px;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
-.exp-lvl.core{background:rgba(79,172,254,.1);color:var(--accent)}
-.exp-lvl.adv{background:rgba(0,242,254,.08);color:var(--accent2)}
-.exp-lvl.spec{background:rgba(240,147,251,.08);color:var(--warm)}
+.ring-wrap{position:relative;width:90px;height:90px;margin:0 auto 1rem}
+.ring-wrap svg{width:90px;height:90px;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(79,172,254,.08);stroke-width:4}
+.ring-fill{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.5s var(--ease-smooth)}
+.ring-fill.accent{stroke:var(--accent)}
+.ring-fill.accent2{stroke:var(--accent2)}
+.ring-fill.warm{stroke:var(--warm)}
+.ring-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--txt)}
+.exp-cell h4{font-family:var(--serif);font-size:.92rem;color:var(--txt);margin-bottom:.3rem}
+.exp-cell p{font-size:.75rem;color:var(--dim);line-height:1.5}
 
 /* === PROJECTS === */
-.projects{padding:6rem 2rem 7rem}
+.projects{padding:4.5rem 2rem 4rem}
 .projects .sbg{background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=2560&q=85&fit=crop&auto=format')}
 .projects .sov{background:rgba(5,8,22,.9)}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
@@ -351,10 +372,11 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 .about-g{grid-template-columns:1fr;text-align:center}
 .about-photo{display:flex;justify-content:center}.pf{max-width:260px}
 .stats{justify-content:center}
-.svc-grid{grid-template-columns:1fr}.cgrid{grid-template-columns:1fr}
+.svc-grid{grid-template-columns:1fr}.cc{width:260px}
 .edu-g{grid-template-columns:1fr}
 .exp-grid{grid-template-columns:repeat(2,1fr)}
 .proj-grid{grid-template-columns:1fr}
+.carousel-slide{flex:0 0 calc(50% - .5rem);min-width:240px}
 .prow,.prow:nth-child(even){flex-direction:column}
 .prow:nth-child(odd) .ppnl,.prow:nth-child(even) .ppnl{clip-path:none}
 .prow:nth-child(odd) .ptxt{margin-left:0}.prow:nth-child(even) .ptxt{margin-right:0}
@@ -373,6 +395,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 </head>
 <body>
 
+<div class="noise"></div>
 <div class="sprog" id="sp"></div>
 
 <!-- NAV -->
@@ -414,7 +437,6 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
       </a>
     </div>
   </div>
-  <div class="scroll-ind" id="scrollInd"><span>Scroll</span><div class="line"></div></div>
 </section>
 
 <!-- ABOUT -->
@@ -549,9 +571,10 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 <section class="career sec" id="career">
   <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
   <div class="si">
-    <div class="shdr rv"><h2>The Path</h2><p>From Augusta to London and back. Click to expand.</p></div>
-    <div class="cgrid">
+    <div class="shdr rv"><h2>The Path</h2><p>From Augusta to London and back. Scroll or use arrows.</p></div>
+    <div class="tl-wrap" id="tlWrap"><div class="tl-track">
       <div class="cc rvs" style="transition-delay:.1s" onclick="toggleExpand(this)">
+        <div class="tl-dot"></div>
         <div class="cc-img">
           <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=85&fit=crop&auto=format" alt="Augusta National golf course" loading="lazy">
           <img class="logo" src="Images/augustanational_logo.jpg" alt="Augusta National logo">
@@ -564,6 +587,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
         </div>
       </div>
       <div class="cc rvs" style="transition-delay:.2s" onclick="toggleExpand(this)">
+        <div class="tl-dot"></div>
         <div class="cc-img">
           <img src="https://images.unsplash.com/photo-1617581629397-a72507c3de9e?w=800&q=85&fit=crop&auto=format" alt="Washington DC Capitol building" loading="lazy">
           <img class="logo" src="Images/carahsoft_logo.jpg" alt="Carahsoft logo">
@@ -576,6 +600,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
         </div>
       </div>
       <div class="cc rvs" style="transition-delay:.3s" onclick="toggleExpand(this)">
+        <div class="tl-dot"></div>
         <div class="cc-img">
           <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=85&fit=crop&auto=format" alt="London skyline" loading="lazy">
           <img class="logo" src="Images/price_forbes_logo.jpg" alt="Price Forbes logo">
@@ -588,6 +613,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
         </div>
       </div>
       <div class="cc rvs" style="transition-delay:.4s" onclick="toggleExpand(this)">
+        <div class="tl-dot"></div>
         <div class="cc-img">
           <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85&fit=crop&auto=format" alt="South Carolina marsh landscape" loading="lazy">
           <img class="logo" src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox Agency logo">
@@ -599,6 +625,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
+    </div></div>
+    <div class="tl-nav">
+      <button class="tl-btn" onclick="document.getElementById('tlWrap').scrollBy({left:-300,behavior:'smooth'})" aria-label="Previous">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="tl-btn" onclick="document.getElementById('tlWrap').scrollBy({left:300,behavior:'smooth'})" aria-label="Next">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -610,52 +644,44 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
     <div class="shdr rv"><h2>Expertise Matrix</h2><p>Where deep specialization meets broad capability.</p></div>
     <div class="exp-grid">
       <div class="exp-cell rvs" style="transition-delay:.05s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M9 17H5a2 2 0 0 0-2 2m14-2h4a2 2 0 0 1 2 2"/><rect x="3" y="21" width="18" height="2" rx="1"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent" cx="45" cy="45" r="40" data-pct="95"/></svg><span class="ring-pct">95%</span></div>
         <h4>Commercial Trucking</h4>
-        <p>Fleet programs, owner-operators, long-haul & local routes, MCS-90 endorsements</p>
-        <span class="exp-lvl core">Core Specialty</span>
+        <p>Fleet programs, owner-operators, MCS-90, long-haul & local</p>
       </div>
       <div class="exp-cell rvs" style="transition-delay:.1s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent" cx="45" cy="45" r="40" data-pct="92"/></svg><span class="ring-pct">92%</span></div>
         <h4>Forestry & Logging</h4>
-        <p>Timber operations, skidders, feller-bunchers, stumpage, SCTPA-endorsed coverage</p>
-        <span class="exp-lvl core">Core Specialty</span>
+        <p>Timber ops, skidders, SCTPA-endorsed, captive programs</p>
       </div>
       <div class="exp-cell rvs" style="transition-delay:.15s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent2" cx="45" cy="45" r="40" data-pct="88"/></svg><span class="ring-pct">88%</span></div>
         <h4>P&C / Surety / Marine</h4>
-        <p>General liability, property, commercial auto, inland marine, performance bonds</p>
-        <span class="exp-lvl adv">Advanced</span>
+        <p>GL, property, commercial auto, inland marine, bonds</p>
       </div>
       <div class="exp-cell rvs" style="transition-delay:.2s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h4>London / Lloyd's Market</h4>
-        <p>Syndicate placement, specialty reinsurance, surplus lines, global risk transfer</p>
-        <span class="exp-lvl spec">Specialized</span>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill warm" cx="45" cy="45" r="40" data-pct="78"/></svg><span class="ring-pct">78%</span></div>
+        <h4>Lloyd's Market</h4>
+        <p>Syndicate placement, specialty reinsurance, global risk</p>
       </div>
       <div class="exp-cell rvs" style="transition-delay:.25s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent2" cx="45" cy="45" r="40" data-pct="85"/></svg><span class="ring-pct">85%</span></div>
         <h4>Risk Analysis</h4>
-        <p>Loss run interpretation, exposure modeling, coverage gap identification, risk profiling</p>
-        <span class="exp-lvl adv">Advanced</span>
+        <p>Loss runs, exposure modeling, coverage gaps, profiling</p>
       </div>
       <div class="exp-cell rvs" style="transition-delay:.3s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent2" cx="45" cy="45" r="40" data-pct="82"/></svg><span class="ring-pct">82%</span></div>
         <h4>E&S / Surplus Lines</h4>
-        <p>Non-admitted market navigation, hard-to-place risks, excess capacity sourcing</p>
-        <span class="exp-lvl adv">Advanced</span>
+        <p>Non-admitted, hard-to-place, excess capacity sourcing</p>
       </div>
       <div class="exp-cell rvs" style="transition-delay:.35s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill warm" cx="45" cy="45" r="40" data-pct="75"/></svg><span class="ring-pct">75%</span></div>
         <h4>Technology & AI</h4>
-        <p>Workflow automation, AI-driven analytics, GitHub, full-stack web development</p>
-        <span class="exp-lvl spec">Specialized</span>
+        <p>Automation, AI analytics, GitHub, full-stack dev</p>
       </div>
       <div class="exp-cell rvs" style="transition-delay:.4s">
-        <div class="exp-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill warm" cx="45" cy="45" r="40" data-pct="72"/></svg><span class="ring-pct">72%</span></div>
         <h4>Federal Sales</h4>
-        <p>Government procurement, cybersecurity solutions, enterprise contract negotiation</p>
-        <span class="exp-lvl spec">Specialized</span>
+        <p>Gov procurement, cybersecurity, enterprise contracts</p>
       </div>
     </div>
   </div>
@@ -702,36 +728,26 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{cur
 <section class="photos sec" id="photos">
   <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
   <div class="si">
-    <div class="shdr rv" style="padding:0 2rem"><h2 style="background:linear-gradient(135deg,#fff,var(--warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Life in the Lowcountry</h2><p>South Carolina born, raised, and rooted.</p></div>
-    <div class="photo-rows">
-      <div class="prow rvs">
-        <div class="ppnl"><img src="Images/ben 2.JPG" alt="Ben at Lloyd's of London" loading="lazy" onclick="openLightbox(this,'Lloyd\'s of London')"></div>
-        <div class="ptxt"><div class="ptxt-in"><h3>The Global Perspective</h3><p>From the floor of Lloyd's of London to the streets of the City, I saw how the world's biggest risks get placed. That experience shapes every coverage strategy I build back home.</p></div></div>
+    <div class="shdr rv" style="padding:0 2rem"><h2 style="background:linear-gradient(135deg,#fff,var(--warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Life in the Lowcountry</h2><p>South Carolina born, raised, and rooted. Click any photo to expand.</p></div>
+    <div class="carousel-wrap rvs">
+      <div class="carousel-track" id="carTrack">
+        <div class="carousel-slide" data-cap="Lloyd's of London" onclick="openLightbox(this.querySelector('img'),'Lloyd\'s of London')"><img src="Images/ben 2.JPG" alt="Ben at Lloyd's of London" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Washington, DC" onclick="openLightbox(this.querySelector('img'),'Washington, DC')"><img src="Images/ben 4.png" alt="Ben at formal event in DC" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="SC Coast" onclick="openLightbox(this.querySelector('img'),'Lowcountry living')"><img src="Images/ben.jpeg" alt="Ben on the SC coast" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Family" onclick="openLightbox(this.querySelector('img'),'Family')"><img src="Images/ben and fam.jpg" alt="Ben with family" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="City of London" onclick="openLightbox(this.querySelector('img'),'City of London')"><img src="Images/ben 3.JPG" alt="Ben in the City of London" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Game Day" onclick="openLightbox(this.querySelector('img'),'Game Day')"><img src="Images/ben with dad.jpg" alt="Ben at a game" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Nashville" onclick="openLightbox(this.querySelector('img'),'Nashville, TN')"><img src="Images/IMG_2977.JPG" alt="Ben in Nashville" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Capitals" onclick="openLightbox(this.querySelector('img'),'Capitals game')"><img src="Images/ben with cap.jpg" alt="Ben at a Capitals game" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Sunset Crew" onclick="openLightbox(this.querySelector('img'),'Palmetto sunset')"><img src="Images/ben and frinewd.JPG" alt="Ben with friends at sunset" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Dressed Up" onclick="openLightbox(this.querySelector('img'),'Dressed for the occasion')"><img src="Images/250de2e8-d077-48de-9e15-bf20436e4112.jpg" alt="Ben in suit at rooftop" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="Good Times" onclick="openLightbox(this.querySelector('img'),'Good times')"><img src="Images/ben67.PNG" alt="Ben with friend" loading="lazy"></div>
+        <div class="carousel-slide" data-cap="USC Graduation" onclick="openLightbox(this.querySelector('img'),'University of South Carolina')"><img src="Images/ben grad.jpg" alt="Ben USC graduation" loading="lazy"></div>
       </div>
-      <div class="prow rvs" style="transition-delay:.15s">
-        <div class="ppnl"><img src="Images/ben 4.png" alt="Ben at formal event in DC" loading="lazy" onclick="openLightbox(this,'Washington, DC')"></div>
-        <div class="ptxt"><div class="ptxt-in"><h3>Where I Recharge</h3><p>Whether it's a game, an event, or time with people who matter — balance makes the work better. The best ideas come from knowing when to step back.</p></div></div>
-      </div>
-      <div class="prow rvs" style="transition-delay:.25s">
-        <div class="ppnl"><img src="Images/ben.jpeg" alt="Ben on the South Carolina coast" loading="lazy" onclick="openLightbox(this,'Lowcountry living — SC coast')"></div>
-        <div class="ptxt"><div class="ptxt-in"><h3>The Lowcountry</h3><p>Born and raised in the marshes and oaks of Berkeley County. South Carolina isn't just where I work — it's the reason I do what I do. Protecting the people and industries that keep this place moving.</p></div></div>
-      </div>
-      <div class="collage rvs" style="transition-delay:.35s">
-        <div class="coli" data-label="Family"><img src="Images/ben and fam.jpg" alt="Ben with family" loading="lazy" onclick="openLightbox(this,'Family')"></div>
-        <div class="coli" data-label="City of London"><img src="Images/ben 3.JPG" alt="Ben in the City of London" loading="lazy" onclick="openLightbox(this,'City of London')"></div>
-        <div class="coli" data-label="Game Day"><img src="Images/ben with dad.jpg" alt="Ben at a game" loading="lazy" onclick="openLightbox(this,'Game Day')"></div>
-        <div class="coli" data-label="Capitals"><img src="Images/ben with cap.jpg" alt="Ben at a Capitals game" loading="lazy" onclick="openLightbox(this,'Capitals')"></div>
-      </div>
-      <div class="prow rvs" style="transition-delay:.4s">
-        <div class="ppnl"><img src="Images/IMG_2977.JPG" alt="Ben in Nashville" loading="lazy" onclick="openLightbox(this,'Nashville, TN')"></div>
-        <div class="ptxt"><div class="ptxt-in"><h3>Off the Clock</h3><p>Nashville honky-tonks, SEC football Saturdays, weekend road trips. The relationships I build outside the office make me better inside it. You work harder when you remember what you're working for.</p></div></div>
-      </div>
-      <div class="collage rvs" style="transition-delay:.45s">
-        <div class="coli" data-label="Friends"><img src="Images/ben and frinewd.JPG" alt="Ben with friends at sunset" loading="lazy" onclick="openLightbox(this,'Palmetto sunset with the crew')"></div>
-        <div class="coli" data-label="The Suit"><img src="Images/250de2e8-d077-48de-9e15-bf20436e4112.jpg" alt="Ben in suit at rooftop" loading="lazy" onclick="openLightbox(this,'Dressed for the occasion')"></div>
-        <div class="coli" data-label="Good Times"><img src="Images/ben67.PNG" alt="Ben with friend" loading="lazy" onclick="openLightbox(this,'Good times')"></div>
-        <div class="coli" data-label="Graduation"><img src="Images/ben grad.jpg" alt="Ben USC graduation" loading="lazy" onclick="openLightbox(this,'University of South Carolina — Class of 2025')"></div>
-      </div>
+    </div>
+    <div class="car-nav">
+      <button class="car-btn" onclick="scrollCar(-1)" aria-label="Previous photos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="car-btn" onclick="scrollCar(1)" aria-label="Next photos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </div>
 </section>
@@ -837,9 +853,9 @@ window.addEventListener('scroll',()=>{
   document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
   /* Hero content + scroll indicator fade on scroll */
   const hc=document.getElementById('heroContent'),si=document.getElementById('scrollInd');
-  const fade=Math.max(0,1-y/600);
+  const vh=window.innerHeight;
+  const fade=Math.max(0,1-y/(vh*0.85));
   if(hc){hc.style.opacity=fade;if(fade<=0)hc.classList.add('hidden');else hc.classList.remove('hidden')}
-  if(si){si.style.opacity=Math.max(0,1-y/300);if(y>300)si.classList.add('hidden');else si.classList.remove('hidden')}
 },{passive:true});
 
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
@@ -901,6 +917,46 @@ function handleBook(e){
   btn.style.background='linear-gradient(135deg,#00b894,#00cec9)';
   setTimeout(()=>{btn.innerHTML='Send Request';btn.style.background='';f.reset();closeModal()},2500);
 }
+
+/* ===== PROGRESS RINGS ===== */
+(function(){
+  const rings=document.querySelectorAll('.ring-fill[data-pct]');
+  if(!rings.length)return;
+  const circ=2*Math.PI*40; // r=40
+  const rObs=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting){
+      const pct=parseInt(e.target.dataset.pct);
+      const offset=circ-(circ*pct/100);
+      e.target.style.strokeDashoffset=offset;
+      rObs.unobserve(e.target);
+    }
+  })},{threshold:.3});
+  rings.forEach(r=>rObs.observe(r));
+})();
+
+/* ===== PHOTO CAROUSEL ===== */
+function scrollCar(dir){
+  const track=document.getElementById('carTrack');
+  if(!track)return;
+  const slide=track.querySelector('.carousel-slide');
+  const w=slide.offsetWidth+16; // gap
+  track.parentElement.scrollBy({left:dir*w*2,behavior:'smooth'});
+}
+(function(){
+  const wrap=document.querySelector('.carousel-wrap');
+  if(!wrap)return;
+  wrap.style.overflowX='auto';
+  wrap.style.scrollbarWidth='none';
+  wrap.style.webkitOverflowScrolling='touch';
+  // Touch drag
+  let isDrag=false,startX,scrollL;
+  const track=document.getElementById('carTrack');
+  wrap.addEventListener('mousedown',e=>{isDrag=true;startX=e.pageX-wrap.offsetLeft;scrollL=wrap.scrollLeft;wrap.style.cursor='grabbing'});
+  wrap.addEventListener('mouseleave',()=>{isDrag=false;wrap.style.cursor='grab'});
+  wrap.addEventListener('mouseup',()=>{isDrag=false;wrap.style.cursor='grab'});
+  wrap.addEventListener('mousemove',e=>{if(!isDrag)return;e.preventDefault();const x=e.pageX-wrap.offsetLeft;wrap.scrollLeft=scrollL-(x-startX)*1.5});
+  wrap.style.cursor='grab';
+})();
 
 /* ===== LIGHTBOX ===== */
 function openLightbox(img,cap){
