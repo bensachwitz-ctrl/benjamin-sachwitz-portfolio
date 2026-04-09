@@ -62,7 +62,7 @@ z-index:2000;width:0;pointer-events:none;box-shadow:0 0 20px rgba(79,172,254,0.6
 /* === NAV === */
 .nav{position:fixed;top:0;left:0;right:0;z-index:1001;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s var(--ease)}
 .nav.scrolled{background:rgba(5,8,22,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-b)}
-.nav-logo{display:flex;align-items:center;text-decoration:none}.nav-logo img{display:block;height:32px;width:auto}
+.nav-logo{display:flex;align-items:center;text-decoration:none}.nav-logo img{display:block;height:28px;width:auto}
 .nav-links{display:flex;gap:2rem;align-items:center;position:relative}
 .nav-indicator{position:absolute;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:left .35s var(--ease),width .35s var(--ease),background .6s ease;pointer-events:none}
 .nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2);transition:color .3s;position:relative}
@@ -192,21 +192,10 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 /* === NOISE TEXTURE OVERLAY === */
 .noise{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
 
-/* === SECTION BG SYSTEM === */
-.sec{position:relative;overflow:hidden}
-.sec .sbg{position:absolute;inset:-20px;background-size:cover;background-position:center;z-index:0;animation:kenBurns 25s ease-in-out infinite alternate;will-change:transform;transition:filter 1.2s var(--ease-smooth)}
-.sec:nth-child(odd) .sbg{animation-name:kenBurnsAlt}
-.sec .sov{position:absolute;inset:0;z-index:1}
-.sec .sov::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(79,172,254,.05) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(240,147,251,.04) 0%,transparent 50%);pointer-events:none;animation:meshShift 15s ease-in-out infinite alternate}
-.sec .bt{position:absolute;top:0;left:0;right:0;height:180px;background:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.15) 60%,transparent);z-index:2;pointer-events:none}
-.sec .bb{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(0deg,var(--deep) 0%,rgba(5,8,22,.15) 60%,transparent);z-index:2;pointer-events:none}
+/* === SECTION SYSTEM === */
+.sec{position:relative;overflow:hidden;background-color:var(--deep);background-size:cover;background-position:center;background-attachment:fixed}
+.sec+.sec{border-top:none}
 .sec .si{position:relative;z-index:3}
-@keyframes kenBurns{0%{transform:scale(1.05) translate(0,0)}100%{transform:scale(1.12) translate(-1%,-1%)}}
-@keyframes kenBurnsAlt{0%{transform:scale(1.08) translate(0.5%,0.5%)}100%{transform:scale(1.03) translate(-0.5%,-0.5%)}}
-@keyframes meshShift{0%{opacity:.7}50%{opacity:1}100%{opacity:.8}}
-/* === SECONDARY DEPTH LAYER === */
-.sec .sbg2{position:absolute;inset:-30px;z-index:0;opacity:.12;pointer-events:none;background-size:cover;background-position:center;animation:kenBurnsSlow 40s ease-in-out infinite alternate;mix-blend-mode:screen;filter:blur(1px)}
-@keyframes kenBurnsSlow{0%{transform:scale(1.02) translate(1%,0)}100%{transform:scale(1.15) translate(-1%,-1%)}}
 
 /* === BUTTONS === */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2.2rem;border-radius:50px;font-size:.93rem;font-weight:600;letter-spacing:.03em;transition:all .3s var(--ease);position:relative;overflow:hidden}
@@ -219,8 +208,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 /* === ABOUT === */
 .about{padding:3.5rem 2rem 3rem}
-.about .sbg{background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2560&q=85&fit=crop&auto=format')}
-.about .sov{background:rgba(5,8,22,.78)}
 .about-g{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .pf{position:relative;width:100%;max-width:380px;aspect-ratio:3/4;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .pf img{width:100%;height:100%;object-fit:cover}
@@ -237,8 +224,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .shdr p{color:var(--txt2);font-size:1rem;max-width:500px;margin:0 auto}
 /* === CAREER === */
 .career{padding:3rem 2rem 2.5rem}
-.career .sbg{background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=2560&q=85&fit=crop&auto=format')}
-.career .sov{background:rgba(5,8,22,.80)}
 .tl-wrap{overflow:hidden;position:relative;padding:1rem 0}
 .tl-wrap::-webkit-scrollbar{display:none}
 .tl-track{display:flex;gap:1.5rem;animation:tlMarquee 60s linear infinite;width:max-content;position:relative}
@@ -276,8 +261,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 /* === CONNECT === */
 .connect{padding:3rem 2rem 2.5rem}
-.connect .sbg{background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=2560&q=85&fit=crop&auto=format')}
-.connect .sov{background:rgba(5,8,22,.82)}
 .con-in{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:3}
 .con-in h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;background:linear-gradient(135deg,#fff,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
 .con-in .tagline{color:var(--txt2);font-size:1rem;margin-bottom:2.5rem;line-height:1.7}
@@ -354,7 +337,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .form-success{display:inline-flex;align-items:center;gap:.5rem;color:#00b894;font-weight:600}
 .form-success svg{animation:checkDraw .5s var(--ease-smooth) forwards}
 @keyframes checkDraw{0%{transform:scale(0) rotate(-45deg);opacity:0}60%{transform:scale(1.2) rotate(0deg);opacity:1}100%{transform:scale(1) rotate(0deg);opacity:1}}
-.sec .sbg2{will-change:transform}
 .cc-img img{will-change:transform}
 .nav-links a{transition:color .3s var(--ease-smooth)}
 .cc,.pill,.btn{-webkit-tap-highlight-color:transparent}
@@ -365,8 +347,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 /* === RESPONSIVE === */
 /* === CERTIFICATIONS MARQUEE === */
 .certs{padding:3rem 2rem 2.5rem}
-.certs .sbg{background-image:url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=2560&q=85&fit=crop&auto=format')}
-.certs .sov{background:rgba(5,8,22,.84)}
 .cert-marquee{position:relative;overflow:hidden;max-width:1200px;margin:0 auto;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .cert-row{display:flex;gap:1rem;animation:marquee 60s linear infinite;width:max-content}
 .cert-row.reverse{animation-direction:reverse;animation-duration:55s}
@@ -420,8 +400,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .sec{transition:box-shadow .5s}
 
 /* === DEPTH OF FIELD SECTION TRANSITIONS === */
-.sec.in-view .sbg{filter:brightness(1)}
-.sec:not(.in-view) .sbg{filter:blur(2px) brightness(.8)}
 
 
 /* === TYPING CURSOR GLOW === */
@@ -445,8 +423,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 /* === FLOATING PARTICLES IN CONNECT SECTION === */
 @keyframes floatUp{0%{transform:translateY(0) scale(1);opacity:.3}50%{opacity:.6}100%{transform:translateY(-100vh) scale(.5);opacity:0}}
 .connect{overflow:hidden}
-.connect .sov::before{content:'';position:absolute;bottom:0;left:20%;width:3px;height:3px;border-radius:50%;background:var(--accent);animation:floatUp 8s ease-in infinite;z-index:0}
-.connect .sov::after{background:radial-gradient(ellipse at 20% 50%,rgba(79,172,254,.06) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(240,147,251,.04) 0%,transparent 50%);}
 
 @media(max-width:900px){
 .about-g{grid-template-columns:1fr;text-align:center}
@@ -455,7 +431,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .prow:nth-child(odd) .ppnl,.prow:nth-child(even) .ppnl{clip-path:none}
 .prow:nth-child(odd) .ptxt{margin-left:0}.prow:nth-child(even) .ptxt{margin-right:0}
 .ppnl{min-height:220px}.collage{flex-direction:column}.coli{min-height:220px}
-.sec .sbg{background-attachment:scroll}
 .hero-city{background-attachment:scroll}
 .modal-form .fr{flex-direction:column}
 .hero-content{grid-template-columns:1fr;text-align:center}
@@ -476,16 +451,26 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .ring-pct{font-size:.9rem}
 }
 
+/* === SECTION BACKGROUNDS WITH DEPTH === */
+.about{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.85) 20%,rgba(5,8,22,.75) 50%,rgba(5,8,22,.85) 80%,var(--deep) 100%),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80&fit=crop&auto=format')}
+.certs{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.9) 15%,rgba(5,8,22,.82) 50%,rgba(5,8,22,.9) 85%,var(--deep) 100%)}
+.career{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.8) 20%,rgba(5,8,22,.72) 50%,rgba(5,8,22,.8) 80%,var(--deep) 100%),url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80&fit=crop&auto=format')}
+.viz-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.88) 15%,rgba(5,8,22,.82) 50%,rgba(5,8,22,.88) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&fit=crop&auto=format')}
+.map-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.9) 15%,rgba(5,8,22,.84) 50%,rgba(5,8,22,.9) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1920&q=80&fit=crop&auto=format')}
+.snake-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.88) 15%,rgba(5,8,22,.8) 50%,rgba(5,8,22,.88) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80&fit=crop&auto=format')}
+.type-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.9) 15%,rgba(5,8,22,.84) 50%,rgba(5,8,22,.9) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=1920&q=80&fit=crop&auto=format')}
+.connect{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.82) 20%,rgba(5,8,22,.72) 50%,rgba(5,8,22,.82) 80%,var(--deep) 100%),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80&fit=crop&auto=format')}
+
 /* === SECTION-SPECIFIC COLOR THEMING === */
-.about{--sec-accent:var(--color-about)}.about .sov{background:var(--glass-about)}
+.about{--sec-accent:var(--color-about)}
 .about .rv,.about .btn,.about .ring-fill{--accent:var(--color-about)}
-.edu{--sec-accent:var(--color-edu)}.edu .sov{background:var(--glass-edu)}
+.edu{--sec-accent:var(--color-edu)}
 .edu .rv,.edu .btn,.edu .ring-fill,.edu .edu-badge{--accent:var(--color-edu)}
-.certs{--sec-accent:var(--color-certs)}.certs .sov{background:var(--glass-certs)}
+.certs{--sec-accent:var(--color-certs)}
 .certs .rv,.certs .btn,.certs .cert-chip{--accent:var(--color-certs)}
-.career{--sec-accent:var(--color-career)}.career .sov{background:var(--glass-career)}
+.career{--sec-accent:var(--color-career)}
 .career .rv,.career .btn{--accent:var(--color-career)}
-.connect{--sec-accent:var(--color-connect)}.connect .sov{background:var(--glass-connect)}
+.connect{--sec-accent:var(--color-connect)}
 .connect .rv,.connect .btn{--accent:var(--color-connect)}
 
 /* === SPOTLIGHT EFFECT === */
@@ -606,13 +591,13 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 </head>
 <body>
 
-<div class="page-loader" id="pageLoader"><img src="Images/bs-icon.svg" alt="BS" width="60" height="60" class="loader-logo" style="border-radius:12px"></div>
+<div class="page-loader" id="pageLoader"><img src="Images/bs-logo.svg" alt="Ben Sachwitz" width="200" height="38" class="loader-logo"></div>
 <div class="noise"></div>
 <div class="sprog" id="sp"></div>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo"><img src="Images/bs-logo.svg" alt="BS" width="140" height="36"></a>
+  <a href="#" class="nav-logo"><img src="Images/bs-logo.svg" alt="Ben Sachwitz" width="180" height="34"></a>
   <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
     <a href="#certifications">Certs</a>
@@ -667,7 +652,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- ABOUT -->
 <section class="about sec" id="about">
-  <div class="sbg"></div><div class="sbg2" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80&fit=crop&auto=format')"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
   <div class="si">
     <div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div>
     <div class="about-g">
@@ -688,7 +672,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- CERTIFICATIONS -->
 <section class="certs sec" id="certifications">
-  <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
   <div class="si">
     <div class="shdr rv"><h2>Certifications & Training</h2><p>Always learning. 70+ professional certifications and counting.</p></div>
     <div class="cert-marquee rv" style="transition-delay:.1s">
@@ -820,7 +803,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- CAREER (Expandable) -->
 <section class="career sec" id="career">
-  <div class="sbg"></div><div class="sbg2" style="background-image:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80&fit=crop&auto=format')"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
   <div class="si">
     <div class="shdr rv"><h2>The Path</h2><p>From South Carolina to London and back. The full journey.</p></div>
     <div class="tl-wrap" id="tlWrap"><div class="tl-track">
@@ -1008,9 +990,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- INTERACTIVE VISUALIZATION -->
 <section class="viz-sec sec" id="viz">
-  <div class="sbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2560&q=85&fit=crop&auto=format')"></div>
-  <div class="sov" style="background:linear-gradient(180deg,rgba(5,8,22,.88) 0%,rgba(5,8,22,.82) 100%)"></div>
-  <div class="bt"></div><div class="bb"></div>
   <div class="si" style="position:relative;z-index:3;text-align:center;padding:2rem 2rem 1.5rem">
     <div class="shdr rvs"><span class="sec-label">Interactive</span><h2>My Network</h2></div>
     <p class="sec-sub rv" style="max-width:550px;margin:0 auto 1.5rem;color:var(--txt2)">Hover or tap any node to explore my skills, experiences, and expertise areas.</p>
@@ -1029,9 +1008,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- INTERACTIVE MAP -->
 <section class="map-sec sec" id="map">
-  <div class="sbg" style="background-image:url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1920&q=80&fit=crop&auto=format')"></div>
-  <div class="sov" style="background:linear-gradient(180deg,rgba(5,8,22,.92) 0%,rgba(5,8,22,.85) 100%)"></div>
-  <div class="bt"></div><div class="bb"></div>
   <div class="si" style="position:relative;z-index:3">
     <div class="shdr rv"><span class="sec-label">Global Experience</span><h2>Where I've Been</h2></div>
     <p class="sec-sub rv" style="max-width:550px;margin:0 auto 2rem;color:var(--txt2);text-align:center">Click any pin to learn about my experience in that location.</p>
@@ -1049,8 +1025,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- SNAKE GAME -->
 <section class="snake-sec sec" id="games">
-  <div class="sbg" style="background-image:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80&fit=crop&auto=format')"></div>
-  <div class="sov" style="background:linear-gradient(180deg,rgba(5,8,22,.88) 0%,rgba(5,8,22,.78) 100%)"></div>
   <div class="si" style="position:relative;z-index:2">
     <div class="shdr rvs"><span class="sec-label">Take a Break</span><h2>Play Snake</h2></div>
     <p class="sec-sub rv" style="margin-bottom:2rem;color:var(--txt2)">Beat your high score, then let's talk about how I can help your business.</p>
@@ -1091,9 +1065,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- TYPING GAME -->
 <section class="type-sec sec" id="typegame">
-  <div class="sbg" style="background-image:url('https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=1920&q=80&fit=crop&auto=format')"></div>
-  <div class="sov" style="background:linear-gradient(180deg,rgba(5,8,22,.9) 0%,rgba(5,8,22,.82) 100%)"></div>
-  <div class="bt"></div><div class="bb"></div>
   <div class="si" style="position:relative;z-index:2">
     <div class="shdr rvs"><span class="sec-label">Challenge</span><h2>Type Speed</h2></div>
     <p class="sec-sub rv" style="margin-bottom:2rem;color:var(--txt2);text-align:center">How fast can you type insurance terms? Test your WPM.</p>
@@ -1112,7 +1083,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- CONNECT -->
 <section class="connect sec" id="connect">
-  <div class="sbg"></div><div class="sbg2" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80&fit=crop&auto=format')"></div><div class="sov"></div><div class="bt"></div>
   <div class="si">
     <div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div>
     <div class="con-in">
@@ -1458,33 +1428,6 @@ document.querySelectorAll('.ppnl img,.coli img').forEach(img=>{img.style.cursor=
   setTimeout(typePhrase,1200);
 })();
 
-/* ===== PARALLAX SECTION BGs ===== */
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  const bgs=document.querySelectorAll('.sec .sbg');
-  const allSecs=document.querySelectorAll('.sec');
-  let ticking=false;
-  window.addEventListener('scroll',()=>{
-    if(!ticking){requestAnimationFrame(()=>{
-      const y=window.scrollY;
-      bgs.forEach(bg=>{
-        const sec=bg.parentElement;
-        const rect=sec.getBoundingClientRect();
-        if(rect.top<window.innerHeight&&rect.bottom>0){
-          const progress=(window.innerHeight-rect.top)/(window.innerHeight+rect.height);
-          const offset=(progress-.5)*-40;
-          bg.style.translate='0 '+offset+'px';
-        }
-      });
-      ticking=false;
-    });ticking=true}
-  },{passive:true});
-  /* Depth-of-field: blur out-of-view sections */
-  const dofObs=new IntersectionObserver(es=>{es.forEach(e=>{
-    e.target.classList.toggle('in-view',e.isIntersecting);
-  })},{threshold:.15});
-  allSecs.forEach(s=>dofObs.observe(s));
-})();
 
 /* ===== RIPPLE ===== */
 document.querySelectorAll('.btn,.pill,.mbtn,.cal-btn').forEach(b=>{b.addEventListener('click',function(e){const r=this.getBoundingClientRect(),s=Math.max(r.width,r.height),el=document.createElement('span');el.classList.add('ripple');el.style.width=el.style.height=s+'px';el.style.left=(e.clientX-r.left-s/2)+'px';el.style.top=(e.clientY-r.top-s/2)+'px';this.appendChild(el);el.addEventListener('animationend',()=>el.remove())})});

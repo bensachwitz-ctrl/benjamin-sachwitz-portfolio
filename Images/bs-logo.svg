@@ -1,17 +1,11 @@
-<svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 44" width="240" height="44">
   <defs>
-    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4facfe"/>
+      <stop offset="100%" stop-color="#f093fb"/>
     </linearGradient>
   </defs>
-
-  <!-- Shield/Diamond shape -->
-  <path d="M 15 10 L 25 10 L 30 15 L 25 20 L 15 20 L 10 15 Z" fill="url(#shieldGradient)" />
-
-  <!-- BS text inside shield -->
-  <text x="17.5" y="17" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">BS</text>
-
-  <!-- BEN SACHWITZ text -->
-  <text x="45" y="25" font-family="Outfit, system-ui, sans-serif" font-size="14" font-weight="600" fill="#f0f0f0" letter-spacing="0.12em">BEN SACHWITZ</text>
+  <text x="0" y="34" font-family="Outfit,system-ui,sans-serif" font-size="32" font-weight="700" letter-spacing="-0.02em" fill="url(#g)">BEN</text>
+  <text x="78" y="34" font-family="Outfit,system-ui,sans-serif" font-size="32" font-weight="300" letter-spacing="-0.02em" fill="#e8eaf0">SACHWITZ</text>
 </svg>
