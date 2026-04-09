@@ -470,7 +470,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 /* === SECTION BACKGROUNDS WITH DEPTH === */
 .about{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.3) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85&fit=crop&auto=format')}
 .certs{background-image:linear-gradient(180deg,rgba(5,8,22,.55) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.3) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.55) 100%),url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&q=85&fit=crop&auto=format')}
-.career{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.28) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=85&fit=crop&auto=format')}
+.career{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.28) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=85&fit=crop&auto=format')}
 .viz-sec{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.3) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=85&fit=crop&auto=format')}
 .map-sec{background-image:linear-gradient(180deg,rgba(5,8,22,.55) 0%,rgba(5,8,22,.32) 20%,rgba(5,8,22,.28) 50%,rgba(5,8,22,.32) 80%,rgba(5,8,22,.55) 100%),url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1920&q=85&fit=crop&auto=format')}
 .snake-sec{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.38) 20%,rgba(5,8,22,.32) 50%,rgba(5,8,22,.38) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=85&fit=crop&auto=format')}
@@ -603,11 +603,72 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .spotlight{display:none}
 }
 
+/* === MAGNETIC CURSOR EFFECT === */
+.cursor-dot,.cursor-ring{position:fixed;pointer-events:none;z-index:9990;mix-blend-mode:screen}
+.cursor-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);transition:opacity .3s}
+.cursor-ring{width:30px;height:30px;border:1.5px solid var(--accent);border-radius:50%;opacity:.3;transition:transform .15s ease-out,opacity .3s}
+.cursor-ring.active{transform:scale(1.67);opacity:.5}
+.cursor-dot.hide,.cursor-ring.hide{opacity:0}
+@media(max-width:1024px){
+.cursor-dot,.cursor-ring{display:none}
+}
+
+/* === HERO PORTRAIT TILT EFFECT === */
+.hero-portrait.tilt-enabled{perspective:1000px}
+.hero-portrait.tilt-enabled .hp-img{transform-style:preserve-3d;transition:transform .1s ease-out;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(79,172,254,.1)}
+@media(max-width:1024px){
+.hero-portrait.tilt-enabled .hp-img{transform:none!important}
+}
+
+/* === TEXT SCRAMBLE EFFECT === */
+@keyframes charScramble{
+0%{content:attr(data-original)}
+50%{content:'!@#$%^&*()_+-=[]{}|;:,./<>?'}
+100%{content:attr(data-original)}
+}
+
+/* === GRADIENT BORDER ANIMATION === */
+.btn.bp{position:relative;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--deep)}
+.btn.bp::before{content:'';position:absolute;inset:-2px;background:conic-gradient(from var(--angle,0deg),var(--accent),var(--accent2),var(--warm),var(--accent2),var(--accent));border-radius:50px;opacity:0;z-index:-1;animation:borderSpin 3s linear infinite;filter:blur(3px)}
+.btn.bp::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50px;z-index:-1}
+@keyframes borderSpin{
+0%{--angle:0deg}
+100%{--angle:360deg}
+}
+
+/* === FLOATING GEOMETRIC SHAPES === */
+.sec::before,.sec::after{content:'';position:absolute;z-index:0;pointer-events:none;opacity:.04}
+.sec::before{width:80px;height:80px;background:linear-gradient(135deg,var(--accent),var(--accent2));clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);top:10%;left:5%;animation:floatGeometric 8s ease-in-out infinite}
+.sec::after{width:120px;height:120px;border-radius:50%;background:var(--accent);bottom:15%;right:8%;animation:floatGeometric 10s ease-in-out infinite;animation-delay:-3s}
+@keyframes floatGeometric{
+0%{transform:translateY(0) rotate(0deg)}
+50%{transform:translateY(-40px) rotate(180deg)}
+100%{transform:translateY(0) rotate(360deg)}
+}
+
+/* === TYPING CURSOR IN HERO TAG === */
+.hero-tag::after{content:'';display:inline-block;width:2px;height:1.1em;background:var(--accent);margin-left:2px;vertical-align:text-bottom;animation:blink 1s step-end infinite;box-shadow:0 0 8px rgba(79,172,254,.4)}
+
+/* === SMOOTH NUMBER COUNTER === */
+@keyframes countUp{
+from{opacity:0;transform:scale(0.8)}
+to{opacity:1;transform:scale(1)}
+}
+
+/* === SMOOTH PAGE LOAD SEQUENCE === */
+.hero-loc{opacity:0;animation:fu 1s .3s forwards}
+.hero-name{opacity:0;animation:fu 1s .5s forwards}
+.hero-tag{opacity:0;animation:fu 1s .7s forwards}
+.hero-btns{opacity:0;animation:fu 1s .9s forwards}
+.scroll-ind{opacity:0;animation:fu 1s 2s forwards}
+
 </style>
 </head>
 <body>
 
 <a href="#main" class="skip-link">Skip to main content</a>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 <div class="page-loader" id="pageLoader"><img src="Images/bs-logo.svg" alt="Ben Sachwitz" width="240" height="48" class="loader-logo"></div>
 <div class="noise"></div>
 <div class="sprog" id="sp"></div>
@@ -2327,6 +2388,219 @@ var resetTypeGame;
   };
 
   pickPhrase();
+})();
+
+/* === MAGNETIC CURSOR SYSTEM === */
+(function(){
+  if(window.innerWidth<1024)return;
+  const dot=document.getElementById('cursorDot');
+  const ring=document.getElementById('cursorRing');
+  if(!dot||!ring)return;
+
+  let x=0,y=0,dx=0,dy=0;
+  const speed=0.15;
+
+  document.addEventListener('mousemove',e=>{
+    x=e.clientX;
+    y=e.clientY;
+    dot.style.left=(x-3)+'px';
+    dot.style.top=(y-3)+'px';
+  });
+
+  function lerp(start,end,factor){return start+(end-start)*factor}
+  function updateRing(){
+    dx=lerp(dx,x,speed);
+    dy=lerp(dy,y,speed);
+    ring.style.left=(dx-15)+'px';
+    ring.style.top=(dy-15)+'px';
+    requestAnimationFrame(updateRing);
+  }
+  updateRing();
+
+  const interactiveEls=document.querySelectorAll('a, button, .cc, .cert-chip, .pill, .viz-node, .map-pin');
+  interactiveEls.forEach(el=>{
+    el.addEventListener('mouseenter',()=>{
+      ring.classList.add('active');
+      dot.classList.add('hide');
+    });
+    el.addEventListener('mouseleave',()=>{
+      ring.classList.remove('active');
+      dot.classList.remove('hide');
+    });
+  });
+
+  document.addEventListener('mouseleave',()=>{
+    dot.classList.add('hide');
+    ring.classList.add('hide');
+  });
+  document.addEventListener('mouseenter',()=>{
+    dot.classList.remove('hide');
+    ring.classList.remove('hide');
+  });
+})();
+
+/* === HERO PORTRAIT TILT EFFECT === */
+(function(){
+  if(window.innerWidth<1024)return;
+  const portrait=document.querySelector('.hero-portrait');
+  const hpImg=portrait?.querySelector('.hp-img');
+  if(!portrait||!hpImg)return;
+
+  portrait.classList.add('tilt-enabled');
+
+  document.addEventListener('mousemove',e=>{
+    const rect=hpImg.getBoundingClientRect();
+    const centerX=rect.left+rect.width/2;
+    const centerY=rect.top+rect.height/2;
+
+    const angleX=(e.clientY-centerY)/rect.height;
+    const angleY=(e.clientX-centerX)/rect.width;
+
+    const tiltX=angleX*8;
+    const tiltY=angleY*-8;
+
+    hpImg.style.transform=`rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+  });
+
+  document.addEventListener('mouseleave',()=>{
+    hpImg.style.transform='rotateX(0) rotateY(0)';
+  });
+})();
+
+/* === TEXT SCRAMBLE EFFECT ON SECTION HEADERS === */
+(function(){
+  const chars='!@#$%^&*()_+-=[]{}|;:,./<>?';
+  const headers=document.querySelectorAll('.shdr h2');
+
+  function scrambleText(el){
+    const originalText=el.textContent;
+    let frame=0;
+    const duration=400;
+    const frameCount=Math.ceil(duration/30);
+
+    const interval=setInterval(()=>{
+      frame++;
+      let scrambled='';
+      for(let i=0;i<originalText.length;i++){
+        if(frame<frameCount){
+          scrambled+=chars[Math.floor(Math.random()*chars.length)];
+        }else{
+          scrambled+=originalText[i];
+        }
+      }
+      el.textContent=scrambled;
+      if(frame>=frameCount)clearInterval(interval);
+    },30);
+  }
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        scrambleText(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1});
+
+  headers.forEach(h=>observer.observe(h));
+})();
+
+/* === SMOOTH NUMBER COUNTER ON CERT COUNT === */
+(function(){
+  const certSection=document.querySelector('[id="certifications"]');
+  if(!certSection)return;
+
+  const statElements=document.querySelectorAll('.stat');
+
+  function animateCounter(el,target){
+    if(el.dataset.animated)return;
+    el.dataset.animated='true';
+
+    const numEl=el.querySelector('[class*="num"]')||el;
+    const start=parseInt(numEl.textContent)||0;
+    const duration=1200;
+    const startTime=Date.now();
+
+    function update(){
+      const elapsed=Date.now()-startTime;
+      const progress=Math.min(elapsed/duration,1);
+
+      const easeOut=1-Math.pow(1-progress,3);
+      const current=Math.round(start+(target-start)*easeOut);
+
+      numEl.textContent=current;
+
+      if(progress<1){
+        requestAnimationFrame(update);
+      }
+    }
+    update();
+  }
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const certCount=document.querySelector('.stat .num')||document.querySelector('[class*="cert"][class*="count"]');
+        if(certCount){
+          const target=parseInt(certCount.getAttribute('data-count'))||72;
+          animateCounter(certCount,target);
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.3});
+
+  observer.observe(certSection);
+})();
+
+/* === SMOOTH PAGE LOAD SEQUENCE === */
+(function(){
+  const loader=document.getElementById('pageLoader');
+  if(!loader)return;
+
+  window.addEventListener('load',()=>{
+    setTimeout(()=>{
+      loader.classList.add('hidden');
+    },700);
+  });
+
+  const heroLoc=document.querySelector('.hero-loc');
+  const heroName=document.querySelector('.hero-name');
+  const heroTag=document.querySelector('.hero-tag');
+  const heroBtns=document.querySelector('.hero-btns');
+  const scrollInd=document.querySelector('.scroll-ind');
+
+  if(heroLoc)setTimeout(()=>heroLoc.style.opacity='1',300);
+  if(heroName)setTimeout(()=>heroName.style.opacity='1',500);
+  if(heroTag)setTimeout(()=>heroTag.style.opacity='1',700);
+  if(heroBtns)setTimeout(()=>heroBtns.style.opacity='1',900);
+  if(scrollInd)setTimeout(()=>scrollInd.style.opacity='1',2000);
+})();
+
+/* === SECTION COLOR THEMING (scroll progress bar) === */
+(function(){
+  const sections=[
+    {el:document.querySelector('[id="about"]'),color:'var(--color-about)'},
+    {el:document.querySelector('[id="certifications"]'),color:'var(--color-certs)'},
+    {el:document.querySelector('[id="career"]'),color:'var(--color-career)'},
+    {el:document.querySelector('[id="viz"]'),color:'var(--color-projects)'},
+    {el:document.querySelector('[id="map"]'),color:'var(--color-photos)'},
+    {el:document.querySelector('[id="games"]'),color:'var(--color-expertise)'},
+    {el:document.querySelector('[id="connect"]'),color:'var(--color-connect)'}
+  ];
+
+  const progressBar=document.getElementById('sp');
+  if(!progressBar)return;
+
+  window.addEventListener('scroll',()=>{
+    for(let sec of sections){
+      if(!sec.el)continue;
+      const rect=sec.el.getBoundingClientRect();
+      if(rect.top<window.innerHeight/2){
+        progressBar.style.background=`linear-gradient(90deg,${sec.color},var(--aurora-2),var(--aurora-3))`;
+      }
+    }
+  });
 })();
 </script>
 <div class="spotlight" id="spotlight"></div>
