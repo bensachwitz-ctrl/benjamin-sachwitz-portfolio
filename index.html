@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Ben Sachwitz — Insurance Professional | Risk Strategist</title>
-<meta name="description" content="Ben Sachwitz — Account Manager & Strategic Risk Analyst at Swamp Fox Agency. Commercial trucking, logging, P&C, Surety, Marine insurance. Summerville, SC.">
+<meta name="description" content="Ben Sachwitz — Assistant Underwriter & Strategic Risk Analyst at Swamp Fox Agency. Commercial trucking, logging, P&C, Surety, Marine insurance. Moncks Corner, SC.">
 <meta name="keywords" content="Ben Sachwitz, Benjamin Sachwitz, Swamp Fox Agency, Insurance, Risk Management, Commercial Trucking, Logging, P&C, Surety, Marine, South Carolina, Lloyd's of London, Price Forbes">
 <meta name="author" content="Benjamin Sachwitz">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Ben Sachwitz — Insurance Professional & Risk Strategist">
-<meta property="og:description" content="Account Manager at Swamp Fox Agency. Commercial trucking, logging, and complex risk specialist.">
+<meta property="og:description" content="Assistant Underwriter at Swamp Fox Agency. Commercial trucking, logging, and complex risk specialist.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/">
 <meta property="og:image" content="https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/Images/1749487469361.jpg">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ben Sachwitz — Insurance Professional & Risk Strategist">
-<meta name="twitter:description" content="Account Manager at Swamp Fox Agency. Commercial trucking, logging, and complex risk specialist.">
+<meta name="twitter:description" content="Assistant Underwriter at Swamp Fox Agency. Commercial trucking, logging, and complex risk specialist.">
 <meta name="twitter:image" content="https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/Images/1749487469361.jpg">
 <link rel="canonical" href="https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Benjamin Sachwitz","jobTitle":"Account Manager","worksFor":{"@type":"Organization","name":"Swamp Fox Agency","url":"https://swampfoxagency.com"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of South Carolina — Darla Moore School of Business"},"url":"https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/","image":"https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/Images/1749487469361.jpg","sameAs":["https://linkedin.com/in/benjamin-sachwitz","https://github.com/bensachwitz-ctrl","https://instagram.com/bensachwitz"],"knowsAbout":["Commercial Insurance","Risk Management","Trucking Insurance","Logging Insurance","P&C Insurance","Surety","Marine Insurance","Lloyd's of London"],"address":{"@type":"PostalAddress","addressLocality":"Summerville","addressRegion":"SC","addressCountry":"US"}}}
+{"@context":"https://schema.org","@type":"ProfilePage","mainEntity":{"@type":"Person","name":"Benjamin Sachwitz","jobTitle":"Assistant Underwriter","worksFor":{"@type":"Organization","name":"Swamp Fox Agency","url":"https://swampfoxagency.com"},"alumniOf":{"@type":"CollegeOrUniversity","name":"University of South Carolina — Darla Moore School of Business"},"url":"https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/","image":"https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/Images/1749487469361.jpg","sameAs":["https://linkedin.com/in/benjamin-sachwitz","https://github.com/bensachwitz-ctrl","https://instagram.com/bensachwitz"],"knowsAbout":["Commercial Insurance","Risk Management","Trucking Insurance","Logging Insurance","P&C Insurance","Surety","Marine Insurance","Lloyd's of London"],"address":{"@type":"PostalAddress","addressLocality":"Summerville","addressRegion":"SC","addressCountry":"US"}}}
 </script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -56,7 +56,11 @@ z-index:2000;width:0;pointer-events:none;box-shadow:0 0 20px rgba(79,172,254,0.6
 }
 
 /* === REVEALS === */
-.rv,.rvl,.rvr,.rvs{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv,.rvl,.rvr,.rvs{transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv{opacity:0;transform:translateY(30px)}
+.rvl{opacity:0;transform:translateX(-40px)}
+.rvr{opacity:0;transform:translateX(40px)}
+.rvs{opacity:0;transform:scale(0.95)}
 .rv.v,.rvl.v,.rvr.v,.rvs.v{opacity:1;transform:none}
 
 /* === NAV === */
@@ -65,10 +69,10 @@ z-index:2000;width:0;pointer-events:none;box-shadow:0 0 20px rgba(79,172,254,0.6
 .nav-logo{display:flex;align-items:center;text-decoration:none}.nav-logo img{display:block;height:28px;width:auto}
 .nav-links{display:flex;gap:2rem;align-items:center;position:relative}
 .nav-indicator{position:absolute;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;transition:left .35s var(--ease),width .35s var(--ease),background .6s ease;pointer-events:none}
-.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2);transition:color .3s;position:relative}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2);transition:color .3s var(--ease),text-shadow .3s var(--ease);position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:var(--accent);transition:width .3s var(--ease),left .3s var(--ease);border-radius:1px}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;left:0}
-.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);text-shadow:0 0 12px rgba(79,172,254,.4)}
 .nav-cta{padding:.5rem 1.3rem;border:1px solid var(--accent);border-radius:50px;color:var(--accent)!important;transition:all .3s}
 .nav-cta:hover{background:var(--accent);color:var(--deep)!important}
 .nav-cta::after{display:none!important}
@@ -170,13 +174,15 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .hero-btns .btn:nth-child(2){animation-delay:1.1s}
 .hero-btns .btn:nth-child(3){animation-delay:1.3s}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroNameFade{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes heroPortraitScale{0%{opacity:0;transform:scale(0.8)}100%{opacity:1;transform:scale(1)}}
 @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 
 /* === SCROLL DOWN INDICATOR === */
 .scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fu 1s 2s forwards}
 .scroll-ind span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-.scroll-ind .scroll-arrow{width:20px;height:20px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:scrollBounce 2s ease-in-out infinite;opacity:.6}
-@keyframes scrollBounce{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:.8}}
+.scroll-ind .scroll-arrow{width:20px;height:20px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:scrollBounce 1.5s ease-in-out infinite;opacity:.6}
+@keyframes scrollBounce{0%{transform:rotate(45deg) translateY(0);opacity:.4}50%{transform:rotate(45deg) translateY(8px);opacity:.8}100%{transform:rotate(45deg) translateY(0);opacity:.4}}
 
 /* === BACK TO TOP === */
 .btt{position:fixed;bottom:1.5rem;left:1.5rem;z-index:1500;width:44px;height:44px;border-radius:50%;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;color:var(--accent);cursor:pointer;transition:all .4s var(--ease);opacity:0;pointer-events:none;transform:translateY(10px)}
@@ -189,25 +195,30 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .page-loader .loader-logo{font-family:var(--serif);font-size:2rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:loaderPulse 1.2s ease-in-out infinite}
 @keyframes loaderPulse{0%,100%{opacity:.4;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}
 
+/* === ACCESSIBILITY === */
+.skip-link{position:absolute;top:-40px;left:0;background:var(--accent);color:var(--deep);padding:.5rem 1rem;text-decoration:none;z-index:10000;border-radius:0 0 4px 0}
+.skip-link:focus{top:0}
+
 /* === NOISE TEXTURE OVERLAY === */
 .noise{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
 
 /* === SECTION SYSTEM === */
 .sec{position:relative;overflow:hidden;background-color:var(--deep);background-size:cover;background-position:center;background-attachment:fixed}
-.sec+.sec{border-top:none}
-.sec .si{position:relative;z-index:3}
+.sec .si{position:relative;z-index:3;text-shadow:0 2px 20px rgba(5,8,22,.8),0 1px 3px rgba(5,8,22,.9)}
+.sec .si p,.sec .si .cc-sum,.sec .si .cc-body,.sec .si .sec-sub{text-shadow:0 1px 12px rgba(5,8,22,.9),0 0 4px rgba(5,8,22,.7)}
 
 /* === BUTTONS === */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2.2rem;border-radius:50px;font-size:.93rem;font-weight:600;letter-spacing:.03em;transition:all .3s var(--ease);position:relative;overflow:hidden}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2.2rem;border-radius:50px;font-size:.93rem;font-weight:600;letter-spacing:.03em;transition:all .3s var(--ease-spring);position:relative;overflow:hidden;cursor:pointer}
 .bp{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--deep)}
 .bp:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(79,172,254,.3)}
+.bp:active{transform:scale(0.96);transition-duration:0.08s}
 .bs{background:transparent;color:var(--txt);border:1px solid rgba(255,255,255,.18);font-weight:500}
 .bs:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.2);transform:scale(0);animation:rip .6s var(--ease);pointer-events:none}
 @keyframes rip{to{transform:scale(4);opacity:0}}
 
 /* === ABOUT === */
-.about{padding:3.5rem 2rem 3rem}
+.about{padding:3.5rem 2rem 3rem;position:relative}
 .about-g{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .pf{position:relative;width:100%;max-width:380px;aspect-ratio:3/4;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .pf img{width:100%;height:100%;object-fit:cover}
@@ -219,11 +230,12 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .at .lb{color:var(--accent);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;margin-bottom:2rem}
 .at p{color:var(--txt2);line-height:1.85;font-size:.98rem;margin-bottom:1.2rem}
 .at p strong{color:var(--txt);font-weight:500}
-.shdr{text-align:center;margin-bottom:2rem}
+.sec-label{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);display:inline-block;margin-bottom:.5rem}
+.shdr{text-align:center;margin-bottom:2.5rem}
 .shdr h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
 .shdr p{color:var(--txt2);font-size:1rem;max-width:500px;margin:0 auto}
 /* === CAREER === */
-.career{padding:3rem 2rem 2.5rem}
+.career{padding:3rem 2rem 2.5rem;position:relative}
 .tl-wrap{overflow:hidden;position:relative;padding:1rem 0}
 .tl-wrap::-webkit-scrollbar{display:none}
 .tl-track{display:flex;gap:1.5rem;animation:tlMarquee 60s linear infinite;width:max-content;position:relative}
@@ -236,8 +248,8 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .cc:nth-child(3) .tl-dot{animation-delay:.8s}
 .cc:nth-child(4) .tl-dot{animation-delay:1.2s}
 @keyframes dotPulse{0%,100%{box-shadow:0 0 0 0 rgba(79,172,254,.4)}50%{box-shadow:0 0 0 8px rgba(79,172,254,0)}}
-.cc{width:280px;flex-shrink:0;border-radius:20px;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-b);transition:all .4s var(--ease);transform-style:preserve-3d;cursor:pointer;position:relative}
-.cc:hover{border-color:rgba(79,172,254,.25);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.cc{width:280px;flex-shrink:0;border-radius:20px;overflow:hidden;background:var(--glass);backdrop-filter:blur(10px);border:1px solid var(--glass-b);transition:all .3s var(--ease);transform-style:preserve-3d;cursor:pointer;position:relative}
+.cc:hover{border-color:rgba(79,172,254,.35);transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.3),0 0 30px rgba(79,172,254,.12)}
 .tl-nav{display:flex;justify-content:center;gap:1rem;margin-top:1.5rem}
 .tl-btn{width:44px;height:44px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;color:var(--accent);cursor:pointer;transition:all .3s var(--ease)}
 .tl-btn:hover{background:rgba(79,172,254,.15);border-color:var(--accent)}
@@ -265,8 +277,8 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .con-in h2{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:700;background:linear-gradient(135deg,#fff,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
 .con-in .tagline{color:var(--txt2);font-size:1rem;margin-bottom:2.5rem;line-height:1.7}
 .pills{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
-.pill{display:flex;align-items:center;gap:.5rem;padding:.8rem 1.4rem;border-radius:50px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-b);transition:all .3s var(--ease);font-size:.88rem;position:relative;overflow:hidden}
-.pill:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 22px rgba(79,172,254,.12)}
+.pill{display:flex;align-items:center;gap:.5rem;padding:.8rem 1.4rem;border-radius:50px;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-b);transition:all .3s var(--ease);font-size:.88rem;position:relative;overflow:hidden;cursor:pointer}
+.pill:hover{border-color:var(--accent);transform:translateY(-4px) scale(1.02);box-shadow:0 12px 32px rgba(79,172,254,.2),inset 0 0 20px rgba(79,172,254,.08)}
 .pill svg{width:16px;height:16px;color:var(--accent);flex-shrink:0}
 .pill span{color:var(--txt);font-weight:500}
 .con-note{margin-top:1.5rem;color:var(--dim);font-size:.8rem}
@@ -275,7 +287,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 /* === BOOKING MODAL === */
 .modal-overlay{position:fixed;inset:0;background:rgba(5,8,22,.85);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
 .modal-overlay.open{opacity:1;pointer-events:auto}
-.modal{background:linear-gradient(135deg,#0c1224,#101a32);border:1px solid var(--glass-b);border-radius:24px;padding:2.5rem;max-width:500px;width:90%;max-height:90vh;overflow-y:auto;transform:scale(.92) translateY(20px);transition:transform .4s var(--ease);position:relative}
+.modal{background:rgba(10,14,26,0.85);border:1px solid rgba(79,172,254,0.12);border-radius:16px;padding:2.5rem;max-width:500px;width:90%;max-height:90vh;overflow-y:auto;transform:scale(.92) translateY(20px);transition:transform .4s var(--ease);position:relative;backdrop-filter:blur(20px)}
 .modal-overlay.open .modal{transform:scale(1) translateY(0)}
 .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--txt2);cursor:pointer;transition:all .3s}
 .modal-close:hover{background:rgba(255,255,255,.1);color:var(--txt)}
@@ -284,7 +296,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .modal-form{display:flex;flex-direction:column;gap:1rem}
 .modal-form .fr{display:flex;gap:1rem}
 .modal-form .fr input{flex:1}
-.modal-form input,.modal-form textarea,.modal-form select{width:100%;padding:.9rem 1.2rem;border-radius:12px;border:1px solid rgba(79,172,254,.1);background:rgba(12,18,36,.7);color:var(--txt);font-family:var(--sans);font-size:.9rem;transition:all .3s;outline:none;-webkit-appearance:none}
+.modal-form input,.modal-form textarea,.modal-form select{width:100%;padding:.9rem 1.2rem;border-radius:12px;border:1px solid rgba(79,172,254,.12);background:rgba(12,18,36,.7);color:var(--txt);font-family:var(--sans);font-size:.9rem;transition:all .3s var(--ease);outline:none;-webkit-appearance:none}
 .modal-form select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238892b0' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
 .modal-form select option{background:var(--navy);color:var(--txt)}
 .modal-form input:focus,.modal-form textarea:focus,.modal-form select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,172,254,.08)}
@@ -299,11 +311,15 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .modal-cal .cal-btn svg{width:16px;height:16px}
 
 /* === FOOTER === */
-.footer{padding:2.5rem 2rem;text-align:center;border-top:1px solid rgba(79,172,254,.06)}
-.footer p{color:var(--dim);font-size:.75rem;letter-spacing:.05em}
-.flinks{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem}
-.flinks a{color:var(--dim);transition:color .3s}
-.flinks a:hover{color:var(--accent)}
+.footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(79,172,254,.08);background:rgba(5,8,22,.5);backdrop-filter:blur(8px)}
+.footer{display:flex;flex-direction:column;gap:1.5rem;align-items:center;justify-content:center;max-width:1200px;margin:0 auto}
+.flinks{display:flex;gap:1.5rem;justify-content:center;align-items:center}
+.flinks a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(79,172,254,.08);border:1px solid rgba(79,172,254,.12);color:var(--accent);transition:all .3s var(--ease);text-decoration:none}
+.flinks a:hover{background:rgba(79,172,254,.15);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 16px rgba(79,172,254,.1)}
+.flinks svg{width:16px;height:16px}
+.footer-text{display:flex;flex-direction:column;gap:.5rem;align-items:center;justify-content:center}
+.footer-copyright{color:var(--txt2);font-size:.75rem;letter-spacing:.05em}
+.footer-tagline{color:var(--dim);font-size:.7rem;font-style:italic;letter-spacing:.08em;text-transform:uppercase}
 .flinks svg{width:17px;height:17px}
 
 
@@ -330,7 +346,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .modal-form input:focus,.modal-form textarea:focus,.modal-form select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,172,254,.08),0 0 20px rgba(79,172,254,.06)}
 .pill svg{transition:transform .3s var(--ease-smooth)}
 .pill:hover svg{transform:scale(1.15)}
-.cc{will-change:transform}.pill{will-change:transform}
+.cc{will-change:transform}.pill{will-change:transform}.tl-track{will-change:transform}.hero-portrait{will-change:opacity,transform}.btn{will-change:transform}
 .hero-stars,.hero-city,#particles{will-change:transform}
 .hero-tag .typewriter-cursor{display:inline-block;width:2px;height:1.1em;background:var(--accent);margin-left:2px;vertical-align:text-bottom;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -342,7 +358,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .cc,.pill,.btn{-webkit-tap-highlight-color:transparent}
 
 /* === ACCESSIBILITY === */
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.rvs{opacity:1;transform:none}.hero-loc,.hero-name,.hero-tag,.hero-btns,.scroll-ind{opacity:1;animation:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.rvs,.hero-portrait,.hero-loc,.hero-name,.hero-tag,.hero-btns,.scroll-ind,.tl-track,.cc,.pill,.btn,.bp:active{opacity:1;animation:none;transform:none!important}.nav-links a:hover,.nav-links a.active{text-shadow:none}.btn{transition:none}.pill{transition:none}.cc{transition:none}.modal{transform:scale(1) translateY(0)!important}}
 
 /* === RESPONSIVE === */
 /* === CERTIFICATIONS MARQUEE === */
@@ -452,14 +468,14 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 }
 
 /* === SECTION BACKGROUNDS WITH DEPTH === */
-.about{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.85) 20%,rgba(5,8,22,.75) 50%,rgba(5,8,22,.85) 80%,var(--deep) 100%),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80&fit=crop&auto=format')}
-.certs{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.9) 15%,rgba(5,8,22,.82) 50%,rgba(5,8,22,.9) 85%,var(--deep) 100%)}
-.career{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.8) 20%,rgba(5,8,22,.72) 50%,rgba(5,8,22,.8) 80%,var(--deep) 100%),url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80&fit=crop&auto=format')}
-.viz-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.88) 15%,rgba(5,8,22,.82) 50%,rgba(5,8,22,.88) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&fit=crop&auto=format')}
-.map-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.9) 15%,rgba(5,8,22,.84) 50%,rgba(5,8,22,.9) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1920&q=80&fit=crop&auto=format')}
-.snake-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.88) 15%,rgba(5,8,22,.8) 50%,rgba(5,8,22,.88) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80&fit=crop&auto=format')}
-.type-sec{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.9) 15%,rgba(5,8,22,.84) 50%,rgba(5,8,22,.9) 85%,var(--deep) 100%),url('https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=1920&q=80&fit=crop&auto=format')}
-.connect{background-image:linear-gradient(180deg,var(--deep) 0%,rgba(5,8,22,.82) 20%,rgba(5,8,22,.72) 50%,rgba(5,8,22,.82) 80%,var(--deep) 100%),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&q=80&fit=crop&auto=format')}
+.about{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.3) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=85&fit=crop&auto=format')}
+.certs{background-image:linear-gradient(180deg,rgba(5,8,22,.55) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.3) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.55) 100%),url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&q=85&fit=crop&auto=format')}
+.career{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.28) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=85&fit=crop&auto=format')}
+.viz-sec{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.3) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=85&fit=crop&auto=format')}
+.map-sec{background-image:linear-gradient(180deg,rgba(5,8,22,.55) 0%,rgba(5,8,22,.32) 20%,rgba(5,8,22,.28) 50%,rgba(5,8,22,.32) 80%,rgba(5,8,22,.55) 100%),url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1920&q=85&fit=crop&auto=format')}
+.snake-sec{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.38) 20%,rgba(5,8,22,.32) 50%,rgba(5,8,22,.38) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=85&fit=crop&auto=format')}
+.type-sec{background-image:linear-gradient(180deg,rgba(5,8,22,.6) 0%,rgba(5,8,22,.35) 20%,rgba(5,8,22,.3) 50%,rgba(5,8,22,.35) 80%,rgba(5,8,22,.6) 100%),url('https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=1920&q=85&fit=crop&auto=format')}
+.connect{background-image:linear-gradient(180deg,rgba(5,8,22,.55) 0%,rgba(5,8,22,.32) 20%,rgba(5,8,22,.28) 50%,rgba(5,8,22,.32) 80%,rgba(5,8,22,.55) 100%),url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=85&fit=crop&auto=format')}
 
 /* === SECTION-SPECIFIC COLOR THEMING === */
 .about{--sec-accent:var(--color-about)}
@@ -591,13 +607,14 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 </head>
 <body>
 
-<div class="page-loader" id="pageLoader"><img src="Images/bs-logo.svg" alt="Ben Sachwitz" width="200" height="38" class="loader-logo"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+<div class="page-loader" id="pageLoader"><img src="Images/bs-logo.svg" alt="Ben Sachwitz" width="240" height="48" class="loader-logo"></div>
 <div class="noise"></div>
 <div class="sprog" id="sp"></div>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo"><img src="Images/bs-logo.svg" alt="Ben Sachwitz" width="180" height="34"></a>
+  <a href="#" class="nav-logo"><img src="Images/bs-logo.svg" alt="Ben Sachwitz" width="200" height="40"></a>
   <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
     <a href="#certifications">Certs</a>
@@ -612,7 +629,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   <div class="ham" id="ham" onclick="toggleNav()"><span></span><span></span><span></span></div>
 </nav>
 
-<main>
+<main id="main" role="main">
 <!-- HERO: NIGHT SKY -> CITY SKYLINE -->
 <section class="hero" id="hero">
   <div class="hero-sky"></div>
@@ -621,9 +638,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   <canvas id="particles"></canvas>
   <div class="hero-content" id="heroContent">
     <div class="hero-text">
-      <p class="hero-loc">Summerville, SC</p>
+      <p class="hero-loc">Moncks Corner, SC</p>
       <h1 class="hero-name">Ben Sachwitz</h1>
-      <p class="hero-tag"><span>Insurance Professional</span> &middot; Risk Strategist &middot; <span>SC Native</span><br>Building relationships that protect what matters most.</p>
+      <p class="hero-tag"><span>Assistant Underwriter</span> &middot; Risk Strategist &middot; <span>Moore School of Business</span><br>Building relationships that protect what matters most.</p>
       <div class="hero-btns">
         <a href="javascript:void(0)" class="btn bp" onclick="openModal()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
@@ -638,7 +655,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
     </div>
     <div class="hero-portrait">
       <div class="hp-glow"></div>
-      <div class="hp-img"><img src="Images/1749487469361.jpg" alt="Ben Sachwitz — professional headshot"></div>
+      <div class="hp-img"><img src="Images/1749487469361.jpg" alt="Ben Sachwitz — professional headshot" loading="lazy"></div>
       <span class="hp-badge">P&C Licensed &middot; Moore School of Business</span>
     </div>
   </div>
@@ -662,7 +679,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
       <div class="at rvr">
         <p class="lb">Who I Am</p>
         <h2>Built for the Business<br>of Risk</h2>
-        <p>I'm a <strong>Darla Moore School of Business</strong> graduate who found his calling at the intersection of relationships and risk. As an Account Manager at <strong>Swamp Fox Agency</strong> — the only endorsed agency of the SC Timber Producers Association — I specialize in the industries most people overlook: commercial trucking, logging operations, and the complex risks that keep South Carolina's economy moving.</p>
+        <p>I'm a <strong>Darla Moore School of Business</strong> graduate (B.S.B.A. in Risk Management & Insurance, Dec 2025) who found his calling at the intersection of relationships and risk. As an Assistant Underwriter at <strong>Swamp Fox Agency</strong> — the only SCTPA-endorsed agency and Lloyd's coverholder serving South Carolina — I specialize in the industries most people overlook: commercial trucking, logging operations, and the complex risks that keep the Southeast's economy moving.</p>
         <p>My path wasn't traditional. Operations at <strong>The Masters</strong>, federal tech sales at <strong>Carahsoft</strong> in DC, specialty brokerage at <strong>Price Forbes</strong> inside Lloyd's of London — every stop built a lens that most 22-year-old account managers don't have. I bring a global perspective to a local market.</p>
         <p>Every policy starts with a conversation, not a quote. The best risk strategies come from understanding the people behind the operations — their families, their crews, their livelihoods.</p>
       </div>
@@ -681,6 +698,8 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
         <div class="cert-chip" data-issuer="Google / Coursera" data-desc="Foundations of AI concepts, machine learning basics, and responsible AI"><span class="cc-dot ai"></span>Google AI Essentials</div>
         <div class="cert-chip" data-issuer="Anthropic" data-desc="Core concepts of Claude AI assistant and effective prompting"><span class="cc-dot ai"></span>Claude 101</div>
         <div class="cert-chip" data-issuer="Anthropic" data-desc="Building with Claude Code for agentic development workflows"><span class="cc-dot ai"></span>Claude Code in Action</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Agent skills and autonomous workflow development"><span class="cc-dot ai"></span>Introduction to Agent Skills</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Claude Code 101 essentials and best practices"><span class="cc-dot ai"></span>Claude Code 101</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced negotiation strategies and tactics"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
         <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Data analysis fundamentals using Microsoft tools"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
         <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Generative AI concepts and enterprise applications"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
@@ -700,6 +719,8 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
         <div class="cert-chip" data-issuer="Google / Coursera" data-desc="Foundations of AI concepts, machine learning basics, and responsible AI"><span class="cc-dot ai"></span>Google AI Essentials</div>
         <div class="cert-chip" data-issuer="Anthropic" data-desc="Core concepts of Claude AI assistant and effective prompting"><span class="cc-dot ai"></span>Claude 101</div>
         <div class="cert-chip" data-issuer="Anthropic" data-desc="Building with Claude Code for agentic development workflows"><span class="cc-dot ai"></span>Claude Code in Action</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Agent skills and autonomous workflow development"><span class="cc-dot ai"></span>Introduction to Agent Skills</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Claude Code 101 essentials and best practices"><span class="cc-dot ai"></span>Claude Code 101</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced negotiation strategies and tactics"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
         <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Data analysis fundamentals using Microsoft tools"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
         <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Generative AI concepts and enterprise applications"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
@@ -717,6 +738,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
     </div>
     <div class="cert-marquee rv" style="transition-delay:.2s;margin-top:1rem">
       <div class="cert-row reverse" id="certRow2">
+        <div class="cert-chip" data-issuer="LiveAction/BlueCat" data-desc="Partner sales certification for network solutions"><span class="cc-dot tech"></span>LiveAction Partner Sales Certification</div>
+        <div class="cert-chip" data-issuer="IBM" data-desc="Professional skills for digital workplace success"><span class="cc-dot biz"></span>Working in a Digital World: Professional Skills</div>
+        <div class="cert-chip" data-issuer="Qlik" data-desc="Qlik product and business readiness training"><span class="cc-dot tech"></span>Qlik Learning Ready, Set, Go!</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Introduction to artificial intelligence fundamentals"><span class="cc-dot ai"></span>Getting Started with AI</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="AI concepts, history, and modern applications"><span class="cc-dot ai"></span>Introduction to AI</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Using generative AI for enhanced research and search"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
@@ -735,6 +759,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leadership influence and persuasion techniques"><span class="cc-dot biz"></span>Influence Skills for Leaders</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Digital skills for the modern workplace"><span class="cc-dot tech"></span>Digital Literacy</div>
         <!-- duplicated for seamless loop -->
+        <div class="cert-chip" data-issuer="LiveAction/BlueCat" data-desc="Partner sales certification for network solutions"><span class="cc-dot tech"></span>LiveAction Partner Sales Certification</div>
+        <div class="cert-chip" data-issuer="IBM" data-desc="Professional skills for digital workplace success"><span class="cc-dot biz"></span>Working in a Digital World: Professional Skills</div>
+        <div class="cert-chip" data-issuer="Qlik" data-desc="Qlik product and business readiness training"><span class="cc-dot tech"></span>Qlik Learning Ready, Set, Go!</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Introduction to artificial intelligence fundamentals"><span class="cc-dot ai"></span>Getting Started with AI</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="AI concepts, history, and modern applications"><span class="cc-dot ai"></span>Introduction to AI</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Using generative AI for enhanced research and search"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
@@ -756,6 +783,21 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
     </div>
     <div class="cert-marquee rv" style="transition-delay:.3s;margin-top:1rem">
       <div class="cert-row" id="certRow3" style="animation-duration:65s">
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Professional tips and strategies for administrative roles"><span class="cc-dot biz"></span>Administrative Professional Tips</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Creating sustainable organizational change"><span class="cc-dot biz"></span>Driving Measurable, Sustainable Change</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Investing in personal and professional growth"><span class="cc-dot biz"></span>Invest in You: Personal/Professional Development</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Digital marketing strategies and tools"><span class="cc-dot tech"></span>Marketing Tools: Digital Marketing</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="First-time tech manager success strategies"><span class="cc-dot biz"></span>Succeeding as First-Time Tech Manager</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Balancing assertiveness with likability"><span class="cc-dot biz"></span>How to Be Both Assertive and Likable</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Negotiation preparation and tactics"><span class="cc-dot biz"></span>How to Prepare for Negotiations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Negotiation beyond financial terms"><span class="cc-dot biz"></span>When Negotiation's About More Than Money</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building and maintaining a positive mindset"><span class="cc-dot biz"></span>Tips to Build a Positive Mindset</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Strategies for workplace happiness and fulfillment"><span class="cc-dot biz"></span>Strategies for Being Happy at Work</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building psychological safety in teams"><span class="cc-dot biz"></span>Collaborate to Build Psychological Safety</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Cybersecurity awareness and mental health"><span class="cc-dot tech"></span>Mental Health Awareness for Cybersecurity</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Managing emotional responses to workplace stress"><span class="cc-dot biz"></span>Managing Emotional Response to Stress</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Strategies for dealing with difficult colleagues"><span class="cc-dot biz"></span>Working with Difficult People</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Stress relief and mental wellness techniques"><span class="cc-dot biz"></span>Train Your Brain to Unwind Stress</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Management skills for effective leadership"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leading through discovery and innovation"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building adaptive management skills"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
@@ -774,6 +816,21 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Process improvement with Lean Six Sigma"><span class="cc-dot biz"></span>Lean Six Sigma Projects</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Professional etiquette for business settings"><span class="cc-dot biz"></span>Business Etiquette</div>
         <!-- duplicated for seamless loop -->
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Professional tips and strategies for administrative roles"><span class="cc-dot biz"></span>Administrative Professional Tips</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Creating sustainable organizational change"><span class="cc-dot biz"></span>Driving Measurable, Sustainable Change</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Investing in personal and professional growth"><span class="cc-dot biz"></span>Invest in You: Personal/Professional Development</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Digital marketing strategies and tools"><span class="cc-dot tech"></span>Marketing Tools: Digital Marketing</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="First-time tech manager success strategies"><span class="cc-dot biz"></span>Succeeding as First-Time Tech Manager</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Balancing assertiveness with likability"><span class="cc-dot biz"></span>How to Be Both Assertive and Likable</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Negotiation preparation and tactics"><span class="cc-dot biz"></span>How to Prepare for Negotiations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Negotiation beyond financial terms"><span class="cc-dot biz"></span>When Negotiation's About More Than Money</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building and maintaining a positive mindset"><span class="cc-dot biz"></span>Tips to Build a Positive Mindset</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Strategies for workplace happiness and fulfillment"><span class="cc-dot biz"></span>Strategies for Being Happy at Work</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building psychological safety in teams"><span class="cc-dot biz"></span>Collaborate to Build Psychological Safety</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Cybersecurity awareness and mental health"><span class="cc-dot tech"></span>Mental Health Awareness for Cybersecurity</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Managing emotional responses to workplace stress"><span class="cc-dot biz"></span>Managing Emotional Response to Stress</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Strategies for dealing with difficult colleagues"><span class="cc-dot biz"></span>Working with Difficult People</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Stress relief and mental wellness techniques"><span class="cc-dot biz"></span>Train Your Brain to Unwind Stress</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Management skills for effective leadership"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leading through discovery and innovation"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
         <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building adaptive management skills"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
@@ -797,24 +854,24 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
       <div class="ct-issuer" id="ctIssuer"></div>
       <div class="ct-desc" id="ctDesc"></div>
     </div>
-    <p class="cert-count rv" style="transition-delay:.4s"><span>70+</span> certifications across Insurance, AI/ML, Data Analytics, Leadership, and Technology</p>
+    <p class="cert-count rv" style="transition-delay:.4s"><span>72</span> certifications across Insurance, AI/ML, Data Analytics, Leadership, and Technology</p>
   </div>
 </section>
 
 <!-- CAREER (Expandable) -->
 <section class="career sec" id="career">
   <div class="si">
-    <div class="shdr rv"><h2>The Path</h2><p>From South Carolina to London and back. The full journey.</p></div>
+    <div class="shdr rv"><h2>The Path</h2><p>From McLean to London and back. The full journey.</p></div>
     <div class="tl-wrap" id="tlWrap"><div class="tl-track">
       <div class="cc rvs" style="transition-delay:.05s" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=85&fit=crop&auto=format" alt="High school campus" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=85&fit=crop&auto=format" alt="McLean High School campus" loading="lazy">
         </div>
         <div class="cc-body">
-          <span class="tg">South Carolina</span><h3>High School</h3><p class="rl">Foundation Years</p>
-          <p class="cc-sum">Where the drive started. Built the work ethic and competitive edge that fuels everything.</p>
-          <div class="cc-detail"><p>Grew up in South Carolina with a mindset rooted in hard work, competitive sports, and community. Developed early leadership skills through athletics and extracurriculars that would later translate into every professional role — from managing operations at Augusta National to closing deals in DC. The southern roots run deep, and they shaped the values I bring to every client relationship today.</p></div>
+          <span class="tg">McLean, Virginia</span><h3>McLean High School</h3><p class="rl">Foundation & Competitive Edge &middot; 2017-2022</p>
+          <p class="cc-sum">4.0 GPA, varsity athlete. Built the work ethic that defines everything.</p>
+          <div class="cc-detail"><p>Grew up in Northern Virginia with a competitive mindset forged through varsity sports — Lacrosse, Basketball, Football — across four years. Held 4.0 GPA while managing multi-sport schedules. Served in Investment Club, Mcrypto, Finance Club, and Best Buddies. These weren't just activities; they were laboratories for leadership, discipline, and systems thinking. Every principle I apply in underwriting — risk assessment, pattern recognition, relationship building — started here in McLean.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -825,9 +882,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img class="logo" src="Images/uofsc_logo.jpg" alt="University of South Carolina logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Columbia, SC</span><h3>University of South Carolina</h3><p class="rl">Darla Moore School of Business &middot; B.S.B.A.</p>
-          <p class="cc-sum">Risk Management & Insurance from a Global Center of Insurance Excellence.</p>
-          <div class="cc-detail"><p>Earned a B.S.B.A. in Risk Management & Insurance from the Darla Moore School of Business — one of the top insurance programs in the country and an AACSB-accredited Global Center of Insurance Excellence. Member of Phi Sigma Kappa fraternity and Gamma Iota Sigma (international insurance fraternity). Completed a security consulting project where my team conducted a full risk assessment, future scenario analysis, and Building Emergency Action Plan for a campus academic building, presenting findings to university faculty. Every internship and experience during these 3.5 years was intentional — building toward a career in insurance and risk. Forever to Thee.</p></div>
+          <span class="tg">Columbia, SC</span><h3>University of South Carolina</h3><p class="rl">B.S.B.A. Risk Management & Insurance &middot; 2022-2025</p>
+          <p class="cc-sum">Darla Moore School of Business. AACSB Global Center of Insurance Excellence.</p>
+          <div class="cc-detail"><p>Earned B.S.B.A. in Risk Management & Insurance and Financial Planning from the Darla Moore School of Business — one of the nation's premier insurance programs and an AACSB-accredited Global Center of Insurance Excellence. Member of Phi Sigma Kappa fraternity and Gamma Iota Sigma (international insurance honor fraternity). Led security consulting capstone where my team conducted full risk assessment, scenario analysis, and Building Emergency Action Plan for a campus building, presenting findings to university administration. Every internship and project was intentional — building directly toward an insurance career. Forever to Thee.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -838,22 +895,22 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img class="logo" src="Images/augustanational_logo.jpg" alt="Augusta National logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Augusta, GA</span><h3>The Masters Tournament</h3><p class="rl">Operations &middot; Augusta National Golf Club</p>
-          <p class="cc-sum">Elite event operations at the most prestigious tournament in golf.</p>
-          <div class="cc-detail"><p>Worked behind the scenes at Augusta National during the Masters — managing patron logistics, coordinating with operations leadership, and executing under a standard of excellence that accepts zero margin for error. Learned that every detail is a reflection of the standard you hold, and that operational discipline at this level translates directly into risk management. The precision required to run a world-class event is the same precision required to underwrite complex risks.</p></div>
+          <span class="tg">Augusta, Georgia</span><h3>The Masters Tournament</h3><p class="rl">Operations Staff &middot; Apr 2023 & 2024</p>
+          <p class="cc-sum">Elite event ops. Zero margin for error. Precision over everything.</p>
+          <div class="cc-detail"><p>Worked inside Augusta National during The Masters — coordinating patron logistics, supporting operations leadership, executing under a standard that accepts no exceptions. Learned that operational excellence at this level is indistinguishable from risk management. Every detail reflects the standard you hold. The precision required to run a world-class event is the same precision required to underwrite complex commercial risks. This experience shaped how I approach client relationships and policy analysis.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
       <div class="cc rvs" style="transition-delay:.2s" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&q=85&fit=crop&auto=format" alt="Washington DC Capitol at night" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&q=85&fit=crop&auto=format" alt="Washington DC Capitol" loading="lazy">
           <img class="logo" src="Images/carahsoft_logo.jpg" alt="Carahsoft logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Reston, VA</span><h3>Carahsoft Technology</h3><p class="rl">Federal Tech Sales &middot; 3 Summers</p>
-          <p class="cc-sum">Enterprise cybersecurity and software sales into the federal government.</p>
-          <div class="cc-detail"><p>Three summers selling cybersecurity and enterprise software solutions to federal agencies through complex government procurement cycles (GSA Schedule, GWACs, BPAs). Carahsoft is the #45 largest private company in America per Forbes — a pressure-cooker environment where you learn to build relationships at scale, translate technical capabilities into value propositions, and close deals with decision-makers who have zero patience for fluff. Grateful to team lead Kevin Dyer for his guidance. Every skill I use in insurance today started here.</p></div>
+          <span class="tg">Reston, Virginia</span><h3>Carahsoft Technology</h3><p class="rl">BDR Intern – Federal Sales &middot; 3 Summers</p>
+          <p class="cc-sum">Enterprise cybersecurity. Government contracting. Forbes #45 company.</p>
+          <div class="cc-detail"><p>Three summers in a pressure-cooker environment selling cybersecurity and enterprise software to federal agencies via GSA Schedule, GWACs, and BPAs. Carahsoft is Forbes' #45 largest private company — a machine that teaches you to build relationships at scale, translate technical value into executive language, and close deals with zero tolerance for wasted time. Worked under team lead Kevin Dyer. This is where I learned the fundamentals I use in insurance sales: qualifying buyers, understanding complex contracts, and managing procurement cycles. Everything translates.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -864,9 +921,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img class="logo" src="Images/price_forbes_logo.jpg" alt="Price Forbes logo">
         </div>
         <div class="cc-body">
-          <span class="tg">London, UK</span><h3>Price Forbes at Lloyd's</h3><p class="rl">Global Specialty Broker &middot; Lloyd's Market</p>
-          <p class="cc-sum">Trained at the global epicenter of specialty insurance — Lloyd's of London.</p>
-          <div class="cc-detail"><p>Worked inside Price Forbes — a leading independent global specialty broker — on the floor of Lloyd's of London. Sat at a box in the world's oldest and most sophisticated insurance marketplace, established 1688. Observed the full insurance lifecycle from initial client conversations and strategic risk submissions to live underwriting negotiations and claims handling. Worked alongside the Marine team and the Property team, seeing how brokers structure large-scale, multi-sector placements. Understanding surplus lines at the source changed how I approach every placement back in the US. Grateful to Jeremy Jiggins, James Bradley, and the entire team for their guidance.</p></div>
+          <span class="tg">London, United Kingdom</span><h3>Price Forbes at Lloyd's</h3><p class="rl">Global Specialty Broker &middot; Jul-Aug 2025</p>
+          <p class="cc-sum">Inside Lloyd's. On the floor. Learned specialty insurance at the source.</p>
+          <div class="cc-detail"><p>Worked inside Price Forbes — a leading independent global specialty broker — on the actual floor of Lloyd's of London. Sat at a box in the world's oldest insurance marketplace (established 1688). Observed the full insurance lifecycle: client conversations, risk submissions, live underwriting negotiations, claims handling. Worked alongside Marine and Property teams seeing how brokers structure multi-sector placements at global scale. Understanding surplus lines and Lloyd's market dynamics at the source fundamentally changed how I approach every risk back in the US. Mentored by Jeremy Jiggins and James Bradley.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -876,34 +933,35 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=85&fit=crop&auto=format" alt="Professional exam and licensing" loading="lazy">
         </div>
         <div class="cc-body">
-          <span class="tg">South Carolina</span><h3>SC Insurance License</h3><p class="rl">Property, Casualty, Surety & Marine Producer</p>
-          <p class="cc-sum">Completed Brewer Insurance pre-licensing and passed the SC Producer exam.</p>
-          <div class="cc-detail"><p>Completed the Brewer Insurance pre-licensing course and passed the South Carolina Property, Casualty, Surety, and Marine Insurance Producer examination. This was the final step before starting my insurance career — converting years of academic study and industry exposure into a license to operate. Prepared for this next stage with a deep understanding of insurance principles, risk management, and the regulatory landscape in South Carolina.</p></div>
+          <span class="tg">South Carolina</span><h3>SC Insurance License</h3><p class="rl">P&C, Surety & Marine Producer &middot; 2026</p>
+          <p class="cc-sum">Passed state exam. Brewer Insurance pre-licensing. Legal authority to operate.</p>
+          <div class="cc-detail"><p>Completed Brewer Insurance pre-licensing course and passed the South Carolina Property, Casualty, Surety, and Marine Insurance Producer exam. This was the final checkpoint before starting my insurance career — converting years of academic study and industry exposure into regulatory authority. Prepared with deep understanding of insurance principles, state regulations, and risk management frameworks specific to South Carolina's market dynamics.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
       <div class="cc rvs" style="transition-delay:.35s" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85&fit=crop&auto=format" alt="South Carolina marsh landscape" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85&fit=crop&auto=format" alt="South Carolina Lowcountry" loading="lazy">
           <img class="logo" src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox Agency logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Moncks Corner, SC</span><h3>Swamp Fox Agency</h3><p class="rl">Account Manager &middot; 2025 - Present</p>
-          <p class="cc-sum">Home. Commercial trucking and logging specialist. SCTPA-endorsed.</p>
-          <div class="cc-detail"><p>This is where every experience converges. Swamp Fox is a Lloyd's of London coverholder and the only endorsed agency of the SC Timber Producers Association — founded 35+ years ago by logging equipment salesmen who saw an underserved market. I specialize in the commercial trucking and logging risks that are the backbone of the SE economy, working across the E&S market to find capacity where standard carriers won't write. Building a book on relationships, not transactions — with a global perspective applied to a local market. The agency also created FICoSE, the only logger-owned captive insurance company in the US.</p></div>
+          <span class="tg">Moncks Corner, SC</span><h3>Swamp Fox Agency</h3><p class="rl">Assistant Underwriter &middot; Mar 2026 - Present</p>
+          <p class="cc-sum">Home. Logging and commercial trucking. SCTPA-endorsed Lloyd's coverholder.</p>
+          <div class="cc-detail"><p>This is where every experience converges. Swamp Fox is the only SCTPA-endorsed agency and a Lloyd's of London coverholder. Founded in the 1980s by logging equipment salesmen who saw an underserved market. I specialize in commercial trucking and logging risks — the backbone of the SE economy — working across the surplus and specialty market to place capacity where standard carriers won't write. Building my book on relationships, not transactions. The agency also founded FICoSE — the only logger-owned captive insurance company in the US. Every skill I developed has prepared me for exactly this role.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
+      <!-- duplicated cards for seamless marquee loop -->
       <div class="cc" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=85&fit=crop&auto=format" alt="High school campus" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=85&fit=crop&auto=format" alt="McLean High School campus" loading="lazy">
         </div>
         <div class="cc-body">
-          <span class="tg">South Carolina</span><h3>High School</h3><p class="rl">Foundation Years</p>
-          <p class="cc-sum">Where the drive started. Built the work ethic and competitive edge that fuels everything.</p>
-          <div class="cc-detail"><p>Grew up in South Carolina with a mindset rooted in hard work, competitive sports, and community. Developed early leadership skills through athletics and extracurriculars that would later translate into every professional role — from managing operations at Augusta National to closing deals in DC. The southern roots run deep, and they shaped the values I bring to every client relationship today.</p></div>
+          <span class="tg">McLean, Virginia</span><h3>McLean High School</h3><p class="rl">Foundation & Competitive Edge &middot; 2017-2022</p>
+          <p class="cc-sum">4.0 GPA, varsity athlete. Built the work ethic that defines everything.</p>
+          <div class="cc-detail"><p>Grew up in Northern Virginia with a competitive mindset forged through varsity sports — Lacrosse, Basketball, Football — across four years. Held 4.0 GPA while managing multi-sport schedules. Served in Investment Club, Mcrypto, Finance Club, and Best Buddies. These weren't just activities; they were laboratories for leadership, discipline, and systems thinking. Every principle I apply in underwriting — risk assessment, pattern recognition, relationship building — started here in McLean.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -914,9 +972,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img class="logo" src="Images/uofsc_logo.jpg" alt="University of South Carolina logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Columbia, SC</span><h3>University of South Carolina</h3><p class="rl">Darla Moore School of Business &middot; B.S.B.A.</p>
-          <p class="cc-sum">Risk Management & Insurance from a Global Center of Insurance Excellence.</p>
-          <div class="cc-detail"><p>Earned a B.S.B.A. in Risk Management & Insurance from the Darla Moore School of Business — one of the top insurance programs in the country and an AACSB-accredited Global Center of Insurance Excellence. Member of Phi Sigma Kappa fraternity and Gamma Iota Sigma (international insurance fraternity). Completed a security consulting project where my team conducted a full risk assessment, future scenario analysis, and Building Emergency Action Plan for a campus academic building, presenting findings to university faculty. Every internship and experience during these 3.5 years was intentional — building toward a career in insurance and risk. Forever to Thee.</p></div>
+          <span class="tg">Columbia, SC</span><h3>University of South Carolina</h3><p class="rl">B.S.B.A. Risk Management & Insurance &middot; 2022-2025</p>
+          <p class="cc-sum">Darla Moore School of Business. AACSB Global Center of Insurance Excellence.</p>
+          <div class="cc-detail"><p>Earned B.S.B.A. in Risk Management & Insurance and Financial Planning from the Darla Moore School of Business — one of the nation's premier insurance programs and an AACSB-accredited Global Center of Insurance Excellence. Member of Phi Sigma Kappa fraternity and Gamma Iota Sigma (international insurance honor fraternity). Led security consulting capstone where my team conducted full risk assessment, scenario analysis, and Building Emergency Action Plan for a campus building, presenting findings to university administration. Every internship and project was intentional — building directly toward an insurance career. Forever to Thee.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -927,22 +985,22 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img class="logo" src="Images/augustanational_logo.jpg" alt="Augusta National logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Augusta, GA</span><h3>The Masters Tournament</h3><p class="rl">Operations &middot; Augusta National Golf Club</p>
-          <p class="cc-sum">Elite event operations at the most prestigious tournament in golf.</p>
-          <div class="cc-detail"><p>Worked behind the scenes at Augusta National during the Masters — managing patron logistics, coordinating with operations leadership, and executing under a standard of excellence that accepts zero margin for error. Learned that every detail is a reflection of the standard you hold, and that operational discipline at this level translates directly into risk management. The precision required to run a world-class event is the same precision required to underwrite complex risks.</p></div>
+          <span class="tg">Augusta, Georgia</span><h3>The Masters Tournament</h3><p class="rl">Operations Staff &middot; Apr 2023 & 2024</p>
+          <p class="cc-sum">Elite event ops. Zero margin for error. Precision over everything.</p>
+          <div class="cc-detail"><p>Worked inside Augusta National during The Masters — coordinating patron logistics, supporting operations leadership, executing under a standard that accepts no exceptions. Learned that operational excellence at this level is indistinguishable from risk management. Every detail reflects the standard you hold. The precision required to run a world-class event is the same precision required to underwrite complex commercial risks. This experience shaped how I approach client relationships and policy analysis.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
       <div class="cc" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&q=85&fit=crop&auto=format" alt="Washington DC Capitol at night" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800&q=85&fit=crop&auto=format" alt="Washington DC Capitol" loading="lazy">
           <img class="logo" src="Images/carahsoft_logo.jpg" alt="Carahsoft logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Reston, VA</span><h3>Carahsoft Technology</h3><p class="rl">Federal Tech Sales &middot; 3 Summers</p>
-          <p class="cc-sum">Enterprise cybersecurity and software sales into the federal government.</p>
-          <div class="cc-detail"><p>Three summers selling cybersecurity and enterprise software solutions to federal agencies through complex government procurement cycles (GSA Schedule, GWACs, BPAs). Carahsoft is the #45 largest private company in America per Forbes — a pressure-cooker environment where you learn to build relationships at scale, translate technical capabilities into value propositions, and close deals with decision-makers who have zero patience for fluff. Grateful to team lead Kevin Dyer for his guidance. Every skill I use in insurance today started here.</p></div>
+          <span class="tg">Reston, Virginia</span><h3>Carahsoft Technology</h3><p class="rl">BDR Intern – Federal Sales &middot; 3 Summers</p>
+          <p class="cc-sum">Enterprise cybersecurity. Government contracting. Forbes #45 company.</p>
+          <div class="cc-detail"><p>Three summers in a pressure-cooker environment selling cybersecurity and enterprise software to federal agencies via GSA Schedule, GWACs, and BPAs. Carahsoft is Forbes' #45 largest private company — a machine that teaches you to build relationships at scale, translate technical value into executive language, and close deals with zero tolerance for wasted time. Worked under team lead Kevin Dyer. This is where I learned the fundamentals I use in insurance sales: qualifying buyers, understanding complex contracts, and managing procurement cycles. Everything translates.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -953,9 +1011,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img class="logo" src="Images/price_forbes_logo.jpg" alt="Price Forbes logo">
         </div>
         <div class="cc-body">
-          <span class="tg">London, UK</span><h3>Price Forbes at Lloyd's</h3><p class="rl">Global Specialty Broker &middot; Lloyd's Market</p>
-          <p class="cc-sum">Trained at the global epicenter of specialty insurance — Lloyd's of London.</p>
-          <div class="cc-detail"><p>Worked inside Price Forbes — a leading independent global specialty broker — on the floor of Lloyd's of London. Sat at a box in the world's oldest and most sophisticated insurance marketplace, established 1688. Observed the full insurance lifecycle from initial client conversations and strategic risk submissions to live underwriting negotiations and claims handling. Worked alongside the Marine team and the Property team, seeing how brokers structure large-scale, multi-sector placements. Understanding surplus lines at the source changed how I approach every placement back in the US. Grateful to Jeremy Jiggins, James Bradley, and the entire team for their guidance.</p></div>
+          <span class="tg">London, United Kingdom</span><h3>Price Forbes at Lloyd's</h3><p class="rl">Global Specialty Broker &middot; Jul-Aug 2025</p>
+          <p class="cc-sum">Inside Lloyd's. On the floor. Learned specialty insurance at the source.</p>
+          <div class="cc-detail"><p>Worked inside Price Forbes — a leading independent global specialty broker — on the actual floor of Lloyd's of London. Sat at a box in the world's oldest insurance marketplace (established 1688). Observed the full insurance lifecycle: client conversations, risk submissions, live underwriting negotiations, claims handling. Worked alongside Marine and Property teams seeing how brokers structure multi-sector placements at global scale. Understanding surplus lines and Lloyd's market dynamics at the source fundamentally changed how I approach every risk back in the US. Mentored by Jeremy Jiggins and James Bradley.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -965,22 +1023,22 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=85&fit=crop&auto=format" alt="Professional exam and licensing" loading="lazy">
         </div>
         <div class="cc-body">
-          <span class="tg">South Carolina</span><h3>SC Insurance License</h3><p class="rl">Property, Casualty, Surety & Marine Producer</p>
-          <p class="cc-sum">Completed Brewer Insurance pre-licensing and passed the SC Producer exam.</p>
-          <div class="cc-detail"><p>Completed the Brewer Insurance pre-licensing course and passed the South Carolina Property, Casualty, Surety, and Marine Insurance Producer examination. This was the final step before starting my insurance career — converting years of academic study and industry exposure into a license to operate. Prepared for this next stage with a deep understanding of insurance principles, risk management, and the regulatory landscape in South Carolina.</p></div>
+          <span class="tg">South Carolina</span><h3>SC Insurance License</h3><p class="rl">P&C, Surety & Marine Producer &middot; 2026</p>
+          <p class="cc-sum">Passed state exam. Brewer Insurance pre-licensing. Legal authority to operate.</p>
+          <div class="cc-detail"><p>Completed Brewer Insurance pre-licensing course and passed the South Carolina Property, Casualty, Surety, and Marine Insurance Producer exam. This was the final checkpoint before starting my insurance career — converting years of academic study and industry exposure into regulatory authority. Prepared with deep understanding of insurance principles, state regulations, and risk management frameworks specific to South Carolina's market dynamics.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
       <div class="cc" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85&fit=crop&auto=format" alt="South Carolina marsh landscape" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85&fit=crop&auto=format" alt="South Carolina Lowcountry" loading="lazy">
           <img class="logo" src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox Agency logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Moncks Corner, SC</span><h3>Swamp Fox Agency</h3><p class="rl">Account Manager &middot; 2025 - Present</p>
-          <p class="cc-sum">Home. Commercial trucking and logging specialist. SCTPA-endorsed.</p>
-          <div class="cc-detail"><p>This is where every experience converges. Swamp Fox is a Lloyd's of London coverholder and the only endorsed agency of the SC Timber Producers Association — founded 35+ years ago by logging equipment salesmen who saw an underserved market. I specialize in the commercial trucking and logging risks that are the backbone of the SE economy, working across the E&S market to find capacity where standard carriers won't write. Building a book on relationships, not transactions — with a global perspective applied to a local market. The agency also created FICoSE, the only logger-owned captive insurance company in the US.</p></div>
+          <span class="tg">Moncks Corner, SC</span><h3>Swamp Fox Agency</h3><p class="rl">Assistant Underwriter &middot; Mar 2026 - Present</p>
+          <p class="cc-sum">Home. Logging and commercial trucking. SCTPA-endorsed Lloyd's coverholder.</p>
+          <div class="cc-detail"><p>This is where every experience converges. Swamp Fox is the only SCTPA-endorsed agency and a Lloyd's of London coverholder. Founded in the 1980s by logging equipment salesmen who saw an underserved market. I specialize in commercial trucking and logging risks — the backbone of the SE economy — working across the surplus and specialty market to place capacity where standard carriers won't write. Building my book on relationships, not transactions. The agency also founded FICoSE — the only logger-owned captive insurance company in the US. Every skill I developed has prepared me for exactly this role.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -990,6 +1048,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- INTERACTIVE VISUALIZATION -->
 <section class="viz-sec sec" id="viz">
+  <div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div>
   <div class="si" style="position:relative;z-index:3;text-align:center;padding:2rem 2rem 1.5rem">
     <div class="shdr rvs"><span class="sec-label">Interactive</span><h2>My Network</h2></div>
     <p class="sec-sub rv" style="max-width:550px;margin:0 auto 1.5rem;color:var(--txt2)">Hover or tap any node to explore my skills, experiences, and expertise areas.</p>
@@ -1025,6 +1084,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- SNAKE GAME -->
 <section class="snake-sec sec" id="games">
+  <div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div>
   <div class="si" style="position:relative;z-index:2">
     <div class="shdr rvs"><span class="sec-label">Take a Break</span><h2>Play Snake</h2></div>
     <p class="sec-sub rv" style="margin-bottom:2rem;color:var(--txt2)">Beat your high score, then let's talk about how I can help your business.</p>
@@ -1065,6 +1125,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 <!-- TYPING GAME -->
 <section class="type-sec sec" id="typegame">
+  <div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div>
   <div class="si" style="position:relative;z-index:2">
     <div class="shdr rvs"><span class="sec-label">Challenge</span><h2>Type Speed</h2></div>
     <p class="sec-sub rv" style="margin-bottom:2rem;color:var(--txt2);text-align:center">How fast can you type insurance terms? Test your WPM.</p>
@@ -1162,14 +1223,17 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 
 </main>
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="flinks">
-    <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-    <a href="https://instagram.com/bensachwitz" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
-    <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-    <a href="mailto:ben@swampfoxagency.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+    <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+    <a href="https://instagram.com/bensachwitz" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg></a>
+    <a href="mailto:ben@swampfoxagency.com" aria-label="Email Ben" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
   </div>
-  <p>&copy; 2026 Ben Sachwitz &middot; Summerville, SC &middot; Built Different</p>
+  <div class="footer-text">
+    <p class="footer-copyright">&copy; 2026 Ben Sachwitz &middot; Summerville, South Carolina</p>
+    <p class="footer-tagline">Built with code &amp; coffee</p>
+  </div>
 </footer>
 
 <script>
@@ -1670,7 +1734,7 @@ window.addEventListener('scroll',()=>{
     {label:'USC Moore School',cat:'Education',color:'#ffa500',desc:'B.S.B.A. in Risk Management & Insurance from a Global Center of Insurance Excellence. AACSB accredited.'},
     {label:'Carahsoft',cat:'Experience',color:'#f093fb',desc:'Federal technology sales in Washington, DC. Government procurement, cybersecurity solutions, and enterprise contracts.'},
     {label:'The Masters',cat:'Experience',color:'#f093fb',desc:'Operations team at Augusta National Golf Club. World-class event management and service excellence.'},
-    {label:'Swamp Fox Agency',cat:'Experience',color:'#f093fb',desc:'Current home. Account Manager specializing in commercial trucking and logging — SC\'s only SCTPA-endorsed agency.'},
+    {label:'Swamp Fox Agency',cat:'Experience',color:'#f093fb',desc:'Current home. Assistant Underwriter specializing in commercial trucking and logging — SC\'s only SCTPA-endorsed agency.'},
     {label:'Data Analytics',cat:'Skill',color:'#00d084',desc:'Business analytics, sales data analysis, Excel FP&A, and data-driven decision making across insurance operations.'},
     {label:'Negotiation',cat:'Skill',color:'#ffa500',desc:'Professional negotiation certification. Strategic negotiation, agile tactics, and influence skills for complex deals.'}
   ];
@@ -1839,10 +1903,12 @@ window.addEventListener('scroll',()=>{
   const ctx=canvas.getContext('2d');
 
   const locations=[
-    {name:'Moncks Corner, SC',role:'Swamp Fox Agency',desc:'Home base. Account Manager specializing in commercial trucking and logging insurance. SC\'s only SCTPA-endorsed agency.',lat:33.196,lng:-80.013,color:'#4facfe',current:true},
-    {name:'Columbia, SC',role:'University of South Carolina',desc:'B.S.B.A. in Risk Management & Insurance from the Darla Moore School of Business.',lat:34.0,lng:-81.035,color:'#00d084'},
-    {name:'Augusta, GA',role:'The Masters Tournament',desc:'Operations at Augusta National Golf Club — world-class event management.',lat:33.474,lng:-81.975,color:'#00f2fe'},
-    {name:'Reston, VA',role:'Carahsoft Technology',desc:'Three summers in federal tech sales — cybersecurity and enterprise software to government agencies.',lat:38.968,lng:-77.341,color:'#f093fb'},
+    {name:'Moncks Corner, SC',role:'Swamp Fox Agency',desc:'Home base. Assistant Underwriter specializing in commercial trucking and logging insurance. SC\'s only SCTPA-endorsed agency.',lat:33.196,lng:-80.013,color:'#4facfe',current:true},
+    {name:'McLean, VA',role:'McLean High School',desc:'Where it started. 4.0 GPA, varsity lacrosse, multi-sport athlete. Northern Virginia roots.',lat:38.934,lng:-77.177,color:'#ffa500'},
+    {name:'Columbia, SC',role:'University of South Carolina',desc:'B.S.B.A. in Risk Management & Insurance from the Darla Moore School of Business. Dec 2025.',lat:34.0,lng:-81.035,color:'#00d084'},
+    {name:'Rehoboth Beach, DE',role:'SoDel Concepts',desc:'High-volume restaurant operations during peak beach season. Work ethic forged in hospitality.',lat:38.72,lng:-75.075,color:'#14b8a6'},
+    {name:'Augusta, GA',role:'The Masters Tournament',desc:'Operations at Augusta National Golf Club — world-class event management, two years.',lat:33.474,lng:-81.975,color:'#00f2fe'},
+    {name:'Reston, VA',role:'Carahsoft Technology',desc:'Three summers in federal tech sales — cybersecurity and enterprise software to government agencies. 2 yrs 3 mos total.',lat:38.968,lng:-77.341,color:'#f093fb'},
     {name:'London, UK',role:'Price Forbes at Lloyd\'s',desc:'Trained at Lloyd\'s of London — the world\'s oldest insurance marketplace. Global specialty risk.',lat:51.513,lng:-0.083,color:'#ffa500'}
   ];
 
