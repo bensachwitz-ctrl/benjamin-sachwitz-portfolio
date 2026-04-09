@@ -528,7 +528,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 /* === INTERACTIVE VISUALIZATION === */
 .viz-sec{padding:3rem 2rem 2rem}
 .viz-container{border-radius:16px;background:rgba(5,8,22,0.6);border:1px solid rgba(79,172,254,0.1);overflow:hidden;position:relative}
-.viz-nodes{position:absolute;inset:0;z-index:1}
+.viz-nodes{position:absolute;inset:0;z-index:1;overflow:visible}
 .viz-node{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s;z-index:2;border:none;padding:0;outline:none;top:0;left:0}
 .viz-node:hover,.viz-node.active{transform:scale(1.8)!important;z-index:10;box-shadow:0 0 30px currentColor}
 .viz-node .vn-label{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.72rem;font-weight:600;color:#fff;opacity:0;transition:opacity .25s;pointer-events:none;text-shadow:0 2px 8px rgba(0,0,0,.9);padding:3px 8px;border-radius:4px;background:rgba(5,8,22,.8)}
@@ -582,22 +582,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 *{animation:none!important;transition:none!important}
 .spotlight{display:none}
 }
-
-/* === VIZ NODES & DETAIL PANEL === */
-.viz-container{border-radius:16px;background:rgba(5,8,22,0.6);border:1px solid rgba(79,172,254,0.1);overflow:hidden}
-.viz-nodes{position:absolute;inset:0;z-index:1}
-.viz-node{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s;z-index:2;border:none;padding:0}
-.viz-node:hover,.viz-node.active{transform:scale(1.5)!important;z-index:10;box-shadow:0 0 30px currentColor}
-.viz-node .vn-label{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.7rem;font-weight:600;color:#fff;opacity:0;transition:opacity .2s;pointer-events:none;text-shadow:0 2px 8px rgba(0,0,0,.8)}
-.viz-node:hover .vn-label,.viz-node.active .vn-label{opacity:1}
-
-.viz-detail{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);width:320px;padding:1.5rem;border-radius:16px;background:rgba(10,14,26,0.96);backdrop-filter:blur(20px);border:1px solid rgba(79,172,254,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:all .3s var(--ease)}
-.viz-detail.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-.vd-close{position:absolute;top:.8rem;right:1rem;font-size:1.2rem;color:var(--txt2);cursor:pointer;line-height:1;background:none;border:none;padding:0}
-.vd-close:hover{color:var(--txt)}
-.vd-title{font-family:var(--serif);font-size:1.15rem;color:var(--txt);margin-bottom:.3rem;margin-top:0}
-.vd-cat{font-size:.7rem;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;margin-top:0}
-.vd-desc{font-size:.88rem;color:var(--txt2);line-height:1.7;margin-top:0;margin-bottom:0}
 
 </style>
 </head>
@@ -818,16 +802,41 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 <section class="career sec" id="career">
   <div class="sbg"></div><div class="sbg2" style="background-image:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80&fit=crop&auto=format')"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
   <div class="si">
-    <div class="shdr rv"><h2>The Path</h2><p>From Augusta to London and back. Scroll or use arrows.</p></div>
+    <div class="shdr rv"><h2>The Path</h2><p>From South Carolina to London and back. The full journey.</p></div>
     <div class="tl-wrap" id="tlWrap"><div class="tl-track">
+      <div class="cc rvs" style="transition-delay:.05s" onclick="toggleExpand(this)">
+        <div class="tl-dot"></div>
+        <div class="cc-img">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=85&fit=crop&auto=format" alt="High school campus" loading="lazy">
+        </div>
+        <div class="cc-body">
+          <span class="tg">South Carolina</span><h3>High School</h3><p class="rl">Foundation Years</p>
+          <p class="cc-sum">Where the drive started. Built the work ethic and competitive edge that fuels everything.</p>
+          <div class="cc-detail"><p>Grew up in South Carolina with a mindset rooted in hard work, competitive sports, and community. Developed early leadership skills through athletics and extracurriculars that would later translate into every professional role — from managing operations at Augusta National to closing deals in DC. The southern roots run deep, and they shaped the values I bring to every client relationship today.</p></div>
+          <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+        </div>
+      </div>
       <div class="cc rvs" style="transition-delay:.1s" onclick="toggleExpand(this)">
+        <div class="tl-dot"></div>
+        <div class="cc-img">
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=85&fit=crop&auto=format" alt="University of South Carolina campus" loading="lazy">
+          <img class="logo" src="Images/uofsc_logo.jpg" alt="University of South Carolina logo">
+        </div>
+        <div class="cc-body">
+          <span class="tg">Columbia, SC</span><h3>University of South Carolina</h3><p class="rl">Darla Moore School of Business &middot; B.S.B.A.</p>
+          <p class="cc-sum">Risk Management & Insurance from a Global Center of Insurance Excellence.</p>
+          <div class="cc-detail"><p>Earned a B.S.B.A. in Risk Management & Insurance from the Darla Moore School of Business — one of the top insurance programs in the country and an AACSB-accredited Global Center of Insurance Excellence. Member of Phi Sigma Kappa fraternity and Gamma Iota Sigma (international insurance fraternity). Completed a security consulting project where my team conducted a full risk assessment, future scenario analysis, and Building Emergency Action Plan for a campus academic building, presenting findings to university faculty. Every internship and experience during these 3.5 years was intentional — building toward a career in insurance and risk. Forever to Thee.</p></div>
+          <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+        </div>
+      </div>
+      <div class="cc rvs" style="transition-delay:.15s" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
           <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=800&q=85&fit=crop&auto=format" alt="Augusta National golf course" loading="lazy">
           <img class="logo" src="Images/augustanational_logo.jpg" alt="Augusta National logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Augusta, GA</span><h3>The Masters Tournament</h3><p class="rl">Operations &middot; Seasonal</p>
+          <span class="tg">Augusta, GA</span><h3>The Masters Tournament</h3><p class="rl">Operations &middot; Augusta National Golf Club</p>
           <p class="cc-sum">Elite event operations at the most prestigious tournament in golf.</p>
           <div class="cc-detail"><p>Worked behind the scenes at Augusta National during the Masters — managing patron logistics, coordinating with operations leadership, and executing under a standard of excellence that accepts zero margin for error. Learned that every detail is a reflection of the standard you hold, and that operational discipline at this level translates directly into risk management. The precision required to run a world-class event is the same precision required to underwrite complex risks.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
@@ -840,13 +849,13 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
           <img class="logo" src="Images/carahsoft_logo.jpg" alt="Carahsoft logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Washington, DC</span><h3>Carahsoft Technology</h3><p class="rl">Federal Tech Sales &middot; Reston, VA</p>
-          <p class="cc-sum">Enterprise cybersecurity & software sales into the federal government.</p>
-          <div class="cc-detail"><p>Sold cybersecurity and enterprise software solutions to federal agencies through complex government procurement cycles (GSA Schedule, GWACs, BPAs). Carahsoft is the #45 largest private company in America per Forbes — a pressure-cooker environment where you learn to build relationships at scale, translate technical capabilities into value propositions, and close deals with decision-makers who have zero patience for fluff. Every skill I use in insurance today started here.</p></div>
+          <span class="tg">Reston, VA</span><h3>Carahsoft Technology</h3><p class="rl">Federal Tech Sales &middot; 3 Summers</p>
+          <p class="cc-sum">Enterprise cybersecurity and software sales into the federal government.</p>
+          <div class="cc-detail"><p>Three summers selling cybersecurity and enterprise software solutions to federal agencies through complex government procurement cycles (GSA Schedule, GWACs, BPAs). Carahsoft is the #45 largest private company in America per Forbes — a pressure-cooker environment where you learn to build relationships at scale, translate technical capabilities into value propositions, and close deals with decision-makers who have zero patience for fluff. Grateful to team lead Kevin Dyer for his guidance. Every skill I use in insurance today started here.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
-      <div class="cc rvs" style="transition-delay:.3s" onclick="toggleExpand(this)">
+      <div class="cc rvs" style="transition-delay:.25s" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
           <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=85&fit=crop&auto=format" alt="London skyline" loading="lazy">
@@ -855,20 +864,32 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
         <div class="cc-body">
           <span class="tg">London, UK</span><h3>Price Forbes at Lloyd's</h3><p class="rl">Global Specialty Broker &middot; Lloyd's Market</p>
           <p class="cc-sum">Trained at the global epicenter of specialty insurance — Lloyd's of London.</p>
-          <div class="cc-detail"><p>Worked inside Price Forbes, a leading independent global specialty broker, on the floor of Lloyd's of London — the oldest and most sophisticated insurance marketplace in the world, established 1688. Gained first-hand exposure to how syndicates operate, how complex global risks are structured and placed, and how the London market underwrites exposures that no domestic carrier will touch. Understanding surplus lines at the source changed how I approach every placement back in the US.</p></div>
+          <div class="cc-detail"><p>Worked inside Price Forbes — a leading independent global specialty broker — on the floor of Lloyd's of London. Sat at a box in the world's oldest and most sophisticated insurance marketplace, established 1688. Observed the full insurance lifecycle from initial client conversations and strategic risk submissions to live underwriting negotiations and claims handling. Worked alongside the Marine team and the Property team, seeing how brokers structure large-scale, multi-sector placements. Understanding surplus lines at the source changed how I approach every placement back in the US. Grateful to Jeremy Jiggins, James Bradley, and the entire team for their guidance.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
-      <div class="cc rvs" style="transition-delay:.4s" onclick="toggleExpand(this)">
+      <div class="cc rvs" style="transition-delay:.3s" onclick="toggleExpand(this)">
+        <div class="tl-dot"></div>
+        <div class="cc-img">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=85&fit=crop&auto=format" alt="Professional exam and licensing" loading="lazy">
+        </div>
+        <div class="cc-body">
+          <span class="tg">South Carolina</span><h3>SC Insurance License</h3><p class="rl">Property, Casualty, Surety & Marine Producer</p>
+          <p class="cc-sum">Completed Brewer Insurance pre-licensing and passed the SC Producer exam.</p>
+          <div class="cc-detail"><p>Completed the Brewer Insurance pre-licensing course and passed the South Carolina Property, Casualty, Surety, and Marine Insurance Producer examination. This was the final step before starting my insurance career — converting years of academic study and industry exposure into a license to operate. Prepared for this next stage with a deep understanding of insurance principles, risk management, and the regulatory landscape in South Carolina.</p></div>
+          <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+        </div>
+      </div>
+      <div class="cc rvs" style="transition-delay:.35s" onclick="toggleExpand(this)">
         <div class="tl-dot"></div>
         <div class="cc-img">
           <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=85&fit=crop&auto=format" alt="South Carolina marsh landscape" loading="lazy">
           <img class="logo" src="Images/swamp_fox_agency_logo.jpg" alt="Swamp Fox Agency logo">
         </div>
         <div class="cc-body">
-          <span class="tg">Moncks Corner, SC</span><h3>Swamp Fox Agency</h3><p class="rl">Account Manager &middot; 2024 - Present</p>
+          <span class="tg">Moncks Corner, SC</span><h3>Swamp Fox Agency</h3><p class="rl">Account Manager &middot; 2025 - Present</p>
           <p class="cc-sum">Home. Commercial trucking and logging specialist. SCTPA-endorsed.</p>
-          <div class="cc-detail"><p>This is where every experience converges. Swamp Fox is the only endorsed agency of the SC Timber Producers Association and a member of the SC Trucking Association — founded 35+ years ago by logging equipment salesmen who saw an underserved market. I specialize in the commercial trucking and logging risks that are the backbone of the SC economy, working across the E&S market to find capacity where standard carriers won't write. Building a book on relationships, not transactions — with a global perspective applied to a local market. The agency also created FICoSE, the only logger-owned captive insurance company in the US.</p></div>
+          <div class="cc-detail"><p>This is where every experience converges. Swamp Fox is a Lloyd's of London coverholder and the only endorsed agency of the SC Timber Producers Association — founded 35+ years ago by logging equipment salesmen who saw an underserved market. I specialize in the commercial trucking and logging risks that are the backbone of the SE economy, working across the E&S market to find capacity where standard carriers won't write. Building a book on relationships, not transactions — with a global perspective applied to a local market. The agency also created FICoSE, the only logger-owned captive insurance company in the US.</p></div>
           <div class="cc-expand">Read more <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
         </div>
       </div>
@@ -892,7 +913,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   <div class="si" style="position:relative;z-index:3;text-align:center;padding:2rem 2rem 1.5rem">
     <div class="shdr rvs"><span class="sec-label">Interactive</span><h2>My Network</h2></div>
     <p class="sec-sub rv" style="max-width:550px;margin:0 auto 1.5rem;color:var(--txt2)">Hover or tap any node to explore my skills, experiences, and expertise areas.</p>
-    <div class="viz-container rv" id="vizContainer" style="max-width:900px;margin:0 auto;position:relative;aspect-ratio:16/9">
+    <div class="viz-container rv" id="vizContainer" style="max-width:900px;margin:0 auto;position:relative;aspect-ratio:16/9;min-height:350px">
       <canvas id="vizCanvas" style="position:absolute;inset:0;width:100%;height:100%;border-radius:16px;pointer-events:none;z-index:0"></canvas>
       <div class="viz-nodes" id="vizNodes"></div>
       <div class="viz-detail" id="vizDetail">
@@ -1079,11 +1100,13 @@ setTimeout(()=>{document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>{if(
   function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
   resize();window.addEventListener('resize',resize);
   const stars=[];
-  for(let i=0;i<200;i++){stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.2+.3,a:Math.random(),sp:Math.random()*.005+.001,d:Math.random()>.5?1:-1})}
+  for(let i=0;i<300;i++){stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+.2,a:Math.random(),sp:Math.random()*.005+.001,d:Math.random()>.5?1:-1,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.1})}
   (function draw(){
     ctx.clearRect(0,0,w,h);
     stars.forEach(s=>{
       s.a+=s.sp*s.d;if(s.a>=1||s.a<=.2)s.d*=-1;
+      s.x+=s.vx;s.y+=s.vy;
+      if(s.x<0)s.x=w;if(s.x>w)s.x=0;if(s.y<0)s.y=h;if(s.y>h)s.y=0;
       ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
       ctx.fillStyle='rgba(200,220,255,'+s.a+')';ctx.fill();
     });
@@ -1603,6 +1626,8 @@ window.addEventListener('scroll',()=>{
       });
 
       nodesWrap.appendChild(el);
+      el.style.opacity='0';
+      setTimeout(function(){el.style.opacity='1';el.style.transition='opacity .5s'},100);
 
       nodes.push({
         el:el,

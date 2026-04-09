@@ -1,82 +1,75 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#050816"/>
-      <stop offset="100%" stop-color="#0a0e1a"/>
+    <!-- Gradient: Electric Blue → Cyan → Soft Purple -->
+    <linearGradient id="bsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00f2fe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#4facfe"/>
-      <stop offset="50%" stop-color="#00f2fe"/>
-      <stop offset="100%" stop-color="#f093fb"/>
+
+    <!-- Subtle ring gradient (15% opacity) -->
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.15" />
+      <stop offset="50%" style="stop-color:#00f2fe;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#f093fb;stop-opacity:0.15" />
     </linearGradient>
-    <linearGradient id="glowGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#4facfe" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#f093fb" stop-opacity="0.15"/>
-    </linearGradient>
+
+    <!-- Glow filter -->
     <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <filter id="outerGlow">
-      <feGaussianBlur stdDeviation="20" result="blur"/>
+
+    <!-- Stronger glow for halo -->
+    <filter id="haloGlow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <clipPath id="hexClip">
-      <polygon points="256,40 440,145 440,367 256,472 72,367 72,145"/>
-    </clipPath>
   </defs>
-  
-  <!-- Background -->
-  <rect width="512" height="512" fill="url(#bgGrad)" rx="32"/>
-  
-  <!-- Outer glow ring -->
-  <polygon points="256,60 420,155 420,357 256,452 92,357 92,155" 
-           fill="none" stroke="url(#glowGrad)" stroke-width="1.5" filter="url(#outerGlow)" opacity="0.6"/>
-  
-  <!-- Hex border -->
-  <polygon points="256,60 420,155 420,357 256,452 92,357 92,155" 
-           fill="none" stroke="url(#logoGrad)" stroke-width="2" opacity="0.4"/>
-  
-  <!-- Inner subtle hex -->
-  <polygon points="256,90 395,172 395,340 256,422 117,340 117,172" 
-           fill="none" stroke="url(#logoGrad)" stroke-width="0.5" opacity="0.15"/>
-  
-  <!-- BS Monogram - custom geometric letterforms -->
-  <g filter="url(#glow)" transform="translate(256,256)">
-    <!-- B letterform - left side -->
-    <g transform="translate(-65, 0)">
-      <!-- B vertical stem -->
-      <rect x="-30" y="-70" width="12" height="140" rx="2" fill="url(#logoGrad)"/>
-      <!-- B upper bowl -->
-      <path d="M-18,-70 L20,-70 Q50,-70 50,-42 Q50,-18 20,-18 L-18,-18" 
-            fill="none" stroke="url(#logoGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- B lower bowl (slightly wider) -->
-      <path d="M-18,-10 L28,-10 Q60,-10 60,25 Q60,60 28,60 L-18,60 L-18,70" 
-            fill="none" stroke="url(#logoGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    
-    <!-- S letterform - right side, slightly overlapping -->
-    <g transform="translate(55, 0)">
-      <!-- S curve -->
-      <path d="M38,-65 Q38,-70 25,-70 L-5,-70 Q-35,-70 -35,-45 Q-35,-20 -5,-18 L25,-15 Q55,-12 55,18 Q55,55 25,60 L-10,60 Q-35,60 -35,55" 
-            fill="none" stroke="url(#logoGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    
-    <!-- Connecting accent line between B and S -->
-    <line x1="-10" y1="0" x2="10" y2="0" stroke="url(#logoGrad)" stroke-width="2" opacity="0.5"/>
+
+  <!-- Dark background with rounded corners -->
+  <rect width="512" height="512" rx="24" fill="#050816"/>
+
+  <!-- Subtle background ring (80% of canvas = 410px diameter, 205px radius) -->
+  <circle cx="256" cy="256" r="205" fill="none" stroke="url(#ringGradient)" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Halo glow layer (subtle outer glow) -->
+  <g filter="url(#haloGlow)">
+    <!-- B letter with glow -->
+    <path d="M 140 180 L 140 370 L 200 370 Q 230 370 230 355 L 230 310 Q 230 295 200 295 L 160 295 L 160 240 L 200 240 Q 230 240 230 225 L 230 195 Q 230 180 200 180 L 140 180 Z"
+          fill="url(#bsGradient)"
+          fill-rule="evenodd"
+          stroke="url(#bsGradient)"
+          stroke-width="0.5"
+          opacity="0.3"/>
+
+    <!-- S letter with glow -->
+    <path d="M 280 180 Q 320 180 335 190 Q 350 200 350 215 Q 350 230 335 235 L 300 250 Q 290 255 290 265 L 290 285 Q 290 300 310 310 L 345 330 Q 360 340 360 350 Q 360 365 340 375 Q 320 385 280 385 Q 250 385 230 375 L 250 360 Q 270 370 280 370 Q 310 370 320 365 Q 335 360 335 350 Q 335 340 320 335 L 280 315 Q 265 310 265 295 L 265 275 Q 265 260 285 250 L 320 235 Q 340 230 340 215 Q 340 200 320 195 Q 305 190 280 190 Z"
+          fill="url(#bsGradient)"
+          fill-rule="evenodd"
+          stroke="url(#bsGradient)"
+          stroke-width="0.5"
+          opacity="0.3"/>
   </g>
-  
-  <!-- Corner accent dots -->
-  <circle cx="256" cy="40" r="3" fill="#4facfe" opacity="0.8"/>
-  <circle cx="440" cy="145" r="3" fill="#00f2fe" opacity="0.6"/>
-  <circle cx="440" cy="367" r="3" fill="#f093fb" opacity="0.6"/>
-  <circle cx="256" cy="472" r="3" fill="#f093fb" opacity="0.8"/>
-  <circle cx="72" cy="367" r="3" fill="#00f2fe" opacity="0.6"/>
-  <circle cx="72" cy="145" r="3" fill="#4facfe" opacity="0.6"/>
+
+  <!-- Main B letter (left) - Bold, geometric -->
+  <path d="M 140 180 L 140 370 L 200 370 Q 230 370 230 355 L 230 310 Q 230 295 200 295 L 160 295 L 160 240 L 200 240 Q 230 240 230 225 L 230 195 Q 230 180 200 180 L 140 180 Z"
+        fill="url(#bsGradient)"
+        filter="url(#glow)"
+        opacity="0.95"/>
+
+  <!-- Main S letter (right) - Bold, geometric, slightly overlapping -->
+  <path d="M 280 180 Q 320 180 335 190 Q 350 200 350 215 Q 350 230 335 235 L 300 250 Q 290 255 290 265 L 290 285 Q 290 300 310 310 L 345 330 Q 360 340 360 350 Q 360 365 340 375 Q 320 385 280 385 Q 250 385 230 375 L 250 360 Q 270 370 280 370 Q 310 370 320 365 Q 335 360 335 350 Q 335 340 320 335 L 280 315 Q 265 310 265 295 L 265 275 Q 265 260 285 250 L 320 235 Q 340 230 340 215 Q 340 200 320 195 Q 305 190 280 190 Z"
+        fill="url(#bsGradient)"
+        filter="url(#glow)"
+        opacity="0.95"/>
+
+  <!-- Light accent highlight on gradient (subtle inner light) -->
+  <ellipse cx="220" cy="200" rx="60" ry="80" fill="#ffffff" opacity="0.08"/>
 </svg>
