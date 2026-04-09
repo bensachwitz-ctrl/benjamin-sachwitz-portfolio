@@ -56,14 +56,8 @@ z-index:2000;width:0;pointer-events:none;box-shadow:0 0 20px rgba(79,172,254,0.6
 }
 
 /* === REVEALS === */
-.rv{opacity:0;transform:translateY(35px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.rv.v{opacity:1;transform:translateY(0)}
-.rvl{opacity:0;transform:translateX(-45px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.rvl.v{opacity:1;transform:translateX(0)}
-.rvr{opacity:0;transform:translateX(45px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.rvr.v{opacity:1;transform:translateX(0)}
-.rvs{opacity:0;transform:scale(.88);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rvs.v{opacity:1;transform:scale(1);animation:springOvershoot .8s cubic-bezier(.34,1.56,.64,1)}
+.rv,.rvl,.rvr,.rvs{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.v,.rvl.v,.rvr.v,.rvs.v{opacity:1;transform:none}
 
 /* === NAV === */
 .nav{position:fixed;top:0;left:0;right:0;z-index:1001;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s var(--ease)}
