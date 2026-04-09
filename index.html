@@ -1437,8 +1437,10 @@ function toggleNav(){document.getElementById('navLinks').classList.toggle('open'
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('ham').classList.remove('open')}));
 
 /* ===== OBSERVER ===== */
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');e.target.style.opacity='1';e.target.style.transform='none';obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>obs.observe(el));
+/* Fallback: force all reveals visible after 4s in case observer fails */
+setTimeout(()=>{document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>{if(!el.classList.contains('v')){el.classList.add('v');el.style.opacity='1';el.style.transform='none'}})},4000);
 
 /* ===== STAR FIELD ===== */
 (function(){
@@ -1797,7 +1799,10 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ===== PAGE LOAD + NAV INDICATOR INIT ===== */
-window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('pageLoader')?.classList.add('hidden')},400);updateNavIndicator()});
+function hideLoader(){const l=document.getElementById('pageLoader');if(l)l.classList.add('hidden')}
+window.addEventListener('load',()=>{setTimeout(hideLoader,400);updateNavIndicator()});
+/* Fallback: hide loader after 2s regardless */
+setTimeout(hideLoader,2000);
 document.addEventListener('DOMContentLoaded',updateNavIndicator);
 
 
