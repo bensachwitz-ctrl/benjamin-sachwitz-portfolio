@@ -506,32 +506,10 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .cert-count span{color:var(--accent);font-weight:700;font-size:1.1rem}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* === T-REX GAME === */
-.trex-toggle{position:fixed;bottom:1.5rem;right:1.5rem;z-index:1500;width:48px;height:48px;border-radius:50%;background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--glass-b);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s var(--ease);color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.3)}
-.trex-toggle:hover{transform:scale(1.1);border-color:var(--accent);box-shadow:0 6px 24px rgba(79,172,254,.2)}
-.trex-container{position:fixed;bottom:5rem;right:1.5rem;z-index:1500;width:380px;border-radius:20px;background:rgba(8,12,28,.95);backdrop-filter:blur(20px);border:1px solid var(--glass-b);overflow:hidden;transform:scale(0) translateY(20px);transform-origin:bottom right;transition:all .4s var(--ease);opacity:0;pointer-events:none;box-shadow:0 16px 50px rgba(0,0,0,.5)}
-.trex-container.open{transform:scale(1) translateY(0);opacity:1;pointer-events:auto}
-.trex-header{padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(79,172,254,.08)}
-.trex-header span{font-size:.75rem;color:var(--accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.trex-header .trex-score{font-family:var(--serif);font-size:.85rem;color:var(--txt)}
-.trex-canvas-wrap{position:relative}
-#trexCanvas{display:block;width:100%;height:160px;background:#0a0e1a}
-.trex-gameover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,8,22,.88);opacity:0;pointer-events:none;transition:all .4s var(--ease)}
-.trex-gameover.show{opacity:1;pointer-events:auto}
-.trex-gameover h4{font-family:var(--serif);font-size:1.2rem;color:var(--accent);margin-bottom:.3rem}
-.trex-gameover p{font-size:.8rem;color:var(--txt2);margin-bottom:1rem}
-.trex-gameover .trex-cta{padding:.6rem 1.5rem;border-radius:50px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--deep);font-weight:600;font-size:.82rem;cursor:pointer;transition:all .3s var(--ease);border:none;font-family:var(--sans)}
-.trex-gameover .trex-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,172,254,.3)}
-.trex-footer{padding:.5rem 1rem;text-align:center;font-size:.68rem;color:var(--dim);border-top:1px solid rgba(79,172,254,.08)}
-
 /* === MAGNETIC GLOW EFFECT === */
 .glow-card{position:relative;overflow:hidden}
 .glow-card::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(79,172,254,.12),transparent 70%);pointer-events:none;opacity:0;transition:opacity .4s;transform:translate(-50%,-50%);z-index:0}
 .glow-card:hover::after{opacity:1}
-
-/* === FLOATING ACTION PULSE === */
-@keyframes floatPulse{0%,100%{box-shadow:0 4px 16px rgba(0,0,0,.3),0 0 0 0 rgba(79,172,254,.3)}50%{box-shadow:0 4px 16px rgba(0,0,0,.3),0 0 0 8px rgba(79,172,254,0)}}
-.trex-toggle{animation:floatPulse 3s ease-in-out infinite}
 
 /* === SHIMMER GRADIENT ON HEADINGS === */
 @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
@@ -615,7 +593,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .hero-content{grid-template-columns:1fr;text-align:center}
 .hero-portrait{margin:0 auto;width:clamp(180px,40vw,240px)}
 .hero-btns{justify-content:center}
-.trex-container{width:320px;right:1rem;bottom:4.5rem}
 .scroll-ind{bottom:1.5rem}
 }
 @media(max-width:640px){
@@ -626,7 +603,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .hero-portrait{width:clamp(160px,50vw,200px)}
 .pills{flex-direction:column;align-items:center}
 .carousel-slide{flex:0 0 80%;min-width:200px}
-.trex-container{width:calc(100vw - 2rem);right:1rem;bottom:4rem}
 .btt{bottom:1rem;left:1rem;width:38px;height:38px}
 .exp-grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
 .ring-wrap{width:70px;height:70px}
@@ -696,6 +672,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 /* === NAV ACTIVE GLOW === */
 .nav-links a.active{animation:navGlowPulse 2s ease-in-out infinite}
 
+/* === INTERACTIVE VISUALIZATION === */
+.viz-sec{padding:4.5rem 2rem 4rem}
+
 /* === SNAKE GAME SECTION === */
 .snake-sec{position:relative;padding:5rem 1.5rem;overflow:hidden}
 .snake-sec .si{max-width:700px;margin:0 auto;text-align:center}
@@ -750,13 +729,9 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   <a href="#" class="nav-logo">BS</a>
   <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
-    <a href="#education">Education</a>
     <a href="#certifications">Certs</a>
-    <a href="#services">What I Do</a>
     <a href="#career">Career</a>
-    <a href="#expertise">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#photos">Life</a>
+    <a href="#viz">Visualize</a>
     <a href="#games">Game</a>
     <a href="#connect">Connect</a>
     <a href="javascript:void(0)" class="nav-cta" onclick="openModal()">Book a Call</a>
@@ -819,58 +794,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
         <p>I'm a <strong>Darla Moore School of Business</strong> graduate who found his calling at the intersection of relationships and risk. As an Account Manager at <strong>Swamp Fox Agency</strong> — the only endorsed agency of the SC Timber Producers Association — I specialize in the industries most people overlook: commercial trucking, logging operations, and the complex risks that keep South Carolina's economy moving.</p>
         <p>My path wasn't traditional. Operations at <strong>The Masters</strong>, federal tech sales at <strong>Carahsoft</strong> in DC, specialty brokerage at <strong>Price Forbes</strong> inside Lloyd's of London — every stop built a lens that most 22-year-old account managers don't have. I bring a global perspective to a local market.</p>
         <p>Every policy starts with a conversation, not a quote. The best risk strategies come from understanding the people behind the operations — their families, their crews, their livelihoods.</p>
-        <div class="stats">
-          <div class="stat"><div class="counter" data-target="4" data-suffix="+">0</div><div class="stat-l">Industries</div>
-<div class="stat-context">Trucking, logging, P&C, cargo</div></div>
-          <div class="stat"><div class="counter" data-target="3">0</div><div class="stat-l">Countries</div></div>
-          <div class="stat"><div class="counter" data-target="4">0</div><div class="stat-l">Career Stops</div>
-<div class="stat-context">Augusta, DC, London, SC</div></div>
-          <div class="stat"><div class="stat-v">P&C</div><div class="stat-l">Licensed</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION & CREDENTIALS -->
-<section class="edu sec" id="education">
-  <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
-  <div class="si">
-    <div class="shdr rv"><h2>Education & Credentials</h2><p>Foundation built at one of the nation's top risk management programs.</p></div>
-    <div class="edu-g">
-      <div class="edu-card rvl">
-        <div class="edu-top">
-          <img class="edu-logo" src="Images/uofsc_logo.jpg" alt="University of South Carolina">
-          <div><h3>University of South Carolina</h3><p class="edu-sub">Darla Moore School of Business</p></div>
-        </div>
-        <div class="edu-body">
-          <p><strong>B.S.B.A. — Risk Management & Insurance</strong></p>
-          <p>Graduated from one of the 20 inaugural <strong>Global Centers for Insurance Excellence</strong> recognized by the International Insurance Society. Coursework in property & liability insurance, corporate risk management, insurance operations, and derivative securities.</p>
-          <p>Moore School's RMI program is consistently ranked among the nation's best — producing graduates who go straight into the London market, Fortune 500 risk departments, and specialty agencies.</p>
-        </div>
-        <div class="edu-badges">
-          <span class="edu-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Global Center of Excellence</span>
-          <span class="edu-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5-1-3H6l3-2-1-3 4 3 4-3-1 3 3 2h-3z"/></svg> AACSB Accredited</span>
-          <span class="edu-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> Gamecock Athletics</span>
-        </div>
-      </div>
-      <div class="edu-right rvr">
-        <div class="cert-item">
-          <div class="cert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <div><h4>SC Property & Casualty Producer</h4><p>Licensed Insurance Professional — South Carolina DOI</p></div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <div><h4>Surety & Marine Lines</h4><p>SC Surety and Marine Insurance Producer License</p></div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-          <div><h4>Brewer Insurance Pre-Licensing</h4><p>Completed intensive P&C exam preparation course</p></div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-          <div><h4>Lloyd's of London Market Training</h4><p>On-the-ground experience via Price Forbes — global specialty placement</p></div>
-        </div>
       </div>
     </div>
   </div>
@@ -1004,65 +927,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   </div>
 </section>
 
-<!-- SERVICES (Expandable) -->
-<section class="services sec" id="services">
-  <div class="sbg"></div><div class="sbg2" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80&fit=crop&auto=format')"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
-  <div class="si">
-    <div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div>
-    <div class="shdr rv"><h2>What I Do</h2><p>Click any card to learn more.</p></div>
-    <div class="svc-grid">
-      <div class="svc rvs" style="transition-delay:.1s" onclick="toggleExpand(this)">
-        <div class="svc-top">
-          <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M9 17H5a2 2 0 0 0-2 2m14-2h4a2 2 0 0 1 2 2M12 13a4 4 0 1 0 0-8"/><rect x="3" y="21" width="18" height="2" rx="1"/></svg></div>
-          <h3>Commercial Trucking & Logging</h3>
-        </div>
-        <p class="svc-summary">Specialized coverage for fleets, owner-operators, and forestry contractors across the E&S market.</p>
-        <div class="svc-detail">
-          <p>I navigate the surplus lines market to find capacity where standard carriers won't write — from long-haul trucking to high-risk logging operations. My approach: understand the fleet first, then build the program around the actual exposure, not a template.</p>
-          <a href="#connect" class="svc-link">Get a quote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="svc-toggle">See more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
-      </div>
-      <div class="svc rvs" style="transition-delay:.2s" onclick="toggleExpand(this)">
-        <div class="svc-top">
-          <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h3>Risk Analysis & Strategy</h3>
-        </div>
-        <p class="svc-summary">Loss run analysis, risk profiling, and coverage gap identification for complex operations.</p>
-        <div class="svc-detail">
-          <p>I translate complex exposures into clear strategies — helping clients understand their risks before they become claims, and structuring programs that actually fit their operations. No cookie-cutter policies.</p>
-          <a href="#connect" class="svc-link">Discuss strategy <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="svc-toggle">See more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
-      </div>
-      <div class="svc rvs" style="transition-delay:.3s" onclick="toggleExpand(this)">
-        <div class="svc-top">
-          <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-          <h3>Client Relationships</h3>
-        </div>
-        <p class="svc-summary">Building the kind of partnerships where clients call me first — because they trust it.</p>
-        <div class="svc-detail">
-          <p>Insurance is a people business. From first-time fleet owners to multi-generational operations, I make coverage personal. When something goes wrong, you want someone who already knows your operation on the phone.</p>
-          <a href="javascript:void(0)" onclick="event.stopPropagation();openModal()" class="svc-link">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="svc-toggle">See more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
-      </div>
-      <div class="svc rvs" style="transition-delay:.4s" onclick="toggleExpand(this)">
-        <div class="svc-top">
-          <div class="svc-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-          <h3>Technology & Innovation</h3>
-        </div>
-        <p class="svc-summary">Bridging traditional insurance with modern tech, data analytics, and digital workflows.</p>
-        <div class="svc-detail">
-          <p>I leverage data analytics, AI-driven workflows, and digital tools to streamline the placement process. The best risk professionals are also the most efficient ones. I build tools that make the work faster and smarter.</p>
-          <a href="https://github.com/bensachwitz-ctrl" target="_blank" class="svc-link">See my projects <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="svc-toggle">See more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CAREER (Expandable) -->
 <section class="career sec" id="career">
   <div class="sbg"></div><div class="sbg2" style="background-image:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80&fit=crop&auto=format')"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
@@ -1133,117 +997,58 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   </div>
 </section>
 
-<!-- EXPERTISE MATRIX -->
-<section class="expertise sec" id="expertise">
-  <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
-  <div class="si">
-    <div class="ambient-orb orb-1"></div><div class="ambient-orb orb-2"></div>
-    <div class="shdr rv"><h2>Expertise Matrix</h2><p>Where deep specialization meets broad capability.</p></div>
-    <div class="exp-grid">
-      <div class="exp-cell rvs" style="transition-delay:.05s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent" cx="45" cy="45" r="40" data-pct="95"/></svg><span class="ring-pct">95%</span></div>
-        <h4>Commercial Trucking</h4>
-        <p>Fleet programs, owner-operators, MCS-90, long-haul & local</p>
-      </div>
-      <div class="exp-cell rvs" style="transition-delay:.1s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent" cx="45" cy="45" r="40" data-pct="92"/></svg><span class="ring-pct">92%</span></div>
-        <h4>Forestry & Logging</h4>
-        <p>Timber ops, skidders, SCTPA-endorsed, captive programs</p>
-      </div>
-      <div class="exp-cell rvs" style="transition-delay:.15s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent2" cx="45" cy="45" r="40" data-pct="88"/></svg><span class="ring-pct">88%</span></div>
-        <h4>P&C / Surety / Marine</h4>
-        <p>GL, property, commercial auto, inland marine, bonds</p>
-      </div>
-      <div class="exp-cell rvs" style="transition-delay:.2s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill warm" cx="45" cy="45" r="40" data-pct="78"/></svg><span class="ring-pct">78%</span></div>
-        <h4>Lloyd's Market</h4>
-        <p>Syndicate placement, specialty reinsurance, global risk</p>
-      </div>
-      <div class="exp-cell rvs" style="transition-delay:.25s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent2" cx="45" cy="45" r="40" data-pct="85"/></svg><span class="ring-pct">85%</span></div>
-        <h4>Risk Analysis</h4>
-        <p>Loss runs, exposure modeling, coverage gaps, profiling</p>
-      </div>
-      <div class="exp-cell rvs" style="transition-delay:.3s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill accent2" cx="45" cy="45" r="40" data-pct="82"/></svg><span class="ring-pct">82%</span></div>
-        <h4>E&S / Surplus Lines</h4>
-        <p>Non-admitted, hard-to-place, excess capacity sourcing</p>
-      </div>
-      <div class="exp-cell rvs" style="transition-delay:.35s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill warm" cx="45" cy="45" r="40" data-pct="75"/></svg><span class="ring-pct">75%</span></div>
-        <h4>Technology & AI</h4>
-        <p>Automation, AI analytics, GitHub, full-stack dev</p>
-      </div>
-      <div class="exp-cell rvs" style="transition-delay:.4s">
-        <div class="ring-wrap"><svg viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="40"/><circle class="ring-fill warm" cx="45" cy="45" r="40" data-pct="72"/></svg><span class="ring-pct">72%</span></div>
-        <h4>Federal Sales</h4>
-        <p>Gov procurement, cybersecurity, enterprise contracts</p>
-      </div>
+<!-- INTERACTIVE VISUALIZATION -->
+<section class="viz-sec sec" id="viz">
+  <div class="sbg" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=2560&q=85&fit=crop&auto=format')"></div>
+  <div class="sov" style="background:linear-gradient(180deg,rgba(5,8,22,.88) 0%,rgba(5,8,22,.82) 100%)"></div>
+  <div class="bt"></div><div class="bb"></div>
+  <div class="si" style="position:relative;z-index:3;text-align:center;padding:4rem 2rem">
+    <div class="shdr rvs"><span class="sec-label">Interactive</span><h2>My Network</h2></div>
+    <p class="sec-sub rv" style="max-width:550px;margin:0 auto 2rem;color:var(--txt2)">Move your cursor to explore the connections between my expertise, experience, and industries. Each node represents a skill or milestone.</p>
+    <div class="rv" style="max-width:900px;margin:0 auto">
+      <canvas id="vizCanvas" style="width:100%;aspect-ratio:16/9;border-radius:16px;background:rgba(5,8,22,0.6);border:1px solid rgba(79,172,254,0.1);cursor:crosshair;display:block"></canvas>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS / DIGITAL PORTFOLIO -->
-<section class="projects sec" id="projects">
-  <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
-  <div class="si">
-    <div class="shdr rv"><h2>Digital Portfolio</h2><p>Where insurance meets code. Side of the desk that keeps things interesting.</p></div>
-    <div class="proj-grid">
-      <div class="proj rvs" style="transition-delay:.1s">
-        <span class="proj-status live">Live</span>
-        <h3>Personal Portfolio</h3>
-        <p>This site. Single-file vanilla HTML/CSS/JS with canvas animations, parallax scrolling, glassmorphism, and full SEO optimization. Deployed on GitHub Pages.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">HTML5</span><span class="proj-tag">CSS3</span><span class="proj-tag">JavaScript</span><span class="proj-tag">Canvas API</span><span class="proj-tag">GitHub Pages</span>
+<!-- SNAKE GAME -->
+<section class="snake-sec sec" id="games">
+  <div class="sbg" style="background-image:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80&fit=crop&auto=format')"></div>
+  <div class="sov" style="background:linear-gradient(180deg,rgba(5,8,22,.88) 0%,rgba(5,8,22,.78) 100%)"></div>
+  <div class="si" style="position:relative;z-index:2">
+    <div class="shdr rvs"><span class="sec-label">Take a Break</span><h2>Play Snake</h2></div>
+    <p class="sec-sub rv" style="margin-bottom:2rem;color:var(--txt2)">Beat your high score, then let's talk about how I can help your business.</p>
+    <div class="game-wrapper rv" style="transition-delay:.1s">
+      <div class="game-container" id="snakeGameContainer">
+        <div class="game-header">
+          <div class="game-title">Snake</div>
+          <div class="game-score-display">
+            <div class="game-score-item"><span class="game-score-label">Score</span><span class="game-score-val" id="snakeScore">0</span></div>
+            <div class="game-score-item"><span class="game-score-label">Best</span><span class="game-score-val high" id="snakeHigh">0</span></div>
+          </div>
         </div>
-        <a href="https://bensachwitz-ctrl.github.io/benjamin-sachwitz-portfolio/" target="_blank" class="proj-link">View Live <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-      </div>
-      <div class="proj rvs" style="transition-delay:.2s">
-        <span class="proj-status dev">In Progress</span>
-        <h3>Swamp Fox Agency Redesign</h3>
-        <p>Full website modernization for the agency. New lead-capture forms, responsive design, SEO for "forestry insurance" and "trucking insurance SC" terms.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">React</span><span class="proj-tag">Tailwind CSS</span><span class="proj-tag">SEO</span><span class="proj-tag">Lead Gen</span>
+        <div style="position:relative">
+          <canvas id="snake-canvas"></canvas>
+          <div class="snake-overlay" id="snakeStart">
+            <h4>Snake</h4>
+            <p>Use arrow keys or swipe to play</p>
+            <button class="snake-play-btn" onclick="startSnake()">Start Game</button>
+          </div>
+          <div class="snake-overlay hide" id="snakeOver">
+            <div class="score-final" id="snakeFinalScore">0</div>
+            <p>Game Over</p>
+            <div class="snake-cta-row">
+              <button class="snake-play-btn" onclick="startSnake()">Play Again</button>
+              <button class="snake-cta-link" onclick="openModal()">Book a Call</button>
+            </div>
+          </div>
         </div>
-        <a href="https://github.com/bensachwitz-ctrl" target="_blank" class="proj-link">GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-      </div>
-      <div class="proj rvs" style="transition-delay:.3s">
-        <span class="proj-status dev">In Progress</span>
-        <h3>Loss Control Hub</h3>
-        <p>Internal tool for fleet safety tracking, DOT compliance monitoring, driver training logs, and claims reduction analytics for Swamp Fox clients.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">Python</span><span class="proj-tag">Data Analytics</span><span class="proj-tag">Dashboard</span><span class="proj-tag">API</span>
+        <div class="game-controls">
+          <span><kbd>Arrow Keys</kbd> or <kbd>WASD</kbd> to move</span>
+          <span>Mobile: Swipe</span>
         </div>
-        <a href="https://github.com/bensachwitz-ctrl" target="_blank" class="proj-link">GitHub <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PHOTOS -->
-<section class="photos sec" id="photos">
-  <div class="sbg"></div><div class="sov"></div><div class="bt"></div><div class="bb"></div>
-  <div class="si">
-    <div class="shdr rv" style="padding:0 2rem"><h2 style="background:linear-gradient(135deg,#fff,var(--warm));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Life in the Lowcountry</h2><p>South Carolina born, raised, and rooted. Click any photo to expand.</p></div>
-    <div class="carousel-wrap rvs">
-      <div class="carousel-track" id="carTrack">
-        <div class="carousel-slide" data-cap="Lloyd's of London" onclick="openLightbox(this.querySelector('img'),'Lloyd\'s of London')"><img src="Images/ben 2.JPG" alt="Ben at Lloyd's of London" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="Washington, DC" onclick="openLightbox(this.querySelector('img'),'Washington, DC')"><img src="Images/ben 4.png" alt="Ben at formal event in DC" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="SC Coast" onclick="openLightbox(this.querySelector('img'),'Lowcountry living')"><img src="Images/ben.jpeg" alt="Ben on the SC coast" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="Family" onclick="openLightbox(this.querySelector('img'),'Family')"><img src="Images/ben and fam.jpg" alt="Ben with family" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="City of London" onclick="openLightbox(this.querySelector('img'),'City of London')"><img src="Images/ben 3.JPG" alt="Ben in the City of London" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="Game Day" onclick="openLightbox(this.querySelector('img'),'Game Day')"><img src="Images/ben with dad.jpg" alt="Ben at a game" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="Nashville" onclick="openLightbox(this.querySelector('img'),'Nashville, TN')"><img src="Images/IMG_2977.JPG" alt="Ben in Nashville" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="Capitals" onclick="openLightbox(this.querySelector('img'),'Capitals game')"><img src="Images/ben with cap.jpg" alt="Ben at a Capitals game" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="Sunset Crew" onclick="openLightbox(this.querySelector('img'),'Palmetto sunset')"><img src="Images/ben and frinewd.JPG" alt="Ben with friends at sunset" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="Good Times" onclick="openLightbox(this.querySelector('img'),'Good times')"><img src="Images/ben67.PNG" alt="Ben with friend" loading="lazy"></div>
-        <div class="carousel-slide" data-cap="USC Graduation" onclick="openLightbox(this.querySelector('img'),'University of South Carolina')"><img src="Images/ben grad.jpg" alt="Ben USC graduation" loading="lazy"></div>
-      </div>
-    </div>
-    <div class="car-nav">
-      <button class="car-btn" onclick="scrollCar(-1)" aria-label="Previous photos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button class="car-btn" onclick="scrollCar(1)" aria-label="Next photos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      <p class="sub-note">A little fun before business — why not?</p>
     </div>
   </div>
 </section>
@@ -1327,69 +1132,6 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   <img id="lbImg" src="" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
-
-<!-- T-REX GAME -->
-<div class="trex-toggle" id="trexToggle" onclick="toggleTrex()" title="Play a game">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 2h4v4M15 9l6.1-6.1M10.6 9.6l-8.1 8.1a2.1 2.1 0 103 3l8.1-8.1"/><path d="M12 6l4.5 4.5M8 14l2 2"/></svg>
-</div>
-<div class="trex-container" id="trexBox">
-  <div class="trex-header">
-    <span>Runner</span>
-    <span class="trex-score" id="trexScoreDisp">Score: 0</span>
-  </div>
-  <div class="trex-canvas-wrap">
-    <canvas id="trexCanvas" width="380" height="160"></canvas>
-    <div class="trex-gameover" id="trexGameover">
-      <h4>Let's Connect</h4>
-      <p>You scored <span id="trexFinalScore">0</span> points</p>
-      <button class="trex-cta" onclick="openModal()">Book a Call</button>
-      <button class="trex-cta" style="margin-top:.5rem;background:transparent;border:1px solid var(--accent);color:var(--accent)" onclick="startTrex()">Play Again</button>
-    </div>
-  </div>
-  <div class="trex-footer">Space / Tap to jump &middot; Avoid obstacles</div>
-</div>
-
-<!-- SNAKE GAME -->
-<section class="snake-sec sec" id="games">
-  <div class="sbg" style="background-image:url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80&fit=crop&auto=format')"></div>
-  <div class="sov" style="background:linear-gradient(180deg,rgba(5,8,22,.88) 0%,rgba(5,8,22,.78) 100%)"></div>
-  <div class="si" style="position:relative;z-index:2">
-    <div class="shdr rvs"><span class="sec-label">Take a Break</span><h2>Play Snake</h2></div>
-    <p class="sec-sub rv" style="margin-bottom:2rem;color:var(--txt2)">Beat your high score, then let's talk about how I can help your business.</p>
-    <div class="game-wrapper rv" style="transition-delay:.1s">
-      <div class="game-container" id="snakeGameContainer">
-        <div class="game-header">
-          <div class="game-title">Snake</div>
-          <div class="game-score-display">
-            <div class="game-score-item"><span class="game-score-label">Score</span><span class="game-score-val" id="snakeScore">0</span></div>
-            <div class="game-score-item"><span class="game-score-label">Best</span><span class="game-score-val high" id="snakeHigh">0</span></div>
-          </div>
-        </div>
-        <div style="position:relative">
-          <canvas id="snake-canvas"></canvas>
-          <div class="snake-overlay" id="snakeStart">
-            <h4>Snake</h4>
-            <p>Use arrow keys or swipe to play</p>
-            <button class="snake-play-btn" onclick="startSnake()">Start Game</button>
-          </div>
-          <div class="snake-overlay hide" id="snakeOver">
-            <div class="score-final" id="snakeFinalScore">0</div>
-            <p>Game Over</p>
-            <div class="snake-cta-row">
-              <button class="snake-play-btn" onclick="startSnake()">Play Again</button>
-              <button class="snake-cta-link" onclick="openModal()">Book a Call</button>
-            </div>
-          </div>
-        </div>
-        <div class="game-controls">
-          <span><kbd>Arrow Keys</kbd> or <kbd>WASD</kbd> to move</span>
-          <span>Mobile: Swipe</span>
-        </div>
-      </div>
-      <p class="sub-note">A little fun before business — why not?</p>
-    </div>
-  </div>
-</section>
 
 </main>
 <!-- FOOTER -->
@@ -1646,86 +1388,6 @@ document.querySelectorAll('.svc,.proj,.exp-cell,.cert-item').forEach(el=>{
   });
 });
 
-/* ===== T-REX RUNNER GAME ===== */
-let trexOpen=false;
-function toggleTrex(){
-  trexOpen=!trexOpen;
-  document.getElementById('trexBox').classList.toggle('open',trexOpen);
-  if(trexOpen&&!trexRunning)startTrex();
-}
-let trexRunning=false,trexRaf,trexScore=0;
-function startTrex(){
-  const cv=document.getElementById('trexCanvas');if(!cv)return;
-  const ctx=cv.getContext('2d');
-  cv.width=380;cv.height=160;
-  document.getElementById('trexGameover').classList.remove('show');
-  trexScore=0;trexRunning=true;
-  // game state
-  const dino={x:40,y:120,w:20,h:24,vy:0,jumping:false,grounded:true};
-  let obstacles=[],spawnTimer=0,speed=3,frame=0;
-  const ground=140;
-  function jump(){if(dino.grounded){dino.vy=-8;dino.grounded=false;dino.jumping=true}}
-  function onKey(e){if((e.code==='Space'||e.key===' ')&&trexRunning){e.preventDefault();jump()}}
-  function onTouch(){if(trexRunning)jump()}
-  document.addEventListener('keydown',onKey);
-  cv.addEventListener('touchstart',onTouch);
-  cv.addEventListener('click',onTouch);
-  function spawnOb(){
-    const h=15+Math.random()*20;
-    obstacles.push({x:cv.width,y:ground-h,w:12+Math.random()*8,h:h});
-  }
-  function gameOver(){
-    trexRunning=false;cancelAnimationFrame(trexRaf);
-    document.removeEventListener('keydown',onKey);
-    cv.removeEventListener('touchstart',onTouch);
-    cv.removeEventListener('click',onTouch);
-    document.getElementById('trexFinalScore').textContent=trexScore;
-    document.getElementById('trexGameover').classList.add('show');
-  }
-  function loop(){
-    ctx.clearRect(0,0,cv.width,cv.height);
-    // ground
-    ctx.strokeStyle='rgba(79,172,254,.2)';ctx.lineWidth=1;
-    ctx.beginPath();ctx.moveTo(0,ground);ctx.lineTo(cv.width,ground);ctx.stroke();
-    // ground dots
-    for(let i=0;i<cv.width;i+=20){
-      const ox=(frame*speed)%20;
-      ctx.fillStyle='rgba(79,172,254,.1)';
-      ctx.fillRect(i-ox,ground+4,1,1);
-    }
-    // dino physics
-    dino.vy+=0.5;dino.y+=dino.vy;
-    if(dino.y>=ground-dino.h){dino.y=ground-dino.h;dino.vy=0;dino.grounded=true;dino.jumping=false}
-    // draw dino (runner silhouette)
-    ctx.fillStyle='var(--accent)';ctx.fillStyle='#4facfe';
-    ctx.fillRect(dino.x,dino.y,dino.w,dino.h);
-    ctx.fillRect(dino.x+4,dino.y-6,12,6);// head
-    // legs animation
-    const legPhase=Math.sin(frame*.3);
-    ctx.fillRect(dino.x+2,dino.y+dino.h,4,6+legPhase*3);
-    ctx.fillRect(dino.x+14,dino.y+dino.h,4,6-legPhase*3);
-    // obstacles
-    spawnTimer++;
-    if(spawnTimer>60+Math.random()*40){spawnOb();spawnTimer=0}
-    obstacles.forEach(o=>{
-      o.x-=speed;
-      ctx.fillStyle='rgba(240,147,251,.7)';
-      ctx.fillRect(o.x,o.y,o.w,o.h);
-      // collision
-      if(dino.x+dino.w>o.x+3&&dino.x<o.x+o.w-3&&dino.y+dino.h>o.y+3){gameOver();return}
-    });
-    obstacles=obstacles.filter(o=>o.x>-30);
-    // score
-    trexScore=Math.floor(frame/5);
-    document.getElementById('trexScoreDisp').textContent='Score: '+trexScore;
-    // speed up over time
-    if(frame%300===0&&speed<7)speed+=.2;
-    frame++;
-    if(trexRunning)trexRaf=requestAnimationFrame(loop);
-  }
-  loop();
-}
-
 /* ===== MAGNETIC BUTTON HOVER ===== */
 document.querySelectorAll('.btn,.pill,.nav-cta').forEach(btn=>{
   btn.addEventListener('mousemove',function(e){
@@ -1949,6 +1611,166 @@ window.addEventListener('scroll',()=>{
   wrap.style.cursor='grab';
 })();
 
+/* ===== INTERACTIVE NETWORK VISUALIZATION ===== */
+(function(){
+  const vc=document.getElementById('vizCanvas');
+  if(!vc)return;
+  const vctx=vc.getContext('2d');
+  let vw,vh,mouseX=-1000,mouseY=-1000,nodes=[],animId;
+  const labels=['Trucking','Logging','P&C','Surety','Marine','Lloyd\'s','Risk Analysis','E&S','Federal Sales','AI & Tech','GitHub','Full-Stack','Leadership','Loss Control','Carahsoft','Masters','USC','Price Forbes','Swamp Fox','Underwriting'];
+  const colors=['#4facfe','#00f2fe','#f093fb','#00d084','#ffa500','#ff6b9d','#a78bfa','#06b6d4'];
+
+  function resize(){
+    const r=vc.parentElement.getBoundingClientRect();
+    vc.width=r.width*window.devicePixelRatio;
+    vc.height=Math.round(r.width*9/16)*window.devicePixelRatio;
+    vc.style.width=r.width+'px';
+    vc.style.height=Math.round(r.width*9/16)+'px';
+    vw=vc.width;vh=vc.height;
+    if(nodes.length===0)initNodes();
+  }
+
+  function initNodes(){
+    nodes=[];
+    for(let i=0;i<labels.length;i++){
+      const angle=((Math.PI*2)/labels.length)*i;
+      const rx=vw*0.32+Math.random()*vw*0.08;
+      const ry=vh*0.32+Math.random()*vh*0.08;
+      nodes.push({
+        x:vw/2+Math.cos(angle)*rx,
+        y:vh/2+Math.sin(angle)*ry,
+        ox:vw/2+Math.cos(angle)*rx,
+        oy:vh/2+Math.sin(angle)*ry,
+        vx:0,vy:0,
+        r:(8+Math.random()*8)*window.devicePixelRatio,
+        label:labels[i],
+        color:colors[i%colors.length],
+        phase:Math.random()*Math.PI*2
+      });
+    }
+  }
+
+  vc.addEventListener('mousemove',function(e){
+    const rect=vc.getBoundingClientRect();
+    mouseX=(e.clientX-rect.left)*window.devicePixelRatio;
+    mouseY=(e.clientY-rect.top)*window.devicePixelRatio;
+  });
+  vc.addEventListener('mouseleave',function(){mouseX=-1000;mouseY=-1000});
+
+  /* touch support */
+  vc.addEventListener('touchmove',function(e){
+    const rect=vc.getBoundingClientRect();
+    mouseX=(e.touches[0].clientX-rect.left)*window.devicePixelRatio;
+    mouseY=(e.touches[0].clientY-rect.top)*window.devicePixelRatio;
+    e.preventDefault();
+  },{passive:false});
+  vc.addEventListener('touchend',function(){mouseX=-1000;mouseY=-1000});
+
+  function draw(){
+    vctx.clearRect(0,0,vw,vh);
+
+    /* background subtle grid */
+    vctx.strokeStyle='rgba(79,172,254,0.03)';
+    vctx.lineWidth=1;
+    const gs=vw/20;
+    for(let i=0;i<=20;i++){vctx.beginPath();vctx.moveTo(i*gs,0);vctx.lineTo(i*gs,vh);vctx.stroke()}
+    for(let i=0;i<=Math.ceil(vh/gs);i++){vctx.beginPath();vctx.moveTo(0,i*gs);vctx.lineTo(vw,i*gs);vctx.stroke()}
+
+    const t=Date.now()*0.001;
+
+    /* update positions with gentle float + mouse repulsion */
+    nodes.forEach(function(n){
+      n.x=n.ox+Math.sin(t*0.5+n.phase)*15*window.devicePixelRatio;
+      n.y=n.oy+Math.cos(t*0.4+n.phase*1.3)*12*window.devicePixelRatio;
+
+      const dx=n.x-mouseX,dy=n.y-mouseY;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      const repelRadius=150*window.devicePixelRatio;
+      if(dist<repelRadius&&dist>0){
+        const force=(1-dist/repelRadius)*30*window.devicePixelRatio;
+        n.x+=dx/dist*force;
+        n.y+=dy/dist*force;
+      }
+    });
+
+    /* draw connections */
+    const connDist=vw*0.25;
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<connDist){
+          const alpha=0.12*(1-d/connDist);
+          vctx.strokeStyle='rgba(79,172,254,'+alpha+')';
+          vctx.lineWidth=1;
+          vctx.beginPath();
+          vctx.moveTo(nodes[i].x,nodes[i].y);
+          vctx.lineTo(nodes[j].x,nodes[j].y);
+          vctx.stroke();
+        }
+      }
+    }
+
+    /* draw nodes */
+    nodes.forEach(function(n){
+      const dx=n.x-mouseX,dy=n.y-mouseY;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      const hover=dist<100*window.devicePixelRatio;
+      const scale=hover?1.6:1;
+      const r=n.r*scale;
+
+      /* glow */
+      vctx.shadowBlur=hover?20:8;
+      vctx.shadowColor=n.color;
+      vctx.beginPath();
+      vctx.arc(n.x,n.y,r,0,Math.PI*2);
+      vctx.fillStyle=n.color;
+      vctx.globalAlpha=hover?1:0.7;
+      vctx.fill();
+      vctx.globalAlpha=1;
+      vctx.shadowBlur=0;
+
+      /* label */
+      if(hover){
+        const fs=Math.round(11*window.devicePixelRatio);
+        vctx.font='600 '+fs+'px Outfit,system-ui,sans-serif';
+        vctx.fillStyle='#fff';
+        vctx.textAlign='center';
+        vctx.fillText(n.label,n.x,n.y-r-8*window.devicePixelRatio);
+      }
+    });
+
+    /* mouse glow */
+    if(mouseX>0&&mouseY>0){
+      const grd=vctx.createRadialGradient(mouseX,mouseY,0,mouseX,mouseY,120*window.devicePixelRatio);
+      grd.addColorStop(0,'rgba(79,172,254,0.06)');
+      grd.addColorStop(1,'rgba(79,172,254,0)');
+      vctx.fillStyle=grd;
+      vctx.fillRect(0,0,vw,vh);
+    }
+
+    animId=requestAnimationFrame(draw);
+  }
+
+  /* only animate when visible */
+  const vizObs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){resize();draw()}
+    else{cancelAnimationFrame(animId)}
+  },{threshold:0.1});
+  vizObs.observe(vc);
+
+  window.addEventListener('resize',function(){
+    resize();
+    nodes.forEach(function(n,i){
+      const angle=((Math.PI*2)/labels.length)*i;
+      const rx=vw*0.32+Math.random()*vw*0.08;
+      const ry=vh*0.32+Math.random()*vh*0.08;
+      n.ox=vw/2+Math.cos(angle)*rx;
+      n.oy=vh/2+Math.sin(angle)*ry;
+    });
+  });
+})();
+
 /* ===== SNAKE GAME ===== */
 (function(){
   const canvas=document.getElementById('snake-canvas');
@@ -1993,6 +1815,11 @@ window.addEventListener('scroll',()=>{
     for(let i=0;i<=cols;i++){ctx.beginPath();ctx.moveTo(i*cellW,0);ctx.lineTo(i*cellW,canvas.height);ctx.stroke()}
     for(let i=0;i<=rows;i++){ctx.beginPath();ctx.moveTo(0,i*cellH);ctx.lineTo(canvas.width,i*cellH);ctx.stroke()}
 
+    /* draw walls */
+    ctx.strokeStyle='rgba(79,172,254,0.15)';
+    ctx.lineWidth=2;
+    ctx.strokeRect(1,1,canvas.width-2,canvas.height-2)
+
     /* food */
     const fx=food.x*cellW+cellW/2,fy=food.y*cellH+cellH/2,fr=Math.min(cellW,cellH)*0.35;
     ctx.beginPath();ctx.arc(fx,fy,fr,0,Math.PI*2);
@@ -2023,11 +1850,10 @@ window.addEventListener('scroll',()=>{
     dir=nextDir;
     const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
 
-    /* wall wrap */
-    if(head.x<0)head.x=cols-1;
-    if(head.x>=cols)head.x=0;
-    if(head.y<0)head.y=rows-1;
-    if(head.y>=rows)head.y=0;
+    /* wall death */
+    if(head.x<0||head.x>=cols||head.y<0||head.y>=rows){
+      gameOver();return;
+    }
 
     /* self collision */
     if(snake.some(s=>s.x===head.x&&s.y===head.y)){
