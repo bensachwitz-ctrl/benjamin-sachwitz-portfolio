@@ -367,6 +367,12 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .cert-chip .cc-dot.ai{background:var(--accent2)}
 .cert-chip .cc-dot.biz{background:var(--warm)}
 .cert-chip .cc-dot.tech{background:#ffd700}
+.cert-chip.open{border-color:var(--accent);background:rgba(79,172,254,0.08);z-index:10}
+.cert-tooltip{position:fixed;min-width:240px;max-width:320px;padding:1rem 1.2rem;border-radius:12px;background:rgba(10,14,26,0.96);backdrop-filter:blur(20px);border:1px solid rgba(79,172,254,0.25);box-shadow:0 16px 48px rgba(0,0,0,0.5),0 0 0 1px rgba(79,172,254,0.08);z-index:2000;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .25s var(--ease),transform .25s var(--ease);white-space:normal}
+.cert-tooltip.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.ct-issuer{font-size:.72rem;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+.ct-issuer::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.ct-desc{font-size:.82rem;color:var(--txt2);line-height:1.6}
 .cert-count{text-align:center;margin-top:2rem;color:var(--dim);font-size:.85rem;letter-spacing:.05em}
 .cert-count span{color:var(--accent);font-weight:700;font-size:1.1rem}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -555,6 +561,22 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .spotlight{display:none}
 }
 
+/* === VIZ NODES & DETAIL PANEL === */
+.viz-container{border-radius:16px;background:rgba(5,8,22,0.6);border:1px solid rgba(79,172,254,0.1);overflow:hidden}
+.viz-nodes{position:absolute;inset:0;z-index:1}
+.viz-node{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s;z-index:2;border:none;padding:0}
+.viz-node:hover,.viz-node.active{transform:scale(1.5)!important;z-index:10;box-shadow:0 0 30px currentColor}
+.viz-node .vn-label{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.7rem;font-weight:600;color:#fff;opacity:0;transition:opacity .2s;pointer-events:none;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.viz-node:hover .vn-label,.viz-node.active .vn-label{opacity:1}
+
+.viz-detail{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);width:320px;padding:1.5rem;border-radius:16px;background:rgba(10,14,26,0.96);backdrop-filter:blur(20px);border:1px solid rgba(79,172,254,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:all .3s var(--ease)}
+.viz-detail.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.vd-close{position:absolute;top:.8rem;right:1rem;font-size:1.2rem;color:var(--txt2);cursor:pointer;line-height:1;background:none;border:none;padding:0}
+.vd-close:hover{color:var(--txt)}
+.vd-title{font-family:var(--serif);font-size:1.15rem;color:var(--txt);margin-bottom:.3rem;margin-top:0}
+.vd-cat{font-size:.7rem;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;margin-top:0}
+.vd-desc{font-size:.88rem;color:var(--txt2);line-height:1.7;margin-top:0;margin-bottom:0}
+
 </style>
 </head>
 <body>
@@ -645,122 +667,126 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
     <div class="shdr rv"><h2>Certifications & Training</h2><p>Always learning. 70+ professional certifications and counting.</p></div>
     <div class="cert-marquee rv" style="transition-delay:.1s">
       <div class="cert-row" id="certRow1">
-        <div class="cert-chip"><span class="cc-dot ins"></span>SC Property & Casualty Producer</div>
-        <div class="cert-chip"><span class="cc-dot ins"></span>SC Surety & Marine Lines</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Google AI Essentials</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Claude 101</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Claude Code in Action</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Salesforce Admin Cert Prep</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Qlik Certified Partner Sales</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>AI Productivity Hacks</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Machine Learning Foundations</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics Foundations</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics: Sales Data</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Excel for FP&A</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Excel with Copilot</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Prompt Engineering</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>What Is Generative AI?</div>
+        <div class="cert-chip" data-issuer="SC DOI" data-desc="State insurance producer license — property, casualty, and liability lines"><span class="cc-dot ins"></span>SC Property & Casualty Producer</div>
+        <div class="cert-chip" data-issuer="SC DOI" data-desc="State insurance producer license — surety bonds and marine insurance"><span class="cc-dot ins"></span>SC Surety & Marine Lines</div>
+        <div class="cert-chip" data-issuer="Google / Coursera" data-desc="Foundations of AI concepts, machine learning basics, and responsible AI"><span class="cc-dot ai"></span>Google AI Essentials</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Core concepts of Claude AI assistant and effective prompting"><span class="cc-dot ai"></span>Claude 101</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Building with Claude Code for agentic development workflows"><span class="cc-dot ai"></span>Claude Code in Action</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced negotiation strategies and tactics"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
+        <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Data analysis fundamentals using Microsoft tools"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
+        <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Generative AI concepts and enterprise applications"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
+        <div class="cert-chip" data-issuer="Salesforce / LinkedIn" data-desc="Salesforce administration fundamentals and exam prep"><span class="cc-dot tech"></span>Salesforce Admin Cert Prep</div>
+        <div class="cert-chip" data-issuer="Qlik" data-desc="Certified partner sales methodology for Qlik analytics"><span class="cc-dot biz"></span>Qlik Certified Partner Sales</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leveraging AI tools to streamline daily workflows"><span class="cc-dot ai"></span>AI Productivity Hacks</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core ML concepts, algorithms, and practical applications"><span class="cc-dot ai"></span>Machine Learning Foundations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core business analytics concepts and methods"><span class="cc-dot biz"></span>Business Analytics Foundations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Analyzing sales data for business insights"><span class="cc-dot biz"></span>Business Analytics: Sales Data</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Excel techniques for financial planning and analysis"><span class="cc-dot tech"></span>Excel for FP&A</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="Using AI Copilot features in Microsoft Excel"><span class="cc-dot tech"></span>Excel with Copilot</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Techniques for effective AI prompt design"><span class="cc-dot ai"></span>Introduction to Prompt Engineering</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Overview of generative AI technology and use cases"><span class="cc-dot ai"></span>What Is Generative AI?</div>
         <!-- duplicated for seamless loop -->
-        <div class="cert-chip"><span class="cc-dot ins"></span>SC Property & Casualty Producer</div>
-        <div class="cert-chip"><span class="cc-dot ins"></span>SC Surety & Marine Lines</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Google AI Essentials</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Claude 101</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Claude Code in Action</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Salesforce Admin Cert Prep</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Qlik Certified Partner Sales</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>AI Productivity Hacks</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Machine Learning Foundations</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics Foundations</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Business Analytics: Sales Data</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Excel for FP&A</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Excel with Copilot</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Prompt Engineering</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>What Is Generative AI?</div>
+        <div class="cert-chip" data-issuer="SC DOI" data-desc="State insurance producer license — property, casualty, and liability lines"><span class="cc-dot ins"></span>SC Property & Casualty Producer</div>
+        <div class="cert-chip" data-issuer="SC DOI" data-desc="State insurance producer license — surety bonds and marine insurance"><span class="cc-dot ins"></span>SC Surety & Marine Lines</div>
+        <div class="cert-chip" data-issuer="Google / Coursera" data-desc="Foundations of AI concepts, machine learning basics, and responsible AI"><span class="cc-dot ai"></span>Google AI Essentials</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Core concepts of Claude AI assistant and effective prompting"><span class="cc-dot ai"></span>Claude 101</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Building with Claude Code for agentic development workflows"><span class="cc-dot ai"></span>Claude Code in Action</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced negotiation strategies and tactics"><span class="cc-dot biz"></span>Negotiation Professional Certificate</div>
+        <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Data analysis fundamentals using Microsoft tools"><span class="cc-dot ai"></span>Career Essentials in Data Analysis</div>
+        <div class="cert-chip" data-issuer="Microsoft & LinkedIn" data-desc="Generative AI concepts and enterprise applications"><span class="cc-dot ai"></span>Career Essentials in Generative AI</div>
+        <div class="cert-chip" data-issuer="Salesforce / LinkedIn" data-desc="Salesforce administration fundamentals and exam prep"><span class="cc-dot tech"></span>Salesforce Admin Cert Prep</div>
+        <div class="cert-chip" data-issuer="Qlik" data-desc="Certified partner sales methodology for Qlik analytics"><span class="cc-dot biz"></span>Qlik Certified Partner Sales</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leveraging AI tools to streamline daily workflows"><span class="cc-dot ai"></span>AI Productivity Hacks</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core ML concepts, algorithms, and practical applications"><span class="cc-dot ai"></span>Machine Learning Foundations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core business analytics concepts and methods"><span class="cc-dot biz"></span>Business Analytics Foundations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Analyzing sales data for business insights"><span class="cc-dot biz"></span>Business Analytics: Sales Data</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Excel techniques for financial planning and analysis"><span class="cc-dot tech"></span>Excel for FP&A</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="Using AI Copilot features in Microsoft Excel"><span class="cc-dot tech"></span>Excel with Copilot</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Techniques for effective AI prompt design"><span class="cc-dot ai"></span>Introduction to Prompt Engineering</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Overview of generative AI technology and use cases"><span class="cc-dot ai"></span>What Is Generative AI?</div>
       </div>
     </div>
     <div class="cert-marquee rv" style="transition-delay:.2s;margin-top:1rem">
       <div class="cert-row reverse" id="certRow2">
-        <div class="cert-chip"><span class="cc-dot ai"></span>Getting Started with AI</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to AI</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Copilot in PowerPoint</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Microsoft 365 Copilot</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Streamlining Work with Copilot</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Learning Data Analytics 1 & 2</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Career Skills in Data Analytics</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Fundamentals</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Strategies in New World</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Sales Presentations with AI Boost</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Foundations</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Strategic Negotiation</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiating with Agility</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Service Excellence</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Influence Skills for Leaders</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Digital Literacy</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Introduction to artificial intelligence fundamentals"><span class="cc-dot ai"></span>Getting Started with AI</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="AI concepts, history, and modern applications"><span class="cc-dot ai"></span>Introduction to AI</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Using generative AI for enhanced research and search"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="AI-powered presentation creation with Copilot"><span class="cc-dot tech"></span>Copilot in PowerPoint</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="Enterprise AI assistant across Microsoft 365"><span class="cc-dot tech"></span>Microsoft 365 Copilot</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="Workflow automation using Microsoft Copilot"><span class="cc-dot tech"></span>Streamlining Work with Copilot</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Comprehensive data analytics fundamentals"><span class="cc-dot biz"></span>Learning Data Analytics 1 & 2</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Essential skills for data analytics careers"><span class="cc-dot biz"></span>Career Skills in Data Analytics</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core sales techniques and methodologies"><span class="cc-dot biz"></span>Sales Fundamentals</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Modern sales strategies for digital-first era"><span class="cc-dot biz"></span>Sales Strategies in New World</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Enhancing sales presentations with AI tools"><span class="cc-dot ai"></span>Sales Presentations with AI Boost</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core negotiation principles and frameworks"><span class="cc-dot biz"></span>Negotiation Foundations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced strategic negotiation techniques"><span class="cc-dot biz"></span>Strategic Negotiation</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Adaptive negotiation in dynamic environments"><span class="cc-dot biz"></span>Negotiating with Agility</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Delivering exceptional customer service"><span class="cc-dot biz"></span>Service Excellence</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leadership influence and persuasion techniques"><span class="cc-dot biz"></span>Influence Skills for Leaders</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Digital skills for the modern workplace"><span class="cc-dot tech"></span>Digital Literacy</div>
         <!-- duplicated for seamless loop -->
-        <div class="cert-chip"><span class="cc-dot ai"></span>Getting Started with AI</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to AI</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Copilot in PowerPoint</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Microsoft 365 Copilot</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Streamlining Work with Copilot</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Learning Data Analytics 1 & 2</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Career Skills in Data Analytics</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Fundamentals</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Sales Strategies in New World</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Sales Presentations with AI Boost</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiation Foundations</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Strategic Negotiation</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Negotiating with Agility</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Service Excellence</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Influence Skills for Leaders</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>Digital Literacy</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Introduction to artificial intelligence fundamentals"><span class="cc-dot ai"></span>Getting Started with AI</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="AI concepts, history, and modern applications"><span class="cc-dot ai"></span>Introduction to AI</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Using generative AI for enhanced research and search"><span class="cc-dot ai"></span>Generative AI: Online Search</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="AI-powered presentation creation with Copilot"><span class="cc-dot tech"></span>Copilot in PowerPoint</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="Enterprise AI assistant across Microsoft 365"><span class="cc-dot tech"></span>Microsoft 365 Copilot</div>
+        <div class="cert-chip" data-issuer="Microsoft / LinkedIn" data-desc="Workflow automation using Microsoft Copilot"><span class="cc-dot tech"></span>Streamlining Work with Copilot</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Comprehensive data analytics fundamentals"><span class="cc-dot biz"></span>Learning Data Analytics 1 & 2</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Essential skills for data analytics careers"><span class="cc-dot biz"></span>Career Skills in Data Analytics</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core sales techniques and methodologies"><span class="cc-dot biz"></span>Sales Fundamentals</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Modern sales strategies for digital-first era"><span class="cc-dot biz"></span>Sales Strategies in New World</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Enhancing sales presentations with AI tools"><span class="cc-dot ai"></span>Sales Presentations with AI Boost</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Core negotiation principles and frameworks"><span class="cc-dot biz"></span>Negotiation Foundations</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced strategic negotiation techniques"><span class="cc-dot biz"></span>Strategic Negotiation</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Adaptive negotiation in dynamic environments"><span class="cc-dot biz"></span>Negotiating with Agility</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Delivering exceptional customer service"><span class="cc-dot biz"></span>Service Excellence</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leadership influence and persuasion techniques"><span class="cc-dot biz"></span>Influence Skills for Leaders</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Digital skills for the modern workplace"><span class="cc-dot tech"></span>Digital Literacy</div>
       </div>
     </div>
     <div class="cert-marquee rv" style="transition-delay:.3s;margin-top:1rem">
       <div class="cert-row" id="certRow3" style="animation-duration:65s">
-        <div class="cert-chip"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Program Management for IT</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>IT Strategy</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>IT Architecture</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>IT Asset Management</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Building Resilience</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Handling Workplace Change</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Teamwork Essentials</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Ethics in Age of Generative AI</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI for Creative Content</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Claude Cowork</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Build Generative AI Productivity Skills</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Becoming an Agile Coach</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Lean Six Sigma Projects</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Business Etiquette</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Management skills for effective leadership"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leading through discovery and innovation"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building adaptive management skills"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="IT program management fundamentals"><span class="cc-dot biz"></span>Program Management for IT</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Strategic IT planning and governance"><span class="cc-dot tech"></span>IT Strategy</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Enterprise IT architecture fundamentals"><span class="cc-dot tech"></span>IT Architecture</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Managing IT assets and lifecycle"><span class="cc-dot tech"></span>IT Asset Management</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Professional resilience and stress management"><span class="cc-dot biz"></span>Building Resilience</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Managing and adapting to organizational change"><span class="cc-dot biz"></span>Handling Workplace Change</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Effective team collaboration strategies"><span class="cc-dot biz"></span>Teamwork Essentials</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Responsible and ethical use of generative AI"><span class="cc-dot ai"></span>Ethics in Age of Generative AI</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Creating content using generative AI tools"><span class="cc-dot ai"></span>Generative AI for Creative Content</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Using Claude Cowork for desktop automation"><span class="cc-dot ai"></span>Introduction to Claude Cowork</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced AI productivity techniques"><span class="cc-dot ai"></span>Build Generative AI Productivity Skills</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Agile coaching principles and practices"><span class="cc-dot biz"></span>Becoming an Agile Coach</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Process improvement with Lean Six Sigma"><span class="cc-dot biz"></span>Lean Six Sigma Projects</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Professional etiquette for business settings"><span class="cc-dot biz"></span>Business Etiquette</div>
         <!-- duplicated for seamless loop -->
-        <div class="cert-chip"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Program Management for IT</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>IT Strategy</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>IT Architecture</div>
-        <div class="cert-chip"><span class="cc-dot tech"></span>IT Asset Management</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Building Resilience</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Handling Workplace Change</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Teamwork Essentials</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Ethics in Age of Generative AI</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Generative AI for Creative Content</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Introduction to Claude Cowork</div>
-        <div class="cert-chip"><span class="cc-dot ai"></span>Build Generative AI Productivity Skills</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Becoming an Agile Coach</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Lean Six Sigma Projects</div>
-        <div class="cert-chip"><span class="cc-dot biz"></span>Business Etiquette</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Management skills for effective leadership"><span class="cc-dot biz"></span>How to Be a Better Boss</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Leading through discovery and innovation"><span class="cc-dot biz"></span>Discovery-Driven Leadership</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Building adaptive management skills"><span class="cc-dot biz"></span>Developing Adaptability as Manager</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="IT program management fundamentals"><span class="cc-dot biz"></span>Program Management for IT</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Strategic IT planning and governance"><span class="cc-dot tech"></span>IT Strategy</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Enterprise IT architecture fundamentals"><span class="cc-dot tech"></span>IT Architecture</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Managing IT assets and lifecycle"><span class="cc-dot tech"></span>IT Asset Management</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Professional resilience and stress management"><span class="cc-dot biz"></span>Building Resilience</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Managing and adapting to organizational change"><span class="cc-dot biz"></span>Handling Workplace Change</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Effective team collaboration strategies"><span class="cc-dot biz"></span>Teamwork Essentials</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Responsible and ethical use of generative AI"><span class="cc-dot ai"></span>Ethics in Age of Generative AI</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Creating content using generative AI tools"><span class="cc-dot ai"></span>Generative AI for Creative Content</div>
+        <div class="cert-chip" data-issuer="Anthropic" data-desc="Using Claude Cowork for desktop automation"><span class="cc-dot ai"></span>Introduction to Claude Cowork</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Advanced AI productivity techniques"><span class="cc-dot ai"></span>Build Generative AI Productivity Skills</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Agile coaching principles and practices"><span class="cc-dot biz"></span>Becoming an Agile Coach</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Process improvement with Lean Six Sigma"><span class="cc-dot biz"></span>Lean Six Sigma Projects</div>
+        <div class="cert-chip" data-issuer="LinkedIn Learning" data-desc="Professional etiquette for business settings"><span class="cc-dot biz"></span>Business Etiquette</div>
       </div>
+    </div>
+    <div class="cert-tooltip" id="certTooltip">
+      <div class="ct-issuer" id="ctIssuer"></div>
+      <div class="ct-desc" id="ctDesc"></div>
     </div>
     <p class="cert-count rv" style="transition-delay:.4s"><span>70+</span> certifications across Insurance, AI/ML, Data Analytics, Leadership, and Technology</p>
   </div>
@@ -843,9 +869,16 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
   <div class="bt"></div><div class="bb"></div>
   <div class="si" style="position:relative;z-index:3;text-align:center;padding:4rem 2rem">
     <div class="shdr rvs"><span class="sec-label">Interactive</span><h2>My Network</h2></div>
-    <p class="sec-sub rv" style="max-width:550px;margin:0 auto 2rem;color:var(--txt2)">Move your cursor to explore the connections between my expertise, experience, and industries. Each node represents a skill or milestone.</p>
-    <div class="rv" style="max-width:900px;margin:0 auto">
-      <canvas id="vizCanvas" style="width:100%;aspect-ratio:16/9;border-radius:16px;background:rgba(5,8,22,0.6);border:1px solid rgba(79,172,254,0.1);cursor:crosshair;display:block"></canvas>
+    <p class="sec-sub rv" style="max-width:550px;margin:0 auto 2rem;color:var(--txt2)">Hover or tap any node to explore my skills, experiences, and expertise areas.</p>
+    <div class="viz-container rv" id="vizContainer" style="max-width:900px;margin:0 auto;position:relative;aspect-ratio:16/9">
+      <canvas id="vizCanvas" style="position:absolute;inset:0;width:100%;height:100%;border-radius:16px;pointer-events:none;z-index:0"></canvas>
+      <div class="viz-nodes" id="vizNodes"></div>
+      <div class="viz-detail" id="vizDetail">
+        <div class="vd-close" onclick="document.getElementById('vizDetail').classList.remove('show')">&times;</div>
+        <h4 class="vd-title" id="vdTitle"></h4>
+        <p class="vd-cat" id="vdCat"></p>
+        <p class="vd-desc" id="vdDesc"></p>
+      </div>
     </div>
   </div>
 </section>
@@ -1049,6 +1082,61 @@ setTimeout(()=>{document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>{if(
 
 /* ===== SMOOTH SCROLL ===== */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-64,behavior:'smooth'})})});
+
+/* ===== CERT TOOLTIP ===== */
+(function(){
+  const tip=document.getElementById('certTooltip');
+  if(!tip)return;
+  const issuerEl=document.getElementById('ctIssuer');
+  const descEl=document.getElementById('ctDesc');
+  let activeChip=null;
+
+  document.querySelectorAll('.cert-chip').forEach(chip=>{
+    chip.style.cursor='pointer';
+    chip.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(activeChip===this){closeTip();return}
+
+      // Pause the marquee row
+      const row=this.closest('.cert-row');
+      if(row)row.style.animationPlayState='paused';
+
+      // Remove previous active
+      if(activeChip){
+        activeChip.classList.remove('open');
+        const prevRow=activeChip.closest('.cert-row');
+        if(prevRow)prevRow.style.animationPlayState='running';
+      }
+
+      this.classList.add('open');
+      activeChip=this;
+
+      const issuer=this.getAttribute('data-issuer')||'';
+      const desc=this.getAttribute('data-desc')||'';
+      issuerEl.textContent=issuer;
+      descEl.textContent=desc;
+
+      // Position tooltip
+      const rect=this.getBoundingClientRect();
+      tip.style.left=Math.min(Math.max(rect.left,16),window.innerWidth-340)+'px';
+      tip.style.top=(rect.bottom+10)+'px';
+      tip.classList.add('show');
+    });
+  });
+
+  function closeTip(){
+    if(activeChip){
+      activeChip.classList.remove('open');
+      const row=activeChip.closest('.cert-row');
+      if(row)row.style.animationPlayState='running';
+      activeChip=null;
+    }
+    tip.classList.remove('show');
+  }
+
+  document.addEventListener('click',closeTip);
+  window.addEventListener('scroll',closeTip);
+})();
 
 /* ===== EXPAND/COLLAPSE ===== */
 function toggleExpand(el){el.classList.toggle('expanded')}
@@ -1431,160 +1519,179 @@ window.addEventListener('scroll',()=>{
 
 /* ===== INTERACTIVE NETWORK VISUALIZATION ===== */
 (function(){
-  const vc=document.getElementById('vizCanvas');
-  if(!vc)return;
-  const vctx=vc.getContext('2d');
-  let vw,vh,mouseX=-1000,mouseY=-1000,nodes=[],animId;
-  const labels=['Trucking','Logging','P&C','Surety','Marine','Lloyd\'s','Risk Analysis','E&S','Federal Sales','AI & Tech','GitHub','Full-Stack','Leadership','Loss Control','Carahsoft','Masters','USC','Price Forbes','Swamp Fox','Underwriting'];
-  const colors=['#4facfe','#00f2fe','#f093fb','#00d084','#ffa500','#ff6b9d','#a78bfa','#06b6d4'];
+  const container=document.getElementById('vizContainer');
+  const nodesWrap=document.getElementById('vizNodes');
+  const canvas=document.getElementById('vizCanvas');
+  const detail=document.getElementById('vizDetail');
+  if(!container||!canvas||!nodesWrap)return;
+  const ctx=canvas.getContext('2d');
+
+  const nodeData=[
+    {label:'Commercial Trucking',cat:'Insurance',color:'#4facfe',desc:'Fleet programs, owner-operators, MCS-90 endorsements, and long-haul/local operations. My primary specialty at Swamp Fox Agency.'},
+    {label:'Forestry & Logging',cat:'Insurance',color:'#4facfe',desc:'Timber operations, skidder coverage, SCTPA-endorsed programs. South Carolina\'s only endorsed logging insurance agency.'},
+    {label:'P&C Insurance',cat:'Insurance',color:'#4facfe',desc:'Property & casualty, general liability, commercial auto, inland marine, and umbrella coverage across multiple states.'},
+    {label:'Surety Bonds',cat:'Insurance',color:'#00f2fe',desc:'Contract surety, commercial bonds, and license/permit bonds for contractors and businesses.'},
+    {label:'Marine Insurance',cat:'Insurance',color:'#00f2fe',desc:'Inland marine, cargo, and ocean marine coverage for goods in transit and specialized equipment.'},
+    {label:'Lloyd\'s of London',cat:'Experience',color:'#f093fb',desc:'Trained at Price Forbes inside Lloyd\'s — the world\'s oldest insurance marketplace. Syndicate placement and global specialty risk.'},
+    {label:'Risk Analysis',cat:'Skill',color:'#00d084',desc:'Loss run analysis, exposure modeling, coverage gap identification, and risk profiling for complex commercial accounts.'},
+    {label:'E&S / Surplus Lines',cat:'Insurance',color:'#00f2fe',desc:'Non-admitted market expertise — placing hard-to-find coverage through excess & surplus lines carriers.'},
+    {label:'Federal Sales',cat:'Experience',color:'#f093fb',desc:'Government procurement and enterprise tech sales at Carahsoft — cybersecurity, cloud, and IT solutions for federal agencies.'},
+    {label:'AI & Technology',cat:'Skill',color:'#00d084',desc:'70+ certifications in AI, data analytics, and productivity tools. Building automated workflows and AI-driven insurance processes.'},
+    {label:'Full-Stack Dev',cat:'Skill',color:'#00d084',desc:'HTML, CSS, JavaScript, Canvas API, GitHub Pages. Built this portfolio and the Swamp Fox Agency website redesign.'},
+    {label:'Loss Control',cat:'Insurance',color:'#4facfe',desc:'Fleet safety programs, DOT compliance monitoring, driver training systems, and claims reduction analytics.'},
+    {label:'Underwriting',cat:'Skill',color:'#00d084',desc:'Account analysis, submission preparation, carrier negotiations, and risk selection for commercial trucking and logging.'},
+    {label:'Leadership',cat:'Skill',color:'#ffa500',desc:'Operations at The Masters Tournament, team management, and building client relationships across four industries.'},
+    {label:'USC Moore School',cat:'Education',color:'#ffa500',desc:'B.S.B.A. in Risk Management & Insurance from a Global Center of Insurance Excellence. AACSB accredited.'},
+    {label:'Carahsoft',cat:'Experience',color:'#f093fb',desc:'Federal technology sales in Washington, DC. Government procurement, cybersecurity solutions, and enterprise contracts.'},
+    {label:'The Masters',cat:'Experience',color:'#f093fb',desc:'Operations team at Augusta National Golf Club. World-class event management and service excellence.'},
+    {label:'Swamp Fox Agency',cat:'Experience',color:'#f093fb',desc:'Current home. Account Manager specializing in commercial trucking and logging — SC\'s only SCTPA-endorsed agency.'},
+    {label:'Data Analytics',cat:'Skill',color:'#00d084',desc:'Business analytics, sales data analysis, Excel FP&A, and data-driven decision making across insurance operations.'},
+    {label:'Negotiation',cat:'Skill',color:'#ffa500',desc:'Professional negotiation certification. Strategic negotiation, agile tactics, and influence skills for complex deals.'}
+  ];
+
+  let cw,ch,nodes=[],animId,mouseX=-1,mouseY=-1;
 
   function resize(){
-    const r=vc.parentElement.getBoundingClientRect();
-    vc.width=r.width*window.devicePixelRatio;
-    vc.height=Math.round(r.width*9/16)*window.devicePixelRatio;
-    vc.style.width=r.width+'px';
-    vc.style.height=Math.round(r.width*9/16)+'px';
-    vw=vc.width;vh=vc.height;
-    if(nodes.length===0)initNodes();
+    const r=container.getBoundingClientRect();
+    cw=r.width;ch=r.height;
+    canvas.width=cw*window.devicePixelRatio;
+    canvas.height=ch*window.devicePixelRatio;
+    canvas.style.width=cw+'px';
+    canvas.style.height=ch+'px';
+    ctx.setTransform(window.devicePixelRatio,0,0,window.devicePixelRatio,0,0);
   }
 
-  function initNodes(){
+  function createNodes(){
+    nodesWrap.innerHTML='';
     nodes=[];
-    for(let i=0;i<labels.length;i++){
-      const angle=((Math.PI*2)/labels.length)*i;
-      const rx=vw*0.32+Math.random()*vw*0.08;
-      const ry=vh*0.32+Math.random()*vh*0.08;
-      nodes.push({
-        x:vw/2+Math.cos(angle)*rx,
-        y:vh/2+Math.sin(angle)*ry,
-        ox:vw/2+Math.cos(angle)*rx,
-        oy:vh/2+Math.sin(angle)*ry,
-        vx:0,vy:0,
-        r:(8+Math.random()*8)*window.devicePixelRatio,
-        label:labels[i],
-        color:colors[i%colors.length],
-        phase:Math.random()*Math.PI*2
+    nodeData.forEach(function(d,i){
+      const angle=(Math.PI*2/nodeData.length)*i;
+      const orbitR=Math.min(cw,ch)*0.3+Math.random()*Math.min(cw,ch)*0.1;
+      const speed=0.15+Math.random()*0.25;
+      const size=12+Math.random()*10;
+
+      const el=document.createElement('button');
+      el.className='viz-node';
+      el.style.width=size+'px';
+      el.style.height=size+'px';
+      el.style.background=d.color;
+      el.style.boxShadow='0 0 '+size+'px '+d.color+'44';
+      el.innerHTML='<span class="vn-label">'+d.label+'</span>';
+
+      el.addEventListener('click',function(e){
+        e.stopPropagation();
+        document.getElementById('vdTitle').textContent=d.label;
+        document.getElementById('vdCat').textContent=d.cat;
+        document.getElementById('vdDesc').textContent=d.desc;
+        detail.classList.add('show');
+        nodesWrap.querySelectorAll('.viz-node').forEach(n=>n.classList.remove('active'));
+        el.classList.add('active');
       });
-    }
+
+      nodesWrap.appendChild(el);
+
+      nodes.push({
+        el:el,
+        angle:angle,
+        orbitR:orbitR,
+        speed:speed*(Math.random()>0.5?1:-1),
+        offsetX:(Math.random()-0.5)*cw*0.05,
+        offsetY:(Math.random()-0.5)*ch*0.05,
+        size:size,
+        color:d.color,
+        x:0,y:0
+      });
+    });
   }
 
-  vc.addEventListener('mousemove',function(e){
-    const rect=vc.getBoundingClientRect();
-    mouseX=(e.clientX-rect.left)*window.devicePixelRatio;
-    mouseY=(e.clientY-rect.top)*window.devicePixelRatio;
-  });
-  vc.addEventListener('mouseleave',function(){mouseX=-1000;mouseY=-1000});
-
-  /* touch support */
-  vc.addEventListener('touchmove',function(e){
-    const rect=vc.getBoundingClientRect();
-    mouseX=(e.touches[0].clientX-rect.left)*window.devicePixelRatio;
-    mouseY=(e.touches[0].clientY-rect.top)*window.devicePixelRatio;
-    e.preventDefault();
-  },{passive:false});
-  vc.addEventListener('touchend',function(){mouseX=-1000;mouseY=-1000});
-
-  function draw(){
-    vctx.clearRect(0,0,vw,vh);
-
-    /* background subtle grid */
-    vctx.strokeStyle='rgba(79,172,254,0.03)';
-    vctx.lineWidth=1;
-    const gs=vw/20;
-    for(let i=0;i<=20;i++){vctx.beginPath();vctx.moveTo(i*gs,0);vctx.lineTo(i*gs,vh);vctx.stroke()}
-    for(let i=0;i<=Math.ceil(vh/gs);i++){vctx.beginPath();vctx.moveTo(0,i*gs);vctx.lineTo(vw,i*gs);vctx.stroke()}
-
+  function animate(){
     const t=Date.now()*0.001;
+    const cx=cw/2, cy=ch/2;
 
-    /* update positions with gentle float + mouse repulsion */
     nodes.forEach(function(n){
-      n.x=n.ox+Math.sin(t*0.5+n.phase)*15*window.devicePixelRatio;
-      n.y=n.oy+Math.cos(t*0.4+n.phase*1.3)*12*window.devicePixelRatio;
+      const a=n.angle+t*n.speed;
+      n.x=cx+Math.cos(a)*n.orbitR*0.9+Math.sin(a*0.7)*n.offsetX+n.offsetX;
+      n.y=cy+Math.sin(a)*n.orbitR*0.6+Math.cos(a*0.5)*n.offsetY+n.offsetY;
 
-      const dx=n.x-mouseX,dy=n.y-mouseY;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      const repelRadius=150*window.devicePixelRatio;
-      if(dist<repelRadius&&dist>0){
-        const force=(1-dist/repelRadius)*30*window.devicePixelRatio;
-        n.x+=dx/dist*force;
-        n.y+=dy/dist*force;
+      if(mouseX>0&&mouseY>0){
+        const dx=mouseX-n.x, dy=mouseY-n.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<200&&dist>0){
+          const pull=0.03*(1-dist/200);
+          n.x+=dx*pull;
+          n.y+=dy*pull;
+        }
       }
+
+      n.el.style.transform='translate('+(n.x-n.size/2)+'px,'+(n.y-n.size/2)+'px)';
     });
 
-    /* draw connections */
-    const connDist=vw*0.25;
+    ctx.clearRect(0,0,cw,ch);
+    const connDist=cw*0.22;
     for(let i=0;i<nodes.length;i++){
       for(let j=i+1;j<nodes.length;j++){
-        const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y;
+        const dx=nodes[i].x-nodes[j].x;
+        const dy=nodes[i].y-nodes[j].y;
         const d=Math.sqrt(dx*dx+dy*dy);
         if(d<connDist){
-          const alpha=0.12*(1-d/connDist);
-          vctx.strokeStyle='rgba(79,172,254,'+alpha+')';
-          vctx.lineWidth=1;
-          vctx.beginPath();
-          vctx.moveTo(nodes[i].x,nodes[i].y);
-          vctx.lineTo(nodes[j].x,nodes[j].y);
-          vctx.stroke();
+          ctx.strokeStyle='rgba(79,172,254,'+(0.12*(1-d/connDist))+')';
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x,nodes[i].y);
+          ctx.lineTo(nodes[j].x,nodes[j].y);
+          ctx.stroke();
         }
       }
     }
 
-    /* draw nodes */
-    nodes.forEach(function(n){
-      const dx=n.x-mouseX,dy=n.y-mouseY;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      const hover=dist<100*window.devicePixelRatio;
-      const scale=hover?1.6:1;
-      const r=n.r*scale;
-
-      /* glow */
-      vctx.shadowBlur=hover?20:8;
-      vctx.shadowColor=n.color;
-      vctx.beginPath();
-      vctx.arc(n.x,n.y,r,0,Math.PI*2);
-      vctx.fillStyle=n.color;
-      vctx.globalAlpha=hover?1:0.7;
-      vctx.fill();
-      vctx.globalAlpha=1;
-      vctx.shadowBlur=0;
-
-      /* label */
-      if(hover){
-        const fs=Math.round(11*window.devicePixelRatio);
-        vctx.font='600 '+fs+'px Outfit,system-ui,sans-serif';
-        vctx.fillStyle='#fff';
-        vctx.textAlign='center';
-        vctx.fillText(n.label,n.x,n.y-r-8*window.devicePixelRatio);
-      }
-    });
-
-    /* mouse glow */
     if(mouseX>0&&mouseY>0){
-      const grd=vctx.createRadialGradient(mouseX,mouseY,0,mouseX,mouseY,120*window.devicePixelRatio);
-      grd.addColorStop(0,'rgba(79,172,254,0.06)');
-      grd.addColorStop(1,'rgba(79,172,254,0)');
-      vctx.fillStyle=grd;
-      vctx.fillRect(0,0,vw,vh);
+      const g=ctx.createRadialGradient(mouseX,mouseY,0,mouseX,mouseY,120);
+      g.addColorStop(0,'rgba(79,172,254,0.06)');
+      g.addColorStop(1,'rgba(79,172,254,0)');
+      ctx.fillStyle=g;
+      ctx.fillRect(0,0,cw,ch);
     }
 
-    animId=requestAnimationFrame(draw);
+    animId=requestAnimationFrame(animate);
   }
 
-  /* only animate when visible */
+  container.addEventListener('mousemove',function(e){
+    const r=container.getBoundingClientRect();
+    mouseX=e.clientX-r.left;
+    mouseY=e.clientY-r.top;
+  });
+  container.addEventListener('mouseleave',function(){mouseX=-1;mouseY=-1});
+
+  container.addEventListener('touchmove',function(e){
+    const r=container.getBoundingClientRect();
+    mouseX=e.touches[0].clientX-r.left;
+    mouseY=e.touches[0].clientY-r.top;
+  },{passive:true});
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.viz-node')&&!e.target.closest('.viz-detail')){
+      detail.classList.remove('show');
+      nodesWrap.querySelectorAll('.viz-node').forEach(n=>n.classList.remove('active'));
+    }
+  });
+
   const vizObs=new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting){resize();draw()}
-    else{cancelAnimationFrame(animId)}
+    if(entries[0].isIntersecting){
+      resize();
+      if(nodes.length===0)createNodes();
+      animate();
+    } else {
+      cancelAnimationFrame(animId);
+    }
   },{threshold:0.1});
-  vizObs.observe(vc);
+  vizObs.observe(container);
 
   window.addEventListener('resize',function(){
     resize();
     nodes.forEach(function(n,i){
-      const angle=((Math.PI*2)/labels.length)*i;
-      const rx=vw*0.32+Math.random()*vw*0.08;
-      const ry=vh*0.32+Math.random()*vh*0.08;
-      n.ox=vw/2+Math.cos(angle)*rx;
-      n.oy=vh/2+Math.sin(angle)*ry;
+      n.orbitR=Math.min(cw,ch)*0.3+Math.random()*Math.min(cw,ch)*0.1;
+      n.offsetX=(Math.random()-0.5)*cw*0.05;
+      n.offsetY=(Math.random()-0.5)*ch*0.05;
     });
   });
 })();
