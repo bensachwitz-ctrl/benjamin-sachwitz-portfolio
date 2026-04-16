@@ -1,0 +1,676 @@
+{
+  "console": {
+    "desktop_1440": [
+      {
+        "type": "warning",
+        "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation"
+      }
+    ],
+    "tablet_1024": [
+      {
+        "type": "warning",
+        "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation"
+      }
+    ],
+    "mobile_390": [
+      {
+        "type": "warning",
+        "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation"
+      }
+    ]
+  },
+  "layout": {
+    "desktop_1440": {
+      "docWidth": 1440,
+      "viewWidth": 1440,
+      "docHeight": 8609,
+      "hasHorizontalScroll": false,
+      "wideElements": [
+        {
+          "tag": "DIV",
+          "cls": "aurora w-[60vw] h-[60vw] -top-[20vw] -right-[10vw]",
+          "right": 1584,
+          "w": 864
+        },
+        {
+          "tag": "DIV",
+          "cls": "cert-chip",
+          "right": 1677,
+          "w": 248
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "right": 1658,
+          "w": 193
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[13.5px] font-medium leading-tight",
+          "right": 1658,
+          "w": 193
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[11px] text-ink/50 font-mono tracking-wide",
+          "right": 1658,
+          "w": 193
+        },
+        {
+          "tag": "DIV",
+          "cls": "cert-chip",
+          "right": 2034,
+          "w": 317
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "right": 2015,
+          "w": 262
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[13.5px] font-medium leading-tight",
+          "right": 2015,
+          "w": 262
+        }
+      ],
+      "bodyBg": "rgb(245, 242, 236)",
+      "bodyFont": "Inter, system-ui, sans-serif",
+      "brokenImages": [],
+      "links": [
+        {
+          "href": "http://127.0.0.1:4200/#top",
+          "text": "Ben Sachwitz"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#about",
+          "text": "About"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#career",
+          "text": "Career"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#expertise",
+          "text": "Expertise"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "Work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#snake",
+          "text": "Snake"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#about",
+          "text": "About"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#career",
+          "text": "Career"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#expertise",
+          "text": "Expertise"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "Work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#snake",
+          "text": "Play Snake"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        },
+        {
+          "href": "https://www.swampfoxagency.com/",
+          "text": "Swamp Fox Agency"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "View selected work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a 30-min call"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "mailto:bensachwitz@outlook.com",
+          "text": "EMAIL"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 01\nEXITED\n500K Instagram Brand \u2014 Built"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 02\nDELIVERED\nUSC Campus Security Risk "
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "/ 03\nSHIPPING\nSwamp Fox Digital Transfor"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 04\nIN DEVELOPMENT\nLoss Control Innovat"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Connect"
+        },
+        {
+          "href": "https://calendar.google.com/calendar/u/0/r/eventedit?add=bensachwitz%40gmail.com&text=Call%20with%20Ben%20Sachwitz&dur=30&details=Looking%20forward%20to%20connecting!",
+          "text": "Schedule via Google Calendar"
+        },
+        {
+          "href": "mailto:bensachwitz@outlook.com",
+          "text": "bensachwitz@outlook.com"
+        },
+        {
+          "href": "tel:5713855134",
+          "text": "+1 571-385-5134"
+        },
+        {
+          "href": "mailto:benjamin@swampfoxagency.com",
+          "text": "benjamin@swampfoxagency.com"
+        },
+        {
+          "href": "tel:8434734236",
+          "text": "+1 843-473-4236 (direct)"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "BOOK A CALL"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        }
+      ],
+      "smallTextCount": 55
+    },
+    "tablet_1024": {
+      "docWidth": 1024,
+      "viewWidth": 1024,
+      "docHeight": 8835,
+      "hasHorizontalScroll": false,
+      "wideElements": [
+        {
+          "tag": "DIV",
+          "cls": "aurora w-[60vw] h-[60vw] -top-[20vw] -right-[10vw]",
+          "right": 1126,
+          "w": 614
+        },
+        {
+          "tag": "DIV",
+          "cls": "cert-chip",
+          "right": 1222,
+          "w": 229
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "right": 1204,
+          "w": 174
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[13.5px] font-medium leading-tight",
+          "right": 1204,
+          "w": 174
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[11px] text-ink/50 font-mono tracking-wide",
+          "right": 1204,
+          "w": 174
+        },
+        {
+          "tag": "DIV",
+          "cls": "cert-chip",
+          "right": 1434,
+          "w": 172
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "right": 1416,
+          "w": 117
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[13.5px] font-medium leading-tight",
+          "right": 1416,
+          "w": 117
+        }
+      ],
+      "bodyBg": "rgb(245, 242, 236)",
+      "bodyFont": "Inter, system-ui, sans-serif",
+      "brokenImages": [],
+      "links": [
+        {
+          "href": "http://127.0.0.1:4200/#top",
+          "text": "Ben Sachwitz"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#about",
+          "text": "About"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#career",
+          "text": "Career"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#expertise",
+          "text": "Expertise"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "Work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#snake",
+          "text": "Snake"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#about",
+          "text": "About"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#career",
+          "text": "Career"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#expertise",
+          "text": "Expertise"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "Work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#snake",
+          "text": "Play Snake"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        },
+        {
+          "href": "https://www.swampfoxagency.com/",
+          "text": "Swamp Fox Agency"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "View selected work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a 30-min call"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "mailto:bensachwitz@outlook.com",
+          "text": "EMAIL"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 01\nEXITED\n500K Instagram Brand \u2014 Built"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 02\nDELIVERED\nUSC Campus Security Risk "
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "/ 03\nSHIPPING\nSwamp Fox Digital Transfor"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 04\nIN DEVELOPMENT\nLoss Control Innovat"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Connect"
+        },
+        {
+          "href": "https://calendar.google.com/calendar/u/0/r/eventedit?add=bensachwitz%40gmail.com&text=Call%20with%20Ben%20Sachwitz&dur=30&details=Looking%20forward%20to%20connecting!",
+          "text": "Schedule via Google Calendar"
+        },
+        {
+          "href": "mailto:bensachwitz@outlook.com",
+          "text": "bensachwitz@outlook.com"
+        },
+        {
+          "href": "tel:5713855134",
+          "text": "+1 571-385-5134"
+        },
+        {
+          "href": "mailto:benjamin@swampfoxagency.com",
+          "text": "benjamin@swampfoxagency.com"
+        },
+        {
+          "href": "tel:8434734236",
+          "text": "+1 843-473-4236 (direct)"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "BOOK A CALL"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        }
+      ],
+      "smallTextCount": 55
+    },
+    "mobile_390": {
+      "docWidth": 390,
+      "viewWidth": 390,
+      "docHeight": 11687,
+      "hasHorizontalScroll": false,
+      "wideElements": [
+        {
+          "tag": "DIV",
+          "cls": "aurora w-[60vw] h-[60vw] -top-[20vw] -right-[10vw]",
+          "right": 429,
+          "w": 234
+        },
+        {
+          "tag": "DIV",
+          "cls": "eyebrow text-ink/60 mt-3",
+          "right": 430,
+          "w": 159
+        },
+        {
+          "tag": "DIV",
+          "cls": "cert-chip",
+          "right": 408,
+          "w": 263
+        },
+        {
+          "tag": "DIV",
+          "cls": "cert-chip",
+          "right": 675,
+          "w": 227
+        },
+        {
+          "tag": "DIV",
+          "cls": "",
+          "right": 657,
+          "w": 172
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[13.5px] font-medium leading-tight",
+          "right": 657,
+          "w": 172
+        },
+        {
+          "tag": "DIV",
+          "cls": "text-[11px] text-ink/50 font-mono tracking-wide",
+          "right": 657,
+          "w": 172
+        },
+        {
+          "tag": "DIV",
+          "cls": "cert-chip",
+          "right": 990,
+          "w": 275
+        }
+      ],
+      "bodyBg": "rgb(245, 242, 236)",
+      "bodyFont": "Inter, system-ui, sans-serif",
+      "brokenImages": [],
+      "links": [
+        {
+          "href": "http://127.0.0.1:4200/#top",
+          "text": "Ben Sachwitz"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#about",
+          "text": "About"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#career",
+          "text": "Career"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#expertise",
+          "text": "Expertise"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "Work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#snake",
+          "text": "Snake"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "\n        Book a call\n        \n      "
+        },
+        {
+          "href": "http://127.0.0.1:4200/#about",
+          "text": "About"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#career",
+          "text": "Career"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#expertise",
+          "text": "Expertise"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "Work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#snake",
+          "text": "Play Snake"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        },
+        {
+          "href": "https://www.swampfoxagency.com/",
+          "text": "Swamp Fox Agency"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#work",
+          "text": "View selected work"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a 30-min call"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "mailto:bensachwitz@outlook.com",
+          "text": "EMAIL"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 01\nEXITED\n500K Instagram Brand \u2014 Built"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 02\nDELIVERED\nUSC Campus Security Risk "
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "/ 03\nSHIPPING\nSwamp Fox Digital Transfor"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "/ 04\nIN DEVELOPMENT\nLoss Control Innovat"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Connect"
+        },
+        {
+          "href": "https://calendar.google.com/calendar/u/0/r/eventedit?add=bensachwitz%40gmail.com&text=Call%20with%20Ben%20Sachwitz&dur=30&details=Looking%20forward%20to%20connecting!",
+          "text": "Schedule via Google Calendar"
+        },
+        {
+          "href": "mailto:bensachwitz@outlook.com",
+          "text": "bensachwitz@outlook.com"
+        },
+        {
+          "href": "tel:5713855134",
+          "text": "+1 571-385-5134"
+        },
+        {
+          "href": "mailto:benjamin@swampfoxagency.com",
+          "text": "benjamin@swampfoxagency.com"
+        },
+        {
+          "href": "tel:8434734236",
+          "text": "+1 843-473-4236 (direct)"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "https://linkedin.com/in/benjamin-sachwitz",
+          "text": "LINKEDIN"
+        },
+        {
+          "href": "https://github.com/bensachwitz-ctrl",
+          "text": "GITHUB"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "BOOK A CALL"
+        },
+        {
+          "href": "http://127.0.0.1:4200/#contact",
+          "text": "Book a call"
+        }
+      ],
+      "smallTextCount": 55
+    }
+  },
+  "snake": {
+    "info": {
+      "hasCanvas": true,
+      "canvasId": "snakeCanvas",
+      "startBtn": "Play Again",
+      "buttons": [
+        "Play Again",
+        "Start Game",
+        "Restart",
+        "\u25b2",
+        "\u25c0",
+        "\u25bc",
+        "\u25b6",
+        "Send message"
+      ]
+    },
+    "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"button\", name=\"Play Again\").first\n    - locator resolved to <button id=\"playAgain\" class=\"game-btn-primary\">Play Again</button>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not stable\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not stable\n    - retrying click action\n      - waiting 100ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"flex flex-col items-center\">\u2026</div> from <div id=\"loader\" class=\"loader\" aria-hidden=\"true\">\u2026</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"flex flex-col items-center\">\u2026</div> from <div id=\"loader\" aria-hidden=\"true\" class=\"loader hide\">\u2026</div> subtree intercepts pointer events\n  13 \u00d7 retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <canvas width=\"400\" height=\"400\" id=\"snakeCanvas\" class=\"w-full aspect-square block rounded-sm bg-[#050505] border border-bone/10\"></canvas> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <canvas width=\"400\" height=\"400\" id=\"snakeCanvas\" class=\"w-full aspect-square block rounded-sm bg-[#050505] border border-bone/10\"></canvas> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"max-w-[1400px] mx-auto px-5 md:px-10 flex items-center justify-between h-16 md:h-20\">\u2026</div> from <nav id=\"nav\" class=\"nav-shell fixed top-0 inset-x-0 z-40 transition-colors duration-300 nav-scrolled\">\u2026</nav> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"max-w-[1400px] mx-auto px-5 md:px-10 flex items-center justify-between h-16 md:h-20\">\u2026</div> from <nav id=\"nav\" class=\"nav-shell fixed top-0 inset-x-0 z-40 transition-colors duration-300 nav-scrolled\">\u2026</nav> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n",
+    "console": [
+      {
+        "type": "warning",
+        "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation"
+      }
+    ]
+  },
+  "mobile_menu": {
+    "hamburger": {
+      "text": "",
+      "cls": "hb md:hidden p-2",
+      "aria": "Open menu"
+    },
+    "open_state": [
+      {
+        "tag": "NAV",
+        "cls": "nav-shell nav-hero fixed top-0 inset-x-0 z-40 transition-colors duration-300",
+        "h": 442
+      },
+      {
+        "tag": "DIV",
+        "cls": "mmenu md:hidden bg-bone border-t border-ink/10 open",
+        "h": 378
+      }
+    ]
+  },
+  "tailwind": {},
+  "links": {},
+  "images": {}
+}

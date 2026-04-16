@@ -1,0 +1,3219 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Benjamin Sachwitz — Risk &amp; Signal</title>
+<meta name="description" content="Benjamin Sachwitz — Insurance and risk technology strategist. Darla Moore graduate. Lloyd's of London trained. Assistant Underwriter at Swamp Fox Agency." />
+<meta name="keywords" content="Benjamin Sachwitz, Insurance Technology, Risk Management, Lloyd's of London, Swamp Fox Agency, Commercial Insurance, South Carolina" />
+<meta name="author" content="Benjamin Sachwitz" />
+<meta name="theme-color" content="#0A0A0A" />
+
+<meta property="og:title" content="Benjamin Sachwitz — Risk & Signal" />
+<meta property="og:description" content="Darla Moore graduate. Lloyd's of London trained. Building the next generation of commercial risk management." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="headshot.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Benjamin Sachwitz — Risk & Signal" />
+<meta name="twitter:description" content="Darla Moore graduate. Lloyd's of London trained. Building the next generation of commercial risk management." />
+<meta name="twitter:image" content="headshot.png" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0A0A'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='38' font-weight='500' fill='%23E8C77D'%3Ebs%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'Menlo', 'monospace'],
+        },
+        colors: {
+          ink: { DEFAULT: '#0A0A0A', 2: '#161616', 3: '#1F1F1F', 4: '#2A2A2A' },
+          bone: { DEFAULT: '#F5F2EC', 2: '#EAE5DA', 3: '#D9D2C3' },
+          ox: { DEFAULT: '#8B1A1A', 2: '#6B1111' },
+          gold: { DEFAULT: '#D4A843', 2: '#B88A2F', 3: '#E8C77D' },
+          mute: { DEFAULT: '#6B6B6B', 2: '#8A8A8A' },
+        },
+        letterSpacing: { tightest: '-0.05em' },
+      },
+    },
+  };
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Benjamin Sachwitz",
+  "alternateName": "Ben Sachwitz",
+  "jobTitle": "Assistant Underwriter",
+  "worksFor": { "@type": "Organization", "name": "Swamp Fox Agency", "url": "https://www.swampfoxagency.com" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Darla Moore School of Business, University of South Carolina" },
+  "email": "mailto:bensachwitz@outlook.com",
+  "telephone": "+1-571-385-5134",
+  "image": "headshot.png",
+  "description": "Insurance and risk technology strategist. Darla Moore graduate, Lloyd's of London trained. Commercial trucking and logging specialist building AI-powered tools for the modern agency.",
+  "knowsAbout": ["Commercial Insurance","Risk Management","Lloyd's of London Market","Marine Insurance","Commercial Trucking","Logging Insurance","Loss Control","Underwriting","Insurance Technology","Artificial Intelligence"],
+  "sameAs": ["https://linkedin.com/in/benjamin-sachwitz","https://github.com/bensachwitz-ctrl"]
+}
+</script>
+
+<style>
+  :root {
+    --ink: #0A0A0A;
+    --bone: #F5F2EC;
+    --ox: #8B1A1A;
+    --gold: #D4A843;
+  }
+  html, body { background: var(--bone); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; }
+  body { font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+  /* Serif display tweaks */
+  .font-serif { font-feature-settings: "ss01","liga","dlig"; }
+
+  /* Subtle paper grain on bone sections */
+  .grain::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.03  0 0 0 0 0.03  0 0 0 0 0.03  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: .8; mix-blend-mode: multiply;
+  }
+
+  /* Fine hairline */
+  .rule { background: currentColor; height: 1px; width: 100%; opacity: .15; }
+  .rule-v { background: currentColor; width: 1px; height: 100%; opacity: .15; }
+
+  /* Animated small caps label */
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: .5rem;
+  }
+  .eyebrow::before {
+    content: ""; display: inline-block; width: 22px; height: 1px; background: currentColor; opacity: .5;
+  }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: .08s; } .reveal.d2 { transition-delay: .16s; }
+  .reveal.d3 { transition-delay: .24s; } .reveal.d4 { transition-delay: .32s; }
+
+  /* Underline hover */
+  .link-line { position: relative; display: inline-block; }
+  .link-line::after {
+    content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; width: 100%;
+    background: currentColor; transform: scaleX(0); transform-origin: right;
+    transition: transform .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .link-line:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Nav */
+  .nav-shell { backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px); }
+  .nav-scrolled { background: rgba(245,242,236,.82); border-bottom: 1px solid rgba(10,10,10,.08); }
+  .nav-hero { background: transparent; }
+
+  /* CTA */
+  .btn-ink {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .85rem 1.4rem; background: var(--ink); color: var(--bone);
+    font-size: 13px; letter-spacing: .04em; font-weight: 500;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), background .3s, box-shadow .3s;
+    border: 1px solid var(--ink); white-space: nowrap; cursor: pointer;
+  }
+  .btn-ink:hover { background: var(--ox); border-color: var(--ox); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(10,10,10,.15); }
+  .btn-ink:active { transform: translateY(0px); }
+  .btn-ink svg { transition: transform .35s ease; }
+  .btn-ink:hover svg { transform: translate(3px,-3px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .85rem 1.4rem; background: transparent; color: var(--ink);
+    font-size: 13px; letter-spacing: .04em; font-weight: 500;
+    border: 1px solid rgba(10,10,10,.4);
+    transition: all .3s;
+    cursor: pointer;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(10,10,10,.1); }
+  .btn-outline:active { transform: translateY(0); }
+
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .85rem 1.4rem; background: var(--gold); color: #1a1204;
+    font-size: 13px; letter-spacing: .04em; font-weight: 600;
+    border: 1px solid var(--gold); transition: all .3s;
+    cursor: pointer;
+  }
+  .btn-gold:hover { background: #1a1204; color: var(--gold); border-color: #1a1204; transform: translateY(-2px); box-shadow: 0 12px 24px rgba(212,168,67,.25); }
+  .btn-gold:active { transform: translateY(0px); }
+
+  /* Hero type */
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    line-height: .88;
+    letter-spacing: -0.035em;
+    font-size: clamp(3.4rem, 12vw, 11rem);
+  }
+  .hero-title em { font-style: italic; font-weight: 300; color: var(--ox); }
+
+  /* Hero grid lines */
+  .gridlines {
+    background-image:
+      linear-gradient(to right, rgba(10,10,10,.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10,10,10,.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /* Ticker marquee */
+  .marquee { overflow: hidden; position: relative; }
+  .marquee-track { display: flex; gap: 1.5rem; width: max-content; animation: marquee 90s linear infinite; }
+  .marquee-track-rev { animation: marquee-rev 110s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+  /* Cert grid */
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .75rem; }
+  .cert-chip {
+    display: inline-flex; align-items: center; gap: .75rem; padding: .8rem 1rem;
+    border: 1px solid rgba(10,10,10,.12); background: rgba(255,255,255,.5);
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s, box-shadow .3s;
+    cursor: pointer; position: relative; font-family: inherit; text-align: left; width: 100%;
+    min-height: 58px;
+  }
+  .cert-chip:hover { border-color: var(--ink); background: #fff; transform: translateY(-2px); box-shadow: 0 14px 30px -18px rgba(10,10,10,.35); z-index: 2; }
+  .cert-chip:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .cert-chip .dot { width: 6px; height: 6px; background: var(--ox); border-radius: 50%; flex-shrink:0; transition: transform .3s, background .3s; }
+  .cert-chip:hover .dot { background: var(--gold); transform: scale(1.6); }
+  .cert-chip .chev { margin-left: auto; opacity: .3; transition: transform .3s, opacity .3s; flex-shrink: 0; }
+  .cert-chip:hover .chev { opacity: 1; transform: translate(2px,-2px); }
+  .cert-chip .cname { font-size: 13px; font-weight: 500; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; }
+  .cert-chip .cmeta { font-size: 10.5px; color: rgba(10,10,10,.5); font-family: 'JetBrains Mono', monospace; letter-spacing: .04em; margin-top: .2rem; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cert-chip .cbody { min-width: 0; flex: 1; }
+  .cert-chip[data-hidden="1"] { display: none; }
+
+  /* Cert filter pills */
+  .cert-filter {
+    display: inline-flex; align-items: center; gap: .35rem; padding: .4rem .75rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .08em;
+    text-transform: uppercase; border: 1px solid rgba(10,10,10,.15); background: transparent;
+    cursor: pointer; transition: all .25s; color: rgba(10,10,10,.65);
+  }
+  .cert-filter:hover { border-color: var(--ink); color: var(--ink); }
+  .cert-filter.is-active { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+  .cert-filter .cf-count { opacity: .5; font-size: 9.5px; }
+
+  /* Cert modal */
+  .cert-modal {
+    position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center;
+    padding: 1.25rem; background: rgba(10,10,10,.55); backdrop-filter: blur(8px);
+    opacity: 0; transition: opacity .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .cert-modal.is-open { display: flex; opacity: 1; }
+  .cert-modal-panel {
+    position: relative; max-width: 560px; width: 100%;
+    background: var(--bone); border: 1px solid rgba(10,10,10,.12);
+    padding: 2.25rem 2rem 2rem; transform: translateY(24px) scale(.97);
+    transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s;
+    opacity: 0; max-height: 85vh; overflow-y: auto;
+  }
+  .cert-modal.is-open .cert-modal-panel { transform: none; opacity: 1; }
+  .cert-modal-close {
+    position: absolute; top: .9rem; right: .9rem; width: 32px; height: 32px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(10,10,10,.15); background: transparent; cursor: pointer;
+    color: var(--ink); transition: all .25s; font-family: inherit;
+  }
+  .cert-modal-close:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+  .cert-modal-gold-bar { width: 36px; height: 2px; background: var(--gold); margin-bottom: 1.25rem; }
+  .cert-skill {
+    display: inline-block; padding: .35rem .7rem; font-size: 11px; letter-spacing: .04em;
+    background: rgba(10,10,10,.05); border: 1px solid rgba(10,10,10,.1);
+    font-family: 'JetBrains Mono', monospace; margin: 0 .35rem .4rem 0;
+    transition: all .25s;
+  }
+  .cert-skill:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+
+  /* Timeline */
+  .tl-row { border-top: 1px solid rgba(10,10,10,.12); transition: background .4s; position: relative; }
+  .tl-row:last-child { border-bottom: 1px solid rgba(10,10,10,.12); }
+  .tl-row:hover { background: rgba(10,10,10,.02); }
+  .tl-row .tl-marker { transition: all .4s; }
+  .tl-row:hover .tl-marker { color: var(--ox); letter-spacing: 0; }
+  .tl-row::after {
+    content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 0; background: var(--ox); transition: width .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .tl-row:hover::after { width: 100%; }
+
+  /* Expertise card */
+  .exp-card {
+    position: relative; padding: 2.75rem 2.25rem; border: 1px solid rgba(10,10,10,.12);
+    transition: all .4s; background: rgba(255,255,255,.35);
+  }
+  .exp-card:hover { border-color: var(--ink); background: #fff; transform: translateY(-6px); box-shadow: 0 20px 40px rgba(10,10,10,.08); }
+  .pill {
+    display: inline-block; padding: .4rem .8rem; font-size: 11.5px;
+    background: rgba(10,10,10,.05); border: 1px solid transparent;
+    letter-spacing: .01em; transition: all .25s;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0; animation: pillReveal .6s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes pillReveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .exp-card .pill:nth-child(1) { animation-delay: .05s; }
+  .exp-card .pill:nth-child(2) { animation-delay: .1s; }
+  .exp-card .pill:nth-child(3) { animation-delay: .15s; }
+  .exp-card .pill:nth-child(4) { animation-delay: .2s; }
+  .exp-card .pill:nth-child(5) { animation-delay: .25s; }
+  .exp-card .pill:nth-child(n+6) { animation-delay: .3s; }
+  .exp-card:hover .pill { background: rgba(10,10,10,.04); border-color: rgba(10,10,10,.1); }
+  .pill:hover { background: var(--ink); color: var(--bone); }
+
+  /* Project card */
+  .proj {
+    position: relative; padding: 2.25rem 2rem; border: 1px solid rgba(10,10,10,.12);
+    background: rgba(255,255,255,.4); transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .45s cubic-bezier(.2,.7,.2,1), box-shadow .5s cubic-bezier(.2,.7,.2,1);
+    overflow: hidden; will-change: transform;
+  }
+  .proj::before {
+    content: ""; position: absolute; inset: 0; background: var(--ink); transform: translateY(100%);
+    transition: transform .55s cubic-bezier(.2,.7,.2,1); z-index: 0;
+  }
+  .proj::after {
+    content: ""; position: absolute; top: 0; left: -120%; width: 70%; height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(212,168,67,.14) 50%, transparent 100%);
+    transform: skewX(-18deg); transition: left .9s cubic-bezier(.2,.7,.2,1); z-index: 2; pointer-events: none;
+  }
+  .proj:hover { border-color: var(--ink); transform: translateY(-4px); box-shadow: 0 30px 60px -30px rgba(10,10,10,.35); }
+  .proj:hover::before { transform: translateY(0); }
+  .proj:hover::after { left: 140%; }
+  .proj > * { position: relative; z-index: 1; transition: color .4s; }
+  .proj-content svg { transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+  .proj:hover .proj-content svg { transform: translate(4px,-4px); }
+  .proj:hover .proj-content, .proj:hover .proj-content * { color: var(--bone) !important; }
+  .proj:hover .proj-num { color: var(--gold) !important; }
+  .proj:hover .ptag { background: rgba(245,242,236,.1); color: var(--bone); border-color: rgba(245,242,236,.2); }
+  .proj .ptag { transition: background .3s, color .3s, border-color .3s, transform .4s cubic-bezier(.34,1.56,.64,1); }
+  .proj:hover .ptag { transform: translateY(-2px); }
+  .proj:hover .ptag:nth-child(1) { transition-delay: .04s; }
+  .proj:hover .ptag:nth-child(2) { transition-delay: .08s; }
+  .proj:hover .ptag:nth-child(3) { transition-delay: .12s; }
+  .proj:hover .ptag:nth-child(4) { transition-delay: .16s; }
+
+  .ptag { display: inline-block; padding: .3rem .65rem; font-size: 10.5px;
+    background: rgba(10,10,10,.05); border: 1px solid transparent;
+    font-family: 'JetBrains Mono', monospace; letter-spacing: .04em;
+  }
+
+  /* Snake game card */
+  .game-card {
+    background: linear-gradient(180deg, #0E0E0E 0%, #050505 100%);
+    border: 1px solid rgba(212,168,67,.3);
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,.5), inset 0 1px 0 rgba(212,168,67,.08);
+  }
+  kbd {
+    display: inline-block; padding: .15rem .45rem; margin: 0 .1rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    background: rgba(245,242,236,.08); color: var(--bone);
+    border: 1px solid rgba(245,242,236,.2); border-radius: 3px;
+  }
+  .game-btn-primary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .75rem 1.4rem; background: var(--gold); color: #1a1204;
+    font-size: 13px; letter-spacing: .04em; font-weight: 600;
+    border: 1px solid var(--gold); cursor: pointer;
+    transition: all .3s;
+  }
+  .game-btn-primary:hover { background: #E8C77D; border-color: #E8C77D; transform: translateY(-1px); }
+  .game-btn-secondary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .75rem 1.4rem; background: transparent; color: var(--bone);
+    font-size: 13px; letter-spacing: .04em; font-weight: 500;
+    border: 1px solid rgba(245,242,236,.3); cursor: pointer;
+    transition: all .3s;
+  }
+  .game-btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Game over overlay */
+  .game-over {
+    position: absolute; inset: 0; background: rgba(5,5,5,.94);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity .4s;
+    text-align: center; padding: 2rem;
+  }
+  .game-over.show { opacity: 1; pointer-events: auto; }
+
+  /* Touch controls */
+  .touch-grid { display: grid; grid-template-columns: repeat(3, 52px); gap: 6px; justify-content: center; margin-top: 1rem; }
+  .touch-btn {
+    width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+    background: rgba(245,242,236,.08); border: 1px solid rgba(245,242,236,.2);
+    color: var(--bone); font-size: 16px; border-radius: 6px; cursor: pointer;
+    transition: all .2s;
+  }
+  .touch-btn:hover, .touch-btn:active { background: var(--gold); color: #1a1204; border-color: var(--gold); }
+  .touch-empty { background: transparent; border: none; }
+  @media (min-width: 768px) { .touch-grid { display: none; } }
+
+  /* Scroll progress */
+  .scroll-prog { position: fixed; top: 0; left: 0; height: 2px; background: var(--ox); width: 0; z-index: 100; transition: width .1s linear; }
+
+  /* Loader */
+  .loader { position: fixed; inset: 0; background: var(--ink); z-index: 200; display: flex; align-items: center; justify-content: center; transition: opacity .6s ease, visibility .6s ease; }
+  .loader.hide { opacity: 0; visibility: hidden; }
+  .loader-text { font-family: 'Fraunces', serif; font-size: clamp(2rem, 6vw, 4rem); color: var(--bone); font-weight: 300; letter-spacing: -0.02em; animation: loaderTextFade .8s ease-out; }
+  @keyframes loaderTextFade { from { opacity: 0; transform: scale(.95); } to { opacity: 1; transform: none; } }
+  .loader-text em { color: var(--gold); font-style: italic; }
+  .loader-bar { width: 180px; height: 1px; background: rgba(245,242,236,.2); margin-top: 1.5rem; overflow: hidden; }
+  .loader-bar::after { content: ""; display: block; height: 100%; background: var(--gold); animation: loaderFill 1.1s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
+
+  /* Mobile menu */
+  .mmenu { transform: translateY(-8px); opacity: 0; pointer-events: none; transition: all .35s; }
+  .mmenu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+  /* Hero photo mask */
+  .photo-mask {
+    position: relative; overflow: hidden;
+  }
+  .photo-mask img { filter: grayscale(.2) contrast(1.02); transition: filter .6s, transform 8s ease; }
+  .photo-mask:hover img { filter: grayscale(0) contrast(1.05); transform: scale(1.04); }
+
+  /* Float book button */
+  .book-float {
+    position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 50;
+    opacity: 0; transform: translateY(10px); pointer-events: none;
+    transition: all .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .book-float.show { opacity: 1; transform: none; pointer-events: auto; }
+
+  /* Aurora bg (subtle blobs) */
+  .aurora {
+    position: absolute; filter: blur(100px); opacity: .18; pointer-events: none; border-radius: 50%;
+  }
+
+  /* Form */
+  .finput {
+    width: 100%; padding: .85rem 0; background: transparent; border: 0;
+    border-bottom: 1px solid rgba(10,10,10,.25); font-size: 14px; color: var(--ink);
+    transition: border-color .3s, box-shadow .3s;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+  .finput::placeholder { color: rgba(10,10,10,.35); }
+  .finput:focus { outline: none; border-color: var(--ox); box-shadow: 0 1px 0 var(--gold); }
+  .finput:focus::placeholder { color: rgba(10,10,10,.2); }
+  .flabel {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    text-transform: uppercase; letter-spacing: .18em; color: var(--mute);
+    display: block; margin-bottom: .35rem; transition: color .3s;
+  }
+  .finput:focus ~ .flabel, .finput:not(:placeholder-shown) ~ .flabel { color: var(--ink); }
+  textarea.finput { min-height: 110px; resize: vertical; padding-top: .6rem; border: 1px solid rgba(10,10,10,.15); padding: .75rem; }
+  textarea.finput:focus { border-color: var(--ox); }
+
+  /* Roman numerals for chapter */
+  .chapter-num {
+    font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
+    font-size: clamp(3rem, 8vw, 6rem); color: rgba(10,10,10,.08); line-height: 1; letter-spacing: -.02em;
+  }
+
+  /* Focus rings — accessibility */
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  a:focus-visible, button:focus-visible { outline-offset: 4px; }
+
+  /* Marquee fade-mask */
+  .marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+
+  /* Mobile tightening */
+  @media (max-width: 640px) {
+    .eyebrow { letter-spacing: .16em; font-size: 10.5px; }
+    .chapter-num { display: none; }
+    .aurora { filter: blur(70px); opacity: .12; }
+  }
+
+  /* Drop cap */
+  .drop-cap::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 4.2em;
+    line-height: .85;
+    float: left;
+    padding: .2rem .7rem 0 0;
+    color: var(--ox);
+  }
+
+  /* Mobile hamburger → X color fix when menu open */
+  .hb.open span { background: var(--ink); }
+
+  /* ===== ARCADE TABS ===== */
+  .atab {
+    display: inline-flex; align-items: center; gap: .65rem;
+    padding: .75rem 1.1rem; background: rgba(245,242,236,.04);
+    border: 1px solid rgba(245,242,236,.12); color: rgba(245,242,236,.6);
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    cursor: pointer; transition: all .35s cubic-bezier(.2,.7,.2,1);
+    position: relative; overflow: hidden;
+  }
+  .atab::before {
+    content: ""; position: absolute; inset: 0; background: var(--gold);
+    transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.2,.7,.2,1);
+    z-index: 0;
+  }
+  .atab > * { position: relative; z-index: 1; }
+  .atab:hover { color: var(--bone); border-color: rgba(245,242,236,.3); }
+  .atab.is-active { color: #1a1204; border-color: var(--gold); }
+  .atab.is-active::before { transform: scaleX(1); }
+  .atab.is-active .atab-num { color: rgba(26,18,4,.6); }
+  .atab.is-active .atab-sub { color: rgba(26,18,4,.5); }
+  .atab-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(245,242,236,.4); letter-spacing: .06em; transition: color .3s; }
+  .atab-name { font-weight: 600; letter-spacing: .02em; }
+  .atab-sub { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .2em; color: rgba(245,242,236,.4); transition: color .3s; }
+
+  /* Arcade panel transition */
+  .apanel { animation: apanel-in .5s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes apanel-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .apanel.hidden { display: none; }
+
+  /* ===== WORDLE ===== */
+  .wordle-board { display: grid; grid-template-rows: repeat(6, 1fr); gap: 6px; max-width: 340px; margin: 0 auto; }
+  .wordle-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .wordle-tile {
+    aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+    background: rgba(245,242,236,.03); border: 1.5px solid rgba(245,242,236,.15);
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: clamp(18px, 5vw, 26px); color: var(--bone);
+    text-transform: uppercase; transition: all .4s;
+    transform-style: preserve-3d; perspective: 400px;
+  }
+  .wordle-tile.filled { border-color: rgba(245,242,236,.45); animation: wt-pop .15s ease; }
+  @keyframes wt-pop { 0%{transform:scale(.92);} 50%{transform:scale(1.04);} 100%{transform:scale(1);} }
+  .wordle-tile.correct { background: #2F6E3B; border-color: #2F6E3B; color: #fff; animation: wt-flip .6s ease; }
+  .wordle-tile.present { background: var(--gold); border-color: var(--gold); color: #1a1204; animation: wt-flip .6s ease .1s both; }
+  .wordle-tile.absent { background: rgba(245,242,236,.08); border-color: rgba(245,242,236,.15); color: rgba(245,242,236,.4); animation: wt-flip .6s ease .2s both; }
+  @keyframes wt-flip {
+    0% { transform: rotateX(0); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0); }
+  }
+  .wordle-row.invalid { animation: wt-shake .5s ease; }
+  @keyframes wt-shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+  }
+
+  .wordle-kb { display: flex; flex-direction: column; gap: 6px; max-width: 420px; margin: 0 auto; }
+  .wordle-kb-row { display: flex; gap: 4px; justify-content: center; }
+  .wkey {
+    flex: 1; max-width: 40px; min-width: 24px; min-height: 46px; padding: 0 4px;
+    background: rgba(245,242,236,.08); color: var(--bone);
+    border: 1px solid rgba(245,242,236,.12); border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all .2s; text-transform: uppercase;
+  }
+  .wkey.wide { flex: 1.4; font-size: 11px; padding: 0 6px; letter-spacing: .06em; }
+  .wkey:hover { background: rgba(245,242,236,.14); }
+  .wkey:active { transform: translateY(1px); }
+  .wkey.correct { background: #2F6E3B; color: #fff; border-color: #2F6E3B; }
+  .wkey.present { background: var(--gold); color: #1a1204; border-color: var(--gold); }
+  .wkey.absent { background: rgba(245,242,236,.04); color: rgba(245,242,236,.25); border-color: rgba(245,242,236,.08); }
+
+  /* ===== TETRIS ===== */
+  #tetrisCanvas, #tetrisNext { image-rendering: pixelated; }
+
+  /* Depth-layer helpers from epic-design */
+  .scene { position: relative; }
+  .layer.depth-0 { z-index: 1; }
+  .layer.depth-1 { z-index: 2; }
+  .layer.depth-2 { z-index: 3; }
+  .layer.depth-3 { z-index: 4; }
+  .layer.depth-4 { z-index: 5; }
+  .layer.depth-5 { z-index: 6; }
+
+  /* ===== EPIC HERO depth parallax ===== */
+  .hero-parallax-photo { transition: transform .25s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+
+  /* Split-text word reveal */
+  .split-word {
+    display: inline-block; overflow: hidden; vertical-align: top;
+  }
+  .split-word > span {
+    display: inline-block; transform: translateY(110%); opacity: 0;
+    transition: transform .85s cubic-bezier(.2,.7,.2,1), opacity .6s ease;
+  }
+  .split-word.go > span { transform: none; opacity: 1; }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .atab::before, .apanel, .wordle-tile.correct, .wordle-tile.present, .wordle-tile.absent,
+    .wordle-row.invalid, .split-word > span, .hero-parallax-photo {
+      animation: none !important; transform: none !important; transition: none !important;
+    }
+  }
+
+  /* Hamburger */
+  .hb span { display: block; width: 22px; height: 1.5px; background: var(--ink); margin: 5px 0; transition: all .3s; }
+  .hb.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hb.open span:nth-child(2) { opacity: 0; }
+  .hb.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .marquee-track { animation: none !important; }
+  }
+
+  /* Section display title */
+  .display-h {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    line-height: .95;
+    letter-spacing: -.03em;
+    font-size: clamp(2.4rem, 6.2vw, 5.2rem);
+  }
+  .display-h em { font-style: italic; color: var(--ox); font-weight: 300; }
+
+  /* Stat number */
+  .stat-n {
+    font-family: 'Fraunces', serif; font-weight: 300; line-height: 1;
+    font-size: clamp(2.6rem, 5vw, 4rem); letter-spacing: -.03em;
+  }
+
+  /* Noise hover on photo */
+  .tag-badge {
+    position: absolute; background: var(--ink); color: var(--bone);
+    padding: .9rem 1.1rem; font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase;
+  }
+
+  /* Print */
+  @media print {
+    .loader, .scroll-prog, .book-float, nav { display: none !important; }
+  }
+
+  /* Anchor scroll offset — clears fixed nav */
+  html { scroll-padding-top: 90px; }
+  section[id], [id="top"] { scroll-margin-top: 90px; }
+  #arcade-play { scroll-margin-top: 110px; }
+  @media (max-width: 768px) { html { scroll-padding-top: 70px; } section[id], [id="top"] { scroll-margin-top: 70px; } #arcade-play { scroll-margin-top: 80px; } }
+
+  /* ============ INTERACTIVE LAYER ============ */
+
+  /* Hero letter reveal */
+  .hero-letters { display: inline-block; }
+  .hero-letters .hl {
+    display: inline-block; opacity: 0; filter: blur(12px);
+    transform: translateY(40%) rotateX(-40deg);
+    transform-origin: 50% 100%;
+    animation: heroLetter .9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes heroLetter { to { opacity: 1; filter: blur(0); transform: none; } }
+
+  /* Typewriter rotator */
+  .tw-rotator {
+    display: inline-flex; align-items: center; gap: .6rem; font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px; letter-spacing: .06em; color: rgba(10,10,10,.7);
+    padding: .4rem 0;
+  }
+  .tw-rotator .tw-label { text-transform: uppercase; letter-spacing: .22em; font-size: 10.5px; color: rgba(10,10,10,.45); }
+  .tw-rotator .tw-dot { width: 5px; height: 5px; border-radius: 50%; background: #D4A843; animation: twPulse 1.8s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes twPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .3; transform: scale(.6); } }
+  .tw-phrase { position: relative; display: inline-block; min-height: 1.2em; }
+  .tw-phrase::after {
+    content: ""; display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -2px;
+    background: #0A0A0A; animation: twBlink 1s steps(2, start) infinite;
+  }
+  @keyframes twBlink { to { background: transparent; } }
+
+  /* Split-line reveal (word-level) */
+  .sl-line { display: inline-block; overflow: hidden; position: relative; vertical-align: top; line-height: inherit; }
+  .sl-word {
+    display: inline-block; transform: translateY(110%); opacity: 0;
+    transition: transform .9s cubic-bezier(.2,.7,.2,1), opacity .7s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in .sl-word, .sl-word.in { transform: none; opacity: 1; }
+
+  /* Image mask reveal */
+  .mask-reveal { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(.7,0,.3,1); }
+  .mask-reveal.in { clip-path: inset(0 0 0 0); }
+  .mask-reveal img { transform: scale(1.15); transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+  .mask-reveal.in img { transform: scale(1); }
+
+  /* Stat flash */
+  .stat-n { position: relative; transition: text-shadow .6s; }
+  .stat-n.is-flashed { text-shadow: 0 0 40px rgba(212,168,67,.55); }
+
+  /* Active nav link */
+  .nlink.is-active, .nlink.is-active:hover { color: var(--ink); }
+  .nlink.is-active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--gold);
+    transform: scaleX(1); transform-origin: 0 50%; transition: transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .nlink { position: relative; }
+  .nlink::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--gold);
+    transform: scaleX(0); transform-origin: 0 50%; transition: transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .nlink:hover::after { transform: scaleX(1); }
+
+  /* Press feedback on interactive controls */
+  .btn-ink, .btn-outline, .game-btn-primary, .game-btn-secondary, .atab, .cert-chip, .cert-filter, .proj, .pill, .life-tile {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-ink:active, .btn-outline:active, .game-btn-primary:active, .game-btn-secondary:active,
+  .cert-chip:active, .cert-filter:active, .atab:active {
+    transform: scale(.97); transition: transform .08s ease;
+  }
+
+  /* Skip link */
+  .skip-link {
+    position: fixed; top: 8px; left: 8px; z-index: 1000;
+    padding: .6rem .9rem; background: var(--ink); color: var(--bone);
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    transform: translateY(-120%); transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+  }
+  .skip-link:focus-visible { transform: translateY(0); outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* Chapter numeral gentle drift */
+  .chapter-num { animation: chapterFloat 9s ease-in-out infinite alternate; will-change: transform; }
+  @keyframes chapterFloat {
+    0% { transform: translate(0,0) rotate(0deg); }
+    50% { transform: translate(6px,-10px) rotate(.6deg); }
+    100% { transform: translate(-4px,-4px) rotate(-.4deg); }
+  }
+
+  /* Primary CTA gold shimmer sweep */
+  .btn-ink { position: relative; overflow: hidden; }
+  .btn-ink::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(212,168,67,.45) 50%, transparent 70%);
+    transform: translateX(-110%); transition: transform .9s cubic-bezier(.2,.7,.2,1);
+    pointer-events: none;
+  }
+  .btn-ink:hover::before { transform: translateX(110%); }
+
+  /* Photo saturation reveal */
+  .sat-reveal img { filter: saturate(.2) contrast(1.05); transition: filter 1.4s cubic-bezier(.2,.7,.2,1); }
+  .sat-reveal.in img { filter: saturate(1) contrast(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .sat-reveal img { filter: none !important; }
+    .chapter-num { animation: none !important; }
+    .btn-ink::before { display: none; }
+  }
+
+  /* Timeline vertical draw line */
+  #career .mt-6 { position: relative; }
+  #career .mt-6::before {
+    content: ""; position: absolute; left: -12px; top: 0; width: 2px; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(212,168,67,.35), rgba(212,168,67,.1), transparent);
+    transform-origin: 50% 0; transform: scaleY(0);
+    transition: transform 1.8s cubic-bezier(.2,.7,.2,1);
+  }
+  #career.in-view .mt-6::before { transform: scaleY(1); }
+  @media (max-width: 768px) { #career .mt-6::before { left: -4px; } }
+
+  /* Worlds strip */
+  .worlds-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
+  @media (max-width: 900px) { .worlds-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .worlds-grid { grid-template-columns: 1fr 1fr; } }
+  .world-tile {
+    position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+    border: 1px solid rgba(245,242,236,.1); background: #0A0A0A;
+    opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1), box-shadow .5s;
+  }
+  .world-tile.wt-in { opacity: 1; transform: none; }
+  .worlds-grid .world-tile:nth-child(1).wt-in { transition-delay: 0s; }
+  .worlds-grid .world-tile:nth-child(2).wt-in { transition-delay: .1s; }
+  .worlds-grid .world-tile:nth-child(3).wt-in { transition-delay: .2s; }
+  .worlds-grid .world-tile:nth-child(4).wt-in { transition-delay: .3s; }
+  .world-tile img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(.45) brightness(.78) contrast(1.05);
+    transition: transform 2.2s cubic-bezier(.2,.7,.2,1), filter .6s;
+  }
+  .world-tile:hover img { transform: scale(1.08); filter: grayscale(0) brightness(.92) contrast(1.02); }
+  .world-tile:hover { box-shadow: 0 20px 40px rgba(0,0,0,.4), 0 0 0 1px rgba(245,242,236,.2); }
+  .world-tile figcaption {
+    position: absolute; inset: auto 0 0 0; padding: 1rem .9rem .85rem;
+    display: flex; flex-direction: column; gap: .2rem;
+    background: linear-gradient(to top, rgba(10,10,10,.9) 0%, rgba(10,10,10,.5) 50%, transparent 100%);
+    color: var(--bone); font-family: 'JetBrains Mono', monospace;
+  }
+  .world-tile .wtnum { font-size: 10px; letter-spacing: .3em; color: rgba(212,168,67,.85); }
+  .world-tile .wttxt { font-size: 12px; letter-spacing: .04em; line-height: 1.3; }
+  .world-tile::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    border: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  .world-tile:hover::after { border-color: rgba(212,168,67,.5); }
+
+  /* Stat mini */
+  .stat-mini { display: flex; flex-direction: column; gap: .4rem; }
+  .stat-val { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.02em; color: var(--bone); line-height: 1; }
+  .stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: rgba(245,242,236,.55); }
+
+  /* Credo banner */
+  .credo-h { font-size: clamp(2.4rem, 7vw, 5.5rem); letter-spacing: -0.02em; }
+  .credo-h em { font-style: italic; font-weight: 400; }
+
+  /* Timeline logo chips */
+  .tl-logo {
+    width: 38px; height: 38px; border-radius: 4px; object-fit: cover; flex-shrink: 0;
+    background: rgba(245,242,236,.06); border: 1px solid rgba(245,242,236,.1);
+    filter: grayscale(.35) brightness(1.05); transition: filter .4s, transform .4s, border-color .4s;
+  }
+  .tl-row:hover .tl-logo { filter: grayscale(0) brightness(1); transform: scale(1.06); border-color: rgba(212,168,67,.45); }
+
+  /* Life photo strip */
+  .life-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr 1.1fr; gap: .75rem; }
+  @media (max-width: 900px) { .life-grid { grid-template-columns: 1fr 1fr; } .life-grid > *:nth-child(5) { display: none; } }
+  @media (max-width: 560px) { .life-grid { grid-template-columns: 1fr 1fr; } }
+  .life-tile {
+    position: relative; overflow: hidden; aspect-ratio: 3 / 4;
+    border: 1px solid rgba(10,10,10,.1); background: rgba(10,10,10,.04);
+    transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s;
+  }
+  .life-tile img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 1.8s cubic-bezier(.2,.7,.2,1), filter .5s;
+    filter: saturate(.92) contrast(1.02);
+  }
+  .life-tile:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(10,10,10,.12); }
+  .life-tile:hover img { transform: scale(1.06); filter: saturate(1.1) contrast(1.05); }
+  .life-tile::after {
+    content: attr(data-caption); position: absolute; left: 12px; bottom: 12px;
+    padding: .3rem .55rem; background: rgba(10,10,10,.78); color: #F5F2EC;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    opacity: 0; transform: translateY(6px); transition: opacity .35s, transform .35s;
+  }
+  .life-tile:hover::after { opacity: 1; transform: translateY(0); }
+  .life-tile { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .life-tile.lt-in { opacity: 1; transform: none; }
+  .life-grid .life-tile:nth-child(1) { transition-delay: 0s; }
+  .life-grid .life-tile:nth-child(2) { transition-delay: .08s; }
+  .life-grid .life-tile:nth-child(3) { transition-delay: .16s; }
+  .life-grid .life-tile:nth-child(4) { transition-delay: .24s; }
+  .life-grid .life-tile:nth-child(5) { transition-delay: .32s; }
+
+  /* Availability chip */
+  .avail-chip {
+    display: inline-flex; align-items: center; gap: .55rem; padding: .45rem .8rem;
+    border: 1px solid rgba(212,168,67,.4); background: rgba(212,168,67,.08);
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--ink); border-radius: 999px;
+  }
+  .avail-chip .pulse {
+    width: 7px; height: 7px; border-radius: 50%; background: #14A05C; position: relative;
+    box-shadow: 0 0 0 0 rgba(20,160,92,.6); animation: availPulse 1.8s ease-out infinite;
+  }
+  @keyframes availPulse {
+    0% { box-shadow: 0 0 0 0 rgba(20,160,92,.55); }
+    100% { box-shadow: 0 0 0 10px rgba(20,160,92,0); }
+  }
+
+  /* Timeline row accent */
+  .tl-row { position: relative; }
+  .tl-row::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, #D4A843, transparent);
+    transform: scaleY(0); transform-origin: 50% 0; opacity: 0;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .4s;
+  }
+  .tl-row:hover::before { transform: scaleY(1); opacity: 1; }
+  .tl-row { transition: background .35s; }
+  .tl-row:hover { background: rgba(212,168,67,.03); }
+
+  /* Magnetic button */
+  .magnet { transition: transform .35s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+
+  /* Static ambient gradient (replaces cursor-tracked spotlight) */
+  .spotlight-host { position: relative; }
+  .spotlight-host::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(600px circle at 20% 30%, rgba(212,168,67,.09), transparent 55%),
+      radial-gradient(500px circle at 85% 75%, rgba(139,26,26,.07), transparent 55%);
+    opacity: .8;
+  }
+
+  /* Project tilt */
+  .proj { transform-style: preserve-3d; perspective: 900px; }
+  .proj > .proj-content { transform-style: preserve-3d; }
+  .proj.is-tilting { transition: transform .08s linear; }
+  .proj:not(.is-tilting) { transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .45s, box-shadow .5s; }
+
+  /* Link underline draw */
+  .link-line { background-image: linear-gradient(to right, currentColor 50%, transparent 50%); background-size: 200% 1px; background-position: 100% 100%; background-repeat: no-repeat; transition: background-position .5s cubic-bezier(.2,.7,.2,1); }
+  .link-line:hover { background-position: 0% 100%; }
+
+  /* Copyright easter egg tooltip */
+  .copy-egg { position: relative; cursor: help; transition: color .4s; }
+  .copy-egg:hover { color: #D4A843; }
+  .copy-tip {
+    position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translate(-50%, 6px);
+    white-space: nowrap; padding: .4rem .7rem; font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    background: #0A0A0A; color: #F5F2EC; border: 1px solid #D4A843;
+    opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .copy-tip::after {
+    content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 4px solid transparent; border-top-color: #D4A843;
+  }
+  .copy-egg.is-unlocked .copy-tip { opacity: 1; transform: translate(-50%, 0); }
+
+  /* Glyph rain easter egg */
+  .glyph-rain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 80;
+    overflow: hidden; opacity: 0; transition: opacity .5s;
+  }
+  .glyph-rain.on { opacity: 1; }
+  .glyph-col {
+    position: absolute; top: -20vh; font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; line-height: 1.1; color: #D4A843;
+    white-space: pre; text-shadow: 0 0 8px rgba(212,168,67,.5);
+    animation: glyphFall linear forwards;
+  }
+  .glyph-col span { display: block; opacity: 0; animation: glyphFade 3s linear forwards; }
+  @keyframes glyphFall { to { transform: translateY(130vh); } }
+  @keyframes glyphFade { 0% { opacity: 0; } 10% { opacity: 1; color: #F5F2EC; } 30% { opacity: .9; color: #D4A843; } 100% { opacity: 0; } }
+
+  /* Egg toast */
+  .egg-toast {
+    position: fixed; bottom: 28px; left: 50%; transform: translate(-50%, 100px);
+    padding: .9rem 1.3rem; background: #0A0A0A; color: #F5F2EC;
+    border: 1px solid #D4A843; z-index: 200; font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: .7rem; opacity: 0;
+    transition: transform .5s cubic-bezier(.34,1.56,.64,1), opacity .35s;
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,.5);
+  }
+  .egg-toast.on { transform: translate(-50%, 0); opacity: 1; }
+  .egg-toast .dot { width: 6px; height: 6px; border-radius: 50%; background: #D4A843; animation: twPulse 1.4s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-letters .hl { opacity: 1; filter: none; transform: none; animation: none; }
+    .sl-word { transform: none !important; opacity: 1 !important; }
+    .mask-reveal { clip-path: none !important; }
+    .mask-reveal img { transform: none !important; }
+    .magnet, .proj { transform: none !important; transition: none !important; }
+    .tw-phrase::after { animation: none; background: transparent; }
+    .glyph-rain { display: none !important; }
+  }
+</style>
+</head>
+
+<body class="bg-bone text-ink antialiased">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ===== LOADER ===== -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="flex flex-col items-center">
+    <div class="loader-text">Ben <em>Sachwitz</em></div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="nav-shell nav-hero fixed top-0 inset-x-0 z-40 transition-colors duration-300">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 flex items-center justify-between h-16 md:h-20">
+    <a href="#top" class="font-serif text-lg md:text-xl font-medium tracking-tight">
+      Ben <span class="italic text-ox">Sachwitz</span>
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-[13px] font-medium tracking-wide">
+      <li><a href="#about" class="nlink" data-nav="about">About</a></li>
+      <li><a href="#career" class="nlink" data-nav="career">Career</a></li>
+      <li><a href="#expertise" class="nlink" data-nav="expertise">Expertise</a></li>
+      <li><a href="#work" class="nlink" data-nav="work">Work</a></li>
+      <li><a href="#arcade-play" class="nlink text-gold-2" data-nav="arcade">Arcade</a></li>
+      <li><a href="#contact" class="btn-ink">
+        Book a call
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+      </a></li>
+    </ul>
+    <button id="hb" class="hb md:hidden p-2" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mmenu" class="mmenu md:hidden bg-bone border-t border-ink/10">
+    <ul class="px-5 py-6 flex flex-col gap-4 text-[15px] font-medium">
+      <li><a href="#about" class="mlink block py-2">About</a></li>
+      <li><a href="#career" class="mlink block py-2">Career</a></li>
+      <li><a href="#expertise" class="mlink block py-2">Expertise</a></li>
+      <li><a href="#work" class="mlink block py-2">Work</a></li>
+      <li><a href="#arcade-play" class="mlink block py-2 text-gold-2">The Arcade</a></li>
+      <li><a href="#contact" class="mlink btn-ink w-full justify-center mt-2">Book a call</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="top" class="relative min-h-[92vh] flex flex-col overflow-hidden pt-20 md:pt-24"><span id="main" tabindex="-1"></span>
+  <div class="absolute inset-0 gridlines opacity-60 pointer-events-none"></div>
+  <div class="aurora w-[60vw] h-[60vw] -top-[20vw] -right-[10vw]" style="background:radial-gradient(closest-side, #8B1A1A, transparent 70%);"></div>
+  <div class="aurora w-[50vw] h-[50vw] -bottom-[10vw] -left-[15vw]" style="background:radial-gradient(closest-side, #D4A843, transparent 70%);"></div>
+
+  <div class="relative z-10 max-w-[1400px] w-full mx-auto px-5 md:px-10 flex-1 flex flex-col">
+
+    <!-- Top meta row -->
+    <div class="flex items-start justify-between pt-3 md:pt-4 text-[11px] font-mono tracking-[.22em] uppercase text-ink/55">
+      <div class="flex flex-col gap-1">
+        <span>Portfolio / MMXXVI</span>
+        <span class="hidden sm:block">b. 2003 · McLean → Columbia → London → Global</span>
+      </div>
+      <div class="text-right flex flex-col gap-1">
+        <span class="hidden sm:block">Est. 2003</span>
+        <span class="hidden md:block text-ink/40">Asst. Underwriter · Swamp Fox</span>
+      </div>
+    </div>
+
+    <!-- Hero title -->
+    <div class="flex-1 flex items-center py-4 md:py-8">
+      <div class="grid grid-cols-12 gap-5 md:gap-10 w-full items-center">
+
+        <div class="col-span-12 lg:col-span-8 order-1 lg:order-1">
+          <div class="mb-4 flex flex-wrap items-center gap-3 reveal in">
+            <span class="avail-chip"><span class="pulse"></span>Open to producer-track conversations</span>
+            <span class="eyebrow text-ink/55">Insurance × Risk Technology</span>
+          </div>
+          <h1 class="hero-title reveal in" data-split-hero>
+            <span class="hero-letters" data-hero-line>Benjamin</span><br/>
+            <em><span class="hero-letters" data-hero-line data-delay=".3">Sachwitz.</span></em>
+          </h1>
+          <div class="tw-rotator mt-5 reveal d1 in">
+            <span class="tw-dot"></span>
+            <span class="tw-label">Currently</span>
+            <span class="tw-phrase" id="twPhrase" aria-live="polite"></span>
+          </div>
+          <p class="mt-8 md:mt-10 max-w-xl text-[15px] md:text-[17px] leading-relaxed text-ink/75 reveal d1 in">
+            McLean, VA native. Darla Moore graduate (Dec 2025). Lloyd's of London trained. Commercial trucking &amp; logging specialist at <a href="https://www.swampfoxagency.com" target="_blank" rel="noopener" class="link-line font-medium">Swamp Fox Agency</a> — building AI-powered tools for the modern agency from DC roots to the Lloyd's market.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-3 reveal d2 in">
+            <a href="#work" class="btn-ink magnet">
+              View selected work
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+            </a>
+            <a href="#contact" class="btn-outline magnet">Book a 30-min call →</a>
+          </div>
+
+          <!-- Social mini row -->
+          <div class="mt-10 flex items-center gap-6 text-[12px] font-mono tracking-widest uppercase text-ink/60 reveal d3 in">
+            <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="link-line">LinkedIn</a>
+            <span class="text-ink/20">·</span>
+            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" class="link-line">GitHub</a>
+            <span class="text-ink/20">·</span>
+            <a href="mailto:bensachwitz@outlook.com" class="link-line">Email</a>
+          </div>
+        </div>
+
+        <div class="col-span-12 lg:col-span-4 order-2 lg:order-2 relative mt-10 lg:mt-0">
+          <div class="photo-mask hero-parallax-photo sat-reveal aspect-[4/5] w-full max-w-sm lg:max-w-none mx-auto relative">
+            <img src="headshot.png" alt="Benjamin Sachwitz headshot" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 ring-1 ring-ink/10"></div>
+            <div class="tag-badge" style="bottom:1rem; left:1rem;">
+              Asst. Underwriter · Swamp Fox
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom scroll cue -->
+    <div class="pb-8 md:pb-12 flex items-end justify-between border-t border-ink/10 pt-6">
+      <div class="text-[11px] font-mono tracking-[.22em] uppercase text-ink/60">
+        <span class="hidden md:inline">Scroll to begin</span>
+        <span class="md:hidden">Begin →</span>
+      </div>
+      <div class="text-[11px] font-mono tracking-[.22em] uppercase text-ink/40">01 / 07</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTER 01 — ABOUT ===== -->
+<section id="about" class="relative py-14 md:py-20 overflow-hidden">
+  <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
+  <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
+
+    <div class="flex items-end justify-between mb-10 md:mb-14">
+      <div>
+        <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 01 · About</div>
+        <h2 class="display-h reveal d1">DC raised. USC built.<br/><em>Lloyd's trained.</em></h2>
+      </div>
+      <div class="chapter-num hidden md:block reveal d2">I</div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-8 md:gap-12">
+      <!-- Photo -->
+      <div class="col-span-12 md:col-span-5 reveal">
+        <div class="photo-mask sat-reveal aspect-[4/5] relative">
+          <img src="images/lloyds-interior.jpg" alt="Interior of Lloyd's of London, the underwriting floor with the Rostrum" class="w-full h-full object-cover" loading="lazy" />
+          <div class="tag-badge" style="bottom:1rem; left:1rem;">
+            <span class="text-gold-3">Lloyd's Market</span>
+            <span class="mx-2 text-bone/40">·</span>
+            London &middot; 2025
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-span-12 md:col-span-7 md:pl-8">
+        <div class="space-y-6 text-[15.5px] md:text-[17px] leading-[1.8] text-ink/80 reveal d1 max-w-[58ch]">
+          <p class="drop-cap">
+            <strong class="text-ink">A</strong> Darla Moore School of Business graduate (Dec 2025) with a passion for placing hard-to-write risk. My time at <strong class="text-ink">Price Forbes</strong> inside the Lloyd's of London market gave me direct exposure to marine and property placement in the world's most sophisticated risk environment.
+          </p>
+          <p>
+            At <strong class="text-ink">Swamp Fox Agency</strong> I specialize in commercial trucking and logging — applying a global underwriting lens to markets most retail agents avoid. Alongside daily underwriting I build AI-powered tools to modernize how agencies operate: automated loss-control workflows, conversion-optimized platforms, and the systems tomorrow's producer will require.
+          </p>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-ink/15 flex flex-wrap items-center gap-x-8 gap-y-3 text-[12px] font-mono tracking-widest uppercase text-ink/60 reveal d2">
+          <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ox"></span> Born 2003</span>
+          <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Lloyd's · 1688</span>
+          <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ink"></span> Darla Moore · 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTER 02 — CAREER TIMELINE ===== -->
+<section id="career" class="relative py-14 md:py-20 bg-ink text-bone overflow-hidden spotlight-host">
+  <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
+  <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
+
+    <div class="flex items-end justify-between mb-10 md:mb-14">
+      <div>
+        <div class="eyebrow text-bone/60 mb-4 reveal">Chapter 02 · Career Path</div>
+        <h2 class="display-h text-bone reveal d1">The <em class="text-gold">journey</em>.</h2>
+      </div>
+      <div class="chapter-num text-bone/10 hidden md:block reveal d2">II</div>
+    </div>
+
+    <!-- Timeline list (earliest → now) -->
+    <div class="mt-6">
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-6 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2017 — 2022</div>
+        <div class="col-span-12 md:col-span-4">
+          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Youth Sports Referee</h3>
+          <div class="mt-1 text-bone/60 text-[13px]">McLean Youth Basketball &amp; WALOA Lacrosse · McLean, VA</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/70 text-[13.5px] leading-relaxed">
+          Officiated youth basketball and competitive lacrosse across ~7 years. Built decision-making under pressure and composure — skills that carry into every underwriting call.
+        </div>
+      </div>
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-6 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2020 — 2022</div>
+        <div class="col-span-12 md:col-span-4">
+          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Crew Member</h3>
+          <div class="mt-1 text-bone/60 text-[13px]">Badd Pizza · Falls Church, VA</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/70 text-[13.5px] leading-relaxed">
+          Two years on a local pizza line during high school. Speed, service, and showing up when it mattered.
+        </div>
+      </div>
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-6 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2022 — 2023</div>
+        <div class="col-span-12 md:col-span-4">
+          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Busser</h3>
+          <div class="mt-1 text-bone/60 text-[13px]">SoDel Concepts · Ocean View, DE</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/70 text-[13.5px] leading-relaxed">
+          Coastal brewery-restaurant floor work. High-volume service, team choreography, customer-first execution.
+        </div>
+      </div>
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-7 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2023 — 2024</div>
+        <div class="col-span-12 md:col-span-4">
+          <div class="flex items-center gap-3 mb-1">
+            <img src="images/logo-masters.jpg" alt="" class="tl-logo" loading="lazy" />
+            <h3 class="font-serif text-[22px] md:text-[26px] font-light leading-tight">Operations Staff</h3>
+          </div>
+          <div class="mt-1 text-bone/60 text-[13.5px]">Augusta National Golf Club · Augusta, GA</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/75 text-[14px] leading-relaxed">
+          Two-year returning staff at <strong class="text-bone">The Masters Tournament</strong>. Front-row exposure to precision execution at one of the world's most prestigious sporting events.
+        </div>
+      </div>
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-7 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2023 — 2025</div>
+        <div class="col-span-12 md:col-span-4">
+          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Brand Ambassador</h3>
+          <div class="mt-1 text-bone/60 text-[13px]">SSprinting · Campus (USC)</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/70 text-[13.5px] leading-relaxed">
+          Ran campus sales and influencer partnerships for a direct-to-consumer apparel brand. Hit targets, reported field intel back to HQ — early GTM reps.
+        </div>
+      </div>
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-7 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2023 — 2025</div>
+        <div class="col-span-12 md:col-span-4">
+          <div class="flex items-center gap-3 mb-1">
+            <img src="images/logo-carahsoft.jpg" alt="" class="tl-logo" loading="lazy" />
+            <h3 class="font-serif text-[22px] md:text-[26px] font-light leading-tight">BDR Intern · Intel Team</h3>
+          </div>
+          <div class="mt-1 text-bone/60 text-[13.5px]">Carahsoft Technology · Reston, VA</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/75 text-[14px] leading-relaxed">
+          Three years across the public-sector cybersecurity team. Federal outreach, lead qualification, and strategic vendor–agency alignment for mission-driven IT.
+        </div>
+      </div>
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-6 md:py-8 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">Jul — Aug 2025</div>
+        <div class="col-span-12 md:col-span-4">
+          <div class="flex items-center gap-3 mb-1">
+            <img src="images/logo-priceforbes.jpg" alt="" class="tl-logo" loading="lazy" />
+            <h3 class="font-serif text-[22px] md:text-[28px] font-light leading-tight">Marine &amp; Property Intern</h3>
+          </div>
+          <div class="mt-1 text-bone/60 text-[13.5px]">Price Forbes · Lloyd's of London</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/75 text-[14px] leading-relaxed">
+          Two-week placement inside the <strong class="text-bone">Lloyd's market</strong>. Shadowed brokers across Marine and Property, observed live risk submissions and underwriter negotiations, and studied global specialty placement from inside the Room.
+        </div>
+      </div>
+
+      <div class="tl-row group grid grid-cols-12 gap-6 py-6 md:py-10 text-bone">
+        <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-gold">2026 — Now</div>
+        <div class="col-span-12 md:col-span-4">
+          <div class="flex items-center gap-3 mb-1">
+            <img src="images/logo-swampfox.jpg" alt="" class="tl-logo" loading="lazy" />
+            <h3 class="font-serif text-[24px] md:text-[30px] font-light leading-tight">Assistant Underwriter</h3>
+          </div>
+          <div class="mt-1 text-bone/60 text-[14px]">Swamp Fox Agency · Moncks Corner, SC</div>
+        </div>
+        <div class="col-span-12 md:col-span-6 text-bone/75 text-[14.5px] leading-relaxed">
+          Commercial P&amp;C underwriting in trucking and logging. Analyzing loss runs, preparing Lloyd's binding-authority submissions, interpreting FMCSA &amp; CAB safety data — driving AI-powered loss-control innovation while modernizing a 38-year-old agency from the inside.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATEMENT BANNER ===== -->
+<section id="credo" class="relative py-16 md:py-24 overflow-hidden border-y border-ink/10 bg-bone">
+  <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background:
+    radial-gradient(520px circle at 15% 40%, rgba(212,168,67,.09), transparent 60%),
+    radial-gradient(520px circle at 85% 60%, rgba(139,26,26,.05), transparent 60%);"></div>
+  <div class="relative max-w-[1200px] mx-auto px-5 md:px-10 text-center">
+    <div class="eyebrow text-ink/50 mb-6 reveal" style="justify-content:center;">The credo</div>
+    <h2 class="credo-h font-serif font-light leading-[1.05] reveal d1">
+      It's the <em class="italic text-ox">little things</em><br/>that set us <em class="italic text-gold-2">apart</em>.
+    </h2>
+    <div class="mt-6 inline-flex items-center gap-3 text-[11px] font-mono tracking-[.22em] uppercase text-ink/45 reveal d2">
+      <span class="w-8 h-px bg-ink/25"></span>
+      <span>— b.s.</span>
+      <span class="w-8 h-px bg-ink/25"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORLDS STRIP ===== -->
+<section id="worlds" class="relative py-12 md:py-16 overflow-hidden bg-ink text-bone">
+  <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
+  <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="mb-8 flex items-end justify-between flex-wrap gap-4">
+      <div>
+        <div class="eyebrow text-bone/55 mb-3">The worlds I work in</div>
+        <h2 class="font-serif text-[26px] md:text-[34px] font-light leading-tight text-bone">From the <em class="text-gold italic">Lowcountry</em> to the <em class="text-gold italic">Lloyd's Room</em>.</h2>
+      </div>
+      <div class="text-bone/45 text-[11px] font-mono tracking-[.22em] uppercase">4 markets · 1 lens</div>
+    </div>
+    <div class="worlds-grid">
+      <figure class="world-tile" data-caption="The Lloyd's Room · London EC3">
+        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=900&q=80&auto=format&fit=crop" alt="London financial district skyline at dusk" loading="lazy" />
+        <figcaption><span class="wtnum">01</span><span class="wttxt">Specialty &amp; binding authority</span></figcaption>
+      </figure>
+      <figure class="world-tile" data-caption="Commercial trucking · Southeast corridors">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80&auto=format&fit=crop" alt="Commercial truck on a southern highway" loading="lazy" />
+        <figcaption><span class="wtnum">02</span><span class="wttxt">Motor carriers · FMCSA &amp; telematics</span></figcaption>
+      </figure>
+      <figure class="world-tile" data-caption="Forestry &amp; logging · SC / GA / FL">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=80&auto=format&fit=crop" alt="Southern pine forest" loading="lazy" />
+        <figcaption><span class="wtnum">03</span><span class="wttxt">SCTPA-endorsed forestry risks</span></figcaption>
+      </figure>
+      <figure class="world-tile" data-caption="Federal DC · Public-sector tech">
+        <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=900&q=80&auto=format&fit=crop" alt="Washington DC Capitol building" loading="lazy" />
+        <figcaption><span class="wtnum">04</span><span class="wttxt">DC roots · federal account exposure</span></figcaption>
+      </figure>
+    </div>
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 border-t border-bone/10" id="statsStrip">
+      <div class="stat-mini">
+        <div class="stat-val"><span data-count="72">0</span><span class="text-gold">+</span></div>
+        <div class="stat-lbl">Certifications earned</div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-val"><span data-count="8">0</span></div>
+        <div class="stat-lbl">Years in the market</div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-val font-serif italic">Lloyd's</div>
+        <div class="stat-lbl">London · est. 1688</div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-val"><span data-count="500">0</span><span class="text-ox">K+</span></div>
+        <div class="stat-lbl">Followers built &amp; sold</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTER 03 — EXPERTISE ===== -->
+<section id="expertise" class="relative py-14 md:py-20 overflow-hidden">
+  <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
+
+    <div class="flex items-end justify-between mb-10 md:mb-14">
+      <div>
+        <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 03 · Expertise</div>
+        <h2 class="display-h reveal d1">What I <em>bring</em>.</h2>
+      </div>
+      <div class="chapter-num hidden md:block reveal d2">III</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0">
+      <div class="exp-card reveal">
+        <div class="flex items-start justify-between mb-6">
+          <div class="eyebrow text-ink/50">01</div>
+          <div class="eyebrow text-ox">Core</div>
+        </div>
+        <h3 class="font-serif text-[26px] font-light leading-tight">Insurance &amp; Risk</h3>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Commercial P&amp;C discipline — from binder to claim.</p>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="pill">Commercial P&amp;C</span>
+          <span class="pill">Marine</span>
+          <span class="pill">Lloyd's Market</span>
+          <span class="pill">Trucking</span>
+          <span class="pill">Logging Risk</span>
+          <span class="pill">Risk Assessment</span>
+          <span class="pill">Loss Control</span>
+          <span class="pill">Underwriting</span>
+          <span class="pill">Surety</span>
+          <span class="pill">Claims Analysis</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal d1 md:border-l-0">
+        <div class="flex items-start justify-between mb-6">
+          <div class="eyebrow text-ink/50">02</div>
+          <div class="eyebrow text-ox">Modern</div>
+        </div>
+        <h3 class="font-serif text-[26px] font-light leading-tight">Technology &amp; AI</h3>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Modern stack for the modern agency operator.</p>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="pill">AI / ML</span>
+          <span class="pill">GitHub</span>
+          <span class="pill">HTML / CSS / JS</span>
+          <span class="pill">MS Copilot</span>
+          <span class="pill">Data Analysis</span>
+          <span class="pill">Excel (Advanced)</span>
+          <span class="pill">Salesforce</span>
+          <span class="pill">Qlik</span>
+          <span class="pill">Prompt Eng.</span>
+          <span class="pill">Digital Mktg.</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal d2 md:border-l-0">
+        <div class="flex items-start justify-between mb-6">
+          <div class="eyebrow text-ink/50">03</div>
+          <div class="eyebrow text-ox">Revenue</div>
+        </div>
+        <h3 class="font-serif text-[26px] font-light leading-tight">Business &amp; Sales</h3>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Producer's engine room — pipeline to close.</p>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="pill">BizDev</span>
+          <span class="pill">Federal Sales</span>
+          <span class="pill">Negotiation</span>
+          <span class="pill">Account Mgmt.</span>
+          <span class="pill">Pipeline Growth</span>
+          <span class="pill">Client Relations</span>
+          <span class="pill">Strategy</span>
+          <span class="pill">Brand Mgmt.</span>
+          <span class="pill">Events</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTER 04 — WORK ===== -->
+<section id="work" class="relative py-16 md:py-24 overflow-hidden bg-bone-2">
+  <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
+
+    <div class="flex items-end justify-between mb-10 md:mb-14">
+      <div>
+        <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 04 · Portfolio</div>
+        <h2 class="display-h reveal d1">Selected <em>work</em>.</h2>
+      </div>
+      <div class="chapter-num hidden md:block reveal d2">IV</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal">
+        <div class="proj-content">
+          <div class="flex items-start justify-between mb-10">
+            <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 01</div>
+            <div class="eyebrow text-ink/50">Exited</div>
+          </div>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">500K Instagram Brand — Built &amp; Sold.</h3>
+          <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
+            Grew an Instagram brand from zero to 500,000+ followers through systematic content strategy and audience development. Monetized and executed a full acquisition sale — end-to-end entrepreneurial execution from growth to exit.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="ptag">Growth Strategy</span>
+            <span class="ptag">Content Marketing</span>
+            <span class="ptag">Monetization</span>
+            <span class="ptag">Acquisition</span>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
+            <span>View on LinkedIn</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d1">
+        <div class="proj-content">
+          <div class="flex items-start justify-between mb-10">
+            <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 02</div>
+            <div class="eyebrow text-ink/50">Delivered</div>
+          </div>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">USC Campus Security Risk Assessment.</h3>
+          <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
+            Led a comprehensive security risk consultation for the University of South Carolina — applying commercial risk frameworks to assess physical security vulnerabilities, emergency protocols, and institutional liability. Delivered recommendations to stakeholders.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="ptag">Risk Assessment</span>
+            <span class="ptag">Security</span>
+            <span class="ptag">Stakeholder Report</span>
+            <span class="ptag">Emergency Planning</span>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
+            <span>View on LinkedIn</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d2">
+        <div class="proj-content">
+          <div class="flex items-start justify-between mb-10">
+            <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 03</div>
+            <div class="eyebrow text-ink/50">Shipping</div>
+          </div>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Lloyd's of London &middot; E&amp;S Underwriting.</h3>
+          <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
+            Placing complex commercial trucking and logging risks in the Excess &amp; Surplus non-admitted market. Preparing Lloyd's binding authority submissions, interpreting FMCSA &amp; CAB safety records, and running five-year longitudinal loss profiling across multi-state fleets.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="ptag">E&amp;S Market</span>
+            <span class="ptag">Lloyd's London</span>
+            <span class="ptag">FMCSA Analysis</span>
+            <span class="ptag">Loss Profiling</span>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
+            <span>View on LinkedIn</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d3">
+        <div class="proj-content">
+          <div class="flex items-start justify-between mb-10">
+            <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 04</div>
+            <div class="eyebrow text-gold-2">In Development</div>
+          </div>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Loss Control Innovation Hub.</h3>
+          <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
+            Internal loss-control platform to systematize risk-assessment workflows at Swamp Fox. Centralizes inspection data, automates report generation, and surfaces analytics that flag exposure trends before they become claims.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="ptag">InsurTech</span>
+            <span class="ptag">Loss Control</span>
+            <span class="ptag">Workflow Auto.</span>
+            <span class="ptag">Beta</span>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
+            <span>View on LinkedIn</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section id="credentials" class="relative py-10 md:py-16 border-y border-ink/10">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="mb-10 flex items-end justify-between flex-wrap gap-6">
+      <div>
+        <div class="eyebrow text-ink/60 mb-3">Credentials · <span id="certCount">72</span> earned · click any</div>
+        <h2 class="font-serif text-[28px] md:text-[38px] font-light leading-tight">Always <em class="text-ox">learning</em>.</h2>
+        <p class="mt-3 text-ink/60 text-[14px] max-w-[52ch]">Every badge opens the full cert — issuer, date, credential ID, and the specific skills earned.</p>
+      </div>
+      <div class="flex items-end gap-6">
+        <div class="hidden md:flex gap-2 flex-wrap max-w-[420px] justify-end" id="certFilters" role="tablist" aria-label="Filter credentials"></div>
+        <div class="chapter-num hidden md:block">V</div>
+      </div>
+    </div>
+
+    <div class="cert-grid" id="certGrid" role="list"></div>
+  </div>
+</section>
+
+<!-- ===== CERT DETAIL MODAL ===== -->
+<div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" aria-hidden="true">
+  <div class="cert-modal-panel" role="document">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 1L13 13M13 1L1 13"/></svg>
+    </button>
+    <div class="cert-modal-gold-bar"></div>
+    <div class="eyebrow text-ink/55 mb-3" id="certModalOrg">Organization</div>
+    <h3 class="font-serif text-[24px] md:text-[28px] font-light leading-tight mb-3" id="certModalTitle">Certificate title</h3>
+    <div class="flex items-center gap-3 mb-6 text-[12px] font-mono tracking-widest uppercase text-ink/55">
+      <span id="certModalDate">Issued</span>
+      <span class="inline-block w-6 h-px bg-ink/20"></span>
+      <span id="certModalIdLabel" class="hidden"><span class="text-ink/70">ID</span> <span id="certModalId"></span></span>
+    </div>
+    <div class="eyebrow text-ink/55 mb-3">Skills gained</div>
+    <div id="certModalSkills" class="flex flex-wrap"></div>
+    <p id="certModalNote" class="text-[12.5px] text-ink/50 italic mt-5 hidden"></p>
+  </div>
+</div>
+
+<!-- ===== CHAPTER 06 — ARCADE (Snake · Wordle · Tetris) ===== -->
+<!-- ===== LIFE STRIP ===== -->
+<section id="life" class="relative py-14 md:py-20 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="mb-8 md:mb-10 flex items-end justify-between flex-wrap gap-6">
+      <div>
+        <div class="eyebrow text-ink/60 mb-3">Chapter 05a · Off the clock</div>
+        <h2 class="display-h reveal">Life outside <em>the desk</em>.</h2>
+        <p class="mt-3 text-ink/60 text-[14px] max-w-[52ch]">Family, friends, Caps games at Capital One Arena, Sundays at FedExField with Dad, Darla Moore on graduation day.</p>
+      </div>
+      <div class="chapter-num hidden md:block">V·a</div>
+    </div>
+
+    <div class="life-grid reveal d1">
+      <div class="life-tile" data-caption="Darla Moore · Dec 2025"><img src="images/life-grad.jpg" alt="Ben at Darla Moore graduation" loading="lazy" /></div>
+      <div class="life-tile" data-caption="Family"><img src="images/life-family.jpg" alt="Ben with family" loading="lazy" /></div>
+      <div class="life-tile" data-caption="The Capitals · DC"><img src="images/life-caps.jpg" alt="Ben at a Washington Capitals game" loading="lazy" /></div>
+      <div class="life-tile" data-caption="Commanders · with Dad"><img src="images/life-nfl.jpg" alt="Ben with his father at an NFL game" loading="lazy" /></div>
+      <div class="life-tile" data-caption="Friends · Lowcountry"><img src="images/life-friends.jpg" alt="Ben with friends at sunset in South Carolina" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<section id="arcade" class="relative py-14 md:py-20 bg-ink text-bone overflow-hidden scene spotlight-host">
+  <!-- Depth-0: grid background -->
+  <div class="layer depth-0 absolute inset-0 opacity-[0.06] pointer-events-none" data-depth="0" aria-hidden="true" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  <!-- Depth-1: aurora glows -->
+  <div class="layer depth-1 aurora w-[55vw] h-[55vw] -top-[15vw] -right-[15vw]" data-depth="1" aria-hidden="true" style="background:radial-gradient(closest-side, #D4A843, transparent 70%); opacity:.16;"></div>
+  <div class="layer depth-1 aurora w-[45vw] h-[45vw] -bottom-[15vw] -left-[15vw]" data-depth="1" aria-hidden="true" style="background:radial-gradient(closest-side, #8B1A1A, transparent 70%); opacity:.10;"></div>
+
+  <div class="relative z-10 max-w-[1400px] mx-auto px-5 md:px-10">
+
+    <!-- Header -->
+    <div class="flex items-end justify-between mb-10 md:mb-16">
+      <div>
+        <div class="eyebrow text-bone/60 mb-4 reveal">Interlude · Take a break</div>
+        <h2 class="display-h text-bone reveal d1">The <em class="text-gold">arcade</em>.</h2>
+        <p class="mt-4 text-bone/70 max-w-xl text-[14.5px] md:text-[15.5px] reveal d2">Three games. Three disciplines. Beat your scores, then let's talk about how I can help your business.</p>
+      </div>
+      <div class="chapter-num text-bone/10 hidden md:block">VI</div>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="arcade-tabs flex flex-wrap items-center gap-2 md:gap-3 mb-8 reveal d1" role="tablist" aria-label="Select a game">
+      <button class="atab is-active" data-tab="snake" role="tab" aria-selected="true">
+        <span class="atab-num">01</span>
+        <span class="atab-name">Snake</span>
+        <span class="atab-sub hidden sm:inline">Reflex</span>
+      </button>
+      <button class="atab" data-tab="wordle" role="tab" aria-selected="false">
+        <span class="atab-num">02</span>
+        <span class="atab-name">Wordle</span>
+        <span class="atab-sub hidden sm:inline">Logic</span>
+      </button>
+      <button class="atab" data-tab="tetris" role="tab" aria-selected="false">
+        <span class="atab-num">03</span>
+        <span class="atab-name">Tetris</span>
+        <span class="atab-sub hidden sm:inline">Strategy</span>
+      </button>
+    </div>
+
+    <!-- Panel wrapper -->
+    <div id="arcade-play" class="arcade-panel-wrap relative reveal d2">
+
+      <!-- ========== SNAKE PANEL ========== -->
+      <div class="apanel is-active" data-panel="snake" role="tabpanel">
+        <div class="game-card max-w-[560px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Snake</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Score</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="scoreDisp">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Best</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="highDisp">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="snakeCanvas" width="400" height="400" class="w-full aspect-square block rounded-sm bg-[#050505] border border-bone/10"></canvas>
+            <div class="game-over" id="gameOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl md:text-6xl font-light text-bone mb-1"><span id="finalScore">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Points scored</div>
+              <p class="text-bone/70 text-sm max-w-xs mb-6 leading-relaxed">Nice run. Ready to put that competitive drive to work? Let's connect.</p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary" id="gameContact">Connect</a>
+                <button class="game-btn-primary" id="playAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3">
+              <button class="game-btn-primary" id="startBtn">Start game</button>
+              <button class="game-btn-secondary hidden" id="restartBtn">Restart</button>
+            </div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys</p>
+          </div>
+          <div class="touch-grid">
+            <div class="touch-btn touch-empty"></div>
+            <button class="touch-btn" data-dir="up">▲</button>
+            <div class="touch-btn touch-empty"></div>
+            <button class="touch-btn" data-dir="left">◀</button>
+            <button class="touch-btn" data-dir="down">▼</button>
+            <button class="touch-btn" data-dir="right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== WORDLE PANEL ========== -->
+      <div class="apanel hidden" data-panel="wordle" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Wordle</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Attempt</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="wAttempt">1 / 6</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Streak</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="wStreak">0</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="wordleBoard" class="wordle-board mb-5"></div>
+
+          <div id="wordleStatus" class="text-center text-bone/70 text-[13px] min-h-[22px] mb-4 font-mono tracking-wide"></div>
+
+          <div id="wordleKeyboard" class="wordle-kb"></div>
+
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-secondary" id="wNewBtn">New word</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">Type with keyboard or tap keys</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== TETRIS PANEL ========== -->
+      <div class="apanel hidden" data-panel="tetris" role="tabpanel" hidden>
+        <div class="game-card max-w-[640px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Tetris</div>
+            </div>
+            <div class="flex gap-4 md:gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Score</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tScore">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Lines</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tLines">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Level</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tLevel">1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start justify-center">
+            <div class="relative">
+              <canvas id="tetrisCanvas" width="240" height="480" class="block rounded-sm bg-[#050505] border border-bone/10"></canvas>
+              <div class="game-over" id="tGameOver">
+                <div class="eyebrow text-ox mb-2">Game over</div>
+                <div class="font-serif text-5xl font-light text-bone mb-1"><span id="tFinalScore">0</span></div>
+                <div class="eyebrow text-bone/50 mb-5">Final score</div>
+                <div class="flex flex-wrap gap-2 justify-center">
+                  <a href="#contact" class="game-btn-secondary">Connect</a>
+                  <button class="game-btn-primary" id="tPlayAgain">Play again</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+              <div>
+                <div class="eyebrow text-bone/50 mb-2">Next</div>
+                <canvas id="tetrisNext" width="96" height="96" class="block rounded-sm bg-[#050505] border border-bone/10"></canvas>
+              </div>
+              <div class="hidden md:block text-bone/50 text-[11.5px] leading-snug">
+                <div class="eyebrow mb-2 text-bone/40">Controls</div>
+                <div><kbd>←</kbd><kbd>→</kbd> move</div>
+                <div class="mt-1"><kbd>↑</kbd> rotate</div>
+                <div class="mt-1"><kbd>↓</kbd> soft drop</div>
+                <div class="mt-1"><kbd>Space</kbd> hard drop</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3">
+              <button class="game-btn-primary" id="tStartBtn">Start game</button>
+              <button class="game-btn-secondary hidden" id="tRestartBtn">Restart</button>
+            </div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Arrow keys &amp; Space</p>
+          </div>
+
+          <!-- Mobile touch grid for Tetris -->
+          <div class="tetris-touch mt-4 grid grid-cols-5 gap-1.5 md:hidden max-w-[320px] mx-auto">
+            <button class="touch-btn" data-t="left">◀</button>
+            <button class="touch-btn" data-t="rotate">⟲</button>
+            <button class="touch-btn" data-t="down">▼</button>
+            <button class="touch-btn" data-t="drop">⇓</button>
+            <button class="touch-btn" data-t="right">▶</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTER 07 — CONTACT / BOOK ===== -->
+<section id="contact" class="relative py-16 md:py-28 overflow-hidden">
+  <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
+
+    <div class="flex items-end justify-between mb-10 md:mb-14">
+      <div>
+        <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 07 · Contact</div>
+        <h2 class="display-h reveal d1">Let's <em>connect</em>.</h2>
+      </div>
+      <div class="chapter-num hidden md:block reveal d2">VII</div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-8 md:gap-16">
+
+      <!-- Left: Book a call -->
+      <div class="col-span-12 lg:col-span-7 reveal">
+        <div class="border border-ink/15 bg-white/40 p-8 md:p-12">
+          <div class="flex items-start justify-between mb-8">
+            <div>
+              <div class="eyebrow text-ox mb-3">30-min consultation</div>
+              <h3 class="font-serif text-[32px] md:text-[42px] font-light leading-tight">Book a <em class="text-ox">call</em>.</h3>
+            </div>
+            <div class="hidden md:block eyebrow text-ink/40">Free · No obligation</div>
+          </div>
+          <p class="text-[15px] text-ink/75 leading-relaxed max-w-[52ch] mb-8">
+            Commercial risk discussion, technology partnership, or a professional introduction. Pick a time that works for you directly in Google Calendar.
+          </p>
+
+          <ul class="space-y-3 text-[13.5px] text-ink/70 mb-10">
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              30 minutes · Your timezone
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M5 18h8a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg>
+              Video or phone call
+            </li>
+            <li class="flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Ben Sachwitz · Swamp Fox Agency
+            </li>
+          </ul>
+
+          <a href="https://calendar.google.com/calendar/u/0/r/eventedit?add=bensachwitz%40gmail.com&text=Call%20with%20Ben%20Sachwitz&dur=30&details=Looking%20forward%20to%20connecting!" target="_blank" rel="noopener" class="btn-gold w-full justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Schedule via Google Calendar
+          </a>
+          <p class="eyebrow text-ink/40 mt-4 text-center">Opens Google Calendar · No account required</p>
+        </div>
+      </div>
+
+      <!-- Right: Direct + Form -->
+      <div class="col-span-12 lg:col-span-5 reveal d1">
+        <!-- Direct -->
+        <div class="space-y-6 mb-10">
+          <div>
+            <div class="eyebrow text-ink/50 mb-2">Personal</div>
+            <a href="mailto:bensachwitz@outlook.com" class="block font-serif text-[22px] md:text-[24px] font-light link-line">bensachwitz@outlook.com</a>
+            <a href="tel:5713855134" class="block mt-1 text-[14px] text-ink/70 link-line">+1 571-385-5134</a>
+          </div>
+          <div class="rule text-ink"></div>
+          <div>
+            <div class="eyebrow text-ink/50 mb-2">Swamp Fox Agency</div>
+            <a href="mailto:benjamin@swampfoxagency.com" class="block font-serif text-[22px] md:text-[24px] font-light link-line">benjamin@swampfoxagency.com</a>
+            <a href="tel:8434734236" class="block mt-1 text-[14px] text-ink/70 link-line">+1 843-473-4236 (direct)</a>
+          </div>
+          <div class="rule text-ink"></div>
+          <div class="flex items-center gap-5 text-[12px] font-mono uppercase tracking-widest">
+            <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="link-line">LinkedIn</a>
+            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" class="link-line">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="contactForm" class="mt-6">
+          <div class="eyebrow text-ink/50 mb-4">— or send a message</div>
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="flabel" for="fName">Name</label>
+              <input class="finput" id="fName" type="text" required />
+            </div>
+            <div>
+              <label class="flabel" for="fEmail">Email</label>
+              <input class="finput" id="fEmail" type="email" required />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="flabel" for="fSubject">Subject</label>
+            <input class="finput" id="fSubject" type="text" />
+          </div>
+          <div class="mb-6">
+            <label class="flabel" for="fMessage">Message</label>
+            <textarea class="finput" id="fMessage" required></textarea>
+          </div>
+          <button class="btn-ink w-full justify-center" type="submit" id="formSubmit">
+            Send message
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="relative py-14 md:py-20 border-t border-ink/10 bg-bone">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid grid-cols-12 gap-6 items-center">
+    <div class="col-span-12 md:col-span-4 font-serif text-lg">
+      Ben <span class="italic text-ox">Sachwitz</span>
+    </div>
+    <div class="col-span-12 md:col-span-4 text-center eyebrow text-ink/50">
+      <span class="copy-egg" id="copyEgg" tabindex="0">© <span id="copyYear">2026</span><span class="copy-tip">Lloyd's · est. 1688</span></span> Benjamin Sachwitz · McLean → Columbia → London
+    </div>
+    <div class="col-span-12 md:col-span-4 flex md:justify-end gap-5 text-[12px] font-mono uppercase tracking-widest">
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="link-line">LinkedIn</a>
+      <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" class="link-line">GitHub</a>
+      <a href="#contact" class="link-line">Book a call</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING BOOK BUTTON ===== -->
+<div class="book-float" id="bookFloat">
+  <a href="#contact" class="btn-ink shadow-2xl">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book a call
+  </a>
+</div>
+
+<!-- ============================================================
+     INTERACTION LAYER
+============================================================ -->
+<script>
+(function(){
+  'use strict';
+
+  /* === LOADER === */
+  const loader = document.getElementById('loader');
+  document.body.style.overflow = 'hidden';
+  function hideLoader() {
+    loader.classList.add('hide');
+    document.body.style.overflow = '';
+    setTimeout(() => { loader.style.display = 'none'; }, 700);
+  }
+  if (document.readyState === 'complete') setTimeout(hideLoader, 650);
+  else window.addEventListener('load', () => setTimeout(hideLoader, 650));
+
+  /* === NAV SCROLL === */
+  const nav = document.getElementById('nav');
+  const scrollProg = document.getElementById('scrollProg');
+  const bookFloat = document.getElementById('bookFloat');
+  const heroEl = document.getElementById('top');
+
+  function onScroll(){
+    const y = window.scrollY;
+    if (y > 40) { nav.classList.remove('nav-hero'); nav.classList.add('nav-scrolled'); }
+    else { nav.classList.add('nav-hero'); nav.classList.remove('nav-scrolled'); }
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProg.style.width = docH > 0 ? (y / docH * 100) + '%' : '0%';
+    const heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+    bookFloat.classList.toggle('show', y > heroH * 0.7);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* === MOBILE MENU === */
+  const hb = document.getElementById('hb');
+  const mmenu = document.getElementById('mmenu');
+  hb.addEventListener('click', () => {
+    hb.classList.toggle('open');
+    mmenu.classList.toggle('open');
+  });
+  mmenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hb.classList.remove('open');
+      mmenu.classList.remove('open');
+    });
+  });
+
+  /* === SMOOTH SCROLL === */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      const id = this.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      const t = document.querySelector(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    });
+  });
+
+  /* === SCROLL REVEAL === */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (!el.classList.contains('in')) io.observe(el);
+  });
+
+  /* === ANIMATED COUNTERS === */
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.count, 10);
+      if (!target || el.dataset.counted) return;
+      el.dataset.counted = 'true';
+      let cur = 0;
+      const step = Math.max(1, Math.floor(target / 60));
+      const iv = setInterval(() => {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(iv); }
+        el.textContent = cur;
+      }, 22);
+      cio.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  /* === CERTS MARQUEE === */
+  const CERTS = [
+    {n:'Introduction to Agent Skills', o:'Anthropic', d:'Apr 2026', id:'c2oy32kfnk4b', s:['Claude Agent SDK','AI Agents','Skill Architecture']},
+    {n:'Claude Code 101', o:'Anthropic', d:'Apr 2026', id:'k6fmw9h533iy', s:['Claude Code','AI-Assisted Development','CLI Workflows']},
+    {n:'Claude Code in Action', o:'Anthropic', d:'Apr 2026', id:'e846okxivds6', s:['Claude Code','Applied AI','Prompt Engineering']},
+    {n:'Introduction to Claude Cowork', o:'Anthropic', d:'Apr 2026', id:'c2qz8ie6swbd', s:['Claude Cowork','AI Collaboration']},
+    {n:'Claude 101', o:'Anthropic', d:'Apr 2026', id:'yk4rmrw6ko53', s:['Claude','LLM Fundamentals','Prompt Design']},
+    {n:'Qlik Certified Partner Sales — Data & Analytics', o:'Qlik', d:'May 2025', s:['Data & Analytics','Partner Sales','Qlik Platform']},
+    {n:'Qlik Learning — Ready, Set, Go!', o:'Qlik', d:'May 2025', s:['Qlik','Analytics Onboarding']},
+    {n:'Google AI Essentials', o:'Coursera · Google', d:'Apr 2025', s:['Generative AI','AI Productivity','Responsible AI']},
+    {n:'Digital Literacy', o:'IBM', d:'Jan 2025', s:['Digital Skills','Workplace Tech']},
+    {n:'Working in a Digital World: Professional Skills', o:'IBM', d:'Jan 2025', s:['Professional Skills','Digital Workplace']},
+    {n:'Getting Started with Artificial Intelligence', o:'IBM', d:'Jan 2025', s:['Artificial Intelligence (AI)']},
+    {n:'Build Your Generative AI Productivity Skills', o:'Microsoft & LinkedIn', d:'Jan 2025', s:['Prompt Engineering','Productivity Improvement','Generative AI']},
+    {n:'Excel with Copilot: AI-Driven Data Analysis', o:'LinkedIn Learning', d:'Jan 2025', s:['Microsoft Excel','Microsoft Copilot','Data Analysis']},
+    {n:'Introduction to Prompt Engineering for Generative AI', o:'LinkedIn Learning', d:'Jan 2025', s:['Prompt Engineering','AI Prompting']},
+    {n:'Generative AI Skills for Creative Content', o:'LinkedIn Learning', d:'Jan 2025', s:['AI for Design','Media Ethics','Creative AI']},
+    {n:'Copilot in PowerPoint: From Prompt to Presentation', o:'LinkedIn Learning', d:'Jan 2025', s:['Microsoft Copilot','AI for Business','Presentations']},
+    {n:'AI Productivity Hacks', o:'LinkedIn Learning', d:'Jan 2025', s:['AI Productivity']},
+    {n:'Handling Workplace Change as an Employee', o:'LinkedIn Learning', d:'Oct 2024', s:['Change Readiness']},
+    {n:'How to Be a Better Boss', o:'LinkedIn Learning', d:'Oct 2024', s:['Team Management','Team Leadership']},
+    {n:'Business Analytics Foundations', o:'LinkedIn Learning', d:'Oct 2024', s:['Business Analytics']},
+    {n:'Business Analytics: Sales Data', o:'LinkedIn Learning', d:'Oct 2024', s:['Sales Analysis','Business Analytics']},
+    {n:'Influence Skills for Leaders and Managers', o:'LinkedIn Learning', d:'Oct 2024', s:['Influencing Others','Leadership']},
+    {n:'Train Your Brain to Unwind Stress & Anxiety', o:'LinkedIn Learning', d:'Oct 2024', s:['Anxiety Management']},
+    {n:'Working with Difficult People', o:'LinkedIn Learning', d:'Oct 2024', s:['Emotional Intelligence','Difficult Situations']},
+    {n:'Mental Health Awareness for Cybersecurity Professionals', o:'LinkedIn Learning', d:'Oct 2024', s:['Mental Health','Cybersecurity']},
+    {n:'Managing Your Emotional Response to Workplace Stress', o:'LinkedIn Learning', d:'Oct 2024', s:['Stress Management']},
+    {n:'Building Resilience', o:'LinkedIn Learning', d:'Oct 2024', s:['Grit','Resiliency']},
+    {n:'Strategies for Being Happy at Work', o:'LinkedIn Learning', d:'Oct 2024', s:['Emotional Intelligence','Positive Psychology']},
+    {n:'Collaborate to Build Psychological Safety', o:'LinkedIn Learning', d:'Oct 2024', s:['Emotional Intelligence','Team Collaboration']},
+    {n:'Tips to Build a Positive Mindset', o:'LinkedIn Learning', d:'Oct 2024', s:['Attitude Change','Positive Psychology']},
+    {n:'Negotiation Professional Certificate', o:'American Negotiation Institute', d:'Sep 2024', s:['Professional Communication','Negotiation']},
+    {n:'Career Essentials in Generative AI', o:'Microsoft & LinkedIn', d:'Sep 2024', s:['Computer Ethics','Generative AI']},
+    {n:'Career Essentials in Data Analysis', o:'Microsoft & LinkedIn', d:'Sep 2024', s:['Data Visualization','Data Analysis']},
+    {n:'Administrative Professional Tips', o:'LinkedIn Learning', d:'Sep 2024', s:['Administrative Assistance']},
+    {n:'Driving Measurable, Sustainable Change', o:'LinkedIn Learning', d:'Sep 2024', s:['Sustainable Business Strategies']},
+    {n:'How to Manage Lean Six Sigma Projects: Part II', o:'LinkedIn Learning', d:'Sep 2024', s:['Lean Six Sigma','Lean Projects']},
+    {n:'Invest in You: Personal & Professional Development', o:'LinkedIn Learning', d:'Sep 2024', s:['Personal Development','Professional Development']},
+    {n:'Service Excellence: Exceed Expectations', o:'LinkedIn Learning', d:'Sep 2024', s:['Customer Service','Service Quality']},
+    {n:'Introduction to Career Skills in Data Analytics', o:'LinkedIn Learning', d:'Sep 2024', s:['Data Analytics','Tech Career Skills']},
+    {n:'Learning Data Analytics 1: Foundations', o:'LinkedIn Learning', d:'Sep 2024', s:['Data Analytics']},
+    {n:'Learning Data Analytics 2: Extending & Applying', o:'LinkedIn Learning', d:'Sep 2024', s:['Data Analytics']},
+    {n:"When Negotiation's About More Than Money", o:'LinkedIn Learning', d:'Sep 2024', s:['Negotiation']},
+    {n:'Introduction to Artificial Intelligence', o:'LinkedIn Learning', d:'Sep 2024', s:['AI for Business','Artificial Intelligence (AI)']},
+    {n:'Excel for Financial Planning & Analysis (FP&A)', o:'LinkedIn Learning', d:'Sep 2024', s:['Microsoft Excel','Financial Analysis','FP&A']},
+    {n:'How to Prepare for Your Negotiations', o:'LinkedIn Learning', d:'Sep 2024', s:['Negotiation']},
+    {n:'How to Be Both Assertive and Likable', o:'LinkedIn Learning', d:'Sep 2024', s:['Interpersonal Skills']},
+    {n:'Negotiating with Agility', o:'LinkedIn Learning', d:'Sep 2024', s:['Negotiation']},
+    {n:'Negotiation Foundations', o:'LinkedIn Learning', d:'Sep 2024', s:['Negotiation']},
+    {n:'Discovery-Driven Leadership with Rita McGrath', o:'LinkedIn Learning', d:'Sep 2024', s:['Collaborative Leadership']},
+    {n:'Program Management for IT Professionals', o:'LinkedIn Learning', d:'Sep 2024', s:['IT Project & Program Management']},
+    {n:'Introduction to IT Architecture', o:'LinkedIn Learning', d:'Sep 2024', s:['IT Architectures']},
+    {n:'Creating Your IT Strategy', o:'LinkedIn Learning', d:'Sep 2024', s:['IT Strategic Planning']},
+    {n:'Succeeding as a First-Time Tech Manager', o:'LinkedIn Learning', d:'Sep 2024', s:['Technical Leadership','Tech Career Skills']},
+    {n:'What Is Generative AI?', o:'LinkedIn Learning', d:'Sep 2024', s:['Generative AI Tools','Artificial Intelligence (AI)']},
+    {n:'Generative AI: Evolution of Thoughtful Online Search', o:'LinkedIn Learning', d:'Sep 2024', s:['Search Engine Technology','AI for Business']},
+    {n:'Streamlining Your Work with Microsoft Copilot', o:'LinkedIn Learning', d:'Sep 2024', s:['Productivity Improvement']},
+    {n:'Ethics in the Age of Generative AI', o:'LinkedIn Learning', d:'Sep 2024', s:['Computer Ethics','Responsible AI']},
+    {n:'Cert Prep: Salesforce Certified Administrator', o:'LinkedIn Learning', d:'Sep 2024', s:['Salesforce.com']},
+    {n:'Learning Microsoft 365 Copilot', o:'LinkedIn Learning', d:'Sep 2024', s:['Microsoft Copilot','Microsoft 365']},
+    {n:'Strategic Negotiation', o:'LinkedIn Learning', d:'Sep 2024', s:['Strategic Negotiations']},
+    {n:'Introduction to IT Asset Management (ITAM)', o:'LinkedIn Learning', d:'Sep 2024', s:['IT Asset Management']},
+    {n:'Becoming an Agile Coach', o:'LinkedIn Learning', d:'Sep 2024', s:['Agile Coaching']},
+    {n:'Winning Over Execs: AI-Boosted Sales Presentations', o:'LinkedIn Learning', d:'Sep 2024', s:['Sales Presentations','AI for Business']},
+    {n:'Sales Strategies in a New World of Selling', o:'LinkedIn Learning', d:'Sep 2024', s:['Sales Strategy']},
+    {n:'Sales Fundamentals', o:'LinkedIn Learning', d:'Sep 2024', s:['Sales Effectiveness']},
+    {n:'AI Foundations: Machine Learning', o:'LinkedIn Learning', d:'Sep 2024', s:['Machine Learning']},
+    {n:'Marketing Tools: Digital Marketing Tools & Services', o:'LinkedIn Learning', d:'Sep 2024', s:['Digital Marketing']},
+    {n:'Developing Adaptability as a Manager', o:'LinkedIn Learning', d:'Sep 2024', s:['Management']},
+    {n:'Teamwork Essentials: Stand Out as a Valuable Team Member', o:'LinkedIn Learning', d:'Sep 2024', s:['Teamwork','Personal Branding']},
+    {n:'Business Etiquette: Phone, Email, and Text', o:'LinkedIn Learning', d:'Sep 2024', s:['Professional Communication','Phone Etiquette']},
+    {n:'LiveAction Partner Sales Certification', o:'LiveAction (acq. BlueCat)', d:'Jul 2024', s:['Customer Service','Communication','Partner Sales']},
+    {n:'Sales Certified — LiveAction', o:'LiveAction', d:'2024', s:['Partner Sales Training','Network Performance']},
+  ];
+  const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const groupFor = (o) => {
+    const s = o.toLowerCase();
+    if (s.includes('anthropic')) return 'Anthropic';
+    if (s.includes('linkedin')) return 'LinkedIn';
+    if (s.includes('microsoft')) return 'Microsoft';
+    if (s.includes('ibm')) return 'IBM';
+    if (s.includes('qlik')) return 'Qlik';
+    if (s.includes('google') || s.includes('coursera')) return 'Google';
+    return 'Other';
+  };
+  CERTS.forEach(c => { c.group = groupFor(c.o); });
+
+  const chipHtml = (c, i) => `
+    <button class="cert-chip" data-cert="${i}" data-group="${c.group}" type="button" role="listitem" aria-label="View details for ${esc(c.n)}">
+      <span class="dot"></span>
+      <div class="cbody">
+        <span class="cname">${esc(c.n)}</span>
+        <span class="cmeta">${esc(c.o)} · ${esc(c.d)}</span>
+      </div>
+      <svg class="chev" width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+    </button>`;
+
+  const grid = document.getElementById('certGrid');
+  if (grid) grid.innerHTML = CERTS.map((c, i) => chipHtml(c, i)).join('');
+
+  const countEl = document.getElementById('certCount');
+  if (countEl) countEl.textContent = CERTS.length;
+
+  // Filter pills
+  const groups = ['All','Anthropic','LinkedIn','Microsoft','Google','Qlik','IBM','Other'];
+  const counts = groups.reduce((acc, g) => {
+    acc[g] = g === 'All' ? CERTS.length : CERTS.filter(c => c.group === g).length;
+    return acc;
+  }, {});
+  const filterWrap = document.getElementById('certFilters');
+  if (filterWrap) {
+    filterWrap.innerHTML = groups
+      .filter(g => counts[g] > 0)
+      .map(g => `<button class="cert-filter${g==='All'?' is-active':''}" data-group="${g}" type="button" role="tab" aria-selected="${g==='All'}">${g} <span class="cf-count">${counts[g]}</span></button>`)
+      .join('');
+    filterWrap.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cert-filter');
+      if (!btn) return;
+      filterWrap.querySelectorAll('.cert-filter').forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected','false'); });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected','true');
+      const g = btn.dataset.group;
+      grid.querySelectorAll('.cert-chip').forEach(ch => {
+        ch.dataset.hidden = (g === 'All' || ch.dataset.group === g) ? '0' : '1';
+      });
+    });
+  }
+
+  /* === CERT MODAL === */
+  const certModal = document.getElementById('certModal');
+  const certModalClose = document.getElementById('certModalClose');
+  const certModalTitle = document.getElementById('certModalTitle');
+  const certModalOrg = document.getElementById('certModalOrg');
+  const certModalDate = document.getElementById('certModalDate');
+  const certModalIdLabel = document.getElementById('certModalIdLabel');
+  const certModalIdEl = document.getElementById('certModalId');
+  const certModalSkills = document.getElementById('certModalSkills');
+  const certModalNote = document.getElementById('certModalNote');
+
+  const openCert = (idx) => {
+    const c = CERTS[idx];
+    if (!c) return;
+    certModalTitle.textContent = c.n;
+    certModalOrg.textContent = c.o;
+    certModalDate.textContent = 'Issued ' + c.d;
+    if (c.id) {
+      certModalIdLabel.classList.remove('hidden');
+      certModalIdEl.textContent = c.id;
+    } else {
+      certModalIdLabel.classList.add('hidden');
+    }
+    certModalSkills.innerHTML = (c.s && c.s.length)
+      ? c.s.map(s => `<span class="cert-skill">${s}</span>`).join('')
+      : '<span class="text-ink/50 text-[12.5px] italic">No specific skills tagged.</span>';
+    certModalNote.classList.add('hidden');
+    certModal.classList.add('is-open');
+    certModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeCert = () => {
+    certModal.classList.remove('is-open');
+    certModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+  document.addEventListener('click', (e) => {
+    const chip = e.target.closest('.cert-chip');
+    if (chip) { e.preventDefault(); openCert(parseInt(chip.dataset.cert, 10)); }
+  });
+  certModalClose?.addEventListener('click', closeCert);
+  certModal?.addEventListener('click', (e) => { if (e.target === certModal) closeCert(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && certModal.classList.contains('is-open')) closeCert(); });
+
+  /* === SNAKE GAME === */
+  const canvas = document.getElementById('snakeCanvas');
+  const ctx = canvas.getContext('2d');
+  const scoreDisp = document.getElementById('scoreDisp');
+  const highDisp = document.getElementById('highDisp');
+  const startBtn = document.getElementById('startBtn');
+  const restartBtn = document.getElementById('restartBtn');
+  const gameOver = document.getElementById('gameOver');
+  const finalScore = document.getElementById('finalScore');
+  const playAgain = document.getElementById('playAgain');
+  const gameContact = document.getElementById('gameContact');
+
+  const GRID = 20;
+  const COLS = canvas.width / GRID;
+  const ROWS = canvas.height / GRID;
+
+  let snake = [], food = {}, dx = 1, dy = 0, nextDx = 1, nextDy = 0;
+  let score = 0, speed = 120, loop = null, running = false;
+  let high = parseInt(localStorage.getItem('snakeHigh') || '0', 10);
+  highDisp.textContent = high;
+
+  const GOLD = '#D4A843', GOLD_DEEP = '#B88A2F';
+  const SNAKE_HEAD = '#F5F2EC', SNAKE_BODY = 'rgba(245,242,236,';
+
+  function drawBoard(){
+    ctx.fillStyle = '#050505';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'rgba(212,168,67,0.05)';
+    ctx.lineWidth = 0.5;
+    for (let x = 0; x <= canvas.width; x += GRID) {
+      ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,canvas.height); ctx.stroke();
+    }
+    for (let y = 0; y <= canvas.height; y += GRID) {
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke();
+    }
+  }
+  function drawSnake(){
+    snake.forEach((s, i) => {
+      const isHead = i === 0;
+      const prog = 1 - (i / snake.length);
+      const r = isHead ? GRID * 0.45 : GRID * 0.4;
+      const px = s.x * GRID + (GRID - r*2)/2;
+      const py = s.y * GRID + (GRID - r*2)/2;
+      ctx.save();
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(px, py, r*2, r*2, isHead ? 6 : 4);
+      else ctx.rect(px, py, r*2, r*2);
+      if (isHead) {
+        ctx.fillStyle = SNAKE_HEAD;
+        ctx.shadowColor = 'rgba(245,242,236,0.5)';
+        ctx.shadowBlur = 10;
+      } else {
+        ctx.fillStyle = SNAKE_BODY + (0.35 + prog * 0.5) + ')';
+      }
+      ctx.fill();
+      ctx.restore();
+    });
+  }
+  function drawFood(){
+    const cx = food.x * GRID + GRID/2;
+    const cy = food.y * GRID + GRID/2;
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, cy, GRID*0.55, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(212,168,67,0.15)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, GRID*0.3, 0, Math.PI*2);
+    ctx.fillStyle = GOLD;
+    ctx.shadowColor = 'rgba(212,168,67,0.6)';
+    ctx.shadowBlur = 12;
+    ctx.fill();
+    ctx.restore();
+  }
+  function spawnFood(){
+    let p;
+    do {
+      p = { x: Math.floor(Math.random()*COLS), y: Math.floor(Math.random()*ROWS) };
+    } while (snake.some(s => s.x===p.x && s.y===p.y));
+    food = p;
+  }
+  function reset(){
+    const mx = Math.floor(COLS/2), my = Math.floor(ROWS/2);
+    snake = [{x:mx,y:my},{x:mx-1,y:my},{x:mx-2,y:my}];
+    dx=1; dy=0; nextDx=1; nextDy=0;
+    score=0; speed=120;
+    scoreDisp.textContent = '0';
+    gameOver.classList.remove('show');
+    spawnFood();
+  }
+  function step(){
+    dx = nextDx; dy = nextDy;
+    const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+    if (head.x<0 || head.x>=COLS || head.y<0 || head.y>=ROWS) return over();
+    if (snake.some(s => s.x===head.x && s.y===head.y)) return over();
+    snake.unshift(head);
+    if (head.x===food.x && head.y===food.y) {
+      score++;
+      scoreDisp.textContent = score;
+      if (score > high) {
+        high = score; highDisp.textContent = high;
+        localStorage.setItem('snakeHigh', high);
+      }
+      spawnFood();
+      if (speed > 60) speed -= 2;
+      clearInterval(loop);
+      loop = setInterval(step, speed);
+    } else snake.pop();
+    drawBoard(); drawFood(); drawSnake();
+  }
+  function over(){
+    running = false;
+    clearInterval(loop);
+    finalScore.textContent = score;
+    gameOver.classList.add('show');
+    startBtn.classList.add('hidden');
+    restartBtn.classList.remove('hidden');
+  }
+  function start(){
+    reset();
+    running = true;
+    drawBoard(); drawFood(); drawSnake();
+    loop = setInterval(step, speed);
+    startBtn.classList.add('hidden');
+    restartBtn.classList.remove('hidden');
+  }
+
+  // Initial state
+  drawBoard();
+  ctx.fillStyle = 'rgba(212,168,67,0.4)';
+  ctx.font = '500 14px "JetBrains Mono", monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('PRESS START TO PLAY', canvas.width/2, canvas.height/2);
+
+  startBtn.addEventListener('click', start);
+  restartBtn.addEventListener('click', start);
+  playAgain.addEventListener('click', start);
+  gameContact.addEventListener('click', () => gameOver.classList.remove('show'));
+
+  document.addEventListener('keydown', (e) => {
+    if (!running) return;
+    switch (e.key) {
+      case 'ArrowUp': case 'w': case 'W': if (dy!==1){nextDx=0;nextDy=-1;} e.preventDefault(); break;
+      case 'ArrowDown': case 's': case 'S': if (dy!==-1){nextDx=0;nextDy=1;} e.preventDefault(); break;
+      case 'ArrowLeft': case 'a': case 'A': if (dx!==1){nextDx=-1;nextDy=0;} e.preventDefault(); break;
+      case 'ArrowRight': case 'd': case 'D': if (dx!==-1){nextDx=1;nextDy=0;} e.preventDefault(); break;
+    }
+  });
+
+  document.querySelectorAll('.touch-btn[data-dir]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!running) return;
+      const d = btn.dataset.dir;
+      if (d==='up' && dy!==1) { nextDx=0; nextDy=-1; }
+      if (d==='down' && dy!==-1) { nextDx=0; nextDy=1; }
+      if (d==='left' && dx!==1) { nextDx=-1; nextDy=0; }
+      if (d==='right' && dx!==-1) { nextDx=1; nextDy=0; }
+    });
+  });
+
+  let tsx=0, tsy=0;
+  canvas.addEventListener('touchstart', (e) => { tsx=e.touches[0].clientX; tsy=e.touches[0].clientY; }, {passive:true});
+  canvas.addEventListener('touchend', (e) => {
+    if (!running) return;
+    const dX = e.changedTouches[0].clientX - tsx;
+    const dY = e.changedTouches[0].clientY - tsy;
+    if (Math.abs(dX) > Math.abs(dY)) {
+      if (dX > 20 && dx!==-1) { nextDx=1; nextDy=0; }
+      else if (dX < -20 && dx!==1) { nextDx=-1; nextDy=0; }
+    } else {
+      if (dY > 20 && dy!==-1) { nextDx=0; nextDy=1; }
+      else if (dY < -20 && dy!==1) { nextDx=0; nextDy=-1; }
+    }
+  }, {passive:true});
+
+  /* === ARCADE TABS === */
+  const tabs = document.querySelectorAll('.atab');
+  const panels = document.querySelectorAll('.apanel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const name = tab.dataset.tab;
+      tabs.forEach(t => {
+        const on = t.dataset.tab === name;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      panels.forEach(p => {
+        const on = p.dataset.panel === name;
+        p.classList.toggle('is-active', on);
+        p.classList.toggle('hidden', !on);
+        if (on) p.removeAttribute('hidden'); else p.setAttribute('hidden', '');
+        if (on) {
+          // Re-trigger animation
+          p.style.animation = 'none';
+          void p.offsetWidth;
+          p.style.animation = '';
+          if (name === 'wordle' && window.__wordle && !window.__wordle.ready) window.__wordle.init();
+          if (name === 'tetris' && window.__tetris && !window.__tetris.ready) window.__tetris.init();
+        }
+      });
+    });
+  });
+
+  /* === WORDLE === */
+  const WORDS = [
+    'AGENT','BLAZE','CLAIM','COVER','CRANE','DRIVE','FORCE','FRAUD','GRACE','HEDGE',
+    'HOUSE','INDEX','LATER','LLOYD','NOBLE','OCEAN','PILOT','PRIZE','QUOTE','ROUTE',
+    'SMART','SOUTH','STONE','TRUST','UNITY','WORLD','AMBER','BONDS','FLEET','LOGIC',
+    'MERGE','BROKE','NORTH','SWAMP','RADAR','EARTH','BRAVE','CHARM','DEPTH','FRONT',
+    'GLOBE','HEART','MONEY','LEGAL','MODEL','POINT','RAPID','SHORE','TIGER','VAULT'
+  ].filter(w => w.length === 5);
+
+  const wBoard = document.getElementById('wordleBoard');
+  const wKb = document.getElementById('wordleKeyboard');
+  const wStatus = document.getElementById('wordleStatus');
+  const wAttempt = document.getElementById('wAttempt');
+  const wStreak = document.getElementById('wStreak');
+  const wNewBtn = document.getElementById('wNewBtn');
+
+  let wAnswer = '', wCurRow = 0, wCurCol = 0, wDone = false, wGrid = [], wStreakNum = parseInt(localStorage.getItem('wordleStreak') || '0', 10);
+
+  const wordle = {
+    ready: false,
+    init() {
+      this.ready = true;
+      buildBoard(); buildKeyboard(); resetGame();
+    }
+  };
+  window.__wordle = wordle;
+
+  function buildBoard() {
+    wBoard.innerHTML = '';
+    for (let r = 0; r < 6; r++) {
+      const row = document.createElement('div');
+      row.className = 'wordle-row';
+      row.dataset.row = r;
+      for (let c = 0; c < 5; c++) {
+        const t = document.createElement('div');
+        t.className = 'wordle-tile';
+        t.dataset.row = r; t.dataset.col = c;
+        row.appendChild(t);
+      }
+      wBoard.appendChild(row);
+    }
+  }
+  function buildKeyboard() {
+    const rows = ['QWERTYUIOP', 'ASDFGHJKL', '⏎ZXCVBNM⌫'];
+    wKb.innerHTML = '';
+    rows.forEach(r => {
+      const rowEl = document.createElement('div');
+      rowEl.className = 'wordle-kb-row';
+      [...r].forEach(ch => {
+        const btn = document.createElement('button');
+        btn.className = 'wkey';
+        if (ch === '⏎') { btn.classList.add('wide'); btn.textContent = 'Enter'; btn.dataset.key = 'ENTER'; }
+        else if (ch === '⌫') { btn.classList.add('wide'); btn.textContent = 'Del'; btn.dataset.key = 'BACKSPACE'; }
+        else { btn.textContent = ch; btn.dataset.key = ch; }
+        btn.addEventListener('click', () => handleWKey(btn.dataset.key));
+        rowEl.appendChild(btn);
+      });
+      wKb.appendChild(rowEl);
+    });
+  }
+  function resetGame() {
+    wAnswer = WORDS[Math.floor(Math.random() * WORDS.length)];
+    wCurRow = 0; wCurCol = 0; wDone = false;
+    wGrid = Array.from({length: 6}, () => ['','','','','']);
+    wBoard.querySelectorAll('.wordle-tile').forEach(t => {
+      t.textContent = ''; t.className = 'wordle-tile';
+    });
+    wKb.querySelectorAll('.wkey').forEach(k => k.className = k.classList.contains('wide') ? 'wkey wide' : 'wkey');
+    wAttempt.textContent = '1 / 6';
+    wStreak.textContent = wStreakNum;
+    wStatus.textContent = '';
+  }
+  function handleWKey(k) {
+    if (wDone) return;
+    if (k === 'ENTER') return submitGuess();
+    if (k === 'BACKSPACE') {
+      if (wCurCol > 0) { wCurCol--; wGrid[wCurRow][wCurCol] = ''; updateTile(wCurRow, wCurCol); }
+      return;
+    }
+    if (/^[A-Z]$/.test(k) && wCurCol < 5) {
+      wGrid[wCurRow][wCurCol] = k;
+      updateTile(wCurRow, wCurCol);
+      wCurCol++;
+    }
+  }
+  function updateTile(r, c) {
+    const t = wBoard.querySelector(`[data-row="${r}"][data-col="${c}"]`);
+    if (!t) return;
+    t.textContent = wGrid[r][c];
+    t.classList.toggle('filled', !!wGrid[r][c]);
+  }
+  function submitGuess() {
+    if (wCurCol !== 5) { flashRow('Not enough letters'); return; }
+    const guess = wGrid[wCurRow].join('');
+    // Score tiles
+    const result = Array(5).fill('absent');
+    const answerArr = wAnswer.split('');
+    const used = Array(5).fill(false);
+    // Pass 1: correct
+    for (let i = 0; i < 5; i++) {
+      if (guess[i] === answerArr[i]) { result[i] = 'correct'; used[i] = true; }
+    }
+    // Pass 2: present
+    for (let i = 0; i < 5; i++) {
+      if (result[i] === 'correct') continue;
+      for (let j = 0; j < 5; j++) {
+        if (!used[j] && guess[i] === answerArr[j]) { result[i] = 'present'; used[j] = true; break; }
+      }
+    }
+    // Apply with staggered flip
+    for (let i = 0; i < 5; i++) {
+      const t = wBoard.querySelector(`[data-row="${wCurRow}"][data-col="${i}"]`);
+      setTimeout(() => { t.classList.add(result[i]); }, i * 120);
+      // Update key state (best state wins)
+      const key = wKb.querySelector(`.wkey[data-key="${guess[i]}"]`);
+      if (key) {
+        if (result[i] === 'correct') { key.classList.remove('present','absent'); key.classList.add('correct'); }
+        else if (result[i] === 'present' && !key.classList.contains('correct')) { key.classList.remove('absent'); key.classList.add('present'); }
+        else if (result[i] === 'absent' && !key.classList.contains('correct') && !key.classList.contains('present')) { key.classList.add('absent'); }
+      }
+    }
+    // Check win/lose
+    setTimeout(() => {
+      if (guess === wAnswer) {
+        wDone = true;
+        wStreakNum++;
+        localStorage.setItem('wordleStreak', wStreakNum);
+        wStreak.textContent = wStreakNum;
+        const msgs = ['Genius', 'Masterful', 'Brilliant', 'Sharp', 'Clutch', 'Whew'];
+        wStatus.innerHTML = `<span class="text-gold">${msgs[Math.min(wCurRow, msgs.length-1)]}.</span> The word was <strong>${wAnswer}</strong>.`;
+      } else {
+        wCurRow++; wCurCol = 0;
+        wAttempt.textContent = `${wCurRow + 1} / 6`;
+        if (wCurRow >= 6) {
+          wDone = true;
+          wStreakNum = 0;
+          localStorage.setItem('wordleStreak', 0);
+          wStreak.textContent = 0;
+          wStatus.innerHTML = `<span class="text-ox">Out of attempts.</span> The word was <strong>${wAnswer}</strong>.`;
+        }
+      }
+    }, 700);
+  }
+  function flashRow(msg) {
+    wStatus.textContent = msg;
+    const row = wBoard.querySelector(`[data-row="${wCurRow}"]`);
+    if (row) {
+      row.classList.add('invalid');
+      setTimeout(() => row.classList.remove('invalid'), 550);
+    }
+    setTimeout(() => { if (wStatus.textContent === msg) wStatus.textContent = ''; }, 1800);
+  }
+
+  // Keyboard input for Wordle (when tab is active)
+  document.addEventListener('keydown', (e) => {
+    const wordleTab = document.querySelector('.apanel[data-panel="wordle"]');
+    if (!wordleTab || wordleTab.classList.contains('hidden')) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === 'Enter') { e.preventDefault(); handleWKey('ENTER'); }
+    else if (e.key === 'Backspace') { e.preventDefault(); handleWKey('BACKSPACE'); }
+    else if (/^[a-zA-Z]$/.test(e.key)) { handleWKey(e.key.toUpperCase()); }
+  });
+
+  if (wNewBtn) wNewBtn.addEventListener('click', resetGame);
+
+  // Init wordle lazily — only build when first shown
+  // (board built once on first tab activation)
+
+  /* === TETRIS === */
+  const tCanvas = document.getElementById('tetrisCanvas');
+  const tCtx = tCanvas.getContext('2d');
+  const tNextCanvas = document.getElementById('tetrisNext');
+  const tNCtx = tNextCanvas.getContext('2d');
+  const tScoreEl = document.getElementById('tScore');
+  const tLinesEl = document.getElementById('tLines');
+  const tLevelEl = document.getElementById('tLevel');
+  const tStartBtn = document.getElementById('tStartBtn');
+  const tRestartBtn = document.getElementById('tRestartBtn');
+  const tGameOverEl = document.getElementById('tGameOver');
+  const tFinalScoreEl = document.getElementById('tFinalScore');
+  const tPlayAgain = document.getElementById('tPlayAgain');
+
+  const T_COLS = 10, T_ROWS = 20, T_CELL = 24;
+  // Colors tuned to palette
+  const T_COLORS = {
+    I: '#D4A843', // gold
+    O: '#E8C77D', // light gold
+    T: '#8B1A1A', // oxblood
+    S: '#6B9B6B', // muted green
+    Z: '#A83232', // red accent
+    J: '#3A5EAF', // deep blue
+    L: '#B88A2F'  // amber
+  };
+  const T_SHAPES = {
+    I: [[1,1,1,1]],
+    O: [[1,1],[1,1]],
+    T: [[0,1,0],[1,1,1]],
+    S: [[0,1,1],[1,1,0]],
+    Z: [[1,1,0],[0,1,1]],
+    J: [[1,0,0],[1,1,1]],
+    L: [[0,0,1],[1,1,1]]
+  };
+  const T_KEYS = Object.keys(T_SHAPES);
+
+  let tBoard = [], tPiece = null, tNext = null, tScore = 0, tLines = 0, tLevel = 1;
+  let tDropTimer = null, tDropInterval = 800, tRunning = false, tReady = false;
+
+  const tetris = {
+    ready: false,
+    init() {
+      if (this.ready) return;
+      this.ready = true;
+      tBoard = tNewBoard();
+      drawTBoard();
+      tCtx.fillStyle = 'rgba(212,168,67,0.5)';
+      tCtx.font = '600 11px "JetBrains Mono", monospace';
+      tCtx.textAlign = 'center';
+      tCtx.fillText('PRESS START TO PLAY', tCanvas.width/2, tCanvas.height/2);
+    }
+  };
+  window.__tetris = tetris;
+
+  function tNewBoard() { return Array.from({length: T_ROWS}, () => Array(T_COLS).fill(0)); }
+  function tSpawn() {
+    const key = tNext || T_KEYS[Math.floor(Math.random() * T_KEYS.length)];
+    tNext = T_KEYS[Math.floor(Math.random() * T_KEYS.length)];
+    const shape = T_SHAPES[key].map(r => r.slice());
+    const piece = { key, shape, x: Math.floor((T_COLS - shape[0].length) / 2), y: 0 };
+    drawNextPiece();
+    if (collides(piece, tBoard)) { over(); return null; }
+    return piece;
+  }
+  function collides(piece, board) {
+    for (let r = 0; r < piece.shape.length; r++) {
+      for (let c = 0; c < piece.shape[r].length; c++) {
+        if (!piece.shape[r][c]) continue;
+        const nx = piece.x + c, ny = piece.y + r;
+        if (nx < 0 || nx >= T_COLS || ny >= T_ROWS) return true;
+        if (ny >= 0 && board[ny][nx]) return true;
+      }
+    }
+    return false;
+  }
+  function merge(piece, board) {
+    piece.shape.forEach((row, r) => row.forEach((v, c) => {
+      if (v && piece.y + r >= 0) board[piece.y + r][piece.x + c] = piece.key;
+    }));
+  }
+  function clearLines() {
+    let cleared = 0;
+    for (let r = T_ROWS - 1; r >= 0; r--) {
+      if (tBoard[r].every(v => v)) {
+        tBoard.splice(r, 1);
+        tBoard.unshift(Array(T_COLS).fill(0));
+        cleared++;
+        r++;
+      }
+    }
+    if (cleared) {
+      const pts = [0, 100, 300, 500, 800][cleared] * tLevel;
+      tScore += pts;
+      tLines += cleared;
+      tLevel = Math.floor(tLines / 10) + 1;
+      tDropInterval = Math.max(100, 800 - (tLevel - 1) * 60);
+      tScoreEl.textContent = tScore;
+      tLinesEl.textContent = tLines;
+      tLevelEl.textContent = tLevel;
+      clearInterval(tDropTimer);
+      tDropTimer = setInterval(tick, tDropInterval);
+    }
+  }
+  function rotatePiece() {
+    const old = tPiece.shape;
+    const rows = old.length, cols = old[0].length;
+    const rotated = Array.from({length: cols}, () => Array(rows).fill(0));
+    for (let r = 0; r < rows; r++)
+      for (let c = 0; c < cols; c++)
+        rotated[c][rows - 1 - r] = old[r][c];
+    const test = { ...tPiece, shape: rotated };
+    // Try wall kicks
+    for (const dx of [0, -1, 1, -2, 2]) {
+      test.x = tPiece.x + dx;
+      if (!collides(test, tBoard)) { tPiece.shape = rotated; tPiece.x = test.x; return; }
+    }
+  }
+  function move(dx, dy) {
+    const test = { ...tPiece, x: tPiece.x + dx, y: tPiece.y + dy };
+    if (!collides(test, tBoard)) { tPiece.x = test.x; tPiece.y = test.y; return true; }
+    return false;
+  }
+  function hardDrop() {
+    while (move(0, 1)) { tScore += 2; }
+    tScoreEl.textContent = tScore;
+    lockPiece();
+  }
+  function tick() {
+    if (!tRunning) return;
+    if (!move(0, 1)) lockPiece();
+    drawTBoard(); drawPiece();
+  }
+  function lockPiece() {
+    merge(tPiece, tBoard);
+    clearLines();
+    tPiece = tSpawn();
+    if (!tPiece) return;
+    drawTBoard(); drawPiece();
+  }
+  function drawTBoard() {
+    tCtx.fillStyle = '#050505';
+    tCtx.fillRect(0, 0, tCanvas.width, tCanvas.height);
+    // Grid
+    tCtx.strokeStyle = 'rgba(212,168,67,0.05)';
+    tCtx.lineWidth = 0.5;
+    for (let x = 0; x <= tCanvas.width; x += T_CELL) {
+      tCtx.beginPath(); tCtx.moveTo(x, 0); tCtx.lineTo(x, tCanvas.height); tCtx.stroke();
+    }
+    for (let y = 0; y <= tCanvas.height; y += T_CELL) {
+      tCtx.beginPath(); tCtx.moveTo(0, y); tCtx.lineTo(tCanvas.width, y); tCtx.stroke();
+    }
+    // Settled blocks
+    for (let r = 0; r < T_ROWS; r++) {
+      for (let c = 0; c < T_COLS; c++) {
+        if (tBoard[r][c]) drawBlock(tCtx, c, r, T_COLORS[tBoard[r][c]]);
+      }
+    }
+  }
+  function drawBlock(ctx, c, r, color) {
+    const x = c * T_CELL, y = r * T_CELL, s = T_CELL;
+    ctx.fillStyle = color;
+    ctx.fillRect(x + 1, y + 1, s - 2, s - 2);
+    // Inner bevel
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+    ctx.fillRect(x + 1, y + 1, s - 2, 2);
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.fillRect(x + 1, y + s - 3, s - 2, 2);
+  }
+  function drawPiece() {
+    if (!tPiece) return;
+    const color = T_COLORS[tPiece.key];
+    tPiece.shape.forEach((row, r) => row.forEach((v, c) => {
+      if (v && tPiece.y + r >= 0) drawBlock(tCtx, tPiece.x + c, tPiece.y + r, color);
+    }));
+    // Ghost piece
+    const ghost = { ...tPiece, y: tPiece.y };
+    while (!collides({ ...ghost, y: ghost.y + 1 }, tBoard)) ghost.y++;
+    if (ghost.y > tPiece.y) {
+      tCtx.save();
+      tCtx.globalAlpha = .2;
+      ghost.shape = tPiece.shape;
+      tPiece.shape.forEach((row, r) => row.forEach((v, c) => {
+        if (v) drawBlock(tCtx, ghost.x + c, ghost.y + r, color);
+      }));
+      tCtx.restore();
+    }
+  }
+  function drawNextPiece() {
+    tNCtx.fillStyle = '#050505';
+    tNCtx.fillRect(0, 0, tNextCanvas.width, tNextCanvas.height);
+    if (!tNext) return;
+    const shape = T_SHAPES[tNext];
+    const cell = 18;
+    const w = shape[0].length * cell, h = shape.length * cell;
+    const ox = (tNextCanvas.width - w) / 2, oy = (tNextCanvas.height - h) / 2;
+    const color = T_COLORS[tNext];
+    shape.forEach((row, r) => row.forEach((v, c) => {
+      if (v) {
+        const x = ox + c * cell, y = oy + r * cell;
+        tNCtx.fillStyle = color;
+        tNCtx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
+        tNCtx.fillStyle = 'rgba(255,255,255,0.15)';
+        tNCtx.fillRect(x + 1, y + 1, cell - 2, 2);
+      }
+    }));
+  }
+  function startTetris() {
+    tBoard = tNewBoard();
+    tScore = 0; tLines = 0; tLevel = 1; tDropInterval = 800;
+    tScoreEl.textContent = '0'; tLinesEl.textContent = '0'; tLevelEl.textContent = '1';
+    tNext = null;
+    tPiece = tSpawn();
+    tRunning = true;
+    tGameOverEl.classList.remove('show');
+    tStartBtn.classList.add('hidden');
+    tRestartBtn.classList.remove('hidden');
+    clearInterval(tDropTimer);
+    tDropTimer = setInterval(tick, tDropInterval);
+    drawTBoard(); drawPiece();
+  }
+  function over() {
+    tRunning = false;
+    clearInterval(tDropTimer);
+    tFinalScoreEl.textContent = tScore;
+    tGameOverEl.classList.add('show');
+  }
+
+  if (tStartBtn) tStartBtn.addEventListener('click', startTetris);
+  if (tRestartBtn) tRestartBtn.addEventListener('click', startTetris);
+  if (tPlayAgain) tPlayAgain.addEventListener('click', startTetris);
+
+  document.addEventListener('keydown', (e) => {
+    if (!tRunning) return;
+    const panel = document.querySelector('.apanel[data-panel="tetris"]');
+    if (!panel || panel.classList.contains('hidden')) return;
+    switch (e.key) {
+      case 'ArrowLeft': move(-1, 0); drawTBoard(); drawPiece(); e.preventDefault(); break;
+      case 'ArrowRight': move(1, 0); drawTBoard(); drawPiece(); e.preventDefault(); break;
+      case 'ArrowDown':
+        if (move(0, 1)) { tScore += 1; tScoreEl.textContent = tScore; }
+        drawTBoard(); drawPiece(); e.preventDefault(); break;
+      case 'ArrowUp': rotatePiece(); drawTBoard(); drawPiece(); e.preventDefault(); break;
+      case ' ': hardDrop(); e.preventDefault(); break;
+    }
+  });
+
+  // Tetris touch controls
+  document.querySelectorAll('.tetris-touch [data-t]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!tRunning) return;
+      const d = btn.dataset.t;
+      if (d === 'left') move(-1, 0);
+      else if (d === 'right') move(1, 0);
+      else if (d === 'down') { if (move(0, 1)) { tScore += 1; tScoreEl.textContent = tScore; } }
+      else if (d === 'rotate') rotatePiece();
+      else if (d === 'drop') hardDrop();
+      drawTBoard(); drawPiece();
+    });
+  });
+
+  /* === EPIC HERO parallax === */
+  const heroPhoto = document.querySelector('.hero-parallax-photo');
+  const heroAuroras = document.querySelectorAll('#top .aurora');
+  if (!window.matchMedia('(pointer: coarse)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      if (!heroPhoto) return;
+      const x = (e.clientX / window.innerWidth - 0.5) * 12;
+      const y = (e.clientY / window.innerHeight - 0.5) * 12;
+      heroPhoto.style.transform = `translate(${x*0.4}px, ${y*0.4}px)`;
+      heroAuroras.forEach((a, i) => {
+        a.style.transform = `translate(${x * (i === 0 ? -0.8 : 0.8)}px, ${y * (i === 0 ? -0.6 : 0.6)}px)`;
+      });
+    }, { passive: true });
+  }
+  // Scroll-driven parallax for hero photo
+  window.addEventListener('scroll', () => {
+    if (!heroPhoto) return;
+    const y = Math.min(window.scrollY, 600);
+    heroPhoto.style.setProperty('--scrollY', y + 'px');
+  }, { passive: true });
+
+  /* === MAGNETIC HOVER on primary CTAs === */
+  if (!window.matchMedia('(pointer: coarse)').matches) {
+    document.querySelectorAll('.btn-ink, .btn-gold').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.18;
+        const y = (e.clientY - r.top - r.height / 2) * 0.18;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  /* === SPLIT-TEXT reveal on display headlines === */
+  const splitTargets = document.querySelectorAll('.display-h, .hero-title');
+  splitTargets.forEach(h => {
+    if (h.dataset.split) return;
+    h.dataset.split = '1';
+    // Wrap each word in a span
+    const walker = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    let n; while (n = walker.nextNode()) nodes.push(n);
+    nodes.forEach(tn => {
+      const words = tn.textContent.split(/(\s+)/);
+      const frag = document.createDocumentFragment();
+      words.forEach(w => {
+        if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(w)); return; }
+        const wrap = document.createElement('span');
+        wrap.className = 'split-word';
+        const inner = document.createElement('span');
+        inner.textContent = w;
+        wrap.appendChild(inner);
+        frag.appendChild(wrap);
+      });
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  });
+
+  const splitIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const words = e.target.querySelectorAll('.split-word');
+      words.forEach((w, idx) => {
+        const inner = w.querySelector('span');
+        if (inner) inner.style.transitionDelay = (idx * 0.06) + 's';
+        setTimeout(() => w.classList.add('go'), 30);
+      });
+      splitIO.unobserve(e.target);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
+  splitTargets.forEach(h => splitIO.observe(h));
+
+  /* === CONTACT FORM === */
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const n = document.getElementById('fName').value.trim();
+      const em = document.getElementById('fEmail').value.trim();
+      const s = document.getElementById('fSubject').value.trim();
+      const m = document.getElementById('fMessage').value.trim();
+      const body = `Name: ${n}\nEmail: ${em}\n\n${m}`;
+      const subj = s || `Portfolio Inquiry from ${n}`;
+      window.location.href = `mailto:bensachwitz@gmail.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+      const btn = document.getElementById('formSubmit');
+      const original = btn.innerHTML;
+      btn.innerHTML = 'Opening email client...';
+      btn.disabled = true;
+      setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 3500);
+    });
+  }
+})();
+</script>
+
+<!-- ===== INTERACTIVE LAYER ===== -->
+<script>
+(function () {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouch = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+
+  /* 1. HERO LETTER SPLIT */
+  if (!prefersReduced) {
+    document.querySelectorAll('[data-hero-line]').forEach((el) => {
+      const txt = el.textContent;
+      const base = parseFloat(el.dataset.delay || '0');
+      el.textContent = '';
+      [...txt].forEach((ch, i) => {
+        const s = document.createElement('span');
+        s.className = 'hl';
+        s.textContent = ch === ' ' ? '\u00A0' : ch;
+        s.style.animationDelay = (base + i * 0.045).toFixed(3) + 's';
+        el.appendChild(s);
+      });
+    });
+  }
+
+  /* 2. TYPEWRITER ROTATOR */
+  const twEl = document.getElementById('twPhrase');
+  if (twEl && !prefersReduced) {
+    const phrases = [
+      'placing Lloyd\u2019s binders.',
+      'analyzing loss runs.',
+      'interpreting FMCSA data.',
+      'building AI underwriting tools.',
+      'modernizing a 38-year-old agency.',
+      'profiling 5-year loss trends.',
+      'drafting submissions for E&S markets.'
+    ];
+    let pi = 0;
+    const TYPE = 55, ERASE = 28, HOLD = 1700, GAP = 360;
+    const type = async (s) => {
+      for (let i = 0; i <= s.length; i++) {
+        twEl.textContent = s.slice(0, i);
+        await new Promise(r => setTimeout(r, TYPE + Math.random() * 45));
+      }
+    };
+    const erase = async () => {
+      const s = twEl.textContent;
+      for (let i = s.length; i >= 0; i--) {
+        twEl.textContent = s.slice(0, i);
+        await new Promise(r => setTimeout(r, ERASE));
+      }
+    };
+    (async function loop() {
+      while (true) {
+        await type(phrases[pi]);
+        await new Promise(r => setTimeout(r, HOLD));
+        await erase();
+        await new Promise(r => setTimeout(r, GAP));
+        pi = (pi + 1) % phrases.length;
+      }
+    })();
+  } else if (twEl) {
+    twEl.textContent = 'placing Lloyd\u2019s binders.';
+  }
+
+  /* 3. SPLIT-LINE REVEAL on display-h headings */
+  if (!prefersReduced) {
+    document.querySelectorAll('.display-h').forEach((h) => {
+      if (h.dataset.split || h.querySelector('[data-hero-line]')) return;
+      h.dataset.split = '1';
+      const walkChildren = (node) => {
+        const children = [...node.childNodes];
+        children.forEach((n) => {
+          if (n.nodeType === 3) {
+            const words = n.textContent.split(/(\s+)/);
+            const frag = document.createDocumentFragment();
+            words.forEach(w => {
+              if (w.trim() === '') { frag.appendChild(document.createTextNode(w)); return; }
+              const line = document.createElement('span'); line.className = 'sl-line';
+              const word = document.createElement('span'); word.className = 'sl-word';
+              word.textContent = w;
+              line.appendChild(word);
+              frag.appendChild(line);
+            });
+            n.replaceWith(frag);
+          } else if (n.nodeType === 1 && !['BR'].includes(n.tagName)) {
+            walkChildren(n);
+          }
+        });
+      };
+      try { walkChildren(h); } catch (e) { /* skip */ }
+    });
+    const slIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('.sl-word').forEach((w, i) => {
+          w.style.transitionDelay = (i * 0.05).toFixed(2) + 's';
+          w.classList.add('in');
+        });
+        slIo.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('[data-split]').forEach(el => slIo.observe(el));
+  }
+
+  /* 4. IMAGE MASK REVEAL */
+  const maskIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); maskIo.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.mask-reveal').forEach(el => maskIo.observe(el));
+
+  /* 5. STAT FLASH when counter lands */
+  const flashObserver = new MutationObserver(() => {});
+  document.querySelectorAll('.stat-n').forEach((el) => {
+    const count = el.querySelector('[data-count]');
+    if (!count) return;
+    const target = parseInt(count.dataset.count, 10);
+    const check = () => {
+      if (parseInt(count.textContent, 10) >= target) {
+        el.classList.add('is-flashed');
+        setTimeout(() => el.classList.remove('is-flashed'), 900);
+      } else requestAnimationFrame(check);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { setTimeout(check, 300); io.unobserve(el); } });
+    }, { threshold: 0.5 });
+    io.observe(el);
+  });
+
+  /* 6. CARD TILT */
+  if (!isTouch && !prefersReduced) {
+    document.querySelectorAll('.proj, .exp-card').forEach((card) => {
+      let raf = null;
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          card.classList.add('is-tilting');
+          const rx = (-y * 5).toFixed(2);
+          const ry = (x * 7).toFixed(2);
+          const ty = card.matches('.proj') ? '-4px' : '0';
+          card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(${ty})`;
+        });
+      });
+      card.addEventListener('mouseleave', () => { card.classList.remove('is-tilting'); card.style.transform = ''; });
+    });
+  }
+
+  /* 7. MAGNETIC BUTTONS */
+  if (!isTouch && !prefersReduced) {
+    document.querySelectorAll('.magnet').forEach((el) => {
+      const k = 0.22;
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = `translate(${(e.clientX - r.left - r.width/2)*k}px, ${(e.clientY - r.top - r.height/2)*k}px)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* 8. SCRAMBLE-DECODE eyebrows on reveal */
+  if (!prefersReduced) {
+    const CHARS = '!<>-_\\/[]{}—=+*^?#________';
+    const scramble = (el, original) => {
+      let frame = 0;
+      const q = [...original].map((c) => ({
+        to: c, start: Math.floor(Math.random() * 8), end: Math.floor(Math.random() * 18) + 8,
+      }));
+      (function tick() {
+        let out = '', done = 0;
+        q.forEach((it) => {
+          if (frame >= it.end) { done++; out += it.to; }
+          else if (frame >= it.start) { out += CHARS[Math.floor(Math.random() * CHARS.length)]; }
+          else { out += ' '; }
+        });
+        el.textContent = out;
+        if (done < q.length) { frame++; requestAnimationFrame(tick); }
+        else { el.textContent = original; }
+      })();
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting || e.target.dataset.scrambled) return;
+        e.target.dataset.scrambled = '1';
+        scramble(e.target, e.target.textContent.trim());
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.eyebrow').forEach((el) => {
+      if (el.children.length > 0) return;
+      io.observe(el);
+    });
+  }
+
+  /* 9. SMOOTH IN-PAGE SCROLL */
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (!id || id === '#' || id.length < 2) return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* 10. COPYRIGHT EASTER EGG — hover 2s, © 2026 morphs to 1688 */
+  const copyEgg = document.getElementById('copyEgg');
+  const copyYear = document.getElementById('copyYear');
+  if (copyEgg && copyYear) {
+    let hoverTimer = null; let original = '2026'; let morphed = false;
+    const CHARS = '0123456789';
+    const morph = (to) => {
+      let frame = 0; const tgt = [...to];
+      (function tick() {
+        let out = '';
+        tgt.forEach((c, i) => {
+          if (frame > 8 + i) out += c;
+          else out += CHARS[Math.floor(Math.random() * CHARS.length)];
+        });
+        copyYear.textContent = out;
+        if (out !== to) { frame++; requestAnimationFrame(tick); }
+      })();
+    };
+    const start = () => {
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(() => {
+        copyEgg.classList.add('is-unlocked');
+        morph('1688');
+        morphed = true;
+      }, 700);
+    };
+    const reset = () => {
+      clearTimeout(hoverTimer);
+      if (morphed) {
+        morph('2026');
+        morphed = false;
+        setTimeout(() => copyEgg.classList.remove('is-unlocked'), 400);
+      }
+    };
+    copyEgg.addEventListener('mouseenter', start);
+    copyEgg.addEventListener('focus', start);
+    copyEgg.addEventListener('mouseleave', reset);
+    copyEgg.addEventListener('blur', reset);
+  }
+
+  /* 11. KONAMI CODE — triggers glyph rain over hero + toast */
+  const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let ki = 0;
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if (k === KONAMI[ki]) {
+      ki++;
+      if (ki === KONAMI.length) { ki = 0; triggerGlyphRain(); }
+    } else {
+      ki = (k === KONAMI[0]) ? 1 : 0;
+    }
+  });
+
+  function triggerGlyphRain() {
+    if (document.querySelector('.glyph-rain')) return;
+    const GLYPHS = 'Σ∑πΔ∫∂λΦΨ£€¥$0123456789·◆◇※';
+    const wrap = document.createElement('div');
+    wrap.className = 'glyph-rain';
+    document.body.appendChild(wrap);
+    const cols = Math.floor(window.innerWidth / 22);
+    for (let i = 0; i < cols; i++) {
+      const col = document.createElement('div');
+      col.className = 'glyph-col';
+      col.style.left = (i * 22 + Math.random() * 8) + 'px';
+      const dur = 2 + Math.random() * 2.5;
+      col.style.animationDuration = dur + 's';
+      col.style.animationDelay = (Math.random() * 1.2) + 's';
+      const len = 12 + Math.floor(Math.random() * 14);
+      for (let j = 0; j < len; j++) {
+        const s = document.createElement('span');
+        s.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        s.style.animationDelay = (j * 0.12) + 's';
+        col.appendChild(s);
+      }
+      wrap.appendChild(col);
+    }
+    requestAnimationFrame(() => wrap.classList.add('on'));
+    showToast('✓ binding authority unlocked · bensachwitz@outlook.com');
+    setTimeout(() => { wrap.classList.remove('on'); setTimeout(() => wrap.remove(), 700); }, 4800);
+  }
+
+  function showToast(msg) {
+    const t = document.createElement('div');
+    t.className = 'egg-toast';
+    t.innerHTML = '<span class="dot"></span><span>' + msg + '</span>';
+    document.body.appendChild(t);
+    requestAnimationFrame(() => t.classList.add('on'));
+    setTimeout(() => { t.classList.remove('on'); setTimeout(() => t.remove(), 500); }, 5000);
+  }
+
+  /* SAT REVEAL — photos bloom to full color on scroll-in */
+  const satIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); satIo.unobserve(e.target); } });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.sat-reveal').forEach(el => satIo.observe(el));
+
+  /* WORLD TILE STAGGER */
+  const worldIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('wt-in'); worldIo.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.world-tile').forEach(el => worldIo.observe(el));
+
+  /* LIFE TILE STAGGER — cascade in on scroll */
+  const lifeIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('lt-in'); lifeIo.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.life-tile').forEach(el => lifeIo.observe(el));
+
+  /* CAREER TIMELINE LINE DRAW — once the section hits viewport */
+  const career = document.getElementById('career');
+  if (career) {
+    const careerIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { career.classList.add('in-view'); careerIo.unobserve(career); } });
+    }, { threshold: 0.15 });
+    careerIo.observe(career);
+  }
+
+  /* 12. SCROLL-SPY — highlight active nav link */
+  const navMap = {
+    about: '#about',
+    career: '#career',
+    expertise: '#expertise',
+    work: '#work',
+    arcade: '#arcade'
+  };
+  const navLinks = document.querySelectorAll('.nlink[data-nav]');
+  const sections = Object.entries(navMap)
+    .map(([k, sel]) => ({ key: k, el: document.querySelector(sel) }))
+    .filter(s => s.el);
+  const setActive = (key) => {
+    navLinks.forEach(l => l.classList.toggle('is-active', l.dataset.nav === key));
+  };
+  const spy = () => {
+    const y = window.scrollY + 120;
+    let active = null;
+    for (const s of sections) {
+      if (s.el.offsetTop <= y) active = s.key;
+    }
+    setActive(active);
+  };
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+
+  /* 13. Expose for mobile trigger (tap-tap-tap on chapter numeral VI) */
+  const arcadeChapter = document.querySelector('#arcade .chapter-num');
+  if (arcadeChapter) {
+    let taps = 0, timer;
+    arcadeChapter.addEventListener('click', () => {
+      taps++; clearTimeout(timer); timer = setTimeout(() => taps = 0, 1200);
+      if (taps >= 3) { taps = 0; triggerGlyphRain(); }
+    });
+    arcadeChapter.style.cursor = 'pointer';
+  }
+})();
+</script>
+
+</body>
+</html>
