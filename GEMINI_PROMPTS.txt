@@ -1,0 +1,69 @@
+GEMINI IMAGE GENERATION PROMPTS — OPTIMIZED
+
+=== PROMPT 1: Lloyd's Atrium Hero Shot ===
+Professional photograph of Lloyd's of London underwriting room. Soaring multi-level atrium with ornate wooden railings and brass fixtures. Polished marble floors. Natural golden light from tall gridded windows. Famous brass Underwriting Bell at center. Professionals in navy suits and white shirts working at standing desks, reviewing documents, negotiating. Historic carved wood and aged brass mixed with modern glass and steel workstations. Warm golden-hour light, rich shadows, high contrast. Shot from elevated mezzanine angle showing full architectural scale. Editorial commercial photography. Authentic marketplace atmosphere. NOT a generic office photo. This is where complex commercial risks get underwritten.
+
+---
+
+=== PROMPT 2: Underwriter's Desk — Close-up ===
+Professional desk photograph. Mahogany desk with brass banker's lamp. Spread: open loss-run documents with FMCSA citations, leather underwriting journal, fountain pen signing a page, photos of commercial truck fleets, phone with risk analytics. Background: blurred wall of leather-bound reference books with brass bookends. Half-full black coffee cup. Historic wood-paneled office walls. Left-side window light creating dramatic shadows. Shallow depth of field, sharp focus on documents. Warm color. Editorial lifestyle. High resolution. Captures analytical focus required in E&S underwriting.
+
+---
+
+=== PROMPT 3: Commercial Trucking Loss Visit ===
+Documentary photograph. Male underwriter (early 30s) in blue dress shirt, no jacket, holding clipboard. Standing with weathered fleet manager in safety vest. In front of commercial trucking facility with lineup of well-maintained 18-wheelers. Early morning golden light. Metal corrugated roofing and maintenance bays visible. Both men focused on documents. Real workplace setting, not posed. Wide shot showing facility context. Both figures sharp in focus. Professional documentary photography. Represents critical fieldwork before underwriting a fleet.
+
+---
+
+=== PROMPT 4: Marine Insurance Documents ===
+Close-up photograph of marine insurance documents on mahogany desktop. Lloyd's Declarations page with visible cargo coverage details. Five-year loss history trend charts with underlined critical datapoints. Handwritten fountain pen notes in margin. Brass magnifying glass resting on one page corner. Warm tungsten lamp light creating dramatic side shadows. Shallow depth of field—sharp on DEC page and magnifying glass, soft background. Visible wood grain. High resolution. Editorial detail photography. Warm moody color. Represents meticulous risk analysis required in marine underwriting.
+
+---
+
+=== PROMPT 5: Conference Room Strategy Meeting ===
+Professional photograph. Four insurance professionals (mix of genders, ages 28-55) in business attire around mahogany conference table in historic wood-paneled Lloyd's board room. Oil paintings of Lloyd's founders on walls (blurred background). Modern laptops and leather portfolios open on table. Floor-to-ceiling windows showing London skyline. Late afternoon golden light. Focused, engaged atmosphere—one professional pointing to data on laptop screen. Coffee cups and papers scattered naturally. Wide-angle shot. Authentic corporate photography. Warm color temperature. Represents collaborative expertise in risk assessment.
+
+---
+
+=== PROMPT 6: Risk Assessment Report ===
+Flat-lay professional photograph. Open risk assessment binder at 45-degree angle. Left page: architectural floor plans with hand-drawn red risk annotations. Right page: loss history matrix with color-coded severity ratings (red, yellow, green). Surrounding: mechanical pencil, highlighter, small building scale model, partial risk-analysis spreadsheet visible. Clean studio lighting with defined shadows. High resolution detail. Editorial product style. Neutral background (white/grey). Color focused on documents. Represents thoroughness in underwriting.
+
+---
+
+=== PROMPT 7: Swamp Fox Agency Office — South Carolina ===
+Professional interior photograph. Young professional (male, early 30s) in navy blazer at glass-top desk looking out floor-to-ceiling windows at cypress trees and marshland. Desk holds: silver laptop, leather portfolio, Swamp Fox Agency branded materials, ceramic planter with palmetto-inspired design. Office mixes modern minimalism with regional character—reclaimed pine beams, local art, warm southern light. Professional has confident expression. Morning or golden-hour light. Documentary lifestyle photography. Warm color. Represents blend of modern practice with regional roots. NOT generic corporate office.
+
+---
+
+=== PROMPT 8: Professional Headshot — Credentialed Underwriter ===
+Corporate headshot photograph. Sharp young man (late 20s, early 30s) wearing tailored navy bespoke suit, crisp white dress shirt, subtle tie. Shot against neutral soft-focus background (warm grey/cream). Professional three-point lighting—key light from left creating dimension. Expression: confident, intelligent, trustworthy. Eyes sharp and focused. Shallow depth of field. Shot at shoulder height. Warm color temperature. High resolution. Editorial quality. This is Benjamin Sachwitz—trained, Lloyd's-credentialed, ready to place complex risk. Professional corporate headshot. No casual expression.
+
+---
+
+=== PROMPT 9: FMCSA Data Analysis — Focus ===
+Professional photograph. Male underwriter (30s) in business casual leaning over desk studying multi-monitor setup. Screens display FMCSA safety records, CSA scores, fleet compliance data. Multiple windows: color-coded risk dashboards, crash data tables, regulatory citations. Intense analytical focus. Modern professional office background: stainless desk, monitor arms, minimal clutter. Warm desk lighting. Shot from side angle showing both analyst and screens. High resolution. Editorial documentary style. Represents technical deep-dive required for commercial trucking in E&S market. NOT generic person-at-computer photo.
+
+---
+
+=== PROMPT 10: Loss Control Before & After ===
+Documentary photograph sequence (two images). BEFORE: Insurance loss control inspector (40s, professional, high-visibility vest) pointing out code violation at commercial trucking facility (exposed electrical, unsafe signage, disorganization visible). AFTER: Same location after remediation (corrected hazards, proper signage, organized workspace). Natural daylight. Documentary style. Before image shows concern/analysis, after shows resolution. Wide shots showing facility context. Authentic site documentation. High dynamic range. Represents proactive loss control preventing claims.
+
+---
+
+=== PROMPT 11: Binding Authority Submission — The Moment ===
+Professional photograph. Lloyd's binding authority submission spread across historic mahogany desk. Official submission document with Lloyd's letterhead visible. Supporting loss history files (labeled, color-coded). Fountain pen. Lloyd's authority certificate (framed, visible in background). Hand (male, professional, wearing dress watch) positioned about to sign submission. The moment of commitment in placing complex commercial risk. Warm tungsten lamp light. Shallow depth of field. High resolution. Editorial style. Rich warm color grading. Captures precision and professional authority.
+
+---
+
+=== PROMPT 12: Insurance Tech Integration — Modern Underwriting ===
+Professional photograph. Contemporary underwriting desk blending physical and digital. Vintage leather desk organizer with traditional underwriting tools next to modern laptop displaying AI-powered risk analytics software. Secondary monitor showing advanced data visualization. Handwritten notes on sustainable paper. Smart home-office setup: good lighting, cable management, ergonomic. Workspace represents modernizing traditional underwriting with AI and data science. Warm professional lighting. High resolution. Editorial lifestyle photography. Represents honoring expertise while building next-generation AI tools. Modern, intentional, forward-thinking.
+
+---
+
+GENERATION INSTRUCTIONS FOR GEMINI:
+1. Copy each prompt individually into Gemini
+2. Generate at highest quality setting available
+3. Request: 1600x1200px minimum (landscape preferred for hero images)
+4. Gemini will generate 4 variations per prompt — select the sharpest, most professional version
+5. Download as PNG
+6. Save to: images/ folder with naming convention: lloyd-atrium.png, desk-closeup.png, etc.
