@@ -94,10 +94,13 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
     display: inline-flex; align-items: center; gap: .5rem;
+    transition: color .4s cubic-bezier(.2,.7,.2,1);
   }
   .eyebrow::before {
-    content: ""; display: inline-block; width: 22px; height: 1px; background: currentColor; opacity: .5;
+    content: ""; display: inline-block; width: 22px; height: 1.5px; background: currentColor; opacity: .6;
+    transition: width .4s cubic-bezier(.2,.7,.2,1), opacity .4s;
   }
+  .eyebrow:hover::before { width: 32px; opacity: 1; }
 
   /* Reveal */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
@@ -540,6 +543,13 @@
   /* ===== TETRIS ===== */
   #tetrisCanvas, #tetrisNext { image-rendering: pixelated; }
 
+  /* ===== DINOSAUR ===== */
+  #dinoCanvas { image-rendering: pixelated; background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%); }
+  .dino-score { display: flex; gap: 24px; margin-bottom: 16px; }
+  .dino-stat { text-align: center; }
+  .dino-stat-val { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 600; color: #D4A843; }
+  .dino-stat-lbl { font-size: 10px; color: rgba(245,242,236,.5); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+
   /* Depth-layer helpers from epic-design */
   .scene { position: relative; }
   .layer.depth-0 { z-index: 1; }
@@ -640,7 +650,8 @@
   }
   @keyframes rotatorFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   .tw-rotator .tw-label { text-transform: uppercase; letter-spacing: .22em; font-size: 10.5px; color: rgba(10,10,10,.45); }
-  .tw-rotator .tw-dot { width: 5px; height: 5px; border-radius: 50%; background: #D4A843; animation: twPulse 1.8s ease-in-out infinite; flex-shrink: 0; }
+  .tw-rotator .tw-dot { width: 6px; height: 6px; border-radius: 50%; background: linear-gradient(135deg, #D4A843, #E8C77D); animation: twPulse 1.6s ease-in-out infinite, dotGlow 2s ease-in-out infinite; flex-shrink: 0; box-shadow: 0 0 8px rgba(212,168,67,.5); }
+  @keyframes dotGlow { 0%, 100% { box-shadow: 0 0 8px rgba(212,168,67,.5); } 50% { box-shadow: 0 0 16px rgba(212,168,67,.8); } }
   @keyframes twPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .3; transform: scale(.6); } }
   .tw-phrase { position: relative; display: inline-block; min-height: 1.2em; font-weight: 500; color: var(--ox); }
   .tw-phrase::after {
@@ -1585,6 +1596,11 @@
         <span class="atab-name">Tetris</span>
         <span class="atab-sub hidden sm:inline">Strategy</span>
       </button>
+      <button class="atab" data-tab="dino" role="tab" aria-selected="false">
+        <span class="atab-num">04</span>
+        <span class="atab-name">Dino</span>
+        <span class="atab-sub hidden sm:inline">Endurance</span>
+      </button>
     </div>
 
     <!-- Panel wrapper -->
@@ -1741,6 +1757,56 @@
             <button class="touch-btn" data-t="down">▼</button>
             <button class="touch-btn" data-t="drop">⇓</button>
             <button class="touch-btn" data-t="right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== DINOSAUR PANEL ========== -->
+      <div class="apanel hidden" data-panel="dino" role="tabpanel" hidden>
+        <div class="game-card max-w-[640px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Chrome Dinosaur</div>
+            </div>
+          </div>
+          <div class="dino-score justify-center mb-6">
+            <div class="dino-stat">
+              <div class="dino-stat-val" id="dinoScore">0</div>
+              <div class="dino-stat-lbl">Score</div>
+            </div>
+            <div class="dino-stat">
+              <div class="dino-stat-val" id="dinoBest">0</div>
+              <div class="dino-stat-lbl">Best</div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="dinoCanvas" width="640" height="200" class="w-full block rounded-sm bg-gradient-to-b from-sky-400 to-sky-100 border border-bone/10"></canvas>
+            <div class="game-over" id="dinoGameOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl md:text-6xl font-light text-bone mb-1"><span id="dinoFinalScore">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Final score</div>
+              <p class="text-bone/70 text-sm max-w-xs mb-6 leading-relaxed">Run far enough? Let's run toward your business goals together.</p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="dinoPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3">
+              <button class="game-btn-primary" id="dinoStartBtn">Start game</button>
+              <button class="game-btn-secondary hidden" id="dinoRestartBtn">Restart</button>
+            </div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Press <kbd>Space</kbd> to jump, <kbd>Duck</kbd> to crouch</p>
+          </div>
+          <div class="touch-grid md:hidden mt-4">
+            <div class="touch-empty"></div>
+            <button class="touch-btn" data-dino="jump">JUMP</button>
+            <div class="touch-empty"></div>
+            <div class="touch-empty"></div>
+            <button class="touch-btn" data-dino="duck">DUCK</button>
+            <div class="touch-empty"></div>
           </div>
         </div>
       </div>
@@ -2768,6 +2834,127 @@
       else if (d === 'rotate') rotatePiece();
       else if (d === 'drop') hardDrop();
       drawTBoard(); drawPiece();
+    });
+  });
+
+  /* === DINOSAUR GAME === */
+  const dinoCanvas = document.getElementById('dinoCanvas');
+  const dinoCtx = dinoCanvas ? dinoCanvas.getContext('2d') : null;
+  let dinoScore = 0, dinoBest = localStorage.getItem('dinoBest') || 0, dinoRunning = false, dinoGameOver = false;
+  const dinoScoreEl = document.getElementById('dinoScore');
+  const dinoBestEl = document.getElementById('dinoBest');
+  const dinoGameOverEl = document.getElementById('dinoGameOver');
+  const dinoFinalScoreEl = document.getElementById('dinoFinalScore');
+  const dinoStartBtn = document.getElementById('dinoStartBtn');
+  const dinoRestartBtn = document.getElementById('dinoRestartBtn');
+  const dinoPlayAgain = document.getElementById('dinoPlayAgain');
+
+  if (dinoBestEl) dinoBestEl.textContent = dinoBest;
+
+  // Dino properties
+  let dino = { x: 50, y: 0, w: 40, h: 50, vy: 0, jumping: false, ducking: false };
+  let obstacles = [];
+  let dinoGameSpeed = 6;
+  let gameTime = 0;
+
+  function drawDino() {
+    if (!dinoCtx) return;
+    const canvas = dinoCanvas;
+    const groundY = canvas.height - dino.h - 10;
+
+    // Draw dino body
+    dinoCtx.fillStyle = '#333';
+    dinoCtx.fillRect(dino.x, groundY, dino.w, dino.h);
+    // Eye
+    dinoCtx.fillStyle = '#000';
+    dinoCtx.fillRect(dino.x + 28, groundY + 8, 4, 4);
+    // Tail
+    dinoCtx.fillStyle = '#333';
+    dinoCtx.fillRect(dino.x + 35, groundY + 15, 15, 8);
+  }
+
+  function updateDino() {
+    const groundY = dinoCanvas.height - dino.h - 10;
+    if (dino.jumping) {
+      dino.vy += 0.5;
+      dino.y += dino.vy;
+      if (dino.y >= 0) { dino.y = 0; dino.jumping = false; dino.vy = 0; }
+    }
+  }
+
+  function drawObstacles() {
+    if (!dinoCtx) return;
+    obstacles.forEach(obs => {
+      dinoCtx.fillStyle = '#666';
+      dinoCtx.fillRect(obs.x, dinoCanvas.height - obs.h - 10, obs.w, obs.h);
+    });
+  }
+
+  function updateObstacles() {
+    for (let i = 0; i < obstacles.length; i++) {
+      obstacles[i].x -= dinoGameSpeed;
+      if (obstacles[i].x + obstacles[i].w < 0) { obstacles.splice(i, 1); i--; dinoScore += 10; }
+    }
+    if (gameTime % 80 === 0) {
+      obstacles.push({ x: dinoCanvas.width, w: 20, h: 40 + Math.random() * 20 });
+    }
+  }
+
+  function checkCollision() {
+    const groundY = dinoCanvas.height - dino.h - 10;
+    obstacles.forEach(obs => {
+      if (dino.x < obs.x + obs.w && dino.x + dino.w > obs.x &&
+          groundY < obs.y + obs.h && groundY + dino.h > obs.y) {
+        endDino();
+      }
+    });
+  }
+
+  function drawDinoGame() {
+    if (!dinoCtx) return;
+    dinoCtx.clearRect(0, 0, dinoCanvas.width, dinoCanvas.height);
+    drawDino(); drawObstacles();
+    dinoScoreEl.textContent = dinoScore;
+    if (dinoRunning) {
+      updateDino(); updateObstacles(); checkCollision();
+      gameTime++;
+      dinoGameSpeed = 6 + (gameTime / 500);
+      requestAnimationFrame(drawDinoGame);
+    }
+  }
+
+  function startDino() {
+    dinoScore = 0; dino = { x: 50, y: 0, w: 40, h: 50, vy: 0, jumping: false, ducking: false };
+    obstacles = []; gameTime = 0; dinoGameSpeed = 6; dinoRunning = true; dinoGameOver = false;
+    dinoGameOverEl.classList.remove('show');
+    dinoStartBtn.classList.add('hidden');
+    dinoRestartBtn.classList.remove('hidden');
+    dinoScoreEl.textContent = '0';
+    drawDinoGame();
+  }
+
+  function endDino() {
+    dinoRunning = false;
+    if (dinoScore > dinoBest) { dinoBest = dinoScore; localStorage.setItem('dinoBest', dinoBest); dinoBestEl.textContent = dinoBest; }
+    dinoFinalScoreEl.textContent = dinoScore;
+    dinoGameOverEl.classList.add('show');
+  }
+
+  if (dinoStartBtn) dinoStartBtn.addEventListener('click', startDino);
+  if (dinoRestartBtn) dinoRestartBtn.addEventListener('click', startDino);
+  if (dinoPlayAgain) dinoPlayAgain.addEventListener('click', startDino);
+
+  document.addEventListener('keydown', (e) => {
+    if (!dinoRunning) return;
+    const panel = document.querySelector('.apanel[data-panel="dino"]');
+    if (!panel || panel.classList.contains('hidden')) return;
+    if (e.code === 'Space' && !dino.jumping) { dino.jumping = true; dino.vy = -12; e.preventDefault(); }
+  });
+
+  document.querySelectorAll('[data-dino]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!dinoRunning) return;
+      if (btn.dataset.dino === 'jump' && !dino.jumping) { dino.jumping = true; dino.vy = -12; }
     });
   });
 
