@@ -630,12 +630,15 @@
   /* Hero letter reveal */
   .hero-letters { display: inline-block; }
   .hero-letters .hl {
-    display: inline-block; opacity: 0; filter: blur(12px);
+    display: inline-block; opacity: 0; filter: blur(6px);
     transform: translateY(40%) rotateX(-40deg);
     transform-origin: 50% 100%;
     animation: heroLetter .85s cubic-bezier(.34,1.56,.64,1) forwards;
   }
   @keyframes heroLetter { to { opacity: 1; filter: blur(0); transform: none; } }
+  @media (max-width: 768px) {
+    .hero-letters .hl { filter: blur(3px); }
+  }
   .hero-letters[data-delay=".3"] .hl:nth-child(1) { animation-delay: .3s; }
   .hero-letters[data-delay=".3"] .hl:nth-child(2) { animation-delay: .35s; }
   .hero-letters[data-delay=".3"] .hl:nth-child(3) { animation-delay: .4s; }
@@ -931,6 +934,48 @@
   .egg-toast.on { transform: translate(-50%, 0); opacity: 1; }
   .egg-toast .dot { width: 6px; height: 6px; border-radius: 50%; background: #D4A843; animation: twPulse 1.4s ease-in-out infinite; }
 
+  /* Enhanced entrance animations */
+  .content-fade-in { opacity: 0; animation: fadeInUp .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  .stagger-1 { animation-delay: .1s; }
+  .stagger-2 { animation-delay: .2s; }
+  .stagger-3 { animation-delay: .3s; }
+  .stagger-4 { animation-delay: .4s; }
+
+  /* Text scale animation on scroll */
+  .scale-on-scroll { opacity: 0; transform: scale(.95); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .scale-on-scroll.in { opacity: 1; transform: scale(1); }
+
+  /* Mobile optimizations - reduce blank space */
+  @media (max-width: 768px) {
+    #about { padding: 3rem 0 !important; }
+    #career { padding: 3rem 0 !important; }
+    #credo { padding: 2rem 0 !important; }
+    #worlds { padding: 2.5rem 0 !important; }
+    #expertise { padding: 3rem 0 !important; }
+    #work { padding: 3rem 0 !important; }
+    #life { padding: 2.5rem 0 !important; }
+
+    .py-16 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+    .py-20 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+    .py-24 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+    .mb-10 { margin-bottom: 1.5rem !important; }
+    .mb-14 { margin-bottom: 1.5rem !important; }
+  }
+
+  /* Pulse animation for CTAs */
+  @keyframes ctaPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,67,.4); } 50% { box-shadow: 0 0 0 8px rgba(212,168,67,0); } }
+  .cta-pulse { animation: ctaPulse 2.5s infinite; }
+
+  /* Smooth scroll behavior enhancement */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { will-change: opacity, transform; }
+    .world-tile { will-change: opacity, transform; }
+    .life-tile { will-change: opacity, transform; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-letters .hl { opacity: 1; filter: none; transform: none; animation: none; }
     .sl-word { transform: none !important; opacity: 1 !important; }
@@ -939,6 +984,7 @@
     .magnet, .proj { transform: none !important; transition: none !important; }
     .tw-phrase::after { animation: none; background: transparent; }
     .glyph-rain { display: none !important; }
+    .content-fade-in, .scale-on-scroll { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
 </style>
 </head>
@@ -1108,7 +1154,7 @@
     <div class="flex items-end justify-between mb-10 md:mb-14">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 01 · About</div>
-        <h2 class="display-h reveal d1">DC raised. USC built.<br/><em>Lloyd's trained.</em></h2>
+        <h2 class="display-h reveal d1 scale-on-scroll">DC raised. USC built.<br/><em>Lloyd's trained.</em></h2>
       </div>
       <div class="chapter-num hidden md:block reveal d2">I</div>
     </div>
@@ -1155,7 +1201,7 @@
     <div class="flex items-end justify-between mb-10 md:mb-14">
       <div>
         <div class="eyebrow text-bone/60 mb-4 reveal">Chapter 02 · Career Path</div>
-        <h2 class="display-h text-bone reveal d1">The <em class="text-gold">journey</em>.</h2>
+        <h2 class="display-h text-bone reveal d1 scale-on-scroll">The <em class="text-gold">journey</em>.</h2>
       </div>
       <div class="chapter-num text-bone/10 hidden md:block reveal d2">II</div>
     </div>
@@ -1281,7 +1327,7 @@
     radial-gradient(520px circle at 85% 60%, rgba(139,26,26,.05), transparent 60%);"></div>
   <div class="relative max-w-[1200px] mx-auto px-5 md:px-10 text-center">
     <div class="eyebrow text-ink/50 mb-6 reveal" style="justify-content:center;">The credo</div>
-    <h2 class="credo-h font-serif font-light leading-[1.05] reveal d1">
+    <h2 class="credo-h font-serif font-light leading-[1.05] reveal d1 scale-on-scroll">
       It's the <em class="italic text-ox">little things</em><br/>that set us <em class="italic text-gold-2">apart</em>.
     </h2>
     <div class="mt-6 inline-flex items-center gap-3 text-[11px] font-mono tracking-[.22em] uppercase text-ink/45 reveal d2">
@@ -1349,7 +1395,7 @@
     <div class="flex items-end justify-between mb-10 md:mb-14">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 03 · Expertise</div>
-        <h2 class="display-h reveal d1">What I <em>bring</em>.</h2>
+        <h2 class="display-h reveal d1 scale-on-scroll">What I <em>bring</em>.</h2>
       </div>
       <div class="chapter-num hidden md:block reveal d2">III</div>
     </div>
@@ -1427,7 +1473,7 @@
     <div class="flex items-end justify-between mb-10 md:mb-14">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 04 · Portfolio</div>
-        <h2 class="display-h reveal d1">Selected <em>work</em>.</h2>
+        <h2 class="display-h reveal d1 scale-on-scroll">Selected <em>work</em>.</h2>
       </div>
       <div class="chapter-num hidden md:block reveal d2">IV</div>
     </div>
@@ -1580,7 +1626,7 @@
     <div class="mb-8 md:mb-10 flex items-end justify-between flex-wrap gap-6">
       <div>
         <div class="eyebrow text-ink/60 mb-3">Chapter 05a · Off the clock</div>
-        <h2 class="display-h reveal">Life outside <em>the desk</em>.</h2>
+        <h2 class="display-h reveal scale-on-scroll">Life outside <em>the desk</em>.</h2>
         <p class="mt-3 text-ink/60 text-[14px] max-w-[52ch]">Family, friends, Caps games at Capital One Arena, Sundays at FedExField with Dad, Darla Moore on graduation day.</p>
       </div>
       <div class="chapter-num hidden md:block">V·a</div>
@@ -1609,7 +1655,7 @@
     <div class="flex items-end justify-between mb-10 md:mb-16">
       <div>
         <div class="eyebrow text-bone/60 mb-4 reveal">Interlude · Take a break</div>
-        <h2 class="display-h text-bone reveal d1">The <em class="text-gold">arcade</em>.</h2>
+        <h2 class="display-h text-bone reveal d1 scale-on-scroll">The <em class="text-gold">arcade</em>.</h2>
         <p class="mt-4 text-bone/70 max-w-xl text-[14.5px] md:text-[15.5px] reveal d2">Three games. Three disciplines. Beat your scores, then let's talk about how I can help your business.</p>
       </div>
       <div class="chapter-num text-bone/10 hidden md:block">VI</div>
@@ -1858,7 +1904,7 @@
     <div class="flex items-end justify-between mb-10 md:mb-14">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 07 · Contact</div>
-        <h2 class="display-h reveal d1">Let's <em>connect</em>.</h2>
+        <h2 class="display-h reveal d1 scale-on-scroll">Let's <em>connect</em>.</h2>
       </div>
       <div class="chapter-num hidden md:block reveal d2">VII</div>
     </div>
@@ -2068,6 +2114,12 @@
     });
   }, { threshold: 0.4 });
   document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  /* === SCALE ON SCROLL === */
+  const sio = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); sio.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+  document.querySelectorAll('.scale-on-scroll').forEach(el => sio.observe(el));
 
   /* === CERTS MARQUEE === */
   const CERTS = [
