@@ -177,10 +177,12 @@
   .hero-title {
     font-family: 'Fraunces', serif;
     font-weight: 300;
-    line-height: .85;
+    line-height: .78;
     letter-spacing: -0.045em;
     font-size: clamp(2.8rem, 9vw, 7.4rem);
     text-rendering: optimizeLegibility;
+    margin: 0;
+    padding: 0;
   }
   .hero-title em { font-style: italic; font-weight: 400; color: var(--ox); display: inline-block; }
   /* Neutralize any JS-injected split wrappers that inflate the h1 */
@@ -193,9 +195,10 @@
     opacity: 1 !important;
     transform: none !important;
     margin: 0;
-    line-height: .88;
+    padding: 0;
+    line-height: .78;
   }
-  .hero-title .hero-line + .hero-line { margin-top: -.28em; }
+  .hero-title .hero-line + .hero-line { margin-top: -.38em; }
   .hero-title br { display: none; }
   @media (prefers-reduced-motion: reduce) {
     .hero-title .hero-line { animation: none !important; transform: none !important; opacity: 1 !important; }
