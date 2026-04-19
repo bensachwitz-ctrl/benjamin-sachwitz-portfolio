@@ -104,8 +104,9 @@
   .eyebrow:hover::before { width: 28px; opacity: 1; }
 
   /* Reveal */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (max-width: 640px) { .reveal { transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1); } }
   .reveal.d1 { transition-delay: .1s; } .reveal.d2 { transition-delay: .2s; }
   .reveal.d3 { transition-delay: .3s; } .reveal.d4 { transition-delay: .4s; }
 
@@ -136,6 +137,7 @@
     border: 1px solid var(--ink); white-space: nowrap; cursor: pointer; border-radius: 6px;
   }
   .btn-ink:hover { background: var(--ox); border-color: var(--ox); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(139,26,26,.2); }
+  .btn-ink:focus { outline: none; box-shadow: 0 0 0 2px var(--bone), 0 0 0 4px var(--ink); }
   .btn-ink:active { transform: translateY(0); }
   .btn-ink svg { transition: transform .3s cubic-bezier(.2,.7,.2,1); width: 14px; height: 14px; }
   .btn-ink:hover svg { transform: translate(2px,-2px); }
@@ -149,6 +151,7 @@
     cursor: pointer;
   }
   .btn-outline:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(10,10,10,.1); }
+  .btn-outline:focus { outline: none; box-shadow: 0 0 0 2px var(--bone), 0 0 0 4px var(--ink); }
   .btn-outline:active { transform: translateY(0); }
 
   .btn-gold {
@@ -420,7 +423,7 @@
     position: relative;
   }
   .finput::placeholder { color: rgba(10,10,10,.35); }
-  .finput:focus { outline: none; border-color: var(--ox); box-shadow: 0 1px 0 var(--gold); }
+  .finput:focus { outline: none; border-color: var(--ox); box-shadow: 0 2px 0 var(--gold); border-width: 2px; }
   .finput:focus::placeholder { color: rgba(10,10,10,.2); }
   .flabel {
     font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
@@ -458,6 +461,10 @@
     .chapter-num { display: none; }
     .aurora { display: none; }
     body { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; }
+    h2, h3 { letter-spacing: -0.01em; }
+    .btn-ink, .btn-outline, .btn-gold { padding: 0.875rem 1.5rem; font-size: 11px; }
+    .finput { padding: .75rem 0; font-size: 13px; }
+    textarea.finput { min-height: 100px; padding: .65rem; }
   }
 
   /* Drop cap */
