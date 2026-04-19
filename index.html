@@ -202,6 +202,25 @@
   @keyframes marquee { to { transform: translateX(-50%); } }
   @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
+  /* Cert ticker marquee */
+  .cert-ticker-wrap { position: relative; }
+  .cert-marquee { padding: .35rem 0; }
+  .cert-marquee .marquee-track { gap: .75rem; animation-duration: 60s; }
+  .cert-marquee-2 .marquee-track { animation-duration: 75s; }
+  .cert-pill {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: .55rem;
+    padding: .5rem .95rem; border: 1px solid rgba(10,10,10,.1);
+    background: rgba(255,255,255,.65); border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .04em;
+    color: rgba(10,10,10,.72); white-space: nowrap;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1), background .3s, border-color .3s, color .3s, box-shadow .3s;
+    cursor: default;
+  }
+  .cert-pill:hover { transform: translateY(-3px) scale(1.04); background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 10px 24px rgba(10,10,10,.18); }
+  .cert-pill .cp-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold); flex-shrink: 0; }
+  .cert-pill .cp-org { color: var(--ox); font-weight: 600; }
+  .cert-pill:hover .cp-org { color: var(--gold); }
+
   /* Cert grid */
   .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
   .cert-chip {
@@ -903,15 +922,36 @@
   /* Magnetic button */
   .magnet { transition: transform .35s cubic-bezier(.2,.7,.2,1); will-change: transform; }
 
-  /* Static ambient gradient (replaces cursor-tracked spotlight) */
-  .spotlight-host { position: relative; }
+  /* Cursor-tracked spotlight (fallback: ambient gradient) */
+  .spotlight-host { position: relative; --mx: 50%; --my: 50%; }
   .spotlight-host::after {
     content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background:
-      radial-gradient(600px circle at 20% 30%, rgba(212,168,67,.09), transparent 55%),
+      radial-gradient(600px circle at var(--mx) var(--my), rgba(212,168,67,.18), transparent 55%),
       radial-gradient(500px circle at 85% 75%, rgba(139,26,26,.07), transparent 55%);
-    opacity: .8;
+    opacity: .85; transition: background .2s linear;
   }
+  @media (hover: none) { .spotlight-host::after { background: radial-gradient(600px circle at 20% 30%, rgba(212,168,67,.09), transparent 55%), radial-gradient(500px circle at 85% 75%, rgba(139,26,26,.07), transparent 55%); } }
+
+  /* Animated gradient shimmer on hero name */
+  .hero-title em {
+    background: linear-gradient(110deg, var(--ox) 0%, #C84444 30%, var(--gold) 55%, #C84444 75%, var(--ox) 100%);
+    background-size: 300% auto; background-clip: text; -webkit-background-clip: text; color: transparent !important;
+    animation: shimmerMove 7s linear infinite;
+  }
+  @keyframes shimmerMove { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
+
+  /* Glow number on hover */
+  .stat-num { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1), text-shadow .4s; cursor: default; }
+  .stat-num:hover { transform: translateY(-3px) scale(1.05); text-shadow: 0 6px 20px rgba(139,26,26,.25); }
+
+  /* Scroll-reveal progress marker */
+  .reveal-glow { position: relative; }
+  .reveal-glow.in::before {
+    content: ""; position: absolute; left: 0; top: 0; width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: glowSweep 1.4s ease-out forwards;
+  }
+  @keyframes glowSweep { from { width: 0; opacity: 1; } to { width: 100%; opacity: 0; } }
 
   /* Project tilt */
   .proj { transform-style: preserve-3d; perspective: 900px; }
@@ -1188,15 +1228,15 @@
           <div class="mt-4 md:mt-6 pt-4 md:pt-5 border-t border-ink/10">
             <div class="grid grid-cols-3 gap-4 md:gap-6 text-center reveal d2 in">
               <div>
-                <div class="font-serif text-[24px] md:text-[32px] font-light text-ink">72<span class="text-ox">+</span></div>
+                <div class="stat-num font-serif text-[24px] md:text-[32px] font-light text-ink" data-count="72"><span class="count-target">72</span><span class="text-ox">+</span></div>
                 <div class="text-[11px] font-mono tracking-[.15em] uppercase text-ink/50 mt-1">Certifications</div>
               </div>
               <div>
-                <div class="font-serif text-[24px] md:text-[32px] font-light text-ink">Lloyd<span class="italic text-ox">'s</span></div>
+                <div class="stat-num font-serif text-[24px] md:text-[32px] font-light text-ink">Lloyd<span class="italic text-ox">'s</span></div>
                 <div class="text-[11px] font-mono tracking-[.15em] uppercase text-ink/50 mt-1">Market Trained</div>
               </div>
               <div>
-                <div class="font-serif text-[24px] md:text-[32px] font-light text-ink">7<span class="text-ox">.</span></div>
+                <div class="stat-num font-serif text-[24px] md:text-[32px] font-light text-ink" data-count="7"><span class="count-target">7</span><span class="text-ox">.</span></div>
                 <div class="text-[11px] font-mono tracking-[.15em] uppercase text-ink/50 mt-1">States Licensed</div>
               </div>
             </div>
@@ -1716,6 +1756,16 @@
       </div>
     </div>
 
+    <!-- Moving marquee of certs -->
+    <div class="cert-ticker-wrap reveal mb-10" aria-hidden="true">
+      <div class="marquee cert-marquee">
+        <div class="marquee-track" id="certTickerA"></div>
+      </div>
+      <div class="marquee cert-marquee cert-marquee-2 mt-3">
+        <div class="marquee-track marquee-track-rev" id="certTickerB"></div>
+      </div>
+    </div>
+
     <div class="cert-grid" id="certGrid" role="list"></div>
   </div>
 </section>
@@ -1984,7 +2034,7 @@
             </div>
           </div>
           <div class="relative">
-            <canvas id="dinoCanvas" width="640" height="200" class="w-full block rounded-sm bg-gradient-to-b from-sky-400 to-sky-100 border border-bone/10"></canvas>
+            <canvas id="dinoCanvas" width="640" height="200" class="w-full block rounded-sm bg-[#FFD89E] border border-bone/10"></canvas>
             <div class="game-over" id="dinoGameOver">
               <div class="eyebrow text-ox mb-2">Game over</div>
               <div class="font-serif text-5xl md:text-6xl font-light text-bone mb-1"><span id="dinoFinalScore">0</span></div>
@@ -2347,6 +2397,18 @@
 
   const countEl = document.getElementById('certCount');
   if (countEl) countEl.textContent = CERTS.length;
+
+  // Populate moving ticker — duplicated for seamless loop
+  const pillHtml = (c) => `<span class="cert-pill"><span class="cp-dot"></span>${esc(c.n)} <span class="cp-org">· ${esc(c.o)}</span></span>`;
+  const tickerA = document.getElementById('certTickerA');
+  const tickerB = document.getElementById('certTickerB');
+  if (tickerA && tickerB) {
+    const shuf = (arr) => arr.slice().sort(() => Math.random() - 0.5);
+    const rowA = shuf(CERTS).slice(0, 24);
+    const rowB = shuf(CERTS).slice(0, 24);
+    tickerA.innerHTML = [...rowA, ...rowA].map(pillHtml).join('');
+    tickerB.innerHTML = [...rowB, ...rowB].map(pillHtml).join('');
+  }
 
   // Filter pills
   const groups = ['All','Anthropic','LinkedIn','Microsoft','Google','Qlik','IBM','Other'];
@@ -3063,6 +3125,10 @@
     });
   });
 
+  // Eager init: draw initial board + "PRESS START" so tetris is ready at page load
+  if (tCanvas && tCtx) { tetris.init(); }
+  if (wBoard && wKb) { wordle.init(); }
+
   /* === DINOSAUR GAME === */
   const dinoCanvas = document.getElementById('dinoCanvas');
   const dinoCtx = dinoCanvas ? dinoCanvas.getContext('2d') : null;
@@ -3088,36 +3154,68 @@
     const canvas = dinoCanvas;
     const groundY = canvas.height - dino.h - 10 + dino.y;
 
-    // Ground line
-    dinoCtx.strokeStyle = 'rgba(20,20,20,0.35)';
-    dinoCtx.lineWidth = 2;
-    dinoCtx.beginPath();
-    dinoCtx.moveTo(0, canvas.height - 10);
-    dinoCtx.lineTo(canvas.width, canvas.height - 10);
-    dinoCtx.stroke();
-
-    // Body
-    dinoCtx.fillStyle = '#1a1a1a';
-    dinoCtx.fillRect(dino.x + 4, groundY + 12, 30, 28);
-    // Head
-    dinoCtx.fillRect(dino.x + 22, groundY, 22, 20);
-    // Eye (white)
-    dinoCtx.fillStyle = '#F5F2EC';
-    dinoCtx.fillRect(dino.x + 36, groundY + 5, 4, 4);
-    dinoCtx.fillStyle = '#1a1a1a';
-    dinoCtx.fillRect(dino.x + 37, groundY + 6, 2, 2);
-    // Tail
-    dinoCtx.fillStyle = '#1a1a1a';
-    dinoCtx.fillRect(dino.x, groundY + 16, 10, 12);
-    // Legs (animate)
-    const legFrame = Math.floor(gameTime / 6) % 2;
+    // Shadow (only when on ground, not jumping)
     if (!dino.jumping) {
-      dinoCtx.fillRect(dino.x + 10, groundY + 40, 6, 10 - legFrame * 2);
-      dinoCtx.fillRect(dino.x + 22, groundY + 40, 6, 8 + legFrame * 2);
+      dinoCtx.fillStyle = 'rgba(10,10,10,0.18)';
+      dinoCtx.beginPath();
+      dinoCtx.ellipse(dino.x + 22, canvas.height - 8, 22, 3, 0, 0, Math.PI * 2);
+      dinoCtx.fill();
     } else {
-      dinoCtx.fillRect(dino.x + 10, groundY + 40, 6, 6);
-      dinoCtx.fillRect(dino.x + 22, groundY + 40, 6, 6);
+      // Smaller shadow during jump
+      const jumpProg = Math.min(Math.abs(dino.y) / 80, 1);
+      dinoCtx.fillStyle = `rgba(10,10,10,${0.18 - jumpProg * 0.14})`;
+      dinoCtx.beginPath();
+      dinoCtx.ellipse(dino.x + 22, canvas.height - 8, 22 - jumpProg * 10, 3 - jumpProg * 1.5, 0, 0, Math.PI * 2);
+      dinoCtx.fill();
     }
+
+    const baseColor = '#1a1a1a';
+    const accentColor = '#2a2a2a';
+
+    // Tail (rounded)
+    dinoCtx.fillStyle = baseColor;
+    dinoCtx.beginPath();
+    dinoCtx.roundRect ? dinoCtx.roundRect(dino.x - 2, groundY + 14, 14, 14, 3) : dinoCtx.rect(dino.x - 2, groundY + 14, 14, 14);
+    dinoCtx.fill();
+    // Body (rounded)
+    dinoCtx.beginPath();
+    dinoCtx.roundRect ? dinoCtx.roundRect(dino.x + 4, groundY + 10, 32, 30, 6) : dinoCtx.rect(dino.x + 4, groundY + 10, 32, 30);
+    dinoCtx.fill();
+    // Head (rounded)
+    dinoCtx.beginPath();
+    dinoCtx.roundRect ? dinoCtx.roundRect(dino.x + 22, groundY - 2, 26, 22, 5) : dinoCtx.rect(dino.x + 22, groundY - 2, 26, 22);
+    dinoCtx.fill();
+    // Body highlight
+    dinoCtx.fillStyle = accentColor;
+    dinoCtx.fillRect(dino.x + 6, groundY + 12, 28, 2);
+    dinoCtx.fillRect(dino.x + 24, groundY, 22, 2);
+    // Eye whites
+    dinoCtx.fillStyle = '#F5F2EC';
+    dinoCtx.beginPath();
+    dinoCtx.arc(dino.x + 40, groundY + 7, 3, 0, Math.PI * 2);
+    dinoCtx.fill();
+    // Pupil
+    dinoCtx.fillStyle = baseColor;
+    dinoCtx.beginPath();
+    dinoCtx.arc(dino.x + 41, groundY + 8, 1.5, 0, Math.PI * 2);
+    dinoCtx.fill();
+    // Nostril
+    dinoCtx.fillRect(dino.x + 46, groundY + 10, 2, 1.5);
+    // Teeth (subtle)
+    dinoCtx.fillStyle = '#F5F2EC';
+    dinoCtx.fillRect(dino.x + 45, groundY + 16, 2, 2);
+    // Legs (animate running)
+    dinoCtx.fillStyle = baseColor;
+    const legFrame = Math.floor(gameTime / 5) % 2;
+    if (!dino.jumping) {
+      dinoCtx.fillRect(dino.x + 12, groundY + 40, 6, 10 - legFrame * 3);
+      dinoCtx.fillRect(dino.x + 24, groundY + 40, 6, 7 + legFrame * 3);
+    } else {
+      dinoCtx.fillRect(dino.x + 12, groundY + 40, 6, 5);
+      dinoCtx.fillRect(dino.x + 24, groundY + 40, 6, 5);
+    }
+    // Arms (small)
+    dinoCtx.fillRect(dino.x + 34, groundY + 22, 5, 3);
   }
 
   function updateDino() {
@@ -3173,11 +3271,95 @@
     });
   }
 
+  let clouds = [
+    { x: 100, y: 30, w: 40, speed: 0.4 },
+    { x: 280, y: 50, w: 32, speed: 0.3 },
+    { x: 480, y: 25, w: 48, speed: 0.5 }
+  ];
+  let mountains = [
+    { x: 0, w: 180, h: 60 },
+    { x: 160, w: 220, h: 80 },
+    { x: 360, w: 180, h: 55 },
+    { x: 500, w: 200, h: 70 }
+  ];
+
+  function drawDinoScene() {
+    if (!dinoCtx) return;
+    const w = dinoCanvas.width, h = dinoCanvas.height;
+    // Gradient sky
+    const sky = dinoCtx.createLinearGradient(0, 0, 0, h);
+    sky.addColorStop(0, '#FFD89E');
+    sky.addColorStop(0.5, '#FFA970');
+    sky.addColorStop(1, '#FFE3C8');
+    dinoCtx.fillStyle = sky;
+    dinoCtx.fillRect(0, 0, w, h);
+    // Sun
+    const sunX = w * 0.8, sunY = h * 0.3;
+    const sunGrad = dinoCtx.createRadialGradient(sunX, sunY, 5, sunX, sunY, 60);
+    sunGrad.addColorStop(0, 'rgba(255,240,200,0.95)');
+    sunGrad.addColorStop(0.4, 'rgba(255,200,120,0.4)');
+    sunGrad.addColorStop(1, 'rgba(255,200,120,0)');
+    dinoCtx.fillStyle = sunGrad;
+    dinoCtx.fillRect(sunX - 80, sunY - 80, 160, 160);
+    dinoCtx.fillStyle = '#FFE8B8';
+    dinoCtx.beginPath();
+    dinoCtx.arc(sunX, sunY, 20, 0, Math.PI * 2);
+    dinoCtx.fill();
+    // Mountains (parallax, slow)
+    mountains.forEach(m => {
+      const mx = ((m.x - gameTime * 0.3) % (w + m.w) + (w + m.w)) % (w + m.w) - m.w;
+      const my = h - m.h - 10;
+      dinoCtx.fillStyle = 'rgba(139,26,26,0.35)';
+      dinoCtx.beginPath();
+      dinoCtx.moveTo(mx, h - 10);
+      dinoCtx.lineTo(mx + m.w / 2, my);
+      dinoCtx.lineTo(mx + m.w, h - 10);
+      dinoCtx.closePath();
+      dinoCtx.fill();
+      // Snow cap
+      dinoCtx.fillStyle = 'rgba(245,242,236,0.5)';
+      dinoCtx.beginPath();
+      dinoCtx.moveTo(mx + m.w / 2 - 10, my + 14);
+      dinoCtx.lineTo(mx + m.w / 2, my);
+      dinoCtx.lineTo(mx + m.w / 2 + 10, my + 14);
+      dinoCtx.closePath();
+      dinoCtx.fill();
+    });
+    // Clouds
+    clouds.forEach(c => {
+      c.x -= c.speed;
+      if (c.x + c.w < 0) c.x = w + Math.random() * 80;
+      drawCloud(c.x, c.y, c.w);
+    });
+    // Ground
+    dinoCtx.fillStyle = '#C49A3C';
+    dinoCtx.fillRect(0, h - 10, w, 10);
+    dinoCtx.fillStyle = 'rgba(139,26,26,0.25)';
+    dinoCtx.fillRect(0, h - 10, w, 1);
+    // Ground speckles
+    dinoCtx.fillStyle = 'rgba(10,10,10,0.15)';
+    for (let i = 0; i < 8; i++) {
+      const gx = ((i * 90 - gameTime * 4) % w + w) % w;
+      dinoCtx.fillRect(gx, h - 6, 4, 1);
+    }
+  }
+
+  function drawCloud(x, y, w) {
+    dinoCtx.fillStyle = 'rgba(245,242,236,0.85)';
+    dinoCtx.beginPath();
+    dinoCtx.arc(x, y, w * 0.35, 0, Math.PI * 2);
+    dinoCtx.arc(x + w * 0.3, y - 4, w * 0.3, 0, Math.PI * 2);
+    dinoCtx.arc(x + w * 0.6, y, w * 0.32, 0, Math.PI * 2);
+    dinoCtx.arc(x + w * 0.3, y + 4, w * 0.28, 0, Math.PI * 2);
+    dinoCtx.fill();
+  }
+
   function drawDinoGame() {
     if (!dinoCtx) return;
-    dinoCtx.clearRect(0, 0, dinoCanvas.width, dinoCanvas.height);
-    drawDino(); drawObstacles();
-    dinoScoreEl.textContent = dinoScore;
+    drawDinoScene();
+    drawObstacles();
+    drawDino();
+    if (dinoScoreEl) dinoScoreEl.textContent = dinoScore;
     if (dinoRunning) {
       updateDino(); updateObstacles(); checkCollision();
       gameTime++;
@@ -3221,6 +3403,51 @@
       if (btn.dataset.dino === 'jump' && !dino.jumping) { dino.jumping = true; dino.vy = -12; }
     });
   });
+
+  // Initial dino scene render (so the panel isn't empty before clicking Start)
+  if (dinoCtx && dinoCanvas) {
+    drawDinoScene();
+    drawDino();
+    dinoCtx.fillStyle = 'rgba(10,10,10,0.7)';
+    dinoCtx.font = '600 14px "JetBrains Mono", monospace';
+    dinoCtx.textAlign = 'center';
+    dinoCtx.fillText('PRESS START · TAP SPACE TO JUMP', dinoCanvas.width/2, 24);
+  }
+
+  /* === CURSOR SPOTLIGHT === */
+  if (!window.matchMedia('(hover: none)').matches) {
+    document.querySelectorAll('.spotlight-host').forEach(host => {
+      host.addEventListener('mousemove', (e) => {
+        const r = host.getBoundingClientRect();
+        const mx = ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%';
+        const my = ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%';
+        host.style.setProperty('--mx', mx);
+        host.style.setProperty('--my', my);
+      });
+    });
+  }
+
+  /* === COUNT-UP ANIMATION on stats === */
+  const countUpIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.parentElement.dataset.count, 10);
+      if (isNaN(target)) return;
+      const dur = 1200;
+      const start = performance.now();
+      const tick = (now) => {
+        const t = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(target * eased);
+        if (t < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      };
+      requestAnimationFrame(tick);
+      countUpIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count-target').forEach(el => countUpIO.observe(el));
 
   /* === EPIC HERO parallax === */
   const heroPhoto = document.querySelector('.hero-parallax-photo');
