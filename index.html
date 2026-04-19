@@ -95,7 +95,7 @@
     font-size: 10px; letter-spacing: .32em; text-transform: uppercase; font-weight: 600;
     display: inline-flex; align-items: center; gap: .6rem;
     transition: color .3s cubic-bezier(.2,.7,.2,1);
-    color: rgba(10,10,10,.6);
+    color: rgba(10,10,10,.65);
   }
   .eyebrow::before {
     content: ""; display: inline-block; width: 18px; height: 1px; background: currentColor; opacity: .5;
@@ -122,6 +122,8 @@
     transition: transform .45s cubic-bezier(.2,.7,.2,1);
   }
   .link-line:hover::after { transform: scaleX(1); transform-origin: left; }
+  .link-line:focus { outline: none; }
+  .link-line:focus-visible::after { transform: scaleX(1); transform-origin: left; }
 
   /* Nav */
   .nav-shell { backdrop-filter: saturate(140%) blur(18px); -webkit-backdrop-filter: saturate(140%) blur(18px); transition: background .35s, border-color .35s; }
@@ -1100,18 +1102,18 @@
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
       </a></li>
     </ul>
-    <button id="hb" class="hb md:hidden p-2" aria-label="Open menu">
+    <button id="hb" class="hb md:hidden p-3" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <!-- Mobile menu -->
   <div id="mmenu" class="mmenu md:hidden bg-bone border-t border-ink/10">
     <ul class="px-5 py-6 flex flex-col gap-4 text-[15px] font-medium">
-      <li><a href="#about" class="mlink block py-2">About</a></li>
-      <li><a href="#career" class="mlink block py-2">Career</a></li>
-      <li><a href="#expertise" class="mlink block py-2">Expertise</a></li>
-      <li><a href="#work" class="mlink block py-2">Work</a></li>
-      <li><a href="#arcade-play" class="mlink block py-2 text-gold-2">The Arcade</a></li>
+      <li><a href="#about" class="mlink block py-3">About</a></li>
+      <li><a href="#career" class="mlink block py-3">Career</a></li>
+      <li><a href="#expertise" class="mlink block py-3">Expertise</a></li>
+      <li><a href="#work" class="mlink block py-3">Work</a></li>
+      <li><a href="#arcade-play" class="mlink block py-3 text-gold-2">The Arcade</a></li>
       <li><a href="#contact" class="mlink btn-ink w-full justify-center mt-2">Book a call</a></li>
     </ul>
   </div>
