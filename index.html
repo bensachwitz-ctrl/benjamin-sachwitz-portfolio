@@ -512,13 +512,51 @@
     .eyebrow { letter-spacing: .16em; font-size: 10.5px; }
     .chapter-num { display: none; }
     .aurora { display: none !important; }
-    body { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; }
+    body { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; line-height: 1.6; }
     h2, h3 { letter-spacing: -0.01em; }
-    .btn-ink, .btn-outline, .btn-gold { padding: 0.875rem 1.5rem; font-size: 11px; }
-    .finput { padding: .75rem 0; font-size: 13px; }
-    textarea.finput { min-height: 100px; padding: .65rem; }
+    .btn-ink, .btn-outline, .btn-gold { padding: 0.85rem 1.4rem; font-size: 11.5px; min-height: 44px; }
+    .finput { padding: .75rem 0; font-size: 16px; } /* 16px avoids iOS zoom-on-focus */
+    textarea.finput { min-height: 100px; padding: .65rem; font-size: 16px; }
     .nav-shell { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
     .cert-modal { backdrop-filter: blur(0) !important; -webkit-backdrop-filter: blur(0) !important; }
+    /* Tighten section vertical rhythm */
+    section { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+    #top { padding-top: 4rem !important; padding-bottom: 1rem !important; }
+    /* Typography */
+    .display-h { font-size: clamp(1.8rem, 7vw, 2.4rem) !important; }
+    /* Hero description compactness */
+    #top p { font-size: 13.5px; line-height: 1.55; }
+    /* Hero pills smaller */
+    .hero-pill { font-size: 10.5px; padding: .32rem .65rem; }
+    /* Stats row compact */
+    #top .stat-num { font-size: 22px !important; }
+    #top .text-\[11px\] { font-size: 9.5px; letter-spacing: .1em; }
+    /* Typewriter single-line */
+    .tw-rotator { font-size: 11px; flex-wrap: nowrap; overflow: hidden; }
+    /* Minimum tap targets on nav */
+    .nlink, .mlink { min-height: 44px; display: inline-flex; align-items: center; }
+    /* Scroll ring smaller on mobile */
+    .scroll-ring { width: 42px; height: 42px; bottom: 1rem; right: 1rem; }
+    /* Section rail hidden — already is but double-sure */
+    .section-rail { display: none !important; }
+    /* Floating book button a little smaller */
+    .book-float .btn-ink { padding: .7rem 1.1rem; font-size: 11px; }
+    /* Cards a bit tighter */
+    .proj { padding: 1.75rem 1.5rem !important; }
+    .exp-card { padding: 1.75rem 1.5rem !important; }
+    /* Cert marquee pills smaller */
+    .cert-pill { font-size: 10px; padding: .35rem .7rem; }
+    /* Game cards */
+    .game-card { padding: 1rem !important; }
+    /* Booking panel better spacing */
+    .booking-chips { gap: .35rem; }
+    .bchip span { padding: .5rem .8rem; font-size: 11.5px; }
+    /* Life grid 2-col at narrow widths */
+    .life-grid { gap: .5rem !important; }
+  }
+  @media (max-width: 400px) {
+    .hero-title { font-size: clamp(1.6rem, 11vw, 2.4rem) !important; }
+    #top .grid.grid-cols-3 { gap: .5rem !important; }
   }
 
   /* Drop cap */
@@ -1496,7 +1534,7 @@
 
     <!-- Hero title -->
     <div class="py-3 md:py-5">
-      <div class="grid grid-cols-12 gap-3 md:gap-10 w-full items-start lg:items-center">
+      <div class="grid grid-cols-12 gap-2 sm:gap-4 md:gap-10 w-full items-start lg:items-center">
 
         <div class="col-span-8 lg:col-span-8 order-1 lg:order-1">
           <div class="mb-1 md:mb-4 flex flex-wrap items-center gap-2 md:gap-3 reveal in">
