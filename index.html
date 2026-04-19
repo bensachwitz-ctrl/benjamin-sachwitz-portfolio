@@ -2575,19 +2575,21 @@
   });
 
   let tsx=0, tsy=0;
-  canvas.addEventListener('touchstart', (e) => { tsx=e.touches[0].clientX; tsy=e.touches[0].clientY; }, {passive:true});
-  canvas.addEventListener('touchend', (e) => {
-    if (!running) return;
-    const dX = e.changedTouches[0].clientX - tsx;
-    const dY = e.changedTouches[0].clientY - tsy;
-    if (Math.abs(dX) > Math.abs(dY)) {
-      if (dX > 20 && dx!==-1) { nextDx=1; nextDy=0; }
-      else if (dX < -20 && dx!==1) { nextDx=-1; nextDy=0; }
-    } else {
-      if (dY > 20 && dy!==-1) { nextDx=0; nextDy=1; }
-      else if (dY < -20 && dy!==1) { nextDx=0; nextDy=-1; }
-    }
-  }, {passive:true});
+  if (canvas) {
+    canvas.addEventListener('touchstart', (e) => { tsx=e.touches[0].clientX; tsy=e.touches[0].clientY; }, {passive:true});
+    canvas.addEventListener('touchend', (e) => {
+      if (!running) return;
+      const dX = e.changedTouches[0].clientX - tsx;
+      const dY = e.changedTouches[0].clientY - tsy;
+      if (Math.abs(dX) > Math.abs(dY)) {
+        if (dX > 20 && dx!==-1) { nextDx=1; nextDy=0; }
+        else if (dX < -20 && dx!==1) { nextDx=-1; nextDy=0; }
+      } else {
+        if (dY > 20 && dy!==-1) { nextDx=0; nextDy=1; }
+        else if (dY < -20 && dy!==1) { nextDx=0; nextDy=-1; }
+      }
+    }, {passive:true});
+  }
 
   /* === ARCADE TABS === */
   const tabs = document.querySelectorAll('.atab');
@@ -3027,11 +3029,12 @@
     if (!tRunning) return;
     const panel = document.querySelector('.apanel[data-panel="tetris"]');
     if (!panel || panel.classList.contains('hidden')) return;
+    if (!tCanvas || !tCtx) return;
     switch (e.key) {
       case 'ArrowLeft': move(-1, 0); drawTBoard(); drawPiece(); e.preventDefault(); break;
       case 'ArrowRight': move(1, 0); drawTBoard(); drawPiece(); e.preventDefault(); break;
       case 'ArrowDown':
-        if (move(0, 1)) { tScore += 1; tScoreEl.textContent = tScore; }
+        if (move(0, 1)) { tScore += 1; if (tScoreEl) tScoreEl.textContent = tScore; }
         drawTBoard(); drawPiece(); e.preventDefault(); break;
       case 'ArrowUp': rotatePiece(); drawTBoard(); drawPiece(); e.preventDefault(); break;
       case ' ': hardDrop(); e.preventDefault(); break;
