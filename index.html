@@ -2498,8 +2498,8 @@
     snake = [{x:mx,y:my},{x:mx-1,y:my},{x:mx-2,y:my}];
     dx=1; dy=0; nextDx=1; nextDy=0;
     score=0; speed=120;
-    scoreDisp.textContent = '0';
-    gameOver.classList.remove('show');
+    if (scoreDisp) scoreDisp.textContent = '0';
+    if (gameOver) gameOver.classList.remove('show');
     spawnFood();
   }
   function step(){
@@ -2510,9 +2510,10 @@
     snake.unshift(head);
     if (head.x===food.x && head.y===food.y) {
       score++;
-      scoreDisp.textContent = score;
+      if (scoreDisp) scoreDisp.textContent = score;
       if (score > high) {
-        high = score; highDisp.textContent = high;
+        high = score;
+        if (highDisp) highDisp.textContent = high;
         localStorage.setItem('snakeHigh', high);
       }
       spawnFood();
@@ -2525,18 +2526,19 @@
   function over(){
     running = false;
     clearInterval(loop);
-    finalScore.textContent = score;
-    gameOver.classList.add('show');
-    startBtn.classList.add('hidden');
-    restartBtn.classList.remove('hidden');
+    if (finalScore) finalScore.textContent = score;
+    if (gameOver) gameOver.classList.add('show');
+    if (startBtn) startBtn.classList.add('hidden');
+    if (restartBtn) restartBtn.classList.remove('hidden');
   }
   function start(){
+    if (!canvas || !ctx) return;
     reset();
     running = true;
     drawBoard(); drawFood(); drawSnake();
     loop = setInterval(step, speed);
-    startBtn.classList.add('hidden');
-    restartBtn.classList.remove('hidden');
+    if (startBtn) startBtn.classList.add('hidden');
+    if (restartBtn) restartBtn.classList.remove('hidden');
   }
 
   // Initial state
