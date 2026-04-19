@@ -969,6 +969,31 @@
   @keyframes ctaPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,67,.4); } 50% { box-shadow: 0 0 0 8px rgba(212,168,67,0); } }
   .cta-pulse { animation: ctaPulse 2.5s infinite; }
 
+  /* Premium project card entrance */
+  .proj { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+  .proj.reveal.in { opacity: 1; transform: none; }
+
+  /* Enhanced expertise card entrance */
+  .exp-card { opacity: 0; transform: translateY(16px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .exp-card.reveal.in { opacity: 1; transform: none; }
+
+  /* Premium link hover effects */
+  .link-line { position: relative; }
+  .link-line::after { content: ""; position: absolute; bottom: -2px; left: 0; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  .link-line:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Text reveal on scroll - premium entrance */
+  @keyframes textReveal { from { clip-path: inset(0 100% 0 0); opacity: 0; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
+  .text-reveal { animation: textReveal 1.2s cubic-bezier(.2,.7,.2,1) forwards; }
+
+  /* Image zoom reveal */
+  @keyframes imageZoom { from { transform: scale(1.08) translateZ(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .image-reveal { animation: imageZoom 1.4s cubic-bezier(.2,.7,.2,1) forwards; }
+
+  /* Number counter flash */
+  @keyframes numberFlash { 0%, 100% { color: currentColor; text-shadow: none; } 50% { color: #D4A843; text-shadow: 0 0 12px rgba(212,168,67,.6); } }
+  .number-flash { animation: numberFlash .6s ease-out; }
+
   /* Smooth scroll behavior enhancement */
   @media (prefers-reduced-motion: no-preference) {
     .reveal { will-change: opacity, transform; }
@@ -1212,33 +1237,33 @@
       <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-6 text-bone">
         <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2017 — 2022</div>
         <div class="col-span-12 md:col-span-4">
-          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Youth Sports Referee</h3>
+          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Sports Official</h3>
           <div class="mt-1 text-bone/60 text-[13px]">McLean Youth Basketball &amp; WALOA Lacrosse · McLean, VA</div>
         </div>
         <div class="col-span-12 md:col-span-6 text-bone/70 text-[13.5px] leading-relaxed">
-          Officiated youth basketball and competitive lacrosse across ~7 years. Built decision-making under pressure and composure — skills that carry into every underwriting call.
+          Five seasons of competitive lacrosse and basketball. Built judgment under pressure—reading game dynamics in real-time, interpreting complex rules, managing stakeholder tensions. Foundation for underwriting: risk assessment requires the same composure and decisive judgment.
         </div>
       </div>
 
       <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-6 text-bone">
         <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2020 — 2022</div>
         <div class="col-span-12 md:col-span-4">
-          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Crew Member</h3>
+          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Operations · Pizza Line</h3>
           <div class="mt-1 text-bone/60 text-[13px]">Badd Pizza · Falls Church, VA</div>
         </div>
         <div class="col-span-12 md:col-span-6 text-bone/70 text-[13.5px] leading-relaxed">
-          Two years on a local pizza line during high school. Speed, service, and showing up when it mattered.
+          High-volume food service during peak hours. Learned operational precision, task prioritization, and quality standards under time pressure—principles that apply directly to underwriting workflows and client service.
         </div>
       </div>
 
       <div class="tl-row group grid grid-cols-12 gap-6 py-5 md:py-6 text-bone">
         <div class="col-span-12 md:col-span-2 tl-marker font-mono text-[11px] tracking-[.24em] uppercase text-bone/60">2022 — 2023</div>
         <div class="col-span-12 md:col-span-4">
-          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Busser</h3>
+          <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight">Guest Services</h3>
           <div class="mt-1 text-bone/60 text-[13px]">SoDel Concepts · Ocean View, DE</div>
         </div>
         <div class="col-span-12 md:col-span-6 text-bone/70 text-[13.5px] leading-relaxed">
-          Coastal brewery-restaurant floor work. High-volume service, team choreography, customer-first execution.
+          Restaurant operations in high-volume hospitality. Developed keen attention to detail, team coordination, and proactive problem-solving—traits essential for managing underwriting relationships and client expectations.
         </div>
       </div>
 
@@ -1407,7 +1432,7 @@
           <div class="eyebrow text-ox">Core</div>
         </div>
         <h3 class="font-serif text-[26px] font-light leading-tight">Insurance &amp; Risk</h3>
-        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Commercial P&amp;C discipline — from binder to claim.</p>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">8+ years underwriting commercial trucking and specialty risk. Deep expertise in placement strategy, loss analysis, and FMCSA/CAB data interpretation. Fluent in Lloyd's market dynamics and E&S submission protocols.</p>
         <div class="flex flex-wrap gap-1.5 mt-6">
           <span class="pill">Commercial P&amp;C</span>
           <span class="pill">Marine</span>
@@ -1428,7 +1453,7 @@
           <div class="eyebrow text-ox">Modern</div>
         </div>
         <h3 class="font-serif text-[26px] font-light leading-tight">Technology &amp; AI</h3>
-        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Modern stack for the modern agency operator.</p>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Building loss-control automation and AI-powered risk assessment tools. Hands-on with full-stack development, prompt engineering, and modern analytics platforms. Translating complex insurance workflows into scalable technical solutions.</p>
         <div class="flex flex-wrap gap-1.5 mt-6">
           <span class="pill">AI / ML</span>
           <span class="pill">GitHub</span>
@@ -1449,7 +1474,7 @@
           <div class="eyebrow text-ox">Revenue</div>
         </div>
         <h3 class="font-serif text-[26px] font-light leading-tight">Business &amp; Sales</h3>
-        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Producer's engine room — pipeline to close.</p>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">BizDev and federal sales background. Proven ability to qualify leads, negotiate complex terms, and build producer-level client relationships. Strategic mindset for agency growth and market expansion.</p>
         <div class="flex flex-wrap gap-1.5 mt-6">
           <span class="pill">BizDev</span>
           <span class="pill">Federal Sales</span>
@@ -1484,7 +1509,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal">
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d1">
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 01</div>
@@ -1627,7 +1652,7 @@
       <div>
         <div class="eyebrow text-ink/60 mb-3">Chapter 05a · Off the clock</div>
         <h2 class="display-h reveal scale-on-scroll">Life outside <em>the desk</em>.</h2>
-        <p class="mt-3 text-ink/60 text-[14px] max-w-[52ch]">Family, friends, Caps games at Capital One Arena, Sundays at FedExField with Dad, Darla Moore on graduation day.</p>
+        <p class="mt-3 text-ink/60 text-[14px] max-w-[52ch]">Home in McLean with family, roots in the Lowcountry, and Sundays at the stadium with Dad. Darla Moore class of 2025—grateful for the rigor, community, and people that shaped me.</p>
       </div>
       <div class="chapter-num hidden md:block">V·a</div>
     </div>
