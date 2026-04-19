@@ -127,11 +127,11 @@
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .85rem 1.4rem; background: var(--ink); color: var(--bone);
     font-size: 13px; letter-spacing: .04em; font-weight: 500;
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), background .3s, box-shadow .3s;
-    border: 1px solid var(--ink); white-space: nowrap; cursor: pointer;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1), background .3s, box-shadow .3s, color .3s;
+    border: 1px solid var(--ink); white-space: nowrap; cursor: pointer; border-radius: 4px;
   }
-  .btn-ink:hover { background: var(--ox); border-color: var(--ox); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(10,10,10,.15); }
-  .btn-ink:active { transform: translateY(0px); }
+  .btn-ink:hover { background: var(--ox); border-color: var(--ox); transform: translateY(-3px); box-shadow: 0 16px 32px rgba(139,26,26,.25); }
+  .btn-ink:active { transform: translateY(-1px); }
   .btn-ink svg { transition: transform .35s ease; }
   .btn-ink:hover svg { transform: translate(3px,-3px); }
 
@@ -139,22 +139,23 @@
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .85rem 1.4rem; background: transparent; color: var(--ink);
     font-size: 13px; letter-spacing: .04em; font-weight: 500;
-    border: 1px solid rgba(10,10,10,.4);
-    transition: all .3s;
+    border: 1.5px solid rgba(10,10,10,.3); border-radius: 4px;
+    transition: all .3s cubic-bezier(.2,.7,.2,1);
     cursor: pointer;
   }
-  .btn-outline:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(10,10,10,.1); }
-  .btn-outline:active { transform: translateY(0); }
+  .btn-outline:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 12px 24px rgba(10,10,10,.12); }
+  .btn-outline:active { transform: translateY(-1px); }
 
   .btn-gold {
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .85rem 1.4rem; background: var(--gold); color: #1a1204;
     font-size: 13px; letter-spacing: .04em; font-weight: 600;
-    border: 1px solid var(--gold); transition: all .3s;
+    border: 1px solid var(--gold); border-radius: 4px;
+    transition: all .3s cubic-bezier(.2,.7,.2,1);
     cursor: pointer;
   }
-  .btn-gold:hover { background: #1a1204; color: var(--gold); border-color: #1a1204; transform: translateY(-2px); box-shadow: 0 12px 24px rgba(212,168,67,.25); }
-  .btn-gold:active { transform: translateY(0px); }
+  .btn-gold:hover { background: #1a1204; color: var(--gold); border-color: #1a1204; transform: translateY(-3px); box-shadow: 0 16px 32px rgba(212,168,67,.3); }
+  .btn-gold:active { transform: translateY(-1px); }
 
   /* Hero type */
   .hero-title {
@@ -1126,7 +1127,7 @@
             <span class="tw-phrase" id="twPhrase" aria-live="polite"></span>
           </div>
           <p class="mt-5 md:mt-8 max-w-xl text-[15px] md:text-[17px] leading-relaxed text-ink/75 reveal d1 in">
-            McLean, VA native. Darla Moore graduate (Dec 2025). Lloyd's of London trained. Commercial trucking &amp; logging specialist at <a href="https://www.swampfoxagency.com" target="_blank" rel="noopener" class="link-line font-medium">Swamp Fox Agency</a> — building AI-powered tools for the modern agency from DC roots to the Lloyd's market.
+            Assistant Underwriter at <a href="https://www.swampfoxagency.com" target="_blank" rel="noopener" class="link-line font-medium text-ink">Swamp Fox Agency</a>. I specialize in commercial trucking and logging risk — applying Lloyd's-trained discipline to hard-to-place accounts. Building AI-powered loss-control systems to modernize how agencies operate.
           </p>
 
           <!-- Specialization pills -->
@@ -1192,6 +1193,29 @@
         <span class="md:hidden">Begin →</span>
       </div>
       <div class="text-[11px] font-mono tracking-[.22em] uppercase text-ink/40">01 / 07</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALUE PROPOSITION ===== -->
+<section class="relative py-10 md:py-14 bg-ink/[0.02] border-b border-ink/10">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+      <div class="reveal">
+        <div class="eyebrow text-ox mb-3 text-[10px]">Deep Knowledge</div>
+        <h3 class="font-serif text-[18px] font-light leading-tight mb-2">Lloyd's discipline</h3>
+        <p class="text-[13.5px] text-ink/70 leading-relaxed">Applied specialty underwriting lens to every underwriting decision. Commercial trucking &amp; logging expertise across E&S markets.</p>
+      </div>
+      <div class="reveal d1">
+        <div class="eyebrow text-ox mb-3 text-[10px]">Modern Tech</div>
+        <h3 class="font-serif text-[18px] font-light leading-tight mb-2">AI-powered workflows</h3>
+        <p class="text-[13.5px] text-ink/70 leading-relaxed">Systematic loss-control automation, risk-assessment tools, and conversion-optimized platforms built for the modern agency.</p>
+      </div>
+      <div class="reveal d2">
+        <div class="eyebrow text-ox mb-3 text-[10px]">Producer Mindset</div>
+        <h3 class="font-serif text-[18px] font-light leading-tight mb-2">Business growth</h3>
+        <p class="text-[13.5px] text-ink/70 leading-relaxed">BizDev &amp; federal sales background. Focused on pipeline growth, client relations, and building a sustainable book.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1376,11 +1400,14 @@
     radial-gradient(520px circle at 15% 40%, rgba(212,168,67,.09), transparent 60%),
     radial-gradient(520px circle at 85% 60%, rgba(139,26,26,.05), transparent 60%);"></div>
   <div class="relative max-w-[1200px] mx-auto px-5 md:px-10 text-center">
-    <div class="eyebrow text-ink/50 mb-6 reveal" style="justify-content:center;">The credo</div>
+    <div class="eyebrow text-ink/50 mb-6 reveal" style="justify-content:center;">Philosophy</div>
     <h2 class="credo-h font-serif font-light leading-[1.05] reveal d1 scale-on-scroll">
       It's the <em class="italic text-ox">little things</em><br/>that set us <em class="italic text-gold-2">apart</em>.
     </h2>
-    <div class="mt-6 inline-flex items-center gap-3 text-[11px] font-mono tracking-[.22em] uppercase text-ink/45 reveal d2">
+    <p class="mt-6 text-[15px] md:text-[16px] text-ink/70 leading-relaxed max-w-[65ch] mx-auto reveal d2">
+      Deep expertise. Systematic thinking. Relentless precision. That's what separates the producers who build generational books from those who chase commissions.
+    </p>
+    <div class="mt-8 inline-flex items-center gap-3 text-[11px] font-mono tracking-[.22em] uppercase text-ink/45 reveal d3">
       <span class="w-8 h-px bg-ink/25"></span>
       <span>— b.s.</span>
       <span class="w-8 h-px bg-ink/25"></span>
