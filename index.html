@@ -875,6 +875,10 @@
   }
   @keyframes chipSlideIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
   .avail-chip:hover { background: rgba(212,168,67,.12); border-color: rgba(212,168,67,.6); }
+  .avail-chip-link { text-decoration: none; cursor: pointer; transition: transform .25s cubic-bezier(.2,.7,.2,1), background .25s, border-color .25s, box-shadow .25s; }
+  .avail-chip-link:hover { transform: translateY(-2px); background: rgba(212,168,67,.18); border-color: var(--gold); box-shadow: 0 8px 20px rgba(212,168,67,.2); }
+  .avail-chip-link:hover svg { opacity: 1; transform: translate(2px,-2px); }
+  .avail-chip-link svg { transition: transform .25s cubic-bezier(.2,.7,.2,1), opacity .25s; }
   .avail-chip .pulse {
     width: 7px; height: 7px; border-radius: 50%; background: #14A05C; position: relative;
     box-shadow: 0 0 0 0 rgba(20,160,92,.6); animation: availPulse 1.8s ease-out infinite;
@@ -1157,7 +1161,7 @@
 
         <div class="col-span-12 lg:col-span-8 order-1 lg:order-1">
           <div class="mb-1 md:mb-4 flex flex-wrap items-center gap-2 md:gap-3 reveal in">
-            <span class="avail-chip" style="font-size: 11px;"><span class="pulse"></span>Open to conversations</span>
+            <a href="#contact" class="avail-chip avail-chip-link" style="font-size: 11px;" aria-label="Open to conversations — book a call"><span class="pulse"></span>Open to conversations<svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="ml-1 opacity-60" aria-hidden="true"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></a>
             <span class="eyebrow text-ink/55 text-[9px]">Insurance × Risk</span>
           </div>
           <h1 class="hero-title reveal in" data-split-hero>
@@ -2183,16 +2187,18 @@
   /* === MOBILE MENU === */
   const hb = document.getElementById('hb');
   const mmenu = document.getElementById('mmenu');
-  hb.addEventListener('click', () => {
-    hb.classList.toggle('open');
-    mmenu.classList.toggle('open');
-  });
-  mmenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hb.classList.remove('open');
-      mmenu.classList.remove('open');
+  if (hb && mmenu) {
+    hb.addEventListener('click', () => {
+      hb.classList.toggle('open');
+      mmenu.classList.toggle('open');
     });
-  });
+    mmenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hb.classList.remove('open');
+        mmenu.classList.remove('open');
+      });
+    });
+  }
 
   /* === SMOOTH SCROLL === */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
