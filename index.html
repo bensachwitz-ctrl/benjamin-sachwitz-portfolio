@@ -941,6 +941,96 @@
   }
   @keyframes shimmerMove { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
 
+  /* Interactive hero pills */
+  .hero-pill {
+    display: inline-block; padding: .375rem .85rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: .025em;
+    color: rgba(10,10,10,.75); border-radius: 999px;
+    position: relative; overflow: hidden; cursor: default;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1), color .3s, border-color .3s, box-shadow .3s;
+    border: 1px solid transparent;
+  }
+  .hero-pill::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .hero-pill-gold { background: rgba(212,168,67,.15); border-color: rgba(212,168,67,.35); }
+  .hero-pill-ox { background: rgba(139,26,26,.1); border-color: rgba(139,26,26,.3); }
+  .hero-pill-ink { background: rgba(10,10,10,.05); border-color: rgba(10,10,10,.2); }
+  .hero-pill:hover { transform: translateY(-3px) scale(1.05); color: var(--bone); box-shadow: 0 10px 24px rgba(10,10,10,.18); }
+  .hero-pill-gold:hover { background: var(--gold); border-color: var(--gold); color: #1a1204; }
+  .hero-pill-ox:hover { background: var(--ox); border-color: var(--ox); }
+  .hero-pill-ink:hover { background: var(--ink); border-color: var(--ink); }
+
+  /* Custom cursor dot (desktop only) */
+  .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 999; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: transform .15s ease-out, width .2s, height .2s, opacity .2s; opacity: 0; }
+  .cursor-ring { position: fixed; top: 0; left: 0; width: 32px; height: 32px; border: 1.5px solid rgba(212,168,67,.6); border-radius: 50%; pointer-events: none; z-index: 998; transform: translate(-50%, -50%); transition: transform .3s cubic-bezier(.2,.7,.2,1), width .3s, height .3s, border-color .3s; opacity: 0; }
+  body.cursor-ready .cursor-dot, body.cursor-ready .cursor-ring { opacity: 1; }
+  body.cursor-hover .cursor-dot { width: 4px; height: 4px; }
+  body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: var(--gold); }
+  @media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-ring { display: none !important; } }
+
+  /* Circular scroll progress */
+  .scroll-ring { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; z-index: 45; opacity: 0; transition: opacity .4s; pointer-events: none; }
+  .scroll-ring.show { opacity: 1; pointer-events: auto; }
+  .scroll-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .scroll-ring .ring-track { stroke: rgba(10,10,10,.12); stroke-width: 2; fill: none; }
+  .scroll-ring .ring-progress { stroke: var(--ox); stroke-width: 2.5; fill: none; stroke-linecap: round; transition: stroke-dashoffset .1s linear; }
+  .scroll-ring button { position: absolute; inset: 0; background: rgba(245,242,236,.9); border: 1px solid rgba(10,10,10,.1); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; padding: 0; transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .3s; margin: 4px; width: calc(100% - 8px); height: calc(100% - 8px); }
+  .scroll-ring button:hover { background: var(--ink); color: var(--bone); transform: scale(1.08); }
+  .scroll-ring button svg { width: 14px; height: 14px; transform: none; }
+
+  /* Section number badges */
+  .section-badge { display: inline-flex; align-items: center; gap: .4rem; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(10,10,10,.5); }
+  .section-badge::before { content: ""; display: inline-block; width: 16px; height: 1px; background: var(--gold); }
+
+  /* Noise grain overlay toggle for premium feel */
+  .noise-layer { position: fixed; inset: 0; pointer-events: none; z-index: 3; mix-blend-mode: overlay; opacity: .035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 200px 200px;
+  }
+
+  /* Float-in animation for reveal cards */
+  @keyframes floatIn { 0% { opacity: 0; transform: translateY(30px) scale(.97); } 100% { opacity: 1; transform: none; } }
+  @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,168,67,.4); } 50% { box-shadow: 0 0 0 6px rgba(212,168,67,0); } }
+  @keyframes borderGlow { 0%, 100% { border-color: rgba(10,10,10,.1); } 50% { border-color: rgba(212,168,67,.5); } }
+  @keyframes iconSpin { to { transform: rotate(360deg); } }
+
+  /* Animated underline on section headings */
+  .display-h em, h2 em { position: relative; }
+
+  /* Ken Burns on hero image */
+  @keyframes kenBurns {
+    0% { transform: scale(1.02); }
+    100% { transform: scale(1.08) translate(-1%, -0.5%); }
+  }
+  .hero-parallax-photo img { animation: kenBurns 14s ease-in-out infinite alternate; }
+
+  /* Pop-in for pills on scroll */
+  .reveal.in .hero-pill { animation: floatIn .6s cubic-bezier(.34,1.56,.64,1) backwards; }
+  .reveal.in .hero-pill:nth-child(1) { animation-delay: .15s; }
+  .reveal.in .hero-pill:nth-child(2) { animation-delay: .22s; }
+  .reveal.in .hero-pill:nth-child(3) { animation-delay: .29s; }
+  .reveal.in .hero-pill:nth-child(4) { animation-delay: .36s; }
+
+  /* Magnetic tilt on cards */
+  .tilt-card { transition: transform .4s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; }
+  .tilt-card:hover { transform: translateY(-4px); }
+
+  /* Gradient text animation utility */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--ox), var(--gold), var(--ox));
+    background-size: 200% 200%;
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+    animation: shimmerMove 5s linear infinite;
+  }
+
+  /* Scroll-linked reveal with slight horizontal drift */
+  .reveal-right { opacity: 0; transform: translateX(20px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal-right.in { opacity: 1; transform: none; }
+  .reveal-left { opacity: 0; transform: translateX(-20px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal-left.in { opacity: 1; transform: none; }
+
   /* Glow number on hover */
   .stat-num { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1), text-shadow .4s; cursor: default; }
   .stat-num:hover { transform: translateY(-3px) scale(1.05); text-shadow: 0 6px 20px rgba(139,26,26,.25); }
@@ -1141,6 +1231,24 @@
 <!-- ===== SCROLL PROGRESS ===== -->
 <div class="scroll-prog" id="scrollProg"></div>
 
+<!-- ===== NOISE TEXTURE OVERLAY ===== -->
+<div class="noise-layer" aria-hidden="true"></div>
+
+<!-- ===== CUSTOM CURSOR ===== -->
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ===== SCROLL-TO-TOP RING ===== -->
+<div class="scroll-ring" id="scrollRing" aria-hidden="true">
+  <svg viewBox="0 0 48 48" aria-hidden="true">
+    <circle class="ring-track" cx="24" cy="24" r="21"/>
+    <circle class="ring-progress" cx="24" cy="24" r="21" id="ringProgress" stroke-dasharray="131.95" stroke-dashoffset="131.95"/>
+  </svg>
+  <button type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 10V2M6 2L2 6M6 2L10 6"/></svg>
+  </button>
+</div>
+
 <!-- ===== NAV ===== -->
 <nav id="nav" class="nav-shell nav-hero fixed top-0 inset-x-0 z-40 transition-colors duration-300">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 flex items-center justify-between h-16 md:h-20">
@@ -1219,10 +1327,10 @@
 
           <!-- Specialization pills -->
           <div class="mt-3 md:mt-4 flex flex-wrap gap-1 md:gap-2 reveal d1 in">
-            <span class="inline-block px-3 py-1.5 bg-gold/15 border border-gold/30 rounded-full text-[12px] font-mono tracking-wide text-ink/70">E&S Underwriting</span>
-            <span class="inline-block px-3 py-1.5 bg-ox/10 border border-ox/30 rounded-full text-[12px] font-mono tracking-wide text-ink/70">Lloyd's Market</span>
-            <span class="inline-block px-3 py-1.5 bg-ink/5 border border-ink/20 rounded-full text-[12px] font-mono tracking-wide text-ink/70">Commercial Trucking</span>
-            <span class="inline-block px-3 py-1.5 bg-ink/5 border border-ink/20 rounded-full text-[12px] font-mono tracking-wide text-ink/70">Loss Control AI</span>
+            <span class="hero-pill hero-pill-gold">E&amp;S Underwriting</span>
+            <span class="hero-pill hero-pill-ox">Lloyd's Market</span>
+            <span class="hero-pill hero-pill-ink">Commercial Trucking</span>
+            <span class="hero-pill hero-pill-ink">Loss Control AI</span>
           </div>
 
           <div class="mt-4 md:mt-6 pt-4 md:pt-5 border-t border-ink/10">
@@ -1285,7 +1393,7 @@
 </section>
 
 <!-- ===== VALUE PROPOSITION ===== -->
-<section class="relative py-12 md:py-16 bg-ink/[0.02] border-b border-ink/10">
+<section class="relative py-10 md:py-12 bg-ink/[0.02] border-b border-ink/10">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       <div class="reveal pb-6 md:pb-0 md:border-r border-ink/10">
@@ -1308,11 +1416,11 @@
 </section>
 
 <!-- ===== CHAPTER 01 — ABOUT ===== -->
-<section id="about" class="relative py-16 md:py-24 overflow-hidden">
+<section id="about" class="relative py-12 md:py-16 overflow-hidden">
   <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
-    <div class="flex items-end justify-between mb-10 md:mb-14">
+    <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 01 · About</div>
         <h2 class="display-h reveal d1 scale-on-scroll">DC raised. USC built.<br/><em>Lloyd's trained.</em></h2>
@@ -1355,11 +1463,11 @@
 </section>
 
 <!-- ===== CHAPTER 02 — CAREER TIMELINE ===== -->
-<section id="career" class="relative py-16 md:py-24 bg-ink text-bone overflow-hidden spotlight-host">
+<section id="career" class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden spotlight-host">
   <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
-    <div class="flex items-end justify-between mb-10 md:mb-14">
+    <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
         <div class="eyebrow text-bone/60 mb-4 reveal">Chapter 02 · Career Path</div>
         <h2 class="display-h text-bone reveal d1 scale-on-scroll">The <em class="text-gold">journey</em>.</h2>
@@ -1478,7 +1586,7 @@
 </section>
 
 <!-- ===== STATEMENT BANNER ===== -->
-<section id="credo" class="relative py-16 md:py-24 overflow-hidden border-y border-ink/10 bg-bone">
+<section id="credo" class="relative py-12 md:py-16 overflow-hidden border-y border-ink/10 bg-bone">
   <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background:
     radial-gradient(520px circle at 15% 40%, rgba(212,168,67,.09), transparent 60%),
@@ -1550,10 +1658,10 @@
 </section>
 
 <!-- ===== CHAPTER 03 — EXPERTISE ===== -->
-<section id="expertise" class="relative py-16 md:py-24 overflow-hidden">
+<section id="expertise" class="relative py-12 md:py-16 overflow-hidden">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
-    <div class="flex items-end justify-between mb-10 md:mb-14">
+    <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 03 · Expertise</div>
         <h2 class="display-h reveal d1 scale-on-scroll">What I <em>bring</em>.</h2>
@@ -1628,10 +1736,10 @@
 </section>
 
 <!-- ===== CHAPTER 04 — WORK ===== -->
-<section id="work" class="relative py-16 md:py-24 overflow-hidden bg-bone-2">
+<section id="work" class="relative py-12 md:py-16 overflow-hidden bg-bone-2">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
-    <div class="flex items-end justify-between mb-10 md:mb-14">
+    <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 04 · Portfolio</div>
         <h2 class="display-h reveal d1 scale-on-scroll">Selected <em>work</em>.</h2>
@@ -1744,7 +1852,7 @@
 <!-- ===== CERTIFICATIONS ===== -->
 <section id="credentials" class="relative py-10 md:py-16 border-y border-ink/10">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
-    <div class="mb-10 flex items-end justify-between flex-wrap gap-6">
+    <div class="mb-8 flex items-end justify-between flex-wrap gap-6">
       <div>
         <div class="eyebrow text-ink/60 mb-3">Credentials · <span id="certCount">72</span> earned · click any</div>
         <h2 class="font-serif text-[28px] md:text-[38px] font-light leading-tight">Always <em class="text-ox">learning</em>.</h2>
@@ -1757,7 +1865,7 @@
     </div>
 
     <!-- Moving marquee of certs -->
-    <div class="cert-ticker-wrap reveal mb-10" aria-hidden="true">
+    <div class="cert-ticker-wrap reveal mb-6" aria-hidden="true">
       <div class="marquee cert-marquee">
         <div class="marquee-track" id="certTickerA"></div>
       </div>
@@ -1792,9 +1900,9 @@
 
 <!-- ===== CHAPTER 06 — ARCADE (Snake · Wordle · Tetris) ===== -->
 <!-- ===== LIFE STRIP ===== -->
-<section id="life" class="relative py-16 md:py-24 overflow-hidden">
+<section id="life" class="relative py-12 md:py-16 overflow-hidden">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
-    <div class="mb-8 md:mb-10 flex items-end justify-between flex-wrap gap-6">
+    <div class="mb-8 md:mb-8 flex items-end justify-between flex-wrap gap-6">
       <div>
         <div class="eyebrow text-ink/60 mb-3">Chapter 05a · Off the clock</div>
         <h2 class="display-h reveal scale-on-scroll">Life outside <em>the desk</em>.</h2>
@@ -1813,7 +1921,7 @@
   </div>
 </section>
 
-<section id="arcade" class="relative py-16 md:py-24 bg-ink text-bone overflow-hidden scene spotlight-host">
+<section id="arcade" class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden scene spotlight-host">
   <!-- Depth-0: grid background -->
   <div class="layer depth-0 absolute inset-0 opacity-[0.06] pointer-events-none" data-depth="0" aria-hidden="true" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 40px 40px;"></div>
   <!-- Depth-1: aurora glows -->
@@ -1823,7 +1931,7 @@
   <div class="relative z-10 max-w-[1400px] mx-auto px-5 md:px-10">
 
     <!-- Header -->
-    <div class="flex items-end justify-between mb-10 md:mb-16">
+    <div class="flex items-end justify-between mb-8 md:mb-12">
       <div>
         <div class="eyebrow text-bone/60 mb-4 reveal">Interlude · Take a break</div>
         <h2 class="display-h text-bone reveal d1 scale-on-scroll">The <em class="text-gold">arcade</em>.</h2>
@@ -2069,10 +2177,10 @@
 </section>
 
 <!-- ===== CHAPTER 07 — CONTACT / BOOK ===== -->
-<section id="contact" class="relative py-20 md:py-28 overflow-hidden">
+<section id="contact" class="relative py-14 md:py-20 overflow-hidden">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
-    <div class="flex items-end justify-between mb-10 md:mb-14">
+    <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 07 · Contact</div>
         <h2 class="display-h reveal d1 scale-on-scroll">Let's <em>connect</em>.</h2>
@@ -2174,7 +2282,7 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="relative py-16 md:py-24 border-t border-ink/10 bg-bone">
+<footer class="relative py-12 md:py-16 border-t border-ink/10 bg-bone">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid grid-cols-12 gap-6 items-center">
     <div class="col-span-12 md:col-span-4 font-serif text-lg">
       Ben <span class="italic text-ox">Sachwitz</span>
@@ -3416,8 +3524,9 @@
     dinoCtx.fillText('PRESS START · TAP SPACE TO JUMP', dinoCanvas.width/2, 24);
   }
 
-  /* === CURSOR SPOTLIGHT === */
-  if (!window.matchMedia('(hover: none)').matches) {
+  /* === CURSOR SPOTLIGHT + CUSTOM CURSOR === */
+  const isFinePointer = !window.matchMedia('(hover: none)').matches && !window.matchMedia('(pointer: coarse)').matches;
+  if (isFinePointer) {
     document.querySelectorAll('.spotlight-host').forEach(host => {
       host.addEventListener('mousemove', (e) => {
         const r = host.getBoundingClientRect();
@@ -3427,6 +3536,45 @@
         host.style.setProperty('--my', my);
       });
     });
+
+    // Custom cursor dot + ring with lag
+    const cDot = document.getElementById('cursorDot');
+    const cRing = document.getElementById('cursorRing');
+    if (cDot && cRing) {
+      let dotX = 0, dotY = 0, ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        document.body.classList.add('cursor-ready');
+      }, { passive: true });
+      const cursorLoop = () => {
+        dotX += (mouseX - dotX) * 0.45;
+        dotY += (mouseY - dotY) * 0.45;
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        cDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+        cRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+        requestAnimationFrame(cursorLoop);
+      };
+      requestAnimationFrame(cursorLoop);
+      document.querySelectorAll('a, button, .cert-chip, .hero-pill, .life-tile, .atab, input, textarea, select, [role="button"]').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+  }
+
+  /* === SCROLL RING PROGRESS + BACK TO TOP === */
+  const scrollRing = document.getElementById('scrollRing');
+  const ringProgress = document.getElementById('ringProgress');
+  const ringCirc = 2 * Math.PI * 21;
+  if (scrollRing && ringProgress) {
+    window.addEventListener('scroll', () => {
+      const st = window.scrollY;
+      const dh = document.documentElement.scrollHeight - window.innerHeight;
+      const prog = dh > 0 ? st / dh : 0;
+      ringProgress.style.strokeDashoffset = (ringCirc * (1 - prog)).toFixed(2);
+      scrollRing.classList.toggle('show', st > 400);
+    }, { passive: true });
   }
 
   /* === COUNT-UP ANIMATION on stats === */
