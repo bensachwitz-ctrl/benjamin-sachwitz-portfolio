@@ -3915,7 +3915,8 @@
   }
 
   /* === SPLIT-TEXT reveal on display headlines === */
-  const splitTargets = document.querySelectorAll('.display-h, .hero-title');
+  // Intentionally exclude .hero-title — we render it with clean .hero-line blocks
+  const splitTargets = document.querySelectorAll('.display-h');
   splitTargets.forEach(h => {
     if (h.dataset.split) return;
     h.dataset.split = '1';
