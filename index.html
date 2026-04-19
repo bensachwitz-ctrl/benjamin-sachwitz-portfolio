@@ -2424,13 +2424,13 @@
   const gameContact = document.getElementById('gameContact');
 
   const GRID = 20;
-  const COLS = canvas.width / GRID;
-  const ROWS = canvas.height / GRID;
+  const COLS = canvas ? canvas.width / GRID : 20;
+  const ROWS = canvas ? canvas.height / GRID : 20;
 
   let snake = [], food = {}, dx = 1, dy = 0, nextDx = 1, nextDy = 0;
   let score = 0, speed = 120, loop = null, running = false;
   let high = parseInt(localStorage.getItem('snakeHigh') || '0', 10);
-  highDisp.textContent = high;
+  if (highDisp) highDisp.textContent = high;
 
   const GOLD = '#D4A843', GOLD_DEEP = '#B88A2F';
   const SNAKE_HEAD = '#F5F2EC', SNAKE_BODY = 'rgba(245,242,236,';
