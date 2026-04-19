@@ -2570,11 +2570,11 @@
     if (gameOver) gameOver.classList.remove('show');
     spawnFood();
   }
-  function step(){
+  function snakeStep(){
     dx = nextDx; dy = nextDy;
     const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-    if (head.x<0 || head.x>=COLS || head.y<0 || head.y>=ROWS) return over();
-    if (snake.some(s => s.x===head.x && s.y===head.y)) return over();
+    if (head.x<0 || head.x>=COLS || head.y<0 || head.y>=ROWS) return snakeOver();
+    if (snake.some(s => s.x===head.x && s.y===head.y)) return snakeOver();
     snake.unshift(head);
     if (head.x===food.x && head.y===food.y) {
       score++;
@@ -2587,11 +2587,11 @@
       spawnFood();
       if (speed > 60) speed -= 2;
       clearInterval(loop);
-      loop = setInterval(step, speed);
+      loop = setInterval(snakeStep, speed);
     } else snake.pop();
     drawBoard(); drawFood(); drawSnake();
   }
-  function over(){
+  function snakeOver(){
     running = false;
     clearInterval(loop);
     if (finalScore) finalScore.textContent = score;
@@ -2599,12 +2599,12 @@
     if (startBtn) startBtn.classList.add('hidden');
     if (restartBtn) restartBtn.classList.remove('hidden');
   }
-  function start(){
+  function snakeStart(){
     if (!canvas || !ctx) return;
     reset();
     running = true;
     drawBoard(); drawFood(); drawSnake();
-    loop = setInterval(step, speed);
+    loop = setInterval(snakeStep, speed);
     if (startBtn) startBtn.classList.add('hidden');
     if (restartBtn) restartBtn.classList.remove('hidden');
   }
@@ -2618,10 +2618,10 @@
     ctx.fillText('PRESS START TO PLAY', canvas.width/2, canvas.height/2);
   }
 
-  if (startBtn) startBtn.addEventListener('click', start);
-  if (restartBtn) restartBtn.addEventListener('click', start);
-  if (playAgain) playAgain.addEventListener('click', start);
-  if (gameContact) gameContact.addEventListener('click', () => gameOver.classList.remove('show'));
+  if (startBtn) startBtn.addEventListener('click', snakeStart);
+  if (restartBtn) restartBtn.addEventListener('click', snakeStart);
+  if (playAgain) playAgain.addEventListener('click', snakeStart);
+  if (gameContact) gameContact.addEventListener('click', () => { if (gameOver) gameOver.classList.remove('show'); });
 
   document.addEventListener('keydown', (e) => {
     if (!running) return;
@@ -2920,7 +2920,7 @@
     const shape = T_SHAPES[key].map(r => r.slice());
     const piece = { key, shape, x: Math.floor((T_COLS - shape[0].length) / 2), y: 0 };
     drawNextPiece();
-    if (collides(piece, tBoard)) { over(); return null; }
+    if (collides(piece, tBoard)) { tOver(); return null; }
     return piece;
   }
   function collides(piece, board) {
@@ -3084,11 +3084,13 @@
     tDropTimer = setInterval(tick, tDropInterval);
     drawTBoard(); drawPiece();
   }
-  function over() {
+  function tOver() {
     tRunning = false;
     clearInterval(tDropTimer);
-    tFinalScoreEl.textContent = tScore;
-    tGameOverEl.classList.add('show');
+    if (tFinalScoreEl) tFinalScoreEl.textContent = tScore;
+    if (tGameOverEl) tGameOverEl.classList.add('show');
+    if (tStartBtn) tStartBtn.classList.add('hidden');
+    if (tRestartBtn) tRestartBtn.classList.remove('hidden');
   }
 
   if (tStartBtn) tStartBtn.addEventListener('click', startTetris);
