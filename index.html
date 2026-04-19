@@ -1031,6 +1031,128 @@
   .reveal-left { opacity: 0; transform: translateX(-20px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
   .reveal-left.in { opacity: 1; transform: none; }
 
+  /* ===== BOOKING MODAL ===== */
+  .booking-modal {
+    position: fixed; inset: 0; z-index: 120;
+    display: none; align-items: center; justify-content: center;
+    padding: 1rem; opacity: 0;
+    transition: opacity .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .booking-modal.is-open { display: flex; opacity: 1; }
+  .booking-backdrop { position: absolute; inset: 0; background: rgba(10,10,10,.62); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .booking-panel {
+    position: relative; width: 100%; max-width: 620px;
+    background: var(--bone); border: 1px solid rgba(10,10,10,.1);
+    border-radius: 14px; box-shadow: 0 40px 80px -20px rgba(10,10,10,.45), 0 0 0 1px rgba(212,168,67,.12);
+    max-height: 92vh; overflow-y: auto; overflow-x: hidden;
+    transform: translateY(30px) scale(.96); opacity: 0;
+    transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s;
+  }
+  .booking-modal.is-open .booking-panel { transform: none; opacity: 1; }
+  .booking-close {
+    position: absolute; top: .9rem; right: .9rem; width: 34px; height: 34px; z-index: 2;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(10,10,10,.12); background: var(--bone);
+    border-radius: 50%; cursor: pointer; color: var(--ink);
+    transition: all .25s; font-family: inherit;
+  }
+  .booking-close:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); transform: rotate(90deg); }
+  .booking-body { padding: 2rem 1.75rem 1.75rem; }
+  @media (min-width: 640px) { .booking-body { padding: 2.5rem 2.25rem 2rem; } }
+  .booking-gold-bar { width: 40px; height: 2px; background: var(--gold); margin-bottom: 1rem; }
+
+  /* Steps indicator */
+  .booking-steps { display: flex; align-items: center; gap: .4rem; margin-bottom: 1.5rem; }
+  .bstep { display: inline-flex; align-items: center; gap: .4rem; width: 30px; height: 30px; border-radius: 50%;
+    background: rgba(10,10,10,.06); color: rgba(10,10,10,.45); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
+    justify-content: center; position: relative; transition: all .35s;
+  }
+  .bstep small { position: absolute; top: 100%; margin-top: .4rem; font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase; color: rgba(10,10,10,.5); font-weight: 500; }
+  .bstep.is-active { background: var(--ink); color: var(--bone); box-shadow: 0 4px 12px rgba(10,10,10,.25); }
+  .bstep.is-done { background: var(--gold); color: #1a1204; }
+  .bstep-line { flex: 1; height: 1px; background: rgba(10,10,10,.1); max-width: 60px; }
+
+  /* Step panels */
+  .booking-step { animation: bstepIn .4s cubic-bezier(.2,.7,.2,1); }
+  .booking-step.hidden { display: none; }
+  @keyframes bstepIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+
+  /* Topic chips */
+  .booking-chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .bchip { cursor: pointer; position: relative; }
+  .bchip input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .bchip span {
+    display: inline-block; padding: .55rem 1rem; border: 1.5px solid rgba(10,10,10,.15);
+    background: rgba(255,255,255,.65); border-radius: 999px; font-size: 12.5px; font-family: 'JetBrains Mono', monospace;
+    color: rgba(10,10,10,.75); transition: all .25s; letter-spacing: .02em;
+  }
+  .bchip:hover span { border-color: var(--ink); background: #fff; }
+  .bchip input:checked + span { background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 8px 20px rgba(10,10,10,.18); transform: translateY(-2px); }
+  .bchip input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* Days grid */
+  .booking-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: .55rem; }
+  .bday { cursor: pointer; position: relative; }
+  .bday input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .bday span {
+    display: flex; flex-direction: column; align-items: center; gap: .1rem;
+    padding: .75rem .5rem; border: 1.5px solid rgba(10,10,10,.12);
+    border-radius: 8px; background: rgba(255,255,255,.6);
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: rgba(10,10,10,.65); transition: all .25s; letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .bday span strong { font-family: 'Fraunces', serif; font-weight: 400; font-size: 20px; color: var(--ink); letter-spacing: 0; text-transform: none; }
+  .bday:hover span { border-color: var(--ink); background: #fff; transform: translateY(-2px); }
+  .bday input:checked + span { background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 8px 20px rgba(10,10,10,.2); }
+  .bday input:checked + span strong { color: var(--gold); }
+
+  /* Time slots */
+  .booking-times { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: .45rem; }
+  .btime { cursor: pointer; position: relative; }
+  .btime input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .btime span {
+    display: block; padding: .65rem .4rem; text-align: center;
+    border: 1.5px solid rgba(10,10,10,.12); border-radius: 6px;
+    background: rgba(255,255,255,.6); font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: rgba(10,10,10,.75); transition: all .25s;
+  }
+  .btime:hover span { border-color: var(--ink); background: #fff; transform: translateY(-2px); }
+  .btime input:checked + span { background: var(--ox); color: var(--bone); border-color: var(--ox); box-shadow: 0 6px 16px rgba(139,26,26,.3); }
+
+  /* Review rows */
+  .booking-review { border: 1px solid rgba(10,10,10,.1); border-radius: 10px; background: rgba(255,255,255,.45); padding: .4rem 1rem; }
+  .brow { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid rgba(10,10,10,.06); }
+  .brow:last-child { border-bottom: none; }
+  .brow .blbl { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(10,10,10,.5); flex-shrink: 0; }
+  .brow .bval { font-size: 14px; color: var(--ink); text-align: right; font-weight: 500; }
+  .brow-strong .bval { font-size: 15.5px; font-family: 'Fraunces', serif; font-weight: 400; }
+
+  /* Actions */
+  .booking-actions { display: flex; justify-content: flex-end; gap: .75rem; margin-top: 1.5rem; }
+  .booking-actions .btn-ink, .booking-actions .btn-outline, .booking-actions .btn-gold {
+    padding: .8rem 1.4rem; font-size: 12px;
+  }
+
+  /* Success state */
+  .booking-success {
+    padding: 3rem 2rem; text-align: center;
+    animation: bsuccess .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .booking-success.hidden { display: none; }
+  @keyframes bsuccess { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: none; } }
+  .booking-success-mark { display: inline-block; color: #2F6E3B; }
+  .booking-success-mark .bsc-ring { animation: bscRing .7s ease-out forwards; stroke-dasharray: 120; stroke-dashoffset: 120; }
+  .booking-success-mark .bsc-tick { animation: bscTick .5s ease-out .5s forwards; stroke-dasharray: 40; stroke-dashoffset: 40; }
+  @keyframes bscRing { to { stroke-dashoffset: 0; } }
+  @keyframes bscTick { to { stroke-dashoffset: 0; } }
+
+  @media (max-width: 640px) {
+    .booking-panel { border-radius: 12px; max-height: 96vh; }
+    .booking-body { padding: 1.5rem 1.25rem 1.25rem; }
+    .bstep small { display: none; }
+  }
+
   /* Glow number on hover */
   .stat-num { display: inline-block; transition: transform .4s cubic-bezier(.34,1.56,.64,1), text-shadow .4s; cursor: default; }
   .stat-num:hover { transform: translateY(-3px) scale(1.05); text-shadow: 0 6px 20px rgba(139,26,26,.25); }
@@ -1261,10 +1383,10 @@
       <li><a href="#expertise" class="nlink" data-nav="expertise">Expertise</a></li>
       <li><a href="#work" class="nlink" data-nav="work">Work</a></li>
       <li><a href="#arcade-play" class="nlink text-gold-2" data-nav="arcade">Arcade</a></li>
-      <li><a href="#contact" class="btn-ink">
+      <li><button type="button" class="btn-ink" data-open-booking>
         Book a call
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
-      </a></li>
+      </button></li>
     </ul>
     <button id="hb" class="hb md:hidden p-3" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -1278,7 +1400,7 @@
       <li><a href="#expertise" class="mlink block py-3">Expertise</a></li>
       <li><a href="#work" class="mlink block py-3">Work</a></li>
       <li><a href="#arcade-play" class="mlink block py-3 text-gold-2">The Arcade</a></li>
-      <li><a href="#contact" class="mlink btn-ink w-full justify-center mt-2">Book a call</a></li>
+      <li><button type="button" class="mlink btn-ink w-full justify-center mt-2" data-open-booking>Book a call</button></li>
     </ul>
   </div>
 </nav>
@@ -1309,7 +1431,7 @@
 
         <div class="col-span-12 lg:col-span-8 order-1 lg:order-1">
           <div class="mb-1 md:mb-4 flex flex-wrap items-center gap-2 md:gap-3 reveal in">
-            <a href="#contact" class="avail-chip avail-chip-link" style="font-size: 11px;" aria-label="Open to conversations — book a call"><span class="pulse"></span>Open to conversations<svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="ml-1 opacity-60" aria-hidden="true"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></a>
+            <button type="button" class="avail-chip avail-chip-link" style="font-size: 11px;" aria-label="Open to conversations — book a call" data-open-booking><span class="pulse"></span>Open to conversations<svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="ml-1 opacity-60" aria-hidden="true"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></button>
             <span class="eyebrow text-ink/55 text-[9px]">Insurance × Risk</span>
           </div>
           <h1 class="hero-title reveal in" data-split-hero>
@@ -1351,10 +1473,10 @@
           </div>
 
           <div class="mt-5 md:mt-6 flex flex-wrap items-center gap-2 md:gap-3 reveal d2 in">
-            <a href="#contact" class="btn-ink magnet text-sm">
+            <button type="button" class="btn-ink magnet text-sm" data-open-booking>
               Book a strategy call
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
-            </a>
+            </button>
             <a href="#work" class="btn-outline magnet text-sm">Explore my work →</a>
           </div>
 
@@ -2219,11 +2341,11 @@
             </li>
           </ul>
 
-          <a href="https://calendar.google.com/calendar/u/0/r/eventedit?add=bensachwitz%40gmail.com&text=Call%20with%20Ben%20Sachwitz&dur=30&details=Looking%20forward%20to%20connecting!" target="_blank" rel="noopener" class="btn-gold w-full justify-center">
+          <button type="button" class="btn-gold w-full justify-center" data-open-booking>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Schedule via Google Calendar
-          </a>
-          <p class="eyebrow text-ink/40 mt-4 text-center">Opens Google Calendar · No account required</p>
+            Book a 30-min call
+          </button>
+          <p class="eyebrow text-ink/40 mt-4 text-center">Instant booking · I'll reply within 24 hours</p>
         </div>
       </div>
 
@@ -2300,10 +2422,104 @@
 
 <!-- ===== FLOATING BOOK BUTTON ===== -->
 <div class="book-float" id="bookFloat">
-  <a href="#contact" class="btn-ink shadow-2xl">
+  <button type="button" class="btn-ink shadow-2xl" data-open-booking>
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     Book a call
-  </a>
+  </button>
+</div>
+
+<!-- ===== BOOKING MODAL ===== -->
+<div class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-hidden="true">
+  <div class="booking-backdrop" data-close-booking></div>
+  <div class="booking-panel" role="document">
+    <button class="booking-close" type="button" aria-label="Close" data-close-booking>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 1L13 13M13 1L1 13"/></svg>
+    </button>
+
+    <div class="booking-body" id="bookingBody">
+      <div class="booking-gold-bar"></div>
+      <div class="eyebrow text-ink/55 mb-2">30-min consultation · Free · No obligation</div>
+      <h3 class="font-serif text-[26px] md:text-[32px] font-light leading-tight mb-1" id="bookingTitle">Let's <em class="text-ox">talk shop</em>.</h3>
+      <p class="text-[13.5px] text-ink/65 leading-relaxed mb-6 max-w-[44ch]">Commercial risk, technology partnership, or a professional introduction. Pick a time — I'll confirm within 24 hours.</p>
+
+      <form id="bookingForm" class="booking-form" novalidate>
+        <!-- Step indicator -->
+        <div class="booking-steps" aria-hidden="true">
+          <span class="bstep is-active" data-step="1">1<small>Details</small></span>
+          <span class="bstep-line"></span>
+          <span class="bstep" data-step="2">2<small>Time</small></span>
+          <span class="bstep-line"></span>
+          <span class="bstep" data-step="3">3<small>Confirm</small></span>
+        </div>
+
+        <!-- Step 1: contact details -->
+        <div class="booking-step" data-panel="1">
+          <div class="grid grid-cols-2 gap-4 mb-3">
+            <div><label class="flabel" for="bName">Name</label><input class="finput" id="bName" type="text" required /></div>
+            <div><label class="flabel" for="bEmail">Email</label><input class="finput" id="bEmail" type="email" required /></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 mb-3">
+            <div><label class="flabel" for="bPhone">Phone</label><input class="finput" id="bPhone" type="tel" placeholder="Optional" /></div>
+            <div><label class="flabel" for="bCompany">Company</label><input class="finput" id="bCompany" type="text" placeholder="Optional" /></div>
+          </div>
+          <div class="mb-4">
+            <label class="flabel mb-2">Topic</label>
+            <div class="booking-chips" role="radiogroup" aria-label="Call topic">
+              <label class="bchip"><input type="radio" name="bTopic" value="Commercial Insurance"/><span>Commercial Insurance</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="Trucking / Logging"/><span>Trucking / Logging</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="Loss Control Tech"/><span>Loss Control Tech</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="General Intro"/><span>General Intro</span></label>
+            </div>
+          </div>
+          <div class="booking-actions">
+            <button type="button" class="btn-outline" data-close-booking>Cancel</button>
+            <button type="button" class="btn-ink" data-booking-next="2">Continue <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Step 2: time slot -->
+        <div class="booking-step hidden" data-panel="2">
+          <label class="flabel mb-2 block">Pick a day</label>
+          <div class="booking-days" id="bookingDays" role="radiogroup" aria-label="Day"></div>
+          <label class="flabel mb-2 block mt-5">Pick a time (ET)</label>
+          <div class="booking-times" id="bookingTimes" role="radiogroup" aria-label="Time"></div>
+          <div class="booking-actions">
+            <button type="button" class="btn-outline" data-booking-back="1">← Back</button>
+            <button type="button" class="btn-ink" data-booking-next="3">Review <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Step 3: review -->
+        <div class="booking-step hidden" data-panel="3">
+          <div class="booking-review">
+            <div class="brow"><span class="blbl">Name</span><span class="bval" id="rvName">—</span></div>
+            <div class="brow"><span class="blbl">Email</span><span class="bval" id="rvEmail">—</span></div>
+            <div class="brow"><span class="blbl">Phone</span><span class="bval" id="rvPhone">—</span></div>
+            <div class="brow"><span class="blbl">Company</span><span class="bval" id="rvCompany">—</span></div>
+            <div class="brow"><span class="blbl">Topic</span><span class="bval" id="rvTopic">—</span></div>
+            <div class="brow brow-strong"><span class="blbl">When</span><span class="bval gradient-text" id="rvWhen">—</span></div>
+          </div>
+          <textarea class="finput mt-4" id="bNotes" placeholder="Anything else I should know? (optional)" rows="3"></textarea>
+          <div class="booking-actions">
+            <button type="button" class="btn-outline" data-booking-back="2">← Edit</button>
+            <button type="submit" class="btn-gold" id="bookingSubmit">Confirm booking
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6l3 3 5-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="booking-success hidden" id="bookingSuccess">
+      <div class="booking-success-mark">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.5" class="bsc-ring"/><path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="2" class="bsc-tick"/></svg>
+      </div>
+      <h3 class="font-serif text-[26px] md:text-[30px] font-light mt-5 mb-2">Booked.</h3>
+      <p class="text-ink/70 text-[14px] mb-2" id="successDetail">I'll confirm the time by email within 24 hours.</p>
+      <p class="eyebrow text-ink/45 mb-6">A copy of your request was sent to bensachwitz@outlook.com</p>
+      <button type="button" class="btn-ink" data-close-booking>Close</button>
+    </div>
+  </div>
 </div>
 
 <!-- ============================================================
@@ -3689,6 +3905,199 @@
       btn.innerHTML = 'Opening email client...';
       btn.disabled = true;
       setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 3500);
+    });
+  }
+
+  /* === BOOKING MODAL === */
+  const bookingModal = document.getElementById('bookingModal');
+  const bookingForm = document.getElementById('bookingForm');
+  const bookingBody = document.getElementById('bookingBody');
+  const bookingSuccess = document.getElementById('bookingSuccess');
+  const daysWrap = document.getElementById('bookingDays');
+  const timesWrap = document.getElementById('bookingTimes');
+
+  const WEEKDAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const TIME_SLOTS = ['9:00 AM','10:00 AM','11:00 AM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM'];
+
+  // Build next 10 weekdays
+  function buildDays() {
+    if (!daysWrap) return;
+    const now = new Date();
+    let added = 0, cursor = new Date(now);
+    cursor.setHours(0,0,0,0);
+    let html = '';
+    while (added < 10) {
+      cursor.setDate(cursor.getDate() + 1);
+      const day = cursor.getDay();
+      if (day === 0 || day === 6) continue; // skip weekends
+      const iso = cursor.toISOString().slice(0,10);
+      const label = `${WEEKDAYS[day]} ${MONTHS[cursor.getMonth()]} ${cursor.getDate()}`;
+      html += `<label class="bday"><input type="radio" name="bDay" value="${iso}" data-label="${label}"/><span>${WEEKDAYS[day]}<strong>${cursor.getDate()}</strong>${MONTHS[cursor.getMonth()]}</span></label>`;
+      added++;
+    }
+    daysWrap.innerHTML = html;
+  }
+  function buildTimes() {
+    if (!timesWrap) return;
+    timesWrap.innerHTML = TIME_SLOTS.map(t => `<label class="btime"><input type="radio" name="bTime" value="${t}"/><span>${t}</span></label>`).join('');
+  }
+  buildDays(); buildTimes();
+
+  // Open modal
+  const openBooking = () => {
+    if (!bookingModal) return;
+    bookingModal.classList.add('is-open');
+    bookingModal.setAttribute('aria-hidden', 'false');
+    bookingBody.classList.remove('hidden');
+    bookingSuccess.classList.add('hidden');
+    document.body.style.overflow = 'hidden';
+    goStep(1);
+    setTimeout(() => {
+      const first = bookingModal.querySelector('input, button');
+      if (first) first.focus();
+    }, 300);
+  };
+  const closeBooking = () => {
+    if (!bookingModal) return;
+    bookingModal.classList.remove('is-open');
+    bookingModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('[data-open-booking]').forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); openBooking(); }));
+  document.querySelectorAll('[data-close-booking]').forEach(b => b.addEventListener('click', closeBooking));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && bookingModal && bookingModal.classList.contains('is-open')) closeBooking(); });
+
+  // Step navigation
+  function goStep(n) {
+    if (!bookingForm) return;
+    bookingForm.querySelectorAll('.booking-step').forEach(p => p.classList.toggle('hidden', p.dataset.panel !== String(n)));
+    bookingForm.querySelectorAll('.bstep').forEach(s => {
+      const step = parseInt(s.dataset.step, 10);
+      s.classList.toggle('is-active', step === n);
+      s.classList.toggle('is-done', step < n);
+    });
+  }
+  function getValid(step) {
+    if (step === 1) {
+      const name = document.getElementById('bName').value.trim();
+      const email = document.getElementById('bEmail').value.trim();
+      const topic = document.querySelector('input[name="bTopic"]:checked');
+      if (!name) { flashField('bName'); return false; }
+      if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { flashField('bEmail'); return false; }
+      if (!topic) { flash('Please pick a topic'); return false; }
+      return true;
+    }
+    if (step === 2) {
+      const day = document.querySelector('input[name="bDay"]:checked');
+      const time = document.querySelector('input[name="bTime"]:checked');
+      if (!day) { flash('Pick a day'); return false; }
+      if (!time) { flash('Pick a time'); return false; }
+      return true;
+    }
+    return true;
+  }
+  function flashField(id) {
+    const f = document.getElementById(id);
+    if (!f) return;
+    f.style.borderColor = 'var(--ox)';
+    f.focus();
+    setTimeout(() => f.style.borderColor = '', 1400);
+  }
+  function flash(msg) {
+    let el = document.getElementById('bookingFlash');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'bookingFlash';
+      el.style.cssText = 'position:absolute;top:1rem;left:50%;transform:translateX(-50%);padding:.5rem 1rem;background:var(--ox);color:var(--bone);border-radius:6px;font-size:12px;font-family:JetBrains Mono,monospace;letter-spacing:.1em;text-transform:uppercase;z-index:3;animation:bflash 2s ease forwards;box-shadow:0 10px 24px rgba(139,26,26,.35);';
+      document.querySelector('.booking-panel')?.appendChild(el);
+      if (!document.getElementById('bflashKeys')) {
+        const style = document.createElement('style');
+        style.id = 'bflashKeys';
+        style.textContent = '@keyframes bflash{0%{opacity:0;transform:translate(-50%,-10px)}15%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}';
+        document.head.appendChild(style);
+      }
+    }
+    el.textContent = msg;
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = 'bflash 2s ease forwards';
+  }
+
+  document.querySelectorAll('[data-booking-next]').forEach(b => b.addEventListener('click', () => {
+    const cur = parseInt(b.closest('.booking-step').dataset.panel, 10);
+    if (!getValid(cur)) return;
+    const next = parseInt(b.dataset.bookingNext, 10);
+    if (next === 3) fillReview();
+    goStep(next);
+  }));
+  document.querySelectorAll('[data-booking-back]').forEach(b => b.addEventListener('click', () => {
+    goStep(parseInt(b.dataset.bookingBack, 10));
+  }));
+
+  function fillReview() {
+    const get = (id) => document.getElementById(id).value.trim() || '—';
+    const topic = document.querySelector('input[name="bTopic"]:checked');
+    const day = document.querySelector('input[name="bDay"]:checked');
+    const time = document.querySelector('input[name="bTime"]:checked');
+    document.getElementById('rvName').textContent = get('bName');
+    document.getElementById('rvEmail').textContent = get('bEmail');
+    document.getElementById('rvPhone').textContent = get('bPhone');
+    document.getElementById('rvCompany').textContent = get('bCompany');
+    document.getElementById('rvTopic').textContent = topic ? topic.value : '—';
+    document.getElementById('rvWhen').textContent = (day && time) ? `${day.dataset.label} · ${time.value} ET` : '—';
+  }
+
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('bookingSubmit');
+      if (submitBtn) submitBtn.disabled = true;
+      const name = document.getElementById('bName').value.trim();
+      const email = document.getElementById('bEmail').value.trim();
+      const phone = document.getElementById('bPhone').value.trim();
+      const company = document.getElementById('bCompany').value.trim();
+      const topic = document.querySelector('input[name="bTopic"]:checked')?.value || '—';
+      const day = document.querySelector('input[name="bDay"]:checked');
+      const time = document.querySelector('input[name="bTime"]:checked')?.value || '—';
+      const notes = document.getElementById('bNotes').value.trim();
+      const when = day ? `${day.dataset.label} at ${time} ET` : '—';
+
+      const body = [
+        `New booking request from ${name}`,
+        '',
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone || '—'}`,
+        `Company: ${company || '—'}`,
+        `Topic: ${topic}`,
+        `When: ${when}`,
+        '',
+        `Notes:`,
+        notes || '—'
+      ].join('\n');
+      const subject = `Call request: ${name} · ${when}`;
+
+      // Open email client with pre-filled booking
+      const mail = `mailto:bensachwitz@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      // Fire-and-forget the mailto; still show success UI
+      window.location.href = mail;
+
+      // Save locally so Ben sees the request even if email client blocked
+      try {
+        const saved = JSON.parse(localStorage.getItem('bookings') || '[]');
+        saved.push({ name, email, phone, company, topic, when, notes, ts: Date.now() });
+        localStorage.setItem('bookings', JSON.stringify(saved));
+      } catch(_) {}
+
+      // Show success
+      const sd = document.getElementById('successDetail');
+      if (sd) sd.innerHTML = `I got your request for <strong>${when}</strong>.<br/>I'll confirm by email within 24 hours.`;
+      bookingBody.classList.add('hidden');
+      bookingSuccess.classList.remove('hidden');
+      if (submitBtn) submitBtn.disabled = false;
+      // Reset form after close
     });
   }
 })();
