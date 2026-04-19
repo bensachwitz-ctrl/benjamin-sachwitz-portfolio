@@ -126,9 +126,10 @@
   .link-line:focus-visible::after { transform: scaleX(1); transform-origin: left; }
 
   /* Nav */
-  .nav-shell { backdrop-filter: saturate(140%) blur(18px); -webkit-backdrop-filter: saturate(140%) blur(18px); transition: background .35s, border-color .35s; }
-  .nav-scrolled { background: rgba(245,242,236,.9); border-bottom: 1px solid rgba(10,10,10,.12); box-shadow: 0 2px 12px rgba(10,10,10,.06); }
-  .nav-hero { background: rgba(245,242,236,.05); }
+  .nav-shell { transition: background .35s, border-color .35s; }
+  .nav-scrolled { background: rgba(245,242,236,.95); border-bottom: 1px solid rgba(10,10,10,.12); box-shadow: 0 2px 12px rgba(10,10,10,.06); }
+  .nav-hero { background: rgba(245,242,236,.08); }
+  @media (min-width: 1024px) { .nav-shell { backdrop-filter: saturate(140%) blur(18px); -webkit-backdrop-filter: saturate(140%) blur(18px); } }
 
   /* CTA */
   .btn-ink {
@@ -461,12 +462,14 @@
   @media (max-width: 640px) {
     .eyebrow { letter-spacing: .16em; font-size: 10.5px; }
     .chapter-num { display: none; }
-    .aurora { display: none; }
+    .aurora { display: none !important; }
     body { font-smoothing: antialiased; -webkit-font-smoothing: antialiased; }
     h2, h3 { letter-spacing: -0.01em; }
     .btn-ink, .btn-outline, .btn-gold { padding: 0.875rem 1.5rem; font-size: 11px; }
     .finput { padding: .75rem 0; font-size: 13px; }
     textarea.finput { min-height: 100px; padding: .65rem; }
+    .nav-shell { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    .cert-modal { backdrop-filter: blur(0) !important; -webkit-backdrop-filter: blur(0) !important; }
   }
 
   /* Drop cap */
