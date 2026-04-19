@@ -104,9 +104,9 @@
   .eyebrow:hover::before { width: 28px; opacity: 1; }
 
   /* Reveal */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.85s cubic-bezier(.2,.7,.2,1), transform 0.85s cubic-bezier(.2,.7,.2,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
-  @media (max-width: 640px) { .reveal { transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1); } }
+  @media (max-width: 640px) { .reveal { transition: opacity 0.65s cubic-bezier(.2,.7,.2,1), transform 0.65s cubic-bezier(.2,.7,.2,1); } }
   .reveal.d1 { transition-delay: .1s; } .reveal.d2 { transition-delay: .2s; }
   .reveal.d3 { transition-delay: .3s; } .reveal.d4 { transition-delay: .4s; }
 
@@ -962,7 +962,7 @@
   .stagger-4 { animation-delay: .4s; }
 
   /* Text scale animation on scroll */
-  .scale-on-scroll { opacity: 0; transform: scale(.95); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .scale-on-scroll { opacity: 0; transform: scale(.96); transition: opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1); }
   .scale-on-scroll.in { opacity: 1; transform: scale(1); }
 
   /* Mobile optimizations - reduce blank space */
@@ -1447,7 +1447,7 @@
 </section>
 
 <!-- ===== WORLDS STRIP ===== -->
-<section id="worlds" class="relative py-12 md:py-16 overflow-hidden bg-ink text-bone">
+<section id="worlds" class="relative py-14 md:py-20 overflow-hidden bg-ink text-bone">
   <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="mb-8 flex items-end justify-between flex-wrap gap-4">
@@ -1729,7 +1729,7 @@
 
 <!-- ===== CHAPTER 06 — ARCADE (Snake · Wordle · Tetris) ===== -->
 <!-- ===== LIFE STRIP ===== -->
-<section id="life" class="relative py-14 md:py-20 overflow-hidden">
+<section id="life" class="relative py-16 md:py-24 overflow-hidden">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="mb-8 md:mb-10 flex items-end justify-between flex-wrap gap-6">
       <div>
@@ -1750,7 +1750,7 @@
   </div>
 </section>
 
-<section id="arcade" class="relative py-14 md:py-20 bg-ink text-bone overflow-hidden scene spotlight-host">
+<section id="arcade" class="relative py-16 md:py-24 bg-ink text-bone overflow-hidden scene spotlight-host">
   <!-- Depth-0: grid background -->
   <div class="layer depth-0 absolute inset-0 opacity-[0.06] pointer-events-none" data-depth="0" aria-hidden="true" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 40px 40px;"></div>
   <!-- Depth-1: aurora glows -->
@@ -2006,7 +2006,7 @@
 </section>
 
 <!-- ===== CHAPTER 07 — CONTACT / BOOK ===== -->
-<section id="contact" class="relative py-16 md:py-28 overflow-hidden">
+<section id="contact" class="relative py-20 md:py-28 overflow-hidden">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
     <div class="flex items-end justify-between mb-10 md:mb-14">
@@ -2111,7 +2111,7 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="relative py-14 md:py-20 border-t border-ink/10 bg-bone">
+<footer class="relative py-16 md:py-24 border-t border-ink/10 bg-bone">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid grid-cols-12 gap-6 items-center">
     <div class="col-span-12 md:col-span-4 font-serif text-lg">
       Ben <span class="italic text-ox">Sachwitz</span>
