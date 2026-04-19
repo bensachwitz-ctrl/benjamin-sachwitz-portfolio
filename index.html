@@ -397,8 +397,8 @@
   @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
 
   /* Mobile menu */
-  .mmenu { position: absolute; top: 100%; left: 0; right: 0; background: var(--bone); max-height: 0; overflow: hidden; opacity: 0; pointer-events: none; transition: max-height .35s, opacity .35s; }
-  .mmenu.open { max-height: 500px; opacity: 1; pointer-events: auto; }
+  .mmenu { position: absolute; top: 100%; left: 0; right: 0; background: var(--bone); max-height: 0; overflow: hidden; opacity: 0; pointer-events: none; transition: max-height .4s cubic-bezier(.2,.7,.2,1), opacity .3s; border-bottom: 1px solid rgba(10,10,10,.05); }
+  .mmenu.open { max-height: 600px; opacity: 1; pointer-events: auto; }
 
   /* Hero photo mask */
   .photo-mask {
