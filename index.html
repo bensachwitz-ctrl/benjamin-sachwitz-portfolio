@@ -1014,10 +1014,20 @@
   .life-tile:hover { box-shadow: 0 16px 32px rgba(10,10,10,.15); }
 
   /* Professional heading letter spacing */
-  .display-h { letter-spacing: -0.02em; font-weight: 300; }
+  .display-h { letter-spacing: -0.02em; font-weight: 300; line-height: 1.1; }
 
   /* Premium eyebrow styling */
-  .eyebrow { font-weight: 500; letter-spacing: .24em; }
+  .eyebrow { font-weight: 500; letter-spacing: .24em; color-transition: .3s; }
+
+  /* Section divider line */
+  .section-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(10,10,10,.1), transparent); margin: 0 auto; }
+
+  /* Enhanced section spacing for premium feel */
+  section { position: relative; }
+  section::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, rgba(10,10,10,0), rgba(10,10,10,.08), rgba(10,10,10,0)); }
+
+  /* Premium text sizing for hierarchy */
+  .text-premium { font-size: clamp(1.1rem, 1.5vw, 1.4rem); font-weight: 400; }
 
   /* Smooth scroll behavior enhancement */
   @media (prefers-reduced-motion: no-preference) {
