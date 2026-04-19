@@ -908,7 +908,20 @@
   }
 
   /* Timeline row accent */
-  .tl-row { position: relative; }
+  .tl-row {
+    position: relative;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1), background .35s, border-color .35s;
+  }
+  .tl-row.in { opacity: 1; transform: none; }
+  .tl-row:nth-child(1).in { transition-delay: .02s; }
+  .tl-row:nth-child(2).in { transition-delay: .08s; }
+  .tl-row:nth-child(3).in { transition-delay: .14s; }
+  .tl-row:nth-child(4).in { transition-delay: .2s; }
+  .tl-row:nth-child(5).in { transition-delay: .26s; }
+  .tl-row:nth-child(6).in { transition-delay: .32s; }
+  .tl-row:nth-child(7).in { transition-delay: .38s; }
+  .tl-row:nth-child(8).in { transition-delay: .44s; }
   .tl-row::before {
     content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
     background: linear-gradient(to bottom, transparent, #D4A843, transparent);
@@ -1764,16 +1777,16 @@
         <div class="stat-lbl">Certifications earned</div>
       </div>
       <div class="stat-mini">
-        <div class="stat-val"><span data-count="8">0</span></div>
-        <div class="stat-lbl">Years in the market</div>
+        <div class="stat-val"><span data-count="7">0</span></div>
+        <div class="stat-lbl">States licensed</div>
       </div>
       <div class="stat-mini">
         <div class="stat-val font-serif italic">Lloyd's</div>
         <div class="stat-lbl">London · est. 1688</div>
       </div>
       <div class="stat-mini">
-        <div class="stat-val"><span data-count="500">0</span><span class="text-ox">K+</span></div>
-        <div class="stat-lbl">Followers built &amp; sold</div>
+        <div class="stat-val font-serif italic">Darla Moore</div>
+        <div class="stat-lbl">USC · Dec 2025 grad</div>
       </div>
     </div>
   </div>
@@ -1879,17 +1892,17 @@
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 01</div>
-            <div class="eyebrow text-ink/50">Exited</div>
+            <div class="eyebrow text-ink/50">Precision Ops</div>
           </div>
-          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">500K Instagram Brand — Built &amp; Sold.</h3>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">The Masters &middot; Augusta National.</h3>
           <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
-            Grew an Instagram brand from zero to 500,000+ followers through systematic content strategy and audience development. Monetized and executed a full acquisition sale — end-to-end entrepreneurial execution from growth to exit.
+            Two-year returning operations staff at one of the world's most prestigious sporting events. Learned how precision, discretion, and relentless standards get executed at scale — a blueprint for how I handle high-stakes accounts and client relationships today.
           </p>
           <div class="flex flex-wrap gap-1.5">
-            <span class="ptag">Growth Strategy</span>
-            <span class="ptag">Content Marketing</span>
-            <span class="ptag">Monetization</span>
-            <span class="ptag">Acquisition</span>
+            <span class="ptag">Operations</span>
+            <span class="ptag">High-Stakes Execution</span>
+            <span class="ptag">Client Service</span>
+            <span class="ptag">2 Seasons Returning</span>
           </div>
           <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
             <span>View on LinkedIn</span>
@@ -1904,15 +1917,15 @@
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 02</div>
             <div class="eyebrow text-ink/50">Delivered</div>
           </div>
-          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">USC Campus Security Risk Assessment.</h3>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Campus Risk Framework &middot; Darla Moore.</h3>
           <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
-            Led a comprehensive security risk consultation for the University of South Carolina — applying commercial risk frameworks to assess physical security vulnerabilities, emergency protocols, and institutional liability. Delivered recommendations to stakeholders.
+            Senior-year project applying commercial risk frameworks to an institutional scenario — physical security exposures, emergency protocol gaps, and liability implications. A chance to translate classroom theory into the language underwriters actually speak.
           </p>
           <div class="flex flex-wrap gap-1.5">
-            <span class="ptag">Risk Assessment</span>
-            <span class="ptag">Security</span>
-            <span class="ptag">Stakeholder Report</span>
-            <span class="ptag">Emergency Planning</span>
+            <span class="ptag">Academic Project</span>
+            <span class="ptag">Risk Frameworks</span>
+            <span class="ptag">Liability Analysis</span>
+            <span class="ptag">USC · 2025</span>
           </div>
           <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
             <span>View on LinkedIn</span>
@@ -1927,9 +1940,9 @@
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 03</div>
             <div class="eyebrow text-ink/50">Shipping</div>
           </div>
-          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Lloyd's of London &middot; E&amp;S Underwriting.</h3>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Trucking &amp; Logging &middot; E&amp;S Placement.</h3>
           <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
-            Placing complex commercial trucking and logging risks in the Excess &amp; Surplus non-admitted market. Preparing Lloyd's binding authority submissions, interpreting FMCSA &amp; CAB safety records, and running five-year longitudinal loss profiling across multi-state fleets.
+            Placing complex commercial trucking and logging risk through Swamp Fox's Excess &amp; Surplus channels — including Lloyd's market access. Preparing submissions, interpreting FMCSA &amp; CAB safety records, and learning how specialty accounts actually come together.
           </p>
           <div class="flex flex-wrap gap-1.5">
             <span class="ptag">E&amp;S Market</span>
@@ -2588,7 +2601,7 @@
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.reveal').forEach(el => {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .tl-row').forEach(el => {
     if (!el.classList.contains('in')) io.observe(el);
   });
 
