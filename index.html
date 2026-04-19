@@ -3245,9 +3245,10 @@
 (function () {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+  const isMobile = window.innerWidth <= 768;
 
   /* 1. HERO LETTER SPLIT */
-  if (!prefersReduced) {
+  if (!prefersReduced && !isMobile) {
     document.querySelectorAll('[data-hero-line]').forEach((el) => {
       const txt = el.textContent;
       const base = parseFloat(el.dataset.delay || '0');
