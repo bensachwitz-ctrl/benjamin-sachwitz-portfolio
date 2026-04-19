@@ -1,0 +1,52 @@
+=== WEBSITE AUDIT CHECKLIST ===
+
+1. STRUCTURE & MARKUP:
+   - HTML validation (div/span balance)
+   - All sections present
+   - Image references valid
+   - Meta tags correct
+
+2. PERFORMANCE:
+   - File size
+   - Load time metrics
+   - Asset optimization
+
+3. RESPONSIVE DESIGN:
+   - Mobile (320px, 375px, 480px)
+   - Tablet (768px, 1024px)
+   - Desktop (1440px+)
+
+4. VISUAL POLISH:
+   - Contrast ratios (WCAG AA minimum)
+   - Typography consistency
+   - Spacing hierarchy
+   - Color palette usage
+   - Button states (hover, active)
+   - Form styling
+   - Loading screen quality
+   - Scroll indicators
+
+5. INTERACTIVE ELEMENTS:
+   - Navigation (desktop + mobile menu)
+   - Animations (smooth, purposeful)
+   - Forms (submit, validation)
+   - Modals (open/close, z-index)
+   - Tooltips/hints
+
+6. BROWSER COMPATIBILITY:
+   - Chrome/Edge (modern)
+   - Safari (iOS + macOS)
+   - Firefox
+
+7. ACCESSIBILITY:
+   - Focus states visible
+   - ARIA labels where needed
+   - Keyboard navigation
+   - Color contrast
+   - Motion preferences respected
+
+8. CODE QUALITY:
+   - CSS brace balance
+   - JavaScript errors
+   - Unused styles/code
+   - Optimization opportunities

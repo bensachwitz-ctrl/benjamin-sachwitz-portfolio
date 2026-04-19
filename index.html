@@ -71,6 +71,9 @@
     --bone: #F5F2EC;
     --ox: #8B1A1A;
     --gold: #D4A843;
+    --shadow-sm: 0 2px 8px rgba(10,10,10,.06);
+    --shadow-md: 0 8px 20px rgba(10,10,10,.08);
+    --shadow-lg: 0 16px 40px rgba(10,10,10,.12);
   }
   html, body { background: var(--bone); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
   body { font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; line-height: 1.7; letter-spacing: 0.25px; }
@@ -136,10 +139,11 @@
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
     padding: 1rem 1.8rem; background: var(--ink); color: var(--bone);
     font-size: 12.5px; letter-spacing: .06em; font-weight: 600; text-transform: uppercase;
-    transition: transform .3s cubic-bezier(.2,.7,.2,1), background .25s, box-shadow .3s;
-    border: 1px solid var(--ink); white-space: nowrap; cursor: pointer; border-radius: 6px;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), background .25s, box-shadow .35s cubic-bezier(.2,.7,.2,1);
+    border: 1px solid var(--ink); white-space: nowrap; cursor: pointer; border-radius: 8px;
+    box-shadow: var(--shadow-sm);
   }
-  .btn-ink:hover { background: var(--ox); border-color: var(--ox); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(139,26,26,.2); }
+  .btn-ink:hover { background: var(--ox); border-color: var(--ox); transform: translateY(-3px); box-shadow: 0 16px 32px rgba(139,26,26,.25); }
   .btn-ink:focus { outline: none; box-shadow: 0 0 0 2px var(--bone), 0 0 0 4px var(--ink); }
   .btn-ink:active { transform: translateY(0); }
   .btn-ink svg { transition: transform .3s cubic-bezier(.2,.7,.2,1); width: 14px; height: 14px; }
@@ -2409,7 +2413,7 @@
 
   /* === SNAKE GAME === */
   const canvas = document.getElementById('snakeCanvas');
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas ? canvas.getContext('2d') : null;
   const scoreDisp = document.getElementById('scoreDisp');
   const highDisp = document.getElementById('highDisp');
   const startBtn = document.getElementById('startBtn');
@@ -2432,6 +2436,7 @@
   const SNAKE_HEAD = '#F5F2EC', SNAKE_BODY = 'rgba(245,242,236,';
 
   function drawBoard(){
+    if (!ctx || !canvas) return;
     ctx.fillStyle = '#050505';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'rgba(212,168,67,0.05)';
@@ -2535,16 +2540,18 @@
   }
 
   // Initial state
-  drawBoard();
-  ctx.fillStyle = 'rgba(212,168,67,0.4)';
-  ctx.font = '500 14px "JetBrains Mono", monospace';
-  ctx.textAlign = 'center';
-  ctx.fillText('PRESS START TO PLAY', canvas.width/2, canvas.height/2);
+  if (canvas && ctx) {
+    drawBoard();
+    ctx.fillStyle = 'rgba(212,168,67,0.4)';
+    ctx.font = '500 14px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('PRESS START TO PLAY', canvas.width/2, canvas.height/2);
+  }
 
-  startBtn.addEventListener('click', start);
-  restartBtn.addEventListener('click', start);
-  playAgain.addEventListener('click', start);
-  gameContact.addEventListener('click', () => gameOver.classList.remove('show'));
+  if (startBtn) startBtn.addEventListener('click', start);
+  if (restartBtn) restartBtn.addEventListener('click', start);
+  if (playAgain) playAgain.addEventListener('click', start);
+  if (gameContact) gameContact.addEventListener('click', () => gameOver.classList.remove('show'));
 
   document.addEventListener('keydown', (e) => {
     if (!running) return;
@@ -2603,8 +2610,10 @@
           p.style.animation = 'none';
           void p.offsetWidth;
           p.style.animation = '';
-          if (name === 'wordle' && window.__wordle && !window.__wordle.ready) window.__wordle.init();
-          if (name === 'tetris' && window.__tetris && !window.__tetris.ready) window.__tetris.init();
+          setTimeout(() => {
+            if (name === 'wordle' && window.__wordle && !window.__wordle.ready) window.__wordle.init();
+            if (name === 'tetris' && window.__tetris && !window.__tetris.ready) window.__tetris.init();
+          }, 10);
         }
       });
     });
@@ -2780,9 +2789,9 @@
 
   /* === TETRIS === */
   const tCanvas = document.getElementById('tetrisCanvas');
-  const tCtx = tCanvas.getContext('2d');
+  const tCtx = tCanvas ? tCanvas.getContext('2d') : null;
   const tNextCanvas = document.getElementById('tetrisNext');
-  const tNCtx = tNextCanvas.getContext('2d');
+  const tNCtx = tNextCanvas ? tNextCanvas.getContext('2d') : null;
   const tScoreEl = document.getElementById('tScore');
   const tLinesEl = document.getElementById('tLines');
   const tLevelEl = document.getElementById('tLevel');
@@ -2820,7 +2829,7 @@
   const tetris = {
     ready: false,
     init() {
-      if (this.ready) return;
+      if (this.ready || !tCanvas || !tCtx) return;
       this.ready = true;
       tBoard = tNewBoard();
       drawTBoard();
@@ -2918,6 +2927,7 @@
     drawTBoard(); drawPiece();
   }
   function drawTBoard() {
+    if (!tCtx || !tCanvas) return;
     tCtx.fillStyle = '#050505';
     tCtx.fillRect(0, 0, tCanvas.width, tCanvas.height);
     // Grid
@@ -2966,6 +2976,7 @@
     }
   }
   function drawNextPiece() {
+    if (!tNCtx || !tNextCanvas) return;
     tNCtx.fillStyle = '#050505';
     tNCtx.fillRect(0, 0, tNextCanvas.width, tNextCanvas.height);
     if (!tNext) return;
@@ -2985,15 +2996,18 @@
     }));
   }
   function startTetris() {
+    if (!tCanvas || !tCtx) return;
     tBoard = tNewBoard();
     tScore = 0; tLines = 0; tLevel = 1; tDropInterval = 800;
-    tScoreEl.textContent = '0'; tLinesEl.textContent = '0'; tLevelEl.textContent = '1';
+    if (tScoreEl) tScoreEl.textContent = '0';
+    if (tLinesEl) tLinesEl.textContent = '0';
+    if (tLevelEl) tLevelEl.textContent = '1';
     tNext = null;
     tPiece = tSpawn();
     tRunning = true;
-    tGameOverEl.classList.remove('show');
-    tStartBtn.classList.add('hidden');
-    tRestartBtn.classList.remove('hidden');
+    if (tGameOverEl) tGameOverEl.classList.remove('show');
+    if (tStartBtn) tStartBtn.classList.add('hidden');
+    if (tRestartBtn) tRestartBtn.classList.remove('hidden');
     clearInterval(tDropTimer);
     tDropTimer = setInterval(tick, tDropInterval);
     drawTBoard(); drawPiece();
@@ -3027,11 +3041,11 @@
   // Tetris touch controls
   document.querySelectorAll('.tetris-touch [data-t]').forEach(btn => {
     btn.addEventListener('click', () => {
-      if (!tRunning) return;
+      if (!tRunning || !tCanvas || !tCtx) return;
       const d = btn.dataset.t;
       if (d === 'left') move(-1, 0);
       else if (d === 'right') move(1, 0);
-      else if (d === 'down') { if (move(0, 1)) { tScore += 1; tScoreEl.textContent = tScore; } }
+      else if (d === 'down') { if (move(0, 1)) { tScore += 1; if (tScoreEl) tScoreEl.textContent = tScore; } }
       else if (d === 'rotate') rotatePiece();
       else if (d === 'drop') hardDrop();
       drawTBoard(); drawPiece();
@@ -3097,15 +3111,16 @@
       if (obstacles[i].x + obstacles[i].w < 0) { obstacles.splice(i, 1); i--; dinoScore += 10; }
     }
     if (gameTime % 80 === 0) {
-      obstacles.push({ x: dinoCanvas.width, w: 20, h: 40 + Math.random() * 20 });
+      obstacles.push({ x: dinoCanvas.width, w: 20, h: 40 + Math.random() * 20, y: dinoCanvas.height - (40 + Math.random() * 20) - 10 });
     }
   }
 
   function checkCollision() {
     const groundY = dinoCanvas.height - dino.h - 10;
     obstacles.forEach(obs => {
+      const obsY = obs.y !== undefined ? obs.y : (dinoCanvas.height - obs.h - 10);
       if (dino.x < obs.x + obs.w && dino.x + dino.w > obs.x &&
-          groundY < obs.y + obs.h && groundY + dino.h > obs.y) {
+          groundY < obsY + obs.h && groundY + dino.h > obsY) {
         endDino();
       }
     });
@@ -3125,20 +3140,21 @@
   }
 
   function startDino() {
+    if (!dinoCanvas || !dinoCtx) return;
     dinoScore = 0; dino = { x: 50, y: 0, w: 40, h: 50, vy: 0, jumping: false, ducking: false };
     obstacles = []; gameTime = 0; dinoGameSpeed = 6; dinoRunning = true; dinoGameOver = false;
-    dinoGameOverEl.classList.remove('show');
-    dinoStartBtn.classList.add('hidden');
-    dinoRestartBtn.classList.remove('hidden');
-    dinoScoreEl.textContent = '0';
+    if (dinoGameOverEl) dinoGameOverEl.classList.remove('show');
+    if (dinoStartBtn) dinoStartBtn.classList.add('hidden');
+    if (dinoRestartBtn) dinoRestartBtn.classList.remove('hidden');
+    if (dinoScoreEl) dinoScoreEl.textContent = '0';
     drawDinoGame();
   }
 
   function endDino() {
     dinoRunning = false;
-    if (dinoScore > dinoBest) { dinoBest = dinoScore; localStorage.setItem('dinoBest', dinoBest); dinoBestEl.textContent = dinoBest; }
-    dinoFinalScoreEl.textContent = dinoScore;
-    dinoGameOverEl.classList.add('show');
+    if (dinoScore > dinoBest) { dinoBest = dinoScore; localStorage.setItem('dinoBest', dinoBest); if (dinoBestEl) dinoBestEl.textContent = dinoBest; }
+    if (dinoFinalScoreEl) dinoFinalScoreEl.textContent = dinoScore;
+    if (dinoGameOverEl) dinoGameOverEl.classList.add('show');
   }
 
   if (dinoStartBtn) dinoStartBtn.addEventListener('click', startDino);
