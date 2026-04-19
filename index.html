@@ -975,13 +975,42 @@
   .hero-pill-ox:hover { background: var(--ox); border-color: var(--ox); }
   .hero-pill-ink:hover { background: var(--ink); border-color: var(--ink); }
 
-  /* Custom cursor dot (desktop only) */
-  .cursor-dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 999; mix-blend-mode: difference; transform: translate(-50%, -50%); transition: transform .15s ease-out, width .2s, height .2s, opacity .2s; opacity: 0; }
-  .cursor-ring { position: fixed; top: 0; left: 0; width: 32px; height: 32px; border: 1.5px solid rgba(212,168,67,.6); border-radius: 50%; pointer-events: none; z-index: 998; transform: translate(-50%, -50%); transition: transform .3s cubic-bezier(.2,.7,.2,1), width .3s, height .3s, border-color .3s; opacity: 0; }
-  body.cursor-ready .cursor-dot, body.cursor-ready .cursor-ring { opacity: 1; }
-  body.cursor-hover .cursor-dot { width: 4px; height: 4px; }
-  body.cursor-hover .cursor-ring { width: 52px; height: 52px; border-color: var(--gold); }
-  @media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-ring { display: none !important; } }
+  /* Side section indicator — fixed left rail */
+  .section-rail { position: fixed; left: 1.5rem; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; gap: 14px; pointer-events: none; opacity: 0; transition: opacity .5s; }
+  .section-rail.show { opacity: 1; }
+  .section-rail button { pointer-events: auto; width: 22px; height: 22px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; position: relative; }
+  .section-rail button::before {
+    content: ""; display: block; width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(10,10,10,.25); transition: all .4s cubic-bezier(.34,1.56,.64,1);
+  }
+  .section-rail button:hover::before { background: var(--ink); transform: scale(1.5); }
+  .section-rail button.is-active::before { background: var(--ox); transform: scale(1.8); box-shadow: 0 0 0 4px rgba(139,26,26,.15); }
+  .section-rail button .rail-label {
+    position: absolute; left: 26px; top: 50%; transform: translateY(-50%) translateX(-8px);
+    white-space: nowrap; padding: .3rem .6rem; background: var(--ink); color: var(--bone);
+    border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: .18em; text-transform: uppercase; opacity: 0; pointer-events: none;
+    transition: opacity .25s, transform .25s; font-weight: 600;
+  }
+  .section-rail button:hover .rail-label { opacity: 1; transform: translateY(-50%) translateX(0); }
+  @media (max-width: 1024px) { .section-rail { display: none; } }
+
+  /* Life tile extra: gold frame on hover (stacks on existing tile rules) */
+  .life-tile::before {
+    content: ""; position: absolute; inset: 0; border: 2px solid var(--gold);
+    opacity: 0; transform: scale(1.02); transition: opacity .35s, transform .35s cubic-bezier(.2,.7,.2,1);
+    pointer-events: none; border-radius: inherit; z-index: 2;
+  }
+  .life-tile:hover::before { opacity: .7; transform: scale(1); }
+
+  /* Headshot frame — glow + rotation accent */
+  .photo-mask::before {
+    content: ""; position: absolute; inset: -4px; z-index: -1; border-radius: inherit;
+    background: linear-gradient(135deg, var(--gold), var(--ox), var(--gold));
+    background-size: 200% 200%; animation: shimmerMove 5s linear infinite; opacity: 0;
+    transition: opacity .5s;
+  }
+  .photo-mask:hover::before { opacity: .65; }
 
   /* Circular scroll progress */
   .scroll-ring { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; z-index: 45; opacity: 0; transition: opacity .4s; pointer-events: none; }
@@ -1369,9 +1398,17 @@
 <!-- ===== NOISE TEXTURE OVERLAY ===== -->
 <div class="noise-layer" aria-hidden="true"></div>
 
-<!-- ===== CUSTOM CURSOR ===== -->
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<!-- ===== SECTION RAIL (left-side chapter navigator) ===== -->
+<nav class="section-rail" id="sectionRail" aria-label="Section navigator">
+  <button type="button" data-rail="top" aria-label="Hero"><span class="rail-label">Home</span></button>
+  <button type="button" data-rail="about" aria-label="About"><span class="rail-label">About</span></button>
+  <button type="button" data-rail="career" aria-label="Career"><span class="rail-label">Career</span></button>
+  <button type="button" data-rail="expertise" aria-label="Expertise"><span class="rail-label">Expertise</span></button>
+  <button type="button" data-rail="work" aria-label="Work"><span class="rail-label">Work</span></button>
+  <button type="button" data-rail="credentials" aria-label="Credentials"><span class="rail-label">Creds</span></button>
+  <button type="button" data-rail="arcade" aria-label="Arcade"><span class="rail-label">Arcade</span></button>
+  <button type="button" data-rail="contact" aria-label="Contact"><span class="rail-label">Contact</span></button>
+</nav>
 
 <!-- ===== SCROLL-TO-TOP RING ===== -->
 <div class="scroll-ring" id="scrollRing" aria-hidden="true">
@@ -1717,9 +1754,6 @@
         <div class="col-span-12 md:col-span-6 text-bone/75 text-[14.5px] leading-relaxed">
           Commercial P&amp;C underwriting in trucking and logging. Rigorous risk analysis across loss trends, FMCSA compliance, and market dynamics. Focused on applying technical discipline to underwriting decisions and exploring how systems can strengthen the portfolio.
         </div>
-        <div class="col-span-12 mt-4">
-          <img src="headshot.png" alt="Benjamin Sachwitz professional headshot" loading="lazy" class="w-full max-w-[400px] rounded-sm" />
-        </div>
       </div>
 
     </div>
@@ -1886,10 +1920,6 @@
         <h2 class="display-h reveal d1 scale-on-scroll">Selected <em>work</em>.</h2>
       </div>
       <div class="chapter-num hidden md:block reveal d2">IV</div>
-    </div>
-
-    <div class="mb-8">
-      <img src="images/documents-analysis.jpg" alt="Professional document analysis and risk assessment" loading="lazy" class="w-full rounded-sm" />
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -3759,9 +3789,8 @@
     dinoCtx.fillText('PRESS START · TAP SPACE TO JUMP', dinoCanvas.width/2, 24);
   }
 
-  /* === CURSOR SPOTLIGHT + CUSTOM CURSOR === */
-  const isFinePointer = !window.matchMedia('(hover: none)').matches && !window.matchMedia('(pointer: coarse)').matches;
-  if (isFinePointer) {
+  /* === SECTION SPOTLIGHT (cursor-tracked radial gradient on dark sections) === */
+  if (!window.matchMedia('(hover: none)').matches && !window.matchMedia('(pointer: coarse)').matches) {
     document.querySelectorAll('.spotlight-host').forEach(host => {
       host.addEventListener('mousemove', (e) => {
         const r = host.getBoundingClientRect();
@@ -3771,45 +3800,44 @@
         host.style.setProperty('--my', my);
       });
     });
-
-    // Custom cursor dot + ring with lag
-    const cDot = document.getElementById('cursorDot');
-    const cRing = document.getElementById('cursorRing');
-    if (cDot && cRing) {
-      let dotX = 0, dotY = 0, ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX; mouseY = e.clientY;
-        document.body.classList.add('cursor-ready');
-      }, { passive: true });
-      const cursorLoop = () => {
-        dotX += (mouseX - dotX) * 0.45;
-        dotY += (mouseY - dotY) * 0.45;
-        ringX += (mouseX - ringX) * 0.18;
-        ringY += (mouseY - ringY) * 0.18;
-        cDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
-        cRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-        requestAnimationFrame(cursorLoop);
-      };
-      requestAnimationFrame(cursorLoop);
-      document.querySelectorAll('a, button, .cert-chip, .hero-pill, .life-tile, .atab, input, textarea, select, [role="button"]').forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-      });
-    }
   }
 
-  /* === SCROLL RING PROGRESS + BACK TO TOP === */
+  /* === SCROLL RING PROGRESS + BACK TO TOP + SECTION RAIL === */
   const scrollRing = document.getElementById('scrollRing');
   const ringProgress = document.getElementById('ringProgress');
   const ringCirc = 2 * Math.PI * 21;
+  const sectionRail = document.getElementById('sectionRail');
+  const railButtons = sectionRail ? sectionRail.querySelectorAll('button') : [];
+
+  if (sectionRail) {
+    railButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.rail);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
   if (scrollRing && ringProgress) {
-    window.addEventListener('scroll', () => {
+    const sections = ['top','about','career','expertise','work','credentials','arcade','contact'].map(id => document.getElementById(id)).filter(Boolean);
+    const handleScroll = () => {
       const st = window.scrollY;
       const dh = document.documentElement.scrollHeight - window.innerHeight;
       const prog = dh > 0 ? st / dh : 0;
       ringProgress.style.strokeDashoffset = (ringCirc * (1 - prog)).toFixed(2);
       scrollRing.classList.toggle('show', st > 400);
-    }, { passive: true });
+      if (sectionRail) sectionRail.classList.toggle('show', st > 300);
+
+      // Active section
+      const viewportMid = st + window.innerHeight * 0.4;
+      let activeId = sections[0]?.id;
+      for (const s of sections) {
+        if (s.offsetTop <= viewportMid) activeId = s.id;
+      }
+      railButtons.forEach(b => b.classList.toggle('is-active', b.dataset.rail === activeId));
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
   }
 
   /* === COUNT-UP ANIMATION on stats === */
