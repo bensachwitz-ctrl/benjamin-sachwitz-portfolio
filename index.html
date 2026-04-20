@@ -2134,7 +2134,7 @@
               <button class="game-btn-primary" id="dinoStartBtn">Start game</button>
               <button class="game-btn-secondary hidden" id="dinoRestartBtn">Restart</button>
             </div>
-            <p class="text-bone/50 text-[12px] hidden md:block">Press <kbd>Space</kbd> to jump, <kbd>Duck</kbd> to crouch</p>
+            <p class="text-bone/50 text-[12px] hidden md:block"><kbd>Space</kbd>/<kbd>↑</kbd> jump · <kbd>↓</kbd> duck · birds fly at head height</p>
           </div>
           <div class="touch-grid md:hidden mt-4">
             <div class="touch-empty"></div>
@@ -3599,16 +3599,17 @@
   function drawDino() {
     if (!dinoCtx) return;
     const canvas = dinoCanvas;
-    const groundY = canvas.height - dino.h - 10 + dino.y;
+    const ducking = dino.ducking && !dino.jumping;
+    const effH = ducking ? 28 : dino.h;
+    const groundY = canvas.height - effH - 10 + dino.y;
 
-    // Shadow (only when on ground, not jumping)
+    // Shadow
     if (!dino.jumping) {
       dinoCtx.fillStyle = 'rgba(10,10,10,0.18)';
       dinoCtx.beginPath();
-      dinoCtx.ellipse(dino.x + 22, canvas.height - 8, 22, 3, 0, 0, Math.PI * 2);
+      dinoCtx.ellipse(dino.x + 22, canvas.height - 8, ducking ? 26 : 22, 3, 0, 0, Math.PI * 2);
       dinoCtx.fill();
     } else {
-      // Smaller shadow during jump
       const jumpProg = Math.min(Math.abs(dino.y) / 80, 1);
       dinoCtx.fillStyle = `rgba(10,10,10,${0.18 - jumpProg * 0.14})`;
       dinoCtx.beginPath();
@@ -3618,17 +3619,43 @@
 
     const baseColor = '#1a1a1a';
     const accentColor = '#2a2a2a';
-
-    // Tail (rounded)
     dinoCtx.fillStyle = baseColor;
+
+    if (ducking) {
+      // Crouched pose — elongated, lower body, head forward
+      dinoCtx.beginPath();
+      dinoCtx.roundRect ? dinoCtx.roundRect(dino.x - 2, groundY + 8, 48, 18, 6) : dinoCtx.rect(dino.x - 2, groundY + 8, 48, 18);
+      dinoCtx.fill();
+      // Head pushed forward
+      dinoCtx.beginPath();
+      dinoCtx.roundRect ? dinoCtx.roundRect(dino.x + 34, groundY + 2, 22, 16, 4) : dinoCtx.rect(dino.x + 34, groundY + 2, 22, 16);
+      dinoCtx.fill();
+      // Eye
+      dinoCtx.fillStyle = '#F5F2EC';
+      dinoCtx.beginPath();
+      dinoCtx.arc(dino.x + 48, groundY + 8, 2.5, 0, Math.PI * 2);
+      dinoCtx.fill();
+      dinoCtx.fillStyle = baseColor;
+      dinoCtx.beginPath();
+      dinoCtx.arc(dino.x + 49, groundY + 9, 1.3, 0, Math.PI * 2);
+      dinoCtx.fill();
+      // Little legs (quick shuffle)
+      const legFrame = Math.floor(gameTime / 4) % 2;
+      dinoCtx.fillRect(dino.x + 8, groundY + 26, 5, 6 - legFrame * 2);
+      dinoCtx.fillRect(dino.x + 22, groundY + 26, 5, 4 + legFrame * 2);
+      return;
+    }
+
+    // Standing pose
+    // Tail
     dinoCtx.beginPath();
     dinoCtx.roundRect ? dinoCtx.roundRect(dino.x - 2, groundY + 14, 14, 14, 3) : dinoCtx.rect(dino.x - 2, groundY + 14, 14, 14);
     dinoCtx.fill();
-    // Body (rounded)
+    // Body
     dinoCtx.beginPath();
     dinoCtx.roundRect ? dinoCtx.roundRect(dino.x + 4, groundY + 10, 32, 30, 6) : dinoCtx.rect(dino.x + 4, groundY + 10, 32, 30);
     dinoCtx.fill();
-    // Head (rounded)
+    // Head
     dinoCtx.beginPath();
     dinoCtx.roundRect ? dinoCtx.roundRect(dino.x + 22, groundY - 2, 26, 22, 5) : dinoCtx.rect(dino.x + 22, groundY - 2, 26, 22);
     dinoCtx.fill();
@@ -3646,12 +3673,11 @@
     dinoCtx.beginPath();
     dinoCtx.arc(dino.x + 41, groundY + 8, 1.5, 0, Math.PI * 2);
     dinoCtx.fill();
-    // Nostril
+    // Nostril + teeth
     dinoCtx.fillRect(dino.x + 46, groundY + 10, 2, 1.5);
-    // Teeth (subtle)
     dinoCtx.fillStyle = '#F5F2EC';
     dinoCtx.fillRect(dino.x + 45, groundY + 16, 2, 2);
-    // Legs (animate running)
+    // Running legs
     dinoCtx.fillStyle = baseColor;
     const legFrame = Math.floor(gameTime / 5) % 2;
     if (!dino.jumping) {
@@ -3661,7 +3687,7 @@
       dinoCtx.fillRect(dino.x + 12, groundY + 40, 6, 5);
       dinoCtx.fillRect(dino.x + 24, groundY + 40, 6, 5);
     }
-    // Arms (small)
+    // Arms
     dinoCtx.fillRect(dino.x + 34, groundY + 22, 5, 3);
   }
 
@@ -3677,16 +3703,40 @@
   function drawObstacles() {
     if (!dinoCtx) return;
     obstacles.forEach(obs => {
+      if (obs.type === 'bird') {
+        // Flapping bird — two-frame animation
+        obs.flap = (obs.flap || 0) + 1;
+        const up = Math.floor(obs.flap / 8) % 2 === 0;
+        const bx = obs.x, by = obs.y;
+        dinoCtx.fillStyle = '#1a1a1a';
+        // Body
+        dinoCtx.fillRect(bx + 10, by + 6, 14, 6);
+        // Head + beak
+        dinoCtx.fillRect(bx + 22, by + 4, 6, 6);
+        dinoCtx.fillStyle = '#C49A3C';
+        dinoCtx.fillRect(bx + 28, by + 6, 4, 2);
+        // Eye
+        dinoCtx.fillStyle = '#F5F2EC';
+        dinoCtx.fillRect(bx + 24, by + 5, 2, 2);
+        // Wings
+        dinoCtx.fillStyle = '#1a1a1a';
+        if (up) {
+          dinoCtx.fillRect(bx + 12, by - 2, 10, 5);
+          dinoCtx.fillRect(bx + 8, by - 5, 6, 4);
+        } else {
+          dinoCtx.fillRect(bx + 12, by + 12, 10, 5);
+          dinoCtx.fillRect(bx + 8, by + 14, 6, 4);
+        }
+        return;
+      }
+      // Cactus
       const y = dinoCanvas.height - obs.h - 10;
-      // Cactus body
       dinoCtx.fillStyle = '#2d5a3d';
       dinoCtx.fillRect(obs.x + 6, y, 8, obs.h);
-      // Arm
       dinoCtx.fillRect(obs.x, y + obs.h * 0.3, 6, 4);
       dinoCtx.fillRect(obs.x, y + obs.h * 0.3, 2, obs.h * 0.5);
       dinoCtx.fillRect(obs.x + 14, y + obs.h * 0.45, 6, 4);
       dinoCtx.fillRect(obs.x + 18, y + obs.h * 0.45, 2, obs.h * 0.4);
-      // Highlight
       dinoCtx.fillStyle = 'rgba(255,255,255,0.15)';
       dinoCtx.fillRect(obs.x + 6, y, 2, obs.h);
     });
@@ -3698,14 +3748,22 @@
       if (obstacles[i].x + obstacles[i].w < 0) { obstacles.splice(i, 1); i--; dinoScore += 10; }
     }
     if (gameTime % 80 === 0) {
-      const h = 36 + Math.random() * 22;
-      obstacles.push({ x: dinoCanvas.width, w: 20, h: h, y: dinoCanvas.height - h - 10 });
+      // 70% cactus, 30% bird (after a warm-up)
+      if (gameTime > 300 && Math.random() < 0.3) {
+        // Bird at head height — must duck to avoid
+        const by = dinoCanvas.height - 70 - Math.random() * 20;
+        obstacles.push({ x: dinoCanvas.width, w: 32, h: 18, y: by, type: 'bird', flap: 0 });
+      } else {
+        const h = 36 + Math.random() * 22;
+        obstacles.push({ x: dinoCanvas.width, w: 20, h: h, y: dinoCanvas.height - h - 10, type: 'cactus' });
+      }
     }
   }
 
   function checkCollision() {
-    const dinoTop = dinoCanvas.height - dino.h - 10 + dino.y;
-    const dinoBottom = dinoTop + dino.h;
+    const effH = dino.ducking ? 28 : dino.h;
+    const dinoTop = dinoCanvas.height - effH - 10 + dino.y;
+    const dinoBottom = dinoTop + effH;
     const dinoLeft = dino.x + 4;
     const dinoRight = dino.x + dino.w - 4;
     obstacles.forEach(obs => {
@@ -3841,14 +3899,36 @@
     if (!dinoRunning) return;
     const panel = document.querySelector('.apanel[data-panel="dino"]');
     if (!panel || panel.classList.contains('hidden')) return;
-    if (e.code === 'Space' && !dino.jumping) { dino.jumping = true; dino.vy = -12; e.preventDefault(); }
+    if ((e.code === 'Space' || e.code === 'ArrowUp') && !dino.jumping && !dino.ducking) {
+      dino.jumping = true; dino.vy = -12; e.preventDefault();
+    } else if (e.code === 'ArrowDown') {
+      if (dino.jumping) { dino.vy += 3; /* soft drop */ }
+      else { dino.ducking = true; }
+      e.preventDefault();
+    }
+  });
+  document.addEventListener('keyup', (e) => {
+    if (e.code === 'ArrowDown') dino.ducking = false;
   });
 
+  // Touch buttons: jump (tap) + duck (hold)
   document.querySelectorAll('[data-dino]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (!dinoRunning) return;
-      if (btn.dataset.dino === 'jump' && !dino.jumping) { dino.jumping = true; dino.vy = -12; }
-    });
+    const action = btn.dataset.dino;
+    if (action === 'jump') {
+      btn.addEventListener('click', () => {
+        if (!dinoRunning) return;
+        if (!dino.jumping && !dino.ducking) { dino.jumping = true; dino.vy = -12; }
+      });
+    } else if (action === 'duck') {
+      const start = (e) => { if (!dinoRunning) return; if (!dino.jumping) dino.ducking = true; e.preventDefault(); };
+      const end = () => { dino.ducking = false; };
+      btn.addEventListener('pointerdown', start);
+      btn.addEventListener('pointerup', end);
+      btn.addEventListener('pointerleave', end);
+      btn.addEventListener('pointercancel', end);
+      btn.addEventListener('touchstart', start, { passive: false });
+      btn.addEventListener('touchend', end);
+    }
   });
 
   // Initial dino scene render (so the panel isn't empty before clicking Start)
@@ -3858,7 +3938,7 @@
     dinoCtx.fillStyle = 'rgba(10,10,10,0.7)';
     dinoCtx.font = '600 14px "JetBrains Mono", monospace';
     dinoCtx.textAlign = 'center';
-    dinoCtx.fillText('PRESS START · TAP SPACE TO JUMP', dinoCanvas.width/2, 24);
+    dinoCtx.fillText('PRESS START · SPACE = JUMP · ↓ = DUCK', dinoCanvas.width/2, 24);
   }
 
   /* === SECTION SPOTLIGHT (cursor-tracked radial gradient on dark sections) === */
