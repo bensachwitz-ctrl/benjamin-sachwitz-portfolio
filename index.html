@@ -2335,6 +2335,52 @@
         </div>
       </a>
 
+      <a href="https://bargolfcrawl.vercel.app" target="_blank" rel="noopener" class="proj block reveal d2">
+        <div class="proj-content">
+          <div class="flex items-start justify-between mb-10">
+            <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 05</div>
+            <div class="eyebrow text-ox">Live App</div>
+          </div>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Bar Golf Crawl.</h3>
+          <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
+            Full-stack web app that turns a night out into a competitive round of bar golf. Score tracking, custom course creation, and real-time leaderboards — built and shipped end-to-end.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="ptag">Full-Stack</span>
+            <span class="ptag">Vercel</span>
+            <span class="ptag">Interactive UI</span>
+            <span class="ptag">Shipped</span>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
+            <span>Launch App</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://my-dailytool.vercel.app" target="_blank" rel="noopener" class="proj block reveal d3">
+        <div class="proj-content">
+          <div class="flex items-start justify-between mb-10">
+            <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 06</div>
+            <div class="eyebrow text-ox">Live App</div>
+          </div>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">My Daily Tool.</h3>
+          <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
+            Personal productivity toolkit — a clean, fast utility app for daily workflows. Designed for speed and simplicity, built to solve real friction points in my own routine.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="ptag">Productivity</span>
+            <span class="ptag">Vercel</span>
+            <span class="ptag">Utility App</span>
+            <span class="ptag">Shipped</span>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between text-[12px] font-mono uppercase tracking-widest">
+            <span>Launch App</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -2481,6 +2527,14 @@
           <div class="flex items-center gap-5 text-[12px] font-mono uppercase tracking-widest">
             <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="link-line">LinkedIn</a>
             <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" class="link-line">GitHub</a>
+          </div>
+          <div class="rule text-ink mt-6"></div>
+          <div>
+            <div class="eyebrow text-ink/50 mb-2">My Apps</div>
+            <div class="flex items-center gap-5 text-[12px] font-mono uppercase tracking-widest">
+              <a href="https://bargolfcrawl.vercel.app" target="_blank" rel="noopener" class="link-line">Bar Golf Crawl</a>
+              <a href="https://my-dailytool.vercel.app" target="_blank" rel="noopener" class="link-line">Daily Tool</a>
+            </div>
           </div>
         </div>
 
@@ -4610,89 +4664,4 @@
         const s = document.createElement('span');
         s.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
         s.style.animationDelay = (j * 0.12) + 's';
-        col.appendChild(s);
-      }
-      wrap.appendChild(col);
-    }
-    requestAnimationFrame(() => wrap.classList.add('on'));
-    showToast('✓ binding authority unlocked · bensachwitz@outlook.com');
-    setTimeout(() => { wrap.classList.remove('on'); setTimeout(() => wrap.remove(), 700); }, 4800);
-  }
-
-  function showToast(msg) {
-    const t = document.createElement('div');
-    t.className = 'egg-toast';
-    t.innerHTML = '<span class="dot"></span><span>' + msg + '</span>';
-    document.body.appendChild(t);
-    requestAnimationFrame(() => t.classList.add('on'));
-    setTimeout(() => { t.classList.remove('on'); setTimeout(() => t.remove(), 500); }, 5000);
-  }
-
-  /* SAT REVEAL — photos bloom to full color on scroll-in */
-  const satIo = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); satIo.unobserve(e.target); } });
-  }, { threshold: 0.25 });
-  document.querySelectorAll('.sat-reveal').forEach(el => satIo.observe(el));
-
-  /* WORLD TILE STAGGER */
-  const worldIo = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('wt-in'); worldIo.unobserve(e.target); } });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.world-tile').forEach(el => worldIo.observe(el));
-
-  /* LIFE TILE STAGGER — cascade in on scroll */
-  const lifeIo = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('lt-in'); lifeIo.unobserve(e.target); } });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.life-tile').forEach(el => lifeIo.observe(el));
-
-  /* CAREER TIMELINE LINE DRAW — once the section hits viewport */
-  const career = document.getElementById('career');
-  if (career) {
-    const careerIo = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { career.classList.add('in-view'); careerIo.unobserve(career); } });
-    }, { threshold: 0.15 });
-    careerIo.observe(career);
-  }
-
-  /* 12. SCROLL-SPY — highlight active nav link */
-  const navMap = {
-    about: '#about',
-    career: '#career',
-    expertise: '#expertise',
-    work: '#work',
-    arcade: '#arcade'
-  };
-  const navLinks = document.querySelectorAll('.nlink[data-nav]');
-  const sections = Object.entries(navMap)
-    .map(([k, sel]) => ({ key: k, el: document.querySelector(sel) }))
-    .filter(s => s.el);
-  const setActive = (key) => {
-    navLinks.forEach(l => l.classList.toggle('is-active', l.dataset.nav === key));
-  };
-  const spy = () => {
-    const y = window.scrollY + 120;
-    let active = null;
-    for (const s of sections) {
-      if (s.el.offsetTop <= y) active = s.key;
-    }
-    setActive(active);
-  };
-  window.addEventListener('scroll', spy, { passive: true });
-  spy();
-
-  /* 13. Expose for mobile trigger (tap-tap-tap on chapter numeral VI) */
-  const arcadeChapter = document.querySelector('#arcade .chapter-num');
-  if (arcadeChapter) {
-    let taps = 0, timer;
-    arcadeChapter.addEventListener('click', () => {
-      taps++; clearTimeout(timer); timer = setTimeout(() => taps = 0, 1200);
-      if (taps >= 3) { taps = 0; triggerGlyphRain(); }
-    });
-    arcadeChapter.style.cursor = 'pointer';
-  }
-})();
-</script>
-
-</body>
-</html>
+      
