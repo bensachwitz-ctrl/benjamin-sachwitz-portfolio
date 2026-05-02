@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Benjamin Sachwitz — Risk &amp; Signal</title>
-<meta name="description" content="Benjamin Sachwitz — Insurance and risk technology strategist. Darla Moore graduate. Lloyd's of London trained. Assistant Underwriter at Swamp Fox Agency." />
+<title>Benjamin Sachwitz — Assistant Underwriter &amp; Builder</title>
+<meta name="description" content="Benjamin Sachwitz — Assistant Underwriter at Swamp Fox Agency in Moncks Corner, SC. Darla Moore graduate, Lloyd's of London trained. Insurance × risk tech." />
 <meta name="keywords" content="Benjamin Sachwitz, Insurance Technology, Risk Management, Lloyd's of London, Swamp Fox Agency, Commercial Insurance, South Carolina" />
 <meta name="author" content="Benjamin Sachwitz" />
 <meta name="theme-color" content="#0A0A0A" />
@@ -12,11 +12,13 @@
 <meta property="og:title" content="Benjamin Sachwitz — Risk & Signal" />
 <meta property="og:description" content="Darla Moore graduate. Lloyd's of London trained. Building the next generation of commercial risk management." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="headshot.png" />
+<meta property="og:url" content="https://bensachwitz.vercel.app/" />
+<meta property="og:image" content="https://bensachwitz.vercel.app/headshot.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Benjamin Sachwitz — Risk & Signal" />
 <meta name="twitter:description" content="Darla Moore graduate. Lloyd's of London trained. Building the next generation of commercial risk management." />
-<meta name="twitter:image" content="headshot.png" />
+<meta name="twitter:image" content="https://bensachwitz.vercel.app/headshot.png" />
+<link rel="canonical" href="https://bensachwitz.vercel.app/" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0A0A'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='38' font-weight='500' fill='%23E8C77D'%3Ebs%3C/text%3E%3C/svg%3E" />
 
@@ -61,7 +63,8 @@
   "image": "headshot.png",
   "description": "Darla Moore graduate. Assistant Underwriter at Swamp Fox Agency, one month in. Learning commercial trucking and logging insurance. Exploring how technology can solve real problems.",
   "knowsAbout": ["Commercial Insurance","Risk Management","Lloyd's of London Market","Marine Insurance","Commercial Trucking","Logging Insurance","Loss Control","Underwriting","Insurance Technology","Artificial Intelligence"],
-  "sameAs": ["https://linkedin.com/in/benjamin-sachwitz","https://github.com/bensachwitz-ctrl"]
+  "url": "https://bensachwitz.vercel.app/",
+  "sameAs": ["https://linkedin.com/in/benjamin-sachwitz","https://github.com/bensachwitz-ctrl","https://barcrawlgolf.vercel.app"]
 }
 </script>
 
@@ -74,12 +77,31 @@
     --shadow-sm: 0 2px 8px rgba(10,10,10,.06);
     --shadow-md: 0 8px 20px rgba(10,10,10,.08);
     --shadow-lg: 0 16px 40px rgba(10,10,10,.12);
+    --teal: #1A6B5C;
+    --navy: #1B2A4A;
+    --grad-accent: linear-gradient(135deg, var(--ox), var(--gold) 50%, var(--teal));
+    --grad-warm: linear-gradient(135deg, var(--ox) 0%, #C0392B 50%, var(--gold) 100%);
   }
   html, body { background: var(--bone); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
   body { font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; line-height: 1.7; letter-spacing: 0.25px; }
 
   /* Serif display tweaks */
   .font-serif { font-feature-settings: "ss01","liga","dlig"; }
+
+  /* === CREATIVE COLOR ACCENTS === */
+  .display-h em { background: var(--grad-warm); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .section-divider { height: 3px; border: none; margin: 0; background: var(--grad-accent); background-size: 200% 100%; animation: shimmerBar 4s ease-in-out infinite; }
+  @keyframes shimmerBar { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .sat-frame { position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(139,26,26,.15), 0 2px 8px rgba(212,168,67,.1); transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease; }
+  .sat-frame:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(139,26,26,.22), 0 4px 16px rgba(212,168,67,.18); }
+  .sat-frame::before { content: ''; position: absolute; inset: -2px; z-index: -1; border-radius: 12px; background: var(--grad-accent); background-size: 300% 300%; animation: borderGlow 6s ease-in-out infinite; opacity: .6; }
+  @keyframes borderGlow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .eyebrow-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); margin-right: 8px; vertical-align: middle; box-shadow: 0 0 10px rgba(212,168,67,.5); animation: dotPulse 2s ease-in-out infinite; }
+  @keyframes dotPulse { 0%,100% { box-shadow: 0 0 8px rgba(212,168,67,.4); } 50% { box-shadow: 0 0 18px rgba(212,168,67,.7); } }
+  .proj:hover .proj-num { color: var(--ox); }
+  .stat-num .count-target { background: var(--grad-warm); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .footer-gradient { height: 2px; background: var(--grad-accent); background-size: 200% 100%; animation: shimmerBar 5s ease-in-out infinite; }
+  #scrollProgress { position: fixed; top: 0; left: 0; height: 3px; z-index: 9999; background: var(--grad-accent); background-size: 200% 100%; animation: shimmerBar 3s ease-in-out infinite; width: 0%; transition: width .1s linear; pointer-events: none; }
 
   /* Subtle paper grain on bone sections */
   .grain::before {
@@ -1439,10 +1461,73 @@
     .glyph-rain { display: none !important; }
     .content-fade-in, .scale-on-scroll { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
+
+  /* === MOBILE TYPOGRAPHY HARDENING === */
+  /* Italic Fraunces has wider side-bearings than upright; without breathing room
+     and overflow:clip the rightmost terminal/descender gets cropped on iOS Safari. */
+  .hero-title,
+  .hero-line,
+  .display-h,
+  h2.font-serif,
+  h3.font-serif,
+  .display-h em,
+  h2 em,
+  h3 em {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: manual;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display-h, h2.font-serif, h3.font-serif, .hero-line {
+    padding-right: 0.08em;
+    padding-bottom: 0.08em;
+  }
+  /* Italic accent words: inline-block with side padding so the italic terminal
+     stays inside its layout box, with negative margin so flow isn't disrupted. */
+  .display-h em, h2 em, h3 em, .hero-line em {
+    display: inline-block;
+    padding-right: 0.14em;
+    margin-right: -0.06em;
+  }
+
+  /* Stop section overflow from clipping descenders/terminals on mobile */
+  @media (max-width: 640px) {
+    section, .sec, .hero {
+      overflow-x: clip;
+      overflow-y: visible;
+    }
+    .display-h {
+      font-size: clamp(2.1rem, 8.2vw, 3.6rem) !important;
+      line-height: 1.1;
+      max-width: 100%;
+    }
+    .hero-title .hero-line {
+      padding-right: 0.12em;
+      max-width: 100%;
+    }
+    /* Gradient text fallback: solid color if -webkit-background-clip flakes out */
+    @supports not (-webkit-background-clip: text) {
+      .display-h em, h2 em, h3 em {
+        background: none !important;
+        -webkit-text-fill-color: currentColor !important;
+        color: var(--ox);
+      }
+    }
+  }
+
+  /* Safari iOS-specific: drop text-shadow that aggravates italic clip */
+  @supports (-webkit-touch-callout: none) {
+    .hero-title, .hero-line, .display-h { text-shadow: none; }
+  }
+
+  /* Outer page guard against horizontal scroll re-introduction */
+  html, body { max-width: 100vw; overflow-x: clip; }
 </style>
 </head>
 
 <body class="bg-bone text-ink antialiased">
+<div id="scrollProgress"></div>
 <a href="#main" class="skip-link">Skip to content</a>
 
 <!-- ===== LOADER ===== -->
@@ -1551,7 +1636,7 @@
         <!-- Photo: next to title on mobile, full right column on desktop -->
         <div class="col-span-4 lg:col-span-4 lg:row-span-2 order-2 lg:order-2 relative">
           <div class="photo-mask hero-parallax-photo sat-reveal aspect-[4/5] w-full max-w-[140px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-none mx-auto relative">
-            <img src="headshot.png" alt="Benjamin Sachwitz headshot" class="w-full h-full object-cover" loading="eager" />
+            <img src="headshot.png" alt="Portrait of Benjamin Sachwitz, Assistant Underwriter at Swamp Fox Agency" class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
             <div class="absolute inset-0 ring-1 ring-ink/10"></div>
             <div class="tag-badge hidden md:block" style="bottom:1rem; left:1rem;">
               Asst. Underwriter · Swamp Fox
@@ -1605,9 +1690,9 @@
 
           <!-- Social mini row -->
           <div class="mt-4 md:mt-5 flex items-center gap-4 md:gap-6 text-[11px] md:text-[12px] font-mono tracking-widest uppercase text-ink/60 reveal d3 in">
-            <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="link-line">LinkedIn</a>
+            <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="link-line">LinkedIn</a>
             <span class="text-ink/20">·</span>
-            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" class="link-line">GitHub</a>
+            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line">GitHub</a>
             <span class="text-ink/20">·</span>
             <a href="mailto:bensachwitz@outlook.com" class="link-line">Email</a>
           </div>
@@ -2243,7 +2328,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d1">
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="proj block reveal d1">
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 01</div>
@@ -2266,7 +2351,7 @@
         </div>
       </a>
 
-      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d1">
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="proj block reveal d1">
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 02</div>
@@ -2289,7 +2374,7 @@
         </div>
       </a>
 
-      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d2">
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="proj block reveal d2">
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 03</div>
@@ -2312,7 +2397,7 @@
         </div>
       </a>
 
-      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="proj block reveal d3">
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="proj block reveal d3">
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 04</div>
@@ -2335,15 +2420,15 @@
         </div>
       </a>
 
-      <a href="https://bargolfcrawl.vercel.app" target="_blank" rel="noopener" class="proj block reveal d2">
+      <a href="https://barcrawlgolf.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Bar Crawl Golf — open the live app" class="proj block reveal d2">
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 05</div>
             <div class="eyebrow text-ox">Live App</div>
           </div>
-          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Bar Golf Crawl.</h3>
+          <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">Bar Crawl Golf.</h3>
           <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
-            Full-stack web app that turns a night out into a competitive round of bar golf. Score tracking, custom course creation, and real-time leaderboards — built and shipped end-to-end.
+            Full-stack web app that turns a night out into a tournament of bar golf. Score tracking, custom course creation, leaderboards — built and shipped end-to-end.
           </p>
           <div class="flex flex-wrap gap-1.5">
             <span class="ptag">Full-Stack</span>
@@ -2358,7 +2443,7 @@
         </div>
       </a>
 
-      <a href="https://my-dailytool.vercel.app" target="_blank" rel="noopener" class="proj block reveal d3">
+      <a href="https://my-dailytool.vercel.app" target="_blank" rel="noopener noreferrer" class="proj block reveal d3">
         <div class="proj-content">
           <div class="flex items-start justify-between mb-10">
             <div class="proj-num font-mono text-[11px] tracking-[.24em] text-ink/50">/ 06</div>
@@ -2461,6 +2546,15 @@
 <section id="contact" class="relative py-14 md:py-20 overflow-hidden">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
+    <!-- Satellite name collage -->
+    <div class="mb-12 reveal" style="text-align:center">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:1100px;margin:0 auto">
+        <div class="sat-frame"><img src="images/sat-benjamin.png" alt="BENJAMIN spelled in satellite imagery" loading="lazy" style="width:100%;height:auto;display:block" /></div>
+        <div class="sat-frame"><img src="images/sat-sachwitz.png" alt="SACHWITZ spelled in satellite imagery" loading="lazy" style="width:100%;height:auto;display:block" /></div>
+      </div>
+      <p style="margin-top:14px;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(28,25,23,.4)"><span class="eyebrow-dot"></span>Each letter found in satellite imagery from around the world</p>
+    </div>
+
     <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 07 · Contact</div>
@@ -2525,15 +2619,15 @@
           </div>
           <div class="rule text-ink"></div>
           <div class="flex items-center gap-5 text-[12px] font-mono uppercase tracking-widest">
-            <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="link-line">LinkedIn</a>
-            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" class="link-line">GitHub</a>
+            <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="link-line">LinkedIn</a>
+            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line">GitHub</a>
           </div>
           <div class="rule text-ink mt-6"></div>
           <div>
-            <div class="eyebrow text-ink/50 mb-2">My Apps</div>
+            <div class="eyebrow text-ink/50 mb-2"><span class="eyebrow-dot"></span>My Apps</div>
             <div class="flex items-center gap-5 text-[12px] font-mono uppercase tracking-widest">
-              <a href="https://bargolfcrawl.vercel.app" target="_blank" rel="noopener" class="link-line">Bar Golf Crawl</a>
-              <a href="https://my-dailytool.vercel.app" target="_blank" rel="noopener" class="link-line">Daily Tool</a>
+              <a href="https://barcrawlgolf.vercel.app" target="_blank" rel="noopener noreferrer" class="link-line">Bar Crawl Golf</a>
+              <a href="https://my-dailytool.vercel.app" target="_blank" rel="noopener noreferrer" class="link-line">Daily Tool</a>
             </div>
           </div>
         </div>
@@ -2570,8 +2664,9 @@
   </div>
 </section>
 
+<hr class="section-divider" />
 <!-- ===== FOOTER ===== -->
-<footer class="relative py-12 md:py-16 border-t border-ink/10 bg-bone">
+<footer class="relative py-12 md:py-16 bg-bone">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid grid-cols-12 gap-6 items-center">
     <div class="col-span-12 md:col-span-4 font-serif text-lg">
       Ben <span class="italic text-ox">Sachwitz</span>
@@ -2580,8 +2675,8 @@
       <span class="copy-egg" id="copyEgg" tabindex="0">© <span id="copyYear">2026</span><span class="copy-tip">Lloyd's · est. 1688</span></span> Benjamin Sachwitz · McLean → Columbia → London
     </div>
     <div class="col-span-12 md:col-span-4 flex md:justify-end gap-5 text-[12px] font-mono uppercase tracking-widest">
-      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener" class="link-line">LinkedIn</a>
-      <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener" class="link-line">GitHub</a>
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="link-line">LinkedIn</a>
+      <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line">GitHub</a>
       <a href="#contact" class="link-line">Book a call</a>
     </div>
   </div>
@@ -4664,4 +4759,99 @@
         const s = document.createElement('span');
         s.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
         s.style.animationDelay = (j * 0.12) + 's';
-      
+        col.appendChild(s);
+      }
+      wrap.appendChild(col);
+    }
+    requestAnimationFrame(() => wrap.classList.add('on'));
+    showToast('✓ binding authority unlocked · bensachwitz@outlook.com');
+    setTimeout(() => { wrap.classList.remove('on'); setTimeout(() => wrap.remove(), 700); }, 4800);
+  }
+
+  function showToast(msg) {
+    const t = document.createElement('div');
+    t.className = 'egg-toast';
+    t.innerHTML = '<span class="dot"></span><span>' + msg + '</span>';
+    document.body.appendChild(t);
+    requestAnimationFrame(() => t.classList.add('on'));
+    setTimeout(() => { t.classList.remove('on'); setTimeout(() => t.remove(), 500); }, 5000);
+  }
+
+  /* SAT REVEAL — photos bloom to full color on scroll-in */
+  const satIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); satIo.unobserve(e.target); } });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.sat-reveal').forEach(el => satIo.observe(el));
+
+  /* WORLD TILE STAGGER */
+  const worldIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('wt-in'); worldIo.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.world-tile').forEach(el => worldIo.observe(el));
+
+  /* LIFE TILE STAGGER — cascade in on scroll */
+  const lifeIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('lt-in'); lifeIo.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.life-tile').forEach(el => lifeIo.observe(el));
+
+  /* CAREER TIMELINE LINE DRAW — once the section hits viewport */
+  const career = document.getElementById('career');
+  if (career) {
+    const careerIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { career.classList.add('in-view'); careerIo.unobserve(career); } });
+    }, { threshold: 0.15 });
+    careerIo.observe(career);
+  }
+
+  /* 12. SCROLL-SPY — highlight active nav link */
+  const navMap = {
+    about: '#about',
+    career: '#career',
+    expertise: '#expertise',
+    work: '#work',
+    arcade: '#arcade'
+  };
+  const navLinks = document.querySelectorAll('.nlink[data-nav]');
+  const sections = Object.entries(navMap)
+    .map(([k, sel]) => ({ key: k, el: document.querySelector(sel) }))
+    .filter(s => s.el);
+  const setActive = (key) => {
+    navLinks.forEach(l => l.classList.toggle('is-active', l.dataset.nav === key));
+  };
+  const spy = () => {
+    const y = window.scrollY + 120;
+    let active = null;
+    for (const s of sections) {
+      if (s.el.offsetTop <= y) active = s.key;
+    }
+    setActive(active);
+  };
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+
+  /* 13. Expose for mobile trigger (tap-tap-tap on chapter numeral VI) */
+  const arcadeChapter = document.querySelector('#arcade .chapter-num');
+  if (arcadeChapter) {
+    let taps = 0, timer;
+    arcadeChapter.addEventListener('click', () => {
+      taps++; clearTimeout(timer); timer = setTimeout(() => taps = 0, 1200);
+      if (taps >= 3) { taps = 0; triggerGlyphRain(); }
+    });
+    arcadeChapter.style.cursor = 'pointer';
+  }
+})();
+</script>
+
+
+<script>
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+  const bar = document.getElementById('scrollProgress');
+  if (bar) bar.style.width = pct + '%';
+}, { passive: true });
+</script>
+</body>
+</html>
