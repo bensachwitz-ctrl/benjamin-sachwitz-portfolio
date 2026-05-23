@@ -728,7 +728,7 @@ to{opacity:1;transform:scale(1)}
     <a href="https://calendly.com/bensachwitz/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
     <div class="nav-indicator" id="navInd"></div>
   </div>
-  <div class="ham" id="ham" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  <button class="ham" id="ham" onclick="toggleNav()" aria-label="Toggle navigation menu" aria-expanded="false" style="background: none; border: none; padding: 0;"><span></span><span></span><span></span></button>
 </nav>
 
 <main id="main" role="main">
@@ -1382,8 +1382,8 @@ window.addEventListener('scroll',()=>{
   });
 },{passive:true});
 
-function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('ham').classList.remove('open')}));
+function toggleNav(){const n=document.getElementById('navLinks');const h=document.getElementById('ham');const isOpen=n.classList.toggle('open');h.classList.toggle('open');h.setAttribute('aria-expanded', isOpen);}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');const h=document.getElementById('ham');h.classList.remove('open');h.setAttribute('aria-expanded','false')}));
 
 /* ===== OBSERVER ===== */
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');e.target.style.opacity='1';e.target.style.transform='none';obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
