@@ -1,0 +1,3 @@
+## 2026-05-24 - Interactive Elements and ARIA attributes
+**Learning:** Found multiple interactive UI elements (hamburger menu, lightbox close button, modal close button, visualization detail close button) incorrectly implemented as `div`s without keyboard accessibility or ARIA attributes. Modifying them into semantic `button` tags and applying `aria-label` (and `aria-expanded` for the menu) drastically improves accessibility for screen readers and keyboard users without compromising the visual design.
+**Action:** Always ensure that interactive elements that trigger actions but lack visible text use semantic `button` tags and have descriptive `aria-label`s attached. When dealing with toggles like hamburger menus, ensure `aria-expanded` logic is synced via JavaScript.
