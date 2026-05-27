@@ -1,0 +1,3 @@
+## 2026-05-27 - Interactive Custom Elements Accessibility
+**Learning:** Custom interactive elements built with `div` or `span` (like custom close buttons or hamburger menus) need `role="button"` and `tabindex="0"` to be focusable, but they also require explicit keyboard event handlers (like `onkeydown`) to respond to 'Enter' or 'Space' keys, because browsers only provide this behavior automatically for native `<button>` and `<a>` elements.
+**Action:** When converting non-interactive elements into custom controls, always implement an `onkeydown` handler checking for `Enter` or `Space` alongside the `onclick` handler, in addition to adding appropriate ARIA roles and labels.
