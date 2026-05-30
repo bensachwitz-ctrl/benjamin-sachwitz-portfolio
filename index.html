@@ -76,7 +76,7 @@ z-index:2000;width:0;pointer-events:none;box-shadow:0 0 20px rgba(79,172,254,0.6
 .nav-cta{padding:.5rem 1.3rem;border:1px solid var(--accent);border-radius:50px;color:var(--accent)!important;transition:all .3s}
 .nav-cta:hover{background:var(--accent);color:var(--deep)!important}
 .nav-cta::after{display:none!important}
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1002}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1002;background:transparent;border:none;padding:0}
 .ham span{width:24px;height:2px;background:var(--txt);transition:all .3s;transform-origin:center}
 .ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
@@ -539,7 +539,7 @@ animation:auroraShift 12s ease-in-out infinite;pointer-events:none}
 .viz-node:hover .vn-label,.viz-node.active .vn-label{opacity:1}
 .viz-detail{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);width:320px;max-width:90%;padding:1.5rem;border-radius:16px;background:rgba(10,14,26,0.96);backdrop-filter:blur(20px);border:1px solid rgba(79,172,254,0.25);box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:100;opacity:0;pointer-events:none;transition:all .3s var(--ease);text-align:left}
 .viz-detail.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-.vd-close{position:absolute;top:.6rem;right:.8rem;font-size:1.4rem;color:var(--txt2);cursor:pointer;line-height:1;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .2s}
+.vd-close{position:absolute;top:.6rem;right:.8rem;font-size:1.4rem;color:var(--txt2);cursor:pointer;line-height:1;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .2s;background:transparent;border:none;padding:0}
 .vd-close:hover{color:var(--txt);background:rgba(255,255,255,.08)}
 .vd-title{font-family:var(--serif);font-size:1.15rem;color:var(--txt);margin-bottom:.3rem}
 .vd-cat{font-size:.7rem;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
@@ -728,7 +728,7 @@ to{opacity:1;transform:scale(1)}
     <a href="https://calendly.com/bensachwitz/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
     <div class="nav-indicator" id="navInd"></div>
   </div>
-  <div class="ham" id="ham" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  <button class="ham" id="ham" onclick="toggleNav()" aria-label="Toggle Navigation" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <main id="main" role="main">
@@ -1168,7 +1168,7 @@ to{opacity:1;transform:scale(1)}
       <canvas id="vizCanvas" style="position:absolute;inset:0;width:100%;height:100%;border-radius:16px;pointer-events:none;z-index:0"></canvas>
       <div class="viz-nodes" id="vizNodes"></div>
       <div class="viz-detail" id="vizDetail">
-        <div class="vd-close" onclick="document.getElementById('vizDetail').classList.remove('show')">&times;</div>
+        <button class="vd-close" onclick="document.getElementById('vizDetail').classList.remove('show')" aria-label="Close detail view">&times;</button>
         <h4 class="vd-title" id="vdTitle"></h4>
         <p class="vd-cat" id="vdCat"></p>
         <p class="vd-desc" id="vdDesc"></p>
@@ -1293,7 +1293,7 @@ to{opacity:1;transform:scale(1)}
 <!-- BOOKING MODAL -->
 <div class="modal-overlay" id="bookModal" onclick="closeModal(event)">
   <div class="modal" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal()">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <h3>Book a Call</h3>
@@ -1330,10 +1330,10 @@ to{opacity:1;transform:scale(1)}
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1382,8 +1382,8 @@ window.addEventListener('scroll',()=>{
   });
 },{passive:true});
 
-function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');document.getElementById('ham').classList.remove('open')}));
+function toggleNav(){const ham=document.getElementById('ham');document.getElementById('navLinks').classList.toggle('open');const isOpen=ham.classList.toggle('open');ham.setAttribute('aria-expanded',isOpen);}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open');const ham=document.getElementById('ham');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');}));
 
 /* ===== OBSERVER ===== */
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');e.target.style.opacity='1';e.target.style.transform='none';obs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
