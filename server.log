@@ -1,0 +1,9 @@
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/bs-logo.svg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/uofsc_logo.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/augustanational_logo.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/carahsoft_logo.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/price_forbes_logo.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/swamp_fox_agency_logo.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/ben%203.JPG HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jun/2026 07:49:13] "GET /Images/1749487469361.jpg HTTP/1.1" 200 -
