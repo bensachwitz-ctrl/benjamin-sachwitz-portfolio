@@ -1,0 +1,16 @@
+/* TEAM */
+  Built by:    Benjamin Sachwitz
+  Site:        bensachwitz.vercel.app
+  Contact:     bensachwitz [at] outlook.com
+  Location:    Moncks Corner, South Carolina, USA
+
+/* THANKS */
+  Darla Moore School of Business — University of South Carolina
+  Price Forbes & Partners — London
+  Swamp Fox Agency — Moncks Corner, SC
+
+/* SITE */
+  Last update: 2026-05-05
+  Standards:   HTML5, CSS3, ES2020
+  Components:  Tailwind CSS, Vanilla JS, Fraunces + Inter + JetBrains Mono
+  Hosted on:   Vercel

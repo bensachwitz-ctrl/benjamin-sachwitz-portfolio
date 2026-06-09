@@ -1,0 +1,6 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Badd Pizza Wings">
+  <rect x="0" y="0" width="120" height="120" fill="#FDFBF7"/>
+  <text x="60" y="35" text-anchor="middle" fill="#0A0A0A" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="-0.5">badd</text>
+  <text x="60" y="68" text-anchor="middle" fill="#E53935" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="-0.5">pizza</text>
+  <text x="60" y="100" text-anchor="middle" fill="#0A0A0A" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="-0.5">wings</text>
+</svg>

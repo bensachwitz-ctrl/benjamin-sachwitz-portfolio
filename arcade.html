@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Arcade · 39 Browser Games · Benjamin Sachwitz</title>
+<meta name="description" content="The Arcade: 39 handcrafted browser games (Snake, Tetris, Wordle, 2048, Minesweeper and more) built in vanilla JavaScript by Benjamin Sachwitz." />
+<meta name="keywords" content="Benjamin Sachwitz, Ben Sachwitz, Assistant Underwriter, Swamp Fox Agency, Commercial Trucking Insurance, Logging Insurance, Excess and Surplus Lines, Lloyd's of London, Price Forbes, Darla Moore School of Business, FMCSA, Specialty Risk, Insurance Technology, South Carolina" />
+<meta name="author" content="Benjamin Sachwitz" />
+<meta name="theme-color" content="#0A0A0A" />
+<meta name="color-scheme" content="light" />
+<!-- Preload the hero portrait (LCP element) so the fetch starts before the parser reaches the <img>. -->
+<link rel="preload" as="image" href="headshot.png" fetchpriority="high" />
+
+<meta property="og:title" content="Benjamin Sachwitz · Risk &amp; Signal" />
+<meta property="og:description" content="Darla Moore graduate. Lloyd's of London-trained at Price Forbes. Specialty trucking &amp; logging underwriting at Swamp Fox Agency. Building technical systems for modern risk." />
+<meta property="og:type" content="profile" />
+<meta property="og:profile:first_name" content="Benjamin" />
+<meta property="og:profile:last_name" content="Sachwitz" />
+<meta property="og:profile:username" content="benjamin-sachwitz" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Benjamin Sachwitz" />
+<meta property="og:url" content="https://bensachwitz.vercel.app/arcade" />
+<meta property="og:image" content="https://bensachwitz.vercel.app/og-arcade.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="The Arcade, 39 browser games by Benjamin Sachwitz" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Benjamin Sachwitz · Risk &amp; Signal" />
+<meta name="twitter:description" content="Darla Moore graduate. Lloyd's of London-trained. Specialty trucking &amp; logging risk at Swamp Fox Agency." />
+<meta name="twitter:image" content="https://bensachwitz.vercel.app/og-arcade.jpg" />
+<meta name="twitter:image:alt" content="The Arcade, 39 browser games by Benjamin Sachwitz" />
+<link rel="canonical" href="https://bensachwitz.vercel.app/arcade" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A0A0A'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='38' font-weight='500' fill='%23E8C77D'%3Ebs%3C/text%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='34' fill='%230A0A0A'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='106' font-weight='500' fill='%23E8C77D'%3Ebs%3C/text%3E%3C/svg%3E" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+<meta name="application-name" content="Benjamin Sachwitz" />
+<meta name="apple-mobile-web-app-title" content="Ben Sachwitz" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="geo.region" content="US-SC" />
+<meta name="geo.placename" content="Moncks Corner, South Carolina" />
+<meta name="geo.position" content="33.1957;-80.0148" />
+<meta name="ICBM" content="33.1957, -80.0148" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'Menlo', 'monospace'],
+        },
+        colors: {
+          ink: { DEFAULT: '#0A0A0A', 2: '#161616', 3: '#1F1F1F', 4: '#2A2A2A' },
+          bone: { DEFAULT: '#F5F2EC', 2: '#EAE5DA', 3: '#D9D2C3' },
+          ox: { DEFAULT: '#8B1A1A', 2: '#6B1111' },
+          gold: { DEFAULT: '#D4A843', 2: '#B88A2F', 3: '#E8C77D' },
+          mute: { DEFAULT: '#6B6B6B', 2: '#8A8A8A' },
+        },
+        letterSpacing: { tightest: '-0.05em' },
+      },
+    },
+  };
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://bensachwitz.vercel.app/#person",
+  "name": "Benjamin Sachwitz",
+  "alternateName": ["Ben Sachwitz","Benjamin Sachwitz"],
+  "givenName": "Benjamin",
+  "familyName": "Sachwitz",
+  "jobTitle": "Assistant Underwriter",
+  "worksFor": { "@type": "Organization", "name": "Swamp Fox Agency", "url": "https://www.swampfoxagency.com" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Darla Moore School of Business, University of South Carolina", "url": "https://sc.edu/study/colleges_schools/moore/" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Moncks Corner",
+    "addressRegion": "SC",
+    "addressCountry": "US"
+  },
+  "email": "mailto:bensachwitz@outlook.com",
+  "telephone": "+1-571-385-5134",
+  "image": "https://bensachwitz.vercel.app/headshot.png",
+  "description": "Assistant Underwriter at Swamp Fox Agency. Darla Moore School of Business graduate (Dec 2025), Lloyd's of London market trained via Price Forbes. Specializing in commercial trucking and logging risk; building technical systems to modernize specialty insurance.",
+  "knowsAbout": ["Commercial Insurance","Risk Management","Lloyd's of London Market","Marine Insurance","Commercial Trucking","Logging Insurance","Loss Control","Underwriting","Excess & Surplus Lines","FMCSA Compliance","Insurance Technology","Artificial Intelligence","Data Analysis","Sales & Negotiation"],
+  "knowsLanguage": "en",
+  "nationality": { "@type": "Country", "name": "United States" },
+  "birthPlace": { "@type": "Place", "name": "McLean, Virginia" },
+  "url": "https://bensachwitz.vercel.app/",
+  "sameAs": ["https://www.linkedin.com/in/benjamin-sachwitz","https://github.com/bensachwitz-ctrl","https://barcrawlgolf.vercel.app"]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://bensachwitz.vercel.app/#website",
+  "url": "https://bensachwitz.vercel.app/",
+  "name": "Benjamin Sachwitz · Risk & Signal",
+  "description": "Personal portfolio of Benjamin Sachwitz, Assistant Underwriter at Swamp Fox Agency. Specialty trucking and logging risk, Lloyd's of London-trained, applied technology.",
+  "inLanguage": "en-US",
+  "publisher": { "@id": "https://bensachwitz.vercel.app/#person" },
+  "potentialAction": {
+    "@type": "ContactAction",
+    "target": "mailto:bensachwitz@outlook.com",
+    "name": "Contact Ben Sachwitz"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://bensachwitz.vercel.app/#service",
+  "name": "Benjamin Sachwitz · Specialty Underwriting",
+  "image": "https://bensachwitz.vercel.app/headshot.png",
+  "url": "https://bensachwitz.vercel.app/",
+  "telephone": "+1-571-385-5134",
+  "priceRange": "$$",
+  "founder": { "@id": "https://bensachwitz.vercel.app/#person" },
+  "areaServed": [
+    { "@type": "State", "name": "South Carolina" },
+    { "@type": "State", "name": "Georgia" },
+    { "@type": "State", "name": "Florida" },
+    { "@type": "State", "name": "North Carolina" },
+    { "@type": "State", "name": "Tennessee" },
+    { "@type": "State", "name": "Virginia" },
+    { "@type": "State", "name": "Alabama" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Moncks Corner",
+    "addressRegion": "SC",
+    "postalCode": "29461",
+    "addressCountry": "US"
+  },
+  "serviceType": [
+    "Commercial Trucking Insurance",
+    "Logging & Forestry Insurance",
+    "Excess & Surplus Lines Placement",
+    "Loss Control Consulting",
+    "Specialty Risk Underwriting"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bensachwitz.vercel.app/" },
+    { "@type": "ListItem", "position": 2, "name": "The Arcade", "item": "https://bensachwitz.vercel.app/arcade" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "@id": "https://bensachwitz.vercel.app/#app-mydailytool",
+      "name": "My Daily Tool",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "iOS",
+      "url": "https://apps.apple.com/us/app/my-daily-tool/id6766240912",
+      "downloadUrl": "https://apps.apple.com/us/app/my-daily-tool/id6766240912",
+      "installUrl": "https://apps.apple.com/us/app/my-daily-tool/id6766240912",
+      "image": "https://bensachwitz.vercel.app/images/app-mydailytool.png",
+      "description": "Open the app. See your day. Weather, agenda, habits, calories and a daily challenge. One screen, no scrolling. Built and shipped by Benjamin Sachwitz.",
+      "author": { "@id": "https://bensachwitz.vercel.app/#person" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "sameAs": ["https://my-dailytool.vercel.app"]
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://bensachwitz.vercel.app/#app-barcrawlgolf",
+      "name": "Bar Crawl Golf (BCG)",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "iOS",
+      "url": "https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112",
+      "downloadUrl": "https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112",
+      "installUrl": "https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112",
+      "image": "https://bensachwitz.vercel.app/images/app-barcrawlgolf.png",
+      "description": "Your crawl, your rules. Turn a night out into a tournament. Set the course, score the holes, settle the night. Built and shipped by Benjamin Sachwitz.",
+      "author": { "@id": "https://bensachwitz.vercel.app/#person" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "sameAs": ["https://barcrawlgolf.vercel.app"]
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Benjamin Sachwitz do?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Benjamin Sachwitz is an Assistant Underwriter at Swamp Fox Agency in Moncks Corner, South Carolina. He specializes in commercial trucking and logging insurance, analyzing FMCSA data, loss trends, and SCTPA-endorsed forestry risks, and is building technical systems to modernize how specialty insurance decisions are made." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where did Benjamin Sachwitz go to school?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Benjamin graduated from the Darla Moore School of Business at the University of South Carolina in December 2025, with a focus on Risk Management & Insurance." }
+    },
+    {
+      "@type": "Question",
+      "name": "Has Benjamin worked in the Lloyd's of London market?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Benjamin trained inside the Lloyd's of London market at Price Forbes & Partners, gaining direct exposure to marine and property placement in the world's most sophisticated specialty risk environment." }
+    },
+    {
+      "@type": "Question",
+      "name": "What kinds of risk does Benjamin underwrite?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Specialty Property & Casualty risk, primarily commercial trucking (motor carriers, FMCSA-regulated fleets) and logging/forestry operations across the Southeast, plus excess & surplus lines, loss control, and binding-authority placements." }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I contact Benjamin Sachwitz?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Book a 30-minute call directly via the contact section at bensachwitz.vercel.app, email bensachwitz@outlook.com, or connect on LinkedIn at linkedin.com/in/benjamin-sachwitz." }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css?v=mp8" />
+</head>
+
+<body class="bg-bone text-ink antialiased">
+
+<!-- ===== Ambient background: drifting glyphs for subtle depth =====
+     Two layers (far + near) of low-opacity symbols that slowly drift.
+     Symbols swap based on mode (Underwriter shows financial/risk glyphs,
+     Developer shows code glyphs). Fixed position, behind everything. -->
+<div class="ambient-bg" id="ambientBg" aria-hidden="true">
+  <span class="ambient-glyph ag-far  ag-1"  data-uw="£"  data-bd="{"></span>
+  <span class="ambient-glyph ag-near ag-2"  data-uw="§"  data-bd="</>"></span>
+  <span class="ambient-glyph ag-far  ag-3"  data-uw="¢"  data-bd="="></span>
+  <span class="ambient-glyph ag-near ag-4"  data-uw="⚓"  data-bd="→"></span>
+  <span class="ambient-glyph ag-far  ag-5"  data-uw="◆"  data-bd=";"></span>
+  <span class="ambient-glyph ag-near ag-6"  data-uw="‡"  data-bd="//"></span>
+  <span class="ambient-glyph ag-far  ag-7"  data-uw="№"  data-bd="*"></span>
+  <span class="ambient-glyph ag-near ag-8"  data-uw="¶"  data-bd="</>"></span>
+  <span class="ambient-glyph ag-far  ag-9"  data-uw="✦"  data-bd="++"></span>
+  <span class="ambient-glyph ag-near ag-10" data-uw="◇"  data-bd="{}"></span>
+  <span class="ambient-glyph ag-far  ag-11" data-uw="⌂"  data-bd="$"></span>
+  <span class="ambient-glyph ag-near ag-12" data-uw="★"  data-bd="&&"></span>
+  <span class="ambient-glyph ag-far  ag-13" data-uw="¤"  data-bd="=>"></span>
+  <span class="ambient-glyph ag-near ag-14" data-uw="‖"  data-bd="??"></span>
+  <span class="ambient-glyph ag-far  ag-15" data-uw="∑"  data-bd="fn()"></span>
+  <span class="ambient-glyph ag-near ag-16" data-uw="Δ"  data-bd="if"></span>
+  <span class="ambient-glyph ag-far  ag-17" data-uw="⊕"  data-bd="[]"></span>
+  <span class="ambient-glyph ag-near ag-18" data-uw="Ω"  data-bd="()"></span>
+  <span class="ambient-glyph ag-far  ag-19" data-uw="ℓ"  data-bd="!="></span>
+  <span class="ambient-glyph ag-near ag-20" data-uw="µ"  data-bd="=>"></span>
+</div>
+
+<!-- Signature cursor-follow ambient glow -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- v1.1.0 SIGNATURE: Two Brains Toggle · underwriter ↔ builder identity switch -->
+<div class="brains-toggle" id="brainsToggle" aria-label="Mode: Underwriter or Builder">
+  <div class="brains-toggle-knob" aria-hidden="true"></div>
+  <button type="button" data-brain-mode="underwriter" aria-pressed="true" aria-label="Underwriter mode: risk, Lloyd's, specialty trucking">
+    <span class="bt-dot"></span>Underwriter
+  </button>
+  <button type="button" data-brain-mode="builder" aria-pressed="false" aria-label="Developer mode: apps, code, ship logs">
+    <span class="bt-dot"></span>Developer
+  </button>
+</div>
+<div id="scrollProgress"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ===== LOADER ===== -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="flex flex-col items-center">
+    <div class="loader-text">Ben <em>Sachwitz</em></div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- ===== NOISE TEXTURE OVERLAY ===== -->
+<div class="noise-layer" aria-hidden="true"></div>
+
+
+<!-- ===== SCROLL-TO-TOP RING ===== -->
+<div class="scroll-ring" id="scrollRing">
+  <svg viewBox="0 0 48 48" aria-hidden="true">
+    <circle class="ring-track" cx="24" cy="24" r="21"/>
+    <circle class="ring-progress" cx="24" cy="24" r="21" id="ringProgress" stroke-dasharray="131.95" stroke-dashoffset="131.95"/>
+  </svg>
+  <button type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 10V2M6 2L2 6M6 2L10 6"/></svg>
+  </button>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav id="nav" class="nav-shell nav-hero fixed top-0 inset-x-0 z-40 transition-colors duration-300">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 flex items-center justify-between h-16 md:h-20">
+    <a href="/" class="font-serif text-lg md:text-xl font-medium tracking-tight">
+      Ben <span class="italic text-ox">Sachwitz</span>
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-[13px] font-medium tracking-wide">
+      <li><a href="/#about" class="nlink">About</a></li>
+      <li><a href="/career" class="nlink">Career</a></li>
+      <li><a href="/projects" class="nlink">Projects</a></li>
+      <li><a href="/apps" class="nlink">Apps</a></li>
+      <li><a href="/arcade" class="nlink text-gold-2">Arcade</a></li>
+      <li><a href="/booking" class="nlink">Booking</a></li>
+      <li><button type="button" class="btn-ink" data-open-booking>
+        Book a call
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button></li>
+    </ul>
+    <button id="hb" class="hb md:hidden p-3" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mmenu" class="mmenu md:hidden bg-bone border-t border-ink/10">
+    <ul class="px-5 py-6 flex flex-col gap-4 text-[15px] font-medium">
+      <li><a href="/#about" class="mlink block py-3">About</a></li>
+      <li><a href="/career" class="mlink block py-3">Career</a></li>
+      <li><a href="/projects" class="mlink block py-3">Projects</a></li>
+      <li><a href="/apps" class="mlink block py-3">Apps</a></li>
+      <li><a href="/arcade" class="mlink block py-3 text-gold-2">The Arcade</a></li>
+      <li><a href="/booking" class="mlink block py-3">Booking</a></li>
+      <li><button type="button" class="mlink btn-ink w-full justify-center mt-2" data-open-booking>Book a call</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+
+<main class="pt-24 md:pt-28">
+
+<section class="relative pt-16 pb-6 md:pt-20 md:pb-8 overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+    <div class="eyebrow text-ink/55 mb-3">The Arcade</div>
+    <h1 class="display-h">The <em class="text-ox">Arcade</em>.</h1>
+    <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed">Thirty-nine games, handcrafted in vanilla JavaScript, no engine, no frameworks. Pick a cabinet and play.</p>
+    <a href="/" class="link-line eyebrow text-ink/50 inline-block mt-5">&larr; Back to home</a>
+  </div>
+</section>
+<section id="arcade" class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden scene spotlight-host">
+  <!-- Floating glyphs representing Ben (drift behind everything) -->
+  <div class="arcade-glyphs" aria-hidden="true">
+    <!-- Commercial truck -->
+    <div class="arcade-glyph g-1"><svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 28h36V8H2v20zm36-12h12l8 8v4H38m-22 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm32 0a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></div>
+    <!-- Pine tree (logging) -->
+    <div class="arcade-glyph g-2"><svg viewBox="0 0 40 56" fill="currentColor"><path d="M20 2L6 22h6L4 38h8L0 54h40L28 38h8L28 22h6L20 2z" stroke="currentColor" stroke-width="1.2"/><rect x="17" y="48" width="6" height="8"/></svg></div>
+    <!-- Code brackets -->
+    <div class="arcade-glyph g-3"><svg viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M18 8L4 28l14 20M46 8l14 20-14 20M38 4L26 52"/></svg></div>
+    <!-- Golf flag -->
+    <div class="arcade-glyph g-4"><svg viewBox="0 0 40 56" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 52V4l24 8-24 8" fill="currentColor" fill-opacity=".18"/><circle cx="8" cy="54" r="3" fill="currentColor"/></svg></div>
+    <!-- Beer mug -->
+    <div class="arcade-glyph g-5"><svg viewBox="0 0 48 56" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 12h26v36H8z"/><path d="M34 18h6a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4h-6"/><path d="M8 4l3 8h20l3-8"/></svg></div>
+    <!-- iPhone / app -->
+    <div class="arcade-glyph g-6"><svg viewBox="0 0 36 56" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="28" height="48" rx="4"/><circle cx="18" cy="48" r="1.5" fill="currentColor"/><path d="M14 9h8"/></svg></div>
+    <!-- Lloyd's bell / circle -->
+    <div class="arcade-glyph g-7"><svg viewBox="0 0 44 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 36c0-12 5-22 12-22s12 10 12 22"/><path d="M6 40h32"/><circle cx="22" cy="44" r="2.5" fill="currentColor"/></svg></div>
+    <!-- Game controller -->
+    <div class="arcade-glyph g-8"><svg viewBox="0 0 52 36" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6h24c5 0 8 4 8 9v6c0 5-3 9-8 9-3 0-5-1-6-3l-6-6h-4l-6 6c-1 2-3 3-6 3-5 0-8-4-8-9v-6c0-5 3-9 12-9z"/><circle cx="38" cy="18" r="2" fill="currentColor"/><circle cx="14" cy="18" r="1.5" fill="currentColor"/></svg></div>
+    <!-- Pause/play arcade button -->
+    <div class="arcade-glyph g-9"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="24" r="22"/><path d="M20 18v12M28 18v12" stroke-linecap="round"/></svg></div>
+    <!-- Dollar / premium -->
+    <div class="arcade-glyph g-10"><svg viewBox="0 0 32 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M16 4v40M24 12c-3-3-7-3-10-2-4 1-5 6-1 8l10 4c4 2 3 7-1 8-3 1-7 1-10-2"/></svg></div>
+    <!-- AI / brain -->
+    <div class="arcade-glyph g-11"><svg viewBox="0 0 48 44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 8a10 10 0 0 1 20 0v2a6 6 0 0 1 0 12v6a8 8 0 0 1-16 0M10 22a6 6 0 0 1 4-12"/><circle cx="20" cy="20" r="1.5" fill="currentColor"/><circle cx="30" cy="20" r="1.5" fill="currentColor"/><path d="M18 28c2 2 6 2 8 0"/></svg></div>
+    <!-- Coffee cup -->
+    <div class="arcade-glyph g-12"><svg viewBox="0 0 44 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 16h26v18a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8z"/><path d="M34 20h4a6 6 0 0 1 0 12h-4"/><path d="M14 4q3 4 0 8M22 4q3 4 0 8M30 4q3 4 0 8" stroke-linecap="round"/></svg></div>
+    <!-- Lightning / signal -->
+    <div class="arcade-glyph g-13"><svg viewBox="0 0 28 44" fill="currentColor"><path d="M16 0L0 24h10L8 44 28 18H18z"/></svg></div>
+    <!-- Document / contract -->
+    <div class="arcade-glyph g-14"><svg viewBox="0 0 36 44" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h20l8 8v28a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M24 4v8h8M10 22h16M10 28h16M10 34h12" stroke-linecap="round"/></svg></div>
+    <!-- Compass / direction (DC roots) -->
+    <div class="arcade-glyph g-15"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="18"/><path d="M14 26L20 8l6 18-6-4z" fill="currentColor" fill-opacity=".4"/></svg></div>
+    <!-- Heart / capital letter (Capitals) -->
+    <div class="arcade-glyph g-16"><svg viewBox="0 0 44 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 36S4 24 4 14a8 8 0 0 1 14-5l4 4 4-4a8 8 0 0 1 14 5c0 10-18 22-18 22z"/></svg></div>
+    <!-- Gear / system -->
+    <div class="arcade-glyph g-17"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="20" cy="20" r="6"/><path d="M20 2v6M20 32v6M2 20h6M32 20h6M7 7l4 4M29 29l4 4M33 7l-4 4M11 29l-4 4" stroke-linecap="round"/></svg></div>
+    <!-- Up arrow / shipping -->
+    <div class="arcade-glyph g-18"><svg viewBox="0 0 32 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 36V8M6 18l10-12 10 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+
+  <!-- Depth-0: grid background -->
+  <div class="layer depth-0 absolute inset-0 opacity-[0.06] pointer-events-none" data-depth="0" aria-hidden="true" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  <!-- Depth-1: aurora glows -->
+  <div class="layer depth-1 aurora w-[55vw] h-[55vw] -top-[15vw] -right-[15vw]" data-depth="1" aria-hidden="true" style="background:radial-gradient(closest-side, #D4A843, transparent 70%); opacity:.16;"></div>
+  <div class="layer depth-1 aurora w-[45vw] h-[45vw] -bottom-[15vw] -left-[15vw]" data-depth="1" aria-hidden="true" style="background:radial-gradient(closest-side, #8B1A1A, transparent 70%); opacity:.10;"></div>
+
+  <div class="relative z-10 max-w-[1400px] mx-auto px-5 md:px-10">
+
+    <!-- Header -->
+    <div class="flex items-end justify-between mb-8 md:mb-12">
+      <div>
+        <div class="eyebrow text-bone/60 mb-4 reveal">Interlude · Take a break</div>
+        <h2 class="display-h text-bone reveal d1 scale-on-scroll">The <em class="text-gold">arcade</em>.</h2>
+        <p class="mt-4 text-bone/70 max-w-xl text-[14.5px] md:text-[15.5px] reveal d2">Thirty-nine games, solo runs, two-player duels, tower defense. One leaderboard. Beat my scores, then book the call.</p>
+      </div>
+      <div class="chapter-num text-bone/10 hidden md:block reveal d2">↺</div>
+    </div>
+
+    <!-- ===== ARCADE CABINET ===== -->
+    <div class="arcade-cabinet reveal d1" id="arcadeCabinet" data-stage="attract">
+
+      <!-- Marquee -->
+      <div class="arcade-marquee">
+        <span class="arcade-marquee-title"><span class="arcade-marquee-dot"></span>Sachwitz Arcade</span>
+        <span class="arcade-marquee-credits" id="arcadeCredits">Credits&nbsp;&nbsp;∞</span>
+      </div>
+
+      <!-- ATTRACT SCREEN -->
+      <div class="arcade-screen arcade-attract arcade-screen-scanlines" data-screen="attract" role="group" aria-label="Arcade start screen">
+        <div class="arcade-attract-kicker" id="arcadeCoinLine">Insert coin · 39 games · 1 leaderboard</div>
+        <h3 class="arcade-attract-title">The <em>Arcade</em></h3>
+        <div class="arcade-attract-creator">Created by Ben Sachwitz</div>
+        <p class="arcade-attract-sub">Thirty-nine hand-built games, singles, two-player duels and tower defense. Beat my scores, then book the call. No quarters required.</p>
+        <button class="arcade-start-btn" id="arcadeStartBtn" type="button">▶ Press Start</button>
+        <div class="arcade-attract-kicker arcade-blink" style="margin-top:.2rem">Press Enter or tap to begin</div>
+      </div>
+
+      <!-- SELECT SCREEN -->
+      <div class="arcade-screen arcade-select" data-screen="select" hidden role="group" aria-label="Choose a game">
+        <div class="arcade-select-head">
+          <h3>Select your game</h3>
+          <div class="flex gap-2">
+            <button class="arcade-back" id="arcadeToAttract" type="button" aria-label="Back to start screen">‹ Back</button>
+          </div>
+        </div>
+        <div class="arcade-grid" id="arcadeGrid" role="menu" aria-label="Game cabinet selection">
+          <button class="cab-tile" data-game="snake" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">01</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h11"/><circle cx="19" cy="6" r="1.4" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Snake</div><div class="cab-tile-sub">Reflex</div>
+            <div class="cab-tile-hi" data-hi="snakeHigh" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="wordle" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">02</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="9" y="15" width="6" height="6" rx="1"/></svg></div>
+            <div class="cab-tile-name">Wordle</div><div class="cab-tile-sub">Logic</div>
+            <div class="cab-tile-hi" data-hi="wordleStreak" data-hi-label="STREAK"></div>
+          </button>
+          <button class="cab-tile" data-game="tetris" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">03</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 8h4V4h4v4h4v4h-4v4H8v-4H4z"/></svg></div>
+            <div class="cab-tile-name">Tetris</div><div class="cab-tile-sub">Strategy</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="dino" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">04</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4v5h2v4h-4l-1 4h-3l1-4H8v3H5v-5h3V7a3 3 0 0 1 3-3z"/></svg></div>
+            <div class="cab-tile-name">Dino</div><div class="cab-tile-sub">Endurance</div>
+            <div class="cab-tile-hi" data-hi="dinoBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="flappy" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">05</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a6 6 0 0 1 6-6 5 5 0 0 1 5 5l5-2-3 4 3 1-5 1a6 6 0 0 1-11-3z"/><circle cx="9" cy="10" r="1" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Flappy</div><div class="cab-tile-sub">Timing</div>
+            <div class="cab-tile-hi" data-hi="pwFlappyBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="pong" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">06</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6v6M20 12v6"/><circle cx="13" cy="11" r="1.6" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Pong</div><div class="cab-tile-sub">Duel</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="breakout" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">07</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 4h5v3H4zM10 4h5v3h-5zM16 4h4v3h-4z"/><path d="M18 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Breakout</div><div class="cab-tile-sub">Aim</div>
+            <div class="cab-tile-hi" data-hi="pwBreakoutBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="g2048" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">08</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h2v6M13 9h2v6" stroke-linecap="round"/></svg></div>
+            <div class="cab-tile-name">2048</div><div class="cab-tile-sub">Merge</div>
+            <div class="cab-tile-hi" data-hi="pwG2048Best" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="mines" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">09</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="13" r="5"/><path d="M12 4v3M12 13l3-3M5 13H2M22 13h-3"/></svg></div>
+            <div class="cab-tile-name">Minesweeper</div><div class="cab-tile-sub">Deduce</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="memory" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">10</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="4" width="8" height="11" rx="1"/><rect x="13" y="9" width="8" height="11" rx="1"/></svg></div>
+            <div class="cab-tile-name">Memory</div><div class="cab-tile-sub">Recall</div>
+            <div class="cab-tile-hi" data-hi="pwMemoryBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="reaction" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">11</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <div class="cab-tile-name">Reflex</div><div class="cab-tile-sub">Reaction</div>
+            <div class="cab-tile-hi" data-hi="pwReactionBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="hilo" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">12</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9 12 5l4 4M16 15l-4 4-4-4"/></svg></div>
+            <div class="cab-tile-name">Hi-Lo</div><div class="cab-tile-sub">Nerve</div>
+            <div class="cab-tile-hi" data-hi="pwHiloBest" data-hi-label="STREAK"></div>
+          </button>
+          <button class="cab-tile" data-game="airhockey" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">13</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M4 12h16"/></svg></div>
+            <div class="cab-tile-name">Air Hockey</div><div class="cab-tile-sub">2P Duel</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="connect4" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">14</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="10" r="1.6" fill="currentColor"/><circle cx="12" cy="14" r="1.6" fill="currentColor"/><circle cx="16" cy="10" r="1.6" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Connect Four</div><div class="cab-tile-sub">2 Player</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="muncher" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">15</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 1 0 7 4l-7 4z"/></svg></div>
+            <div class="cab-tile-name">Muncher</div><div class="cab-tile-sub">Maze</div>
+            <div class="cab-tile-hi" data-hi="pwMuncherBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="invaders" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">16</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6h2v2h6V6h2v3h2v5h-3v3h-3v-2h-2v2H8v-3H5V9h2z"/></svg></div>
+            <div class="cab-tile-name">Invaders</div><div class="cab-tile-sub">Shooter</div>
+            <div class="cab-tile-hi" data-hi="pwInvadersBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="asteroids" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">17</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3l8 18-8-4-8 4z"/></svg></div>
+            <div class="cab-tile-name">Asteroids</div><div class="cab-tile-sub">Vector</div>
+            <div class="cab-tile-hi" data-hi="pwAsteroidsBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="frogger" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">18</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><circle cx="12" cy="13" r="5"/><circle cx="9.5" cy="8" r="1.7"/><circle cx="14.5" cy="8" r="1.7"/></svg></div>
+            <div class="cab-tile-name">Crossing</div><div class="cab-tile-sub">Dodge</div>
+            <div class="cab-tile-hi" data-hi="pwFroggerBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="simon" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">19</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a9 9 0 0 1 9 9M12 3a9 9 0 0 0-9 9M12 21a9 9 0 0 1-9-9M12 21a9 9 0 0 0 9-9"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Sequence</div><div class="cab-tile-sub">Recall</div>
+            <div class="cab-tile-hi" data-hi="pwSimonBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="tower" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">20</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M8 21V9l4-4 4 4v12M6 21h12M12 5V3"/></svg></div>
+            <div class="cab-tile-name">Towers</div><div class="cab-tile-sub">Defense</div>
+            <div class="cab-tile-hi" data-hi="pwTowerBest" data-hi-label="WAVE"></div>
+          </button>
+          <button class="cab-tile" data-game="tron" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">21</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3 7h7v5h7v5"/><path d="M21 5l-3 0 0 3"/></svg></div>
+            <div class="cab-tile-name">Light Cycles</div><div class="cab-tile-sub">2 Player</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="whack" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">22</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="14" r="6"/><path d="M12 8V4M9 5l-3-2M15 5l3-2"/></svg></div>
+            <div class="cab-tile-name">Whack-a-Mole</div><div class="cab-tile-sub">Reflex</div>
+            <div class="cab-tile-hi" data-hi="pwWhackBest" data-hi-label="HI"></div>
+          </button>
+          <button class="cab-tile" data-game="lightsout" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">23</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+            <div class="cab-tile-name">Lights Out</div><div class="cab-tile-sub">Puzzle</div>
+            <div class="cab-tile-hi" data-hi="pwLightsoutBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="ttt" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">24</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div>
+            <div class="cab-tile-name">Tic-Tac-Toe</div><div class="cab-tile-sub">2P / CPU</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="fifteen" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">25</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div>
+            <div class="cab-tile-name">15-Puzzle</div><div class="cab-tile-sub">Slide</div>
+            <div class="cab-tile-hi" data-hi="pwFifteenBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="sokoban" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">26</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/><path d="M11 7h6M7 11v6"/></svg></div>
+            <div class="cab-tile-name">Sokoban</div><div class="cab-tile-sub">Push</div>
+            <div class="cab-tile-hi" data-hi="pwSokobanLevel" data-hi-label="LVL"></div>
+          </button>
+          <button class="cab-tile" data-game="reversi" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">27</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><circle cx="8" cy="8" r="3.2"/><circle cx="16" cy="16" r="3.2"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+            <div class="cab-tile-name">Reversi</div><div class="cab-tile-sub">2P / CPU</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="mastermind" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">28</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6" cy="6" r="2.4"/><circle cx="14" cy="6" r="2.4"/><circle cx="6" cy="14" r="2.4"/><circle cx="14" cy="14" r="2.4"/></svg></div>
+            <div class="cab-tile-name">Mastermind</div><div class="cab-tile-sub">Code</div>
+            <div class="cab-tile-hi" data-hi="pwMastermindBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="vpoker" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">29</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="4" y="3" width="11" height="15" rx="2"/><path d="M9 18l6 2 4-11-5.5-2"/></svg></div>
+            <div class="cab-tile-name">Video Poker</div><div class="cab-tile-sub">Cards</div>
+            <div class="cab-tile-hi" data-hi="pwVpokerBest" data-hi-label="CRED"></div>
+          </button>
+          <button class="cab-tile" data-game="checkers" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">30</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="8" r="3.2"/><circle cx="16" cy="16" r="3.2"/><circle cx="16" cy="8" r="1.4"/><circle cx="8" cy="16" r="1.4"/></svg></div>
+            <div class="cab-tile-name">Checkers</div><div class="cab-tile-sub">2P / CPU</div>
+            <div class="cab-tile-hi"></div>
+          </button>
+          <button class="cab-tile" data-game="blackjack" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">31</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="11" height="15" rx="2"/><path d="M10 5l5-2 5 13-4 1.5"/></svg></div>
+            <div class="cab-tile-name">Blackjack</div><div class="cab-tile-sub">Cards</div>
+            <div class="cab-tile-hi" data-hi="pwBlackjackBest" data-hi-label="CHIPS"></div>
+          </button>
+          <button class="cab-tile" data-game="gems" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">32</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l-3 6 6 12 6-12-3-6"/></svg></div>
+            <div class="cab-tile-name">Gem Crush</div><div class="cab-tile-sub">Match-3</div>
+            <div class="cab-tile-hi" data-hi="pwGemsBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="hangman" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">33</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M5 21V4h9a3 3 0 0 1 0 6"/><path d="M5 21h7"/><path d="M14 10v4M11 16h6M11 20h6"/></svg></div>
+            <div class="cab-tile-name">Hangman</div><div class="cab-tile-sub">Word</div>
+            <div class="cab-tile-hi" data-hi="pwHangmanBest" data-hi-label="STREAK"></div>
+          </button>
+          <button class="cab-tile" data-game="lights" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">34</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Lights Out</div><div class="cab-tile-sub">Puzzle</div>
+            <div class="cab-tile-hi" data-hi="pwLightsBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="dice" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">35</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.3" fill="currentColor"/><circle cx="16" cy="8" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="8" cy="16" r="1.3" fill="currentColor"/><circle cx="16" cy="16" r="1.3" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Dice Poker</div><div class="cab-tile-sub">Dice</div>
+            <div class="cab-tile-hi" data-hi="pwDiceBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="battleship" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">36</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h18l-2.5 4.5a2 2 0 0 1-1.7 1H7.2a2 2 0 0 1-1.7-1z"/><path d="M6 15V9h9l-3 6M12 9V5l5 2-2 2"/></svg></div>
+            <div class="cab-tile-name">Battleship</div><div class="cab-tile-sub">vs CPU</div>
+            <div class="cab-tile-hi" data-hi="pwBattleshipBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="mole" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">37</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><ellipse cx="12" cy="17" rx="9" ry="4"/><path d="M8 15c0-3 1.8-5 4-5s4 2 4 5"/><circle cx="10.5" cy="13" r=".6" fill="currentColor"/><circle cx="13.5" cy="13" r=".6" fill="currentColor"/></svg></div>
+            <div class="cab-tile-name">Whack-a-Mole</div><div class="cab-tile-sub">Reflex</div>
+            <div class="cab-tile-hi" data-hi="pwMoleBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="hanoi" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">38</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 20h16"/><path d="M12 20V5"/><rect x="7" y="8" width="10" height="2.4" rx="1"/><rect x="8.5" y="12" width="7" height="2.4" rx="1"/><rect x="9.7" y="16" width="4.6" height="2.4" rx="1"/></svg></div>
+            <div class="cab-tile-name">Tower of Hanoi</div><div class="cab-tile-sub">Puzzle</div>
+            <div class="cab-tile-hi" data-hi="pwHanoiBest" data-hi-label="BEST"></div>
+          </button>
+          <button class="cab-tile" data-game="minesweeper" role="menuitem" type="button">
+            <div class="cab-tile-top"><span class="cab-tile-num">39</span><svg class="cab-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+            <div class="cab-tile-name">Minesweeper</div><div class="cab-tile-sub">Logic</div>
+            <div class="cab-tile-hi" data-hi="pwMinesBest" data-hi-label="BEST"></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- PLAY SCREEN -->
+      <div class="arcade-screen" data-screen="play" hidden>
+      <div class="arcade-playbar">
+        <button class="arcade-back" id="arcadeToSelect" type="button" aria-label="Back to game selection">‹ Games</button>
+        <span class="arcade-now-playing">Now playing · <b id="arcadeNowPlaying">Snake</b></span>
+      </div>
+
+    <!-- Tab switcher -->
+    <div class="arcade-tabs flex flex-wrap items-center gap-2 md:gap-3 mb-8 reveal d1" role="tablist" aria-label="Select a game">
+      <button class="atab is-active" data-tab="snake" role="tab" aria-selected="true">
+        <span class="atab-num">01</span>
+        <span class="atab-name">Snake</span>
+        <span class="atab-sub hidden sm:inline">Reflex</span>
+      </button>
+      <button class="atab" data-tab="wordle" role="tab" aria-selected="false">
+        <span class="atab-num">02</span>
+        <span class="atab-name">Wordle</span>
+        <span class="atab-sub hidden sm:inline">Logic</span>
+      </button>
+      <button class="atab" data-tab="tetris" role="tab" aria-selected="false">
+        <span class="atab-num">03</span>
+        <span class="atab-name">Tetris</span>
+        <span class="atab-sub hidden sm:inline">Strategy</span>
+      </button>
+      <button class="atab" data-tab="dino" role="tab" aria-selected="false">
+        <span class="atab-num">04</span>
+        <span class="atab-name">Dino</span>
+        <span class="atab-sub hidden sm:inline">Endurance</span>
+      </button>
+      <button class="atab" data-tab="flappy" role="tab" aria-selected="false">
+        <span class="atab-num">05</span>
+        <span class="atab-name">Flappy</span>
+        <span class="atab-sub hidden sm:inline">Timing</span>
+      </button>
+      <button class="atab" data-tab="pong" role="tab" aria-selected="false">
+        <span class="atab-num">06</span>
+        <span class="atab-name">Pong</span>
+        <span class="atab-sub hidden sm:inline">Duel</span>
+      </button>
+      <button class="atab" data-tab="breakout" role="tab" aria-selected="false">
+        <span class="atab-num">07</span>
+        <span class="atab-name">Breakout</span>
+        <span class="atab-sub hidden sm:inline">Aim</span>
+      </button>
+      <button class="atab" data-tab="g2048" role="tab" aria-selected="false">
+        <span class="atab-num">08</span>
+        <span class="atab-name">2048</span>
+        <span class="atab-sub hidden sm:inline">Merge</span>
+      </button>
+      <button class="atab" data-tab="mines" role="tab" aria-selected="false">
+        <span class="atab-num">09</span>
+        <span class="atab-name">Minesweeper</span>
+        <span class="atab-sub hidden sm:inline">Deduce</span>
+      </button>
+      <button class="atab" data-tab="memory" role="tab" aria-selected="false">
+        <span class="atab-num">10</span>
+        <span class="atab-name">Memory</span>
+        <span class="atab-sub hidden sm:inline">Recall</span>
+      </button>
+      <button class="atab" data-tab="reaction" role="tab" aria-selected="false">
+        <span class="atab-num">11</span>
+        <span class="atab-name">Reflex</span>
+        <span class="atab-sub hidden sm:inline">Reaction</span>
+      </button>
+      <button class="atab" data-tab="hilo" role="tab" aria-selected="false">
+        <span class="atab-num">12</span>
+        <span class="atab-name">Hi-Lo</span>
+        <span class="atab-sub hidden sm:inline">Nerve</span>
+      </button>
+      <button class="atab" data-tab="airhockey" role="tab" aria-selected="false">
+        <span class="atab-num">13</span>
+        <span class="atab-name">Air Hockey</span>
+        <span class="atab-sub hidden sm:inline">2P Duel</span>
+      </button>
+      <button class="atab" data-tab="connect4" role="tab" aria-selected="false">
+        <span class="atab-num">14</span>
+        <span class="atab-name">Connect Four</span>
+        <span class="atab-sub hidden sm:inline">2 Player</span>
+      </button>
+      <button class="atab" data-tab="muncher" role="tab" aria-selected="false">
+        <span class="atab-num">15</span>
+        <span class="atab-name">Muncher</span>
+        <span class="atab-sub hidden sm:inline">Maze</span>
+      </button>
+      <button class="atab" data-tab="invaders" role="tab" aria-selected="false">
+        <span class="atab-num">16</span>
+        <span class="atab-name">Invaders</span>
+        <span class="atab-sub hidden sm:inline">Shooter</span>
+      </button>
+      <button class="atab" data-tab="asteroids" role="tab" aria-selected="false">
+        <span class="atab-num">17</span>
+        <span class="atab-name">Asteroids</span>
+        <span class="atab-sub hidden sm:inline">Vector</span>
+      </button>
+      <button class="atab" data-tab="frogger" role="tab" aria-selected="false">
+        <span class="atab-num">18</span>
+        <span class="atab-name">Crossing</span>
+        <span class="atab-sub hidden sm:inline">Dodge</span>
+      </button>
+      <button class="atab" data-tab="simon" role="tab" aria-selected="false">
+        <span class="atab-num">19</span>
+        <span class="atab-name">Sequence</span>
+        <span class="atab-sub hidden sm:inline">Recall</span>
+      </button>
+      <button class="atab" data-tab="tower" role="tab" aria-selected="false">
+        <span class="atab-num">20</span>
+        <span class="atab-name">Towers</span>
+        <span class="atab-sub hidden sm:inline">Defense</span>
+      </button>
+      <button class="atab" data-tab="tron" role="tab" aria-selected="false">
+        <span class="atab-num">21</span>
+        <span class="atab-name">Light Cycles</span>
+        <span class="atab-sub hidden sm:inline">2 Player</span>
+      </button>
+      <button class="atab" data-tab="whack" role="tab" aria-selected="false">
+        <span class="atab-num">22</span>
+        <span class="atab-name">Whack-a-Mole</span>
+        <span class="atab-sub hidden sm:inline">Reflex</span>
+      </button>
+      <button class="atab" data-tab="lightsout" role="tab" aria-selected="false">
+        <span class="atab-num">23</span>
+        <span class="atab-name">Lights Out</span>
+        <span class="atab-sub hidden sm:inline">Puzzle</span>
+      </button>
+      <button class="atab" data-tab="ttt" role="tab" aria-selected="false">
+        <span class="atab-num">24</span>
+        <span class="atab-name">Tic-Tac-Toe</span>
+        <span class="atab-sub hidden sm:inline">2P / CPU</span>
+      </button>
+      <button class="atab" data-tab="fifteen" role="tab" aria-selected="false">
+        <span class="atab-num">25</span>
+        <span class="atab-name">15-Puzzle</span>
+        <span class="atab-sub hidden sm:inline">Slide</span>
+      </button>
+      <button class="atab" data-tab="sokoban" role="tab" aria-selected="false">
+        <span class="atab-num">26</span>
+        <span class="atab-name">Sokoban</span>
+        <span class="atab-sub hidden sm:inline">Push</span>
+      </button>
+      <button class="atab" data-tab="reversi" role="tab" aria-selected="false">
+        <span class="atab-num">27</span>
+        <span class="atab-name">Reversi</span>
+        <span class="atab-sub hidden sm:inline">2P / CPU</span>
+      </button>
+      <button class="atab" data-tab="mastermind" role="tab" aria-selected="false">
+        <span class="atab-num">28</span>
+        <span class="atab-name">Mastermind</span>
+        <span class="atab-sub hidden sm:inline">Code</span>
+      </button>
+      <button class="atab" data-tab="vpoker" role="tab" aria-selected="false">
+        <span class="atab-num">29</span>
+        <span class="atab-name">Video Poker</span>
+        <span class="atab-sub hidden sm:inline">Cards</span>
+      </button>
+      <button class="atab" data-tab="checkers" role="tab" aria-selected="false">
+        <span class="atab-num">30</span>
+        <span class="atab-name">Checkers</span>
+        <span class="atab-sub hidden sm:inline">2P / CPU</span>
+      </button>
+      <button class="atab" data-tab="blackjack" role="tab" aria-selected="false">
+        <span class="atab-num">31</span>
+        <span class="atab-name">Blackjack</span>
+        <span class="atab-sub hidden sm:inline">Cards</span>
+      </button>
+      <button class="atab" data-tab="gems" role="tab" aria-selected="false">
+        <span class="atab-num">32</span>
+        <span class="atab-name">Gem Crush</span>
+        <span class="atab-sub hidden sm:inline">Match-3</span>
+      </button>
+      <button class="atab" data-tab="hangman" role="tab" aria-selected="false">
+        <span class="atab-num">33</span>
+        <span class="atab-name">Hangman</span>
+        <span class="atab-sub hidden sm:inline">Word</span>
+      </button>
+      <button class="atab" data-tab="lights" role="tab" aria-selected="false">
+        <span class="atab-num">34</span>
+        <span class="atab-name">Lights Out</span>
+        <span class="atab-sub hidden sm:inline">Puzzle</span>
+      </button>
+      <button class="atab" data-tab="dice" role="tab" aria-selected="false">
+        <span class="atab-num">35</span>
+        <span class="atab-name">Dice Poker</span>
+        <span class="atab-sub hidden sm:inline">Dice</span>
+      </button>
+      <button class="atab" data-tab="battleship" role="tab" aria-selected="false">
+        <span class="atab-num">36</span>
+        <span class="atab-name">Battleship</span>
+        <span class="atab-sub hidden sm:inline">vs CPU</span>
+      </button>
+      <button class="atab" data-tab="mole" role="tab" aria-selected="false">
+        <span class="atab-num">37</span>
+        <span class="atab-name">Whack-a-Mole</span>
+        <span class="atab-sub hidden sm:inline">Reflex</span>
+      </button>
+      <button class="atab" data-tab="hanoi" role="tab" aria-selected="false">
+        <span class="atab-num">38</span>
+        <span class="atab-name">Tower of Hanoi</span>
+        <span class="atab-sub hidden sm:inline">Puzzle</span>
+      </button>
+      <button class="atab" data-tab="minesweeper" role="tab" aria-selected="false">
+        <span class="atab-num">39</span>
+        <span class="atab-name">Minesweeper</span>
+        <span class="atab-sub hidden sm:inline">Logic</span>
+      </button>
+    </div>
+
+    <!-- Panel wrapper -->
+    <div id="arcade-play" class="arcade-panel-wrap relative reveal d2">
+
+      <!-- ========== SNAKE PANEL ========== -->
+      <div class="apanel is-active" data-panel="snake" role="tabpanel">
+        <div class="game-card max-w-[560px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Snake</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Score</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="scoreDisp">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Best</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="highDisp">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="snakeCanvas" width="400" height="400" class="w-full aspect-square block rounded-sm bg-[#050505] border border-bone/10"></canvas>
+            <div class="game-over" id="gameOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl md:text-6xl font-light text-bone mb-1"><span id="finalScore">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Points scored</div>
+              <p class="text-bone/70 text-sm max-w-xs mb-6 leading-relaxed">Nice run. Ready to put that competitive drive to work? Let's connect.</p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary" id="gameContact">Connect</a>
+                <button class="game-btn-primary" id="playAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3">
+              <button class="game-btn-primary" id="startBtn">Start game</button>
+              <button class="game-btn-secondary hidden" id="restartBtn">Restart</button>
+            </div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Use <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys</p>
+          </div>
+          <div class="touch-grid">
+            <div class="touch-btn touch-empty"></div>
+            <button class="touch-btn" data-dir="up" aria-label="Move up">▲</button>
+            <div class="touch-btn touch-empty" aria-hidden="true"></div>
+            <button class="touch-btn" data-dir="left" aria-label="Move left">◀</button>
+            <button class="touch-btn" data-dir="down" aria-label="Move down">▼</button>
+            <button class="touch-btn" data-dir="right" aria-label="Move right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== WORDLE PANEL ========== -->
+      <div class="apanel hidden" data-panel="wordle" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Wordle</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Attempt</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="wAttempt">1 / 6</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Streak</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="wStreak">0</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="wordleBoard" class="wordle-board mb-5"></div>
+
+          <div id="wordleStatus" class="text-center text-bone/70 text-[13px] min-h-[22px] mb-4 font-mono tracking-wide"></div>
+
+          <div id="wordleKeyboard" class="wordle-kb"></div>
+
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-secondary" id="wNewBtn">New word</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">Type with keyboard or tap keys</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== TETRIS PANEL ========== -->
+      <div class="apanel hidden" data-panel="tetris" role="tabpanel" hidden>
+        <div class="game-card max-w-[640px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Tetris</div>
+            </div>
+            <div class="flex gap-4 md:gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Score</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tScore">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Lines</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tLines">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Level</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tLevel">1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start justify-center">
+            <div class="relative">
+              <canvas id="tetrisCanvas" width="240" height="480" class="block rounded-sm bg-[#050505] border border-bone/10"></canvas>
+              <div class="game-over" id="tGameOver">
+                <div class="eyebrow text-ox mb-2">Game over</div>
+                <div class="font-serif text-5xl font-light text-bone mb-1"><span id="tFinalScore">0</span></div>
+                <div class="eyebrow text-bone/50 mb-5">Final score</div>
+                <div class="flex flex-wrap gap-2 justify-center">
+                  <a href="#contact" class="game-btn-secondary">Connect</a>
+                  <button class="game-btn-primary" id="tPlayAgain">Play again</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+              <div>
+                <div class="eyebrow text-bone/50 mb-2">Next</div>
+                <canvas id="tetrisNext" width="96" height="96" class="block rounded-sm bg-[#050505] border border-bone/10"></canvas>
+              </div>
+              <div class="hidden md:block text-bone/50 text-[11.5px] leading-snug">
+                <div class="eyebrow mb-2 text-bone/40">Controls</div>
+                <div><kbd>&larr;</kbd><kbd>→</kbd> move</div>
+                <div class="mt-1"><kbd>↑</kbd> rotate</div>
+                <div class="mt-1"><kbd>↓</kbd> soft drop</div>
+                <div class="mt-1"><kbd>Space</kbd> hard drop</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3">
+              <button class="game-btn-primary" id="tStartBtn">Start game</button>
+              <button class="game-btn-secondary hidden" id="tRestartBtn">Restart</button>
+            </div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Arrow keys &amp; Space</p>
+          </div>
+
+          <!-- Mobile touch grid for Tetris -->
+          <div class="tetris-touch mt-4 grid grid-cols-5 gap-1.5 md:hidden max-w-[320px] mx-auto">
+            <button class="touch-btn" data-t="left" aria-label="Move piece left">◀</button>
+            <button class="touch-btn" data-t="rotate" aria-label="Rotate piece">⟲</button>
+            <button class="touch-btn" data-t="down" aria-label="Soft drop">▼</button>
+            <button class="touch-btn" data-t="drop" aria-label="Hard drop">⇓</button>
+            <button class="touch-btn" data-t="right" aria-label="Move piece right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== DINOSAUR PANEL ========== -->
+      <div class="apanel hidden" data-panel="dino" role="tabpanel" hidden>
+        <div class="game-card max-w-[640px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Chrome Dinosaur</div>
+            </div>
+          </div>
+          <div class="dino-score justify-center mb-6">
+            <div class="dino-stat">
+              <div class="dino-stat-val" id="dinoScore">0</div>
+              <div class="dino-stat-lbl">Score</div>
+            </div>
+            <div class="dino-stat">
+              <div class="dino-stat-val" id="dinoBest">0</div>
+              <div class="dino-stat-lbl">Best</div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="dinoCanvas" width="640" height="200" class="w-full block rounded-sm bg-[#FFD89E] border border-bone/10"></canvas>
+            <div class="game-over" id="dinoGameOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl md:text-6xl font-light text-bone mb-1"><span id="dinoFinalScore">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Final score</div>
+              <p class="text-bone/70 text-sm max-w-xs mb-6 leading-relaxed">Nice run. Want that same persistence on your next placement? Let's talk.</p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="dinoPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3">
+              <button class="game-btn-primary" id="dinoStartBtn">Start game</button>
+              <button class="game-btn-secondary hidden" id="dinoRestartBtn">Restart</button>
+            </div>
+            <p class="text-bone/50 text-[12px] hidden md:block"><kbd>Space</kbd>/<kbd>↑</kbd> jump · <kbd>↓</kbd> duck · birds fly at head height</p>
+          </div>
+          <div class="touch-grid md:hidden mt-4">
+            <div class="touch-empty"></div>
+            <button class="touch-btn" data-dino="jump">JUMP</button>
+            <div class="touch-empty"></div>
+            <div class="touch-empty"></div>
+            <button class="touch-btn" data-dino="duck">DUCK</button>
+            <div class="touch-empty"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== FLAPPY PANEL ========== -->
+      <div class="apanel hidden" data-panel="flappy" role="tabpanel" hidden>
+        <div class="game-card max-w-[520px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Flappy</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Score</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="flScore">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Best</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="flBest">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="flappyCanvas" width="600" height="400" class="w-full block rounded-sm bg-[#050505] border border-bone/10" style="touch-action:none"></canvas>
+            <div class="game-over" id="flGameOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl md:text-6xl font-light text-bone mb-1"><span id="flFinalScore">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Pipes cleared</div>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="flPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="flStartBtn">Start game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block"><kbd>Space</kbd>/<kbd>↑</kbd> or tap to flap</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== PONG PANEL ========== -->
+      <div class="apanel hidden" data-panel="pong" role="tabpanel" hidden>
+        <div class="game-card max-w-[420px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Pong</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">You</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="pgPlayer">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">CPU</div>
+                <div class="font-mono text-[18px] text-bone/70 mt-1" id="pgCpu">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative mx-auto" style="max-width:320px">
+            <canvas id="pongCanvas" width="320" height="480" class="w-full block rounded-sm bg-[#050505] border border-bone/10" style="touch-action:none"></canvas>
+            <div class="game-over" id="pgGameOver">
+              <div class="eyebrow text-ox mb-2" id="pgResultLabel">Match over</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="pgFinal">0 - 0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">First to 7</div>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="pgPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="pgStartBtn">Start game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block"><kbd>&larr;</kbd><kbd>→</kbd> or drag to move</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== BREAKOUT PANEL ========== -->
+      <div class="apanel hidden" data-panel="breakout" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Breakout</div>
+            </div>
+            <div class="flex gap-4 md:gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Score</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="bkScore">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Best</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="bkBest">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Lives</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="bkLives">3</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative mx-auto" style="max-width:340px">
+            <canvas id="breakoutCanvas" width="400" height="500" class="w-full block rounded-sm bg-[#050505] border border-bone/10" style="touch-action:none"></canvas>
+            <div class="game-over" id="bkGameOver">
+              <div class="eyebrow text-ox mb-2" id="bkResultLabel">Game over</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="bkFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Final score</div>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="bkPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="bkStartBtn">Start game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block"><kbd>&larr;</kbd><kbd>→</kbd> move · <kbd>Space</kbd> launch</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== 2048 PANEL ========== -->
+      <div class="apanel hidden" data-panel="g2048" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">2048</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Score</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tfScore">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Best</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="tfBest">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative mx-auto" style="max-width:340px">
+            <div id="tfBoard" class="tf-board" role="grid" aria-label="2048 board. Swipe or use arrow keys to merge tiles."></div>
+            <div class="game-over" id="tfGameOver">
+              <div class="eyebrow text-ox mb-2" id="tfResultLabel">No moves left</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="tfFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Final score</div>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="tfPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-secondary" id="tfNewBtn">New game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">Arrow keys / <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or swipe</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== MINESWEEPER PANEL ========== -->
+      <div class="apanel hidden" data-panel="mines" role="tabpanel" hidden>
+        <div class="game-card max-w-[520px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Minesweeper</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Mines</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="msMines">10</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Time</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="msTime">0s</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <div class="ms-diff flex gap-2" role="radiogroup" aria-label="Difficulty">
+              <button class="game-btn-secondary is-active" data-ms-diff="easy">Easy</button>
+              <button class="game-btn-secondary" data-ms-diff="medium">Medium</button>
+              <button class="game-btn-secondary" data-ms-diff="hard">Hard</button>
+            </div>
+            <button class="game-btn-secondary ml-auto" id="msFlagBtn" aria-pressed="false">Flag: OFF</button>
+          </div>
+          <div class="relative">
+            <div id="msBoard" class="ms-board" role="grid" aria-label="Minesweeper board"></div>
+            <div class="game-over" id="msGameOver">
+              <div class="eyebrow mb-2" id="msResultLabel">Game over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-1"><span id="msFinal">0s</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Clear time</div>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="msPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <p class="text-bone/50 text-[12px] mt-4 text-center">Tap to reveal · long-press or toggle Flag to mark a mine</p>
+        </div>
+      </div>
+
+      <!-- ========== MEMORY PANEL ========== -->
+      <div class="apanel hidden" data-panel="memory" role="tabpanel" hidden>
+        <div class="game-card max-w-[480px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+              <div class="font-serif text-[20px] font-light text-bone">Memory Match</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Moves</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="mmMoves">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Best</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="mmBest">, </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <div class="mm-size flex gap-2" role="radiogroup" aria-label="Grid size">
+              <button class="game-btn-secondary" data-mm-size="4x3">4×3</button>
+              <button class="game-btn-secondary is-active" data-mm-size="4x4">4×4</button>
+              <button class="game-btn-secondary" data-mm-size="5x4">5×4</button>
+            </div>
+            <button class="game-btn-secondary ml-auto" id="mmNewBtn">New game</button>
+          </div>
+          <div class="relative">
+            <div id="mmBoard" class="mm-board" role="grid" aria-label="Memory match cards"></div>
+            <div class="game-over" id="mmGameOver">
+              <div class="eyebrow text-gold mb-2">Complete</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="mmFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Moves to clear</div>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="mmPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <p class="text-bone/50 text-[12px] mt-4 text-center">Flip two cards, match all pairs in the fewest moves</p>
+        </div>
+      </div>
+
+      <!-- ========== REFLEX PANEL ========== -->
+      <div class="apanel hidden" data-panel="reaction" role="tabpanel" hidden>
+        <div class="game-card max-w-[560px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <div class="eyebrow text-gold mb-1">Reflex</div>
+              <div class="text-bone/60 text-[12.5px]">Wait for green, then click as fast as you can</div>
+            </div>
+            <div class="text-right">
+              <div class="eyebrow text-bone/50">Best</div>
+              <div class="font-mono text-[18px] text-gold mt-1"><span id="rxBest">, </span><span class="text-bone/40 text-[12px]" id="rxBestUnit"></span></div>
+            </div>
+          </div>
+          <button id="rxPad" type="button" class="rx-pad" aria-label="Reaction pad, click to start, then click when it turns green">
+            <div class="rx-state" id="rxState">Click to begin</div>
+            <div class="rx-result font-mono" id="rxResult"></div>
+          </button>
+          <p class="text-bone/50 text-[12px] mt-4 text-center">Five rounds. Average reaction time is recorded, lower is better.</p>
+        </div>
+      </div>
+
+      <!-- ========== HI-LO PANEL ========== -->
+      <div class="apanel hidden" data-panel="hilo" role="tabpanel" hidden>
+        <div class="game-card max-w-[560px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <div class="eyebrow text-gold mb-1">Hi-Lo</div>
+              <div class="text-bone/60 text-[12.5px]">Will the next number (1 to 100) be higher or lower?</div>
+            </div>
+            <div class="flex gap-6">
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Streak</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="hlStreak">0</div>
+              </div>
+              <div class="text-right">
+                <div class="eyebrow text-bone/50">Best</div>
+                <div class="font-mono text-[18px] text-gold mt-1" id="hlBest">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="hl-number font-serif" id="hlNumber">50</div>
+            <div class="flex gap-3 justify-center mt-6">
+              <button class="game-btn-primary" id="hlHigher" type="button">▲ Higher</button>
+              <button class="game-btn-secondary" id="hlLower" type="button">▼ Lower</button>
+            </div>
+            <div class="game-over" id="hlGameOver">
+              <div class="eyebrow text-ox mb-2">Busted</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="hlFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Streak</div>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <a href="#contact" class="game-btn-secondary">Connect</a>
+                <button class="game-btn-primary" id="hlPlayAgain">Play again</button>
+              </div>
+            </div>
+          </div>
+          <p class="text-bone/50 text-[12px] mt-4 text-center">Ties count in your favor. How long can your nerve hold?</p>
+        </div>
+      </div>
+
+      <!-- ========== AIR HOCKEY PANEL (2P) ========== -->
+      <div class="apanel hidden" data-panel="airhockey" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Air Hockey</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">P1</div><div class="font-mono text-[18px] text-gold mt-1" id="ahP1">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">P2</div><div class="font-mono text-[18px] text-gold mt-1" id="ahP2">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="ahCanvas" width="360" height="520" class="w-full block rounded-sm bg-[#070707] border border-bone/10" style="aspect-ratio:360/520"></canvas>
+            <div class="game-over" id="ahOver">
+              <div class="eyebrow text-ox mb-2">Match over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-1" id="ahWinner">P1 wins</div>
+              <div class="eyebrow text-bone/50 mb-5">First to 7</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="ahAgain">Rematch</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="ahStart">Start match</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">P1 <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> · P2 arrow keys</p>
+          </div>
+          <div class="ah-touch grid grid-cols-2 gap-3 mt-4 md:hidden">
+            <div class="text-center"><div class="eyebrow text-bone/40 mb-1">P1 (you)</div><div class="flex gap-2 justify-center"><button class="touch-btn" data-ah="p1l" aria-label="P1 left">◀</button><button class="touch-btn" data-ah="p1r" aria-label="P1 right">▶</button></div></div>
+            <div class="text-center"><div class="eyebrow text-bone/40 mb-1">P2</div><div class="flex gap-2 justify-center"><button class="touch-btn" data-ah="p2l" aria-label="P2 left">◀</button><button class="touch-btn" data-ah="p2r" aria-label="P2 right">▶</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== CONNECT FOUR PANEL (2P) ========== -->
+      <div class="apanel hidden" data-panel="connect4" role="tabpanel" hidden>
+        <div class="game-card max-w-[480px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Connect Four</div></div>
+            <div class="font-mono text-[13px] text-gold" id="c4Status">Red's turn</div>
+          </div>
+          <div class="relative">
+            <div id="c4Board" class="c4-board"></div>
+            <div class="game-over" id="c4Over">
+              <div class="eyebrow text-ox mb-2">Four in a row</div>
+              <div class="font-serif text-4xl font-light text-bone mb-1" id="c4Winner">Red wins</div>
+              <div class="flex flex-wrap gap-2 justify-center mt-4"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="c4Again">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex items-center justify-between gap-4">
+            <button class="game-btn-secondary" id="c4Reset">Reset board</button>
+            <p class="text-bone/50 text-[12px]">Two players · tap a column to drop</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== MUNCHER PANEL ========== -->
+      <div class="apanel hidden" data-panel="muncher" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Muncher</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Score</div><div class="font-mono text-[18px] text-gold mt-1" id="muScore">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Lives</div><div class="font-mono text-[18px] text-gold mt-1" id="muLives">3</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="muBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="muncherCanvas" width="392" height="440" class="w-full block rounded-sm bg-[#040406] border border-bone/10" style="aspect-ratio:392/440"></canvas>
+            <div class="game-over" id="muOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="muFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Pellets cleared</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="muAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="muStart">Start game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">Arrow keys or <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></p>
+          </div>
+          <div class="touch-grid">
+            <div class="touch-btn touch-empty"></div>
+            <button class="touch-btn" data-mdir="up" aria-label="Up">▲</button>
+            <div class="touch-btn touch-empty" aria-hidden="true"></div>
+            <button class="touch-btn" data-mdir="left" aria-label="Left">◀</button>
+            <button class="touch-btn" data-mdir="down" aria-label="Down">▼</button>
+            <button class="touch-btn" data-mdir="right" aria-label="Right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== INVADERS PANEL ========== -->
+      <div class="apanel hidden" data-panel="invaders" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Invaders</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Score</div><div class="font-mono text-[18px] text-gold mt-1" id="invScore">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="invBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="invCanvas" width="400" height="440" class="w-full block rounded-sm bg-[#040406] border border-bone/10" style="aspect-ratio:400/440"></canvas>
+            <div class="game-over" id="invOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="invFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Points scored</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="invAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="invStart">Start game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">◀ ▶ move · <kbd>Space</kbd> fire</p>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mt-4 md:hidden">
+            <button class="touch-btn" data-idir="left" aria-label="Left">◀</button>
+            <button class="touch-btn" data-idir="fire" aria-label="Fire">&larr;</button>
+            <button class="touch-btn" data-idir="right" aria-label="Right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== ASTEROIDS PANEL ========== -->
+      <div class="apanel hidden" data-panel="asteroids" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Asteroids</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Score</div><div class="font-mono text-[18px] text-gold mt-1" id="astScore">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="astBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="astCanvas" width="420" height="420" class="w-full block aspect-square rounded-sm bg-[#040406] border border-bone/10"></canvas>
+            <div class="game-over" id="astOver">
+              <div class="eyebrow text-ox mb-2">Game over</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="astFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Points scored</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="astAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="astStart">Start game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">◀ ▶ turn · <kbd>↑</kbd> thrust · <kbd>Space</kbd> fire</p>
+          </div>
+          <div class="grid grid-cols-4 gap-2 mt-4 md:hidden">
+            <button class="touch-btn" data-adir="left" aria-label="Turn left">↺</button>
+            <button class="touch-btn" data-adir="thrust" aria-label="Thrust">▲</button>
+            <button class="touch-btn" data-adir="right" aria-label="Turn right">↻</button>
+            <button class="touch-btn" data-adir="fire" aria-label="Fire">&larr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== CROSSING (FROGGER) PANEL ========== -->
+      <div class="apanel hidden" data-panel="frogger" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Crossing</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Score</div><div class="font-mono text-[18px] text-gold mt-1" id="frScore">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="frBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="frogCanvas" width="390" height="450" class="w-full block rounded-sm bg-[#040406] border border-bone/10" style="aspect-ratio:390/450"></canvas>
+            <div class="game-over" id="frOver">
+              <div class="eyebrow text-ox mb-2">Squashed</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="frFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Crossings made</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="frAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="frStart">Start game</button>
+            <p class="text-bone/50 text-[12px] hidden md:block">Arrow keys / <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> to hop</p>
+          </div>
+          <div class="touch-grid">
+            <div class="touch-btn touch-empty"></div>
+            <button class="touch-btn" data-fdir="up" aria-label="Up">▲</button>
+            <div class="touch-btn touch-empty" aria-hidden="true"></div>
+            <button class="touch-btn" data-fdir="left" aria-label="Left">◀</button>
+            <button class="touch-btn" data-fdir="down" aria-label="Down">▼</button>
+            <button class="touch-btn" data-fdir="right" aria-label="Right">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SEQUENCE (SIMON) PANEL ========== -->
+      <div class="apanel hidden" data-panel="simon" role="tabpanel" hidden>
+        <div class="game-card max-w-[420px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Sequence</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Level</div><div class="font-mono text-[18px] text-gold mt-1" id="simonLevel">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="simonBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="simon-pad-grid">
+              <button class="simon-pad" data-pad="0" style="--sp:#6FCF7A" aria-label="Green"></button>
+              <button class="simon-pad" data-pad="1" style="--sp:#E05B5B" aria-label="Red"></button>
+              <button class="simon-pad" data-pad="2" style="--sp:#5AB0FA" aria-label="Blue"></button>
+              <button class="simon-pad" data-pad="3" style="--sp:#E6C84A" aria-label="Yellow"></button>
+            </div>
+            <div class="game-over" id="simonOver">
+              <div class="eyebrow text-ox mb-2">Wrong move</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="simonFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Levels cleared</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="simonAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <button class="game-btn-primary" id="simonStart">Start game</button>
+            <p class="text-bone/50 text-[12px]" id="simonStatus">Watch, then repeat the pattern.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== TOWERS (TOWER DEFENSE) PANEL ========== -->
+      <div class="apanel hidden" data-panel="tower" role="tabpanel" hidden>
+        <div class="game-card max-w-[500px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Towers</div></div>
+            <div class="flex gap-5">
+              <div class="text-right"><div class="eyebrow text-bone/50">Wave</div><div class="font-mono text-[16px] text-gold mt-1" id="twWave">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Lives</div><div class="font-mono text-[16px] text-gold mt-1" id="twLives">20</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Gold</div><div class="font-mono text-[16px] text-gold mt-1" id="twGold">100</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[16px] text-gold mt-1" id="twBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="towerCanvas" width="480" height="360" class="w-full block rounded-sm bg-[#06080a] border border-bone/10" style="aspect-ratio:480/360"></canvas>
+            <div class="game-over" id="twOver">
+              <div class="eyebrow text-ox mb-2">Overrun</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1">Wave <span id="twFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Reached</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="twAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="twStart">Start defense</button><button class="game-btn-secondary" id="twWaveBtn">Send wave ›</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Tap a green cell to build (25g)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== TRON / LIGHT CYCLES PANEL (2P) ========== -->
+      <div class="apanel hidden" data-panel="tron" role="tabpanel" hidden>
+        <div class="game-card max-w-[500px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Light Cycles</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">P1 · Gold</div><div class="font-mono text-[18px] text-gold mt-1" id="trP1">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">P2 · Cyan</div><div class="font-mono text-[18px] mt-1" style="color:#2D8A7E" id="trP2">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <canvas id="tronCanvas" width="420" height="420" class="w-full aspect-square block rounded-sm bg-[#040406] border border-bone/10"></canvas>
+            <div class="game-over" id="trOver">
+              <div class="eyebrow text-ox mb-2">Round over</div>
+              <div class="font-serif text-4xl md:text-5xl font-light text-bone mb-1" id="trWinner">, </div>
+              <div class="eyebrow text-bone/50 mb-5">First to 5 wins the match</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="trAgain">Next round</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="trStart">Start match</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">P1 <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> · P2 <kbd>↑</kbd><kbd>&larr;</kbd><kbd>↓</kbd><kbd>→</kbd></p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-4 md:hidden">
+            <div class="touch-grid" style="margin:0">
+              <div class="touch-btn touch-empty"></div>
+              <button class="touch-btn" data-tron="p1up" aria-label="P1 up">▲</button>
+              <div class="touch-btn touch-empty"></div>
+              <button class="touch-btn" data-tron="p1left" aria-label="P1 left">◀</button>
+              <button class="touch-btn" data-tron="p1down" aria-label="P1 down">▼</button>
+              <button class="touch-btn" data-tron="p1right" aria-label="P1 right">▶</button>
+            </div>
+            <div class="touch-grid" style="margin:0">
+              <div class="touch-btn touch-empty"></div>
+              <button class="touch-btn" data-tron="p2up" aria-label="P2 up">▲</button>
+              <div class="touch-btn touch-empty"></div>
+              <button class="touch-btn" data-tron="p2left" aria-label="P2 left">◀</button>
+              <button class="touch-btn" data-tron="p2down" aria-label="P2 down">▼</button>
+              <button class="touch-btn" data-tron="p2right" aria-label="P2 right">▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== WHACK-A-MOLE PANEL ========== -->
+      <div class="apanel hidden" data-panel="whack" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Whack-a-Mole</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Score</div><div class="font-mono text-[18px] text-gold mt-1" id="whScore">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Time</div><div class="font-mono text-[18px] text-gold mt-1" id="whTime">30</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="whBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="whack-grid" id="whackGrid"></div>
+            <div class="game-over" id="whOver">
+              <div class="eyebrow text-ox mb-2">Time</div>
+              <div class="font-serif text-5xl md:text-6xl font-light text-bone mb-1"><span id="whFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Moles bonked</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="whAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="whStart">Start game</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Tap the moles before they hide</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== LIGHTS OUT PANEL ========== -->
+      <div class="apanel hidden" data-panel="lightsout" role="tabpanel" hidden>
+        <div class="game-card max-w-[440px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Lights Out</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Moves</div><div class="font-mono text-[18px] text-gold mt-1" id="loMoves">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="loBest">, </div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="lo-grid" id="loGrid"></div>
+            <div class="game-over" id="loWin">
+              <div class="eyebrow text-gold mb-2">Solved</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="loFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Moves used</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="loAgain">New puzzle</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="loStart">New puzzle</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Turn every light off · tap toggles a plus-shape</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== TIC-TAC-TOE PANEL ========== -->
+      <div class="apanel hidden" data-panel="ttt" role="tabpanel" hidden>
+        <div class="game-card max-w-[420px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Tic-Tac-Toe</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">X</div><div class="font-mono text-[18px] text-gold mt-1" id="tttX">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">O</div><div class="font-mono text-[18px] text-bone mt-1" id="tttO">0</div></div>
+            </div>
+          </div>
+          <div class="text-center mb-4"><span class="eyebrow text-bone/50">Turn · </span><span class="font-mono text-gold" id="tttTurn">X</span></div>
+          <div class="relative">
+            <div class="ttt-grid" id="tttGrid"></div>
+            <div class="game-over" id="tttOver">
+              <div class="eyebrow text-gold mb-2">Round over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="tttResult">X wins</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="tttAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-secondary" id="tttMode">vs CPU: Off</button><button class="game-btn-primary" id="tttReset">Reset scores</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Three in a row wins</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== 15-PUZZLE PANEL ========== -->
+      <div class="apanel hidden" data-panel="fifteen" role="tabpanel" hidden>
+        <div class="game-card max-w-[440px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">15-Puzzle</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Moves</div><div class="font-mono text-[18px] text-gold mt-1" id="fifteenMoves">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="fifteenBest">, </div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="fif-grid" id="fifteenGrid"></div>
+            <div class="game-over" id="fifteenWin">
+              <div class="eyebrow text-gold mb-2">Solved</div>
+              <div class="font-serif text-5xl font-light text-bone mb-1"><span id="fifteenFinal">0</span></div>
+              <div class="eyebrow text-bone/50 mb-5">Moves used</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="fifteenAgain">Shuffle</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="fifteenStart">Shuffle</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Slide tiles into order 1 to 15</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SOKOBAN PANEL ========== -->
+      <div class="apanel hidden" data-panel="sokoban" role="tabpanel" hidden>
+        <div class="game-card max-w-[480px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Sokoban</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Level</div><div class="font-mono text-[18px] text-gold mt-1" id="sokoLevel">1</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Moves</div><div class="font-mono text-[18px] text-gold mt-1" id="sokoMoves">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="soko-grid" id="sokoGrid"></div>
+            <div class="game-over" id="sokoWin">
+              <div class="eyebrow text-gold mb-2">Level clear</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="sokoFinal">Solved</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="sokoAgain">Next level</button></div>
+            </div>
+          </div>
+          <div class="md:hidden mt-4 flex justify-center">
+            <div class="touch-grid" style="margin:0">
+              <div class="touch-btn touch-empty"></div>
+              <button class="touch-btn" data-soko="up" aria-label="Up" type="button">▲</button>
+              <div class="touch-btn touch-empty"></div>
+              <button class="touch-btn" data-soko="left" aria-label="Left" type="button">◀</button>
+              <button class="touch-btn" data-soko="down" aria-label="Down" type="button">▼</button>
+              <button class="touch-btn" data-soko="right" aria-label="Right" type="button">▶</button>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="sokoStart">Restart level</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Push every box onto a target · arrow keys / <kbd>WASD</kbd></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== REVERSI PANEL ========== -->
+      <div class="apanel hidden" data-panel="reversi" role="tabpanel" hidden>
+        <div class="game-card max-w-[440px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Reversi</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Gold</div><div class="font-mono text-[18px] text-gold mt-1" id="revG">2</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Teal</div><div class="font-mono text-[18px] mt-1" style="color:#4FB3A4" id="revT">2</div></div>
+            </div>
+          </div>
+          <div class="text-center mb-4"><span class="eyebrow text-bone/50">Turn · </span><span class="font-mono text-gold" id="revTurn">Gold</span></div>
+          <div class="relative">
+            <div class="rev-grid" id="revGrid"></div>
+            <div class="game-over" id="revOver">
+              <div class="eyebrow text-gold mb-2">Game over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="revResult">Gold wins</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="revAgain">New game</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-secondary" id="revMode">vs CPU: On</button><button class="game-btn-primary" id="revNew">New game</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Outflank to flip · most discs wins</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== MASTERMIND PANEL ========== -->
+      <div class="apanel hidden" data-panel="mastermind" role="tabpanel" hidden>
+        <div class="game-card max-w-[440px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Mastermind</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Row</div><div class="font-mono text-[18px] text-gold mt-1" id="masRowLbl">1/10</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="masBest">, </div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="mas-board" id="masBoard"></div>
+            <div class="game-over" id="masOver">
+              <div class="eyebrow text-gold mb-2" id="masOverLabel">Cracked</div>
+              <div class="font-serif text-3xl font-light text-bone mb-3" id="masResult">Solved</div>
+              <div class="mas-pegs mb-5" id="masReveal" style="justify-content:center"></div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="masAgain">New code</button></div>
+            </div>
+          </div>
+          <div class="mas-palette" id="masPalette"></div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-secondary" id="masClear">Clear row</button><button class="game-btn-primary" id="masGuess">Guess</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Gold = right color &amp; spot · White = right color</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== VIDEO POKER PANEL ========== -->
+      <div class="apanel hidden" data-panel="vpoker" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Video Poker</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Credits</div><div class="font-mono text-[18px] text-gold mt-1" id="vpCredits">100</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="vpBest">100</div></div>
+            </div>
+          </div>
+          <div class="text-center mb-4 min-h-[20px]"><span class="font-mono text-gold text-[14px]" id="vpResult">Jacks or Better, Deal to start</span></div>
+          <div class="vp-hand" id="vpHand"></div>
+          <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="vpDeal">Deal</button><button class="game-btn-secondary" id="vpDraw" disabled>Draw</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Tap cards to hold · bet 5 / hand</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== CHECKERS PANEL ========== -->
+      <div class="apanel hidden" data-panel="checkers" role="tabpanel" hidden>
+        <div class="game-card max-w-[440px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Checkers</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Gold</div><div class="font-mono text-[18px] text-gold mt-1" id="chkGold">12</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Teal</div><div class="font-mono text-[18px] mt-1" style="color:#4FB3A4" id="chkTeal">12</div></div>
+            </div>
+          </div>
+          <div class="text-center mb-4"><span class="eyebrow text-bone/50">Turn · </span><span class="font-mono text-gold" id="chkTurn">Teal</span></div>
+          <div class="relative">
+            <div class="chk-grid" id="chkGrid"></div>
+            <div class="game-over" id="chkOver">
+              <div class="eyebrow text-gold mb-2">Game over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="chkResult">Teal wins</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="chkAgain">New game</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-secondary" id="chkMode">vs CPU: On</button><button class="game-btn-primary" id="chkNew">New game</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Teal moves up · jump to capture · king at the far row</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== BLACKJACK PANEL ========== -->
+      <div class="apanel hidden" data-panel="blackjack" role="tabpanel" hidden>
+        <div class="game-card max-w-[480px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Blackjack</div></div>
+            <div class="flex gap-6">
+              <div class="text-right"><div class="eyebrow text-bone/50">Chips</div><div class="font-mono text-[18px] text-gold mt-1" id="bjChips">100</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="bjBest">100</div></div>
+            </div>
+          </div>
+          <div class="mb-3"><div class="eyebrow text-bone/50 mb-2">Dealer · <span id="bjDealerScore">, </span></div><div class="vp-hand justify-start" id="bjDealer"></div></div>
+          <div class="mb-3"><div class="eyebrow text-bone/50 mb-2">You · <span id="bjPlayerScore">, </span></div><div class="vp-hand justify-start" id="bjPlayer"></div></div>
+          <div class="text-center my-3 min-h-[20px]"><span class="font-mono text-gold text-[14px]" id="bjResult">Bet 10, Deal to start</span></div>
+          <div class="mt-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="bjDeal">Deal</button><button class="game-btn-secondary" id="bjHit" disabled>Hit</button><button class="game-btn-secondary" id="bjStand" disabled>Stand</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Dealer stands on 17 · blackjack pays 3:2</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== GEM CRUSH PANEL ========== -->
+      <div class="apanel hidden" data-panel="gems" role="tabpanel" hidden>
+        <div class="game-card max-w-[420px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Gem Crush</div></div>
+            <div class="flex gap-5">
+              <div class="text-right"><div class="eyebrow text-bone/50">Score</div><div class="font-mono text-[18px] text-gold mt-1" id="gemScore">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Moves</div><div class="font-mono text-[18px] text-gold mt-1" id="gemMoves">20</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="gemBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="gem-grid" id="gemGrid"></div>
+            <div class="game-over" id="gemOver">
+              <div class="eyebrow text-gold mb-2">Out of moves</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="gemResult">Score 0</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="gemAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="gemNew">New board</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Swap adjacent gems · line up 3+ · 20 moves</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apanel hidden" data-panel="hangman" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Hangman</div></div>
+            <div class="flex gap-5">
+              <div class="text-right"><div class="eyebrow text-bone/50">Streak</div><div class="font-mono text-[18px] text-gold mt-1" id="hangStreak">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="hangBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="hang-lives" id="hangLives"></div>
+            <div class="hang-word mb-5" id="hangWord"></div>
+            <div class="hang-keys" id="hangKeys"></div>
+            <p class="text-center text-bone/50 text-[12px] mt-3" id="hangMsg"></p>
+            <div class="game-over" id="hangOver">
+              <div class="eyebrow text-gold mb-2">Round over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="hangResult">Solved!</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="hangAgain">New word</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="hangNew">New word</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Guess the word · 6 wrong allowed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apanel hidden" data-panel="lights" role="tabpanel" hidden>
+        <div class="game-card max-w-[380px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Lights Out</div></div>
+            <div class="flex gap-5">
+              <div class="text-right"><div class="eyebrow text-bone/50">Moves</div><div class="font-mono text-[18px] text-gold mt-1" id="lightsMoves">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="lightsBest">, </div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="lo-grid" id="lightsGrid"></div>
+            <div class="game-over" id="lightsOver">
+              <div class="eyebrow text-gold mb-2">All clear</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="lightsResult">0 moves</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="lightsAgain">New puzzle</button></div>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3"><button class="game-btn-primary" id="lightsNew">New puzzle</button></div>
+            <p class="text-bone/50 text-[12px] hidden md:block">Turn every light off · taps flip neighbors</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apanel hidden" data-panel="dice" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Dice Poker</div></div>
+            <div class="flex gap-4">
+              <div class="text-right"><div class="eyebrow text-bone/50">Round</div><div class="font-mono text-[18px] text-gold mt-1"><span id="diceRound">1</span>/6</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Rolls</div><div class="font-mono text-[18px] text-gold mt-1" id="diceRolls">3</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Total</div><div class="font-mono text-[18px] text-gold mt-1" id="diceTotal">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="diceBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="dice-row mb-4" id="diceRow"></div>
+            <p class="text-center text-bone/60 text-[13px] mb-4" id="diceMsg">Roll to start</p>
+            <div class="flex gap-3 justify-center">
+              <button class="game-btn-primary" id="diceRoll">Roll</button>
+              <button class="game-btn-secondary" id="diceScore">Score hand</button>
+            </div>
+            <div class="game-over" id="diceOver">
+              <div class="eyebrow text-gold mb-2">Game over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="diceResult">0 pts</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="diceAgain">Play again</button></div>
+            </div>
+          </div>
+          <p class="text-bone/50 text-[12px] mt-5 text-center hidden md:block">3 rolls per round · tap dice to hold · best hand wins</p>
+        </div>
+      </div>
+
+      <!-- Battleship -->
+      <div class="apanel hidden" data-panel="battleship" role="tabpanel" hidden>
+        <div class="game-card max-w-[560px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Battleship</div></div>
+            <div class="flex gap-4">
+              <div class="text-right"><div class="eyebrow text-bone/50">Enemy</div><div class="font-mono text-[18px] text-gold mt-1"><span id="bsEnemyHits">0</span>/14</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">You</div><div class="font-mono text-[18px] text-gold mt-1"><span id="bsPlayerHits">0</span>/14</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="bsBest">, </div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="bs-boards">
+              <div>
+                <div class="bs-label">Enemy waters</div>
+                <div class="bs-grid enemy" id="bsEnemyGrid"></div>
+              </div>
+              <div>
+                <div class="bs-label">Your fleet</div>
+                <div class="bs-grid" id="bsPlayerGrid"></div>
+              </div>
+            </div>
+            <p class="text-center text-bone/60 text-[13px] mt-4" id="bsMsg">Fire on enemy waters</p>
+            <div class="game-over" id="bsOver">
+              <div class="eyebrow text-gold mb-2">Battle over</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="bsResult">Victory</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="bsAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="flex justify-center mt-5"><button class="game-btn-primary" id="bsNew">New game</button></div>
+          <p class="text-bone/50 text-[12px] mt-4 text-center hidden md:block">Click enemy cells to fire · sink all 5 ships · fewest shots wins</p>
+        </div>
+      </div>
+
+      <!-- Whack-a-Mole -->
+      <div class="apanel hidden" data-panel="mole" role="tabpanel" hidden>
+        <div class="game-card max-w-[460px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Whack-a-Mole</div></div>
+            <div class="flex gap-4">
+              <div class="text-right"><div class="eyebrow text-bone/50">Score</div><div class="font-mono text-[18px] text-gold mt-1" id="moleScore">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Time</div><div class="font-mono text-[18px] text-gold mt-1" id="moleTime">30</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="moleBest">0</div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="mole-grid" id="moleGrid"></div>
+            <p class="text-center text-bone/60 text-[13px] mt-4" id="moleMsg">Press start, then whack the moles</p>
+            <div class="flex justify-center mt-4"><button class="game-btn-primary" id="moleStart">Start</button></div>
+            <div class="game-over" id="moleOver">
+              <div class="eyebrow text-gold mb-2">Time's up</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="moleResult">0 hits</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="moleAgain">Play again</button></div>
+            </div>
+          </div>
+          <p class="text-bone/50 text-[12px] mt-5 text-center hidden md:block">30 seconds · whack every mole that pops up</p>
+        </div>
+      </div>
+
+      <!-- Tower of Hanoi -->
+      <div class="apanel hidden" data-panel="hanoi" role="tabpanel" hidden>
+        <div class="game-card max-w-[520px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Tower of Hanoi</div></div>
+            <div class="flex gap-4">
+              <div class="text-right"><div class="eyebrow text-bone/50">Moves</div><div class="font-mono text-[18px] text-gold mt-1" id="hanoiMoves">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Optimal</div><div class="font-mono text-[18px] text-gold mt-1" id="hanoiMin">15</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="hanoiBest">, </div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="hanoi-board" id="hanoiBoard"></div>
+            <p class="text-center text-bone/60 text-[13px] mt-4" id="hanoiMsg">Move the whole stack to another peg</p>
+            <div class="game-over" id="hanoiOver">
+              <div class="eyebrow text-gold mb-2">Solved</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="hanoiResult">15 moves</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="hanoiAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="flex justify-center mt-5"><button class="game-btn-primary" id="hanoiNew">Reset</button></div>
+          <p class="text-bone/50 text-[12px] mt-4 text-center hidden md:block">Click a peg to pick up · click another to drop · never stack big on small</p>
+        </div>
+      </div>
+
+      <!-- Minesweeper -->
+      <div class="apanel hidden" data-panel="minesweeper" role="tabpanel" hidden>
+        <div class="game-card max-w-[440px] mx-auto p-5 md:p-8 rounded-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span><div class="font-serif text-[20px] font-light text-bone">Minesweeper</div></div>
+            <div class="flex gap-4">
+              <div class="text-right"><div class="eyebrow text-bone/50">Mines</div><div class="font-mono text-[18px] text-gold mt-1" id="mswMines">10</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Flags</div><div class="font-mono text-[18px] text-gold mt-1" id="msFlags">0</div></div>
+              <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="msBest">, </div></div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="ms-grid" id="msGrid"></div>
+            <p class="text-center text-bone/60 text-[13px] mt-4" id="msMsg">Click to reveal · long-press / right-click to flag</p>
+            <div class="game-over" id="msOver">
+              <div class="eyebrow text-gold mb-2" id="msOverLabel">Cleared</div>
+              <div class="font-serif text-4xl font-light text-bone mb-5" id="msResult">Swept</div>
+              <div class="flex flex-wrap gap-2 justify-center"><a href="#contact" class="game-btn-secondary">Connect</a><button class="game-btn-primary" id="msAgain">Play again</button></div>
+            </div>
+          </div>
+          <div class="flex justify-center gap-3 mt-5"><button class="game-btn-primary" id="msNew">New game</button><button class="game-btn-secondary" id="msFlagMode">Flag: off</button></div>
+          <p class="text-bone/50 text-[12px] mt-4 text-center hidden md:block">9×9 · 10 mines · clear every safe cell · best = fastest sweep</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- /#arcade-play -->
+      </div><!-- /[data-screen=play] -->
+    </div><!-- /.arcade-cabinet -->
+  </div>
+</section>
+
+<!-- ===== CHAPTER 03, EXPERTISE ===== -->
+
+</main>
+<footer class="relative py-12 md:py-16 bg-bone">
+  <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid grid-cols-12 gap-6 items-center">
+    <div class="col-span-12 md:col-span-4 font-serif text-lg">
+      Ben <span class="italic text-ox">Sachwitz</span>
+    </div>
+    <div class="col-span-12 md:col-span-4 text-center eyebrow text-ink/50">
+      <span class="copy-egg" id="copyEgg" tabindex="0">© <span id="copyYear">2026</span><span class="copy-tip">Lloyd's · est. 1688</span></span> Benjamin Sachwitz · McLean → Columbia → London
+    </div>
+    <div class="col-span-12 md:col-span-4 flex md:justify-end gap-5 text-[12px] font-mono uppercase tracking-widest">
+      <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="link-line">LinkedIn</a>
+      <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line">GitHub</a>
+      <a href="#contact" class="link-line">Book a call</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING BOOK BUTTON ===== -->
+<div class="book-float" id="bookFloat">
+  <button type="button" class="btn-ink shadow-2xl book-float-btn" data-open-booking aria-label="Open scheduling · live Cal.com calendar or share details first">
+    <span class="book-float-ping" aria-hidden="true"></span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book a call
+  </button>
+</div>
+
+<!-- ===== BOOKING MODAL ===== -->
+<div class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-hidden="true">
+  <div class="booking-backdrop" data-close-booking></div>
+  <div class="booking-panel" role="document">
+    <button class="booking-close" type="button" aria-label="Close" data-close-booking>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 1L13 13M13 1L1 13"/></svg>
+    </button>
+
+    <div class="booking-body" id="bookingBody">
+      <div class="booking-gold-bar"></div>
+      <div class="eyebrow text-ink/55 mb-2">30 min · Free · Confidential</div>
+      <h3 class="font-serif text-[26px] md:text-[32px] font-light leading-tight mb-1" id="bookingTitle">Let's <em class="text-ox">talk shop</em>.</h3>
+      <p class="text-[13.5px] text-ink/65 leading-relaxed mb-5 max-w-[44ch]">Commercial risk, technology partnership, or a professional introduction. Pick a time, and I'll confirm within 24 hours.</p>
+
+      <!-- Booking mode tabs: Cal.com live calendar OR multi-step request -->
+      <div class="booking-mode-tabs" role="tablist" aria-label="Booking method">
+        <button type="button" class="bmtab is-active" data-bmode="cal" role="tab" aria-selected="true">
+          <span class="bmtab-dot"></span>
+          <span>Live Calendar</span>
+          <span class="bmtab-meta">via Cal.com</span>
+        </button>
+        <button type="button" class="bmtab" data-bmode="form" role="tab" aria-selected="false">
+          <span class="bmtab-dot"></span>
+          <span>Request a Time</span>
+          <span class="bmtab-meta">share details first</span>
+        </button>
+      </div>
+
+      <!-- Cal.com inline embed (lazy-loaded on first show) -->
+      <div class="booking-cal-pane" data-bmode-pane="cal" aria-hidden="false">
+        <div id="bookingCalInline" class="booking-cal-inline" aria-label="Live calendar · pick any open time"></div>
+        <p class="booking-cal-fallback eyebrow text-ink/45 mt-3 text-center">
+          Calendar slow to load? <button type="button" class="link-line text-ink/70" data-bmode="form">Use the request form instead →</button>
+        </p>
+      </div>
+
+      <!-- Multi-step request form (legacy fallback) -->
+      <form id="bookingForm" class="booking-form" data-bmode-pane="form" aria-hidden="true" hidden novalidate>
+        <!-- Step indicator -->
+        <div class="booking-steps" aria-hidden="true">
+          <span class="bstep is-active" data-step="1">1<small>Details</small></span>
+          <span class="bstep-line"></span>
+          <span class="bstep" data-step="2">2<small>Time</small></span>
+          <span class="bstep-line"></span>
+          <span class="bstep" data-step="3">3<small>Confirm</small></span>
+        </div>
+
+        <!-- Step 1: contact details -->
+        <div class="booking-step" data-panel="1">
+          <div class="grid grid-cols-2 gap-4 mb-3">
+            <div><label class="flabel" for="bName">Name</label><input class="finput" id="bName" type="text" required /></div>
+            <div><label class="flabel" for="bEmail">Email</label><input class="finput" id="bEmail" type="email" required /></div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 mb-3">
+            <div><label class="flabel" for="bPhone">Phone</label><input class="finput" id="bPhone" type="tel" placeholder="Optional" /></div>
+            <div><label class="flabel" for="bCompany">Company</label><input class="finput" id="bCompany" type="text" placeholder="Optional" /></div>
+          </div>
+          <div class="mb-4">
+            <label class="flabel mb-2">Topic</label>
+            <div class="booking-chips" role="radiogroup" aria-label="Call topic">
+              <label class="bchip"><input type="radio" name="bTopic" value="Trucking / Logging"/><span>Trucking / Logging</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="Commercial Insurance"/><span>Commercial Insurance</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="Loss Control Tech"/><span>Loss Control Tech</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="Partnership / Vendor"/><span>Partnership / Vendor</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="Recruiting / Career"/><span>Recruiting / Career</span></label>
+              <label class="bchip"><input type="radio" name="bTopic" value="General Intro"/><span>General Intro</span></label>
+            </div>
+          </div>
+          <div class="booking-actions">
+            <button type="button" class="btn-outline" data-close-booking>Cancel</button>
+            <button type="button" class="btn-ink" data-booking-next="2">Continue <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Step 2: time slot -->
+        <div class="booking-step hidden" data-panel="2">
+          <label class="flabel mb-2 block">Pick a day</label>
+          <div class="booking-days" id="bookingDays" role="radiogroup" aria-label="Day"></div>
+          <label class="flabel mb-2 block mt-5">Pick a time (ET)</label>
+          <div class="booking-times" id="bookingTimes" role="radiogroup" aria-label="Time"></div>
+          <div class="booking-actions">
+            <button type="button" class="btn-outline" data-booking-back="1">&larr; Back</button>
+            <button type="button" class="btn-ink" data-booking-next="3">Review <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Step 3: review -->
+        <div class="booking-step hidden" data-panel="3">
+          <div class="booking-review">
+            <div class="brow"><span class="blbl">Name</span><span class="bval" id="rvName"></span></div>
+            <div class="brow"><span class="blbl">Email</span><span class="bval" id="rvEmail"></span></div>
+            <div class="brow"><span class="blbl">Phone</span><span class="bval" id="rvPhone"></span></div>
+            <div class="brow"><span class="blbl">Company</span><span class="bval" id="rvCompany"></span></div>
+            <div class="brow"><span class="blbl">Topic</span><span class="bval" id="rvTopic"></span></div>
+            <div class="brow brow-strong"><span class="blbl">When</span><span class="bval gradient-text" id="rvWhen"></span></div>
+          </div>
+          <label for="bNotes" class="sr-only">Additional notes (optional)</label>
+          <textarea class="finput mt-4" id="bNotes" name="notes" placeholder="Anything else I should know? (optional)" rows="3" aria-label="Additional notes (optional)"></textarea>
+          <div class="booking-actions">
+            <button type="button" class="btn-outline" data-booking-back="2">&larr; Edit</button>
+            <button type="submit" class="btn-gold" id="bookingSubmit">Confirm booking
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6l3 3 5-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="booking-success hidden" id="bookingSuccess">
+      <div class="booking-success-mark">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.5" class="bsc-ring"/><path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="2" class="bsc-tick"/></svg>
+      </div>
+      <h3 class="font-serif text-[26px] md:text-[30px] font-light mt-5 mb-2">Booked.</h3>
+      <p class="text-ink/70 text-[14px] mb-2" id="successDetail">I'll confirm the time by email within 24 hours.</p>
+      <p class="eyebrow text-ink/45 mb-6">A copy of your request was sent to bensachwitz@outlook.com</p>
+      <button type="button" class="btn-ink" data-close-booking>Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     INTERACTION LAYER
+============================================================ -->
+<script src="/app.js?v=mp8"></script>
+
+<!-- ===== INTERACTIVE LAYER ===== -->
+
+
+
+
+</body>
+</html>
+
+

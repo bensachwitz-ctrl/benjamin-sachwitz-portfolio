@@ -1,0 +1,16 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WALOA Washington Area Lacrosse Officials Association">
+  <circle cx="60" cy="60" r="58" fill="#0A0A0A" stroke="#F5F2EC" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F2EC" stroke-width="0.8" stroke-dasharray="1 2"/>
+  <defs>
+    <path id="arcTop" d="M 18,60 A 42,42 0 0 1 102,60" fill="none"/>
+    <path id="arcBottom" d="M 18,60 A 42,42 0 0 0 102,60" fill="none"/>
+  </defs>
+  <text fill="#F5F2EC" font-family="Arial, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.5">
+    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">WASHINGTON AREA</textPath>
+  </text>
+  <text fill="#F5F2EC" font-family="Arial, sans-serif" font-size="7.5" font-weight="700" letter-spacing="1.2">
+    <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">LACROSSE OFFICIALS ASSOCIATION</textPath>
+  </text>
+  <rect x="28" y="48" width="64" height="24" fill="#F5F2EC"/>
+  <text x="60" y="65" text-anchor="middle" fill="#0A0A0A" font-family="Arial Black, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="0.5">WALOA</text>
+</svg>

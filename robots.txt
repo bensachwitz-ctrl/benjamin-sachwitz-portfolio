@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# AI/LLM crawlers explicitly welcomed (AEO)
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://bensachwitz.vercel.app/sitemap.xml
