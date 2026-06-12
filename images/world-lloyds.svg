@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="The Lloyd's underwriting room, oxblood duotone illustration">
+  <defs>
+    <linearGradient id="ll-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A0E0E"/>
+      <stop offset="0.55" stop-color="#1A0808"/>
+      <stop offset="1" stop-color="#0A0303"/>
+    </linearGradient>
+    <radialGradient id="ll-glow" cx="0.5" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#8B1A1A" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#6B1111" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0A0303" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ll-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8C77D"/>
+      <stop offset="1" stop-color="#B88A2F"/>
+    </linearGradient>
+    <pattern id="ll-grain" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <rect width="3" height="3" fill="#000" opacity="0"/>
+      <circle cx="0.6" cy="0.6" r="0.45" fill="#F5F2EC" opacity="0.05"/>
+      <circle cx="2.1" cy="1.8" r="0.35" fill="#000" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#ll-sky)"/>
+  <rect width="600" height="800" fill="url(#ll-glow)"/>
+
+  <!-- The Lutine Bell rostrum: an octagonal pulpit, centerpiece of the Room -->
+  <g opacity="0.92" stroke="url(#ll-gold)" fill="none" stroke-width="2.2" stroke-linejoin="round">
+    <!-- canopy -->
+    <path d="M210 250 L300 196 L390 250 L390 268 L210 268 Z" fill="#160606" stroke-width="2.4"/>
+    <path d="M300 196 L300 168" stroke-width="2.4"/>
+    <circle cx="300" cy="160" r="9" fill="#160606"/>
+    <!-- bell -->
+    <path d="M289 248 q11 -22 22 0 Z" fill="url(#ll-gold)" stroke="none"/>
+    <line x1="300" y1="250" x2="300" y2="258" stroke-width="1.6"/>
+    <!-- octagon rostrum body -->
+    <path d="M236 268 L364 268 L388 330 L388 470 L212 470 L212 330 Z" fill="#1C0808" stroke-width="2.6"/>
+    <!-- panel divisions -->
+    <line x1="262" y1="300" x2="262" y2="470" stroke-width="1.1" opacity="0.7"/>
+    <line x1="300" y1="294" x2="300" y2="470" stroke-width="1.1" opacity="0.7"/>
+    <line x1="338" y1="300" x2="338" y2="470" stroke-width="1.1" opacity="0.7"/>
+    <line x1="212" y1="384" x2="388" y2="384" stroke-width="1.1" opacity="0.55"/>
+    <!-- ledger desk ring -->
+    <path d="M196 470 L404 470 L404 500 L196 500 Z" fill="#120505" stroke-width="2.4"/>
+  </g>
+
+  <!-- Surrounding underwriting boxes (the "boxes" of the Room), receding -->
+  <g stroke="#8B1A1A" fill="#120505" stroke-width="1.6" opacity="0.85">
+    <rect x="74" y="540" width="120" height="150" rx="3"/>
+    <rect x="406" y="540" width="120" height="150" rx="3"/>
+    <rect x="232" y="560" width="136" height="170" rx="3" fill="#160606"/>
+    <!-- desk lamps glow -->
+  </g>
+  <g fill="url(#ll-gold)" opacity="0.9">
+    <circle cx="134" cy="566" r="4"/>
+    <circle cx="466" cy="566" r="4"/>
+    <circle cx="300" cy="584" r="4.5"/>
+  </g>
+  <g stroke="#D4A843" stroke-width="1" opacity="0.4" fill="none">
+    <line x1="92" y1="590" x2="176" y2="590"/><line x1="92" y1="612" x2="176" y2="612"/><line x1="92" y1="634" x2="158" y2="634"/>
+    <line x1="424" y1="590" x2="508" y2="590"/><line x1="424" y1="612" x2="508" y2="612"/><line x1="424" y1="634" x2="490" y2="634"/>
+    <line x1="252" y1="608" x2="348" y2="608"/><line x1="252" y1="632" x2="348" y2="632"/><line x1="252" y1="656" x2="328" y2="656"/>
+  </g>
+
+  <!-- High Lloyd's atrium girders overhead -->
+  <g stroke="#6B1111" stroke-width="1.4" opacity="0.55" fill="none">
+    <path d="M0 96 L600 60"/>
+    <path d="M0 60 L600 96"/>
+    <path d="M120 40 L120 130"/><path d="M300 30 L300 150"/><path d="M480 40 L480 130"/>
+  </g>
+
+  <rect width="600" height="800" fill="url(#ll-grain)"/>
+  <rect width="600" height="800" fill="#0A0303" opacity="0.06"/>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="The United States Capitol at dusk, oxblood duotone illustration">
+  <defs>
+    <linearGradient id="fd-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A0E0E"/>
+      <stop offset="0.42" stop-color="#5A1A12"/>
+      <stop offset="0.6" stop-color="#3A1010"/>
+      <stop offset="1" stop-color="#0A0303"/>
+    </linearGradient>
+    <radialGradient id="fd-glow" cx="0.5" cy="0.46" r="0.5">
+      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.5"/>
+      <stop offset="0.5" stop-color="#8B1A1A" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#0A0303" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fd-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8C77D"/><stop offset="1" stop-color="#B88A2F"/>
+    </linearGradient>
+    <pattern id="fd-grain" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-15)">
+      <circle cx="0.6" cy="0.6" r="0.45" fill="#F5F2EC" opacity="0.05"/>
+      <circle cx="2.1" cy="1.8" r="0.35" fill="#000" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#fd-sky)"/>
+  <ellipse cx="300" cy="380" rx="240" ry="170" fill="url(#fd-glow)"/>
+
+  <!-- Reflecting pool foreground -->
+  <rect x="0" y="640" width="600" height="160" fill="#0F0404"/>
+  <rect x="0" y="640" width="600" height="160" fill="#8B1A1A" opacity="0.12"/>
+
+  <!-- The Capitol: central dome + drum, flanked by the two chamber wings -->
+  <g stroke="url(#fd-gold)" stroke-width="2" fill="#140505" stroke-linejoin="round">
+    <!-- Statue of Freedom + finial -->
+    <circle cx="300" cy="150" r="5.5" fill="url(#fd-gold)" stroke="none"/>
+    <line x1="300" y1="156" x2="300" y2="176"/>
+    <!-- cupola lantern -->
+    <path d="M286 196 L314 196 L310 176 L290 176 Z" fill="#1C0808"/>
+    <!-- main dome -->
+    <path d="M252 300 Q252 206 300 206 Q348 206 348 300 Z" fill="#1C0808" stroke-width="2.4"/>
+    <!-- dome ribs -->
+    <g stroke="#8B1A1A" stroke-width="1" opacity="0.7">
+      <path d="M300 206 L300 300"/>
+      <path d="M280 210 Q272 256 274 300"/>
+      <path d="M320 210 Q328 256 326 300"/>
+    </g>
+    <!-- peristyle (colonnaded drum) -->
+    <rect x="244" y="300" width="112" height="58" fill="#160606" stroke-width="2.2"/>
+    <g stroke="#D4A843" stroke-width="2" opacity="0.85">
+      <line x1="258" y1="304" x2="258" y2="354"/><line x1="272" y1="304" x2="272" y2="354"/>
+      <line x1="286" y1="304" x2="286" y2="354"/><line x1="300" y1="304" x2="300" y2="354"/>
+      <line x1="314" y1="304" x2="314" y2="354"/><line x1="328" y1="304" x2="328" y2="354"/>
+      <line x1="342" y1="304" x2="342" y2="354"/>
+    </g>
+    <!-- base block under dome -->
+    <rect x="232" y="358" width="136" height="40" fill="#120505" stroke-width="2.2"/>
+    <!-- central portico pediment -->
+    <path d="M250 398 L350 398 L300 366 Z" fill="#160606" stroke-width="2"/>
+  </g>
+
+  <!-- Central façade with portico columns -->
+  <g stroke="#D4A843" stroke-width="2.2" opacity="0.9">
+    <line x1="262" y1="408" x2="262" y2="560"/><line x1="280" y1="408" x2="280" y2="560"/>
+    <line x1="300" y1="408" x2="300" y2="560"/><line x1="320" y1="408" x2="320" y2="560"/>
+    <line x1="338" y1="408" x2="338" y2="560"/>
+  </g>
+  <rect x="244" y="398" width="112" height="14" fill="#1C0808" stroke="#8B1A1A" stroke-width="1.6"/>
+  <rect x="240" y="556" width="120" height="10" fill="#1C0808" stroke="#8B1A1A" stroke-width="1.6"/>
+
+  <!-- Left + right Senate/House wings -->
+  <g stroke="#8B1A1A" stroke-width="1.8" fill="#120505">
+    <rect x="96" y="452" width="148" height="112"/>
+    <rect x="356" y="452" width="148" height="112"/>
+    <!-- wing pediments -->
+    <path d="M120 452 L220 452 L170 426 Z" fill="#160606"/>
+    <path d="M380 452 L480 452 L430 426 Z" fill="#160606"/>
+  </g>
+  <!-- wing colonnades -->
+  <g stroke="#D4A843" stroke-width="1.6" opacity="0.6">
+    <line x1="116" y1="458" x2="116" y2="560"/><line x1="138" y1="458" x2="138" y2="560"/><line x1="160" y1="458" x2="160" y2="560"/><line x1="182" y1="458" x2="182" y2="560"/><line x1="204" y1="458" x2="204" y2="560"/><line x1="226" y1="458" x2="226" y2="560"/>
+    <line x1="376" y1="458" x2="376" y2="560"/><line x1="398" y1="458" x2="398" y2="560"/><line x1="420" y1="458" x2="420" y2="560"/><line x1="442" y1="458" x2="442" y2="560"/><line x1="464" y1="458" x2="464" y2="560"/><line x1="486" y1="458" x2="486" y2="560"/>
+  </g>
+
+  <!-- ground terrace -->
+  <rect x="60" y="560" width="480" height="22" fill="#1C0808" stroke="#6B1111" stroke-width="1.4"/>
+
+  <!-- lit windows -->
+  <g fill="url(#fd-gold)" opacity="0.8">
+    <rect x="294" y="330" width="12" height="20" rx="1" opacity="0.9"/>
+    <rect x="150" y="500" width="6" height="12"/><rect x="190" y="500" width="6" height="12"/>
+    <rect x="410" y="500" width="6" height="12"/><rect x="450" y="500" width="6" height="12"/>
+  </g>
+
+  <!-- mirrored reflection in the pool (faint, inverted) -->
+  <g opacity="0.16" transform="translate(0 1284) scale(1 -1)">
+    <path d="M252 300 Q252 206 300 206 Q348 206 348 300 Z" fill="#8B1A1A"/>
+    <rect x="244" y="300" width="112" height="58" fill="#8B1A1A"/>
+    <rect x="232" y="358" width="136" height="200" fill="#8B1A1A"/>
+  </g>
+
+  <rect width="600" height="800" fill="url(#fd-grain)"/>
+  <rect width="600" height="800" fill="#0A0303" opacity="0.05"/>
+</svg>

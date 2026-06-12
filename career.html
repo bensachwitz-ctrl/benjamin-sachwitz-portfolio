@@ -244,7 +244,10 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles.css?v=mp8" />
+<!-- Plausible analytics (privacy-friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
+<script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
+<link rel="stylesheet" href="/styles.css?v=mp9" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
@@ -545,20 +548,20 @@
       <div class="text-bone/45 text-[11px] font-mono tracking-[.22em] uppercase">4 markets · 1 lens</div>
     </div>
     <div class="worlds-grid">
-      <figure class="world-tile" data-caption="The Lloyd's Room · London EC3">
-        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=900&q=80&auto=format&fit=crop" alt="London financial district skyline at dusk" loading="lazy" />
+      <figure class="world-tile wt-art" data-caption="The Lloyd's Room · London EC3">
+        <img src="images/world-lloyds.svg" alt="The Lloyd's of London underwriting room, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
         <figcaption><span class="wtnum">01</span><span class="wttxt">Specialty &amp; binding authority</span></figcaption>
       </figure>
-      <figure class="world-tile" data-caption="Commercial trucking · Southeast corridors">
-        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&q=80&auto=format&fit=crop" alt="Commercial truck on a southern highway" loading="lazy" />
+      <figure class="world-tile wt-art" data-caption="Commercial trucking · Southeast corridors">
+        <img src="images/world-trucking.svg" alt="A commercial truck on a Southern pine highway at golden hour, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
         <figcaption><span class="wtnum">02</span><span class="wttxt">Motor carriers · FMCSA &amp; telematics</span></figcaption>
       </figure>
-      <figure class="world-tile" data-caption="Forestry &amp; logging · SC / GA / FL">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=900&q=80&auto=format&fit=crop" alt="Southern pine forest" loading="lazy" />
+      <figure class="world-tile wt-art" data-caption="Forestry &amp; logging · SC / GA / FL">
+        <img src="images/world-forestry.svg" alt="A Southern pine forest seen from above, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
         <figcaption><span class="wtnum">03</span><span class="wttxt">SCTPA-endorsed forestry risks</span></figcaption>
       </figure>
-      <figure class="world-tile" data-caption="Federal DC · Public-sector tech">
-        <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=900&q=80&auto=format&fit=crop" alt="Washington DC Capitol building" loading="lazy" />
+      <figure class="world-tile wt-art" data-caption="Federal DC · Public-sector tech">
+        <img src="images/world-federal.svg" alt="The United States Capitol at dusk, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
         <figcaption><span class="wtnum">04</span><span class="wttxt">DC roots · federal account exposure</span></figcaption>
       </figure>
     </div>
@@ -783,7 +786,7 @@
 <!-- ============================================================
      INTERACTION LAYER
 ============================================================ -->
-<script src="/app.js?v=mp8"></script>
+<script src="/app.js?v=mp9"></script>
 
 <!-- ===== INTERACTIVE LAYER ===== -->
 

@@ -3471,50 +3471,146 @@
   }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
   splitTargets.forEach(h => splitIO.observe(h));
 
-  /* === CONTACT FORM === */
+  /* === BRAND CELEBRATION CONFETTI (ox + gold; reduced-motion-safe) ===
+     Restrained burst — Carolina Executive = restraint. Skipped entirely when the
+     visitor prefers reduced motion. Self-cleans after the longest particle lands. */
+  function celebrate(originEl) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const COLORS = ['#8B1A1A', '#D4A843', '#E8C77D', '#6B1111', '#F5F2EC'];
+    const layer = document.createElement('div');
+    layer.className = 'confetti-layer';
+    layer.setAttribute('aria-hidden', 'true');
+    // launch from the element's horizontal center if given, else screen center
+    let cx = 50;
+    if (originEl && originEl.getBoundingClientRect) {
+      const r = originEl.getBoundingClientRect();
+      cx = ((r.left + r.width / 2) / window.innerWidth) * 100;
+    }
+    const N = window.innerWidth < 640 ? 36 : 56;
+    for (let i = 0; i < N; i++) {
+      const bit = document.createElement('span');
+      bit.className = 'confetti-bit';
+      const spreadFromCenter = (Math.random() - 0.5) * 60;        // start near the origin column
+      bit.style.left = Math.max(0, Math.min(100, cx + spreadFromCenter)) + 'vw';
+      bit.style.background = COLORS[i % COLORS.length];
+      bit.style.setProperty('--cf-x', ((Math.random() - 0.5) * 280).toFixed(0) + 'px');
+      bit.style.setProperty('--cf-rot', (360 + Math.random() * 540).toFixed(0) + 'deg');
+      bit.style.setProperty('--cf-dur', (2 + Math.random() * 1.4).toFixed(2) + 's');
+      bit.style.setProperty('--cf-delay', (Math.random() * 0.25).toFixed(2) + 's');
+      if (Math.random() < 0.4) bit.style.borderRadius = '50%';     // mix circles + rectangles
+      if (Math.random() < 0.3) { bit.style.width = '6px'; bit.style.height = '6px'; }
+      layer.appendChild(bit);
+    }
+    document.body.appendChild(layer);
+    setTimeout(() => { if (layer.parentNode) layer.parentNode.removeChild(layer); }, 4200);
+  }
+  window.celebrate = celebrate;
+
+  /* === CONTACT FORM — full 4-state (idle / loading / error / success) ===
+     - inline validation (validate-on-blur, per-field error text, focus-first-error)
+     - loading spinner on submit
+     - success card replaces the form + brand confetti
+     - explicit error banner with mailto fallback on non-200 / network failure */
   const form = document.getElementById('contactForm');
   if (form) {
+    const fName = document.getElementById('fName');
+    const fEmail = document.getElementById('fEmail');
+    const fMsg = document.getElementById('fMessage');
+    const fSubject = document.getElementById('fSubject');
+    const btn = document.getElementById('formSubmit');
+    const errBanner = document.getElementById('contactError');
+    const successCard = document.getElementById('contactSuccess');
+    const sendAnother = document.getElementById('contactSendAnother');
+    const idleBtnHTML = btn ? btn.innerHTML : 'Send message';
+
+    const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    const RULES = {
+      fName:  { el: fName,  msg: 'Your name, please.',        ok: (v) => v.trim().length >= 2 },
+      fEmail: { el: fEmail, msg: 'A valid email so I can reply.', ok: (v) => isEmail(v.trim()) },
+      fMessage: { el: fMsg, msg: 'Add a short message.',      ok: (v) => v.trim().length >= 2 }
+    };
+    function setFieldError(key, show) {
+      const r = RULES[key]; if (!r || !r.el) return;
+      const errEl = document.getElementById('err' + key.slice(1)); // fName -> errName
+      r.el.classList.toggle('is-invalid', show);
+      r.el.setAttribute('aria-invalid', show ? 'true' : 'false');
+      if (errEl) { errEl.textContent = show ? r.msg : ''; errEl.classList.toggle('show', show); }
+    }
+    function validateField(key) { const r = RULES[key]; const valid = r.ok(r.el.value); setFieldError(key, !valid); return valid; }
+    function updateSubmitState() {
+      const allValid = Object.keys(RULES).every((k) => RULES[k].ok(RULES[k].el.value));
+      if (btn) btn.disabled = !allValid;
+    }
+    // validate-on-blur; clear error + re-evaluate submit as they type
+    Object.keys(RULES).forEach((key) => {
+      const el = RULES[key].el; if (!el) return;
+      el.addEventListener('blur', () => validateField(key));
+      el.addEventListener('input', () => { if (el.classList.contains('is-invalid')) validateField(key); updateSubmitState(); if (errBanner) errBanner.classList.remove('show'); });
+    });
+    updateSubmitState();
+
+    if (sendAnother && successCard) {
+      sendAnother.addEventListener('click', () => {
+        successCard.classList.remove('show', 'pop');
+        form.style.display = '';
+        form.reset();
+        Object.keys(RULES).forEach((k) => setFieldError(k, false));
+        updateSubmitState();
+        if (fName) fName.focus();
+      });
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn = document.getElementById('formSubmit');
-      const original = btn ? btn.innerHTML : '';
-      const n = document.getElementById('fName').value.trim();
-      const em = document.getElementById('fEmail').value.trim();
-      const s = document.getElementById('fSubject').value.trim();
-      const m = document.getElementById('fMessage').value.trim();
-      if (!n || !em || !m) return;
-      if (btn) { btn.innerHTML = 'Sending…'; btn.disabled = true; }
+      if (errBanner) errBanner.classList.remove('show');
+
+      // focus-first-error
+      let firstInvalid = null;
+      Object.keys(RULES).forEach((key) => { const valid = validateField(key); if (!valid && !firstInvalid) firstInvalid = RULES[key].el; });
+      if (firstInvalid) { firstInvalid.focus(); return; }
+
+      const n = fName.value.trim(), em = fEmail.value.trim();
+      const s = fSubject ? fSubject.value.trim() : '', m = fMsg.value.trim();
+
+      if (btn) {
+        btn.disabled = true;
+        btn.setAttribute('aria-busy', 'true');
+        btn.innerHTML = '<span class="btn-spin"></span> Sending…';
+      }
 
       const payload = {
         _subject: s || `Portfolio Inquiry from ${n}`,
-        _template: 'table',
-        _captcha: 'false',
-        Name: n, Email: em, Subject: s || 'Portfolio Inquiry',
-        Message: m
+        _template: 'table', _captcha: 'false',
+        Name: n, Email: em, Subject: s || 'Portfolio Inquiry', Message: m
       };
 
-      // Try in order: 1) our own /api/contact (Resend → formsubmit relay), 2) direct formsubmit, 3) mailto
       let ok = false;
-      let channel = null;
       try {
         const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
         });
-        if (res.ok) {
-          const data = await res.json().catch(() => ({}));
-          ok = data.ok === true;
-          channel = data.channel || null;
-        }
+        if (res.ok) { const data = await res.json().catch(() => ({})); ok = data.ok === true; }
       } catch (_) { ok = false; }
 
-      // No auto-opening the email client. The serverless endpoint auto-sends and logs
-      // the message; if the network call itself failed, we ask the visitor to email
-      // directly rather than hijacking their inbox with a popup.
-      if (btn) {
-        btn.innerHTML = ok ? '✓ Message sent. I\'ll reply soon' : 'Couldn\'t send — email bensachwitz@outlook.com';
-        setTimeout(() => { btn.innerHTML = original; btn.disabled = false; if (ok) form.reset(); }, 4200);
+      if (btn) { btn.removeAttribute('aria-busy'); btn.innerHTML = idleBtnHTML; }
+
+      if (ok) {
+        if (typeof window.track === 'function') window.track('Contact: Sent');
+        if (successCard) {
+          form.style.display = 'none';
+          successCard.classList.add('show');
+          // spring pop on the checkmark, then confetti
+          requestAnimationFrame(() => successCard.classList.add('pop'));
+          celebrate(successCard);
+        } else if (btn) {
+          btn.innerHTML = 'Sent ✓';
+          setTimeout(() => { btn.innerHTML = idleBtnHTML; form.reset(); updateSubmitState(); }, 4000);
+        }
+      } else {
+        if (errBanner) errBanner.classList.add('show');
+        if (btn) { btn.disabled = false; }
       }
     });
   }
@@ -3854,6 +3950,10 @@
 
       bookingBody.classList.add('hidden');
       bookingSuccess.classList.remove('hidden');
+      // celebration: spring-pop the checkmark ring + restrained brand confetti (reduced-motion-safe)
+      requestAnimationFrame(() => bookingSuccess.classList.add('pop'));
+      if (typeof window.celebrate === 'function') window.celebrate(bookingSuccess);
+      if (typeof window.track === 'function') window.track('Booking: Requested');
       if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
     });
   }
@@ -4570,10 +4670,77 @@
   }
 })();
 
-// Scroll progress bar
+// Scroll progress bar + Drifting background glyphs dynamic cursor & scroll follow
+let targetParallaxX = 0, targetParallaxY = 0;
+let currentParallaxX = 0, currentParallaxY = 0;
+
+window.addEventListener('mousemove', (e) => {
+  // Normalize cursor coords relative to center: -1 to 1
+  const nx = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+  const ny = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+  // Max drift in pixels
+  targetParallaxX = nx * 35;
+  targetParallaxY = ny * 35;
+});
+
 window.addEventListener('scroll', () => {
   const h = document.documentElement.scrollHeight - window.innerHeight;
   const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
   const bar = document.getElementById('scrollProgress');
   if (bar) bar.style.width = pct + '%';
 }, { passive: true });
+
+function updateParallax() {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Smooth interpolation (lerp)
+    currentParallaxX += (targetParallaxX - currentParallaxX) * 0.08;
+    currentParallaxY += (targetParallaxY - currentParallaxY) * 0.08;
+    
+    document.documentElement.style.setProperty('--mouse-drift-x', currentParallaxX.toFixed(2) + 'px');
+    document.documentElement.style.setProperty('--mouse-drift-y', currentParallaxY.toFixed(2) + 'px');
+  }
+  requestAnimationFrame(updateParallax);
+}
+requestAnimationFrame(updateParallax);
+
+/* ============================================================
+   ANALYTICS — Plausible custom-event tracking (delegated)
+   The Plausible script + window.plausible() queue shim are loaded in <head>.
+   Rather than hand-tagging every button across 7 pages with a className,
+   we delegate from the document so the money-events fire identically on
+   every page. Safe no-op if Plausible is blocked (queue shim swallows it).
+============================================================ */
+(function () {
+  function track(name, props) {
+    try { if (typeof window.plausible === 'function') window.plausible(name, props ? { props: props } : undefined); }
+    catch (_) { /* analytics must never throw into the UX */ }
+  }
+  // expose for the form handlers (contact + booking) to call on success
+  window.track = track;
+
+  document.addEventListener('click', function (e) {
+    const t = e.target.closest('a, button');
+    if (!t) return;
+
+    // Open-booking intent (any "book a call" / "start a project" trigger, every page)
+    if (t.closest('[data-open-booking]')) { track('Booking: Open'); return; }
+
+    const href = (t.getAttribute && t.getAttribute('href')) || '';
+
+    // App Store badge / app-tile taps
+    if (href.indexOf('apps.apple.com') !== -1) {
+      const app = href.indexOf('bar-crawl-golf') !== -1 ? 'Bar Crawl Golf'
+                : href.indexOf('my-daily-tool') !== -1 ? 'My Daily Tool'
+                : 'App';
+      track('App Store: Tap', { app: app });
+      return;
+    }
+
+    // "Launch site" / "Web version" / live-project outbound links
+    const label = (t.textContent || '').trim().toLowerCase();
+    if (label.indexOf('launch site') !== -1 || label.indexOf('web version') !== -1 || label.indexOf('view project') !== -1) {
+      track('Project: Launch', { url: href });
+      return;
+    }
+  }, true);
+})();

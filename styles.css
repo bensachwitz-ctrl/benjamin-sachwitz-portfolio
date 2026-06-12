@@ -495,6 +495,75 @@
   textarea.finput { min-height: 110px; resize: vertical; padding-top: .6rem; border: 1px solid rgba(10,10,10,.15); padding: .75rem; }
   textarea.finput:focus { border-color: var(--ox); }
 
+  /* ===== Contact form — inline validation + 4-state ===== */
+  .finput.is-invalid { border-color: var(--ox); box-shadow: 0 1px 0 var(--ox); }
+  textarea.finput.is-invalid { border-color: var(--ox); box-shadow: inset 0 0 0 1px var(--ox); }
+  .field-err {
+    display: block; min-height: 0; overflow: hidden;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .06em;
+    color: var(--ox); margin-top: .3rem; max-height: 0; opacity: 0;
+    transition: max-height .28s cubic-bezier(.2,.7,.2,1), opacity .28s, margin-top .28s;
+  }
+  .field-err.show { max-height: 2rem; opacity: 1; margin-top: .4rem; }
+  /* loading spinner inside the submit button */
+  .btn-spin {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid currentColor; border-top-color: transparent;
+    display: inline-block; animation: btnSpin .7s linear infinite;
+  }
+  @keyframes btnSpin { to { transform: rotate(360deg); } }
+  .btn-ink[aria-busy="true"], .btn-gold[aria-busy="true"] { opacity: .8; cursor: progress; }
+  /* tactile press on primary CTAs (plan §4.3) */
+  .btn-ink:active, .btn-gold:active { transform: scale(.97); }
+
+  /* Inline contact-success card (mirrors the booking success mark, scaled for the form column) */
+  .contact-success {
+    display: none; text-align: center; padding: 2.2rem 1.4rem;
+    border: 1px solid rgba(10,10,10,.14); background: rgba(255,255,255,.45);
+    animation: csIn .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .contact-success.show { display: block; }
+  @keyframes csIn { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
+  .contact-success-mark { display: inline-block; color: #2F6E3B; }
+  .contact-success-mark svg { width: 38px; height: 38px; }
+  .contact-success-mark .csc-ring { stroke-dasharray: 120; stroke-dashoffset: 120; animation: bscRing .7s ease-out forwards; }
+  .contact-success-mark .csc-tick { stroke-dasharray: 40; stroke-dashoffset: 40; animation: bscTick .45s ease-out .5s forwards; }
+  /* error banner with mailto fallback */
+  .contact-error {
+    display: none; margin-top: 1rem; padding: .85rem 1rem;
+    border-left: 3px solid var(--ox); background: rgba(139,26,26,.06);
+    font-size: 13px; color: var(--ink);
+  }
+  .contact-error.show { display: block; animation: csIn .4s cubic-bezier(.2,.7,.2,1); }
+  .contact-error a { color: var(--ox); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* spring pop on the success checkmark ring (booking + contact) */
+  .booking-success.pop .booking-success-mark, .contact-success.pop .contact-success-mark { animation: markPop .6s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes markPop { 0% { transform: scale(.6); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+
+  /* ===== Celebration confetti (brand: ox + gold). Fixed overlay, never blocks input. ===== */
+  .confetti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden; }
+  .confetti-bit {
+    position: absolute; top: -16px; width: 9px; height: 14px; opacity: 0;
+    will-change: transform, opacity;
+    animation: confettiFall var(--cf-dur, 2.4s) cubic-bezier(.25,.6,.4,1) var(--cf-delay, 0s) forwards;
+  }
+  @keyframes confettiFall {
+    0%   { opacity: 0; transform: translate3d(0,-10px,0) rotate(0deg); }
+    8%   { opacity: 1; }
+    100% { opacity: 0; transform: translate3d(var(--cf-x, 0px), 102vh, 0) rotate(var(--cf-rot, 540deg)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* JS already skips confetti when reduced-motion is on; this is the CSS failsafe. */
+    .confetti-layer { display: none !important; }
+    .confetti-bit { animation: none !important; }
+    .btn-spin { animation: none !important; border-top-color: currentColor; }
+    .booking-success.pop .booking-success-mark, .contact-success.pop .contact-success-mark { animation: none !important; }
+    .contact-success-mark .csc-ring, .contact-success-mark .csc-tick { animation: none !important; stroke-dashoffset: 0 !important; }
+    .contact-success, .contact-error { animation: none !important; }
+    .btn-ink:active, .btn-gold:active { transform: none; }
+  }
+
   /* Roman numerals for chapter */
   .chapter-num {
     font-family: 'Fraunces', serif; font-weight: 300; font-style: italic;
@@ -1536,6 +1605,18 @@
   }
   .world-tile:hover img { transform: scale(1.08); filter: grayscale(0) brightness(.92) contrast(1.02); }
   .world-tile:hover { box-shadow: 0 24px 48px rgba(0,0,0,.5), 0 0 0 1px rgba(245,242,236,.25); }
+  /* Custom oxblood-duotone SVG art tiles: already palette-toned, so DON'T desaturate
+     them like the old photos. Lift slightly on hover; the embedded film-grain reads better
+     at full saturation. To regenerate as raster later (Higgsfield/ideogram4, ~2 credits each):
+     TODO ART PROMPT — "Editorial duotone in oxblood #8B1A1A and bone #F5F2EC of {the Lloyd's
+     underwriting room / a Southeastern logging truck on a pine highway at golden hour / a
+     Southern pine forest from above / the US Capitol at dusk}, antique-gold #D4A843 accents,
+     film-grain, muted, archival, Lloyd's-of-London-meets-Vercel restraint, no text, 3:4 portrait." */
+  .world-tile.wt-art img {
+    filter: saturate(1) brightness(.96) contrast(1.04);
+    transition: transform 1.4s cubic-bezier(.2,.7,.2,1), filter .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .world-tile.wt-art:hover img { transform: scale(1.06); filter: saturate(1.08) brightness(1.06) contrast(1.05); }
   .world-tile figcaption {
     position: absolute; inset: auto 0 0 0; padding: 1rem .9rem .85rem;
     display: flex; flex-direction: column; gap: .2rem;
@@ -2468,11 +2549,13 @@
     font-size: clamp(40px, 4.6vw, 72px);
     opacity: 0.07;
     filter: blur(0.3px);
+    --depth-factor: 0.35;
   }
   /* Near layer — larger, slightly more visible */
   .ambient-glyph.ag-near {
     font-size: clamp(58px, 6.8vw, 104px);
     opacity: 0.10;
+    --depth-factor: 1.15;
   }
   /* Slight color tint in builder mode so glyphs feel native to that palette */
   html[data-mode="builder"] .ambient-glyph { color: var(--g-bd-color, rgba(20,160,92,.7)); opacity: .08; }
@@ -2554,10 +2637,10 @@
      fades in and out, with a slight per-symbol horizontal lean (--fx). Duration is
      randomized per symbol in JS, so they travel at different speeds. */
   @keyframes glyphFloat {
-    0%   { opacity: 0; transform: translate(0, 0) scale(0.88); }
+    0%   { opacity: 0; transform: translate(calc(var(--mouse-drift-x, 0px) * var(--depth-factor, 1)), calc(var(--mouse-drift-y, 0px) * var(--depth-factor, 1))) scale(0.88); }
     14%  { opacity: var(--op-max, .14); }
     86%  { opacity: var(--op-max, .14); }
-    100% { opacity: 0; transform: translate(var(--mx, 0px), var(--my, -30px)) scale(0.96); }
+    100% { opacity: 0; transform: translate(calc(var(--mx, 0px) + var(--mouse-drift-x, 0px) * var(--depth-factor, 1)), calc(var(--my, -30px) + var(--mouse-drift-y, 0px) * var(--depth-factor, 1))) scale(0.96); }
   }
 
   /* On dark-bg sections the glyphs should switch to bone color so they remain barely-visible.
@@ -2636,8 +2719,8 @@
   html[data-mode="builder"] .section-glyph::before { content: attr(data-bd); }
   html[data-mode="builder"] .section-glyph { color: var(--g-bd-color, rgba(74,222,128,.85)); }
 
-  .section-glyph.sg-far  { font-size: clamp(40px, 4.6vw, 72px);  --ag-op: .06; }
-  .section-glyph.sg-near { font-size: clamp(58px, 6.8vw, 104px); --ag-op: .09; }
+  .section-glyph.sg-far  { font-size: clamp(40px, 4.6vw, 72px);  --ag-op: .06; --depth-factor: 0.35; }
+  .section-glyph.sg-near { font-size: clamp(58px, 6.8vw, 104px); --ag-op: .09; --depth-factor: 1.15; }
 
   /* Reuse the ambient agDrift keyframes; vary path + phase per glyph. */
   .sg-1 { top:  9%; left: 10%; animation: agDriftA 34s  ease-in-out infinite; }

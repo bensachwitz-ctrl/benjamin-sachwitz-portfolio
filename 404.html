@@ -242,7 +242,10 @@
 }
 </script>
 
-<link rel="stylesheet" href="/styles.css?v=mp8" />
+<!-- Plausible analytics (privacy-friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
+<script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
+<link rel="stylesheet" href="/styles.css?v=mp9" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
@@ -513,7 +516,7 @@
 <!-- ============================================================
      INTERACTION LAYER
 ============================================================ -->
-<script src="/app.js?v=mp8"></script>
+<script src="/app.js?v=mp9"></script>
 
 <!-- ===== INTERACTIVE LAYER ===== -->
 
