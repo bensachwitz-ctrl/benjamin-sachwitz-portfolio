@@ -2547,19 +2547,21 @@
   /* Far layer — small, dimmer, slower */
   .ambient-glyph.ag-far {
     font-size: clamp(40px, 4.6vw, 72px);
-    opacity: 0.07;
+    opacity: 0.18;
+    --ag-op: 0.18;
     filter: blur(0.3px);
     --depth-factor: 0.35;
   }
   /* Near layer — larger, slightly more visible */
   .ambient-glyph.ag-near {
     font-size: clamp(58px, 6.8vw, 104px);
-    opacity: 0.10;
+    opacity: 0.28;
+    --ag-op: 0.28;
     --depth-factor: 1.15;
   }
   /* Slight color tint in builder mode so glyphs feel native to that palette */
-  html[data-mode="builder"] .ambient-glyph { color: var(--g-bd-color, rgba(20,160,92,.7)); opacity: .08; }
-  html[data-mode="builder"] .ambient-glyph.ag-near { opacity: .11; }
+  html[data-mode="builder"] .ambient-glyph { color: var(--g-bd-color, rgba(20,160,92,.7)); --ag-op: .20; }
+  html[data-mode="builder"] .ambient-glyph.ag-near { --ag-op: .30; }
 
   /* Position each glyph across the viewport. Mix top/left + drift origin. */
   .ag-1  { top:  6%; left:  8%; animation: agDriftA 34s ease-in-out infinite; }
@@ -2684,8 +2686,8 @@
     .ambient-glyph.ag-3, .ambient-glyph.ag-5, .ambient-glyph.ag-7,
     .ambient-glyph.ag-9, .ambient-glyph.ag-11, .ambient-glyph.ag-13,
     .ambient-glyph.ag-15, .ambient-glyph.ag-17, .ambient-glyph.ag-19 { display: none; }
-    .ambient-glyph { opacity: .06; }
-    .ambient-glyph.ag-near { opacity: .085; }
+    .ambient-glyph { --ag-op: .14; }
+    .ambient-glyph.ag-near { --ag-op: .20; }
   }
   @media (prefers-reduced-motion: reduce) {
     .ambient-glyph { animation: none !important; }
@@ -2719,8 +2721,8 @@
   html[data-mode="builder"] .section-glyph::before { content: attr(data-bd); }
   html[data-mode="builder"] .section-glyph { color: var(--g-bd-color, rgba(74,222,128,.85)); }
 
-  .section-glyph.sg-far  { font-size: clamp(40px, 4.6vw, 72px);  --ag-op: .06; --depth-factor: 0.35; }
-  .section-glyph.sg-near { font-size: clamp(58px, 6.8vw, 104px); --ag-op: .09; --depth-factor: 1.15; }
+  .section-glyph.sg-far  { font-size: clamp(40px, 4.6vw, 72px);  --ag-op: .16; --depth-factor: 0.35; }
+  .section-glyph.sg-near { font-size: clamp(58px, 6.8vw, 104px); --ag-op: .24; --depth-factor: 1.15; }
 
   /* Reuse the ambient agDrift keyframes; vary path + phase per glyph. */
   .sg-1 { top:  9%; left: 10%; animation: agDriftA 34s  ease-in-out infinite; }
@@ -2734,8 +2736,8 @@
 
   @media (hover: none), (max-width: 640px) {
     .section-glyph.sg-3, .section-glyph.sg-5, .section-glyph.sg-7 { display: none; }
-    .section-glyph.sg-far  { --ag-op: .04;  }
-    .section-glyph.sg-near { --ag-op: .06;  }
+    .section-glyph.sg-far  { --ag-op: .12;  }
+    .section-glyph.sg-near { --ag-op: .18;  }
   }
   @media (prefers-reduced-motion: reduce) {
     .section-glyph { animation: none !important; }
