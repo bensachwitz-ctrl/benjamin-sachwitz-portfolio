@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1398,7 +1398,18 @@ setTimeout(()=>{document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>{if(
   function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
   resize();window.addEventListener('resize',resize);
   const stars=[];
-  for(let i=0;i<300;i++){stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+.2,a:Math.random(),sp:Math.random()*.005+.001,d:Math.random()>.5?1:-1,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.1})}
+  for (let i = 0; i < 300; i++) {
+    stars.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.4 + 0.2,
+      a: Math.random(),
+      sp: Math.random() * 0.005 + 0.001,
+      d: Math.random() > 0.5 ? 1 : -1,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: (Math.random() - 0.5) * 0.1
+    });
+  }
   (function draw(){
     ctx.clearRect(0,0,w,h);
     stars.forEach(s=>{
