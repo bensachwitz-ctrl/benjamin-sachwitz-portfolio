@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1502,7 +1502,7 @@ function closeModal(e){
   document.body.style.overflow='';
   if(lastFocusedEl)lastFocusedEl.focus();
 }
-document.addEventListener('keydown',e=>{
+function handleModalKeydown(e){
   if(e.key==='Escape'){closeModal();closeLightbox()}
   if(e.key==='Tab'){
     const modal=document.getElementById('bookModal');
@@ -1512,7 +1512,8 @@ document.addEventListener('keydown',e=>{
     if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus()}}
     else{if(document.activeElement===last){e.preventDefault();first.focus()}}
   }
-});
+}
+document.addEventListener('keydown', handleModalKeydown);
 
 /* ===== BOOK FORM ===== */
 function handleBook(e){
