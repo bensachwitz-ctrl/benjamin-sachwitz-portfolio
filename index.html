@@ -2188,7 +2188,15 @@ window.addEventListener('scroll',()=>{
   const overOverlay=document.getElementById('snakeOver');
   const finalScoreEl=document.getElementById('snakeFinalScore');
 
-  let cols=30,rows=20,cellW,cellH;
+  const CONFIG = {
+    cols: 30,
+    rows: 20,
+    initialSpeed: 120,
+    minSpeed: 60,
+    speedDecrement: 2,
+    initialSnake: [{x: 15, y: 10}, {x: 14, y: 10}, {x: 13, y: 10}]
+  };
+  let cols=CONFIG.cols,rows=CONFIG.rows,cellW,cellH;
   let snake,dir,nextDir,food,score,highScore=0,gameLoop,running=false,speed;
 
   function resize(){
@@ -2273,8 +2281,8 @@ window.addEventListener('scroll',()=>{
       scoreEl.textContent=score;
       food=spawnFood();
       /* speed up slightly */
-      if(speed>60){
-        speed-=2;
+      if(speed>CONFIG.minSpeed){
+        speed-=CONFIG.speedDecrement;
         clearInterval(gameLoop);
         gameLoop=setInterval(tick,speed);
       }
@@ -2294,9 +2302,9 @@ window.addEventListener('scroll',()=>{
   }
 
   window.startSnake=function(){
-    snake=[{x:15,y:10},{x:14,y:10},{x:13,y:10}];
+    snake=CONFIG.initialSnake.map(s => ({...s}));
     dir={x:1,y:0};nextDir={x:1,y:0};
-    score=0;speed=120;
+    score=0;speed=CONFIG.initialSpeed;
     scoreEl.textContent='0';
     food=spawnFood();
     startOverlay.classList.add('hide');
@@ -2341,7 +2349,7 @@ window.addEventListener('scroll',()=>{
   });
 
   /* initial draw */
-  snake=[{x:15,y:10},{x:14,y:10},{x:13,y:10}];
+  snake=CONFIG.initialSnake.map(s => ({...s}));
   dir={x:1,y:0};nextDir={x:1,y:0};
   food={x:20,y:10};score=0;
   draw();
