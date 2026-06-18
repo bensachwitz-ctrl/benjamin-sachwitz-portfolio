@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -2211,28 +2211,27 @@ window.addEventListener('scroll',()=>{
     return pos;
   }
 
-  function draw(){
-    ctx.fillStyle='#080c18';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    /* grid lines */
+  function drawGrid(){
     ctx.strokeStyle='rgba(79,172,254,0.04)';
     ctx.lineWidth=1;
     for(let i=0;i<=cols;i++){ctx.beginPath();ctx.moveTo(i*cellW,0);ctx.lineTo(i*cellW,canvas.height);ctx.stroke()}
     for(let i=0;i<=rows;i++){ctx.beginPath();ctx.moveTo(0,i*cellH);ctx.lineTo(canvas.width,i*cellH);ctx.stroke()}
+  }
 
-    /* draw walls */
+  function drawWalls(){
     ctx.strokeStyle='rgba(79,172,254,0.15)';
     ctx.lineWidth=2;
-    ctx.strokeRect(1,1,canvas.width-2,canvas.height-2)
+    ctx.strokeRect(1,1,canvas.width-2,canvas.height-2);
+  }
 
-    /* food */
+  function drawFood(){
     const fx=food.x*cellW+cellW/2,fy=food.y*cellH+cellH/2,fr=Math.min(cellW,cellH)*0.35;
     ctx.beginPath();ctx.arc(fx,fy,fr,0,Math.PI*2);
     ctx.fillStyle='#f093fb';ctx.fill();
     ctx.shadowBlur=12;ctx.shadowColor='#f093fb';ctx.fill();ctx.shadowBlur=0;
+  }
 
-    /* snake */
+  function drawSnake(){
     snake.forEach((seg,i)=>{
       const x=seg.x*cellW,y=seg.y*cellH;
       const pad=2;
@@ -2250,6 +2249,15 @@ window.addEventListener('scroll',()=>{
       ctx.fill();
       ctx.shadowBlur=0;
     });
+  }
+
+  function draw(){
+    ctx.fillStyle='#080c18';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    drawGrid();
+    drawWalls();
+    drawFood();
+    drawSnake();
   }
 
   function update(){
