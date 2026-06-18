@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1357,14 +1357,24 @@ to{opacity:1;transform:scale(1)}
 const nav=document.getElementById('nav'),sp=document.getElementById('sp'),secs=document.querySelectorAll('section[id]');
 const navLinksAll=document.querySelectorAll('.nav-links a:not(.nav-cta)');
 const navInd=document.getElementById('navInd');
+const _navIndCache = { active: null, r: null, pr: null };
 function updateNavIndicator(){
   const active=document.querySelector('.nav-links a.active');
   if(!active||!navInd)return;
-  const r=active.getBoundingClientRect();
-  const pr=active.parentElement.getBoundingClientRect();
+  if (_navIndCache.active !== active) {
+    _navIndCache.active = active;
+    _navIndCache.r = active.getBoundingClientRect();
+    _navIndCache.pr = active.parentElement.getBoundingClientRect();
+  }
+  const r=_navIndCache.r;
+  const pr=_navIndCache.pr;
   navInd.style.left=(r.left-pr.left)+'px';
   navInd.style.width=r.width+'px';
 }
+window.addEventListener('resize', () => {
+  _navIndCache.active = null;
+  updateNavIndicator();
+}, {passive: true});
 const btt=document.getElementById('btt'),scrollInd=document.getElementById('scrollInd');
 let ticking=false;
 window.addEventListener('scroll',()=>{
