@@ -2061,10 +2061,7 @@ window.addEventListener('scroll',()=>{
     return{x:Math.max(30,Math.min(cw-30,x)),y:Math.max(30,Math.min(ch-30,y))};
   }
 
-  function drawMap(){
-    ctx.clearRect(0,0,cw,ch);
-
-    /* Draw grid lines */
+  function drawGrid(){
     ctx.strokeStyle='rgba(79,172,254,0.06)';
     ctx.lineWidth=1;
     for(let i=0;i<12;i++){
@@ -2075,10 +2072,9 @@ window.addEventListener('scroll',()=>{
       const y=(ch/8)*i;
       ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cw,y);ctx.stroke();
     }
+  }
 
-    /* Draw arcs between locations */
-    const pts=locations.map(function(l){return project(l.lat,l.lng)});
-    const home=pts[0]; /* Moncks Corner */
+  function drawArcs(pts, home){
     for(let i=1;i<pts.length;i++){
       const p=pts[i];
       const mx=(home.x+p.x)/2;
@@ -2095,8 +2091,9 @@ window.addEventListener('scroll',()=>{
       ctx.stroke();
       ctx.setLineDash([]);
     }
+  }
 
-    /* Animated traveling dots on arcs */
+  function drawDots(pts, home){
     const t=(Date.now()*0.0003)%1;
     for(let i=1;i<pts.length;i++){
       const p=pts[i];
@@ -2110,6 +2107,17 @@ window.addEventListener('scroll',()=>{
       ctx.fillStyle=locations[i].color;
       ctx.fill();
     }
+  }
+
+  function drawMap(){
+    ctx.clearRect(0,0,cw,ch);
+    drawGrid();
+
+    const pts=locations.map(function(l){return project(l.lat,l.lng)});
+    const home=pts[0]; /* Moncks Corner */
+
+    drawArcs(pts, home);
+    drawDots(pts, home);
   }
 
   function createPins(){
