@@ -1543,13 +1543,6 @@ function handleBook(e){
 })();
 
 /* ===== PHOTO CAROUSEL ===== */
-function scrollCar(dir){
-  const track=document.getElementById('carTrack');
-  if(!track)return;
-  const slide=track.querySelector('.carousel-slide');
-  const w=slide.offsetWidth+16; // gap
-  track.parentElement.scrollBy({left:dir*w*2,behavior:'smooth'});
-}
 (function(){
   const wrap=document.querySelector('.carousel-wrap');
   if(!wrap)return;
