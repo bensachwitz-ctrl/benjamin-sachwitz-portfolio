@@ -1360,10 +1360,8 @@ const navInd=document.getElementById('navInd');
 function updateNavIndicator(){
   const active=document.querySelector('.nav-links a.active');
   if(!active||!navInd)return;
-  const r=active.getBoundingClientRect();
-  const pr=active.parentElement.getBoundingClientRect();
-  navInd.style.left=(r.left-pr.left)+'px';
-  navInd.style.width=r.width+'px';
+  navInd.style.left=active.offsetLeft+'px';
+  navInd.style.width=active.offsetWidth+'px';
 }
 const btt=document.getElementById('btt'),scrollInd=document.getElementById('scrollInd');
 let ticking=false;
