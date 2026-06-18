@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1925,25 +1925,29 @@ window.addEventListener('scroll',()=>{
     });
   }
 
+  function updateNodePosition(n, t, cx, cy, mouseX, mouseY) {
+    const a=n.angle+t*n.speed;
+    n.x=cx+Math.cos(a)*n.orbitR*0.9+Math.sin(a*0.7)*n.offsetX+n.offsetX;
+    n.y=cy+Math.sin(a)*n.orbitR*0.6+Math.cos(a*0.5)*n.offsetY+n.offsetY;
+
+    if(mouseX>0&&mouseY>0){
+      const dx=mouseX-n.x, dy=mouseY-n.y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<200&&dist>0){
+        const pull=0.03*(1-dist/200);
+        n.x+=dx*pull;
+        n.y+=dy*pull;
+      }
+    }
+    return n;
+  }
+
   function animate(){
     const t=Date.now()*0.001;
     const cx=cw/2, cy=ch/2;
 
     nodes.forEach(function(n){
-      const a=n.angle+t*n.speed;
-      n.x=cx+Math.cos(a)*n.orbitR*0.9+Math.sin(a*0.7)*n.offsetX+n.offsetX;
-      n.y=cy+Math.sin(a)*n.orbitR*0.6+Math.cos(a*0.5)*n.offsetY+n.offsetY;
-
-      if(mouseX>0&&mouseY>0){
-        const dx=mouseX-n.x, dy=mouseY-n.y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<200&&dist>0){
-          const pull=0.03*(1-dist/200);
-          n.x+=dx*pull;
-          n.y+=dy*pull;
-        }
-      }
-
+      updateNodePosition(n, t, cx, cy, mouseX, mouseY);
       n.el.style.transform='translate('+(n.x-n.size/2)+'px,'+(n.y-n.size/2)+'px)';
     });
 

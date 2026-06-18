@@ -1,0 +1,7 @@
+🎯 **What:** Extracted the logic for calculating node positions in the `animate` function into a separate `updateNodePosition` function in `index.html`. Also fixed an HTMLHint validation issue (`src-not-empty`) by using a base64 transparent GIF as the initial `src` for `#lbImg`.
+
+💡 **Why:** Moving the complex mathematical calculation out of the `nodes.forEach` loop block inside `animate` makes the code cleaner, more readable, and easier to maintain or extend in the future. Fixing the HTMLHint issue ensures better compliance with HTML standards and reduces friction for future code quality checks.
+
+✅ **Verification:** Verified the code health using `npx htmlhint index.html`, which now reports no errors. Reviewed the change manually to ensure the underlying physics and animation logic remain unchanged. The extraction is a pure refactor that retains previous functionality (orbit math, mouse proximity logic).
+
+✨ **Result:** Improved maintainability of the visualization animation code and fixed an HTML validation error without introducing any behavior changes.
