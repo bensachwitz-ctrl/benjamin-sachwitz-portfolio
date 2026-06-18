@@ -567,6 +567,7 @@
   let snake = [], food = {}, dx = 1, dy = 0, nextDx = 1, nextDy = 0;
   let score = 0, speed = 120, loop = null, running = false;
   let high = parseInt(localStorage.getItem('snakeHigh') || '0', 10);
+  if (isNaN(high)) high = 0;
   if (highDisp) highDisp.textContent = high;
 
   const GOLD = '#D4A843', GOLD_DEEP = '#B88A2F';
@@ -806,6 +807,7 @@
   const glyphNodes = Array.from(document.querySelectorAll('.arcade-glyph'));
   function themeArcade(name){
     const t = ARCADE_THEMES[name] || ARCADE_THEMES._default;
+    document.documentElement.style.setProperty('--arcade-accent', t.accent);
     glyphNodes.forEach((node, i) => {
       const key = t.shapes[i % t.shapes.length];
       const inner = SHAPE[key] || SHAPE.disc;
@@ -968,10 +970,16 @@
           else if (stage === 'select') { e.preventDefault(); setStage('attract'); }
         }
       }
-      else if ((e.key === 'f' || e.key === 'F') && stage !== 'play') {
-        // F toggles fullscreen on attract/select screens; skip during play so letter-input games (Hangman, Wordle) keep their keys
+      else if (e.key === 'f' || e.key === 'F') {
+        // F toggles fullscreen everywhere EXCEPT inside letter-input games (Wordle,
+        // Hangman read raw A–Z keys, so "F" must reach them) and form fields.
         const t = e.target;
         if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+        if (stage === 'play') {
+          const LETTER_INPUT_GAMES = ['wordle', 'hangman'];
+          const active = cabinet.querySelector('.apanel.is-active:not(.hidden)');
+          if (active && LETTER_INPUT_GAMES.includes(active.dataset.panel)) return;
+        }
         e.preventDefault(); toggleFullscreen();
       }
     });

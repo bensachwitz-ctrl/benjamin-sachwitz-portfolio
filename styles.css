@@ -703,6 +703,29 @@
   .arcade-marquee-dot { width: 8px; height: 8px; border-radius: 50%; background: #6FCF7A; box-shadow: 0 0 10px #6FCF7A; animation: arcadePulse 1.6s ease-in-out infinite; }
   @keyframes arcadePulse { 0%,100%{opacity:1} 50%{opacity:.35} }
   .arcade-marquee-credits { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .2em; color: rgba(245,242,236,.5); text-transform: uppercase; }
+  .arcade-marquee-right { display: inline-flex; align-items: center; gap: .9rem; }
+
+  /* Fullscreen toggle button — shares the marquee/playbar/attract chrome.
+     The marquee instance carries only .arcade-fs (no .arcade-back), so it
+     needs its own base styling; the attract/playbar instances also carry
+     .arcade-back and inherit from it, but this base keeps them consistent. */
+  .arcade-fs {
+    display: inline-flex; align-items: center; gap: .45rem; cursor: pointer;
+    min-height: 36px; padding: .4rem .85rem; border-radius: 4px;
+    background: rgba(212,168,67,.1); border: 1px solid rgba(212,168,67,.4);
+    color: var(--gold); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    line-height: 1; white-space: nowrap; transition: all .25s;
+  }
+  .arcade-fs:hover { background: rgba(212,168,67,.2); border-color: var(--gold); color: var(--bone); }
+  .arcade-fs:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--gold); }
+  .arcade-fs[aria-pressed="true"] { background: rgba(212,168,67,.26); border-color: var(--gold); color: var(--bone); }
+  /* Playbar/attract instances are 44pt via .arcade-back; keep the marquee one compact */
+  .arcade-playbar .arcade-fs, .arcade-attract-fs { min-height: 44px; padding: .55rem 1rem; }
+  @media (max-width: 480px) {
+    .arcade-fs { padding: .4rem .6rem; }
+    .arcade-marquee-right { gap: .55rem; }
+  }
 
   /* Screen (CRT-ish) */
   .arcade-screen { position: relative; min-height: 360px; }
@@ -829,6 +852,16 @@
   .arcade-cabinet.is-fullscreen .arcade-attract { min-height: 70vh; justify-content: center; }
   .arcade-cabinet.is-fullscreen .arcade-panel-wrap { display: flex; justify-content: center; align-items: center; }
   .arcade-cabinet.is-fullscreen .apanel.is-active { width: 100%; max-width: 1100px; }
+  /* In fullscreen, let canvas games grow to fill the space instead of staying
+     pinned at the 480px default. height stays auto (canvas keeps its intrinsic
+     aspect ratio) but is capped so tall/portrait boards don't overflow. */
+  .arcade-cabinet.is-fullscreen .canvas-container {
+    max-width: min(820px, 92vw); width: fit-content; margin: 0 auto;
+  }
+  .arcade-cabinet.is-fullscreen .canvas-container canvas {
+    width: auto !important; height: auto !important;
+    max-width: min(820px, 92vw); max-height: 76vh;
+  }
   /* Old-timey CRT cabinet: vignette + scanlines layered over the whole fullscreen view */
   .arcade-cabinet.is-fullscreen::after {
     content: ""; position: absolute; inset: 0; z-index: 50; pointer-events: none;
@@ -1589,9 +1622,10 @@
   @media (max-width: 900px) { .worlds-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .worlds-grid { grid-template-columns: 1fr 1fr; } }
   .world-tile {
-    position: relative; aspect-ratio: 3 / 4; overflow: hidden;
-    border: 1px solid rgba(245,242,236,.1); background: #0A0A0A;
-    opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1), box-shadow .4s;
+    position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 8px;
+    border: 1px solid rgba(212,168,67,.22); background: #0A0A0A;
+    box-shadow: inset 0 0 0 1px rgba(212,168,67,.12), inset 0 -40px 70px rgba(0,0,0,.55), 0 16px 38px rgba(0,0,0,.46);
+    opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .4s;
   }
   .world-tile.wt-in { opacity: 1; transform: none; }
   .worlds-grid .world-tile:nth-child(1).wt-in { transition-delay: 0s; }
@@ -1613,18 +1647,22 @@
      Southern pine forest from above / the US Capitol at dusk}, antique-gold #D4A843 accents,
      film-grain, muted, archival, Lloyd's-of-London-meets-Vercel restraint, no text, 3:4 portrait." */
   .world-tile.wt-art img {
-    filter: saturate(1) brightness(.96) contrast(1.04);
+    filter: saturate(1.06) brightness(1.06) contrast(1.06);
     transition: transform 1.4s cubic-bezier(.2,.7,.2,1), filter .5s cubic-bezier(.2,.7,.2,1);
   }
-  .world-tile.wt-art:hover img { transform: scale(1.06); filter: saturate(1.08) brightness(1.06) contrast(1.05); }
+  .world-tile.wt-art:hover img { transform: scale(1.06); filter: saturate(1.14) brightness(1.14) contrast(1.07); }
+  .world-tile.wt-art:hover { border-color: rgba(212,168,67,.5); box-shadow: inset 0 0 0 1px rgba(212,168,67,.3), inset 0 -40px 70px rgba(0,0,0,.5), 0 26px 52px rgba(0,0,0,.52); }
   .world-tile figcaption {
-    position: absolute; inset: auto 0 0 0; padding: 1rem .9rem .85rem;
-    display: flex; flex-direction: column; gap: .2rem;
-    background: linear-gradient(to top, rgba(10,10,10,.9) 0%, rgba(10,10,10,.5) 50%, transparent 100%);
+    position: absolute; inset: auto 0 0 0; padding: 1.4rem .95rem .95rem;
+    display: flex; flex-direction: column; gap: .35rem;
+    background: linear-gradient(to top, rgba(10,10,10,.94) 0%, rgba(10,10,10,.6) 45%, transparent 100%);
     color: var(--bone); font-family: 'JetBrains Mono', monospace;
   }
-  .world-tile .wtnum { font-size: 10px; letter-spacing: .3em; color: rgba(212,168,67,.85); }
-  .world-tile .wttxt { font-size: 12px; letter-spacing: .04em; line-height: 1.3; }
+  .world-tile .wtnum {
+    font-size: 10px; letter-spacing: .34em; color: rgba(212,168,67,.9);
+    padding-bottom: .3rem; border-bottom: 1px solid rgba(212,168,67,.22); width: fit-content;
+  }
+  .world-tile .wttxt { font-size: 12px; letter-spacing: .04em; line-height: 1.35; color: rgba(245,242,236,.92); }
   .world-tile::after {
     content: ""; position: absolute; inset: 0; pointer-events: none;
     border: 1px solid transparent;
@@ -3693,4 +3731,56 @@
   .booking-card-3d {
     transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s;
     will-change: transform;
+  }
+
+  /* ============================================================
+     RESPONSIVE CANVAS CONTAINER & GAME SWITCH TRANSTIIONS
+  ============================================================ */
+  .canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #050505;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(232, 223, 200, 0.1);
+  }
+
+  .canvas-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba(var(--arcade-accent, 212, 168, 67), 0.25);
+    border-color: rgba(var(--arcade-accent, 212, 168, 67), 0.4);
+  }
+
+  .canvas-container canvas {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+
+  /* Smooth custom unblur / scale-up on game switch */
+  .apanel.is-active {
+    animation: apanel-fade-scale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes apanel-fade-scale {
+    0% {
+      opacity: 0;
+      transform: scale(0.97) translateY(8px);
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .canvas-container { transition: none !important; }
+    .canvas-container:hover { transform: none !important; }
+    .apanel.is-active { animation: none !important; opacity: 1 !important; filter: none !important; transform: none !important; }
   }

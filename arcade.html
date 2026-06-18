@@ -434,7 +434,10 @@
       <!-- Marquee -->
       <div class="arcade-marquee">
         <span class="arcade-marquee-title"><span class="arcade-marquee-dot"></span>Sachwitz Arcade</span>
-        <span class="arcade-marquee-credits" id="arcadeCredits">Credits&nbsp;&nbsp;∞</span>
+        <span class="arcade-marquee-right">
+          <button class="arcade-fs" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">⤢ Fullscreen</button>
+          <span class="arcade-marquee-credits" id="arcadeCredits">Credits&nbsp;&nbsp;∞</span>
+        </span>
       </div>
 
       <!-- ATTRACT SCREEN -->
@@ -444,6 +447,7 @@
         <div class="arcade-attract-creator">Created by Ben Sachwitz</div>
         <p class="arcade-attract-sub">Thirty-nine hand-built games, singles, two-player duels and tower defense. Beat my scores, then book the call. No quarters required.</p>
         <button class="arcade-start-btn" id="arcadeStartBtn" type="button">▶ Press Start</button>
+        <button class="arcade-fs arcade-back arcade-attract-fs" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">⤢ Fullscreen</button>
         <div class="arcade-attract-kicker arcade-blink" style="margin-top:.2rem">Press Enter or tap to begin</div>
       </div>
 
@@ -659,6 +663,7 @@
       <div class="arcade-playbar">
         <button class="arcade-back" id="arcadeToSelect" type="button" aria-label="Back to game selection">‹ Games</button>
         <span class="arcade-now-playing">Now playing · <b id="arcadeNowPlaying">Snake</b></span>
+        <button class="arcade-fs arcade-back" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">⤢ Fullscreen</button>
       </div>
 
     <!-- Tab switcher -->
@@ -882,7 +887,7 @@
               </div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="snakeCanvas" width="400" height="400" class="w-full aspect-square block rounded-sm bg-[#050505] border border-bone/10"></canvas>
             <div class="game-over" id="gameOver">
               <div class="eyebrow text-ox mb-2">Game over</div>
@@ -971,7 +976,7 @@
           </div>
 
           <div class="flex gap-4 items-start justify-center">
-            <div class="relative">
+            <div class="canvas-container relative">
               <canvas id="tetrisCanvas" width="240" height="480" class="block rounded-sm bg-[#050505] border border-bone/10"></canvas>
               <div class="game-over" id="tGameOver">
                 <div class="eyebrow text-ox mb-2">Game over</div>
@@ -1037,7 +1042,7 @@
               <div class="dino-stat-lbl">Best</div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="dinoCanvas" width="640" height="200" class="w-full block rounded-sm bg-[#FFD89E] border border-bone/10"></canvas>
             <div class="game-over" id="dinoGameOver">
               <div class="eyebrow text-ox mb-2">Game over</div>
@@ -1087,7 +1092,7 @@
               </div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="flappyCanvas" width="600" height="400" class="w-full block rounded-sm bg-[#050505] border border-bone/10" style="touch-action:none"></canvas>
             <div class="game-over" id="flGameOver">
               <div class="eyebrow text-ox mb-2">Game over</div>
@@ -1125,7 +1130,7 @@
               </div>
             </div>
           </div>
-          <div class="relative mx-auto" style="max-width:320px">
+          <div class="canvas-container relative mx-auto" style="max-width:320px">
             <canvas id="pongCanvas" width="320" height="480" class="w-full block rounded-sm bg-[#050505] border border-bone/10" style="touch-action:none"></canvas>
             <div class="game-over" id="pgGameOver">
               <div class="eyebrow text-ox mb-2" id="pgResultLabel">Match over</div>
@@ -1167,7 +1172,7 @@
               </div>
             </div>
           </div>
-          <div class="relative mx-auto" style="max-width:340px">
+          <div class="canvas-container relative mx-auto" style="max-width:340px">
             <canvas id="breakoutCanvas" width="400" height="500" class="w-full block rounded-sm bg-[#050505] border border-bone/10" style="touch-action:none"></canvas>
             <div class="game-over" id="bkGameOver">
               <div class="eyebrow text-ox mb-2" id="bkResultLabel">Game over</div>
@@ -1380,7 +1385,7 @@
               <div class="text-right"><div class="eyebrow text-bone/50">P2</div><div class="font-mono text-[18px] text-gold mt-1" id="ahP2">0</div></div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="ahCanvas" width="360" height="520" class="w-full block rounded-sm bg-[#070707] border border-bone/10" style="aspect-ratio:360/520"></canvas>
             <div class="game-over" id="ahOver">
               <div class="eyebrow text-ox mb-2">Match over</div>
@@ -1433,7 +1438,7 @@
               <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="muBest">0</div></div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="muncherCanvas" width="392" height="440" class="w-full block rounded-sm bg-[#040406] border border-bone/10" style="aspect-ratio:392/440"></canvas>
             <div class="game-over" id="muOver">
               <div class="eyebrow text-ox mb-2">Game over</div>
@@ -1467,7 +1472,7 @@
               <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="invBest">0</div></div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="invCanvas" width="400" height="440" class="w-full block rounded-sm bg-[#040406] border border-bone/10" style="aspect-ratio:400/440"></canvas>
             <div class="game-over" id="invOver">
               <div class="eyebrow text-ox mb-2">Game over</div>
@@ -1498,7 +1503,7 @@
               <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="astBest">0</div></div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="astCanvas" width="420" height="420" class="w-full block aspect-square rounded-sm bg-[#040406] border border-bone/10"></canvas>
             <div class="game-over" id="astOver">
               <div class="eyebrow text-ox mb-2">Game over</div>
@@ -1530,7 +1535,7 @@
               <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[18px] text-gold mt-1" id="frBest">0</div></div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="frogCanvas" width="390" height="450" class="w-full block rounded-sm bg-[#040406] border border-bone/10" style="aspect-ratio:390/450"></canvas>
             <div class="game-over" id="frOver">
               <div class="eyebrow text-ox mb-2">Squashed</div>
@@ -1597,7 +1602,7 @@
               <div class="text-right"><div class="eyebrow text-bone/50">Best</div><div class="font-mono text-[16px] text-gold mt-1" id="twBest">0</div></div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="towerCanvas" width="480" height="360" class="w-full block rounded-sm bg-[#06080a] border border-bone/10" style="aspect-ratio:480/360"></canvas>
             <div class="game-over" id="twOver">
               <div class="eyebrow text-ox mb-2">Overrun</div>
@@ -1623,7 +1628,7 @@
               <div class="text-right"><div class="eyebrow text-bone/50">P2 · Cyan</div><div class="font-mono text-[18px] mt-1" style="color:#2D8A7E" id="trP2">0</div></div>
             </div>
           </div>
-          <div class="relative">
+          <div class="canvas-container relative">
             <canvas id="tronCanvas" width="420" height="420" class="w-full aspect-square block rounded-sm bg-[#040406] border border-bone/10"></canvas>
             <div class="game-over" id="trOver">
               <div class="eyebrow text-ox mb-2">Round over</div>
