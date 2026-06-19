@@ -3784,3 +3784,34 @@
     .canvas-container:hover { transform: none !important; }
     .apanel.is-active { animation: none !important; opacity: 1 !important; filter: none !important; transform: none !important; }
   }
+
+  /* ============================================================
+     ACCESSIBILITY · TEXT CONTRAST FLOOR (WCAG 2.1 AA, 4.5:1)
+     The muted Tailwind text-opacity tiers used for eyebrows,
+     mono captions and accent labels fell below 4.5:1 on the
+     light "bone" ground (and a couple of bone tiers on the dark
+     "ink" ground). These overrides raise only the alpha/shade of
+     those *text* utilities — layout, type and the design language
+     are unchanged. Decorative borders/rules use bg-*, not text-*,
+     so they are untouched.
+     ============================================================ */
+
+  /* Ink-on-bone muted label tiers: 0.40-0.55 -> 0.60/0.62 (cr >=4.5:1) */
+  .text-ink\/40 { color: rgba(10,10,10,0.60) !important; }
+  .text-ink\/45 { color: rgba(10,10,10,0.60) !important; }
+  .text-ink\/50 { color: rgba(10,10,10,0.60) !important; }
+  .text-ink\/55 { color: rgba(10,10,10,0.62) !important; }
+
+  /* Same fix for two equivalent muted labels defined in raw CSS (not utilities) */
+  .tw-rotator .tw-label { color: rgba(10,10,10,0.60) !important; }
+  .path-logo span { color: rgba(10,10,10,0.62) !important; }
+
+  /* Bone-on-ink muted tiers inside the dark sections: 0.40/0.45 -> 0.58 (cr ~5.9:1) */
+  .text-bone\/40 { color: rgba(245,242,236,0.58) !important; }
+  .text-bone\/45 { color: rgba(245,242,236,0.58) !important; }
+
+  /* Gold-2 accent fails on the light ground (2.8:1). Darken it just
+     enough to clear 4.5:1 on bone, then restore the brighter gold
+     inside dark (text-bone) sections where it already passes (6.3:1). */
+  .text-gold-2 { color: #8F6515 !important; }
+  .text-bone .text-gold-2 { color: #B88A2F !important; }
