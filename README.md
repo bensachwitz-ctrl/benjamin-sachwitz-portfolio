@@ -4,8 +4,8 @@ A high-fidelity, production-ready personal site for **Benjamin Sachwitz** — Ri
 
 > Bridging the gap between traditional risk and modern technology.
 
-**Aesthetic:** Carolina Executive — Deep Garnet `#73000A`, Midnight Navy `#002147`, Frost White `#F8F9FA`.
-**Typography:** Cormorant Garamond (serif headlines) + Montserrat (sans body).
+**Aesthetic:** Carolina Executive — Ink `#0A0A0A`, Bone `#F5F2EC`, Oxblood `#8B1A1A`, Gold `#D4A843`.
+**Typography:** Fraunces (serif headlines) + Inter (sans body) + JetBrains Mono (monospace counters).
 **Tech:** Pure HTML5 / CSS3 / vanilla JS. Zero build step. Zero dependencies. Fast, accessible, fully responsive.
 
 ## Sections
