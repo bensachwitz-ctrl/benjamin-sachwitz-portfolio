@@ -3815,3 +3815,20 @@
      inside dark (text-bone) sections where it already passes (6.3:1). */
   .text-gold-2 { color: #8F6515 !important; }
   .text-bone .text-gold-2 { color: #B88A2F !important; }
+
+/* --- CSS Scroll Snapping Extension (Added 2026-06-23) --- */
+html.snap-active {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.snap-active {
+    scroll-behavior: auto !important;
+    scroll-snap-type: none !important;
+  }
+}
+html.snap-active section,
+html.snap-active footer {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
