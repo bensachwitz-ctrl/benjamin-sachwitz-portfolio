@@ -104,11 +104,47 @@
   <section id="features" class="min-h-[250vh] relative z-10 bg-crawl-navy py-20 flex flex-col justify-start">
     <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
       
-      <!-- Interactive 3D/Floating Compass Badge -->
-      <div id="interactive-badge" class="absolute w-[200px] h-[200px] pointer-events-auto cursor-pointer z-20 flex flex-col items-center justify-center text-center select-none" style="will-change: transform;">
-        <!-- Compass Vector -->
-        <svg class="w-32 h-32 text-crawl-gold/80 animate-[spin_40s_linear_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-        <span class="text-[10px] uppercase font-mono tracking-widest text-crawl-gold mt-2">Tap Compass to Clink</span>
+      <!-- Phone Body Mockup (Interactive Bar Crawl Golf Demo) -->
+      <div id="phone" class="phone-body relative w-[300px] h-[600px] bg-[#1b263b] rounded-[42px] border-4 border-crawl-cream/20 shadow-2xl p-3 flex flex-col justify-between select-none z-10" style="will-change: transform;">
+        <!-- Status Bar -->
+        <div class="flex justify-between items-center text-[10px] text-crawl-mute font-mono px-3 pt-1">
+          <div>10:00 PM</div>
+          <div class="w-20 h-4 bg-black rounded-full mx-auto flex items-center justify-center">
+            <div class="w-3 h-3 bg-slate-900 rounded-full border border-slate-800"></div>
+          </div>
+          <div class="flex gap-1 items-center">
+            <span class="text-[9px] text-crawl-gold font-mono font-semibold">Tee 1</span>
+            <span>100%</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Screen Mockup (Interactive App Demo) -->
+        <div class="flex-1 my-2 bg-[#0d1b2a] rounded-[32px] overflow-hidden border border-crawl-gold/10 relative flex flex-col text-crawl-cream font-sans text-xs">
+          <!-- Mock App Viewport -->
+          <div id="demo-viewport" class="flex-1 overflow-y-auto p-3 flex flex-col gap-2.5">
+            <!-- Loaded dynamically by Javascript tab router -->
+          </div>
+          
+          <!-- Mock App Navigation Bar -->
+          <div class="h-12 bg-[#152238] border-t border-crawl-cream/10 flex justify-around items-center text-[9px] text-crawl-mute pb-1">
+            <button onclick="setBCGTab('map')" id="nav-btn-map" class="flex flex-col items-center gap-0.5 text-crawl-gold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+              <span class="text-[8px] font-medium font-sans">Map</span>
+            </button>
+            <button onclick="setBCGTab('leader')" id="nav-btn-leader" class="flex flex-col items-center gap-0.5 hover:text-crawl-cream transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2"/></svg>
+              <span class="text-[8px] font-medium font-sans">Leaderboard</span>
+            </button>
+            <button onclick="setBCGTab('postcard')" id="nav-btn-postcard" class="flex flex-col items-center gap-0.5 hover:text-crawl-cream transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span class="text-[8px] font-medium font-sans">Postcard</span>
+            </button>
+            <button onclick="setBCGTab('bracket')" id="nav-btn-bracket" class="flex flex-col items-center gap-0.5 hover:text-crawl-cream transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+              <span class="text-[8px] font-medium font-sans">Bracket</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Feature Card 1: Route Builder -->
@@ -227,40 +263,275 @@
       osc2.stop(audioCtx.currentTime + 0.3);
     }
 
-    const badge = document.getElementById('interactive-badge');
-    badge.addEventListener('click', () => {
-      playClink();
-      // Visual bounce
-      gsap.fromTo(badge, 
-        { scale: 0.9, rotate: -15 },
-        { scale: 1, rotate: 0, duration: 0.4, ease: 'elastic.out(1, 0.3)' }
-      );
-    });
+    // Interactive Bar Crawl Golf Demo State & Controller
+    let activeBCGTab = 'map';
+    let selectedPostcardTheme = 'forest';
+    let bracketWinner1 = '';
+    let bracketWinner2 = '';
+    let leaderboardPlayers = [
+      { name: 'Mick (you)', sips: 5, thru: 4, isYou: true },
+      { name: 'Tay', sips: 6, thru: 3, isYou: false },
+      { name: 'Jules', sips: 6, thru: 3, isYou: false },
+      { name: 'Ronnie', sips: 8, thru: 3, isYou: false }
+    ];
 
-    // Hover rotate on badge
-    badge.addEventListener('mousemove', (e) => {
-      const rect = badge.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      gsap.to(badge, {
-        rotateX: -y * 0.3,
-        rotateY: x * 0.3,
-        duration: 0.2
+    window.setBCGTab = function(tabId) {
+      activeBCGTab = tabId;
+      
+      // Update nav button highlights
+      const navButtons = document.querySelectorAll('[id^="nav-btn-"]');
+      navButtons.forEach(btn => {
+        btn.classList.remove('text-crawl-gold');
+        btn.classList.add('text-crawl-mute');
       });
-    });
-    badge.addEventListener('mouseleave', () => {
-      gsap.to(badge, { rotateX: 0, rotateY: 0, duration: 0.4 });
-    });
+      const activeBtn = document.getElementById(`nav-btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-crawl-mute');
+        activeBtn.classList.add('text-crawl-gold');
+      }
+
+      // Render tab viewport
+      const viewport = document.getElementById('demo-viewport');
+      if (!viewport) return;
+      
+      if (tabId === 'map') {
+        renderMap(viewport);
+      } else if (tabId === 'leader') {
+        renderLeaderboard(viewport);
+      } else if (tabId === 'postcard') {
+        renderPostcard(viewport);
+      } else if (tabId === 'bracket') {
+        renderBracket(viewport);
+      }
+    };
+
+    function renderMap(vp) {
+      vp.innerHTML = `
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <div class="text-[8px] text-crawl-mute uppercase tracking-widest font-mono">Walkable Course</div>
+            <h3 class="font-serif text-sm font-semibold text-crawl-cream">Athens Five Points</h3>
+          </div>
+          <span class="text-[8px] bg-crawl-accent/20 text-crawl-cream border border-crawl-accent/30 px-2 py-0.5 rounded font-mono font-semibold">Live Route</span>
+        </div>
+
+        <div class="flex-1 bg-[#152238]/60 border border-crawl-gold/10 rounded-2xl p-2.5 flex flex-col justify-between relative min-h-[190px]">
+          <!-- Illustrated SVG Map Mockup -->
+          <svg class="w-full h-[120px] text-crawl-gold/30" viewBox="0 0 100 60" fill="none" stroke="currentColor">
+            <path d="M10 40 Q 25 15, 50 35 T 90 20" stroke-width="1.5" stroke-dasharray="3 3"/>
+            
+            <!-- Pin 1 -->
+            <circle cx="10" cy="40" r="3" fill="#31572c" stroke="#ebe4cf" stroke-width="1"/>
+            <text x="8" y="47" font-size="5" fill="#ebe4cf" font-family="sans-serif">H1</text>
+            
+            <!-- Pin 2 -->
+            <circle cx="45" cy="30" r="3" fill="#31572c" stroke="#ebe4cf" stroke-width="1"/>
+            <text x="43" y="37" font-size="5" fill="#ebe4cf" font-family="sans-serif">H2</text>
+            
+            <!-- Pin 3 -->
+            <circle cx="90" cy="20" r="3" fill="#31572c" stroke="#ebe4cf" stroke-width="1"/>
+            <text x="88" y="27" font-size="5" fill="#ebe4cf" font-family="sans-serif">H3</text>
+          </svg>
+          
+          <div class="flex justify-between items-center bg-[#0d1b2a]/90 p-2 rounded-xl border border-crawl-gold/15">
+            <div>
+              <div class="text-[9px] text-crawl-gold font-semibold uppercase">Walk: H1 ➔ H2</div>
+              <div class="text-[8px] text-crawl-mute">0.4 miles · 7 min walk</div>
+            </div>
+            <button onclick="playClink(); gsap.from(this, {scale: 0.8, duration: 0.3})" class="px-2.5 py-1 rounded bg-crawl-gold text-crawl-navy font-bold text-[9px] active:scale-95 transition-transform">Arrive</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderLeaderboard(vp) {
+      // Sort players by sips ascending
+      const sorted = [...leaderboardPlayers].sort((a, b) => a.sips - b.sips);
+      
+      vp.innerHTML = `
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <div class="text-[8px] text-crawl-mute uppercase tracking-widest font-mono">Tee Scorecard</div>
+            <h3 class="font-serif text-sm font-semibold text-crawl-cream">Active Standings</h3>
+          </div>
+          <span class="text-[8px] text-crawl-gold font-mono font-semibold">Par 23</span>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          ${sorted.map((p, idx) => `
+            <div class="flex justify-between items-center bg-[#152238] border border-crawl-gold/10 p-2 rounded-xl transition-all duration-300">
+              <div class="flex items-center gap-2">
+                <span class="text-[9px] font-mono font-bold text-crawl-gold w-3">${idx + 1}</span>
+                <div class="w-5 h-5 bg-crawl-navy rounded-full flex items-center justify-center border border-crawl-gold/25 font-bold text-[10px] text-crawl-gold">
+                  ${p.name.charAt(0)}
+                </div>
+                <div>
+                  <div class="text-[10px] font-semibold">${p.name}</div>
+                  <div class="text-[8px] text-crawl-mute">Thru ${p.thru} of 9</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono font-bold text-crawl-cream">${p.sips} <span class="text-[8px] text-crawl-mute font-sans">sips</span></span>
+                ${p.isYou ? `
+                  <div class="flex gap-1">
+                    <button onclick="adjustSips(-1)" class="w-5 h-5 rounded bg-[#0d1b2a] hover:bg-crawl-accent text-crawl-cream font-bold text-xs flex items-center justify-center">-</button>
+                    <button onclick="adjustSips(1)" class="w-5 h-5 rounded bg-crawl-gold text-crawl-navy font-bold text-xs flex items-center justify-center">+</button>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    window.adjustSips = function(val) {
+      const you = leaderboardPlayers.find(p => p.isYou);
+      if (you) {
+        you.sips = Math.max(0, you.sips + val);
+        playClink();
+        renderLeaderboard(document.getElementById('demo-viewport'));
+      }
+    };
+
+    function renderPostcard(vp) {
+      const themeColors = {
+        forest: 'bg-[#31572c] border-[#e0a96d]',
+        navy: 'bg-[#1b263b] border-crawl-cream',
+        peach: 'bg-[#ff7979] border-white'
+      };
+      
+      vp.innerHTML = `
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <div class="text-[8px] text-crawl-mute uppercase tracking-widest font-mono">Illustrated Postcard</div>
+            <h3 class="font-serif text-sm font-semibold text-crawl-cream">Yearbook Export</h3>
+          </div>
+        </div>
+
+        <div class="flex-1 ${themeColors[selectedPostcardTheme]} border-2 rounded-2xl p-3 flex flex-col justify-between text-crawl-cream min-h-[170px] shadow-lg transition-all duration-300">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="font-serif text-sm italic font-light leading-tight">Postcard from Athens</div>
+              <div class="text-[8px] font-mono opacity-80">Date: 2026-06-29</div>
+            </div>
+            <div class="w-6 h-6 border border-crawl-cream/30 rounded flex items-center justify-center font-serif text-[10px] italic">BCG</div>
+          </div>
+          
+          <div class="border-t border-crawl-cream/20 pt-2 flex justify-between items-end">
+            <div>
+              <div class="text-[8px] opacity-75">CHAMPION</div>
+              <div class="text-[10px] font-bold font-mono">MICK (-2)</div>
+            </div>
+            <div class="text-right">
+              <div class="text-[8px] opacity-75">CREW TOTAL</div>
+              <div class="text-[10px] font-bold font-mono">27 SIPS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center gap-1.5 mt-2 bg-[#152238] p-2 rounded-xl border border-crawl-gold/10">
+          <span class="text-[9px] text-crawl-mute">Theme:</span>
+          <div class="flex gap-2">
+            <button onclick="setPostcardTheme('forest')" class="w-4 h-4 rounded-full bg-[#31572c] border border-white/20 active:scale-90 transition-transform ${selectedPostcardTheme === 'forest' ? 'ring-2 ring-crawl-gold' : ''}"></button>
+            <button onclick="setPostcardTheme('navy')" class="w-4 h-4 rounded-full bg-[#1b263b] border border-white/20 active:scale-90 transition-transform ${selectedPostcardTheme === 'navy' ? 'ring-2 ring-crawl-gold' : ''}"></button>
+            <button onclick="setPostcardTheme('peach')" class="w-4 h-4 rounded-full bg-[#ff7979] border border-white/20 active:scale-90 transition-transform ${selectedPostcardTheme === 'peach' ? 'ring-2 ring-crawl-gold' : ''}"></button>
+          </div>
+        </div>
+      `;
+    }
+
+    window.setPostcardTheme = function(theme) {
+      selectedPostcardTheme = theme;
+      playClink();
+      renderPostcard(document.getElementById('demo-viewport'));
+    };
+
+    function renderBracket(vp) {
+      vp.innerHTML = `
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <div class="text-[8px] text-crawl-mute uppercase tracking-widest font-mono">Championship</div>
+            <h3 class="font-serif text-sm font-semibold text-crawl-cream">Tournament Bracket</h3>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2.5 p-1">
+          <!-- Semi-finals -->
+          <div class="flex justify-between items-center gap-2">
+            <div class="flex-1 flex flex-col gap-1">
+              <button onclick="selectBracketWinner(1, 'Mick')" class="p-1.5 rounded-lg text-left text-[9px] border transition-all ${bracketWinner1 === 'Mick' ? 'bg-crawl-accent/20 border-crawl-accent text-crawl-cream' : 'bg-[#152238] border-crawl-gold/10 text-crawl-mute'}">Mick</button>
+              <button onclick="selectBracketWinner(1, 'Tay')" class="p-1.5 rounded-lg text-left text-[9px] border transition-all ${bracketWinner1 === 'Tay' ? 'bg-crawl-accent/20 border-crawl-accent text-crawl-cream' : 'bg-[#152238] border-crawl-gold/10 text-crawl-mute'}">Tay</button>
+            </div>
+            
+            <div class="flex-shrink-0 text-center font-mono text-[9px] text-crawl-gold">➔</div>
+            
+            <div class="flex-1 flex flex-col gap-1">
+              <button onclick="selectBracketWinner(2, 'Jules')" class="p-1.5 rounded-lg text-left text-[9px] border transition-all ${bracketWinner2 === 'Jules' ? 'bg-crawl-accent/20 border-crawl-accent text-crawl-cream' : 'bg-[#152238] border-crawl-gold/10 text-crawl-mute'}">Jules</button>
+              <button onclick="selectBracketWinner(2, 'Sam')" class="p-1.5 rounded-lg text-left text-[9px] border transition-all ${bracketWinner2 === 'Sam' ? 'bg-crawl-accent/20 border-crawl-accent text-crawl-cream' : 'bg-[#152238] border-crawl-gold/10 text-crawl-mute'}">Sam</button>
+            </div>
+          </div>
+          
+          <!-- Final matchup -->
+          <div class="bg-[#152238] border border-crawl-gold/25 rounded-xl p-2 flex flex-col gap-1 items-center">
+            <div class="text-[8px] text-crawl-gold font-mono uppercase tracking-widest">Grand Final</div>
+            <div class="text-[10px] font-bold">
+              ${bracketWinner1 || 'Winner 1'} <span class="text-crawl-mute font-light font-sans">vs</span> ${bracketWinner2 || 'Winner 2'}
+            </div>
+            ${bracketWinner1 && bracketWinner2 ? `
+              <button onclick="playClink(); alert('Tournament complete! Champion: ' + bracketWinner1 + ' or ' + bracketWinner2)" class="mt-1 px-3 py-1 rounded-full bg-crawl-gold text-crawl-navy text-[8px] font-bold uppercase active:scale-95 transition-transform">Simulate Final</button>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    window.selectBracketWinner = function(semi, name) {
+      if (semi === 1) bracketWinner1 = name;
+      if (semi === 2) bracketWinner2 = name;
+      playClink();
+      renderBracket(document.getElementById('demo-viewport'));
+    };
+
+    // 3D Phone Hover Tilt Effect
+    const phoneContainer = document.querySelector('#features .sticky');
+    const phone = document.getElementById('phone');
+    if (phoneContainer && phone) {
+      phoneContainer.addEventListener('mousemove', (e) => {
+        const rect = phoneContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        gsap.to(phone, {
+          rotateY: x * 0.18,
+          rotateX: -y * 0.18,
+          duration: 0.3,
+          ease: 'power1.out'
+        });
+      });
+      
+      phoneContainer.addEventListener('mouseleave', () => {
+        gsap.to(phone, {
+          rotateY: 0,
+          rotateX: 0,
+          duration: 0.6,
+          ease: 'power2.out'
+        });
+      });
+    }
 
     // GSAP Scroll Animations
     gsap.registerPlugin(ScrollTrigger);
+
+    // Initial render
+    setBCGTab('map');
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#features',
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1,
+        scrub: 1.2,
         pin: true
       }
     });
@@ -271,13 +542,27 @@
       duration: 1,
       stagger: 0.5,
       ease: 'power3.inOut'
-    })
-    .to('#interactive-badge', {
-      scale: 1.1,
-      rotate: 360,
-      duration: 2,
-      ease: 'power3.inOut'
-    }, '-=2');
+    });
+
+    // Auto-advance tabs as features scroll
+    ScrollTrigger.create({
+      trigger: '#features',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: true,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        if (progress < 0.25 && activeBCGTab !== 'map') {
+          setBCGTab('map');
+        } else if (progress >= 0.25 && progress < 0.50 && activeBCGTab !== 'leader') {
+          setBCGTab('leader');
+        } else if (progress >= 0.50 && progress < 0.75 && activeBCGTab !== 'postcard') {
+          setBCGTab('postcard');
+        } else if (progress >= 0.75 && activeBCGTab !== 'bracket') {
+          setBCGTab('bracket');
+        }
+      }
+    });
 
   </script>
 </body>

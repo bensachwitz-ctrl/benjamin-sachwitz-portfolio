@@ -149,18 +149,50 @@
       <div class="absolute w-[500px] h-[500px] rounded-full bg-sunrise-gold/5 blur-[120px] pointer-events-none -z-10"></div>
       
       <!-- Phone Body Mockup -->
-      <div id="phone" class="phone-body relative w-[280px] h-[570px] bg-[#1a1512] rounded-[42px] border-4 border-sunrise-cream/20 shadow-2xl p-4 flex flex-col justify-between">
+      <div id="phone" class="phone-body relative w-[300px] h-[600px] bg-[#1a1512] rounded-[42px] border-4 border-sunrise-cream/20 shadow-2xl p-3 flex flex-col justify-between select-none">
         
-        <!-- Screen Header -->
-        <div class="flex justify-between items-center text-[10px] text-sunrise-mute font-mono px-2 pt-1">
-          <div>08:00 AM</div>
-          <div class="w-16 h-4 bg-black rounded-full mx-auto"></div>
-          <div>100%</div>
+        <!-- Screen Header / Notch -->
+        <div class="flex justify-between items-center text-[10px] text-sunrise-mute font-mono px-3 pt-1">
+          <div>9:41 AM</div>
+          <div class="w-20 h-4 bg-black rounded-full mx-auto flex items-center justify-center">
+            <div class="w-3 h-3 bg-slate-900 rounded-full border border-slate-800"></div>
+          </div>
+          <div class="flex gap-1 items-center">
+            <svg class="w-3 h-3 text-sunrise-mute" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.13 19.57 10.53 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-9h-2v5h5v-2h-3z"/></svg>
+            <span>100%</span>
+          </div>
         </div>
 
-        <!-- Dashboard Screen Mockup -->
-        <div class="flex-1 my-3 bg-black rounded-[28px] overflow-hidden border border-sunrise-cream/5 relative">
-          <img src="images/app-mydailytool.png" alt="My Daily Tool Dashboard Screen" class="w-full h-full object-cover object-top" />
+        <!-- Dashboard Screen Mockup (Interactive App Demo) -->
+        <div class="flex-1 my-2 bg-[#120d0a] rounded-[32px] overflow-hidden border border-sunrise-cream/10 relative flex flex-col text-sunrise-cream font-sans text-xs">
+          <!-- Mock App Viewport -->
+          <div id="demo-viewport" class="flex-1 overflow-y-auto p-3 flex flex-col gap-2.5">
+            <!-- Loaded dynamically by Javascript tab router -->
+          </div>
+          
+          <!-- Mock App Navigation Bar -->
+          <div class="h-12 bg-[#1c1612] border-t border-sunrise-cream/5 flex justify-around items-center text-[9px] text-sunrise-mute pb-1">
+            <button onclick="setDTTab('home')" id="nav-btn-home" class="flex flex-col items-center gap-0.5 text-sunrise-gold">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              <span class="text-[8px] font-medium font-sans">Home</span>
+            </button>
+            <button onclick="setDTTab('track')" id="nav-btn-track" class="flex flex-col items-center gap-0.5 hover:text-sunrise-cream transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              <span class="text-[8px] font-medium font-sans">Track</span>
+            </button>
+            <button onclick="setDTTab('ai')" id="nav-btn-ai" class="flex flex-col items-center gap-0.5 hover:text-sunrise-cream transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+              <span class="text-[8px] font-medium font-sans">Caddie AI</span>
+            </button>
+            <button onclick="setDTTab('games')" id="nav-btn-games" class="flex flex-col items-center gap-0.5 hover:text-sunrise-cream transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+              <span class="text-[8px] font-medium font-sans">Arcade</span>
+            </button>
+            <button onclick="setDTTab('tools')" id="nav-btn-tools" class="flex flex-col items-center gap-0.5 hover:text-sunrise-cream transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              <span class="text-[8px] font-medium font-sans">Tools</span>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -316,6 +348,8 @@
             ease: 'power3.inOut',
             onComplete: () => {
               document.getElementById('preloader').style.display = 'none';
+              // Initial load of the phone viewport tab
+              setDTTab('home');
             }
           });
         }
@@ -323,6 +357,445 @@
         progressBar.style.width = `${progress}%`;
       }, 60);
     });
+
+    // Interactive Phone App Demo State & Controller
+    let activeDTTab = 'home';
+    let waterLogged = 40;
+    let habitStreak = 12;
+    let selectedMood = '';
+    let snakeGameInterval = null;
+
+    // Set interactive tab
+    window.setDTTab = function(tabId) {
+      activeDTTab = tabId;
+      
+      // Clear game loop if leaving arcade
+      if (snakeGameInterval) {
+        clearInterval(snakeGameInterval);
+        snakeGameInterval = null;
+      }
+      
+      // Update nav button classes
+      const navButtons = document.querySelectorAll('[id^="nav-btn-"]');
+      navButtons.forEach(btn => {
+        btn.classList.remove('text-sunrise-gold');
+        btn.classList.add('text-sunrise-mute');
+      });
+      const activeBtn = document.getElementById(`nav-btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-sunrise-mute');
+        activeBtn.classList.add('text-sunrise-gold');
+      }
+
+      // Render tab viewport
+      const viewport = document.getElementById('demo-viewport');
+      if (!viewport) return;
+      
+      if (tabId === 'home') {
+        renderHome(viewport);
+      } else if (tabId === 'track') {
+        renderTrack(viewport);
+      } else if (tabId === 'ai') {
+        renderAI(viewport);
+      } else if (tabId === 'games') {
+        renderGames(viewport);
+      } else if (tabId === 'tools') {
+        renderTools(viewport);
+      }
+    };
+
+    function renderHome(vp) {
+      vp.innerHTML = `
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <div class="text-[9px] text-sunrise-mute">GOOD MORNING</div>
+            <h3 class="font-serif text-sm font-semibold text-sunrise-cream">Welcome, Ben</h3>
+          </div>
+          <div class="bg-sunrise-card border border-sunrise-gold/10 px-2 py-1 rounded text-right">
+            <div class="text-[8px] text-sunrise-gold font-mono font-semibold">ATHENS, GA</div>
+            <div class="text-[9px] font-bold">75° ☀️</div>
+          </div>
+        </div>
+
+        <div class="bg-[#1c1612] border border-sunrise-gold/10 rounded-xl p-3 flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-mono tracking-widest text-sunrise-gold font-semibold uppercase">Daily Challenge</span>
+            <span id="challenge-status" class="text-[8px] bg-sunrise-gold/10 text-sunrise-gold px-1.5 py-0.5 rounded font-mono font-semibold">Active</span>
+          </div>
+          <label class="flex items-center gap-2.5 cursor-pointer py-1">
+            <input type="checkbox" id="challenge-chk" onchange="toggleChallenge(this)" class="accent-sunrise-gold w-3.5 h-3.5 rounded border-sunrise-gold/30 bg-[#120d0a]">
+            <span id="challenge-text" class="text-xs select-none">Drink 64oz Water</span>
+          </label>
+        </div>
+
+        <div class="bg-[#1c1612] border border-sunrise-gold/10 rounded-xl p-3 flex flex-col gap-2">
+          <span class="text-[9px] font-mono tracking-widest text-sunrise-gold font-semibold uppercase">Mood Check-in</span>
+          <div class="flex justify-between items-center gap-1.5 pt-1">
+            ${['😢', '😐', '🙂', '😄'].map(m => `
+              <button onclick="setDemoMood(this, '${m}')" class="flex-1 py-1.5 bg-[#120d0a] hover:bg-sunrise-gold/10 rounded-lg text-sm border border-sunrise-cream/5 transition-colors ${selectedMood === m ? 'bg-sunrise-gold/25 border-sunrise-gold/50' : ''}">${m}</button>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="bg-[#1c1612] border border-sunrise-gold/10 rounded-xl p-3 flex flex-col gap-1.5">
+          <span class="text-[9px] font-mono tracking-widest text-sunrise-gold font-semibold uppercase">Agenda Details</span>
+          <div class="flex flex-col gap-1">
+            <div class="flex items-center justify-between text-[11px] py-0.5 border-b border-sunrise-cream/5">
+              <span>10:00 AM Design Review</span>
+              <span class="text-[9px] text-sunrise-gold">Cal</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px] py-0.5">
+              <span>2:00 PM Coding Challenge</span>
+              <span class="text-[9px] text-sunrise-gold">Task</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    window.toggleChallenge = function(chk) {
+      const statusEl = document.getElementById('challenge-status');
+      const textEl = document.getElementById('challenge-text');
+      if (chk.checked) {
+        statusEl.textContent = 'Done! +10XP';
+        statusEl.className = 'text-[8px] bg-green-500/10 text-green-400 px-1.5 py-0.5 rounded font-mono font-semibold';
+        textEl.style.textDecoration = 'line-through';
+        textEl.classList.add('text-sunrise-mute');
+      } else {
+        statusEl.textContent = 'Active';
+        statusEl.className = 'text-[8px] bg-sunrise-gold/10 text-sunrise-gold px-1.5 py-0.5 rounded font-mono font-semibold';
+        textEl.style.textDecoration = 'none';
+        textEl.classList.remove('text-sunrise-mute');
+      }
+    };
+
+    window.setDemoMood = function(btn, mood) {
+      selectedMood = mood;
+      const btns = btn.parentNode.querySelectorAll('button');
+      btns.forEach(b => {
+        b.classList.remove('bg-sunrise-gold/25', 'border-sunrise-gold/50');
+      });
+      btn.classList.add('bg-sunrise-gold/25', 'border-sunrise-gold/50');
+    };
+
+    function renderTrack(vp) {
+      const percent = Math.min(100, Math.round((waterLogged / 80) * 100));
+      vp.innerHTML = `
+        <div class="bg-[#1c1612] border border-sunrise-gold/10 rounded-xl p-3 flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-mono tracking-widest text-sunrise-gold font-semibold uppercase">Water Logger</span>
+            <span class="text-[9px] text-sunrise-mute font-mono" id="water-logged-text">${waterLogged} / 80 oz</span>
+          </div>
+          <div class="w-full bg-[#120d0a] h-3.5 rounded-full overflow-hidden border border-sunrise-cream/5 flex items-center p-[2px]">
+            <div id="water-bar" class="bg-sunrise-gold h-full rounded-full transition-all duration-300" style="width: ${percent}%"></div>
+          </div>
+          <div class="flex justify-between items-center gap-2">
+            <button onclick="addWater(8)" class="flex-1 py-1.5 rounded-lg bg-sunrise-gold text-sunrise-black font-semibold text-xs text-center select-none active:scale-95 transition-transform">+ 8oz</button>
+            <button onclick="addWater(-8)" class="py-1.5 px-3 rounded-lg bg-[#120d0a] border border-sunrise-cream/10 text-sunrise-mute text-xs active:scale-95 transition-transform">- 8oz</button>
+          </div>
+        </div>
+
+        <div class="bg-[#1c1612] border border-sunrise-gold/10 rounded-xl p-3 flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-mono tracking-widest text-sunrise-gold font-semibold uppercase">Habits Tracker</span>
+            <span class="text-[9px] text-sunrise-gold font-mono" id="streak-counter">${habitStreak}d Streak</span>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="flex items-center justify-between py-0.5 border-b border-sunrise-cream/5 cursor-pointer">
+              <span class="text-[11px]">No Sugar Intake</span>
+              <input type="checkbox" onchange="toggleHabit(this)" class="accent-sunrise-gold">
+            </label>
+            <label class="flex items-center justify-between py-0.5 border-b border-sunrise-cream/5 cursor-pointer">
+              <span class="text-[11px]">Read 10 Pages</span>
+              <input type="checkbox" onchange="toggleHabit(this)" class="accent-sunrise-gold">
+            </label>
+            <label class="flex items-center justify-between py-0.5 cursor-pointer">
+              <span class="text-[11px]">30 Min Cardio</span>
+              <input type="checkbox" onchange="toggleHabit(this)" class="accent-sunrise-gold">
+            </label>
+          </div>
+        </div>
+      `;
+    }
+
+    window.addWater = function(amount) {
+      waterLogged = Math.max(0, waterLogged + amount);
+      const percent = Math.min(100, Math.round((waterLogged / 80) * 100));
+      const textEl = document.getElementById('water-logged-text');
+      const barEl = document.getElementById('water-bar');
+      if (textEl) textEl.textContent = `${waterLogged} / 80 oz`;
+      if (barEl) barEl.style.width = `${percent}%`;
+    };
+
+    window.toggleHabit = function(chk) {
+      if (chk.checked) {
+        habitStreak += 1;
+      } else {
+        habitStreak = Math.max(0, habitStreak - 1);
+      }
+      const streakEl = document.getElementById('streak-counter');
+      if (streakEl) streakEl.textContent = `${habitStreak}d Streak`;
+    };
+
+    function renderAI(vp) {
+      vp.innerHTML = `
+        <div class="flex-1 bg-[#120d0a] rounded-xl p-2.5 border border-sunrise-gold/10 flex flex-col justify-between h-[230px]">
+          <div id="ai-chat-box" class="flex-1 overflow-y-auto flex flex-col gap-2 pr-1 text-[10px]">
+            <div class="bg-[#1c1612] p-2 rounded-lg text-sunrise-cream max-w-[85%]">
+              Hello Ben! I've loaded your schedule. What shall we optimize today?
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5 mt-2">
+            <div class="flex gap-1 overflow-x-auto py-0.5" style="scrollbar-width: none;">
+              <button onclick="sendAiPrompt('Plan my afternoon')" class="flex-shrink-0 px-2 py-1 rounded bg-[#1c1612] border border-sunrise-gold/20 text-[8px] text-sunrise-gold active:bg-sunrise-gold/10">Plan afternoon</button>
+              <button onclick="sendAiPrompt('Gym workout ideas')" class="flex-shrink-0 px-2 py-1 rounded bg-[#1c1612] border border-sunrise-gold/20 text-[8px] text-sunrise-gold active:bg-sunrise-gold/10">Gym plan</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    window.sendAiPrompt = function(promptText) {
+      const box = document.getElementById('ai-chat-box');
+      if (!box) return;
+      
+      // Append user prompt
+      const userMsg = document.createElement('div');
+      userMsg.className = 'bg-sunrise-gold/10 border border-sunrise-gold/30 p-2 rounded-lg text-sunrise-gold self-end max-w-[85%]';
+      userMsg.textContent = promptText;
+      box.appendChild(userMsg);
+      box.scrollTop = box.scrollHeight;
+      
+      // Append typing indicator
+      const typing = document.createElement('div');
+      typing.className = 'bg-[#1c1612] p-2 rounded-lg text-sunrise-mute max-w-[85%] animate-pulse font-serif italic';
+      typing.textContent = 'Thinking...';
+      box.appendChild(typing);
+      box.scrollTop = box.scrollHeight;
+      
+      setTimeout(() => {
+        typing.remove();
+        const reply = document.createElement('div');
+        reply.className = 'bg-[#1c1612] p-2 rounded-lg text-sunrise-cream max-w-[85%]';
+        
+        if (promptText.includes('afternoon')) {
+          reply.innerHTML = `<strong>Schedule Optimized:</strong><br>• 2:00-3:30 PM Focus block (Marketing deck)<br>• 3:30-4:00 PM Break/Hydration<br>• 4:00-5:00 PM Cardio session`;
+        } else {
+          reply.innerHTML = `<strong>Quick Workout (30m):</strong><br>• 5m Dynamic Warm-up<br>• 15m Upper body circuit (Pushups/Rows)<br>• 10m HIIT (Interval runs)`;
+        }
+        
+        box.appendChild(reply);
+        box.scrollTop = box.scrollHeight;
+      }, 1000);
+    };
+
+    function renderGames(vp) {
+      vp.innerHTML = `
+        <div class="flex flex-col items-center gap-2">
+          <canvas id="snake-canvas" width="220" height="150" class="bg-[#120d0a] border border-sunrise-gold/20 rounded-lg"></canvas>
+          <div class="flex justify-between items-center w-full px-1">
+            <span class="text-[9px] font-mono text-sunrise-gold" id="snake-score">Score: 0</span>
+            <button id="snake-start-btn" onclick="startSnakeGame()" class="px-3 py-1 rounded bg-sunrise-gold text-sunrise-black text-[10px] font-semibold">Start Game</button>
+          </div>
+          <div class="grid grid-cols-3 gap-1 w-24">
+            <div></div>
+            <button onclick="controlSnake('up')" class="p-1 bg-[#1c1612] rounded border border-sunrise-cream/10 flex items-center justify-center text-xs">▲</button>
+            <div></div>
+            <button onclick="controlSnake('left')" class="p-1 bg-[#1c1612] rounded border border-sunrise-cream/10 flex items-center justify-center text-xs">◀</button>
+            <button onclick="controlSnake('down')" class="p-1 bg-[#1c1612] rounded border border-sunrise-cream/10 flex items-center justify-center text-xs">▼</button>
+            <button onclick="controlSnake('right')" class="p-1 bg-[#1c1612] rounded border border-sunrise-cream/10 flex items-center justify-center text-xs">▶</button>
+          </div>
+        </div>
+      `;
+      initSnakeCanvas();
+    }
+
+    let snake = [];
+    let food = {};
+    let dx = 10;
+    let dy = 0;
+    let nextDir = 'right';
+    let snakeScore = 0;
+    let canvasWidth = 220;
+    let canvasHeight = 150;
+    let gridScale = 10;
+
+    function initSnakeCanvas() {
+      const canvas = document.getElementById('snake-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#1c1612';
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+      ctx.fillStyle = '#ffbe76';
+      ctx.font = '10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Tap Start Game to Play!', canvasWidth/2, canvasHeight/2);
+    }
+
+    window.startSnakeGame = function() {
+      const canvas = document.getElementById('snake-canvas');
+      if (!canvas) return;
+      
+      const startBtn = document.getElementById('snake-start-btn');
+      if (startBtn) startBtn.style.display = 'none';
+
+      snakeScore = 0;
+      updateSnakeScore();
+      
+      snake = [
+        { x: 50, y: 50 },
+        { x: 40, y: 50 },
+        { x: 30, y: 50 }
+      ];
+      dx = 10;
+      dy = 0;
+      nextDir = 'right';
+      placeFood();
+
+      if (snakeGameInterval) clearInterval(snakeGameInterval);
+      snakeGameInterval = setInterval(gameLoopStep, 150);
+    };
+
+    window.controlSnake = function(dir) {
+      if (dir === 'up' && dy === 0) { nextDir = 'up'; }
+      else if (dir === 'down' && dy === 0) { nextDir = 'down'; }
+      else if (dir === 'left' && dx === 0) { nextDir = 'left'; }
+      else if (dir === 'right' && dx === 0) { nextDir = 'right'; }
+    };
+
+    function placeFood() {
+      food.x = Math.floor(Math.random() * (canvasWidth / gridScale)) * gridScale;
+      food.y = Math.floor(Math.random() * (canvasHeight / gridScale)) * gridScale;
+    }
+
+    function gameLoopStep() {
+      const canvas = document.getElementById('snake-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      // Update direction
+      if (nextDir === 'up') { dx = 0; dy = -10; }
+      else if (nextDir === 'down') { dx = 0; dy = 10; }
+      else if (nextDir === 'left') { dx = -10; dy = 0; }
+      else if (nextDir === 'right') { dx = 10; dy = 0; }
+
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+      
+      // Collision checks
+      if (head.x < 0 || head.x >= canvasWidth || head.y < 0 || head.y >= canvasHeight || snake.some(s => s.x === head.x && s.y === head.y)) {
+        clearInterval(snakeGameInterval);
+        snakeGameInterval = null;
+        ctx.fillStyle = '#ff7979';
+        ctx.font = '12px serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Game Over!', canvasWidth/2, canvasHeight/2 + 5);
+        const startBtn = document.getElementById('snake-start-btn');
+        if (startBtn) {
+          startBtn.style.display = 'block';
+          startBtn.textContent = 'Retry';
+        }
+        return;
+      }
+
+      snake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        snakeScore += 10;
+        updateSnakeScore();
+        placeFood();
+      } else {
+        snake.pop();
+      }
+
+      // Draw
+      ctx.fillStyle = '#120d0a';
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+      // Food
+      ctx.fillStyle = '#ff7979';
+      ctx.beginPath();
+      ctx.arc(food.x + 5, food.y + 5, 4, 0, 2*Math.PI);
+      ctx.fill();
+
+      // Snake
+      ctx.fillStyle = '#ffbe76';
+      snake.forEach((part, i) => {
+        ctx.fillStyle = i === 0 ? '#ffbe76' : '#d4a843';
+        ctx.fillRect(part.x + 1, part.y + 1, 8, 8);
+      });
+    }
+
+    function updateSnakeScore() {
+      const scoreEl = document.getElementById('snake-score');
+      if (scoreEl) scoreEl.textContent = `Score: ${snakeScore}`;
+    }
+
+    function renderTools(vp) {
+      vp.innerHTML = `
+        <div class="bg-[#1c1612] border border-sunrise-gold/10 rounded-xl p-3 flex flex-col gap-2">
+          <span class="text-[9px] font-mono tracking-widest text-sunrise-gold font-semibold uppercase">QR Code Generator</span>
+          <input type="text" oninput="genDemoQr(this.value)" placeholder="Type to generate..." class="w-full bg-[#120d0a] border border-sunrise-cream/10 rounded px-2.5 py-1.5 text-xs text-sunrise-cream focus:outline-none focus:border-sunrise-gold">
+          
+          <div class="flex justify-center py-2">
+            <div id="demo-qr-grid" class="grid grid-cols-12 gap-[1px] p-2 bg-white rounded border border-sunrise-cream/10 w-24 h-24">
+              <!-- Pixel Grid -->
+            </div>
+          </div>
+          <div class="text-[8px] text-sunrise-mute text-center">Pixelated QR preview updates instantly</div>
+        </div>
+      `;
+      genDemoQr("DailyTool");
+    }
+
+    window.genDemoQr = function(val) {
+      const grid = document.getElementById('demo-qr-grid');
+      if (!grid) return;
+      
+      grid.innerHTML = '';
+      // Simple hash to make the QR grid deterministic but variable
+      let hash = 0;
+      for (let i = 0; i < val.length; i++) {
+        hash = val.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      
+      // Make a 12x12 grid (144 pixels)
+      for (let i = 0; i < 144; i++) {
+        const isCorner = (i < 3 || (i >= 9 && i < 12) || i === 12 || i === 24 || i === 131 || i === 143 || (i >= 132 && i < 135));
+        const active = isCorner || ((Math.abs(hash + (i * 37)) % 10) < 4);
+        
+        const px = document.createElement('div');
+        px.className = active ? 'bg-[#120d0a]' : 'bg-white';
+        grid.appendChild(px);
+      }
+    };
+
+    // 3D Phone Hover Tilt Effect
+    const phoneContainer = document.querySelector('.phone-container');
+    const phone = document.getElementById('phone');
+    if (phoneContainer && phone) {
+      phoneContainer.addEventListener('mousemove', (e) => {
+        const rect = phoneContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        // Dynamic tilt based on cursor placement
+        gsap.to(phone, {
+          rotateY: x * 0.18 + 25,
+          rotateX: -y * 0.18 + 15,
+          duration: 0.3,
+          ease: 'power1.out'
+        });
+      });
+      
+      phoneContainer.addEventListener('mouseleave', () => {
+        gsap.to(phone, {
+          rotateY: 25,
+          rotateX: 15,
+          duration: 0.6,
+          ease: 'power2.out'
+        });
+      });
+    }
 
     // GSAP Scroll Animations
     gsap.registerPlugin(ScrollTrigger);
@@ -347,12 +820,12 @@
       ease: 'power2.inOut'
     })
     // 2 — Screen elements fade inside the mockup screen
-    .to(['#screen-tasks', '#screen-habits', '#screen-calories'], {
+    .to('#demo-viewport', {
       opacity: 0.2,
       duration: 0.5,
       ease: 'power2.inOut'
     }, '-=0.5')
-    // 3 — Floating deconstructed cards float out of the screen (reassemble dynamically)
+    // 3 — Floating deconstructed cards float out of the screen
     .to('#float-tasks', {
       opacity: 1,
       x: -200,
@@ -399,7 +872,7 @@
       duration: 1,
       ease: 'power2.in'
     })
-    .to(['#screen-tasks', '#screen-habits', '#screen-calories'], {
+    .to('#demo-viewport', {
       opacity: 1,
       duration: 0.5,
       ease: 'power2.in'
