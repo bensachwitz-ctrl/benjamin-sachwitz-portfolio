@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Daily Tool · One App. Your Whole Day.</title>
+  <meta name="description" content="A private, beautiful, all-in-one personal command center. Plan, track, and own your day. Privacy-first by design.">
+  <meta name="theme-color" content="#120d0a">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN (For Layout) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Fraunces', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            sunrise: {
+              black: '#120d0a',
+              card: '#1c1612',
+              cream: '#f4e3c1',
+              gold: '#ffbe76',
+              peach: '#ff7979',
+              mute: 'rgba(244, 227, 193, 0.65)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Base Custom Styles -->
+  <style>
+    body {
+      background-color: #120d0a;
+      color: #f4e3c1;
+      overflow-x: hidden;
+    }
+    
+    /* Cinematic Loader */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: #120d0a;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .loader-bar {
+      width: 240px;
+      height: 2px;
+      background: rgba(244, 227, 193, 0.15);
+      margin-top: 1.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .loader-bar-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0%;
+      background: #ffbe76;
+    }
+
+    /* 3D phone stage */
+    .phone-container {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+    .phone-body {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .floating-ui-element {
+      position: absolute;
+      will-change: transform, opacity;
+      transform-style: preserve-3d;
+    }
+
+    /* Smooth Scroll Adjustments */
+    html.lenis {
+      height: auto;
+    }
+    .lenis-smooth {
+      scroll-behavior: initial;
+    }
+    .lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    .lenis-stopped {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="text-center">
+      <div class="font-serif text-3xl md:text-5xl font-light italic mb-2">My Daily Tool</div>
+      <div id="loader-percentage" class="font-mono text-sm tracking-widest text-sunrise-gold">0%</div>
+      <div class="loader-bar">
+        <div id="loader-bar-fill" class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="min-h-screen flex flex-col justify-between px-6 py-8 relative z-10 max-w-7xl mx-auto">
+    <nav class="flex justify-between items-center w-full">
+      <a href="/" class="font-serif text-xl font-medium tracking-tight">Benjamin Sachwitz</a>
+      <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full border border-sunrise-cream text-sunrise-cream hover:bg-sunrise-cream hover:text-sunrise-black transition-colors font-medium text-sm">Download App</a>
+    </nav>
+
+    <div class="my-auto max-w-3xl pt-20">
+      <span class="text-xs uppercase tracking-[0.2em] text-sunrise-gold font-semibold mb-4 block">Chapter 06 · iOS App</span>
+      <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight mb-6">
+        One app. <br>Your <span class="italic text-sunrise-gold">whole day</span>.
+      </h1>
+      <p class="text-sunrise-mute text-lg md:text-xl max-w-xl leading-relaxed mb-8">
+        Open the app. See your day. Weather, agenda, habits, calories, and a daily challenge. One screen, no scrolling. Privacy-first, offline-ready.
+      </p>
+      <div class="flex gap-4">
+        <a href="#demo" class="px-6 py-3 rounded-full bg-sunrise-gold text-sunrise-black font-semibold text-sm hover:opacity-90 transition-opacity">Explore Cinematic Scroll</a>
+        <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-sunrise-card text-sunrise-cream border border-sunrise-cream/10 font-semibold text-sm hover:border-sunrise-cream/30 transition-colors">App Store →</a>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-end text-xs text-sunrise-mute">
+      <div>© 2026 Ben Sachwitz</div>
+      <div>Scroll down to explore</div>
+    </div>
+  </header>
+
+  <!-- Interactive 3D/CSS Animation Section -->
+  <section id="demo" class="min-h-[200vh] relative z-10 bg-sunrise-black py-20 flex flex-col justify-start">
+    <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden phone-container">
+      
+      <!-- Ambient Backlights -->
+      <div class="absolute w-[500px] h-[500px] rounded-full bg-sunrise-gold/5 blur-[120px] pointer-events-none -z-10"></div>
+      
+      <!-- Phone Body Mockup -->
+      <div id="phone" class="phone-body relative w-[280px] h-[570px] bg-[#1a1512] rounded-[42px] border-4 border-sunrise-cream/20 shadow-2xl p-4 flex flex-col justify-between">
+        
+        <!-- Screen Header -->
+        <div class="flex justify-between items-center text-[10px] text-sunrise-mute font-mono px-2 pt-1">
+          <div>08:00 AM</div>
+          <div class="w-16 h-4 bg-black rounded-full mx-auto"></div>
+          <div>100%</div>
+        </div>
+
+        <!-- Dashboard Screen Mockup -->
+        <div class="flex-1 my-3 bg-[#120d0a] rounded-[28px] p-3 flex flex-col justify-between overflow-hidden border border-sunrise-cream/5 relative">
+          
+          <!-- Inner App Screen Content -->
+          <div class="space-y-3">
+            <div class="h-6 flex justify-between items-center border-b border-sunrise-cream/5 pb-2">
+              <span class="text-[10px] font-bold tracking-wider">TODAY'S BRIEF</span>
+              <span class="text-[8px] text-sunrise-gold font-mono">76°F Clear</span>
+            </div>
+            
+            <!-- Tasks Placeholder -->
+            <div id="screen-tasks" class="bg-sunrise-card rounded-lg p-2 border border-sunrise-cream/5">
+              <div class="text-[8px] text-sunrise-gold font-mono uppercase mb-1">Agenda</div>
+              <div class="h-2 w-24 bg-sunrise-cream/20 rounded mb-1"></div>
+              <div class="h-2 w-16 bg-sunrise-cream/20 rounded"></div>
+            </div>
+
+            <!-- Habits Placeholder -->
+            <div id="screen-habits" class="bg-sunrise-card rounded-lg p-2 border border-sunrise-cream/5">
+              <div class="text-[8px] text-sunrise-gold font-mono uppercase mb-1">Habits</div>
+              <div class="h-2 w-20 bg-sunrise-cream/20 rounded"></div>
+            </div>
+
+            <!-- Calories Placeholder -->
+            <div id="screen-calories" class="bg-sunrise-card rounded-lg p-2 border border-sunrise-cream/5">
+              <div class="text-[8px] text-sunrise-gold font-mono uppercase mb-1">Wellness</div>
+              <div class="h-2 w-14 bg-sunrise-cream/20 rounded"></div>
+            </div>
+          </div>
+
+          <!-- Screen Footer -->
+          <div class="h-6 border-t border-sunrise-cream/5 pt-2 flex justify-around items-center text-[8px] text-sunrise-mute">
+            <span>Track</span>
+            <span class="text-sunrise-gold font-bold">Today</span>
+            <span>Brief</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Floating Deconstructed UI Elements -->
+      <!-- Task Card Float -->
+      <div id="float-tasks" class="floating-ui-element bg-[#241b16] border border-sunrise-gold/30 rounded-xl p-4 w-[200px] shadow-2xl opacity-0 transform -translate-x-[260px] translate-y-[-100px] translate-z-[150px]">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono tracking-wider text-sunrise-gold">AGENDA</span>
+          <span class="text-[9px] bg-sunrise-gold/10 px-2 py-0.5 rounded text-sunrise-gold">High</span>
+        </div>
+        <h4 class="font-serif text-sm font-medium mb-1">Review Marketing Launch</h4>
+        <p class="text-[10px] text-sunrise-mute">Priority checklist completion sweep.</p>
+      </div>
+
+      <!-- Habits Card Float -->
+      <div id="float-habits" class="floating-ui-element bg-[#241b16] border border-sunrise-gold/30 rounded-xl p-4 w-[200px] shadow-2xl opacity-0 transform translate-x-[260px] translate-y-[-50px] translate-z-[120px]">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono tracking-wider text-sunrise-gold">HABITS</span>
+          <span class="text-[9px] text-sunrise-gold font-mono">18d Streak</span>
+        </div>
+        <h4 class="font-serif text-sm font-medium mb-1">Hydration Goal</h4>
+        <p class="text-[10px] text-sunrise-mute">80oz water intake ring complete.</p>
+      </div>
+
+      <!-- Wellness Card Float -->
+      <div id="float-wellness" class="floating-ui-element bg-[#241b16] border border-sunrise-gold/30 rounded-xl p-4 w-[200px] shadow-2xl opacity-0 transform -translate-x-[220px] translate-y-[120px] translate-z-[80px]">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono tracking-wider text-sunrise-gold">WELLNESS</span>
+          <span class="text-[9px] text-sunrise-gold">Synced</span>
+        </div>
+        <h4 class="font-serif text-sm font-medium mb-1">Apple Health</h4>
+        <p class="text-[10px] text-sunrise-mute">Sleep logs & steps imported locally.</p>
+      </div>
+
+      <!-- Privacy Card Float -->
+      <div id="float-privacy" class="floating-ui-element bg-[#241b16] border border-sunrise-gold/30 rounded-xl p-4 w-[200px] shadow-2xl opacity-0 transform translate-x-[220px] translate-y-[130px] translate-z-[100px]">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono tracking-wider text-sunrise-gold">PRIVACY</span>
+          <span class="text-[9px] bg-green-500/10 px-2 py-0.5 rounded text-green-400">100% Local</span>
+        </div>
+        <h4 class="font-serif text-sm font-medium mb-1">AI Consent Toggles</h4>
+        <p class="text-[10px] text-sunrise-mute">No un-authorized transfers.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feature Grid Section -->
+  <section class="bg-sunrise-card/30 border-t border-sunrise-cream/5 py-24 px-6 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase tracking-[0.2em] text-sunrise-gold font-semibold mb-3 block">Compliance & Integrations</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-light">Elevated to App Store compliance.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Feature 1 -->
+        <div class="bg-sunrise-card border border-sunrise-cream/5 rounded-2xl p-8 hover:border-sunrise-gold/20 transition-colors">
+          <div class="text-sunrise-gold mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl mb-3 text-sunrise-cream">AI Consent & Privacy</h3>
+          <p class="text-sunrise-mute text-sm leading-relaxed">
+            Explicit opt-in screens let you choose when to utilize AI helpers, meeting Guideline 5.1.1 rules with absolute transparent consent.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-sunrise-card border border-sunrise-cream/5 rounded-2xl p-8 hover:border-sunrise-gold/20 transition-colors">
+          <div class="text-sunrise-gold mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl mb-3 text-sunrise-cream">Smart Health Sync</h3>
+          <p class="text-sunrise-mute text-sm leading-relaxed">
+            Import sleep metrics, step counts, and hydration logs locally via Apple Health (HealthKit) and Garmin smartwatch integrations.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-sunrise-card border border-sunrise-cream/5 rounded-2xl p-8 hover:border-sunrise-gold/20 transition-colors">
+          <div class="text-sunrise-gold mb-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl mb-3 text-sunrise-cream">Safe & Offline-First</h3>
+          <p class="text-sunrise-mute text-sm leading-relaxed">
+            Removed all background audio modes to fit strict submission requirements, relying on native iOS LocalNotifications for alarms.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-sunrise-black py-16 px-6 border-t border-sunrise-cream/5 relative z-10 text-center text-xs text-sunrise-mute">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="font-serif text-sunrise-cream text-lg italic">My Daily Tool</div>
+      <div class="flex gap-6">
+        <a href="/" class="hover:text-sunrise-cream transition-colors">Portfolio</a>
+        <a href="/privacy" class="hover:text-sunrise-cream transition-colors">Privacy Policy</a>
+        <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" class="hover:text-sunrise-cream transition-colors">App Store</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis for Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <script>
+    // Initialize Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Wire Lenis with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    // Cinematic Preloader Animation
+    window.addEventListener('load', () => {
+      let progress = 0;
+      const progressText = document.getElementById('loader-percentage');
+      const progressBar = document.getElementById('loader-bar-fill');
+      
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 15) + 5;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          
+          // Fade out preloader
+          gsap.to('#preloader', {
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.inOut',
+            onComplete: () => {
+              document.getElementById('preloader').style.display = 'none';
+            }
+          });
+        }
+        progressText.textContent = `${progress}%`;
+        progressBar.style.width = `${progress}%`;
+      }, 60);
+    });
+
+    // GSAP Scroll Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 3D Phone Deconstruction Timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#demo',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1.5,
+        pin: true
+      }
+    });
+
+    // 1 — Phone rotates and scales up in 3D
+    tl.to('#phone', {
+      rotateY: 25,
+      rotateX: 15,
+      scale: 1.15,
+      duration: 1,
+      ease: 'power2.inOut'
+    })
+    // 2 — Screen elements fade inside the mockup screen
+    .to(['#screen-tasks', '#screen-habits', '#screen-calories'], {
+      opacity: 0.2,
+      duration: 0.5,
+      ease: 'power2.inOut'
+    }, '-=0.5')
+    // 3 — Floating deconstructed cards float out of the screen (reassemble dynamically)
+    .to('#float-tasks', {
+      opacity: 1,
+      x: -200,
+      y: -120,
+      z: 180,
+      rotateY: -15,
+      duration: 1.5,
+      ease: 'power3.out'
+    })
+    .to('#float-habits', {
+      opacity: 1,
+      x: 200,
+      y: -70,
+      z: 160,
+      rotateY: 15,
+      duration: 1.5,
+      ease: 'power3.out'
+    }, '-=1.2')
+    .to('#float-wellness', {
+      opacity: 1,
+      x: -180,
+      y: 140,
+      z: 120,
+      rotateY: -10,
+      duration: 1.5,
+      ease: 'power3.out'
+    }, '-=1.2')
+    .to('#float-privacy', {
+      opacity: 1,
+      x: 180,
+      y: 150,
+      z: 140,
+      rotateY: 10,
+      duration: 1.5,
+      ease: 'power3.out'
+    }, '-=1.2')
+    // 4 — Reassemble on final scroll segment
+    .to(['#float-tasks', '#float-habits', '#float-wellness', '#float-privacy'], {
+      opacity: 0.1,
+      x: 0,
+      y: 0,
+      z: 0,
+      rotateY: 0,
+      duration: 1,
+      ease: 'power2.in'
+    })
+    .to(['#screen-tasks', '#screen-habits', '#screen-calories'], {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.in'
+    }, '-=0.5');
+
+  </script>
+</body>
+</html>

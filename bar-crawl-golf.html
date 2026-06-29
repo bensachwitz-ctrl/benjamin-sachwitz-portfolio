@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar Crawl Golf · Your Crawl. Your Rules.</title>
+  <meta name="description" content="Group competition turned into a real game. Set the course, score the holes, settle the night. Shipped to iPhone.">
+  <meta name="theme-color" content="#0d1b2a">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Fraunces', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            crawl: {
+              navy: '#0d1b2a',
+              card: '#1b263b',
+              gold: '#e0a96d',
+              cream: '#ebe4cf',
+              accent: '#31572c',
+              mute: 'rgba(235, 228, 207, 0.65)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0d1b2a;
+      color: #ebe4cf;
+      overflow-x: hidden;
+    }
+
+    /* Hand-painted border effects */
+    .painted-border {
+      border: 2px solid rgba(224, 169, 109, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      background: #152238;
+      transition: border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .painted-border:hover {
+      border-color: rgba(224, 169, 109, 0.6);
+      transform: translateY(-4px);
+    }
+
+    /* GSAP Easing Curve */
+    .smooth-transition {
+      transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Smooth Scroll Adjustments */
+    html.lenis {
+      height: auto;
+    }
+    .lenis-smooth {
+      scroll-behavior: initial;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Hero Section -->
+  <header class="min-h-screen flex flex-col justify-between px-6 py-8 relative max-w-7xl mx-auto">
+    <nav class="flex justify-between items-center w-full">
+      <a href="/" class="font-serif text-xl font-medium tracking-tight">Benjamin Sachwitz</a>
+      <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full border border-crawl-cream text-crawl-cream hover:bg-crawl-cream hover:text-crawl-navy transition-colors font-medium text-sm">Download App</a>
+    </nav>
+
+    <div class="my-auto max-w-3xl pt-20">
+      <span class="text-xs uppercase tracking-[0.2em] text-crawl-gold font-semibold mb-4 block">Chapter 06 · iOS App</span>
+      <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight mb-6">
+        Your crawl. <br>Your <span class="italic text-crawl-gold">rules</span>.
+      </h1>
+      <p class="text-crawl-mute text-lg md:text-xl max-w-xl leading-relaxed mb-8">
+        Group competition turned into a real game. Bar Crawl Golf turns any night out into a round of golf: every bar is a hole, every drink is a stroke, lowest score wins.
+      </p>
+      <div class="flex gap-4">
+        <a href="#features" class="px-6 py-3 rounded-full bg-crawl-gold text-crawl-navy font-semibold text-sm hover:opacity-90 transition-opacity">Explore Features</a>
+        <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-crawl-card text-crawl-cream border border-crawl-cream/10 font-semibold text-sm hover:border-crawl-cream/30 transition-colors">App Store →</a>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-end text-xs text-crawl-mute">
+      <div>© 2026 Ben Sachwitz</div>
+      <div>Scroll down to explore</div>
+    </div>
+  </header>
+
+  <!-- Pinned Feature Showcase Section -->
+  <section id="features" class="min-h-[250vh] relative z-10 bg-crawl-navy py-20 flex flex-col justify-start">
+    <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+      
+      <!-- Interactive 3D/Floating Compass Badge -->
+      <div id="interactive-badge" class="absolute w-[200px] h-[200px] pointer-events-auto cursor-pointer z-20 flex flex-col items-center justify-center text-center select-none" style="will-change: transform;">
+        <!-- Compass Vector -->
+        <svg class="w-32 h-32 text-crawl-gold/80 animate-[spin_40s_linear_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+        <span class="text-[10px] uppercase font-mono tracking-widest text-crawl-gold mt-2">Tap Compass to Clink</span>
+      </div>
+
+      <!-- Feature Card 1: Route Builder -->
+      <div class="feature-card absolute opacity-0 w-[280px] md:w-[350px] p-6 painted-border" style="transform: translate(-300px, -150px);">
+        <span class="text-[10px] font-mono text-crawl-gold tracking-widest block mb-2">FEATURE 01</span>
+        <h3 class="font-serif text-2xl font-light mb-3 text-crawl-cream">Walkable Course Maps</h3>
+        <p class="text-crawl-mute text-sm leading-relaxed">
+          Integrated MapLibre route maps trace your bar-to-bar coordinates. Calculate distance, walking ETA, and direct stops.
+        </p>
+      </div>
+
+      <!-- Feature Card 2: Leaderboard -->
+      <div class="feature-card absolute opacity-0 w-[280px] md:w-[350px] p-6 painted-border" style="transform: translate(300px, -80px);">
+        <span class="text-[10px] font-mono text-crawl-gold tracking-widest block mb-2">FEATURE 02</span>
+        <h3 class="font-serif text-2xl font-light mb-3 text-crawl-cream">Live Group Leaderboard</h3>
+        <p class="text-crawl-mute text-sm leading-relaxed">
+          Join with a 6-letter code. Watch real-time scorecard updates and penalty allocations across all device viewports.
+        </p>
+      </div>
+
+      <!-- Feature Card 3: Postcards -->
+      <div class="feature-card absolute opacity-0 w-[280px] md:w-[350px] p-6 painted-border" style="transform: translate(-300px, 120px);">
+        <span class="text-[10px] font-mono text-crawl-gold tracking-widest block mb-2">FEATURE 03</span>
+        <h3 class="font-serif text-2xl font-light mb-3 text-crawl-cream">Yearbook Postcards</h3>
+        <p class="text-crawl-mute text-sm leading-relaxed">
+          Save your crawl summary as an illustrated postcard, complete with the Champion tag and crew stats to share.
+        </p>
+      </div>
+
+      <!-- Feature Card 4: Tournaments -->
+      <div class="feature-card absolute opacity-0 w-[280px] md:w-[350px] p-6 painted-border" style="transform: translate(300px, 150px);">
+        <span class="text-[10px] font-mono text-crawl-gold tracking-widest block mb-2">FEATURE 04</span>
+        <h3 class="font-serif text-2xl font-light mb-3 text-crawl-cream">Tour-Style Tournaments</h3>
+        <p class="text-crawl-mute text-sm leading-relaxed">
+          Unlock brackets, spectator capabilities, and multi-round challenges with custom-drawn interface glyphs.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SAMHSA Responsibility Section -->
+  <section class="bg-crawl-card/40 border-t border-crawl-cream/10 py-20 px-6 text-center relative z-10">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-xs uppercase tracking-[0.2em] text-crawl-gold font-semibold mb-3 block">Responsibility First</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-light mb-6">Pace Yourself. Drink Responsibly.</h2>
+      <p class="text-crawl-mute text-sm md:text-base leading-relaxed mb-8">
+        Bar Crawl Golf is a scoring tool for legal drinking age adults (21+ in the US, 18+ in most of Canada, Europe, and the UK). The app rewards strategy, not volume. Never drink and drive.
+      </p>
+      <div class="inline-block bg-[#0f1b2a] border border-crawl-gold/20 rounded-xl p-6">
+        <div class="text-xs text-crawl-gold tracking-widest font-mono uppercase mb-2">SAMHSA Helpline</div>
+        <div class="font-serif text-xl text-crawl-cream font-medium">1-800-662-4357 (HELP)</div>
+        <p class="text-[11px] text-crawl-mute mt-2">Free, confidential, 24/7 information service.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-crawl-navy py-16 px-6 border-t border-crawl-cream/10 relative z-10 text-center text-xs text-crawl-mute">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="font-serif text-crawl-cream text-lg italic">Bar Crawl Golf</div>
+      <div class="flex gap-6">
+        <a href="/" class="hover:text-crawl-cream transition-colors">Portfolio</a>
+        <a href="/privacy" class="hover:text-crawl-cream transition-colors">Privacy Policy</a>
+        <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" class="hover:text-crawl-cream transition-colors">App Store</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <script>
+    // Initialize Lenis
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Audio Feedback Context
+    let audioCtx = null;
+    function playClink() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(1200, audioCtx.currentTime); // High pitch clink
+      
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(1800, audioCtx.currentTime);
+
+      gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+
+      osc1.connect(gainNode);
+      osc2.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      osc1.start();
+      osc2.start();
+      osc1.stop(audioCtx.currentTime + 0.3);
+      osc2.stop(audioCtx.currentTime + 0.3);
+    }
+
+    const badge = document.getElementById('interactive-badge');
+    badge.addEventListener('click', () => {
+      playClink();
+      // Visual bounce
+      gsap.fromTo(badge, 
+        { scale: 0.9, rotate: -15 },
+        { scale: 1, rotate: 0, duration: 0.4, ease: 'elastic.out(1, 0.3)' }
+      );
+    });
+
+    // Hover rotate on badge
+    badge.addEventListener('mousemove', (e) => {
+      const rect = badge.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      gsap.to(badge, {
+        rotateX: -y * 0.3,
+        rotateY: x * 0.3,
+        duration: 0.2
+      });
+    });
+    badge.addEventListener('mouseleave', () => {
+      gsap.to(badge, { rotateX: 0, rotateY: 0, duration: 0.4 });
+    });
+
+    // GSAP Scroll Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#features',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1,
+        pin: true
+      }
+    });
+
+    // Pinned reveal with constant easing curve (power3.inOut)
+    tl.to('.feature-card', {
+      opacity: 1,
+      duration: 1,
+      stagger: 0.5,
+      ease: 'power3.inOut'
+    })
+    .to('#interactive-badge', {
+      scale: 1.1,
+      rotate: 360,
+      duration: 2,
+      ease: 'power3.inOut'
+    }, '-=2');
+
+  </script>
+</body>
+</html>
