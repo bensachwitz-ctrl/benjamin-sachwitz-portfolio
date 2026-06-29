@@ -68,6 +68,18 @@
     .lenis-smooth {
       scroll-behavior: initial;
     }
+
+    /* 3D Phone Tilt */
+    .phone-container {
+      perspective: 1200px;
+    }
+    .phone-body {
+      transform-style: preserve-3d;
+      transition: box-shadow 0.3s ease;
+    }
+    .phone-body:hover {
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    }
   </style>
 </head>
 <body class="font-sans antialiased">
@@ -213,13 +225,6 @@
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <script>
-    // Initialize Lenis
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true
-    });
-
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
