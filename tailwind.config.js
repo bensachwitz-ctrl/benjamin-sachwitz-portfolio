@@ -1,4 +1,4 @@
-/** Static build config — replaces the cdn.tailwindcss.com Play CDN on all 10
+/** Static build config - replaces the cdn.tailwindcss.com Play CDN on all 10
  *  pages. Merges every per-product palette that appeared in the pages' inline
  *  configs (default ink/bone/ox/gold/mute + crawl/sunrise/greek). Scans HTML +
  *  app.js for class usage; safelist is a net for any dynamically-applied
