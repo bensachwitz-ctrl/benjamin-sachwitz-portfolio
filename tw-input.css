@@ -1,3 +1,6 @@
+/* NOTE: self-hosted @font-face declarations live in /fonts/fonts.css, which is
+ * linked directly on every HTML page (not bundled here). The Google Fonts CDN
+ * was removed in favor of those local woff2 files. Do not re-add a fonts CDN. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

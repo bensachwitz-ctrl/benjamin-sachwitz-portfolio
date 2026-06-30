@@ -1,0 +1,48 @@
+/* Self-hosted webfonts. Replaces the former Google Fonts CDN link
+ * so the site has zero third-party font dependency and zero render-blocking
+ * cross-origin request. Files are subset to Latin + punctuation + common
+ * symbols and kept as VARIABLE fonts (weight + optical-size axes preserved)
+ * so every font-weight in styles.css interpolates exactly as it did on the CDN.
+ * font-display: swap mirrors the original "&display=swap" behaviour.
+ * Source: Google Fonts upstream (OFL-1.1). See fonts/OFL.txt for the license. */
+
+/* ---- Fraunces (display serif) ---- */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/fraunces-italic-latin.woff2') format('woff2');
+}
+
+/* ---- Inter (UI / body sans) ---- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/inter-italic-latin.woff2') format('woff2');
+}
+
+/* ---- JetBrains Mono (technical mono / labels) ---- */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('/fonts/jetbrainsmono-latin.woff2') format('woff2');
+}

@@ -12,7 +12,7 @@
     --grad-warm: linear-gradient(135deg, var(--ox) 0%, #C0392B 50%, var(--gold) 100%);
   }
   html, body { background: var(--bone); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
-  body { font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; line-height: 1.7; letter-spacing: 0.25px; }
+  body { font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; line-height: 1.7; letter-spacing: 0.25px; font-optical-sizing: auto; }
 
   /* Serif display tweaks */
   .font-serif { font-feature-settings: "ss01","liga","dlig"; }
@@ -3848,4 +3848,45 @@ html.snap-active section,
 html.snap-active footer {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+/* === FORCED-COLORS / WINDOWS HIGH-CONTRAST SUPPORT ===
+   In forced-colors mode the OS overrides our palette, which can erase
+   custom box-shadow focus rings (shadows are stripped). Re-assert a real
+   outline on every interactive element so keyboard focus stays visible,
+   and keep button/card edges drawn with system border colors. */
+@media (forced-colors: active) {
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  .btn-ink:focus-visible,
+  .btn-outline:focus-visible,
+  .btn-gold:focus-visible,
+  .pill:focus-visible,
+  .atab:focus-visible,
+  .cert-chip:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+  .btn-ink,
+  .btn-outline,
+  .btn-gold,
+  .pill,
+  .exp-card,
+  .cert-chip,
+  .finput {
+    border: 1px solid ButtonText;
+  }
+  /* Decorative scroll-progress and ambient layers carry no meaning;
+     hide them so they cannot wash out high-contrast text. */
+  #scrollProgress,
+  #scrollProg,
+  .confetti-layer,
+  .marquee::before,
+  .marquee::after {
+    forced-color-adjust: none;
+  }
 }
