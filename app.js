@@ -94,12 +94,17 @@
     loaderHidden = true;
     loader.classList.add('hide');
     document.body.style.overflow = '';
-    setTimeout(() => { if (loader) loader.style.display = 'none'; }, 700);
+    // Wait out the clip-path wipe (.9s) before pulling it from the layout.
+    setTimeout(() => { if (loader) loader.style.display = 'none'; }, 1000);
   }
-  if (document.readyState === 'complete') setTimeout(hideLoader, 650);
-  else window.addEventListener('load', () => setTimeout(hideLoader, 650));
-  // FAILSAFE: never let the loader trap the user - 2.5s hard cap regardless of load state
-  setTimeout(hideLoader, 2500);
+  // Let the cinematic intro play to its beat, then wipe away. Reduced-motion
+  // skips the dwell so the content shows almost instantly.
+  const _reduceMo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const _introDwell = _reduceMo ? 120 : 1750;
+  if (document.readyState === 'complete') setTimeout(hideLoader, _introDwell);
+  else window.addEventListener('load', () => setTimeout(hideLoader, _introDwell));
+  // FAILSAFE: never let the loader trap the user - hard cap regardless of load state
+  setTimeout(hideLoader, 2800);
 
   /* === NAV SCROLL === */
   const nav = document.getElementById('nav');
