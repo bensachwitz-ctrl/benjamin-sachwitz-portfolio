@@ -788,7 +788,7 @@
       }
     });
 
-    // 1 — Phone rotates and scales up in 3D
+    // 1 - Phone rotates and scales up in 3D
     tl.to('#phone', {
       rotateY: 25,
       rotateX: 15,
@@ -796,13 +796,13 @@
       duration: 1,
       ease: 'power2.inOut'
     })
-    // 2 — Screen elements fade inside the mockup screen
+    // 2 - Screen elements fade inside the mockup screen
     .to('#demo-viewport', {
       opacity: 0.2,
       duration: 0.5,
       ease: 'power2.inOut'
     }, '-=0.5')
-    // 3 — Floating deconstructed cards float out of the screen
+    // 3 - Floating deconstructed cards float out of the screen
     .to('#float-tasks', {
       opacity: 1,
       x: -200,
@@ -839,7 +839,7 @@
       duration: 1.5,
       ease: 'power3.out'
     }, '-=1.2')
-    // 4 — Reassemble on final scroll segment
+    // 4 - Reassemble on final scroll segment
     .to(['#float-tasks', '#float-habits', '#float-wellness', '#float-privacy'], {
       opacity: 0.1,
       x: 0,
