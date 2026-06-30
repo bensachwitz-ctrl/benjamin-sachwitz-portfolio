@@ -3485,7 +3485,7 @@
   splitTargets.forEach(h => splitIO.observe(h));
 
   /* === BRAND CELEBRATION CONFETTI (ox + gold; reduced-motion-safe) ===
-     Restrained burst — Carolina Executive = restraint. Skipped entirely when the
+     Restrained burst - Carolina Executive = restraint. Skipped entirely when the
      visitor prefers reduced motion. Self-cleans after the longest particle lands. */
   function celebrate(originEl) {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -3519,7 +3519,7 @@
   }
   window.celebrate = celebrate;
 
-  /* === CONTACT FORM — full 4-state (idle / loading / error / success) ===
+  /* === CONTACT FORM - full 4-state (idle / loading / error / success) ===
      - inline validation (validate-on-blur, per-field error text, focus-first-error)
      - loading spinner on submit
      - success card replaces the form + brand confetti
@@ -4717,7 +4717,7 @@ function updateParallax() {
 requestAnimationFrame(updateParallax);
 
 /* ============================================================
-   ANALYTICS — Plausible custom-event tracking (delegated)
+   ANALYTICS - Plausible custom-event tracking (delegated)
    The Plausible script + window.plausible() queue shim are loaded in <head>.
    Rather than hand-tagging every button across 7 pages with a className,
    we delegate from the document so the money-events fire identically on
