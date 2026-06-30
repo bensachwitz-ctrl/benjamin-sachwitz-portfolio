@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy · Ben Sachwitz</title>
+  <meta name="description" content="How My Daily Tool, Bar Crawl Golf, and Greek Stack handle your data. Privacy-first by design: your data stays yours.">
+  <meta name="theme-color" content="#120d0a">
+  <meta name="robots" content="index, follow">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/tailwind.css?v=mp13" />
+
+  <style>
+    :root {
+      --ink: #120d0a;
+      --ink-soft: #1b1410;
+      --cream: #f4e3c1;
+      --amber: #ffbe76;
+      --mute: #a9967a;
+      --line: rgba(244, 227, 193, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background-color: var(--ink);
+      color: var(--cream);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Top bar */
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(18, 13, 10, 0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .brandmark { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.15rem; color: var(--cream); text-decoration: none; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .85rem; color: var(--mute); text-decoration: none;
+      transition: color .2s ease;
+    }
+    .back-link:hover { color: var(--amber); }
+
+    /* Hero */
+    .hero { padding: 5rem 0 2.5rem; text-align: left; }
+    .hero .eyebrow {
+      font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1.05; margin: 0 0 1rem;
+      color: var(--cream);
+    }
+    .hero p.lead { color: var(--mute); font-size: 1.05rem; max-width: 60ch; margin: 0; }
+    .updated { margin-top: 1.5rem; font-size: .8rem; color: var(--mute); }
+
+    /* Sections */
+    main { padding-bottom: 4rem; }
+    section { padding: 2.25rem 0; border-top: 1px solid var(--line); }
+    section h2 {
+      font-family: 'Fraunces', serif; font-weight: 500;
+      font-size: 1.5rem; margin: 0 0 .9rem; color: var(--cream);
+    }
+    section h3 { font-size: 1rem; font-weight: 600; color: var(--cream); margin: 1.4rem 0 .4rem; }
+    p { margin: 0 0 1rem; color: #e4d4b4; }
+    ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+    li { margin-bottom: .55rem; color: #e4d4b4; }
+    strong { color: var(--cream); font-weight: 600; }
+    .callout {
+      background: var(--ink-soft); border: 1px solid var(--line);
+      border-radius: 14px; padding: 1.25rem 1.4rem; margin: 0 0 1rem;
+    }
+    .callout p:last-child { margin-bottom: 0; }
+    a.inline { color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(255,190,118,.35); }
+    a.inline:hover { border-bottom-color: var(--amber); }
+
+    /* Footer */
+    footer {
+      background: #0d0907; padding: 3rem 0; border-top: 1px solid var(--line);
+      text-align: center; font-size: .8rem; color: var(--mute);
+    }
+    footer .links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+    footer .links a { color: var(--mute); text-decoration: none; transition: color .2s ease; }
+    footer .links a:hover { color: var(--cream); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <a href="/" class="brandmark">Ben Sachwitz</a>
+      <a href="/" class="back-link">&larr; Back to portfolio</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Your data stays yours.</h1>
+      <p class="lead">My Daily Tool, Bar Crawl Golf, and Greek Stack are built privacy-first. This page explains, in plain language, what is collected, why, and the control you keep over it.</p>
+      <div class="updated">Last updated: June 30, 2026</div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>The short version</h2>
+        <div class="callout">
+          <p>The apps are designed so your personal data lives on your device or in your own account, not on a marketing database. There are no ads, nothing is sold to third parties, and you can delete your account and data at any time from inside the app.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Who this covers</h2>
+        <p>This policy applies to the products built and maintained by Ben Sachwitz:</p>
+        <ul>
+          <li><strong>My Daily Tool</strong> - a private personal planner and tracker (iOS and web).</li>
+          <li><strong>Bar Crawl Golf</strong> - a social golf-style bar-crawl game (iOS and web).</li>
+          <li><strong>Greek Stack</strong> - chapter management software for Greek-life organizations.</li>
+          <li>This portfolio site and related project pages.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>What is collected</h2>
+
+        <h3>Information you create</h3>
+        <p>The notes, tasks, meals, habits, scores, rosters, and other content you enter is your data. In My Daily Tool, most of it is stored locally on your device by default. When you sign in, your data syncs to your private account so you can reach it across devices.</p>
+
+        <h3>Account information</h3>
+        <p>Signing in is optional in My Daily Tool and used to enable sync. If you do sign in, the apps use Sign in with Apple or Google. The apps receive only the basic profile needed to create your account, typically an email address and a name. Sign in with Apple lets you hide your real email behind a private relay address, and that is fully supported.</p>
+
+        <h3>Location</h3>
+        <p>If you grant location access, it is used only to power the feature you asked for, such as local weather in My Daily Tool or finding nearby bars in Bar Crawl Golf. Location is used in the moment and is not used to build an advertising profile of you.</p>
+
+        <h3>Usage and diagnostics</h3>
+        <p>The apps use privacy-respecting analytics and error monitoring to understand which features are used and to catch crashes. This data is aggregated and does not include the personal content you create. It exists so the apps can be made more stable and more useful, not to track you across the web.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Service providers</h2>
+        <p>A few trusted services help the apps run. Each receives only what it needs for its job:</p>
+        <ul>
+          <li><strong>Apple and Google</strong> - sign-in and, on iOS, weather data through Apple WeatherKit.</li>
+          <li><strong>Supabase</strong> - secure account and game data storage for Bar Crawl Golf.</li>
+          <li><strong>Mapbox and weather providers</strong> - maps and forecasts for location features.</li>
+          <li><strong>Analytics and error monitoring</strong> - aggregated, privacy-respecting product analytics and crash reporting.</li>
+          <li><strong>Email delivery</strong> - to send the messages and reports you request.</li>
+        </ul>
+        <p>These providers process data on the apps' behalf under their own security and privacy commitments. They are not permitted to use your data for their own marketing.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>What is never done</h2>
+        <ul>
+          <li>Your personal content is never sold or rented.</li>
+          <li>There are no third-party advertising trackers in the apps.</li>
+          <li>Your data is not used to train advertising profiles.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Your control</h2>
+        <p>You stay in charge of your information:</p>
+        <ul>
+          <li><strong>Export or review</strong> your data from inside the app.</li>
+          <li><strong>Delete your account</strong> and associated data directly in the app settings. Deletion removes your synced data.</li>
+          <li><strong>Turn off optional permissions</strong> like location at any time in your device settings.</li>
+          <li><strong>Use without an account</strong> in My Daily Tool, keeping data on-device only.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Children</h2>
+        <p>These apps are not directed at children under 13, and personal information is not knowingly collected from them. Bar Crawl Golf is intended for adults of legal drinking age and includes an age gate. If you believe a child has provided personal information, please get in touch and it will be removed.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Changes to this policy</h2>
+        <p>If this policy changes in a meaningful way, the date at the top of this page will be updated. Continued use of the apps after an update means you accept the revised policy.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p>Questions about privacy, or a request about your data? Reach out any time at <a class="inline" href="mailto:bensachwitz@gmail.com">bensachwitz@gmail.com</a> and you will get a real reply.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;color:var(--cream);">Ben Sachwitz</div>
+      <div class="links">
+        <a href="/">Portfolio</a>
+        <a href="/daily-tool">My Daily Tool</a>
+        <a href="/bar-crawl-golf">Bar Crawl Golf</a>
+        <a href="/greek-stack">Greek Stack</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
