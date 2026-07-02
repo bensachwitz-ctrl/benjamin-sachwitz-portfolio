@@ -285,6 +285,16 @@
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <script>
+    // Fail-safe (registered FIRST, before any lib init): force-hide the
+    // preloader after 3.5s regardless of GSAP/Lenis. If an animation library
+    // ever fails to load (CDN outage / CSP change), the top-level `new Lenis`
+    // below still throws, but this already-scheduled timeout guarantees the
+    // opaque #preloader overlay can never permanently trap the page.
+    setTimeout(function () {
+      var pl = document.getElementById('preloader');
+      if (pl && pl.style.display !== 'none') { pl.style.opacity = '0'; pl.style.display = 'none'; }
+    }, 3500);
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
