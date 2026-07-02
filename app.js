@@ -3367,7 +3367,7 @@
   }
 
   if (scrollRing && ringProgress) {
-    const sections = ['top','about','career','expertise','work','credentials','arcade','contact'].map(id => document.getElementById(id)).filter(Boolean);
+    const sections = ['top','about','career','expertise','work','websites','apps','credentials','arcade','contact'].map(id => document.getElementById(id)).filter(Boolean);
     const handleScroll = () => {
       const st = window.scrollY;
       const dh = document.documentElement.scrollHeight - window.innerHeight;
@@ -3717,8 +3717,14 @@
         // elevate the always-present "slow to load? use the form" hint so they can
         // choose. The calendar stays put and finishes loading.
         setTimeout(() => {
-          if (!target.classList.contains('is-loaded') && fallbackHint) {
-            fallbackHint.classList.add('is-elevated');
+          if (!target.classList.contains('is-loaded')) {
+            // #4 — record that the Cal embed failed to mount this session so the
+            // next openBooking() defaults straight to the working request form
+            // instead of re-showing a blank calendar (the '0' branch was dead
+            // because nothing ever wrote '0'). If Cal eventually mounts, the
+            // observer above overwrites this back to '1'.
+            if (sessionStorage.getItem('cal:active') !== '1') sessionStorage.setItem('cal:active', '0');
+            if (fallbackHint) fallbackHint.classList.add('is-elevated');
           }
         }, 9000);
       }
