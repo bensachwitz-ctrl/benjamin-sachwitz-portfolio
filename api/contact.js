@@ -1,4 +1,4 @@
-// Vercel serverless function — bulletproof email delivery for portfolio bookings + form contact.
+// Vercel serverless function - bulletproof email delivery for portfolio bookings + form contact.
 //
 // Strategy (in order):
 //   1) Always log to Vercel function logs (visible in dashboard) so no lead is ever lost.
@@ -150,7 +150,7 @@ function buildLeadEmail(payload) {
   <div style="margin-top:28px;padding-top:16px;border-top:1px solid rgba(10,10,10,.1);font-size:11px;color:#888;font-family:monospace;letter-spacing:.06em;">Received ${new Date().toISOString()}</div>
 </div></body></html>`;
 
-  const text = Object.entries(safe).map(([k, v]) => `${k}: ${v}`).join('\n') + `\n\n— Sent from bensachwitz.vercel.app at ${new Date().toISOString()}`;
+  const text = Object.entries(safe).map(([k, v]) => `${k}: ${v}`).join('\n') + `\n\n- Sent from bensachwitz.vercel.app at ${new Date().toISOString()}`;
 
   return { subject, html, text, replyTo, isBooking, safe };
 }
@@ -165,9 +165,9 @@ function buildBookerConfirmEmail({ name, email, when, topic, notes }) {
   const html = `<!DOCTYPE html><html><body style="margin:0;padding:32px;background:#f5f2ec;font-family:-apple-system,sans-serif;color:#0a0a0a;">
 <div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid rgba(10,10,10,.1);padding:36px 32px 32px;">
   <div style="font-family:monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B1A1A;margin-bottom:8px;">bensachwitz.vercel.app · confirmed</div>
-  <h1 style="font-family:Georgia,serif;font-size:26px;font-weight:300;margin:0 0 18px;color:#0a0a0a;line-height:1.2;">Hi ${safeName} &mdash; <em style="color:#8B1A1A;font-style:italic;">looking forward</em> to talking with you.</h1>
-  <p style="font-family:-apple-system,sans-serif;font-size:15px;line-height:1.6;color:#3a3a3a;margin:0 0 16px;">Thank you for taking the time to book a call with me — I genuinely appreciate it, and I'm looking forward to our conversation. I've blocked the time below and I'll come prepared.</p>
-  <p style="font-family:-apple-system,sans-serif;font-size:15px;line-height:1.6;color:#3a3a3a;margin:0 0 20px;">We can do phone or video, whichever is easiest for you. If anything shifts on your end, just reply to this email and we'll find a new time that works — no trouble at all.</p>
+  <h1 style="font-family:Georgia,serif;font-size:26px;font-weight:300;margin:0 0 18px;color:#0a0a0a;line-height:1.2;">Hi ${safeName} - <em style="color:#8B1A1A;font-style:italic;">looking forward</em> to talking with you.</h1>
+  <p style="font-family:-apple-system,sans-serif;font-size:15px;line-height:1.6;color:#3a3a3a;margin:0 0 16px;">Thank you for taking the time to book a call with me - I genuinely appreciate it, and I'm looking forward to our conversation. I've blocked the time below and I'll come prepared.</p>
+  <p style="font-family:-apple-system,sans-serif;font-size:15px;line-height:1.6;color:#3a3a3a;margin:0 0 20px;">We can do phone or video, whichever is easiest for you. If anything shifts on your end, just reply to this email and we'll find a new time that works - no trouble at all.</p>
 
   <div style="background:#f5f2ec;padding:18px 22px;border-left:3px solid #8B1A1A;margin:24px 0 22px;">
     <div style="font-family:monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#888;margin-bottom:6px;">When</div>
@@ -199,11 +199,11 @@ function buildBookerConfirmEmail({ name, email, when, topic, notes }) {
 </body></html>`;
 
   const text = [
-    `Hi ${name} — looking forward to talking with you.`,
+    `Hi ${name} - looking forward to talking with you.`,
     '',
     `Thank you for taking the time to book a call with me. I genuinely appreciate it,`,
     `and I'm looking forward to our conversation. I've blocked the time below and I'll`,
-    `come prepared. We can do phone or video, whichever is easiest for you — and if`,
+    `come prepared. We can do phone or video, whichever is easiest for you - and if`,
     `anything shifts on your end, just reply to this email and we'll find a new time.`,
     '',
     `When:     ${when}`,
@@ -279,7 +279,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ ok: false, error: 'Invalid JSON' });
   }
 
-  // Honeypot — silently accept any submission that fills the trap field
+  // Honeypot - silently accept any submission that fills the trap field
   if (payload._honey) return res.status(200).json({ ok: true, channel: 'honeypot' });
 
   const name = sanitize(payload.Name || payload.name);
