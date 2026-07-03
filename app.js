@@ -977,7 +977,7 @@
       }
       else if (e.key === 'f' || e.key === 'F') {
         // F toggles fullscreen everywhere EXCEPT inside letter-input games (Wordle,
-        // Hangman read raw A–Z keys, so "F" must reach them) and form fields.
+        // Hangman read raw A-Z keys, so "F" must reach them) and form fields.
         const t = e.target;
         if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
         if (stage === 'play') {
@@ -3520,10 +3520,10 @@
   window.celebrate = celebrate;
 
   /* === CONTACT FORM - full 4-state (idle / loading / error / success) ===
-     - inline validation (validate-on-blur, per-field error text, focus-first-error)
-     - loading spinner on submit
-     - success card replaces the form + brand confetti
-     - explicit error banner with mailto fallback on non-200 / network failure */
+ - inline validation (validate-on-blur, per-field error text, focus-first-error)
+ - loading spinner on submit
+ - success card replaces the form + brand confetti
+ - explicit error banner with mailto fallback on non-200 / network failure */
   const form = document.getElementById('contactForm');
   if (form) {
     const fName = document.getElementById('fName');
@@ -3666,9 +3666,9 @@
 
   /* === CAL.COM CONFIGURATION ===
      Change these two lines to point at your Cal.com event type, or to a self-hosted cal.diy instance.
-     - username   : your cal.com username (after signup at https://cal.com)
-     - eventSlug  : the event type slug (default Cal.com creates "30min" automatically)
-     - origin     : 'https://cal.com' for hosted, or your self-hosted URL
+ - username   : your cal.com username (after signup at https://cal.com)
+ - eventSlug  : the event type slug (default Cal.com creates "30min" automatically)
+ - origin     : 'https://cal.com' for hosted, or your self-hosted URL
   */
   const CAL_CONFIG = {
     username: 'benjamin-sachwitz-zdbpyc',
@@ -3718,7 +3718,7 @@
         // choose. The calendar stays put and finishes loading.
         setTimeout(() => {
           if (!target.classList.contains('is-loaded')) {
-            // #4 — record that the Cal embed failed to mount this session so the
+            // #4 - record that the Cal embed failed to mount this session so the
             // next openBooking() defaults straight to the working request form
             // instead of re-showing a blank calendar (the '0' branch was dead
             // because nothing ever wrote '0'). If Cal eventually mounts, the
