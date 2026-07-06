@@ -1903,7 +1903,7 @@ window.addEventListener('scroll',()=>{
         document.getElementById('vdCat').textContent=d.cat;
         document.getElementById('vdDesc').textContent=d.desc;
         detail.classList.add('show');
-        nodesWrap.querySelectorAll('.viz-node').forEach(n=>n.classList.remove('active'));
+        const children=nodesWrap.children;for(let j=0;j<children.length;j++)children[j].classList.remove('active');
         el.classList.add('active');
       });
 
@@ -1992,7 +1992,7 @@ window.addEventListener('scroll',()=>{
   document.addEventListener('click',function(e){
     if(!e.target.closest('.viz-node')&&!e.target.closest('.viz-detail')){
       detail.classList.remove('show');
-      nodesWrap.querySelectorAll('.viz-node').forEach(n=>n.classList.remove('active'));
+      const children=nodesWrap.children;for(let j=0;j<children.length;j++)children[j].classList.remove('active');
     }
   });
 
