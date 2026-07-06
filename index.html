@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1394,12 +1394,13 @@ setTimeout(()=>{document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>{if(
 /* ===== STAR FIELD ===== */
 (function(){
   const c=document.getElementById('stars'),ctx=c.getContext('2d');
-  let w,h;
+  let w,h,isIntersecting=true;
   function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
   resize();window.addEventListener('resize',resize);
   const stars=[];
   for(let i=0;i<300;i++){stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+.2,a:Math.random(),sp:Math.random()*.005+.001,d:Math.random()>.5?1:-1,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.1})}
-  (function draw(){
+  function draw(){
+    if(!isIntersecting) return;
     ctx.clearRect(0,0,w,h);
     stars.forEach(s=>{
       s.a+=s.sp*s.d;if(s.a>=1||s.a<=.2)s.d*=-1;
@@ -1409,18 +1410,46 @@ setTimeout(()=>{document.querySelectorAll('.rv,.rvl,.rvr,.rvs').forEach(el=>{if(
       ctx.fillStyle='rgba(200,220,255,'+s.a+')';ctx.fill();
     });
     requestAnimationFrame(draw);
-  })();
+  }
+
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        isIntersecting=entry.isIntersecting;
+        if(isIntersecting) requestAnimationFrame(draw);
+      });
+    },{threshold:0});
+    observer.observe(c);
+  } else {
+    requestAnimationFrame(draw);
+  }
 })();
 
 /* ===== PARTICLES ===== */
 (function(){
   const c=document.getElementById('particles'),ctx=c.getContext('2d');
-  let w,h,ps=[];
+  let w,h,ps=[],isIntersecting=true;
   function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
   resize();window.addEventListener('resize',resize);
   class P{constructor(){this.reset()}reset(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.r=Math.random()*1.5+.5;this.a=Math.random()*.25+.05}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w||this.y<0||this.y>h)this.reset()}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='rgba(79,172,254,'+this.a+')';ctx.fill()}}
   for(let i=0;i<50;i++)ps.push(new P());
-  (function anim(){ctx.clearRect(0,0,w,h);ps.forEach(p=>{p.update();p.draw()});for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.moveTo(ps[i].x,ps[i].y);ctx.lineTo(ps[j].x,ps[j].y);ctx.strokeStyle='rgba(79,172,254,'+(0.05*(1-d/110))+')';ctx.lineWidth=.5;ctx.stroke()}}requestAnimationFrame(anim)})();
+  function anim(){
+    if(!isIntersecting) return;
+    ctx.clearRect(0,0,w,h);ps.forEach(p=>{p.update();p.draw()});for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.moveTo(ps[i].x,ps[i].y);ctx.lineTo(ps[j].x,ps[j].y);ctx.strokeStyle='rgba(79,172,254,'+(0.05*(1-d/110))+')';ctx.lineWidth=.5;ctx.stroke()}}
+    requestAnimationFrame(anim);
+  }
+
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        isIntersecting=entry.isIntersecting;
+        if(isIntersecting) requestAnimationFrame(anim);
+      });
+    },{threshold:0});
+    observer.observe(c);
+  } else {
+    requestAnimationFrame(anim);
+  }
 })();
 
 /* ===== SMOOTH SCROLL ===== */
