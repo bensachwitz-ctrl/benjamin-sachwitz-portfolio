@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1521,9 +1521,16 @@ function handleBook(e){
   const body=encodeURIComponent('From: '+n+' ('+em+')\nTopic: '+t+'\n\n'+(m||'[No message — just wants to connect]'));
   window.location.href='mailto:ben@swampfoxagency.com?subject='+subj+'&body='+body;
   const btn=document.getElementById('mBtn');
-  btn.innerHTML='<span class="form-success"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg> Sent!</span>';
+    btn.textContent='';
+  const span=document.createElement('span');span.className='form-success';
+  const svgNS='http://www.w3.org/2000/svg';
+  const svg=document.createElementNS(svgNS,'svg');
+  svg.setAttribute('width','18');svg.setAttribute('height','18');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','3');
+  const path=document.createElementNS(svgNS,'path');path.setAttribute('d','M20 6 9 17l-5-5');
+  svg.appendChild(path);span.appendChild(svg);span.appendChild(document.createTextNode(' Sent!'));
+  btn.appendChild(span);
   btn.style.background='linear-gradient(135deg,#00b894,#00cec9)';
-  setTimeout(()=>{btn.innerHTML='Send Request';btn.style.background='';f.reset();closeModal()},2500);
+  setTimeout(()=>{btn.textContent='Send Request';btn.style.background='';f.reset();closeModal()},2500);
 }
 
 /* ===== PROGRESS RINGS ===== */
