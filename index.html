@@ -2548,15 +2548,15 @@ var resetTypeGame;
 
     const interval=setInterval(()=>{
       frame++;
-      let scrambled='';
+      let scrambled=[];
       for(let i=0;i<originalText.length;i++){
         if(frame<frameCount){
-          scrambled+=chars[Math.floor(Math.random()*chars.length)];
+          scrambled.push(chars[Math.floor(Math.random()*chars.length)]);
         }else{
-          scrambled+=originalText[i];
+          scrambled.push(originalText[i]);
         }
       }
-      el.textContent=scrambled;
+      el.textContent=scrambled.join('');
       if(frame>=frameCount)clearInterval(interval);
     },30);
   }
