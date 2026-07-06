@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="React and Serverless Web vector illustration">
+  <defs>
+    <linearGradient id="b-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A0E0E"/>
+      <stop offset="0.55" stop-color="#1A0808"/>
+      <stop offset="1" stop-color="#0A0303"/>
+    </linearGradient>
+    <radialGradient id="b-sun" cx="0.52" cy="0.6" r="0.55">
+      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.45"/>
+      <stop offset="0.45" stop-color="#B84A2A" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#0A0303" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8C77D"/><stop offset="1" stop-color="#B88A2F"/>
+    </linearGradient>
+    <pattern id="b-grain" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <circle cx="0.6" cy="0.6" r="0.45" fill="#F5F2EC" opacity="0.05"/>
+      <circle cx="2.1" cy="1.8" r="0.35" fill="#000" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#b-sky)"/>
+  <rect width="600" height="800" fill="url(#b-sun)"/>
+  
+  <!-- Subtle background grid lines -->
+  <g stroke="#B84A2A" stroke-width="0.5" opacity="0.12" fill="none">
+    <path d="M 0,100 L 600,100 M 0,200 L 600,200 M 0,300 L 600,300 M 0,400 L 600,400 M 0,500 L 600,500 M 0,600 L 600,600"/>
+    <path d="M 100,0 L 100,800 M 200,0 L 200,800 M 300,0 L 300,800 M 400,0 L 400,800 M 500,0 L 500,800"/>
+  </g>
+
+  <!-- Browser window silhouette -->
+  <g fill="#0A0303" stroke="#160606" stroke-width="4">
+    <rect x="80" y="220" width="440" height="420" rx="16"/>
+  </g>
+  <rect x="96" y="260" width="408" height="364" fill="#060202" stroke="#250B0B" stroke-width="2"/>
+
+  <!-- Browser header buttons -->
+  <g fill="#B84A2A" opacity="0.6">
+    <circle cx="116" cy="240" r="6"/>
+    <circle cx="132" cy="240" r="6"/>
+    <circle cx="148" cy="240" r="6"/>
+    <!-- URL bar hint -->
+    <rect x="180" y="232" width="280" height="16" rx="8" fill="#1A0808" stroke="#250B0B" stroke-width="1"/>
+  </g>
+
+  <!-- React symbol in the center -->
+  <g stroke="url(#b-gold)" stroke-width="2.5" fill="none" opacity="0.85">
+    <!-- Ellipses -->
+    <ellipse cx="300" cy="410" rx="100" ry="36" transform="rotate(30, 300, 410)"/>
+    <ellipse cx="300" cy="410" rx="100" ry="36" transform="rotate(-30, 300, 410)"/>
+    <ellipse cx="300" cy="410" rx="100" ry="36" transform="rotate(90, 300, 410)"/>
+    <!-- Nucleus -->
+    <circle cx="300" cy="410" r="12" fill="url(#b-gold)" stroke="none"/>
+  </g>
+
+  <!-- Serverless Function / Cloud Nodes -->
+  <g stroke="url(#b-gold)" stroke-width="1.5" fill="none" opacity="0.65">
+    <!-- Cloud base -->
+    <path d="M 230,550 Q 220,530 240,520 Q 250,500 270,510 Q 290,490 310,510 Q 330,500 340,520 Q 360,530 350,550 Z" fill="#1A0808" fill-opacity="0.3"/>
+    
+    <!-- Connective serverless lines & dots -->
+    <path d="M 160,560 L 220,540 M 360,540 L 420,560" stroke-dasharray="4,4"/>
+    <circle cx="160" cy="560" r="4" fill="url(#b-gold)" stroke="none"/>
+    <circle cx="420" cy="560" r="4" fill="url(#b-gold)" stroke="none"/>
+    
+    <!-- Database cylinders -->
+    <g transform="translate(130, 480)" stroke="url(#b-gold)" stroke-width="1.2">
+      <ellipse cx="20" cy="10" rx="15" ry="6" fill="#1A0808" fill-opacity="0.5"/>
+      <path d="M5,10 L5,25 A15,6 0 0,0 35,25 L35,10"/>
+      <path d="M5,25 L5,40 A15,6 0 0,0 35,40 L35,25"/>
+    </g>
+    <g transform="translate(410, 480)" stroke="url(#b-gold)" stroke-width="1.2">
+      <ellipse cx="20" cy="10" rx="15" ry="6" fill="#1A0808" fill-opacity="0.5"/>
+      <path d="M5,10 L5,25 A15,6 0 0,0 35,25 L35,10"/>
+      <path d="M5,25 L5,40 A15,6 0 0,0 35,40 L35,25"/>
+    </g>
+  </g>
+
+  <!-- Foreground reflections -->
+  <rect x="0" y="700" width="600" height="100" fill="#050101"/>
+  <line x1="0" y1="700" x2="600" y2="700" stroke="#160606" stroke-width="2"/>
+
+  <!-- Subtle grid reflection -->
+  <g stroke="url(#b-gold)" stroke-width="1" opacity="0.08" fill="none">
+    <line x1="160" y1="700" x2="160" y2="800"/>
+    <line x1="300" y1="700" x2="300" y2="800"/>
+    <line x1="440" y1="700" x2="440" y2="800"/>
+  </g>
+
+  <rect width="600" height="800" fill="url(#b-grain)"/>
+</svg>

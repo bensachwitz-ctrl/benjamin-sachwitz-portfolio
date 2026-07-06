@@ -4240,6 +4240,16 @@
         const txt = m === 'builder' ? el.dataset.titleBuilder : el.dataset.titleUnderwriter;
         if (txt) el.textContent = txt;
       });
+      // Image swaps
+      document.querySelectorAll('.mode-img').forEach(el => {
+        const src = m === 'builder' ? el.dataset.imgBuilder : el.dataset.imgUnderwriter;
+        if (src) el.src = src;
+      });
+      // Caption swaps
+      document.querySelectorAll('.mode-caption').forEach(el => {
+        const cap = m === 'builder' ? el.dataset.captionBuilder : el.dataset.captionUnderwriter;
+        if (cap) el.setAttribute('data-caption', cap);
+      });
     }
     window.addEventListener('brainmodechange', (e) => applyModeCopy(e.detail.mode));
     // Apply once on hydrate so persisted "builder" mode survives a refresh

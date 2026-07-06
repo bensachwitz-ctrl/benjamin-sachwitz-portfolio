@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="iOS and Mobile Utilities vector illustration">
+  <defs>
+    <linearGradient id="b-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A0E0E"/>
+      <stop offset="0.55" stop-color="#1A0808"/>
+      <stop offset="1" stop-color="#0A0303"/>
+    </linearGradient>
+    <radialGradient id="b-sun" cx="0.52" cy="0.6" r="0.55">
+      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.45"/>
+      <stop offset="0.45" stop-color="#B84A2A" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#0A0303" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8C77D"/><stop offset="1" stop-color="#B88A2F"/>
+    </linearGradient>
+    <pattern id="b-grain" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <circle cx="0.6" cy="0.6" r="0.45" fill="#F5F2EC" opacity="0.05"/>
+      <circle cx="2.1" cy="1.8" r="0.35" fill="#000" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#b-sky)"/>
+  <rect width="600" height="800" fill="url(#b-sun)"/>
+  
+  <!-- Subtle circular accent halo -->
+  <circle cx="300" cy="460" r="170" fill="none" stroke="#F0D08A" stroke-width="1" opacity="0.12"/>
+  <circle cx="300" cy="460" r="230" fill="none" stroke="#F0D08A" stroke-dasharray="8,8" stroke-width="1" opacity="0.08"/>
+
+  <!-- Phone/Tablet Silhouette -->
+  <g fill="#0A0303" stroke="#160606" stroke-width="4">
+    <!-- Main device frame -->
+    <rect x="160" y="180" width="280" height="520" rx="36"/>
+  </g>
+
+  <!-- Screen area -->
+  <rect x="176" y="196" width="248" height="488" rx="24" fill="#060202" stroke="#250B0B" stroke-width="2"/>
+
+  <!-- Dynamic Island -->
+  <rect x="255" y="210" width="90" height="24" rx="12" fill="#0A0303"/>
+
+  <!-- Mobile UI Layout Wireframe -->
+  <g opacity="0.45" stroke="#B84A2A" stroke-width="2" fill="none">
+    <!-- Navigation bar hint -->
+    <line x1="176" y1="250" x2="424" y2="250"/>
+    <circle cx="200" cy="222" r="6"/>
+    <circle cx="400" cy="222" r="6"/>
+
+    <!-- Scorecard grid (Bar Crawl Golf nod) -->
+    <rect x="196" y="280" width="208" height="120" rx="12" stroke="url(#b-gold)" stroke-width="1.5" opacity="0.8"/>
+    <line x1="196" y1="320" x2="404" y2="320"/>
+    <line x1="196" y1="360" x2="404" y2="360"/>
+    <line x1="265" y1="280" x2="265" y2="400"/>
+    <line x1="335" y1="280" x2="335" y2="400"/>
+
+    <!-- Daily checklist items (Daily Tool nod) -->
+    <g stroke="url(#b-gold)" stroke-width="1.5" opacity="0.75">
+      <!-- Checked box 1 -->
+      <rect x="202" y="430" width="14" height="14" rx="3" fill="url(#b-gold)" fill-opacity="0.15"/>
+      <path d="M205 437 l3 3 l5 -6"/>
+      <line x1="230" y1="437" x2="380" y2="437" stroke-width="2"/>
+
+      <!-- Checked box 2 -->
+      <rect x="202" y="465" width="14" height="14" rx="3" fill="url(#b-gold)" fill-opacity="0.15"/>
+      <path d="M205 472 l3 3 l5 -6"/>
+      <line x1="230" y1="472" x2="350" y2="472" stroke-width="2"/>
+
+      <!-- Unchecked box 3 -->
+      <rect x="202" y="500" width="14" height="14" rx="3"/>
+      <line x1="230" y1="507" x2="370" y2="507" stroke-width="2" stroke-dasharray="4,4"/>
+    </g>
+
+    <!-- Bottom Action Button -->
+    <rect x="220" y="556" width="160" height="40" rx="20" stroke="url(#b-gold)" stroke-width="2" fill="#1A0808" fill-opacity="0.5"/>
+    <line x1="260" y1="576" x2="340" y2="576" stroke="url(#b-gold)" stroke-width="3"/>
+  </g>
+
+  <!-- Glowing interactive dots -->
+  <g fill="url(#b-gold)" opacity="0.9">
+    <circle cx="232" cy="300" r="4"/>
+    <circle cx="300" cy="300" r="4"/>
+    <circle cx="370" cy="300" r="4"/>
+    <!-- golf flagstick marker -->
+    <path d="M298 335 L298 355 M298 335 L308 340 L298 345 Z" stroke="url(#b-gold)" stroke-width="1.5" fill="url(#b-gold)"/>
+    <circle cx="300" cy="576" r="3"/>
+  </g>
+
+  <!-- Home Indicator -->
+  <rect x="236" y="670" width="128" height="5" rx="2.5" fill="#F0D08A" opacity="0.3"/>
+
+  <!-- Foreground reflections -->
+  <rect x="0" y="700" width="600" height="100" fill="#050101"/>
+  <line x1="0" y1="700" x2="600" y2="700" stroke="#160606" stroke-width="2"/>
+
+  <!-- Subtle grid reflection -->
+  <g stroke="url(#b-gold)" stroke-width="1" opacity="0.08" fill="none">
+    <line x1="160" y1="700" x2="160" y2="800"/>
+    <line x1="300" y1="700" x2="300" y2="800"/>
+    <line x1="440" y1="700" x2="440" y2="800"/>
+  </g>
+
+  <rect width="600" height="800" fill="url(#b-grain)"/>
+</svg>
