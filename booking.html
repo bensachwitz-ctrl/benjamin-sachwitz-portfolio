@@ -309,8 +309,8 @@
       <li><a href="/#about" class="nlink">About</a></li>
       <li><a href="/career" class="nlink">Career</a></li>
       <li><a href="/projects" class="nlink">Projects</a></li>
-      <li><a href="/apps" class="nlink">Apps</a></li>
-      <li><a href="/arcade" class="nlink text-gold-2">Arcade</a></li>
+      <li class="mode-builder-only"><a href="/apps" class="nlink">Apps</a></li>
+      <li class="mode-builder-only"><a href="/arcade" class="nlink text-gold-2">Arcade</a></li>
       <li><a href="/booking" class="nlink">Booking</a></li>
       <li><button type="button" class="btn-ink" data-open-booking>
         Book a call
@@ -327,8 +327,8 @@
       <li><a href="/#about" class="mlink block py-3">About</a></li>
       <li><a href="/career" class="mlink block py-3">Career</a></li>
       <li><a href="/projects" class="mlink block py-3">Projects</a></li>
-      <li><a href="/apps" class="mlink block py-3">Apps</a></li>
-      <li><a href="/arcade" class="mlink block py-3 text-gold-2">The Arcade</a></li>
+      <li class="mode-builder-only block-mode"><a href="/apps" class="mlink block py-3">Apps</a></li>
+      <li class="mode-builder-only block-mode"><a href="/arcade" class="mlink block py-3 text-gold-2">The Arcade</a></li>
       <li><a href="/booking" class="mlink block py-3">Booking</a></li>
       <li><button type="button" class="mlink btn-ink w-full justify-center mt-2" data-open-booking>Book a call</button></li>
     </ul>
@@ -343,7 +343,8 @@
   <div class="max-w-[900px] mx-auto px-5 md:px-10">
     <div class="eyebrow text-ink/55 mb-3">Schedule</div>
     <h1 class="display-h">Book a <em class="text-ox">call</em>.</h1>
-    <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed">30 minutes, free, confidential. Commercial risk, a technology partnership, or a professional introduction, pick a time that works for you.</p>
+    <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed mode-underwriter-only block-mode">30 minutes, free, confidential. Commercial risk placement, market updates, or agency relationships, pick a time that works for you.</p>
+    <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed mode-builder-only block-mode">30 minutes, free, confidential. Technical systems, software projects, or a professional developer introduction, pick a time that works for you.</p>
     <a href="/" class="link-line eyebrow text-ink/50 inline-block mt-5">&larr; Back to home</a>
     <div class="mt-10">
       <button type="button" class="btn-ink text-base" data-open-booking>
@@ -366,7 +367,7 @@
     </div>
     <div class="col-span-12 md:col-span-4 flex md:justify-end gap-5 text-[12px] font-mono uppercase tracking-widest">
       <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="link-line">LinkedIn</a>
-      <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line">GitHub</a>
+      <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line mode-builder-only">GitHub</a>
       <a href="#contact" class="link-line">Book a call</a>
     </div>
   </div>
@@ -393,7 +394,8 @@
       <div class="booking-gold-bar"></div>
       <div class="eyebrow text-ink/55 mb-2">30 min · Free · Confidential</div>
       <h3 class="font-serif text-[26px] md:text-[32px] font-light leading-tight mb-1" id="bookingTitle">Let's <em class="text-ox">talk shop</em>.</h3>
-      <p class="text-[13.5px] text-ink/65 leading-relaxed mb-5 max-w-[44ch]">Commercial risk, technology partnership, or a professional introduction. Pick a time, and I'll confirm within 24 hours.</p>
+      <p class="text-[13.5px] text-ink/65 leading-relaxed mb-5 max-w-[44ch] mode-underwriter-only block-mode">Commercial risk, market analysis, or agency relationships. Pick a time, and I'll confirm within 24 hours.</p>
+      <p class="text-[13.5px] text-ink/65 leading-relaxed mb-5 max-w-[44ch] mode-builder-only block-mode">Technical systems, software projects, or a professional developer introduction. Pick a time, and I'll confirm within 24 hours.</p>
 
       <!-- Booking mode tabs: Cal.com live calendar OR multi-step request -->
       <div class="booking-mode-tabs" role="tablist" aria-label="Booking method">

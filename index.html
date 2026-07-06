@@ -322,8 +322,8 @@
       <li><a href="/#about" class="nlink">About</a></li>
       <li><a href="/career" class="nlink">Career</a></li>
       <li><a href="/projects" class="nlink">Projects</a></li>
-      <li><a href="/apps" class="nlink">Apps</a></li>
-      <li><a href="/arcade" class="nlink text-gold-2">Arcade</a></li>
+      <li class="mode-builder-only"><a href="/apps" class="nlink">Apps</a></li>
+      <li class="mode-builder-only"><a href="/arcade" class="nlink text-gold-2">Arcade</a></li>
       <li><a href="/booking" class="nlink">Booking</a></li>
       <li><button type="button" class="btn-ink" data-open-booking>
         Book a call
@@ -340,8 +340,8 @@
       <li><a href="/#about" class="mlink block py-3">About</a></li>
       <li><a href="/career" class="mlink block py-3">Career</a></li>
       <li><a href="/projects" class="mlink block py-3">Projects</a></li>
-      <li><a href="/apps" class="mlink block py-3">Apps</a></li>
-      <li><a href="/arcade" class="mlink block py-3 text-gold-2">The Arcade</a></li>
+      <li class="mode-builder-only block-mode"><a href="/apps" class="mlink block py-3">Apps</a></li>
+      <li class="mode-builder-only block-mode"><a href="/arcade" class="mlink block py-3 text-gold-2">The Arcade</a></li>
       <li><a href="/booking" class="mlink block py-3">Booking</a></li>
       <li><button type="button" class="mlink btn-ink w-full justify-center mt-2" data-open-booking>Book a call</button></li>
     </ul>
@@ -444,7 +444,7 @@
           <div class="mt-4 md:mt-5 flex items-center gap-4 md:gap-6 text-[11px] md:text-[12px] font-mono tracking-widest uppercase text-ink/60 reveal d3 in">
             <a href="https://linkedin.com/in/benjamin-sachwitz" target="_blank" rel="noopener noreferrer" class="link-line">LinkedIn</a>
             <span class="text-ink/20">·</span>
-            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line">GitHub</a>
+            <a href="https://github.com/bensachwitz-ctrl" target="_blank" rel="noopener noreferrer" class="link-line mode-builder-only">GitHub</a>
             <span class="text-ink/20">·</span>
             <a href="mailto:bensachwitz@outlook.com" class="link-line">Email</a>
           </div>
@@ -490,12 +490,11 @@
 <!-- ===== CHAPTER 01 · ABOUT ===== -->
 <section id="about" class="relative py-12 md:py-16 overflow-hidden">
   <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
-  <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
-
-    <div class="flex items-end justify-between mb-8 md:mb-10">
+     <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 01 · About</div>
-        <h2 class="display-h reveal d1 scale-on-scroll">DC raised. USC built.<br/><em>Lloyd's trained.</em></h2>
+        <h2 class="display-h reveal d1 scale-on-scroll mode-underwriter-only block-mode">DC raised. USC built.<br/><em>Lloyd's trained.</em></h2>
+        <h2 class="display-h reveal d1 scale-on-scroll mode-builder-only block-mode">Self-taught. Native focused.<br/><em>Shipped to the App Store.</em></h2>
       </div>
       <div class="chapter-num hidden md:block reveal d2" aria-hidden="true">I</div>
     </div>
@@ -506,7 +505,8 @@
         <div class="photo-mask sat-reveal aspect-[4/5] relative">
           <img src="images/lloyds-interior.jpg" alt="Interior of Lloyd's of London, the underwriting floor with the Rostrum" class="w-full h-full object-cover" loading="lazy" />
           <div class="tag-badge" style="bottom:1rem; left:1rem;">
-            <span class="text-gold-3">Lloyd's Market</span>
+            <span class="text-gold-3 mode-underwriter-only">Lloyd's Market</span>
+            <span class="text-gold-3 mode-builder-only">Developer Workspace</span>
             <span class="mx-2 text-bone/40">·</span>
             London &middot; 2025
           </div>
@@ -515,29 +515,44 @@
 
       <!-- Content -->
       <div class="col-span-12 md:col-span-7 md:pl-8">
-        <div class="space-y-6 text-[15.5px] md:text-[17px] leading-[1.8] text-ink/80 reveal d1 max-w-[58ch]">
-          <p class="drop-cap mode-bio-html"
-             data-bio-html-underwriter="&lt;strong class='text-ink'&gt;A&lt;/strong&gt; Darla Moore School of Business graduate (Dec 2025) specializing in commercial trucking and logging risk. My placement at &lt;strong class='text-ink'&gt;Price Forbes&lt;/strong&gt; inside the Lloyd's of London market gave me firsthand exposure to property and marine cargo underwriting in the world's most sophisticated specialty room."
-             data-bio-html-builder="&lt;strong class='text-ink'&gt;I&lt;/strong&gt; design and build clean, highly usable software. From native iOS apps to full-stack web applications, I enjoy building tools that solve practical bottlenecks, whether they're for local businesses or national platforms.">
-            <strong class="text-ink">A</strong> Darla Moore School of Business graduate (Dec 2025) specializing in commercial trucking and logging risk. My placement at <strong class="text-ink">Price Forbes</strong> inside the Lloyd's of London market gave me firsthand exposure to property and marine cargo underwriting in the world's most sophisticated specialty room.
+        <!-- Underwriter about text -->
+        <div class="mode-underwriter-only block-mode space-y-6 text-[15.5px] md:text-[17px] leading-[1.8] text-ink/80 reveal d1 max-w-[58ch]">
+          <p class="drop-cap">
+            <strong class="text-ink">I</strong> specialize in commercial risk management, focusing on the Southeast's trucking and logging sectors—markets that require a deep understanding of safety data and operational guidelines.
           </p>
-          <p class="mode-bio-html"
-             data-bio-html-underwriter="Now at &lt;strong class='text-ink'&gt;Swamp Fox Agency&lt;/strong&gt;, I analyze motor carrier operations, FMCSA safety metrics, and loss history to structure and price risk. I believe underwriting is part quantitative analysis and part relationship—which is why I build custom software tools to eliminate administrative friction for our agency partners."
-             data-bio-html-builder="My stack centers on &lt;strong class='text-ink'&gt;Swift&lt;/strong&gt;, TypeScript, and modern web environments. Coming from a risk management background, I write clean, structured code and build serverless integrations with a focus on durability, performance, and clear user interface design.">
-            Now at <strong class="text-ink">Swamp Fox Agency</strong>, I analyze motor carrier operations, FMCSA safety metrics, and loss history to structure and price risk. I believe underwriting is part quantitative analysis and part relationship—which is why I build custom software tools to eliminate administrative friction for our agency partners.
+          <p>
+            During my training at <strong>Price Forbes</strong> on the Lloyd's of London floor, I saw how complex cargo and property risks are placed in the world’s oldest specialty room. Today, I use that experience to underwrite durable risks at <strong>Swamp Fox Agency</strong>.
           </p>
         </div>
 
-        <!-- The path narrative -->
-        <div class="mt-8 pt-6 border-t border-ink/10 reveal d2">
+        <!-- Developer about text -->
+        <div class="mode-builder-only block-mode space-y-6 text-[15.5px] md:text-[17px] leading-[1.8] text-ink/80 reveal d1 max-w-[58ch]">
+          <p class="drop-cap">
+            <strong class="text-ink">I</strong> build software that turns complicated workflows into clean, reliable tools. Whether it's crafting native iOS utility apps in Swift or launching full-stack React platforms, I write clean, maintainable code designed to perform under load.
+          </p>
+          <p>
+            Having a background in business and risk management makes me write software differently—prioritizing data integrity, clear layouts, and keeping things simple.
+          </p>
+        </div>
+
+        <!-- The path narrative (Underwriter) -->
+        <div class="mode-underwriter-only block-mode mt-8 pt-6 border-t border-ink/10 reveal d2">
           <div class="eyebrow text-ox mb-3">The path</div>
           <p class="text-[14.5px] md:text-[15.5px] leading-[1.75] text-ink/75 max-w-[58ch]">
-            From refereeing youth sports in McLean to graduating from the Darla Moore School of Business, my path has been about learning under pressure. Whether it was managing operations at Augusta National during the Masters, supporting federal accounts at Carahsoft, or learning the ropes at Lloyd's of London with Price Forbes, every experience taught me the value of precision, discipline, and clear communication. Today, I bring all of that together at Swamp Fox.
+            From McLean youth sports to the Darla Moore School of Business, my background is built on handling high-pressure situations. Whether it was managing logistics at Augusta National during the Masters, supporting federal public-sector accounts at Carahsoft, or navigating the specialty cargo market in London, every experience taught me the value of accuracy, structured discipline, and direct communication. I bring all of that to Swamp Fox.
           </p>
         </div>
 
-        <!-- Career logos strip -->
-        <div class="mt-6 pt-5 border-t border-ink/10 reveal d2">
+        <!-- The path narrative (Developer) -->
+        <div class="mode-builder-only block-mode mt-8 pt-6 border-t border-ink/10 reveal d2">
+          <div class="eyebrow text-ox mb-3">The path</div>
+          <p class="text-[14.5px] md:text-[15.5px] leading-[1.75] text-ink/75 max-w-[58ch]">
+            My coding path has been entirely self-driven. I started building helper scripts to automate manual data entry and soon progressed to launching complete mobile utilities and white-label SaaS templates. I love taking a complex problem—like managing fraternity recruitment pipelines or organizing local golf scorecards—and designing a robust, offline-first digital tool that solves it.
+          </p>
+        </div>
+
+        <!-- Career logos strip (Underwriter only) -->
+        <div class="mode-underwriter-only block-mode mt-6 pt-5 border-t border-ink/10 reveal d2">
           <div class="eyebrow text-ink/45 mb-4">Where I've worked</div>
           <div class="path-logos">
             <a href="#career" class="path-logo" aria-label="Augusta National Golf Club"><img src="images/logo-masters.jpg" alt="Augusta National" loading="lazy" /><span>Augusta National</span></a>
@@ -548,11 +563,20 @@
           </div>
         </div>
 
-        <div class="mt-8 pt-6 border-t border-ink/15 flex flex-wrap items-center gap-x-8 gap-y-3 text-[12px] font-mono tracking-widest uppercase text-ink/60 reveal d2">
+        <!-- Footnotes (Underwriter) -->
+        <div class="mode-underwriter-only block-mode mt-8 pt-6 border-t border-ink/15 flex flex-wrap items-center gap-x-8 gap-y-3 text-[12px] font-mono tracking-widest uppercase text-ink/60 reveal d2">
           <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ox"></span> Born 2003</span>
           <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Lloyd's est. 1688</span>
           <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ink"></span> Darla Moore · USC</span>
           <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ox"></span> P&amp;C Licensed · SC '25</span>
+        </div>
+
+        <!-- Footnotes (Developer) -->
+        <div class="mode-builder-only block-mode mt-8 pt-6 border-t border-ink/15 flex flex-wrap items-center gap-x-8 gap-y-3 text-[12px] font-mono tracking-widest uppercase text-ink/60 reveal d2">
+          <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ox"></span> Born 2003</span>
+          <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-gold"></span> Swift &amp; SwiftUI</span>
+          <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ink"></span> TypeScript &amp; Next.js</span>
+          <span class="inline-flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-ox"></span> Vercel &amp; Supabase</span>
         </div>
       </div>
     </div>
@@ -850,13 +874,15 @@
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 03 · Expertise</div>
         <h2 class="display-h reveal d1 scale-on-scroll">What I <em>bring</em>.</h2>
-        <p class="mt-3 text-ink/60 text-[14px] max-w-[58ch] reveal d2">Three disciplines, one operating system. Specialty insurance, applied technology, and deal-making, the toolkit I bring to every account.</p>
+        <p class="mt-3 text-ink/60 text-[14px] max-w-[58ch] reveal d2 mode-underwriter-only block-mode">Three disciplines, one operating system. Specialty insurance, applied technology, and deal-making, the toolkit I bring to every account.</p>
+        <p class="mt-3 text-ink/60 text-[14px] max-w-[58ch] reveal d2 mode-builder-only block-mode">Building high-performance utilities and scalable web apps. Mobile design, serverless backends, and AI workflows, the tools I use to build daily.</p>
       </div>
       <div class="chapter-num hidden md:block reveal d2" aria-hidden="true">III</div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0">
-      <div class="exp-card reveal">
+      <!-- Underwriter Cards -->
+      <div class="exp-card reveal mode-underwriter-only block-mode">
         <div class="flex items-start justify-between mb-6">
           <div class="eyebrow text-ink/50">01</div>
           <div class="eyebrow text-ox">Core</div>
@@ -877,7 +903,7 @@
         </div>
       </div>
 
-      <div class="exp-card reveal d1 md:border-l-0">
+      <div class="exp-card reveal d1 md:border-l-0 mode-underwriter-only block-mode">
         <div class="flex items-start justify-between mb-6">
           <div class="eyebrow text-ink/50">02</div>
           <div class="eyebrow text-ox">Modern</div>
@@ -898,7 +924,7 @@
         </div>
       </div>
 
-      <div class="exp-card reveal d2 md:border-l-0">
+      <div class="exp-card reveal d2 md:border-l-0 mode-underwriter-only block-mode">
         <div class="flex items-start justify-between mb-6">
           <div class="eyebrow text-ink/50">03</div>
           <div class="eyebrow text-ox">Revenue</div>
@@ -915,6 +941,67 @@
           <span class="pill">Strategy</span>
           <span class="pill">Brand Mgmt.</span>
           <span class="pill">Events</span>
+        </div>
+      </div>
+
+      <!-- Developer Cards -->
+      <div class="exp-card reveal mode-builder-only block-mode">
+        <div class="flex items-start justify-between mb-6">
+          <div class="eyebrow text-ink/50">01</div>
+          <div class="eyebrow text-ox">Native</div>
+        </div>
+        <h3 class="font-serif text-[26px] font-light leading-tight">Mobile &amp; iOS</h3>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Native iOS development with Swift and SwiftUI. Focus on clean architecture, local data caching, responsive layouts, and shipping optimized mobile utilities directly to the App Store.</p>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="pill">Swift</span>
+          <span class="pill">SwiftUI</span>
+          <span class="pill">iOS SDK</span>
+          <span class="pill">Xcode</span>
+          <span class="pill">CoreData</span>
+          <span class="pill">Codemagic</span>
+          <span class="pill">App Store Connect</span>
+          <span class="pill">TestFlight</span>
+          <span class="pill">UI/UX Design</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal d1 md:border-l-0 mode-builder-only block-mode">
+        <div class="flex items-start justify-between mb-6">
+          <div class="eyebrow text-ink/50">02</div>
+          <div class="eyebrow text-ox">Fullstack</div>
+        </div>
+        <h3 class="font-serif text-[26px] font-light leading-tight">Web &amp; Serverless</h3>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Full-stack web engineering using React, Next.js, and TypeScript. Building lightweight SaaS platforms, white-label client tools, and secure database layers with Supabase and Prisma.</p>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="pill">TypeScript</span>
+          <span class="pill">React</span>
+          <span class="pill">Next.js</span>
+          <span class="pill">Tailwind CSS</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">Vercel</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">Prisma</span>
+          <span class="pill">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="exp-card reveal d2 md:border-l-0 mode-builder-only block-mode">
+        <div class="flex items-start justify-between mb-6">
+          <div class="eyebrow text-ink/50">03</div>
+          <div class="eyebrow text-ox">Systems</div>
+        </div>
+        <h3 class="font-serif text-[26px] font-light leading-tight">AI &amp; Automation</h3>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Orchestrating LLM workflows, prompt engineering, and developer automation. Building agentic scripts, custom markdown parsers, and custom MCP integrations to streamline engineering.</p>
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          <span class="pill">AI Agents</span>
+          <span class="pill">Claude Code</span>
+          <span class="pill">Prompt Eng.</span>
+          <span class="pill">MCP Servers</span>
+          <span class="pill">Python</span>
+          <span class="pill">Scripting</span>
+          <span class="pill">GitHub Actions</span>
+          <span class="pill">Cron Jobs</span>
+          <span class="pill">CLI Tools</span>
         </div>
       </div>
     </div>
