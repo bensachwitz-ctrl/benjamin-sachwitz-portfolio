@@ -1249,7 +1249,7 @@ to{opacity:1;transform:scale(1)}
         <div style="text-align:center"><span id="typeAcc" style="font-size:2rem;font-weight:700;color:#00d084">100</span><span style="font-size:1rem;color:#00d084">%</span><br><span style="font-size:.75rem;color:var(--txt2);text-transform:uppercase;letter-spacing:.08em">Accuracy</span></div>
         <div style="text-align:center"><span id="typeTime" style="font-size:2rem;font-weight:700;color:#f093fb">30</span><span style="font-size:1rem;color:#f093fb">s</span><br><span style="font-size:.75rem;color:var(--txt2);text-transform:uppercase;letter-spacing:.08em">Time Left</span></div>
       </div>
-      <button id="typeReset" onclick="resetTypeGame()" style="display:block;margin:1rem auto 0;padding:.5rem 1.5rem;border-radius:50px;border:1px solid rgba(79,172,254,.3);background:rgba(79,172,254,.08);color:var(--accent);font-size:.85rem;cursor:pointer;transition:all .3s">New Round</button>
+      <button id="typeReset" style="display:block;margin:1rem auto 0;padding:.5rem 1.5rem;border-radius:50px;border:1px solid rgba(79,172,254,.3);background:rgba(79,172,254,.08);color:var(--accent);font-size:.85rem;cursor:pointer;transition:all .3s">New Round</button>
     </div>
   </div>
 </section>
@@ -2348,7 +2348,6 @@ window.addEventListener('scroll',()=>{
 })();
 
 /* ===== TYPING SPEED GAME ===== */
-var resetTypeGame;
 (function(){
   const phrases=[
     'Commercial trucking insurance protects fleet operators from liability claims arising during transit operations across state lines',
@@ -2368,6 +2367,7 @@ var resetTypeGame;
   const wpmEl=document.getElementById('typeWpm');
   const accEl=document.getElementById('typeAcc');
   const timeEl=document.getElementById('typeTime');
+  const resetBtn=document.getElementById('typeReset');
   if(!display||!input)return;
 
   let currentPhrase='',startTime=0,timer=null,timeLeft=30,started=false,totalChars=0,correctChars=0;
@@ -2439,7 +2439,7 @@ var resetTypeGame;
     updateStats();
   });
 
-  resetTypeGame=function(){
+  function resetTypeGame(){
     clearInterval(timer);
     started=false;
     timeLeft=30;
@@ -2455,6 +2455,7 @@ var resetTypeGame;
     input.focus();
   };
 
+  if(resetBtn) resetBtn.addEventListener('click', resetTypeGame);
   pickPhrase();
 })();
 
