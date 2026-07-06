@@ -1333,7 +1333,7 @@ to{opacity:1;transform:scale(1)}
   <button class="lightbox-close" onclick="closeLightbox()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="">
   <p class="lightbox-cap" id="lbCap"></p>
 </div>
 
@@ -1359,11 +1359,13 @@ const navLinksAll=document.querySelectorAll('.nav-links a:not(.nav-cta)');
 const navInd=document.getElementById('navInd');
 function updateNavIndicator(){
   const active=document.querySelector('.nav-links a.active');
-  if(!active||!navInd)return;
-  const r=active.getBoundingClientRect();
-  const pr=active.parentElement.getBoundingClientRect();
-  navInd.style.left=(r.left-pr.left)+'px';
-  navInd.style.width=r.width+'px';
+  if(active&&navInd){
+    const r=active.getBoundingClientRect();
+    const pr=active.parentElement.getBoundingClientRect();
+    navInd.style.left=(r.left-pr.left)+'px';
+    navInd.style.width=r.width+'px';
+  }
+  window.dispatchEvent(new CustomEvent('navUpdated'));
 }
 const btt=document.getElementById('btt'),scrollInd=document.getElementById('scrollInd');
 let ticking=false;
@@ -1776,9 +1778,7 @@ document.addEventListener('click',(e)=>{
     'connect':'var(--color-connect)'
   };
   const navLinks=document.querySelectorAll('.nav-links a');
-  const originalUpdateNav=window.updateNavIndicator||function(){};
-  window.updateNavIndicator=function(){
-    originalUpdateNav.call(this);
+  window.addEventListener('navUpdated', function(){
     const activeLink=document.querySelector('.nav-links a.active');
     if(activeLink){
       const href=activeLink.getAttribute('href');
@@ -1790,7 +1790,7 @@ document.addEventListener('click',(e)=>{
       }
       activeLink.style.color=color;
     }
-  };
+  });
 })();
 
 /* ===== SCROLL PARALLAX FOR SHAPES ===== */
