@@ -1657,13 +1657,20 @@ document.querySelectorAll('.cert-item').forEach(el=>{
 
 /* ===== MAGNETIC BUTTON HOVER ===== */
 document.querySelectorAll('.btn,.pill,.nav-cta').forEach(btn=>{
+  let r = null;
+  btn.addEventListener('mouseenter',function(){
+    r=this.getBoundingClientRect();
+  });
   btn.addEventListener('mousemove',function(e){
-    const r=this.getBoundingClientRect();
+    if(!r) r=this.getBoundingClientRect();
     const x=e.clientX-r.left-r.width/2;
     const y=e.clientY-r.top-r.height/2;
     this.style.transform='translate('+x*.15+'px,'+y*.15+'px)';
   });
-  btn.addEventListener('mouseleave',function(){this.style.transform=''});
+  btn.addEventListener('mouseleave',function(){
+    this.style.transform='';
+    r=null;
+  });
 });
 
 /* ===== SMOOTH COUNT-UP ON CERT COUNT ===== */
