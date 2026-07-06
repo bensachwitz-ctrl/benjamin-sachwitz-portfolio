@@ -2638,15 +2638,22 @@ var resetTypeGame;
   const progressBar=document.getElementById('sp');
   if(!progressBar)return;
 
-  window.addEventListener('scroll',()=>{
-    for(let sec of sections){
-      if(!sec.el)continue;
-      const rect=sec.el.getBoundingClientRect();
-      if(rect.top<window.innerHeight/2){
-        progressBar.style.background=`linear-gradient(90deg,${sec.color},var(--aurora-2),var(--aurora-3))`;
-      }
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        for(let sec of sections){
+          if(!sec.el)continue;
+          const rect=sec.el.getBoundingClientRect();
+          if(rect.top<window.innerHeight/2){
+            progressBar.style.background=`linear-gradient(90deg,${sec.color},var(--aurora-2),var(--aurora-3))`;
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 })();
 </script>
 <div class="spotlight" id="spotlight"></div>
