@@ -84,17 +84,22 @@
       <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full border border-crawl-cream text-crawl-cream hover:bg-crawl-cream hover:text-crawl-navy transition-colors font-medium text-sm">Download App</a>
     </nav>
 
-    <div class="my-auto max-w-3xl pt-20">
-      <span class="text-xs uppercase tracking-[0.2em] text-crawl-gold font-semibold mb-4 block">Chapter 06 · iOS App</span>
-      <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight mb-6">
-        Your crawl. <br>Your <span class="italic text-crawl-gold">rules</span>.
-      </h1>
-      <p class="text-crawl-mute text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-        Group competition turned into a real game. Bar Crawl Golf turns any night out into a round of golf: every bar is a hole, every drink is a stroke, lowest score wins.
-      </p>
-      <div class="flex gap-4">
-        <a href="#features" class="px-6 py-3 rounded-full bg-crawl-gold text-crawl-navy font-semibold text-sm hover:opacity-90 transition-opacity">Explore Features</a>
-        <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-crawl-card text-crawl-cream border border-crawl-cream/10 font-semibold text-sm hover:border-crawl-cream/30 transition-colors">App Store →</a>
+    <div class="my-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full pt-12 md:pt-20">
+      <div class="max-w-xl">
+        <span class="text-xs uppercase tracking-[0.2em] text-crawl-gold font-semibold mb-4 block">Chapter 06 · iOS App</span>
+        <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight mb-6">
+          Your crawl. <br>Your <span class="italic text-crawl-gold">rules</span>.
+        </h1>
+        <p class="text-crawl-mute text-lg md:text-xl leading-relaxed mb-8">
+          Group competition turned into a real game. Bar Crawl Golf turns any night out into a round of golf: every bar is a hole, every drink is a stroke, lowest score wins.
+        </p>
+        <div class="flex gap-4">
+          <a href="#features" class="px-6 py-3 rounded-full bg-crawl-gold text-crawl-navy font-semibold text-sm hover:opacity-90 transition-opacity font-medium">Explore Features</a>
+          <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-crawl-card text-crawl-cream border border-crawl-cream/10 font-semibold text-sm hover:border-crawl-cream/30 transition-colors">App Store →</a>
+        </div>
+      </div>
+      <div class="relative w-full h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden" id="threejs-hero-container">
+        <!-- Three.js Canvas will render here -->
       </div>
     </div>
 
@@ -568,6 +573,216 @@
       }
     });
 
+  </script>
+
+  <!-- Three.js 3D Scene Integration -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+
+    const container = document.getElementById('threejs-hero-container');
+    if (container) {
+      // Scene
+      const scene = new THREE.Scene();
+
+      // Camera
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+      camera.position.z = 6;
+
+      // WebGL Renderer
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+      scene.add(ambientLight);
+
+      const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
+      mainLight.position.set(5, 5, 5);
+      scene.add(mainLight);
+
+      const goldLight = new THREE.PointLight(0xe0a96d, 2.5, 10);
+      goldLight.position.set(-2, 2, 2);
+      scene.add(goldLight);
+
+      // Group
+      const mainGroup = new THREE.Group();
+      scene.add(mainGroup);
+
+      // Material
+      const goldMaterial = new THREE.MeshStandardMaterial({
+        color: 0xe0a96d,
+        metalness: 0.9,
+        roughness: 0.15,
+        transparent: true,
+        opacity: 0.95
+      });
+
+      const greenMaterial = new THREE.MeshStandardMaterial({
+        color: 0x1b4332,
+        metalness: 0.2,
+        roughness: 0.8
+      });
+
+      const whiteMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        metalness: 0.5,
+        roughness: 0.5
+      });
+
+      // Geometries
+      // Trophy Base
+      const baseGeom = new THREE.CylinderGeometry(0.8, 0.9, 0.25, 32);
+      const base = new THREE.Mesh(baseGeom, greenMaterial);
+      base.position.y = -1.2;
+      mainGroup.add(base);
+
+      // Trophy Stem
+      const stemGeom = new THREE.CylinderGeometry(0.15, 0.25, 0.6, 16);
+      const stem = new THREE.Mesh(stemGeom, goldMaterial);
+      stem.position.y = -0.8;
+      mainGroup.add(stem);
+
+      // Trophy Cup
+      const cupGeom = new THREE.CylinderGeometry(0.7, 0.35, 1.0, 32);
+      const cup = new THREE.Mesh(cupGeom, goldMaterial);
+      cup.position.y = 0.0;
+      mainGroup.add(cup);
+
+      // Left Handle
+      const handleGeom = new THREE.TorusGeometry(0.35, 0.05, 16, 100, Math.PI);
+      const leftHandle = new THREE.Mesh(handleGeom, goldMaterial);
+      leftHandle.position.set(-0.65, 0.1, 0);
+      leftHandle.rotation.z = Math.PI / 2;
+      mainGroup.add(leftHandle);
+
+      // Right Handle
+      const rightHandle = new THREE.Mesh(handleGeom, goldMaterial);
+      rightHandle.position.set(0.65, 0.1, 0);
+      rightHandle.rotation.z = -Math.PI / 2;
+      mainGroup.add(rightHandle);
+
+      // Golf Ball floating on top of the cup
+      const ballGeom = new THREE.SphereGeometry(0.28, 32, 32);
+      const ball = new THREE.Mesh(ballGeom, whiteMaterial);
+      ball.position.y = 0.75;
+      mainGroup.add(ball);
+
+      // Ring Orbit
+      const orbitGeom = new THREE.TorusGeometry(1.6, 0.02, 16, 100);
+      const orbitRing = new THREE.Mesh(orbitGeom, goldMaterial);
+      orbitRing.rotation.x = Math.PI / 2.5;
+      mainGroup.add(orbitRing);
+
+      // Particle System
+      const particleCount = 50;
+      const particleGeom = new THREE.BufferGeometry();
+      const positions = new Float32Array(particleCount * 3);
+      const speeds = [];
+
+      for(let i=0; i<particleCount; i++) {
+        // Distribute in a sphere
+        const u = Math.random();
+        const v = Math.random();
+        const theta = u * 2.0 * Math.PI;
+        const phi = Math.acos(2.0 * v - 1.0);
+        const r = 1.8 + Math.random() * 1.2;
+
+        positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
+        positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+        positions[i*3+2] = r * Math.cos(phi);
+
+        speeds.push({
+          x: (Math.random() - 0.5) * 0.004,
+          y: (Math.random() - 0.5) * 0.004,
+          z: (Math.random() - 0.5) * 0.004
+        });
+      }
+
+      particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const particleMaterial = new THREE.PointsMaterial({
+        size: 0.03,
+        color: 0xe0a96d,
+        transparent: true,
+        opacity: 0.8
+      });
+      const particles = new THREE.Points(particleGeom, particleMaterial);
+      mainGroup.add(particles);
+
+      // Mouse movements interaction
+      let targetX = 0;
+      let targetY = 0;
+      window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 2 - 1;
+        const y = -(e.clientY / window.innerHeight) * 2 + 1;
+        targetX = x * 0.4;
+        targetY = y * 0.4;
+      });
+
+      // Scroll interaction linking with GSAP scroll percentage
+      let scrollRot = 0;
+      ScrollTrigger.create({
+        trigger: "#features",
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: (self) => {
+          scrollRot = self.progress * Math.PI * 2;
+        }
+      });
+
+      // Render Loop
+      const animate = () => {
+        requestAnimationFrame(animate);
+
+        // Smoothly interpolate rotations
+        mainGroup.rotation.y += (targetX - mainGroup.rotation.y) * 0.05;
+        mainGroup.rotation.x += (targetY - mainGroup.rotation.x) * 0.05;
+
+        // Constant gentle background rotation
+        orbitRing.rotation.z += 0.005;
+        ball.rotation.y += 0.01;
+
+        // Apply scroll rotation offset
+        mainGroup.rotation.y += scrollRot * 0.02;
+
+        // Animate particles
+        const posAttr = particleGeom.getAttribute('position');
+        const posArray = posAttr.array;
+        for (let i = 0; i < particleCount; i++) {
+          posArray[i*3] += speeds[i].x;
+          posArray[i*3+1] += speeds[i].y;
+          posArray[i*3+2] += speeds[i].z;
+
+          // Wrap around if particles drift too far
+          const dist = Math.sqrt(posArray[i*3]**2 + posArray[i*3+1]**2 + posArray[i*3+2]**2);
+          if (dist > 4.0) {
+            posArray[i*3] = (Math.random() - 0.5) * 3;
+            posArray[i*3+1] = (Math.random() - 0.5) * 3;
+            posArray[i*3+2] = (Math.random() - 0.5) * 3;
+          }
+        }
+        posAttr.needsUpdate = true;
+
+        renderer.render(scene, camera);
+      };
+      animate();
+
+      // Handle Resize
+      window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+    }
   </script>
 </body>
 </html>

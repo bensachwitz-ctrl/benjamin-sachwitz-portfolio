@@ -113,17 +113,22 @@
       <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full border border-sunrise-cream text-sunrise-cream hover:bg-sunrise-cream hover:text-sunrise-black transition-colors font-medium text-sm">Download App</a>
     </nav>
 
-    <div class="my-auto max-w-3xl pt-20">
-      <span class="text-xs uppercase tracking-[0.2em] text-sunrise-gold font-semibold mb-4 block">Chapter 06 · iOS App</span>
-      <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight mb-6">
-        One app. <br>Your <span class="italic text-sunrise-gold">whole day</span>.
-      </h1>
-      <p class="text-sunrise-mute text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-        Open the app. See your day. Weather, agenda, habits, calories, and a daily challenge. One screen, no scrolling. Privacy-first, offline-ready.
-      </p>
-      <div class="flex gap-4">
-        <a href="#demo" class="px-6 py-3 rounded-full bg-sunrise-gold text-sunrise-black font-semibold text-sm hover:opacity-90 transition-opacity">Explore Cinematic Scroll</a>
-        <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-sunrise-card text-sunrise-cream border border-sunrise-cream/10 font-semibold text-sm hover:border-sunrise-cream/30 transition-colors">App Store →</a>
+    <div class="my-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full pt-12 md:pt-20">
+      <div class="max-w-xl">
+        <span class="text-xs uppercase tracking-[0.2em] text-sunrise-gold font-semibold mb-4 block">Chapter 06 · iOS App</span>
+        <h1 class="font-serif text-5xl md:text-7xl font-light leading-tight mb-6">
+          One app. <br>Your <span class="italic text-sunrise-gold">whole day</span>.
+        </h1>
+        <p class="text-sunrise-mute text-lg md:text-xl leading-relaxed mb-8">
+          Open the app. See your day. Weather, agenda, habits, calories, and a daily challenge. One screen, no scrolling. The productivity stack I actually use, in your pocket.
+        </p>
+        <div class="flex gap-4">
+          <a href="#demo" class="px-6 py-3 rounded-full bg-sunrise-gold text-sunrise-black font-semibold text-sm hover:opacity-90 transition-opacity font-medium">Explore Cinematic Scroll</a>
+          <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-sunrise-card text-sunrise-cream border border-sunrise-cream/10 font-semibold text-sm hover:border-sunrise-cream/30 transition-colors">App Store →</a>
+        </div>
+      </div>
+      <div class="relative w-full h-[350px] md:h-[450px] flex items-center justify-center overflow-hidden" id="threejs-hero-container">
+        <!-- Three.js Canvas will render here -->
       </div>
     </div>
 
@@ -880,6 +885,223 @@
       ease: 'power2.in'
     }, '-=0.5');
 
+  </script>
+
+  <!-- Three.js 3D Scene Integration -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+
+    const container = document.getElementById('threejs-hero-container');
+    if (container) {
+      // Scene
+      const scene = new THREE.Scene();
+
+      // Camera
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+      camera.position.z = 6;
+
+      // WebGL Renderer
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+      scene.add(ambientLight);
+
+      const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
+      mainLight.position.set(5, 5, 5);
+      scene.add(mainLight);
+
+      const goldLight = new THREE.PointLight(0xffbe76, 2.5, 10);
+      goldLight.position.set(-2, 2, 2);
+      scene.add(goldLight);
+
+      // Group
+      const mainGroup = new THREE.Group();
+      scene.add(mainGroup);
+
+      // Material
+      const goldMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffbe76,
+        metalness: 0.9,
+        roughness: 0.15,
+        transparent: true,
+        opacity: 0.9
+      });
+
+      const glassMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        metalness: 0.1,
+        roughness: 0.1,
+        transparent: true,
+        opacity: 0.25
+      });
+
+      const whiteMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        metalness: 0.8,
+        roughness: 0.2
+      });
+
+      // Geometries
+      // Outer Torus
+      const outerTorusGeom = new THREE.TorusGeometry(1.6, 0.04, 16, 100);
+      const outerTorus = new THREE.Mesh(outerTorusGeom, goldMaterial);
+      mainGroup.add(outerTorus);
+
+      // Inner Flat Torus (Compass Dial)
+      const innerTorusGeom = new THREE.TorusGeometry(1.3, 0.08, 8, 100);
+      const innerTorus = new THREE.Mesh(innerTorusGeom, glassMaterial);
+      mainGroup.add(innerTorus);
+
+      // Center Hub
+      const hubGeom = new THREE.CylinderGeometry(0.18, 0.18, 0.15, 32);
+      const hub = new THREE.Mesh(hubGeom, goldMaterial);
+      hub.rotation.x = Math.PI / 2;
+      mainGroup.add(hub);
+
+      // Hour Hand
+      const hourHandGeom = new THREE.BoxGeometry(0.06, 0.6, 0.04);
+      const hourHand = new THREE.Mesh(hourHandGeom, whiteMaterial);
+      hourHand.position.y = 0.3;
+      
+      const hourPivot = new THREE.Group();
+      hourPivot.add(hourHand);
+      mainGroup.add(hourPivot);
+
+      // Minute Hand
+      const minHandGeom = new THREE.BoxGeometry(0.04, 0.9, 0.03);
+      const minHand = new THREE.Mesh(minHandGeom, goldMaterial);
+      minHand.position.y = 0.45;
+      
+      const minPivot = new THREE.Group();
+      minPivot.add(minHand);
+      mainGroup.add(minPivot);
+
+      // Compass North Arrow
+      const arrowGeom = new THREE.ConeGeometry(0.12, 0.3, 4);
+      const arrow = new THREE.Mesh(arrowGeom, goldMaterial);
+      arrow.position.y = 1.3;
+      mainGroup.add(arrow);
+
+      // Particle System
+      const particleCount = 60;
+      const particleGeom = new THREE.BufferGeometry();
+      const positions = new Float32Array(particleCount * 3);
+      const speeds = [];
+
+      for(let i=0; i<particleCount; i++) {
+        // Distribute in a sphere
+        const u = Math.random();
+        const v = Math.random();
+        const theta = u * 2.0 * Math.PI;
+        const phi = Math.acos(2.0 * v - 1.0);
+        const r = 2.0 + Math.random() * 1.5;
+
+        positions[i*3] = r * Math.sin(phi) * Math.cos(theta);
+        positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+        positions[i*3+2] = r * Math.cos(phi);
+
+        speeds.push({
+          x: (Math.random() - 0.5) * 0.005,
+          y: (Math.random() - 0.5) * 0.005,
+          z: (Math.random() - 0.5) * 0.005
+        });
+      }
+
+      particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const particleMaterial = new THREE.PointsMaterial({
+        size: 0.03,
+        color: 0xffbe76,
+        transparent: true,
+        opacity: 0.7
+      });
+      const particles = new THREE.Points(particleGeom, particleMaterial);
+      mainGroup.add(particles);
+
+      // Mouse movements interaction
+      let targetX = 0;
+      let targetY = 0;
+      window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 2 - 1;
+        const y = -(e.clientY / window.innerHeight) * 2 + 1;
+        targetX = x * 0.4;
+        targetY = y * 0.4;
+      });
+
+      // Scroll interaction linking with GSAP scroll percentage
+      let scrollRot = 0;
+      ScrollTrigger.create({
+        trigger: "#demo",
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: (self) => {
+          scrollRot = self.progress * Math.PI * 2;
+        }
+      });
+
+      // Render Loop
+      const timer = {
+        getDelta: () => 0.016 // fallback simplified timer
+      };
+
+      const animate = () => {
+        requestAnimationFrame(animate);
+
+        // Smoothly interpolate rotations
+        mainGroup.rotation.y += (targetX - mainGroup.rotation.y) * 0.05;
+        mainGroup.rotation.x += (targetY - mainGroup.rotation.x) * 0.05;
+
+        // Constant gentle background rotation
+        outerTorus.rotation.z += 0.002;
+        innerTorus.rotation.z -= 0.001;
+
+        // Hands rotation
+        hourPivot.rotation.z -= 0.0003;
+        minPivot.rotation.z -= 0.0036;
+
+        // Apply scroll rotation offset
+        mainGroup.rotation.y += scrollRot * 0.02;
+
+        // Animate particles
+        const posAttr = particleGeom.getAttribute('position');
+        const posArray = posAttr.array;
+        for (let i = 0; i < particleCount; i++) {
+          posArray[i*3] += speeds[i].x;
+          posArray[i*3+1] += speeds[i].y;
+          posArray[i*3+2] += speeds[i].z;
+
+          // Wrap around if particles drift too far
+          const dist = Math.sqrt(posArray[i*3]**2 + posArray[i*3+1]**2 + posArray[i*3+2]**2);
+          if (dist > 4.5) {
+            posArray[i*3] = (Math.random() - 0.5) * 3;
+            posArray[i*3+1] = (Math.random() - 0.5) * 3;
+            posArray[i*3+2] = (Math.random() - 0.5) * 3;
+          }
+        }
+        posAttr.needsUpdate = true;
+
+        renderer.render(scene, camera);
+      };
+      animate();
+
+      // Handle Resize
+      window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+    }
   </script>
 </body>
 </html>
