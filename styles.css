@@ -3361,7 +3361,7 @@
   .app-meta { background: transparent; }
   /* Ensure no visual gap shows light section bg if the image has alpha edges */
   .app-visual { background-color: var(--ink); }
-  .app-visual.app-visual-bcg { background-color: #ebe4cf; }
+  .app-visual.app-visual-bcg { background-color: #14201a; }
   .app-visual.app-visual-mdt { background-color: #120d0a; }
   .app-card.reveal { transform: translateY(28px) rotateX(8deg); }
   .app-card.reveal.in { transform: translateY(0) rotateX(0); }
@@ -3393,7 +3393,7 @@
   }
   .app-card:hover .app-visual img { transform: scale(1.03); }
   /* Aesthetic tints per app - match their visual identity */
-  .app-visual-bcg { background: #ebe4cf; }
+  .app-visual-bcg { background: #14201a; }
   .app-visual-mdt { background: #120d0a; }
   /* Subtle gradient overlay on hover for depth */
   .app-visual::after {
