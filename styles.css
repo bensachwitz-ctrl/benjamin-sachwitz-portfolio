@@ -3902,3 +3902,21 @@ html.snap-active footer {
 @keyframes arcade-cta-blink{ 0%,55%{opacity:1} 56%,100%{opacity:.12} }
 .arcade-cta-blink{ animation:arcade-cta-blink 1.15s steps(1,end) infinite; }
 @media (prefers-reduced-motion: reduce){ .arcade-cta-blink{ animation:none; } .arcade-cabinet-img{ transition:none; } }
+
+/* ===== Instagram strip (@ben_sachwitz) — Chapter 08 ===== */
+.ig-follow{ display:inline-flex; align-items:center; gap:.5rem; margin-top:.6rem; color:var(--ink,#1a1a1a); text-decoration:none; font-weight:600; font-size:14px; }
+.ig-follow svg{ color:var(--ox,#7a1f1f); }
+.ig-follow-cta{ color:var(--ox,#7a1f1f); font-weight:700; }
+.ig-follow:hover .ig-follow-cta{ text-decoration:underline; }
+.ig-strip{ position:relative; overflow:hidden; margin-top:1.4rem;
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.ig-track{ display:flex; gap:14px; width:max-content; animation:ig-scroll 60s linear infinite; }
+.ig-strip:hover .ig-track{ animation-play-state:paused; }
+.ig-tile{ position:relative; flex:0 0 auto; width:clamp(190px,22vw,260px); aspect-ratio:1/1; border-radius:14px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,.18); display:block; background:#0e0e0e; }
+.ig-tile img{ width:100%; height:100%; object-fit:cover; transition:transform .5s cubic-bezier(.16,1,.3,1); }
+.ig-tile:hover img{ transform:scale(1.06); }
+.ig-cap{ position:absolute; left:0; right:0; bottom:0; padding:26px 12px 10px; font-size:11.5px; color:#fff; letter-spacing:.01em; background:linear-gradient(0deg, rgba(0,0,0,.66), transparent); opacity:0; transition:opacity .3s; }
+.ig-tile:hover .ig-cap{ opacity:1; }
+@keyframes ig-scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@media (prefers-reduced-motion: reduce){ .ig-track{ animation:none; } .ig-strip{ overflow-x:auto; -webkit-overflow-scrolling:touch; } .ig-cap{ opacity:1; } }
