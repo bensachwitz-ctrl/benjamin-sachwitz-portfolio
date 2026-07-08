@@ -3920,3 +3920,47 @@ html.snap-active footer {
 .ig-tile:hover .ig-cap{ opacity:1; }
 @keyframes ig-scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @media (prefers-reduced-motion: reduce){ .ig-track{ animation:none; } .ig-strip{ overflow-x:auto; -webkit-overflow-scrolling:touch; } .ig-cap{ opacity:1; } }
+
+/* ===== Premium button polish (2026-07-08) — layered depth, unified radius, springy lift ===== */
+.btn-ink, .btn-outline, .btn-gold{ border-radius:10px; }
+.btn-ink{
+  background:linear-gradient(180deg,#171717 0%,var(--ink) 62%);
+  box-shadow:0 1px 0 rgba(255,255,255,.06) inset, 0 4px 14px rgba(10,10,10,.16);
+}
+.btn-ink:hover{
+  background:linear-gradient(180deg,#a12323 0%,var(--ox) 72%);
+  box-shadow:0 1px 0 rgba(255,255,255,.10) inset, 0 18px 34px rgba(139,26,26,.30);
+}
+.btn-gold{
+  background:linear-gradient(180deg,#e7c163 0%,var(--gold) 62%);
+  box-shadow:0 1px 0 rgba(255,255,255,.38) inset, 0 4px 14px rgba(212,168,67,.24);
+}
+.btn-gold:hover{ box-shadow:0 1px 0 rgba(255,255,255,.08) inset, 0 16px 30px rgba(212,168,67,.32); }
+.btn-outline{ box-shadow:0 1px 0 rgba(255,255,255,.45) inset, 0 2px 8px rgba(10,10,10,.05); }
+.btn-ink:hover, .btn-gold:hover, .btn-outline:hover{ transform:translateY(-3px); }
+@media (prefers-reduced-motion: reduce){ .btn-ink:hover, .btn-gold:hover, .btn-outline:hover{ transform:none; } }
+
+/* ===== Cinematic intro loader (progress counter + oxblood color wipe) ===== */
+html.intro-lock, html.intro-lock body{ overflow:hidden; }
+.intro-loader{ display:none; }
+html.js .intro-loader{
+  position:fixed; inset:0; z-index:9999; display:grid; place-items:center;
+  background:var(--ink); color:var(--bone);
+  transition:transform 1s cubic-bezier(.76,0,.24,1);
+  will-change:transform;
+  animation:intro-failsafe 0s linear 4.5s forwards; /* no-JS/stall safety net */
+}
+.intro-loader.intro-done{ transform:translateY(-101%); }
+.intro-inner{ position:relative; display:flex; align-items:baseline; gap:.02em; font-family:'Fraunces',serif; }
+.intro-mark{
+  position:absolute; top:-3em; left:50%; transform:translateX(-50%); white-space:nowrap;
+  font-size:12px; letter-spacing:.42em; font-family:ui-monospace,'SFMono-Regular',monospace;
+  color:var(--gold); opacity:0; animation:intro-fade .7s .15s forwards;
+}
+.intro-count{ font-size:clamp(58px,12vw,122px); font-weight:300; line-height:1; font-variant-numeric:tabular-nums; }
+.intro-pct{ font-size:clamp(20px,4vw,34px); font-weight:300; color:var(--ox); margin-left:.06em; }
+.intro-bar{ position:absolute; left:0; right:0; bottom:-1.5em; height:2px; background:rgba(245,242,236,.14); overflow:hidden; }
+.intro-bar-fill{ display:block; height:100%; width:100%; transform:scaleX(0); transform-origin:left; background:var(--ox); transition:transform .12s linear; }
+@keyframes intro-fade{ to{ opacity:.85; } }
+@keyframes intro-failsafe{ to{ visibility:hidden; opacity:0; pointer-events:none; } }
+@media (prefers-reduced-motion: reduce){ .intro-loader{ display:none !important; } html.intro-lock, html.intro-lock body{ overflow:auto; } }

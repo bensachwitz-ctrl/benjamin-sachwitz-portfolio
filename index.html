@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Benjamin Sachwitz · Assistant Underwriter, Swamp Fox Agency · Trucking & Logging Risk</title>
@@ -224,10 +225,41 @@
 <!-- Plausible analytics (privacy-friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
 <script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
 <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
-<link rel="stylesheet" href="/styles.css?v=mp25" />
+<link rel="stylesheet" href="/styles.css?v=mp26" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
+
+<!-- ===== Cinematic intro loader: progress counter + oxblood color wipe (award-site ch05) ===== -->
+<div id="introLoader" class="intro-loader" aria-hidden="true">
+  <div class="intro-inner">
+    <span class="intro-mark">B&nbsp;&middot;&nbsp;S</span>
+    <span class="intro-count" id="introCount">0</span><span class="intro-pct">%</span>
+    <span class="intro-bar"><span class="intro-bar-fill" id="introBarFill"></span></span>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('introLoader'); if(!el) return;
+  var root=document.documentElement;
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function dismiss(){ if(!el) return; el.classList.add('intro-done'); root.classList.remove('intro-lock');
+    var n=el; el=null; setTimeout(function(){ if(n&&n.parentNode) n.parentNode.removeChild(n); }, 1000); }
+  if(reduce){ dismiss(); return; }
+  root.classList.add('intro-lock');
+  var countEl=document.getElementById('introCount'), fill=document.getElementById('introBarFill');
+  var p=0, start=Date.now(), MIN=1500;
+  var iv=setInterval(function(){
+    p+=Math.random()*14+4;
+    if(p>=100){ p=100; clearInterval(iv);
+      var wait=Math.max(0, MIN-(Date.now()-start));
+      setTimeout(dismiss, wait+200); }
+    if(countEl) countEl.textContent=Math.floor(p);
+    if(fill) fill.style.transform='scaleX('+(p/100)+')';
+  }, 90);
+  setTimeout(dismiss, 3800); // absolute failsafe
+})();
+</script>
 
 <!-- ===== Ambient background: drifting glyphs for subtle depth =====
      Two layers (far + near) of low-opacity symbols that slowly drift.
@@ -470,18 +502,18 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       <div class="reveal value-prop-card pb-6 md:pb-0 md:border-r border-ink/10">
         <div class="eyebrow text-ox mb-4 text-[10px] mode-eyebrow" data-eyebrow-underwriter="Specialty Markets" data-eyebrow-builder="iOS · App Store">Specialty Markets</div>
-        <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight mb-3 text-ink mode-title" data-title-underwriter="Unlock hard-to-place risk" data-title-builder="Ship apps that compound">Unlock hard-to-place risk</h3>
-        <p class="text-[13.5px] text-ink/70 leading-relaxed mode-bio" data-bio-underwriter="Trucking &amp; logging risk the standard markets decline. Applying the structured analytical approach I learned at Lloyd's of London to structure risk." data-bio-builder="Active iOS applications in production. Built using Swift, SwiftUI, and standard App Store distribution frameworks.">Trucking &amp; logging risk the standard markets decline. Applying the structured analytical approach I learned at Lloyd's of London to structure risk.</p>
+        <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight mb-3 text-ink mode-title" data-title-underwriter="The accounts others pass on" data-title-builder="Apps that are actually live">The accounts others pass on</h3>
+        <p class="text-[13.5px] text-ink/70 leading-relaxed mode-bio" data-bio-underwriter="The trucking and logging accounts most markets decline. I dig into the safety data, the operations, and the story behind each one, the way I learned to on the Lloyd's floor in London." data-bio-builder="A couple of the apps I built are live on the App Store right now. Swift and SwiftUI, start to finish, shipped by me.">The trucking and logging accounts most markets decline. I dig into the safety data, the operations, and the story behind each one, the way I learned to on the Lloyd's floor in London.</p>
       </div>
       <div class="reveal value-prop-card d1 pb-6 md:pb-0 md:border-r border-ink/10 md:px-6">
         <div class="eyebrow text-ox mb-4 text-[10px] mode-eyebrow" data-eyebrow-underwriter="Systems & Technology" data-eyebrow-builder="Web · Production">Systems &amp; Technology</div>
-        <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight mb-3 text-ink mode-title" data-title-underwriter="Modernize your underwriting" data-title-builder="Sites that ship and convert">Modernize your underwriting</h3>
-        <p class="text-[13.5px] text-ink/70 leading-relaxed mode-bio" data-bio-underwriter="I build rating aids and calculators to simplify daily workflows, shipping helpful tools that support underwriters and reduce repetitive manual tasks." data-bio-builder="Responsive web layouts, chapter portals, and custom deployments. Designed and deployed to Vercel with dedicated domain configurations.">I build rating aids and calculators to simplify daily workflows, shipping helpful tools that support underwriters and reduce repetitive manual tasks.</p>
+        <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight mb-3 text-ink mode-title" data-title-underwriter="Little tools that save real time" data-title-builder="Sites that load fast and just work">Little tools that save real time</h3>
+        <p class="text-[13.5px] text-ink/70 leading-relaxed mode-bio" data-bio-underwriter="On the side I build small rating aids and calculators that take the busywork out of the day. Nothing flashy, just things that genuinely make the job easier." data-bio-builder="Full-stack web apps, designed and deployed end to end on Vercel with their own domains. Built to be quick and hold up.">On the side I build small rating aids and calculators that take the busywork out of the day. Nothing flashy, just things that genuinely make the job easier.</p>
       </div>
       <div class="reveal value-prop-card d2 md:pl-6">
         <div class="eyebrow text-ox mb-4 text-[10px] mode-eyebrow" data-eyebrow-underwriter="Growth Strategy" data-eyebrow-builder="AI Integration">Growth Strategy</div>
-        <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight mb-3 text-ink mode-title" data-title-underwriter="Strengthen producer relationships" data-title-builder="Explore AI assistance">Strengthen producer relationships</h3>
-        <p class="text-[13.5px] text-ink/70 leading-relaxed mode-bio" data-bio-underwriter="Focus on building long-term producer relationships and managing renewals. Collaborating with agencies to understand client needs and structure competitive deals." data-bio-builder="Applying LLMs for specialty underwriting research, developing helper tools to automate administrative tasks, and experimenting with prompt engineering to improve day-to-day workflow efficiency.">Focus on building long-term producer relationships and managing renewals. Collaborating with agencies to understand client needs and structure competitive deals.</p>
+        <h3 class="font-serif text-[20px] md:text-[22px] font-light leading-tight mb-3 text-ink mode-title" data-title-underwriter="Do right by producers" data-title-builder="Always tinkering with AI">Do right by producers</h3>
+        <p class="text-[13.5px] text-ink/70 leading-relaxed mode-bio" data-bio-underwriter="I care about the long game with the agents I work with. Learn what they actually need, be straight with them, and put together deals that still make sense at renewal." data-bio-builder="I lean on LLMs to speed up research and take the admin grind off my plate, and I like poking at new tools to see how much smoother the day can get.">I care about the long game with the agents I work with. Learn what they actually need, be straight with them, and put together deals that still make sense at renewal.</p>
       </div>
     </div>
   </div>
@@ -518,7 +550,7 @@
         <!-- Underwriter about text -->
         <div class="mode-underwriter-only block-mode space-y-6 text-[15.5px] md:text-[17px] leading-[1.8] text-ink/80 reveal d1 max-w-[58ch]">
           <p class="drop-cap">
-            <strong class="text-ink">I</strong> specialize in commercial risk management, focusing on the Southeast's trucking and logging sectors - markets that require a deep understanding of safety data and operational guidelines.
+            <strong class="text-ink">I</strong> underwrite commercial trucking and logging risk across the Southeast. These are accounts you can't judge from a spreadsheet alone, so I put in the time on the safety data and the operations to really understand each one.
           </p>
           <p>
             During my training at <strong>Price Forbes</strong> on the Lloyd's of London floor, I saw how complex cargo and property risks are placed in the world’s oldest specialty room. Today, I use that experience to underwrite durable risks at <strong>Swamp Fox Agency</strong>.
@@ -528,10 +560,10 @@
         <!-- Developer about text -->
         <div class="mode-builder-only block-mode space-y-6 text-[15.5px] md:text-[17px] leading-[1.8] text-ink/80 reveal d1 max-w-[58ch]">
           <p class="drop-cap">
-            <strong class="text-ink">I</strong> build software that turns complicated workflows into clean, reliable tools. Whether it's crafting native iOS utility apps in Swift or launching full-stack React platforms, I write clean, maintainable code designed to perform under load.
+            <strong class="text-ink">I</strong> build software that turns fiddly, annoying workflows into something clean and reliable. Native iOS apps in Swift, full-stack React sites, whatever the problem needs. I try to write code that's easy to come back to and quietly does its job.
           </p>
           <p>
-            Having a background in business and risk management makes me write software differently - prioritizing data integrity, clear layouts, and keeping things simple.
+            Coming at it from a business and risk background makes me build a little differently. I care about getting the data right, keeping the screen uncluttered, and not overcomplicating things.
           </p>
         </div>
 
@@ -539,7 +571,7 @@
         <div class="mode-underwriter-only block-mode mt-8 pt-6 border-t border-ink/10 reveal d2">
           <div class="eyebrow text-ox mb-3">The path</div>
           <p class="text-[14.5px] md:text-[15.5px] leading-[1.75] text-ink/75 max-w-[58ch]">
-            From McLean youth sports to the Darla Moore School of Business, my background is built on handling high-pressure situations. Whether it was managing logistics at Augusta National during the Masters, supporting federal public-sector accounts at Carahsoft, or navigating the specialty cargo market in London, every experience taught me the value of accuracy, structured discipline, and direct communication. I bring all of that to Swamp Fox.
+            From McLean youth sports to the Darla Moore School of Business, most of what I've done has come with real pressure attached. Running logistics at Augusta National during the Masters, supporting federal accounts at Carahsoft, learning the specialty cargo market in London: every one of them taught me to sweat the details, stay steady when it counts, and just be straight with people. I bring all of that to Swamp Fox.
           </p>
         </div>
 
@@ -547,7 +579,7 @@
         <div class="mode-builder-only block-mode mt-8 pt-6 border-t border-ink/10 reveal d2">
           <div class="eyebrow text-ox mb-3">The path</div>
           <p class="text-[14.5px] md:text-[15.5px] leading-[1.75] text-ink/75 max-w-[58ch]">
-            My coding path has been entirely self-driven. I started building helper scripts to automate manual data entry and soon progressed to launching complete mobile utilities and white-label SaaS templates. I love taking a complex problem - like managing fraternity recruitment pipelines or organizing local golf scorecards - and designing a robust, offline-first digital tool that solves it.
+            Everything I know about code, I taught myself. It started with little scripts to skip the manual data entry, and grew into full mobile apps and a few white-label web templates. What I love is taking a messy problem, like running fraternity recruitment or keeping a golf scorecard straight, and building a clean tool that just handles it, even offline.
           </p>
         </div>
 
@@ -723,7 +755,7 @@
       It's the <em class="italic text-ox">little things</em><br/>that set us <em class="italic text-gold-2">apart</em>.
     </h2>
     <p class="mt-6 text-[15px] md:text-[16px] text-ink/70 leading-relaxed max-w-[65ch] mx-auto reveal d2">
-      Deep expertise. Systematic thinking. Relentless precision. That's what separates the producers who build generational books from those who chase commissions.
+      Show up, do the homework, and care about the small stuff nobody else bothers with. That's usually the whole difference, whether it's an account or an app.
     </p>
     <div class="mt-8 inline-flex items-center gap-3 text-[11px] font-mono tracking-[.22em] uppercase text-ink/45 reveal d3">
       <span class="w-8 h-px bg-ink/25"></span>
@@ -915,7 +947,7 @@
           <div class="eyebrow text-ox">Core</div>
         </div>
         <h3 class="font-serif text-[26px] font-light leading-tight">Insurance &amp; Risk</h3>
-        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Specialty P&amp;C underwriting with deep focus on trucking and logging. Rigorous analysis of loss data, compliance frameworks, and market positioning. Building systematic approaches to risk evaluation and portfolio management.</p>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Specialty P&amp;C underwriting, mostly trucking and logging. I spend my time in the loss data, the compliance side, and figuring out where an account really sits in the market before I put a number on it.</p>
         <div class="flex flex-wrap gap-1.5 mt-6">
           <span class="pill">Commercial P&amp;C</span>
           <span class="pill">Marine</span>
@@ -936,7 +968,7 @@
           <div class="eyebrow text-ox">Modern</div>
         </div>
         <h3 class="font-serif text-[26px] font-light leading-tight">Technology &amp; AI</h3>
-        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">I build the tools I wish underwriting had. Two App Store releases and a suite of internal rating calculators demonstrate my stack: Swift, Vercel serverless, and custom helper tools that streamline daily tasks.</p>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">I build the tools I wish underwriting already had. Two apps on the App Store and a handful of rating calculators I use day to day, put together with Swift, a bit of Vercel serverless, and a lot of trial and error.</p>
         <div class="flex flex-wrap gap-1.5 mt-6">
           <span class="pill">AI / ML</span>
           <span class="pill">GitHub</span>
@@ -1018,7 +1050,7 @@
           <div class="eyebrow text-ox">Systems</div>
         </div>
         <h3 class="font-serif text-[26px] font-light leading-tight">AI &amp; Automation</h3>
-        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">Orchestrating LLM workflows, prompt engineering, and developer automation. Building agentic scripts, custom markdown parsers, and custom MCP integrations to streamline engineering.</p>
+        <p class="mt-3 text-[13.5px] text-ink/60 leading-relaxed">This is where I spend my nights and weekends, honestly for the fun of it. Wiring up LLM workflows, writing little scripts and parsers, and building custom integrations that take the repetitive parts of coding off my hands.</p>
         <div class="flex flex-wrap gap-1.5 mt-6">
           <span class="pill">AI Agents</span>
           <span class="pill">Claude Code</span>
@@ -1081,7 +1113,7 @@
           </div>
           <h3 class="font-serif text-[26px] md:text-[30px] font-light leading-tight mb-4">500K Instagram Brand, Built &amp; Sold.</h3>
           <p class="text-[14.5px] text-ink/70 leading-relaxed mb-6 max-w-[52ch]">
-            Built an Instagram brand from zero to <strong class="text-ink">500,000+ followers</strong> through systematic content strategy and audience development, then executed a full acquisition sale. End-to-end entrepreneurial reps: growth, monetization, and exit.
+            Grew an Instagram brand from zero to <strong class="text-ink">500,000+ followers</strong> by paying attention to what actually resonated and posting consistently, then sold it outright. I got to learn the whole arc firsthand: growing it, making money from it, and knowing when to walk away.
           </p>
           <div class="flex flex-wrap gap-1.5">
             <span class="ptag">Growth Strategy</span>
