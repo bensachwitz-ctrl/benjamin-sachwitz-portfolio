@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth snap-active">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -224,7 +224,7 @@
 <!-- Plausible analytics (privacy-friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
 <script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
 <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
-<link rel="stylesheet" href="/styles.css?v=mp19" />
+<link rel="stylesheet" href="/styles.css?v=mp23" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
@@ -885,8 +885,9 @@
     <div class="eyebrow text-bone/60 mb-4 reveal">Chapter · The Arcade</div>
     <h2 class="display-h text-bone reveal d1">The <em class="text-gold">Arcade</em>.</h2>
     <p class="mt-5 max-w-xl mx-auto text-[15px] text-bone/70 leading-relaxed reveal d2">Thirty-nine games, handcrafted in vanilla JavaScript: Snake, Tetris, Wordle, 2048, Minesweeper and more. No engine, no frameworks.</p>
-    <a href="/arcade" class="btn-gold mt-8 inline-flex reveal d3">Enter the Arcade
-      <svg width="12" height="12" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.4"/></svg>
+    <a href="/arcade" class="arcade-start-screen reveal d3" aria-label="Start the Arcade">
+      <span class="arcade-start-title">START ARCADE</span>
+      <span class="arcade-start-sub arcade-cta-blink">&#9654; Press Start</span>
     </a>
   </div>
 </section>
@@ -1682,15 +1683,6 @@
     </div>
   </div>
 </footer>
-
-<!-- ===== FLOATING BOOK BUTTON ===== -->
-<div class="book-float" id="bookFloat">
-  <button type="button" class="btn-ink shadow-2xl book-float-btn" data-open-booking aria-label="Open scheduling · live Cal.com calendar or share details first">
-    <span class="book-float-ping" aria-hidden="true"></span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    Book a call
-  </button>
-</div>
 
 <!-- ===== BOOKING MODAL ===== -->
 <div class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-hidden="true">
