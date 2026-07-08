@@ -122,7 +122,7 @@
     const docH = document.documentElement.scrollHeight - window.innerHeight;
     scrollProg.style.width = docH > 0 ? (y / docH * 100) + '%' : '0%';
     const heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
-    bookFloat.classList.toggle('show', y > heroH * 0.7);
+    if (bookFloat) bookFloat.classList.toggle('show', y > heroH * 0.7);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
