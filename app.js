@@ -42,10 +42,12 @@
       try { localStorage.setItem(STORAGE_KEY, m); } catch(_) {}
     }
 
-    // Hydrate from localStorage (default: underwriter)
-    let saved = 'underwriter';
-    try { saved = localStorage.getItem(STORAGE_KEY) || 'underwriter'; } catch(_) {}
-    applyMode(saved);
+    // Owner directive: every fresh open STARTS in Underwriter (the
+    // professional / specialty-insurance first impression). The toggle still
+    // switches modes within the session, but we no longer rehydrate a
+    // previously-saved 'builder' on load, so opening the site is always the
+    // underwriter view.
+    applyMode('underwriter');
 
     buttons.forEach(b => {
       b.addEventListener('click', () => applyMode(b.dataset.brainMode, true));
