@@ -2797,47 +2797,49 @@
   }
 
   /* ============================================================
-     FLOATING COMPANY LOGOS: subtle brand name text drifting
-     in the background. Mode-aware like the ambient glyphs.
+     FLOATING COMPANY LOGOS: actual brand logos drifting
+     in the background. Subtle, elegant, non-distracting.
   ============================================================ */
   .logo-float {
     position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
   }
   .logo-float-item {
     position: absolute;
-    font-family: 'Fraunces', Georgia, serif;
-    font-style: italic;
-    font-size: clamp(18px, 3vw, 32px);
-    font-weight: 300;
-    letter-spacing: .02em;
-    color: var(--oxblood);
     opacity: 0;
-    white-space: nowrap;
     will-change: transform, opacity;
     animation: logoFloat 45s ease-in-out infinite;
   }
-  .logo-float-item::before { content: attr(data-uw); }
-  html[data-mode="builder"] .logo-float-item::before { content: attr(data-bd); }
-  .logo-float-item.lf-1 { top: 12%; left: 8%;  animation-delay: 0s;    --lf-op: .06; }
-  .logo-float-item.lf-2 { top: 25%; left: 75%; animation-delay: -8s;   --lf-op: .07; }
-  .logo-float-item.lf-3 { top: 45%; left: 15%; animation-delay: -16s;  --lf-op: .05; }
-  .logo-float-item.lf-4 { top: 60%; left: 80%; animation-delay: -24s;  --lf-op: .06; }
-  .logo-float-item.lf-5 { top: 75%; left: 20%; animation-delay: -32s;  --lf-op: .05; }
-  .logo-float-item.lf-6 { top: 35%; left: 50%; animation-delay: -12s;  --lf-op: .04; }
-  .logo-float-item.lf-7 { top: 85%; left: 65%; animation-delay: -20s;  --lf-op: .06; }
-  .logo-float-item.lf-8 { top: 15%; left: 45%; animation-delay: -28s;  --lf-op: .05; }
+  .logo-float-item img {
+    width: auto; height: auto;
+    max-width: 140px; max-height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.5);
+    transition: filter 0.3s ease;
+  }
+  html[data-mode="builder"] .logo-float-item img {
+    filter: grayscale(60%) opacity(0.4) hue-rotate(180deg);
+  }
+  .logo-float-item.lf-1 { top: 12%; left: 8%;  animation-delay: 0s;    --lf-op: .08; }
+  .logo-float-item.lf-2 { top: 25%; left: 75%; animation-delay: -8s;   --lf-op: .09; }
+  .logo-float-item.lf-3 { top: 45%; left: 15%; animation-delay: -16s;  --lf-op: .07; }
+  .logo-float-item.lf-4 { top: 60%; left: 80%; animation-delay: -24s;  --lf-op: .08; }
+  .logo-float-item.lf-5 { top: 75%; left: 20%; animation-delay: -32s;  --lf-op: .07; }
+  .logo-float-item.lf-6 { top: 35%; left: 50%; animation-delay: -12s;  --lf-op: .06; }
+  .logo-float-item.lf-7 { top: 85%; left: 65%; animation-delay: -20s;  --lf-op: .08; }
+  .logo-float-item.lf-8 { top: 15%; left: 45%; animation-delay: -28s;  --lf-op: .07; }
   @keyframes logoFloat {
     0%, 100% { opacity: 0; transform: translateY(0) rotate(-2deg); }
-    20% { opacity: var(--lf-op, .06); }
-    50% { opacity: calc(var(--lf-op, .06) * 1.4); transform: translateY(-30px) rotate(1deg); }
-    80% { opacity: var(--lf-op, .06); }
+    20% { opacity: var(--lf-op, .08); }
+    50% { opacity: calc(var(--lf-op, .08) * 1.4); transform: translateY(-30px) rotate(1deg); }
+    80% { opacity: var(--lf-op, .08); }
   }
   @media (max-width: 768px) {
-    .logo-float-item { font-size: clamp(14px, 4vw, 20px); --lf-op: .04; }
+    .logo-float-item img { max-width: 90px; max-height: 40px; }
+    .logo-float-item { --lf-op: .05; }
     .logo-float-item.lf-6, .logo-float-item.lf-7, .logo-float-item.lf-8 { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .logo-float-item { animation: none; opacity: var(--lf-op, .04); }
+    .logo-float-item { animation: none; opacity: var(--lf-op, .06); }
   }
 
   /* ============================================================
