@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greekstack Â· Multi-Tenant Fraternity & Sorority Management</title>
+  <title>Greekstack Ã‚Â· Multi-Tenant Fraternity & Sorority Management</title>
   <meta name="description" content="The modern operating system for Greek chapters. Manage recruitment, dues, roster sync, and elections securely.">
   <meta name="theme-color" content="#ffffff">
 
-  <meta property="og:title" content="Greekstack Â· Multi-Tenant Fraternity & Sorority Management">
+  <meta property="og:title" content="Greekstack Ã‚Â· Multi-Tenant Fraternity & Sorority Management">
   <meta property="og:description" content="The modern operating system for Greek chapters. Manage recruitment, dues, roster sync, and elections securely.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bensachwitz.vercel.app/greek-stack.html">
@@ -16,7 +16,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Greekstack Platform Preview">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Greekstack Â· Multi-Tenant Fraternity & Sorority Management">
+  <meta name="twitter:title" content="Greekstack Ã‚Â· Multi-Tenant Fraternity & Sorority Management">
   <meta name="twitter:description" content="The modern operating system for Greek chapters. Manage recruitment, dues, roster sync, and elections securely.">
   <meta name="twitter:image" content="https://bensachwitz.vercel.app/og-projects.jpg">
   <meta name="twitter:image:alt" content="Greekstack Platform Preview">
@@ -87,10 +87,10 @@
 
       <!-- Floating 3D Letters -->
       <div id="letters" class="letter-group relative w-full h-full flex items-center justify-center">
-        <div class="greek-letter" style="transform: translate3d(-300px, -100px, -400px);">Î¦</div>
-        <div class="greek-letter" style="transform: translate3d(250px, 80px, -600px);">Î£</div>
-        <div class="greek-letter" style="transform: translate3d(-150px, 150px, -800px);">Îš</div>
-        <div class="greek-letter" style="transform: translate3d(180px, -200px, -1000px);">Î‘</div>
+        <div class="greek-letter" style="transform: translate3d(-300px, -100px, -400px);">ÃŽÂ¦</div>
+        <div class="greek-letter" style="transform: translate3d(250px, 80px, -600px);">ÃŽÂ£</div>
+        <div class="greek-letter" style="transform: translate3d(-150px, 150px, -800px);">ÃŽÅ¡</div>
+        <div class="greek-letter" style="transform: translate3d(180px, -200px, -1000px);">ÃŽâ€˜</div>
         <div class="greek-letter" style="transform: translate3d(-50px, -50px, -1200px); font-size: 8rem; color: #ffffff;">GREEKSTACK</div>
       </div>
 
@@ -288,12 +288,12 @@
             <div class="bg-white border border-slate-200 p-2 rounded-xl flex justify-between items-center shadow-sm">
               <div>
                 <div class="text-[10px] font-semibold text-greek-dark">${p.name}</div>
-                <div class="text-[8px] text-greek-slate">${p.school} Â· ${p.status}</div>
+                <div class="text-[8px] text-greek-slate">${p.school} Ã‚Â· ${p.status}</div>
               </div>
               ${p.status === 'Undecided' ? `
                 <button onclick="voteBid(${idx})" class="px-2 py-0.5 rounded bg-greek-blue text-white text-[9px] font-semibold hover:bg-greek-blue/90 active:scale-95 transition-transform">Propose Bid</button>
               ` : `
-                <span class="text-[8px] text-green-500 font-mono">âœ“ Bid Issued</span>
+                <span class="text-[8px] text-green-500 font-mono">Ã¢Å“â€œ Bid Issued</span>
               `}
             </div>
           `).join('')}
@@ -348,7 +348,7 @@
 
           ${duesPaid ? `
             <div class="flex items-center gap-1.5 text-green-500 font-mono text-[9px]">
-              <span>âœ“ Dues Paid & Settled</span>
+              <span>Ã¢Å“â€œ Dues Paid & Settled</span>
             </div>
           ` : `
             <button onclick="payDemoDues()" class="w-full py-2 bg-greek-blue text-white rounded-lg font-semibold text-[10px] active:scale-95 transition-transform hover:bg-greek-blue/90 shadow-sm flex items-center justify-center gap-1">
@@ -401,7 +401,7 @@
           </div>
 
           ${hasVoted ? `
-            <div class="text-center text-[9px] text-greek-slate font-mono">âœ“ Vote cast anonymously</div>
+            <div class="text-center text-[9px] text-greek-slate font-mono">Ã¢Å“â€œ Vote cast anonymously</div>
           ` : `
             <div class="flex gap-2">
               <button onclick="castBallot('Tayler')" class="flex-1 py-1.5 bg-slate-50 border border-slate-200 hover:bg-slate-100 rounded text-[9px] text-greek-dark active:scale-95 transition-transform">Vote Tayler</button>
