@@ -1,0 +1,55 @@
+# Ben Sachwitz
+
+> Assistant Underwriter at Swamp Fox Agency specializing in trucking and logging risk. Builder of iOS apps and web platforms on the side. Based in Columbia, SC with roots in McLean, VA and London.
+
+## What I Do
+
+- Assistant Underwriter at Swamp Fox Agency (trucking and logging specialty risk)
+- Independent iOS app developer (3 apps on the App Store pipeline)
+- Web platform builder (Next.js, React, static sites)
+- Carolina Executive brand: restrained typography, professional aesthetic
+
+## My Apps
+
+### My Daily Tool
+- 60+ productivity tools in one free iOS app
+- 22 daily milestones to track
+- Morning brief with weather, calendar, and tasks
+- 100% free, no ads, no subscription
+- URL: https://my-dailytool.vercel.app
+
+### Bar Crawl Golf
+- Plan bar crawl golf events with route mapping
+- Bar portal for bar managers to see upcoming crawls
+- Drink recommendations and score tracking
+- iOS app via Capacitor
+- URL: https://barcrawlgolf.vercel.app
+
+### Greek Stack
+- White-label SaaS platform for fraternity chapter management
+- Rush QR sign-in, dues tracking, event calendar, announcements
+- Chapter website builder with custom domains
+- Pricing: Monthly $50, Yearly $800, Dues-Share (contact Ben), Custom
+- URL: https://greekstack.vercel.app
+
+## My Website
+
+- Portfolio: https://bensachwitz.vercel.app
+- Career: https://bensachwitz.vercel.app/career
+- Projects: https://bensachwitz.vercel.app/projects
+- Apps: https://bensachwitz.vercel.app/apps
+- Arcade: 39 vanilla-JS browser games at https://bensachwitz.vercel.app/arcade
+- Booking: https://bensachwitz.vercel.app/booking
+
+## Contact
+
+- Email: bensachwitz@outlook.com
+- LinkedIn: linkedin.com/in/benjamin-sachwitz
+- GitHub: github.com/bensachwitz-ctrl
+- Book a call: https://bensachwitz.vercel.app/booking
+
+## Privacy
+
+All apps are privacy-first. See https://bensachwitz.vercel.app/privacy
+for the full privacy policy covering My Daily Tool, Bar Crawl Golf,
+and Greek Stack.

@@ -902,6 +902,7 @@
     border-radius: 0; max-width: none;
     overflow-y: auto; -webkit-overflow-scrolling: touch;
     background: radial-gradient(120% 90% at 50% 0%, #14110b 0%, #0a0a0a 60%, #050505 100%);
+    overscroll-behavior: contain;
   }
   .arcade-cabinet.is-pseudo-fs .arcade-marquee { position: sticky; top: 0; z-index: 5; }
   .arcade-cabinet.is-pseudo-fs .arcade-screen[data-screen="play"] { flex: 1; }
@@ -922,7 +923,7 @@
       repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,.085) 3px, rgba(0,0,0,0) 4px);
     mix-blend-mode: multiply;
   }
-  body.arcade-fs-lock { overflow: hidden; position: fixed; width: 100%; }
+  body.arcade-fs-lock { overflow: hidden; position: fixed; width: 100%; top: 0; left: 0; }
   /* Always-visible exit affordance - iOS has no Esc key / browser chrome to leave fullscreen */
   .arcade-fs-exit {
     position: fixed; top: .8rem; right: .8rem; z-index: 9999;
@@ -942,10 +943,24 @@
     /* Mobile fullscreen: make exit button larger and more visible */
     .arcade-fs-exit { width: 52px; height: 52px; font-size: 22px; top: 1rem; right: 1rem; }
     .arcade-cabinet.is-pseudo-fs .canvas-container canvas {
-      max-width: 95vw; max-height: 65vh;
+      max-width: 95vw; max-height: 60vh;
     }
     .arcade-cabinet.is-pseudo-fs .arcade-marquee { padding: .8rem 1rem; }
     .arcade-cabinet.is-pseudo-fs .arcade-marquee-title { font-size: 13px; letter-spacing: .3em; }
+    /* Ensure touch controls are visible and properly sized in pseudo-fullscreen on mobile */
+    .arcade-cabinet.is-pseudo-fs .touch-grid {
+      display: grid; margin-top: .5rem; margin-bottom: .5rem;
+    }
+    .arcade-cabinet.is-pseudo-fs .arcade-playbar { padding: .6rem .8rem; }
+    /* Ensure the play screen scrolls properly in pseudo-fullscreen on mobile */
+    .arcade-cabinet.is-pseudo-fs .arcade-screen[data-screen="play"] {
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+    }
+    /* Make sure game panels don't overflow horizontally on mobile */
+    .arcade-cabinet.is-pseudo-fs .apanel.is-active {
+      max-width: 100%; padding: .5rem;
+    }
   }
 
   /* ===== REFLEX (reaction) ===== */

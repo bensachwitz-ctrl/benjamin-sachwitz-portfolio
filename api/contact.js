@@ -12,7 +12,7 @@
 // All responses include CORS headers so the frontend can call this directly.
 
 // === Recipients ===
-const TO_EMAIL_RESEND = process.env.RESEND_TO_EMAIL || 'bensachwitz@gmail.com';
+const TO_EMAIL_RESEND = process.env.RESEND_TO_EMAIL || 'bensachwitz@outlook.com';
 const TO_EMAIL_PUBLIC = 'bensachwitz@outlook.com';
 const FROM_EMAIL_DEFAULT = 'onboarding@resend.dev'; // works without domain verification on Resend
 const FROM_NAME = 'bensachwitz.vercel.app';

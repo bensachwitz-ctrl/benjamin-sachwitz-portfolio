@@ -919,6 +919,7 @@
     function pseudoActive(){ return cabinet.classList.contains('is-pseudo-fs'); }
     function fsAny(){ return !!fsActive() || pseudoActive(); }
     let fsExitFab = null;
+    let savedScrollY = 0;
     function ensureExitFab(){
       if (fsExitFab) return fsExitFab;
       fsExitFab = document.createElement('button');
@@ -943,8 +944,19 @@
       // let the active game canvas re-fit to the new viewport
       requestAnimationFrame(() => { try { window.dispatchEvent(new Event('resize')); } catch(_){} });
     }
-    function enterPseudo(){ cabinet.classList.add('is-pseudo-fs'); syncFsUI(); }
-    function exitPseudo(){ cabinet.classList.remove('is-pseudo-fs'); syncFsUI(); }
+    function enterPseudo(){
+      savedScrollY = window.scrollY || window.pageYOffset || 0;
+      cabinet.classList.add('is-pseudo-fs');
+      syncFsUI();
+      // Scroll the cabinet to top of its play area so the game is visible
+      requestAnimationFrame(() => { cabinet.scrollTop = 0; });
+    }
+    function exitPseudo(){
+      cabinet.classList.remove('is-pseudo-fs');
+      syncFsUI();
+      // Restore scroll position after the body unlock
+      requestAnimationFrame(() => { window.scrollTo(0, savedScrollY); });
+    }
     function toggleFullscreen(){
       if (fsAny()){
         if (pseudoActive()) { exitPseudo(); return; }
