@@ -1966,7 +1966,7 @@
     function upd(){ if(pEl)pEl.textContent=ps; if(cEl)cEl.textContent=cs; }
     function reset(){ px=W/2-PW/2; cx=W/2-PW/2; ps=0; cs=0; freshBall(Math.random()<.5?-1:1); upd(); }
     function start(){ reset(); running=true; last=performance.now(); if(overEl)overEl.classList.remove('show'); if(startBtn)startBtn.textContent='Restart'; cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); }
-    function endMatch(){ running=false; const win=ps>cs; if(labelEl)labelEl.textContent=win?'You win':'CPU wins'; if(finalEl)finalEl.textContent=ps+' - '+cs; if(overEl)overEl.classList.add('show'); if(startBtn)startBtn.textContent='Start game'; }
+    function endMatch(){ running=false; const win=ps>cs; if(labelEl)labelEl.textContent=win?'You win':'CPU wins'; if(finalEl)finalEl.textContent=ps+' '+cs; if(overEl)overEl.classList.add('show'); if(startBtn)startBtn.textContent='Start game'; }
     function score(player){ if(player)ps++; else cs++; upd(); if(ps>=WIN||cs>=WIN){ endMatch(); return; } freshBall(player?1:-1); }
     function clampBall(){ const s=Math.hypot(ball.vx,ball.vy); if(s>MAXB){ ball.vx*=MAXB/s; ball.vy*=MAXB/s; } }
     function loop(now){

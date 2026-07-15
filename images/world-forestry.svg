@@ -1,70 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="A Southern pine stand at dusk, oxblood duotone illustration">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Southern pine forest at dusk, editorial illustration">
   <defs>
     <linearGradient id="fr-bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2A0E0E"/>
-      <stop offset="0.55" stop-color="#1A0808"/>
-      <stop offset="1" stop-color="#0A0303"/>
+      <stop offset="0" stop-color="#1a1818"/>
+      <stop offset="0.5" stop-color="#181410"/>
+      <stop offset="1" stop-color="#0a0808"/>
     </linearGradient>
-    <radialGradient id="fr-sun" cx="0.5" cy="0.72" r="0.55">
-      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.55"/>
-      <stop offset="0.4" stop-color="#B84A2A" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#0A0303" stop-opacity="0"/>
-    </radialGradient>
     <linearGradient id="fr-gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#E8C77D"/><stop offset="1" stop-color="#B88A2F"/>
+      <stop offset="0" stop-color="#E8C77D"/>
+      <stop offset="1" stop-color="#B88A2F"/>
     </linearGradient>
-    <pattern id="fr-grain" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(12)">
-      <circle cx="0.6" cy="0.6" r="0.45" fill="#F5F2EC" opacity="0.05"/>
-      <circle cx="2.1" cy="1.8" r="0.35" fill="#000" opacity="0.06"/>
-    </pattern>
-    <!-- One reusable layered-pine silhouette (tip at 0,0; base near 0,120) -->
-    <g id="fr-pine">
-      <path d="M0 0 L20 40 L10 40 L26 74 L14 74 L34 116 L-34 116 L-14 74 L-26 74 L-10 40 L-20 40 Z"/>
-      <rect x="-4" y="116" width="8" height="16"/>
-    </g>
+    <radialGradient id="fr-sun" cx="0.5" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#0a0808" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
   <rect width="600" height="800" fill="url(#fr-bg)"/>
-  <!-- low sun glow on the horizon -->
   <rect width="600" height="800" fill="url(#fr-sun)"/>
-  <circle cx="300" cy="576" r="46" fill="#F0D08A" opacity="0.32"/>
 
-  <!-- distant ridge line -->
-  <path d="M0 560 Q150 540 300 552 T600 548 L600 560 L0 560 Z" fill="#160606" opacity="0.7"/>
-
-  <!-- BACK stand — small, faint pines along the ridge (depth) -->
-  <g fill="#160606" opacity="0.7">
-    <use href="#fr-pine" transform="translate(60 470) scale(0.55)"/>
-    <use href="#fr-pine" transform="translate(140 486) scale(0.48)"/>
-    <use href="#fr-pine" transform="translate(225 462) scale(0.6)"/>
-    <use href="#fr-pine" transform="translate(360 470) scale(0.5)"/>
-    <use href="#fr-pine" transform="translate(445 458) scale(0.62)"/>
-    <use href="#fr-pine" transform="translate(540 480) scale(0.5)"/>
+  <!-- Distant misty tree line -->
+  <g fill="#0d0a08" opacity="0.4">
+    <path d="M0 450 L30 430 L60 440 L90 420 L120 435 L150 425 L180 440 L210 420 L240 435 L270 425 L300 440 L330 420 L360 435 L390 425 L420 440 L450 420 L480 435 L510 425 L540 440 L570 420 L600 435 L600 600 L0 600 Z"/>
   </g>
 
-  <!-- MID stand — the planted-row cadence of a managed timber stand -->
-  <g fill="#0F0404" opacity="0.92" stroke="#8B1A1A" stroke-width="0.8">
-    <use href="#fr-pine" transform="translate(45 452) scale(0.85)"/>
-    <use href="#fr-pine" transform="translate(160 470) scale(0.78)"/>
-    <use href="#fr-pine" transform="translate(300 440) scale(0.95)"/>
-    <use href="#fr-pine" transform="translate(440 468) scale(0.8)"/>
-    <use href="#fr-pine" transform="translate(560 452) scale(0.86)"/>
+  <!-- Mid-ground trees (tall pines) -->
+  <g fill="#0d0a06" opacity="0.7">
+    <!-- Tree 1 -->
+    <path d="M80 600 L80 380 L75 360 L85 360 L80 380 Z"/>
+    <path d="M70 420 L90 420 L80 380 Z"/>
+    <path d="M68 460 L92 460 L80 410 Z"/>
+    <path d="M66 500 L94 500 L80 450 Z"/>
+    <path d="M64 540 L96 540 L80 490 Z"/>
+    <!-- Tree 2 -->
+    <path d="M200 600 L200 340 L195 320 L205 320 L200 340 Z"/>
+    <path d="M188 380 L212 380 L200 340 Z"/>
+    <path d="M186 420 L214 420 L200 370 Z"/>
+    <path d="M184 460 L216 460 L200 410 Z"/>
+    <path d="M182 500 L218 500 L200 450 Z"/>
+    <path d="M180 540 L220 540 L200 490 Z"/>
+    <!-- Tree 3 -->
+    <path d="M340 600 L340 360 L335 340 L345 340 L340 360 Z"/>
+    <path d="M328 400 L352 400 L340 360 Z"/>
+    <path d="M326 440 L354 440 L340 390 Z"/>
+    <path d="M324 480 L356 480 L340 430 Z"/>
+    <path d="M322 520 L358 520 L340 470 Z"/>
+    <!-- Tree 4 -->
+    <path d="M460 600 L460 380 L455 360 L465 360 L460 380 Z"/>
+    <path d="M450 420 L470 420 L460 380 Z"/>
+    <path d="M448 460 L472 460 L460 410 Z"/>
+    <path d="M446 500 L474 500 L460 450 Z"/>
+    <path d="M444 540 L476 540 L460 490 Z"/>
+    <!-- Tree 5 -->
+    <path d="M540 600 L540 350 L535 330 L545 330 L540 350 Z"/>
+    <path d="M528 390 L552 390 L540 350 Z"/>
+    <path d="M526 430 L554 430 L540 380 Z"/>
+    <path d="M524 470 L556 470 L540 420 Z"/>
+    <path d="M522 510 L558 510 L540 460 Z"/>
+    <path d="M520 550 L560 550 L540 500 Z"/>
   </g>
 
-  <!-- FRONT stand — large, near-black foreground pines -->
-  <g fill="#080202" stroke="#6B1111" stroke-width="1">
-    <use href="#fr-pine" transform="translate(-10 520) scale(1.5)"/>
-    <use href="#fr-pine" transform="translate(150 560) scale(1.25)"/>
-    <use href="#fr-pine" transform="translate(330 540) scale(1.55)"/>
-    <use href="#fr-pine" transform="translate(520 566) scale(1.3)"/>
-    <use href="#fr-pine" transform="translate(620 528) scale(1.4)"/>
+  <!-- Foreground logging equipment silhouette -->
+  <g fill="#050303" opacity="0.85">
+    <!-- Stump -->
+    <ellipse cx="150" cy="620" rx="30" ry="12"/>
+    <rect x="120" y="610" width="60" height="20" rx="4"/>
+    <!-- Log pile -->
+    <g transform="translate(380, 590)">
+      <rect x="0" y="20" width="160" height="22" rx="11"/>
+      <rect x="10" y="0" width="140" height="22" rx="11"/>
+      <rect x="20" y="-20" width="120" height="22" rx="11"/>
+    </g>
   </g>
 
-  <!-- gold survey stake on the stand line -->
-  <g transform="translate(258 612)">
-    <line x1="0" y1="0" x2="0" y2="-30" stroke="url(#fr-gold)" stroke-width="2.4"/>
-    <path d="M0 -30 l16 6 -16 6 Z" fill="url(#fr-gold)"/>
+  <!-- Tree rings on the stump, subtle gold -->
+  <g fill="none" stroke="url(#fr-gold)" stroke-width="0.8" opacity="0.25">
+    <ellipse cx="150" cy="620" rx="20" ry="8"/>
+    <ellipse cx="150" cy="620" rx="14" ry="5.5"/>
+    <ellipse cx="150" cy="620" rx="8" ry="3"/>
+    <ellipse cx="150" cy="620" rx="3" ry="1.2"/>
   </g>
 
-  <rect width="600" height="800" fill="url(#fr-grain)"/>
+  <!-- Ground -->
+  <rect x="0" y="600" width="600" height="200" fill="#080606"/>
+
+  <!-- Subtle ground warmth -->
+  <g fill="url(#fr-gold)" opacity="0.05">
+    <ellipse cx="300" cy="680" rx="200" ry="40"/>
+  </g>
+
+  <!-- Floating marker -->
+  <text x="300" y="750" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#E8C77D" opacity="0.3" letter-spacing="4">Forestry and Logging</text>
 </svg>

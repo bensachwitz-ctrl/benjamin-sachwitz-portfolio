@@ -1,80 +1,100 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="The City of London skyline at dusk, oxblood duotone illustration">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="The Lloyd's of London building, modern editorial illustration">
   <defs>
-    <linearGradient id="ll-sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2A0E0E"/>
-      <stop offset="0.55" stop-color="#1A0808"/>
-      <stop offset="1" stop-color="#0A0303"/>
+    <linearGradient id="ll-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1228"/>
+      <stop offset="0.5" stop-color="#14101e"/>
+      <stop offset="1" stop-color="#0a0812"/>
     </linearGradient>
-    <radialGradient id="ll-sun" cx="0.52" cy="0.7" r="0.5">
-      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.5"/>
-      <stop offset="0.42" stop-color="#B84A2A" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#0A0303" stop-opacity="0"/>
-    </radialGradient>
     <linearGradient id="ll-gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#E8C77D"/><stop offset="1" stop-color="#B88A2F"/>
+      <stop offset="0" stop-color="#E8C77D"/>
+      <stop offset="1" stop-color="#B88A2F"/>
     </linearGradient>
-    <pattern id="ll-grain" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
-      <circle cx="0.6" cy="0.6" r="0.45" fill="#F5F2EC" opacity="0.05"/>
-      <circle cx="2.1" cy="1.8" r="0.35" fill="#000" opacity="0.06"/>
-    </pattern>
+    <linearGradient id="ll-building" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a1a2a"/>
+      <stop offset="1" stop-color="#1a0e1a"/>
+    </linearGradient>
+    <radialGradient id="ll-glow" cx="0.5" cy="0.35" r="0.6">
+      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#0a0812" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
-  <rect width="600" height="800" fill="url(#ll-sky)"/>
-  <rect width="600" height="800" fill="url(#ll-sun)"/>
-  <circle cx="312" cy="612" r="52" fill="#F0D08A" opacity="0.26"/>
+  <rect width="600" height="800" fill="url(#ll-bg)"/>
+  <rect width="600" height="800" fill="url(#ll-glow)"/>
 
-  <!-- Distant skyline haze band -->
-  <rect x="0" y="590" width="600" height="14" fill="#160606" opacity="0.5"/>
+  <!-- Stylized Lloyd's building (the famous inside-out building) -->
+  <g transform="translate(120, 180)">
+    <!-- Main tower mass -->
+    <rect x="0" y="0" width="200" height="420" fill="url(#ll-building)" rx="4"/>
 
-  <!-- CITY OF LONDON silhouette (EC3 — the market's home ground) -->
-  <g fill="#0B0303">
-    <!-- St Paul's dome, left -->
-    <g>
-      <rect x="70" y="470" width="96" height="132"/>
-      <path d="M78 470 q40 -74 80 0 Z"/>               <!-- dome -->
-      <rect x="112" y="392" width="12" height="24"/>    <!-- lantern -->
-      <path d="M114 392 h8 v-6 h-8 Z"/>
-      <rect x="116.5" y="368" width="3" height="20"/>   <!-- finial/cross -->
-      <rect x="112" y="374" width="12" height="3"/>
+    <!-- Exterior service towers (the iconic dark columns on the outside) -->
+    <rect x="-18" y="20" width="22" height="400" fill="#0d0810" rx="3"/>
+    <rect x="196" y="40" width="22" height="380" fill="#0d0810" rx="3"/>
+
+    <!-- Glass curtain facade with horizontal floor lines -->
+    <g stroke="#3a2a3a" stroke-width="1" opacity="0.6">
+      <line x1="0" y1="40" x2="200" y2="40"/>
+      <line x1="0" y1="80" x2="200" y2="80"/>
+      <line x1="0" y1="120" x2="200" y2="120"/>
+      <line x1="0" y1="160" x2="200" y2="160"/>
+      <line x1="0" y1="200" x2="200" y2="200"/>
+      <line x1="0" y1="240" x2="200" y2="240"/>
+      <line x1="0" y1="280" x2="200" y2="280"/>
+      <line x1="0" y1="320" x2="200" y2="320"/>
+      <line x1="0" y1="360" x2="200" y2="360"/>
     </g>
-    <!-- a slender City church spire -->
-    <path d="M196 602 L206 602 L206 468 L201 442 L196 468 Z"/>
-    <!-- rectangular tower -->
-    <rect x="228" y="452" width="58" height="150"/>
-    <rect x="240" y="440" width="34" height="14"/>
-    <!-- THE GHERKIN (30 St Mary Axe) — the hero silhouette -->
-    <g>
-      <path d="M330 602 q-30 -140 32 -262 q62 122 32 262 Z"/>
-      <rect x="360.5" y="322" width="3" height="20"/>   <!-- tip mast -->
+
+    <!-- Lit windows, warm gold, sparse and elegant -->
+    <g fill="url(#ll-gold)" opacity="0.7">
+      <rect x="20" y="50" width="8" height="22" rx="1"/>
+      <rect x="50" y="90" width="8" height="22" rx="1"/>
+      <rect x="90" y="50" width="8" height="22" rx="1"/>
+      <rect x="130" y="130" width="8" height="22" rx="1"/>
+      <rect x="170" y="90" width="8" height="22" rx="1"/>
+      <rect x="60" y="170" width="8" height="22" rx="1"/>
+      <rect x="110" y="210" width="8" height="22" rx="1"/>
+      <rect x="160" y="250" width="8" height="22" rx="1"/>
+      <rect x="30" y="290" width="8" height="22" rx="1"/>
+      <rect x="100" y="330" width="8" height="22" rx="1"/>
+      <rect x="150" y="370" width="8" height="22" rx="1"/>
     </g>
-    <!-- the Cheesegrater (leaning wedge) -->
-    <path d="M430 602 L430 420 L470 402 L470 602 Z"/>
-    <!-- the Walkie-Talkie (top-heavy) -->
-    <path d="M494 602 L494 470 Q494 442 520 440 Q548 442 548 474 L548 602 Z"/>
-    <!-- filler towers to the edges -->
-    <rect x="16" y="516" width="44" height="86"/>
-    <rect x="300" y="500" width="26" height="102"/>
-    <rect x="562" y="500" width="40" height="102"/>
+
+    <!-- Top crane/antenna detail -->
+    <rect x="95" y="-20" width="10" height="20" fill="#0d0810"/>
+    <rect x="85" y="-26" width="30" height="6" fill="#0d0810"/>
   </g>
 
-  <!-- lit windows — warm gold, sparse -->
-  <g fill="url(#ll-gold)" opacity="0.85">
-    <rect x="90" y="500" width="4" height="6"/><rect x="104" y="500" width="4" height="6"/><rect x="118" y="514" width="4" height="6"/><rect x="140" y="500" width="4" height="6"/>
-    <rect x="240" y="474" width="4" height="7"/><rect x="252" y="474" width="4" height="7"/><rect x="264" y="500" width="4" height="7"/><rect x="240" y="524" width="4" height="7"/><rect x="264" y="548" width="4" height="7"/>
-    <rect x="440" y="450" width="4" height="7"/><rect x="452" y="470" width="4" height="7"/><rect x="440" y="500" width="4" height="7"/><rect x="452" y="536" width="4" height="7"/>
-    <rect x="510" y="480" width="4" height="7"/><rect x="524" y="480" width="4" height="7"/><rect x="510" y="512" width="4" height="7"/><rect x="524" y="540" width="4" height="7"/>
-  </g>
-  <!-- Gherkin diagrid hint -->
-  <g stroke="#6B1111" stroke-width="1" opacity="0.5" fill="none">
-    <path d="M340 560 L384 560"/><path d="M336 520 L388 520"/><path d="M340 480 L384 480"/><path d="M348 440 L376 440"/>
-    <path d="M362 340 L338 560"/><path d="M362 340 L386 560"/>
+  <!-- Surrounding city buildings, simplified silhouettes -->
+  <g fill="#0d0810" opacity="0.7">
+    <rect x="40" y="320" width="60" height="280" rx="2"/>
+    <rect x="340" y="280" width="70" height="320" rx="2"/>
+    <rect x="430" y="350" width="50" height="250" rx="2"/>
+    <rect x="500" y="300" width="60" height="300" rx="2"/>
   </g>
 
-  <!-- reflected river foreground -->
-  <rect x="0" y="602" width="600" height="198" fill="#0A0303"/>
-  <g fill="url(#ll-gold)" opacity="0.14">
-    <rect x="300" y="620" width="24" height="90"/>
+  <!-- A few lit windows on surrounding buildings -->
+  <g fill="url(#ll-gold)" opacity="0.4">
+    <rect x="52" y="360" width="5" height="8"/>
+    <rect x="68" y="400" width="5" height="8"/>
+    <rect x="52" y="440" width="5" height="8"/>
+    <rect x="352" y="320" width="5" height="8"/>
+    <rect x="372" y="360" width="5" height="8"/>
+    <rect x="392" y="400" width="5" height="8"/>
+    <rect x="510" y="340" width="5" height="8"/>
+    <rect x="530" y="380" width="5" height="8"/>
+    <rect x="550" y="420" width="5" height="8"/>
   </g>
 
-  <rect width="600" height="800" fill="url(#ll-grain)"/>
+  <!-- Ground plane -->
+  <rect x="0" y="600" width="600" height="200" fill="#080610"/>
+  <rect x="0" y="600" width="600" height="2" fill="#1a1228" opacity="0.8"/>
+
+  <!-- Subtle street light reflections -->
+  <g fill="url(#ll-gold)" opacity="0.08">
+    <ellipse cx="150" cy="680" rx="80" ry="20"/>
+    <ellipse cx="450" cy="700" rx="100" ry="24"/>
+  </g>
+
+  <!-- Floating "Lloyd's" marker, very subtle -->
+  <text x="300" y="750" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#E8C77D" opacity="0.3" letter-spacing="4">Lloyd's of London</text>
 </svg>

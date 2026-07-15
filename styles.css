@@ -899,22 +899,53 @@
   .arcade-cabinet.is-pseudo-fs {
     position: fixed; inset: 0; z-index: 9990; margin: 0;
     width: 100vw; height: 100vh; height: 100dvh;
+    border-radius: 0; max-width: none;
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    background: radial-gradient(120% 90% at 50% 0%, #14110b 0%, #0a0a0a 60%, #050505 100%);
   }
-  body.arcade-fs-lock { overflow: hidden; }
+  .arcade-cabinet.is-pseudo-fs .arcade-marquee { position: sticky; top: 0; z-index: 5; }
+  .arcade-cabinet.is-pseudo-fs .arcade-screen[data-screen="play"] { flex: 1; }
+  .arcade-cabinet.is-pseudo-fs .arcade-attract { min-height: 70vh; justify-content: center; }
+  .arcade-cabinet.is-pseudo-fs .arcade-panel-wrap { display: flex; justify-content: center; align-items: center; }
+  .arcade-cabinet.is-pseudo-fs .apanel.is-active { width: 100%; max-width: 1100px; }
+  .arcade-cabinet.is-pseudo-fs .canvas-container {
+    max-width: min(820px, 92vw); width: fit-content; margin: 0 auto;
+  }
+  .arcade-cabinet.is-pseudo-fs .canvas-container canvas {
+    width: auto !important; height: auto !important;
+    max-width: min(820px, 92vw); max-height: 76vh;
+  }
+  .arcade-cabinet.is-pseudo-fs::after {
+    content: ""; position: absolute; inset: 0; z-index: 50; pointer-events: none;
+    background:
+      radial-gradient(120% 100% at 50% 50%, transparent 58%, rgba(0,0,0,.28) 84%, rgba(0,0,0,.55) 100%),
+      repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,.085) 3px, rgba(0,0,0,0) 4px);
+    mix-blend-mode: multiply;
+  }
+  body.arcade-fs-lock { overflow: hidden; position: fixed; width: 100%; }
   /* Always-visible exit affordance - iOS has no Esc key / browser chrome to leave fullscreen */
   .arcade-fs-exit {
-    position: absolute; top: .8rem; right: .8rem; z-index: 60;
-    width: 44px; height: 44px; display: none; align-items: center; justify-content: center;
+    position: fixed; top: .8rem; right: .8rem; z-index: 9999;
+    width: 48px; height: 48px; display: none; align-items: center; justify-content: center;
     border-radius: 50%; border: 1px solid rgba(212,168,67,.5);
-    background: rgba(10,10,10,.72); color: var(--bone); font-size: 17px; line-height: 1; cursor: pointer;
+    background: rgba(10,10,10,.85); color: var(--bone); font-size: 20px; line-height: 1; cursor: pointer;
     -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: all .2s;
+    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
   }
   .arcade-fs-exit:hover { border-color: var(--gold); background: rgba(20,17,11,.9); }
   .arcade-fs-exit:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--gold); }
+  .arcade-fs-exit:active { transform: scale(0.92); }
 
   @media (max-width: 640px) {
     .arcade-grid { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: .6rem; }
     .arcade-attract { padding: 2.5rem 1rem; min-height: 360px; }
+    /* Mobile fullscreen: make exit button larger and more visible */
+    .arcade-fs-exit { width: 52px; height: 52px; font-size: 22px; top: 1rem; right: 1rem; }
+    .arcade-cabinet.is-pseudo-fs .canvas-container canvas {
+      max-width: 95vw; max-height: 65vh;
+    }
+    .arcade-cabinet.is-pseudo-fs .arcade-marquee { padding: .8rem 1rem; }
+    .arcade-cabinet.is-pseudo-fs .arcade-marquee-title { font-size: 13px; letter-spacing: .3em; }
   }
 
   /* ===== REFLEX (reaction) ===== */
@@ -2766,6 +2797,50 @@
   }
 
   /* ============================================================
+     FLOATING COMPANY LOGOS: subtle brand name text drifting
+     in the background. Mode-aware like the ambient glyphs.
+  ============================================================ */
+  .logo-float {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .logo-float-item {
+    position: absolute;
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 32px);
+    font-weight: 300;
+    letter-spacing: .02em;
+    color: var(--oxblood);
+    opacity: 0;
+    white-space: nowrap;
+    will-change: transform, opacity;
+    animation: logoFloat 45s ease-in-out infinite;
+  }
+  .logo-float-item::before { content: attr(data-uw); }
+  html[data-mode="builder"] .logo-float-item::before { content: attr(data-bd); }
+  .logo-float-item.lf-1 { top: 12%; left: 8%;  animation-delay: 0s;    --lf-op: .06; }
+  .logo-float-item.lf-2 { top: 25%; left: 75%; animation-delay: -8s;   --lf-op: .07; }
+  .logo-float-item.lf-3 { top: 45%; left: 15%; animation-delay: -16s;  --lf-op: .05; }
+  .logo-float-item.lf-4 { top: 60%; left: 80%; animation-delay: -24s;  --lf-op: .06; }
+  .logo-float-item.lf-5 { top: 75%; left: 20%; animation-delay: -32s;  --lf-op: .05; }
+  .logo-float-item.lf-6 { top: 35%; left: 50%; animation-delay: -12s;  --lf-op: .04; }
+  .logo-float-item.lf-7 { top: 85%; left: 65%; animation-delay: -20s;  --lf-op: .06; }
+  .logo-float-item.lf-8 { top: 15%; left: 45%; animation-delay: -28s;  --lf-op: .05; }
+  @keyframes logoFloat {
+    0%, 100% { opacity: 0; transform: translateY(0) rotate(-2deg); }
+    20% { opacity: var(--lf-op, .06); }
+    50% { opacity: calc(var(--lf-op, .06) * 1.4); transform: translateY(-30px) rotate(1deg); }
+    80% { opacity: var(--lf-op, .06); }
+  }
+  @media (max-width: 768px) {
+    .logo-float-item { font-size: clamp(14px, 4vw, 20px); --lf-op: .04; }
+    .logo-float-item.lf-6, .logo-float-item.lf-7, .logo-float-item.lf-8 { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-float-item { animation: none; opacity: var(--lf-op, .04); }
+  }
+
+  /* ============================================================
      PER-SECTION DRIFTING GLYPHS - for dark (bg-ink) sections
      The fixed .ambient-bg layer (z-index:0) is painted over by the
      opaque rgb(10,10,10) backgrounds of dark sections, so the drifting
@@ -3700,6 +3775,45 @@
   }
   .site-mock-greekstack .site-mock-headline { color: #F5F2EC; }
   .site-mock-greekstack .site-mock-headline span { color: #E8C77D; }
+
+  /* Bar Crawl Golf mock */
+  .site-mock-bcg .site-mock-bg {
+    background:
+      radial-gradient(circle at 30% 30%, rgba(13,27,42,.85), transparent 55%),
+      radial-gradient(circle at 75% 70%, rgba(212,168,67,.35), transparent 50%),
+      linear-gradient(135deg, #0d1b2a 0%, #1a2a3a 50%, #081018 100%);
+  }
+  .site-mock-bcg .site-mock-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(212,168,67,.06) 1px, transparent 1px),
+      repeating-linear-gradient(90deg, rgba(212,168,67,.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .site-mock-bcg .site-mock-headline { color: #F5F2EC; }
+  .site-mock-bcg .site-mock-headline span { color: #D4A843; }
+
+  /* My Daily Tool mock */
+  .site-mock-mdt .site-mock-bg {
+    background:
+      radial-gradient(circle at 50% 25%, rgba(59,130,246,.28), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(16,185,129,.18), transparent 50%),
+      linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #E0E7FF 100%);
+  }
+  .site-mock-mdt .site-mock-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(59,130,246,.08) 1px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+  .site-mock-mdt .site-mock-eyebrow { color: rgba(100,116,139,.9); }
+  .site-mock-mdt .site-mock-headline { color: #18181B; }
+  .site-mock-mdt .site-mock-headline span { color: #3B82F6; }
+  .site-mock-mdt .site-mock-sub { color: rgba(100,116,139,.95); }
+  .site-mock-mdt .site-mock-cta { color: #3B82F6; border-color: rgba(59,130,246,.3); }
 
   /* Platform pill (recycled style from apps but light variant) */
   .site-platform-pill {

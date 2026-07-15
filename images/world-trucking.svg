@@ -1,74 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="A commercial truck on a southern pine highway at golden hour, oxblood duotone illustration">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Commercial truck on a Southeast highway at dusk, editorial illustration">
   <defs>
-    <linearGradient id="tk-sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2A0E0E"/>
-      <stop offset="0.4" stop-color="#5A1A12"/>
-      <stop offset="0.62" stop-color="#8B1A1A"/>
-      <stop offset="0.74" stop-color="#0F0404"/>
-      <stop offset="1" stop-color="#0A0303"/>
+    <linearGradient id="tr-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1428"/>
+      <stop offset="0.4" stop-color="#241a18"/>
+      <stop offset="1" stop-color="#0a0808"/>
     </linearGradient>
-    <radialGradient id="tk-sun" cx="0.5" cy="0.56" r="0.42">
-      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.95"/>
-      <stop offset="0.4" stop-color="#D4A843" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#8B1A1A" stop-opacity="0"/>
+    <linearGradient id="tr-road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1414"/>
+      <stop offset="1" stop-color="#0a0606"/>
+    </linearGradient>
+    <linearGradient id="tr-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E8C77D"/>
+      <stop offset="1" stop-color="#B88A2F"/>
+    </linearGradient>
+    <radialGradient id="tr-sun" cx="0.7" cy="0.3" r="0.5">
+      <stop offset="0" stop-color="#E8C77D" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#0a0808" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="tk-gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#E8C77D"/><stop offset="1" stop-color="#B88A2F"/>
-    </linearGradient>
-    <pattern id="tk-grain" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(24)">
-      <circle cx="0.6" cy="0.6" r="0.45" fill="#F5F2EC" opacity="0.05"/>
-      <circle cx="2.1" cy="1.8" r="0.35" fill="#000" opacity="0.06"/>
-    </pattern>
   </defs>
 
-  <rect width="600" height="800" fill="url(#tk-sky)"/>
-  <circle cx="300" cy="448" r="190" fill="url(#tk-sun)"/>
+  <rect width="600" height="800" fill="url(#tr-bg)"/>
+  <rect width="600" height="800" fill="url(#tr-sun)"/>
 
-  <!-- Pine treeline silhouettes flanking the highway -->
-  <g fill="#0A0303" opacity="0.95">
-    <path d="M0 470 l18 -54 8 22 14 -64 9 26 16 -72 10 30 14 -58 9 24 16 -50 v206 H0 Z"/>
-    <path d="M600 470 l-18 -54 -8 22 -14 -64 -9 26 -16 -72 -10 30 -14 -58 -9 24 -16 -50 v206 H600 Z"/>
-  </g>
-  <g fill="#160606" opacity="0.9">
-    <path d="M70 486 l12 -40 7 18 11 -46 7 20 12 -40 v140 H70 Z"/>
-    <path d="M512 486 l-12 -40 -7 18 -11 -46 -7 20 -12 -40 v140 H530 Z"/>
+  <!-- Distant tree line -->
+  <g fill="#0d0a0a" opacity="0.6">
+    <path d="M0 520 L20 500 L40 510 L60 490 L80 505 L100 495 L120 510 L140 490 L160 500 L180 495 L200 510 L220 490 L240 505 L260 495 L280 510 L300 490 L320 505 L340 495 L360 510 L380 490 L400 505 L420 495 L440 510 L460 490 L480 505 L500 495 L520 510 L540 490 L560 505 L580 495 L600 510 L600 600 L0 600 Z"/>
   </g>
 
-  <!-- Highway receding to the sun (vanishing point) -->
-  <polygon points="284,470 316,470 392,800 208,800" fill="#1C0808"/>
-  <polygon points="284,470 316,470 392,800 208,800" fill="none" stroke="#6B1111" stroke-width="1.5"/>
-  <!-- center dashes -->
-  <g fill="url(#tk-gold)" opacity="0.85">
-    <polygon points="298,486 302,486 303,500 297,500"/>
-    <polygon points="297,520 303,520 305,540 295,540"/>
-    <polygon points="295,560 305,560 308,588 292,588"/>
-    <polygon points="292,612 308,612 312,650 288,650"/>
-    <polygon points="288,680 312,680 318,732 282,732"/>
+  <!-- Highway road perspective -->
+  <polygon points="200,600 400,600 500,800 100,800" fill="url(#tr-road)"/>
+
+  <!-- Road lane markings -->
+  <g stroke="#E8C77D" stroke-width="3" opacity="0.4" stroke-dasharray="20 30">
+    <line x1="300" y1="600" x2="300" y2="800"/>
   </g>
 
-  <!-- The tractor-trailer, three-quarter rear, climbing toward the light -->
-  <g stroke="#E8C77D" stroke-width="2" fill="#0A0303" stroke-linejoin="round">
-    <!-- trailer box -->
-    <path d="M330 470 L408 470 L408 612 L330 624 Z" fill="#160606"/>
-    <line x1="350" y1="472" x2="350" y2="620" stroke-width="1" opacity="0.5"/>
-    <line x1="372" y1="471" x2="372" y2="616" stroke-width="1" opacity="0.5"/>
-    <line x1="390" y1="470" x2="390" y2="614" stroke-width="1" opacity="0.5"/>
-    <!-- cab -->
-    <path d="M300 506 L330 502 L330 590 L300 600 Z" fill="#1C0808"/>
-    <!-- rear marker + tail lamp -->
-    <rect x="334" y="600" width="70" height="10" fill="#8B1A1A" stroke-width="1.4"/>
-  </g>
-  <g fill="#D4A843">
-    <rect x="338" y="602" width="9" height="6" rx="1"/>
-    <rect x="392" y="602" width="9" height="6" rx="1"/>
-  </g>
-  <!-- wheel shadow -->
-  <ellipse cx="362" cy="628" rx="54" ry="9" fill="#000" opacity="0.4"/>
+  <!-- The truck, side view, heading right -->
+  <g transform="translate(150, 340)">
+    <!-- Trailer -->
+    <rect x="0" y="0" width="220" height="120" fill="#1a1414" rx="4"/>
+    <rect x="0" y="0" width="220" height="120" fill="none" stroke="#2a1a1a" stroke-width="2" rx="4"/>
 
-  <!-- distant oncoming headlamps -->
-  <circle cx="296" cy="478" r="2.4" fill="#E8C77D"/>
-  <circle cx="304" cy="478" r="2.4" fill="#E8C77D"/>
+    <!-- Trailer panels -->
+    <g stroke="#2a1a1a" stroke-width="1" opacity="0.5">
+      <line x1="55" y1="0" x2="55" y2="120"/>
+      <line x1="110" y1="0" x2="110" y2="120"/>
+      <line x1="165" y1="0" x2="165" y2="120"/>
+    </g>
 
-  <rect width="600" height="800" fill="url(#tk-grain)"/>
-  <rect width="600" height="800" fill="#0A0303" opacity="0.05"/>
+    <!-- Cab -->
+    <path d="M220 20 L280 20 L290 50 L290 120 L220 120 Z" fill="#0d0810" rx="4"/>
+
+    <!-- Windshield -->
+    <path d="M232 28 L272 28 L280 50 L232 50 Z" fill="url(#tr-gold)" opacity="0.3"/>
+
+    <!-- Headlight -->
+    <circle cx="285" cy="80" r="6" fill="url(#tr-gold)" opacity="0.8"/>
+
+    <!-- Wheels -->
+    <g fill="#050303">
+      <circle cx="40" cy="130" r="18"/>
+      <circle cx="100" cy="130" r="18"/>
+      <circle cx="160" cy="130" r="18"/>
+      <circle cx="255" cy="130" r="18"/>
+    </g>
+    <g fill="#1a1414">
+      <circle cx="40" cy="130" r="8"/>
+      <circle cx="100" cy="130" r="8"/>
+      <circle cx="160" cy="130" r="8"/>
+      <circle cx="255" cy="130" r="8"/>
+    </g>
+
+    <!-- Subtle gold pin-striping on trailer -->
+    <line x1="10" y1="60" x2="210" y2="60" stroke="url(#tr-gold)" stroke-width="1" opacity="0.3"/>
+  </g>
+
+  <!-- Ground -->
+  <rect x="0" y="600" width="600" height="200" fill="#080606"/>
+
+  <!-- Subtle headlight glow on road -->
+  <g fill="url(#tr-gold)" opacity="0.06">
+    <ellipse cx="440" cy="650" rx="120" ry="30"/>
+  </g>
+
+  <!-- Floating marker -->
+  <text x="300" y="750" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#E8C77D" opacity="0.3" letter-spacing="4">Southeast Corridors</text>
 </svg>
