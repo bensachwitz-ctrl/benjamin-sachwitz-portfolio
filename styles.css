@@ -3920,7 +3920,7 @@ html.snap-active footer {
 .arcade-cta-blink{ animation:arcade-cta-blink 1.15s steps(1,end) infinite; }
 @media (prefers-reduced-motion: reduce){ .arcade-cta-blink{ animation:none; } .arcade-cabinet-img{ transition:none; } }
 
-/* ===== Instagram strip (@ben_sachwitz) — Chapter 08 ===== */
+/* ===== Instagram strip (@ben_sachwitz) -- Chapter 08 ===== */
 .ig-follow{ display:inline-flex; align-items:center; gap:.5rem; margin-top:.6rem; color:var(--ink,#1a1a1a); text-decoration:none; font-weight:600; font-size:14px; }
 .ig-follow svg{ color:var(--ox,#7a1f1f); }
 .ig-follow-cta{ color:var(--ox,#7a1f1f); font-weight:700; }
@@ -3938,7 +3938,7 @@ html.snap-active footer {
 @keyframes ig-scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @media (prefers-reduced-motion: reduce){ .ig-track{ animation:none; } .ig-strip{ overflow-x:auto; -webkit-overflow-scrolling:touch; } .ig-cap{ opacity:1; } }
 
-/* ===== Premium button polish (2026-07-08) — layered depth, unified radius, springy lift ===== */
+/* ===== Premium button polish (2026-07-08) -- layered depth, unified radius, springy lift ===== */
 .btn-ink, .btn-outline, .btn-gold{ border-radius:10px; }
 .btn-ink{
   background:linear-gradient(180deg,#171717 0%,var(--ink) 62%);
