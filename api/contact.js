@@ -290,13 +290,12 @@ export default async function handler(req, res) {
 
   const lead = buildLeadEmail(payload);
 
-  console.log('[contact]', JSON.stringify({
+  console.log('[contact] submission received', {
     receivedAt: new Date().toISOString(),
-    name, email,
     isBooking: lead.isBooking,
     subject: lead.subject,
-    keys: Object.keys(payload).filter(k => !k.startsWith('_')),
-  }));
+    fieldCount: Object.keys(payload).filter(k => !k.startsWith('_')).length,
+  });
 
   // 1) Try Resend if configured
   if (process.env.RESEND_API_KEY) {
