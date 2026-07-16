@@ -1,12 +1,8 @@
-fix: repair mojibake across all HTML, fix arcade mobile fullscreen, add privacy links, fix email consistency
+fix: repair remaining mojibake in ambient/section glyph data-uw attributes
 
-- Fixed 409 double-encoded byte sequences across 7 HTML files (middle dots, arrows, Greek letters, copyright symbols)
-- Fixed arcade pseudo-fullscreen on mobile: save/restore scroll position, improved canvas sizing, touch controls visibility
-- Added Privacy link to footer on all 7 main pages
-- Fixed email inconsistency: privacy.html and contact API now use outlook.com consistently
-- Updated sitemap.xml lastmod dates to 2026-07-15
-- Added llms.txt for AI search crawlers
-- Bumped cache-bust versions (styles.css?v=mp35, app.js?v=mp34)
+- Fixed 121 mojibake Unicode glyphs across 7 HTML files (warning, arrow, star, summation, Delta, etc.)
+- Bumped cache-bust versions to mp36
+- All ambient glyph data-uw attributes now render correct Unicode symbols
 
 Generated with [Devin](https://devin.ai)
 
