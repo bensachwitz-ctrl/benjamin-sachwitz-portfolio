@@ -1,23 +1,23 @@
-# Benjamin Sachwitz — Personal Portfolio
+# Benjamin Sachwitz - Personal Portfolio
 
-A high-fidelity, production-ready personal site for **Benjamin Sachwitz** — Risk Management & Insurance graduate of the Darla Moore School of Business, currently an assistant underwriter at **Swamp Fox Agency** specializing in commercial trucking and logging risk.
+A high-fidelity, production-ready personal site for **Benjamin Sachwitz** - Risk Management & Insurance graduate of the Darla Moore School of Business, currently an assistant underwriter at **Swamp Fox Agency** specializing in commercial trucking and logging risk.
 
 > Bridging the gap between traditional risk and modern technology.
 
-**Aesthetic:** Carolina Executive — Ink `#0A0A0A`, Bone `#F5F2EC`, Oxblood `#8B1A1A`, Gold `#D4A843`.
+**Aesthetic:** Carolina Executive - Ink `#0A0A0A`, Bone `#F5F2EC`, Oxblood `#8B1A1A`, Gold `#D4A843`.
 **Typography:** Fraunces (serif headlines) + Inter (sans body) + JetBrains Mono (monospace counters).
 **Tech:** Pure HTML5 / CSS3 / vanilla JS. Zero build step. Zero dependencies. Fast, accessible, fully responsive.
 
 ## Sections
 
-- **Hero** — Headline, first-person narrative, dual CTA, animated scroll cue
-- **Stats Band** — Animated counters (cities, certifications, Carahsoft summers, Masters tournaments, Lloyd's est. 1688)
-- **Four Legacy Pillars** — Global Standard (Price Forbes) · Southern Root (Masters) · Tech Specialist (Carahsoft) · Strategic Present (Swamp Fox)
-- **The Interactive Path** — Six-stop career timeline: McLean officiating → USC Darla Moore → Masters → Carahsoft → Lloyd's of London → Swamp Fox
-- **Digital Portfolio** — Swamp Fox Redesign, Loss Control Hub, Summit Portal
-- **Expertise Matrix** — Risk Management · Commercial P&C · Sales & Negotiation · AI & Data
-- **Credentials Chip Grid** — 14 selected certifications
-- **Global Connect Portal** — Contact form + LinkedIn + work email + phone
+- **Hero** - Headline, first-person narrative, dual CTA, animated scroll cue
+- **Stats Band** - Animated counters (cities, certifications, Carahsoft summers, Masters tournaments, Lloyd's est. 1688)
+- **Four Legacy Pillars** - Global Standard (Price Forbes) · Southern Root (Masters) · Tech Specialist (Carahsoft) · Strategic Present (Swamp Fox)
+- **The Interactive Path** - Six-stop career timeline: McLean officiating → USC Darla Moore → Masters → Carahsoft → Lloyd's of London → Swamp Fox
+- **Digital Portfolio** - Swamp Fox Redesign, Loss Control Hub, Summit Portal
+- **Expertise Matrix** - Risk Management · Commercial P&C · Sales & Negotiation · AI & Data
+- **Credentials Chip Grid** - 14 selected certifications
+- **Global Connect Portal** - Contact form + LinkedIn + work email + phone
 
 ## Features
 
@@ -42,7 +42,7 @@ python3 -m http.server 8000
 npx serve .
 ```
 
-Then open `http://localhost:8000`. Or just double-click `index.html` — everything works from the file system.
+Then open `http://localhost:8000`. Or just double-click `index.html` - everything works from the file system.
 
 ## Deploy to GitHub + GitHub Pages (Secure)
 

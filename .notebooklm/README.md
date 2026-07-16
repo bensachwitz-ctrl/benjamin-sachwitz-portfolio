@@ -1,4 +1,4 @@
-﻿# .notebooklm — personal-website
+# .notebooklm - personal-website
 
 Local,  NotebookLM-style context for **personal-website**. Embeddings + chat run on host **Ollama**
 (`nomic-embed-text` + `qwen2.5-coder`), so no API cost.
