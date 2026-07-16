@@ -1,4 +1,4 @@
-﻿{
+{
     "project":  "personal-website",
     "embeddingModel":  "nomic-embed-text",
     "chatModel":  "qwen2.5-coder:7b",
@@ -12,5 +12,5 @@
                   "openNotebook":  "C:/Users/Bensa/working code/oss/open-notebook",
                   "notebooklmPy":  "C:/Users/Bensa/working code/oss/notebooklm-py"
               },
-    "note":  "Local NotebookLM context for this project. \\ — embeddings + chat run on host Ollama."
+    "note":  "Local NotebookLM context for this project. \\ - embeddings + chat run on host Ollama."
 }
