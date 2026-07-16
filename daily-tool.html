@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -420,7 +420,7 @@
           </div>
           <div class="bg-sunrise-card border border-sunrise-gold/10 px-2 py-1 rounded text-right">
             <div class="text-[8px] text-sunrise-gold font-mono font-semibold">ATHENS, GA</div>
-            <div class="text-[9px] font-bold">75° ☀️</div>
+            <div class="text-[9px] font-bold">75° â˜€ï¸</div>
           </div>
         </div>
 
@@ -438,7 +438,7 @@
         <div class="bg-[#1c1612] border border-sunrise-gold/10 rounded-xl p-3 flex flex-col gap-2">
           <span class="text-[9px] font-mono tracking-widest text-sunrise-gold font-semibold uppercase">Mood Check-in</span>
           <div class="flex justify-between items-center gap-1.5 pt-1">
-            ${['😢', '😐', '🙂', '😄'].map(m => `
+            ${['ðŸ˜¢', 'ðŸ˜', 'ðŸ™‚', 'ðŸ˜„'].map(m => `
               <button onclick="setDemoMood(this, '${m}')" class="flex-1 py-1.5 bg-[#120d0a] hover:bg-sunrise-gold/10 rounded-lg text-sm border border-sunrise-cream/5 transition-colors ${selectedMood === m ? 'bg-sunrise-gold/25 border-sunrise-gold/50' : ''}">${m}</button>
             `).join('')}
           </div>
@@ -586,9 +586,9 @@
         reply.className = 'bg-[#1c1612] p-2 rounded-lg text-sunrise-cream max-w-[85%]';
         
         if (promptText.includes('afternoon')) {
-          reply.innerHTML = `<strong>Schedule Optimized:</strong><br>• 2:00-3:30 PM Focus block (Marketing deck)<br>• 3:30-4:00 PM Break/Hydration<br>• 4:00-5:00 PM Cardio session`;
+          reply.innerHTML = `<strong>Schedule Optimized:</strong><br>”¢ 2:00-3:30 PM Focus block (Marketing deck)<br>”¢ 3:30-4:00 PM Break/Hydration<br>”¢ 4:00-5:00 PM Cardio session`;
         } else {
-          reply.innerHTML = `<strong>Quick Workout (30m):</strong><br>• 5m Dynamic Warm-up<br>• 15m Upper body circuit (Pushups/Rows)<br>• 10m HIIT (Interval runs)`;
+          reply.innerHTML = `<strong>Quick Workout (30m):</strong><br>”¢ 5m Dynamic Warm-up<br>”¢ 15m Upper body circuit (Pushups/Rows)<br>”¢ 10m HIIT (Interval runs)`;
         }
         
         box.appendChild(reply);
