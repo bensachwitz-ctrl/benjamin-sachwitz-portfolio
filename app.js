@@ -147,6 +147,19 @@
     });
   }
 
+  /* === MOBILE MENU ACTIVE STATE === */
+  (function initMobileActive() {
+    var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+    var mlinks = document.querySelectorAll('#mmenu a.mlink');
+    if (!mlinks.length) return;
+    mlinks.forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (!href) return;
+      var linkPath = href.split('#')[0].replace(/\/+$/, '') || '/';
+      if (linkPath === path) a.classList.add('is-active');
+    });
+  })();
+
   /* === SMOOTH SCROLL === */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', function(e){
@@ -369,6 +382,24 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); sio.unobserve(e.target); } });
   }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
   document.querySelectorAll('.scale-on-scroll').forEach(el => sio.observe(el));
+
+  /* === LAZY IMAGE FADE-IN === */
+  (function initLazyFade() {
+    var imgs = document.querySelectorAll('img[loading="lazy"]');
+    if (!imgs.length) return;
+    imgs.forEach(function(img) {
+      img.classList.add('lazy-fade');
+      if (img.complete) img.classList.add('loaded');
+      else img.addEventListener('load', function() { img.classList.add('loaded'); }, { once: true });
+    });
+    if (!('IntersectionObserver' in window)) return;
+    var lio = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('loaded'); lio.unobserve(e.target); }
+      });
+    }, { rootMargin: '200px 0px' });
+    imgs.forEach(function(img) { lio.observe(img); });
+  })();
 
   /* === CERTS MARQUEE === */
   const CERTS = [

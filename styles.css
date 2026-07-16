@@ -14,6 +14,12 @@
   html, body { background: var(--bone); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
   body { font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; line-height: 1.7; letter-spacing: 0.25px; font-optical-sizing: auto; }
 
+  /* Page-load fade-in (gated for reduced-motion) */
+  @keyframes pageFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: no-preference) {
+    body { animation: pageFadeIn 0.4s ease-out; }
+  }
+
   /* Serif display tweaks */
   .font-serif { font-feature-settings: "ss01","liga","dlig"; }
 
@@ -122,6 +128,11 @@
     }
     .display-h.tw-active::after { animation: none; opacity: 0; }
   }
+
+  /* 404 page hero bounce */
+  .error-404 { animation: errorBounce 0.6s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes errorBounce { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .error-404 { animation: none; } }
 
   /* Staggered reveal for cards */
   .reveal.card { transition-duration: 1.2s; }
@@ -1624,6 +1635,14 @@
   }
   .nlink:hover::after { transform: scaleX(1); }
 
+  /* Mobile menu active state */
+  .mlink.is-active { color: var(--ink); font-weight: 600; }
+
+  /* Mobile menu link hover underline (matches desktop .nlink gold underline) */
+  .mlink { position: relative; transition: color 0.3s cubic-bezier(.2,.7,.2,1); }
+  .mlink::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s cubic-bezier(.2,.7,.2,1); }
+  .mlink:hover::after { transform: scaleX(1); }
+
   /* Press feedback on interactive controls */
   .btn-ink, .btn-outline, .game-btn-primary, .game-btn-secondary, .atab, .cert-chip, .cert-filter, .proj, .pill, .life-tile {
     -webkit-tap-highlight-color: transparent;
@@ -1668,6 +1687,11 @@
     .chapter-num { animation: none !important; }
     .btn-ink::before { display: none; }
   }
+
+  /* Lazy-loaded image fade-in */
+  img.lazy-fade { opacity: 0; transition: opacity 0.6s ease; }
+  img.lazy-fade.loaded { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { img.lazy-fade { opacity: 1; transition: none; } }
 
   /* Timeline vertical draw line */
   #career .mt-6 { position: relative; }
@@ -1928,14 +1952,15 @@
   .photo-mask:hover::before { opacity: .65; }
 
   /* Circular scroll progress */
-  .scroll-ring { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; z-index: 45; opacity: 0; transition: opacity .4s; pointer-events: none; }
-  .scroll-ring.show { opacity: 1; pointer-events: auto; }
+  .scroll-ring { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 48px; height: 48px; z-index: 45; opacity: 0; transform: scale(0.8); transition: opacity .4s, transform .4s cubic-bezier(.34,1.56,.64,1); pointer-events: none; }
+  .scroll-ring.show { opacity: 1; transform: scale(1); pointer-events: auto; }
   .scroll-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
   .scroll-ring .ring-track { stroke: rgba(10,10,10,.12); stroke-width: 2; fill: none; }
   .scroll-ring .ring-progress { stroke: var(--ox); stroke-width: 2.5; fill: none; stroke-linecap: round; transition: stroke-dashoffset .1s linear; }
   .scroll-ring button { position: absolute; inset: 0; background: rgba(245,242,236,.9); border: 1px solid rgba(10,10,10,.1); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; padding: 0; transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .3s; margin: 4px; width: calc(100% - 8px); height: calc(100% - 8px); }
   .scroll-ring button:hover { background: var(--ink); color: var(--bone); transform: scale(1.08); }
   .scroll-ring button svg { width: 14px; height: 14px; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .scroll-ring { transform: none; transition: opacity .4s; } }
 
   /* Section number badges */
   .section-badge { display: inline-flex; align-items: center; gap: .4rem; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(10,10,10,.5); }
