@@ -293,7 +293,7 @@
               ${p.status === 'Undecided' ? `
                 <button onclick="voteBid(${idx})" class="px-2 py-0.5 rounded bg-greek-blue text-white text-[9px] font-semibold hover:bg-greek-blue/90 active:scale-95 transition-transform">Propose Bid</button>
               ` : `
-                <span class="text-[8px] text-green-500 font-mono">âœ“ Bid Issued</span>
+                <span class="text-[8px] text-green-500 font-mono">✓ Bid Issued</span>
               `}
             </div>
           `).join('')}
@@ -348,7 +348,7 @@
 
           ${duesPaid ? `
             <div class="flex items-center gap-1.5 text-green-500 font-mono text-[9px]">
-              <span>âœ“ Dues Paid & Settled</span>
+              <span>✓ Dues Paid & Settled</span>
             </div>
           ` : `
             <button onclick="payDemoDues()" class="w-full py-2 bg-greek-blue text-white rounded-lg font-semibold text-[10px] active:scale-95 transition-transform hover:bg-greek-blue/90 shadow-sm flex items-center justify-center gap-1">
@@ -401,7 +401,7 @@
           </div>
 
           ${hasVoted ? `
-            <div class="text-center text-[9px] text-greek-slate font-mono">âœ“ Vote cast anonymously</div>
+            <div class="text-center text-[9px] text-greek-slate font-mono">✓ Vote cast anonymously</div>
           ` : `
             <div class="flex gap-2">
               <button onclick="castBallot('Tayler')" class="flex-1 py-1.5 bg-slate-50 border border-slate-200 hover:bg-slate-100 rounded text-[9px] text-greek-dark active:scale-95 transition-transform">Vote Tayler</button>
