@@ -97,7 +97,7 @@ grep -c -E "(id=\"websites\"|bookingCalInline|brainsToggle|new-high-flash)" /tmp
 
 - WarPlay Paintball - `projects/warplay paintball/`
 - Phi Sig Rush - `projects/phi sig rush/`
-- Greekstack - `projects/plug and play greek life/` (greekstack.vercel.app) - added to the Websites grid 2026-06-04
+- Greekstack - `projects/plug and play greek life/` (greekstack.app) - added to the Websites grid 2026-06-04
 - Bar Crawl Golf - `projects/Bar Crawl Golf/`
 - My Daily Tool - `projects/DailyTool/`
 
