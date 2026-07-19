@@ -512,7 +512,8 @@
     position: relative;
   }
   .finput::placeholder { color: rgba(10,10,10,.35); }
-  .finput:focus { outline: none; border-color: var(--ox); box-shadow: 0 2px 0 var(--gold); border-width: 2px; }
+  /* Refined focus: hairline gold underline + soft ink border, no harsh 2px jump */
+  .finput:focus { outline: none; border-color: var(--ink); box-shadow: 0 1.5px 0 var(--gold); }
   .finput:focus::placeholder { color: rgba(10,10,10,.2); }
   .flabel {
     font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
@@ -520,8 +521,8 @@
     display: block; margin-bottom: .35rem; transition: color .3s;
   }
   .finput:focus ~ .flabel, .finput:not(:placeholder-shown) ~ .flabel { color: var(--ink); }
-  textarea.finput { min-height: 110px; resize: vertical; padding-top: .6rem; border: 1px solid rgba(10,10,10,.15); padding: .75rem; }
-  textarea.finput:focus { border-color: var(--ox); }
+  textarea.finput { min-height: 110px; resize: vertical; padding-top: .6rem; border: 1px solid rgba(10,10,10,.15); padding: .75rem; transition: border-color .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s cubic-bezier(.2,.7,.2,1); }
+  textarea.finput:focus { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--gold); }
 
   /* ===== Contact form - inline validation + 4-state ===== */
   .finput.is-invalid { border-color: var(--ox); box-shadow: 0 1px 0 var(--ox); }
@@ -2155,7 +2156,18 @@
   .booking-close:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); transform: rotate(90deg); }
   .booking-body { padding: 2rem 1.75rem 1.75rem; }
   @media (min-width: 640px) { .booking-body { padding: 2.5rem 2.25rem 2rem; } }
-  .booking-gold-bar { width: 40px; height: 2px; background: var(--gold); margin-bottom: 1rem; }
+  .booking-gold-bar { width: 36px; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(212,168,67,.25));
+    margin-bottom: 1.1rem; border-radius: 2px; animation: goldBarIn .6s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes goldBarIn { from { width: 0; opacity: 0; } to { width: 36px; opacity: 1; } }
+  .booking-body .eyebrow { letter-spacing: .22em; color: rgba(10,10,10,.5); }
+  .booking-body .eyebrow::after { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold); margin-left: .55rem; vertical-align: middle; opacity: .7; }
+  #bookingTitle { margin-top: .15rem; letter-spacing: -.01em; }
+  #bookingTitle em { font-style: italic; position: relative; }
+  #bookingTitle em::after { content: ''; position: absolute; left: 0; right: 0; bottom: 2px; height: 1px;
+    background: var(--gold); opacity: .4; transform: scaleX(0); transform-origin: left; animation: titleUnderline .8s .25s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes titleUnderline { to { transform: scaleX(1); } }
+  .booking-body > p { margin-top: .35rem; }
 
   /* Steps indicator */
   .booking-steps { display: flex; align-items: center; gap: .4rem; margin-bottom: 1.5rem; }
@@ -2164,9 +2176,10 @@
     justify-content: center; position: relative; transition: all .35s;
   }
   .bstep small { position: absolute; top: 100%; margin-top: .4rem; font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase; color: rgba(10,10,10,.5); font-weight: 500; }
-  .bstep.is-active { background: var(--ink); color: var(--bone); box-shadow: 0 4px 12px rgba(10,10,10,.25); }
-  .bstep.is-done { background: var(--gold); color: #1a1204; }
-  .bstep-line { flex: 1; height: 1px; background: rgba(10,10,10,.1); max-width: 60px; }
+  .bstep.is-active { background: var(--ink); color: var(--bone); box-shadow: 0 4px 14px rgba(10,10,10,.28), 0 0 0 3px rgba(212,168,67,.18); transform: scale(1.08); }
+  .bstep.is-done { background: var(--gold); color: #1a1204; box-shadow: 0 3px 10px rgba(212,168,67,.35); }
+  .bstep-line { flex: 1; height: 1px; background: rgba(10,10,10,.1); max-width: 60px; transition: background .35s; }
+  .bstep-line.is-filled { background: var(--gold); }
 
   /* Step panels */
   .booking-step { animation: bstepIn .4s cubic-bezier(.2,.7,.2,1); }
@@ -2180,10 +2193,11 @@
   .bchip span {
     display: inline-block; padding: .55rem 1rem; border: 1.5px solid rgba(10,10,10,.15);
     background: rgba(255,255,255,.65); border-radius: 999px; font-size: 12.5px; font-family: 'JetBrains Mono', monospace;
-    color: rgba(10,10,10,.75); transition: all .25s; letter-spacing: .02em;
+    color: rgba(10,10,10,.75); transition: all .25s cubic-bezier(.2,.7,.2,1); letter-spacing: .02em;
   }
-  .bchip:hover span { border-color: var(--ink); background: #fff; }
-  .bchip input:checked + span { background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 8px 20px rgba(10,10,10,.18); transform: translateY(-2px); }
+  .bchip:hover span { border-color: var(--ink); background: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(10,10,10,.08); }
+  .bchip input:checked + span { background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 8px 20px rgba(10,10,10,.18), inset 0 0 0 1px rgba(212,168,67,.4); transform: translateY(-2px); }
+  .bchip input:checked + span::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-right: .5rem; vertical-align: middle; }
   .bchip input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 3px; }
 
   /* Days grid */
@@ -2192,37 +2206,44 @@
   .bday input { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .bday span {
     display: flex; flex-direction: column; align-items: center; gap: .1rem;
-    padding: .75rem .5rem; border: 1.5px solid rgba(10,10,10,.12);
-    border-radius: 8px; background: rgba(255,255,255,.6);
+    padding: .8rem .5rem; border: 1px solid rgba(10,10,10,.14);
+    border-radius: 10px; background: rgba(255,255,255,.55);
     font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
-    color: rgba(10,10,10,.65); transition: all .25s; letter-spacing: .04em;
-    text-transform: uppercase;
+    color: rgba(10,10,10,.6); transition: all .3s cubic-bezier(.2,.7,.3,1);
+    letter-spacing: .04em; text-transform: uppercase;
+    box-shadow: 0 1px 2px rgba(10,10,10,.03);
   }
-  .bday span strong { font-family: 'Fraunces', serif; font-weight: 400; font-size: 20px; color: var(--ink); letter-spacing: 0; text-transform: none; }
-  .bday:hover span { border-color: var(--ink); background: #fff; transform: translateY(-2px); }
-  .bday input:checked + span { background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 8px 20px rgba(10,10,10,.2); }
+  .bday span strong { font-family: 'Fraunces', serif; font-weight: 400; font-size: 21px; color: var(--ink); letter-spacing: 0; text-transform: none; transition: color .3s; }
+  .bday:hover span { border-color: rgba(10,10,10,.4); background: #fff; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(10,10,10,.08); }
+  .bday input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .bday input:checked + span { background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 10px 24px rgba(10,10,10,.22), inset 0 0 0 1px rgba(201,169,97,.25); transform: translateY(-2px); }
   .bday input:checked + span strong { color: var(--gold); }
+  .bday input:checked + span::after { content: ''; position: absolute; top: 6px; right: 6px; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 6px rgba(201,169,97,.6); }
 
   /* Time slots */
   .booking-times { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: .45rem; }
   .btime { cursor: pointer; position: relative; }
   .btime input { position: absolute; opacity: 0; width: 1px; height: 1px; }
   .btime span {
-    display: block; padding: .65rem .4rem; text-align: center;
-    border: 1.5px solid rgba(10,10,10,.12); border-radius: 6px;
-    background: rgba(255,255,255,.6); font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: rgba(10,10,10,.75); transition: all .25s;
+    display: block; padding: .7rem .4rem; text-align: center;
+    border: 1px solid rgba(10,10,10,.14); border-radius: 7px;
+    background: rgba(255,255,255,.55); font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: rgba(10,10,10,.72); transition: all .3s cubic-bezier(.2,.7,.3,1);
+    box-shadow: 0 1px 2px rgba(10,10,10,.03);
   }
-  .btime:hover span { border-color: var(--ink); background: #fff; transform: translateY(-2px); }
-  .btime input:checked + span { background: var(--ox); color: var(--bone); border-color: var(--ox); box-shadow: 0 6px 16px rgba(139,26,26,.3); }
+  .btime:hover span { border-color: rgba(10,10,10,.4); background: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(10,10,10,.08); }
+  .btime input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .btime input:checked + span { background: var(--ink); color: var(--bone); border-color: var(--ink); box-shadow: 0 8px 20px rgba(10,10,10,.2), inset 0 0 0 1px rgba(201,169,97,.25); transform: translateY(-1px); }
 
   /* Review rows */
-  .booking-review { border: 1px solid rgba(10,10,10,.1); border-radius: 10px; background: rgba(255,255,255,.45); padding: .4rem 1rem; }
-  .brow { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid rgba(10,10,10,.06); }
+  .booking-review { border: 1px solid rgba(10,10,10,.1); border-radius: 12px; background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.4)); padding: .4rem 1.1rem; box-shadow: 0 1px 3px rgba(10,10,10,.03); }
+  .brow { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid rgba(10,10,10,.06); }
   .brow:last-child { border-bottom: none; }
   .brow .blbl { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(10,10,10,.5); flex-shrink: 0; }
   .brow .bval { font-size: 14px; color: var(--ink); text-align: right; font-weight: 500; }
-  .brow-strong .bval { font-size: 15.5px; font-family: 'Fraunces', serif; font-weight: 400; }
+  .brow-strong .bval { font-size: 15.5px; font-family: 'Fraunces', serif; font-weight: 400; color: var(--ink); }
+  .brow-strong { position: relative; }
+  .brow-strong::before { content: ''; position: absolute; left: -1.1rem; top: 50%; transform: translateY(-50%); width: 3px; height: 60%; background: var(--gold); border-radius: 2px; opacity: .7; }
 
   /* Actions */
   .booking-actions { display: flex; justify-content: flex-end; gap: .75rem; margin-top: 1.5rem; }
@@ -2232,16 +2253,18 @@
 
   /* Success state */
   .booking-success {
-    padding: 3rem 2rem; text-align: center;
+    padding: 3.5rem 2rem; text-align: center;
     animation: bsuccess .6s cubic-bezier(.2,.7,.2,1);
   }
   .booking-success.hidden { display: none; }
-  @keyframes bsuccess { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: none; } }
-  .booking-success-mark { display: inline-block; color: #2F6E3B; }
-  .booking-success-mark .bsc-ring { animation: bscRing .7s ease-out forwards; stroke-dasharray: 120; stroke-dashoffset: 120; }
-  .booking-success-mark .bsc-tick { animation: bscTick .5s ease-out .5s forwards; stroke-dasharray: 40; stroke-dashoffset: 40; }
+  @keyframes bsuccess { from { opacity: 0; transform: scale(.94) translateY(8px); } to { opacity: 1; transform: none; } }
+  .booking-success-mark { display: inline-block; color: #2F6E3B; position: relative; }
+  .booking-success-mark::after { content: ''; position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle, rgba(47,110,59,.12), transparent 70%); animation: bscGlow .9s ease-out .3s both; }
+  .booking-success-mark .bsc-ring { animation: bscRing .7s cubic-bezier(.34,1.2,.64,1) forwards; stroke-dasharray: 120; stroke-dashoffset: 120; }
+  .booking-success-mark .bsc-tick { animation: bscTick .5s cubic-bezier(.34,1.4,.64,1) .55s forwards; stroke-dasharray: 40; stroke-dashoffset: 40; }
   @keyframes bscRing { to { stroke-dashoffset: 0; } }
   @keyframes bscTick { to { stroke-dashoffset: 0; } }
+  @keyframes bscGlow { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
 
   @media (max-width: 640px) {
     .booking-panel { border-radius: 12px; max-height: 96vh; }
