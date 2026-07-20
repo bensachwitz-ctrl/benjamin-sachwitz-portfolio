@@ -4818,3 +4818,48 @@ requestAnimationFrame(updateParallax);
     }
   }, true);
 })();
+
+/* ============================================================
+   MAGNETIC BUTTONS - premium micro-interaction.
+   Primary CTAs (.btn-ink, .btn-gold) subtly follow the cursor
+   when hovered, then spring back on leave. Disabled on touch
+   devices and reduced-motion. Pure JS, no library.
+============================================================ */
+(function () {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var MAGNET_RADIUS = 18; // max px displacement
+  var LERP = 0.18;
+
+  document.querySelectorAll('.btn-ink, .btn-gold, .book-float a').forEach(function (btn) {
+    var tx = 0, ty = 0, cx = 0, cy = 0, rafId = null, hovered = false;
+
+    function animate() {
+      cx += (tx - cx) * LERP;
+      cy += (ty - cy) * LERP;
+      // Use the standalone `translate` property (not `transform`) so the
+      // CSS :hover transform (translateY lift) still applies on top.
+      btn.style.translate = cx.toFixed(2) + 'px ' + cy.toFixed(2) + 'px';
+      if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        rafId = null;
+      }
+    }
+
+    btn.addEventListener('mousemove', function (e) {
+      var rect = btn.getBoundingClientRect();
+      var px = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+      var py = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+      tx = px * MAGNET_RADIUS;
+      ty = py * MAGNET_RADIUS;
+      if (!rafId) animate();
+    });
+
+    btn.addEventListener('mouseleave', function () {
+      tx = 0; ty = 0;
+      if (!rafId) animate();
+    });
+  });
+})();
