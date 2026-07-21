@@ -3755,17 +3755,30 @@
             if (fallbackHint) fallbackHint.classList.remove('is-elevated');
             obs.disconnect();
           }
-          // Cal.com embed.js injects its own <h1 data-testid="event-title"> into
-          // the parent DOM. Demote it to h2 so the page keeps exactly one h1
-          // (the "Book a call." headline) for SEO and accessibility.
-          target.querySelectorAll('h1[data-testid="event-title"]').forEach(h => {
+        });
+        obs.observe(target, { childList: true, subtree: true });
+        // Cal.com embed.js injects its own <h1 data-testid="event-title"> into
+        // the parent DOM. Demote it to h2 so the page keeps exactly one h1
+        // (the "Book a call." headline) for SEO and accessibility. The embed
+        // script can inject the h1 at any point during/after iframe mount, so
+        // poll for up to 30s rather than relying on the MutationObserver
+        // (which disconnects once the iframe appears).
+        const demoteCalH1 = () => {
+          document.querySelectorAll('h1[data-testid="event-title"]').forEach(h => {
             const h2 = document.createElement('h2');
             for (const attr of h.attributes) h2.setAttribute(attr.name, attr.value);
             h2.innerHTML = h.innerHTML;
             h.replaceWith(h2);
           });
-        });
-        obs.observe(target, { childList: true, subtree: true });
+        };
+        demoteCalH1();
+        let demoteTicks = 0;
+        const demoteInterval = setInterval(() => {
+          demoteCalH1();
+          if (++demoteTicks >= 60 || document.querySelector('h2[data-testid="event-title"]')) {
+            clearInterval(demoteInterval);
+          }
+        }, 500);
         // The calendar IS claimed and live. If Cal.com's embed script is slow on a
         // cold network, DON'T switch tabs out from under the visitor - just gently
         // elevate the always-present "slow to load? use the form" hint so they can
