@@ -4649,6 +4649,13 @@
     copyEgg.addEventListener('focus', start);
     copyEgg.addEventListener('mouseleave', reset);
     copyEgg.addEventListener('blur', reset);
+    // Keyboard activation (Enter / Space) mirrors the hover/focus easter-egg trigger
+    copyEgg.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
+        e.preventDefault();
+        start();
+      }
+    });
   }
 
   /* 11. KONAMI CODE - triggers glyph rain over hero + toast */
