@@ -273,7 +273,7 @@
      Two layers (far + near) of low-opacity symbols that slowly drift.
      Symbols swap based on mode (Underwriter shows financial/risk glyphs,
      Developer shows code glyphs). Fixed position, behind everything. -->
-<div class="ambient-bg" id="ambientBg" aria-hidden="true">
+<div class="ambient-bg sw-layer" id="ambientBg" aria-hidden="true">
   <span class="ambient-glyph ag-far  ag-1"  data-uw="£"  data-bd="{"></span>
   <span class="ambient-glyph ag-near ag-2"  data-uw="§"  data-bd="</>"></span>
   <span class="ambient-glyph ag-far  ag-3"  data-uw="¢"  data-bd="="></span>
@@ -403,7 +403,7 @@
 
 <main id="main-content">
 <!-- ===== HERO ===== -->
-<section id="top" class="relative min-h-auto flex flex-col overflow-hidden pt-28 md:pt-20"><span id="main" tabindex="-1"></span>
+<section id="top" data-sw-section class="relative min-h-auto flex flex-col overflow-hidden pt-28 md:pt-20"><span id="main" tabindex="-1"></span>
   <div class="absolute inset-0 gridlines opacity-60 pointer-events-none"></div>
   <div class="aurora w-[60vw] h-[60vw] -top-[20vw] -right-[10vw]" style="background:radial-gradient(closest-side, #8B1A1A, transparent 70%);"></div>
   <div class="aurora w-[50vw] h-[50vw] -bottom-[10vw] -left-[15vw]" style="background:radial-gradient(closest-side, #D4A843, transparent 70%);"></div>
@@ -430,7 +430,7 @@
         <!-- Photo: next to title on mobile, full right column on desktop -->
         <div class="col-span-4 lg:col-span-4 lg:row-span-2 order-2 lg:order-2 relative">
           <div class="photo-mask hero-parallax-photo sat-reveal aspect-[4/5] w-full max-w-[140px] sm:max-w-[200px] md:max-w-[280px] lg:max-w-none mx-auto relative">
-            <img src="headshot.png" alt="Portrait of Benjamin Sachwitz, Assistant Underwriter at Swamp Fox Agency" class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+            <img src="headshot.png" alt="Portrait of Benjamin Sachwitz, Assistant Underwriter at Swamp Fox Agency" class="sw-layer w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
             <div class="absolute inset-0 ring-1 ring-ink/10"></div>
           </div>
         </div>
@@ -518,7 +518,7 @@
 </section>
 
 <!-- ===== VALUE PROPOSITION ===== -->
-<section class="relative py-10 md:py-12 bg-ink/[0.02] border-b border-ink/10">
+<section data-sw-section class="relative py-10 md:py-12 bg-ink/[0.02] border-b border-ink/10">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       <div class="reveal value-prop-card pb-6 md:pb-0 md:border-r border-ink/10">
@@ -541,7 +541,7 @@
 </section>
 
 <!-- ===== CHAPTER 01 · ABOUT ===== -->
-<section id="about" class="relative py-12 md:py-16 overflow-hidden">
+<section id="about" data-sw-section class="relative py-12 md:py-16 overflow-hidden">
   <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
      <div class="flex items-end justify-between mb-8 md:mb-10">
       <div>
@@ -556,7 +556,7 @@
       <!-- Photo -->
       <div class="col-span-12 md:col-span-5 reveal">
         <div class="photo-mask sat-reveal aspect-[4/5] relative">
-          <img src="images/lloyds-interior.jpg" alt="Interior of Lloyd's of London, the underwriting floor with the Rostrum" class="w-full h-full object-cover" loading="lazy" width="1200" height="800" />
+          <img src="images/lloyds-interior.jpg" alt="Interior of Lloyd's of London, the underwriting floor with the Rostrum" class="sw-layer w-full h-full object-cover" loading="lazy" width="1200" height="800" />
           <div class="tag-badge" style="bottom:1rem; left:1rem;">
             <span class="text-gold-3 mode-underwriter-only">Lloyd's Market</span>
             <span class="text-gold-3 mode-builder-only">Developer Workspace</span>
@@ -621,7 +621,7 @@
 </section>
 
 <!-- ===== CHAPTER 02 · CAREER TIMELINE ===== -->
-<section id="career" class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden spotlight-host">
+<section id="career" data-sw-section class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden spotlight-host">
   <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
   <div class="section-glyphs" aria-hidden="true">
     <span class="section-glyph sg-far  sg-1" data-uw="£"  data-bd="{"></span>
@@ -749,7 +749,7 @@
 </section>
 
 <!-- ===== STATEMENT BANNER ===== -->
-<section id="credo" class="relative py-12 md:py-16 overflow-hidden border-y border-ink/10 bg-bone">
+<section id="credo" data-sw-section class="relative py-12 md:py-16 overflow-hidden border-y border-ink/10 bg-bone">
   <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background:
     radial-gradient(520px circle at 15% 40%, rgba(212,168,67,.09), transparent 60%),
@@ -771,7 +771,7 @@
 </section>
 
 <!-- ===== WORLDS STRIP ===== -->
-<section id="worlds" class="relative py-14 md:py-20 overflow-hidden bg-ink text-bone">
+<section id="worlds" data-sw-section class="relative py-14 md:py-20 overflow-hidden bg-ink text-bone">
   <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
   <div class="section-glyphs" aria-hidden="true">
     <span class="section-glyph sg-near sg-1" data-uw="⚠"  data-bd="→"></span>
@@ -803,7 +803,7 @@
       <figure class="world-tile wt-art mode-caption" data-caption="The Lloyd's market · London EC3"
               data-caption-underwriter="The Lloyd's market · London EC3"
               data-caption-builder="Swift &amp; Objective-C · Native SDKs">
-        <img src="images/world-lloyds.svg?v=mp33" class="mode-img"
+        <img src="images/world-lloyds.svg?v=mp33" class="sw-layer mode-img"
              data-img-underwriter="images/world-lloyds.svg?v=mp33"
              data-img-builder="images/world-ios.svg?v=mp33"
              alt="The City of London skyline at dusk, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
@@ -819,7 +819,7 @@
       <figure class="world-tile wt-art mode-caption" data-caption="Commercial trucking · Southeast corridors"
               data-caption-underwriter="Commercial trucking · Southeast corridors"
               data-caption-builder="React &amp; Next.js · Serverless API">
-        <img src="images/world-trucking.svg?v=mp33" class="mode-img"
+        <img src="images/world-trucking.svg?v=mp33" class="sw-layer mode-img"
              data-img-underwriter="images/world-trucking.svg?v=mp33"
              data-img-builder="images/world-react.svg?v=mp33"
              alt="A commercial truck on a Southern pine highway at golden hour, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
@@ -835,7 +835,7 @@
       <figure class="world-tile wt-art mode-caption" data-caption="Forestry &amp; logging · SC / GA / FL"
               data-caption-underwriter="Forestry &amp; logging · SC / GA / FL"
               data-caption-builder="SaaS Portal · Operations Control">
-        <img src="images/world-forestry.svg?v=mp33" class="mode-img"
+        <img src="images/world-forestry.svg?v=mp33" class="sw-layer mode-img"
              data-img-underwriter="images/world-forestry.svg?v=mp33"
              data-img-builder="images/world-saas.svg?v=mp33"
              alt="A Southern pine stand at dusk, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
@@ -851,7 +851,7 @@
       <figure class="world-tile wt-art mode-caption" data-caption="Federal DC · Public-sector tech"
               data-caption-underwriter="Federal DC · Public-sector tech"
               data-caption-builder="Neural Engine · LLM Orchestration">
-        <img src="images/world-federal.svg?v=mp33" class="mode-img"
+        <img src="images/world-federal.svg?v=mp33" class="sw-layer mode-img"
              data-img-underwriter="images/world-federal.svg?v=mp33"
              data-img-builder="images/world-ai.svg?v=mp33"
              alt="The United States Capitol at dusk, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
@@ -911,7 +911,7 @@
 </section>
 
 <!-- ===== CHAPTER 03 · ARCADE ===== -->
-<section id="arcade" class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden spotlight-host">
+<section id="arcade" data-sw-section class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden spotlight-host">
   <div class="section-glyphs" aria-hidden="true">
     <span class="section-glyph sg-far sg-1" data-uw="→" data-bd="{}"></span>
     <span class="section-glyph sg-near sg-2" data-uw="★" data-bd="&&"></span>
@@ -923,7 +923,7 @@
     <h2 class="display-h text-bone reveal d1">The <em class="text-gold">Arcade</em>.</h2>
     <p class="mt-5 max-w-xl mx-auto text-[15px] text-bone/70 leading-relaxed reveal d2">Thirty-nine games, handcrafted in vanilla JavaScript: Snake, Tetris, Wordle, 2048, Minesweeper and more. No engine, no frameworks.</p>
     <a href="/arcade" class="arcade-cabinet-cta reveal d3" aria-label="Start the Arcade">
-      <img src="images/arcade-cabinet.webp?v=mp1" alt="Retro arcade cabinet with 39 browser games" width="560" height="750" class="arcade-cabinet-img" loading="lazy" decoding="async" />
+      <img src="images/arcade-cabinet.webp?v=mp1" alt="Retro arcade cabinet with 39 browser games" width="560" height="750" class="sw-layer arcade-cabinet-img" loading="lazy" decoding="async" />
       <span class="arcade-cabinet-screen" aria-hidden="true">
         <span class="arcade-cabinet-title">START<br>ARCADE</span>
         <span class="arcade-cabinet-sub arcade-cta-blink">&#9654; Press Start</span>
@@ -931,7 +931,7 @@
     </a>
   </div>
 </section>
-<section id="expertise" class="relative py-12 md:py-16 overflow-hidden">
+<section id="expertise" data-sw-section class="relative py-12 md:py-16 overflow-hidden">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
     <div class="flex items-end justify-between mb-8 md:mb-10">
@@ -1073,7 +1073,7 @@
 </section>
 
 <!-- ===== CHAPTER 04 · WORK ===== -->
-<section id="work" class="relative py-12 md:py-16 overflow-hidden bg-bone-2">
+<section id="work" data-sw-section class="relative py-12 md:py-16 overflow-hidden bg-bone-2">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
     <div class="flex items-end justify-between mb-6 md:mb-8">
@@ -1184,7 +1184,7 @@
 </section>
 
 <!-- ===== CHAPTER 05 · WEBSITES / CLIENT BUILDS ===== -->
-<section id="websites" class="relative py-12 md:py-16 overflow-hidden bg-bone">
+<section id="websites" data-sw-section class="relative py-12 md:py-16 overflow-hidden bg-bone">
   <div class="absolute inset-0 grain opacity-30 pointer-events-none"></div>
   <div class="aurora w-[40vw] h-[40vw] -top-[8vw] -left-[6vw]" style="background:radial-gradient(closest-side, #8B1A1A, transparent 70%); opacity:.06;"></div>
   <div class="aurora w-[34vw] h-[34vw] -bottom-[6vw] -right-[6vw]" style="background:radial-gradient(closest-side, #D4A843, transparent 70%); opacity:.06;"></div>
@@ -1405,7 +1405,7 @@
 </section>
 
 <!-- ===== CHAPTER 06 · APPS / SIDE PROJECTS ===== -->
-<section id="apps" class="relative py-12 md:py-16 overflow-hidden bg-ink text-bone spotlight-host">
+<section id="apps" data-sw-section class="relative py-12 md:py-16 overflow-hidden bg-ink text-bone spotlight-host">
   <!-- depth + grid overlay -->
   <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: linear-gradient(to right, rgba(245,242,236,.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,242,236,.5) 1px, transparent 1px); background-size: 80px 80px;"></div>
   <div class="aurora w-[40vw] h-[40vw] -top-[10vw] -right-[5vw]" style="background:radial-gradient(closest-side, #D4A843, transparent 70%); opacity:.10;"></div>
@@ -1437,7 +1437,7 @@
       <!-- App card: Bar Crawl Golf -->
       <article class="app-card reveal d1">
         <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" title="Opens in new tab" aria-label="Bar Crawl Golf · download on the App Store" class="app-visual app-visual-bcg">
-          <img src="images/app-bcg-real.webp?v=mp1" alt="Bar Crawl Golf app: the Bar Crawl Golf logo above two real iPhone screenshots, the crawl lobby and the live scorecard." loading="lazy" decoding="async" />
+          <img src="images/app-bcg-real.webp?v=mp1" alt="Bar Crawl Golf app: the Bar Crawl Golf logo above two real iPhone screenshots, the crawl lobby and the live scorecard." class="sw-layer" loading="lazy" decoding="async" />
           <span class="app-platform-pill"><svg width="11" height="13" viewBox="0 0 17 21" fill="currentColor" aria-hidden="true"><path d="M13.6 11.2c0-2 1.6-3 1.7-3-1-1.4-2.4-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.7 0-1.6-.8-2.7-.8-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2.1 1 0 1.5-.7 2.7-.7 1.3 0 1.6.7 2.7.7 1.1 0 1.8-1 2.6-2 .8-1.2 1.1-2.3 1.1-2.4 0 0-2.2-.8-2.2-3.5zM11.5 5.2c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.6 1 .1 2-.5 2.5-1.2z"/></svg>iOS · App Store</span>
         </a>
         <div class="app-meta">
@@ -1476,7 +1476,7 @@
       <!-- App card: My Daily Tool -->
       <article class="app-card reveal d2">
         <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" title="Opens in new tab" aria-label="My Daily Tool · download on the App Store" class="app-visual app-visual-mdt">
-          <img src="images/app-dt-real.webp?v=mp1" alt="My Daily Tool app: the sunrise app icon above two real iPhone screenshots, live sports and the news feed." loading="lazy" decoding="async" />
+          <img src="images/app-dt-real.webp?v=mp1" alt="My Daily Tool app: the sunrise app icon above two real iPhone screenshots, live sports and the news feed." class="sw-layer" loading="lazy" decoding="async" />
           <span class="app-platform-pill"><svg width="11" height="13" viewBox="0 0 17 21" fill="currentColor" aria-hidden="true"><path d="M13.6 11.2c0-2 1.6-3 1.7-3-1-1.4-2.4-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.7 0-1.6-.8-2.7-.8-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2.1 1 0 1.5-.7 2.7-.7 1.3 0 1.6.7 2.7.7 1.1 0 1.8-1 2.6-2 .8-1.2 1.1-2.3 1.1-2.4 0 0-2.2-.8-2.2-3.5zM11.5 5.2c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.6 1 .1 2-.5 2.5-1.2z"/></svg>iOS · App Store</span>
         </a>
         <div class="app-meta">
@@ -1525,7 +1525,7 @@
 </section>
 
 <!-- ===== CERTIFICATIONS ===== -->
-<section id="credentials" class="relative py-10 md:py-16 border-y border-ink/10">
+<section id="credentials" data-sw-section class="relative py-10 md:py-16 border-y border-ink/10">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="mb-8 flex items-end justify-between flex-wrap gap-6">
       <div>
@@ -1574,7 +1574,7 @@
 </div>
 
 <!-- ===== LIFE STRIP ===== -->
-<section id="life" class="relative py-12 md:py-16 overflow-hidden">
+<section id="life" data-sw-section class="relative py-12 md:py-16 overflow-hidden">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="mb-8 md:mb-8 flex items-end justify-between flex-wrap gap-6">
       <div>
@@ -1608,14 +1608,14 @@
 
 
 <!-- ===== CHAPTER 09 · CONTACT / BOOK ===== -->
-<section id="contact" class="relative py-14 md:py-20 overflow-hidden">
+<section id="contact" data-sw-section class="relative py-14 md:py-20 overflow-hidden">
   <div class="relative max-w-[1400px] mx-auto px-5 md:px-10">
 
     <!-- Satellite name collage -->
     <div class="mb-12 reveal" style="text-align:center">
       <div style="display:flex;flex-direction:column;gap:8px;max-width:1100px;margin:0 auto">
-        <div class="sat-frame"><img src="images/sat-benjamin.png" alt="BENJAMIN spelled in satellite imagery" loading="lazy" width="800" height="600" style="width:100%;height:auto;display:block" /></div>
-        <div class="sat-frame"><img src="images/sat-sachwitz.png" alt="SACHWITZ spelled in satellite imagery" loading="lazy" width="800" height="600" style="width:100%;height:auto;display:block" /></div>
+        <div class="sat-frame"><img src="images/sat-benjamin.png" alt="BENJAMIN spelled in satellite imagery" class="sw-layer" loading="lazy" width="800" height="600" style="width:100%;height:auto;display:block" /></div>
+        <div class="sat-frame"><img src="images/sat-sachwitz.png" alt="SACHWITZ spelled in satellite imagery" class="sw-layer" loading="lazy" width="800" height="600" style="width:100%;height:auto;display:block" /></div>
       </div>
       <p style="margin-top:14px;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(28,25,23,.62)"><span class="eyebrow-dot"></span>Each letter found in satellite imagery from around the world</p>
     </div>
@@ -1910,8 +1910,7 @@
 
 <!-- ===== INTERACTIVE LAYER ===== -->
 
-
-
+<script src="/scroll-world.js?v=mp41" defer></script>
 
 </body>
 </html>
