@@ -16,13 +16,6 @@
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-    [data-sw-section].sw-visible img.sw-layer {
-      animation: sw-kenburns 22s ease-out forwards;
-    }
-    @keyframes sw-kenburns {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.06); }
-    }
     .sw-layer { will-change: transform; transition: transform 0.05s linear; }
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) {
