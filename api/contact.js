@@ -12,8 +12,8 @@
 // All responses include CORS headers so the frontend can call this directly.
 
 // === Recipients ===
-const TO_EMAIL_RESEND = process.env.RESEND_TO_EMAIL || 'bensachwitz@outlook.com';
-const TO_EMAIL_PUBLIC = 'bensachwitz@outlook.com';
+const TO_EMAIL_RESEND = process.env.RESEND_TO_EMAIL || 'bensachwitz@gmail.com';
+const TO_EMAIL_PUBLIC = 'bensachwitz@gmail.com';
 const FROM_EMAIL_DEFAULT = 'onboarding@resend.dev'; // works without domain verification on Resend
 const FROM_NAME = 'bensachwitz.vercel.app';
 const BEN_NAME = 'Benjamin Sachwitz';
@@ -90,7 +90,7 @@ function buildICS({ name, email, when, topic, notes }) {
     topic ? `Topic: ${topic}` : null,
     notes ? `Notes: ${notes}` : null,
     `Phone: ${BEN_PHONE}`,
-    `Reach Ben directly: bensachwitz@outlook.com`,
+    `Reach Ben directly: bensachwitz@gmail.com`,
     `Booked via https://bensachwitz.vercel.app`
   ].filter(Boolean).join('\\n');
 

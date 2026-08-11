@@ -102,11 +102,11 @@
   // Let the cinematic intro play to its beat, then wipe away. Reduced-motion
   // skips the dwell so the content shows almost instantly.
   const _reduceMo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const _introDwell = _reduceMo ? 120 : 1750;
+  const _introDwell = _reduceMo ? 120 : 600;
   if (document.readyState === 'complete') setTimeout(hideLoader, _introDwell);
   else window.addEventListener('load', () => setTimeout(hideLoader, _introDwell));
   // FAILSAFE: never let the loader trap the user - hard cap regardless of load state
-  setTimeout(hideLoader, 2800);
+  setTimeout(hideLoader, 2100);
 
   /* === NAV SCROLL === */
   const nav = document.getElementById('nav');
@@ -147,18 +147,74 @@
     });
   }
 
-  /* === MOBILE MENU ACTIVE STATE === */
-  (function initMobileActive() {
-    var path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
-    var mlinks = document.querySelectorAll('#mmenu a.mlink');
-    if (!mlinks.length) return;
-    mlinks.forEach(function(a) {
-      var href = a.getAttribute('href');
-      if (!href) return;
-      var linkPath = href.split('#')[0].replace(/\/+$/, '') || '/';
-      if (linkPath === path) a.classList.add('is-active');
-    });
+  /* === NAV ACTIVE STATE === */
+  (function initNavActive() {
+    const normalizePath = (value) => {
+      const raw = (value || '/').split('#')[0].split('?')[0];
+      return (raw.replace(/\.html$/i, '').replace(/\/+$/, '') || '/');
+    };
+    const path = normalizePath(window.location.pathname);
+    const links = document.querySelectorAll('.nlink[data-nav], #mmenu a.mlink');
+    if (!links.length) return;
+    const setActive = (key) => {
+      links.forEach((link) => link.classList.toggle('is-active', link.dataset.nav === key));
+    };
+
+    // Subpages use the URL as the source of truth. This keeps the active
+    // indicator correct before the page has any scrollable content.
+    if (path !== '/') {
+      links.forEach((link) => {
+        link.classList.toggle('is-active', normalizePath(link.getAttribute('href')) === path);
+      });
+      return;
+    }
+
+    // The home page maps top-level nav labels to its long-form chapters.
+    const navMap = {
+      about: '#about',
+      career: '#career',
+      projects: '#work',
+      apps: '#apps',
+      arcade: '#arcade'
+    };
+    const sections = Object.entries(navMap)
+      .map(([key, selector]) => ({ key, el: document.querySelector(selector) }))
+      .filter(({ el }) => el);
+    const spy = () => {
+      const y = window.scrollY + 120;
+      let active = null;
+      for (const section of sections) {
+        if (section.el.offsetTop <= y) active = section.key;
+      }
+      setActive(active);
+    };
+    window.addEventListener('scroll', spy, { passive: true });
+    spy();
   })();
+
+  document.querySelectorAll('[data-page-tabs]').forEach((tabbar) => {
+    const tabs = Array.from(tabbar.querySelectorAll('[data-page-tab]'));
+    const sections = tabs.map((tab) => {
+      const id = (tab.getAttribute('href') || '').slice(1);
+      return { tab, section: id ? document.getElementById(id) : null };
+    }).filter(({ section }) => section);
+    if (!sections.length) return;
+    const update = () => {
+      const y = window.scrollY + 180;
+      let active = sections[0];
+      sections.forEach((item) => {
+        if (item.section.getBoundingClientRect().top + window.scrollY <= y) active = item;
+      });
+      sections.forEach(({ tab }) => {
+        const isActive = tab === active.tab;
+        tab.classList.toggle('is-active', isActive);
+        if (isActive) tab.setAttribute('aria-current', 'location');
+        else tab.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  });
 
   /* === SMOOTH SCROLL === */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -197,44 +253,11 @@
     });
   });
 
-  /* === SECTION-TITLE TYPEWRITER ===
-     Pure-CSS clip-path wipe triggered on enter-viewport. No innerHTML mutation,
-     so <em> styling + line-breaks are preserved perfectly. Respects reduced-motion. */
+  /* === SECTION TITLES ===
+     Keep section headings readable on first paint. The shared reveal transition
+     provides motion without clipping or delaying the text while scrolling. */
   (function setupTitleTypewriterV2() {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const titles = document.querySelectorAll('.display-h');
-    if (!titles.length || prefersReduced) return;
-
-    titles.forEach(t => {
-      const len = (t.textContent || '').trim().length;
-      const dur = Math.max(0.6, Math.min(1.6, len * 0.035));
-      t.style.setProperty('--tw-dur', dur + 's');
-      t.classList.add('tw-pending');
-    });
-
-    function start(t) {
-      if (!t.classList.contains('tw-pending')) return;
-      t.classList.remove('tw-pending');
-      t.classList.add('tw-active');
-    }
-
-    const twIO = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { start(e.target); twIO.unobserve(e.target); } });
-    }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
-
-    titles.forEach(t => twIO.observe(t));
-
-    // Instant-start for titles already in view at first paint
-    requestAnimationFrame(() => {
-      titles.forEach(t => {
-        const r = t.getBoundingClientRect();
-        if (r.top < window.innerHeight * 0.92 && r.bottom > 0) { start(t); twIO.unobserve(t); }
-      });
-    });
-
-    // No global failsafe - the IO + rAF check above already covers visible and
-    // soon-to-be-visible titles. Off-screen titles correctly stay clipped until
-    // the user scrolls them into the viewport, then type out.
+    return;
   })();
 
   /* OLD typewriter (innerHTML mutation) - kept disabled below for reference */
@@ -951,6 +974,10 @@
     function fsAny(){ return !!fsActive() || pseudoActive(); }
     let fsExitFab = null;
     let savedScrollY = 0;
+    let fsRequestTimer = null;
+    function clearFsRequestTimer(){
+      if (fsRequestTimer) { clearTimeout(fsRequestTimer); fsRequestTimer = null; }
+    }
     function ensureExitFab(){
       if (fsExitFab) return fsExitFab;
       fsExitFab = document.createElement('button');
@@ -964,26 +991,31 @@
       return fsExitFab;
     }
     function syncFsUI(){
+      clearFsRequestTimer();
       const on = fsAny();
       cabinet.classList.toggle('is-fullscreen', on);
       document.body.classList.toggle('arcade-fs-lock', pseudoActive());
       ensureExitFab().style.display = on ? 'flex' : 'none';
       cabinet.querySelectorAll('.arcade-fs').forEach(b => {
-        b.textContent = on ? '⤢ Exit' : '⤢ Fullscreen';
+        b.textContent = on ? 'Exit fullscreen' : 'Fullscreen';
         b.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
       // let the active game canvas re-fit to the new viewport
       requestAnimationFrame(() => { try { window.dispatchEvent(new Event('resize')); } catch(_){} });
     }
     function enterPseudo(){
+      clearFsRequestTimer();
       savedScrollY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.setProperty('--arcade-fs-scroll-top', `-${savedScrollY}px`);
       cabinet.classList.add('is-pseudo-fs');
       syncFsUI();
       // Scroll the cabinet to top of its play area so the game is visible
       requestAnimationFrame(() => { cabinet.scrollTop = 0; });
     }
     function exitPseudo(){
+      clearFsRequestTimer();
       cabinet.classList.remove('is-pseudo-fs');
+      document.body.style.removeProperty('--arcade-fs-scroll-top');
       syncFsUI();
       // Restore scroll position after the body unlock
       requestAnimationFrame(() => { window.scrollTo(0, savedScrollY); });
@@ -996,14 +1028,20 @@
         return;
       }
       const req = cabinet.requestFullscreen || cabinet.webkitRequestFullscreen;
-      if (req) {
-        try {
-          const r = req.call(cabinet);
-          if (r && r.catch) r.catch(() => enterPseudo()); // API present but blocked → fall back
-        } catch(_) { enterPseudo(); }
-      } else {
+      if (!req) {
         enterPseudo(); // iOS Safari: no Fullscreen API → CSS pseudo-fullscreen overlay
+        return;
       }
+      try {
+        const r = req.call(cabinet);
+        if (r && r.catch) r.catch(() => enterPseudo());
+        // Some WebKit implementations expose the method but never resolve the
+        // request or emit fullscreenchange. Give them a short, deterministic fallback.
+        clearFsRequestTimer();
+        fsRequestTimer = setTimeout(() => {
+          if (!fsActive() && !pseudoActive()) enterPseudo();
+        }, 450);
+      } catch(_) { enterPseudo(); }
     }
     Array.from(cabinet.querySelectorAll('.arcade-fs')).forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); toggleFullscreen(); }));
     document.addEventListener('fullscreenchange', syncFsUI);
@@ -3673,6 +3711,148 @@
     });
   }
 
+  /* === APP DETAIL MODAL === */
+  const appDetailModal = document.getElementById('appDetailModal');
+  const appDetailImage = document.getElementById('appDetailImage');
+  const appDetailKicker = document.getElementById('appDetailKicker');
+  const appDetailTitle = document.getElementById('appDetailTitle');
+  const appDetailBody = document.getElementById('appDetailBody');
+  const appDetailList = document.getElementById('appDetailList');
+  const appDetailPrimary = document.getElementById('appDetailPrimary');
+  let appDetailReturnFocus = null;
+  const APP_DETAILS = {
+    bcg: {
+      kicker: 'Bar Crawl Golf · iOS + web',
+      title: 'A night out with a scorecard.',
+      body: 'Bar Crawl Golf turns a loose night out into a playable round. I designed the painted product world, the live scorecard, browser join flow, shared lobby, route planning, and the handoff between the native app and a link friends can open on any phone.',
+      image: 'images/app-bcg-real.webp?v=mp1',
+      imageAlt: 'Bar Crawl Golf app screens showing the lobby and live scorecard',
+      primary: 'https://barcrawlgolf.xyz',
+      primaryLabel: 'Open Bar Crawl Golf',
+      points: ['Painted iOS interface with live scorekeeping and haptics', '6-letter codes, shared links, and QR-based browser joining', 'Supabase-backed crawl state, crew status, tournaments, and share cards', 'Responsible-play surfaces including Designated Driver mode and get-home-safe actions']
+    },
+    dailytool: {
+      kicker: 'My Daily Tool · iOS',
+      title: 'The day, without the dashboard feeling.',
+      body: 'My Daily Tool is a private command center for the small things that make a day work: health, planning, habits, meals, notes, reminders, reports, and a quiet arcade. I built the product system, the local-first data model, native integrations, and the web marketing surface together.',
+      image: 'images/app-dt-real.webp?v=mp1',
+      imageAlt: 'My Daily Tool app screens showing the home dashboard and daily utilities',
+      primary: 'https://mydailytool.app',
+      primaryLabel: 'Open My Daily Tool',
+      points: ['Local-first Swift and Capacitor surfaces with offline-safe state', 'HealthKit, notifications, calendar, camera, share sheet, and PDF/report flows', 'Optional AI with user-owned providers and no ad-tech dependency', 'A calm web tour with real iPhone screenshots and feature detail dialogs']
+    }
+  };
+  function openAppDetail(key, trigger) {
+    const detail = APP_DETAILS[key];
+    if (!detail || !appDetailModal) return;
+    appDetailReturnFocus = trigger;
+    if (appDetailImage) { appDetailImage.src = detail.image; appDetailImage.alt = detail.imageAlt; }
+    if (appDetailKicker) appDetailKicker.textContent = detail.kicker;
+    if (appDetailTitle) appDetailTitle.textContent = detail.title;
+    if (appDetailBody) appDetailBody.textContent = detail.body;
+    if (appDetailList) appDetailList.innerHTML = detail.points.map((point) => `<li>${escapeText(point)}</li>`).join('');
+    if (appDetailPrimary) { appDetailPrimary.href = detail.primary; appDetailPrimary.textContent = detail.primaryLabel; }
+    appDetailModal.hidden = false;
+    appDetailModal.classList.add('is-open');
+    appDetailModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const first = appDetailModal.querySelector('button, a');
+    if (first) first.focus();
+  }
+  function closeAppDetail() {
+    if (!appDetailModal || appDetailModal.hidden) return;
+    appDetailModal.classList.remove('is-open');
+    appDetailModal.setAttribute('aria-hidden', 'true');
+    appDetailModal.hidden = true;
+    document.body.style.overflow = '';
+    if (appDetailReturnFocus && document.body.contains(appDetailReturnFocus)) appDetailReturnFocus.focus();
+    appDetailReturnFocus = null;
+  }
+  function escapeText(value) {
+    return String(value).replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  }
+  document.querySelectorAll('[data-open-app-detail]').forEach((trigger) => {
+    trigger.addEventListener('click', (e) => { e.preventDefault(); openAppDetail(trigger.dataset.openAppDetail, trigger); });
+  });
+  document.querySelectorAll('[data-close-app-detail]').forEach((trigger) => trigger.addEventListener('click', closeAppDetail));
+  document.addEventListener('keydown', (e) => {
+    if (!appDetailModal || appDetailModal.hidden) return;
+    if (e.key === 'Escape') { closeAppDetail(); return; }
+    if (e.key !== 'Tab') return;
+    const items = Array.from(appDetailModal.querySelectorAll('button, a[href]')).filter((el) => !el.disabled && el.offsetParent !== null);
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* === LOCAL PAGE PREVIEW MODAL === */
+  const pagePreviewModal = document.getElementById('pagePreviewModal');
+  const pagePreviewTitle = document.getElementById('pagePreviewTitle');
+  const pagePreviewStatus = document.getElementById('pagePreviewStatus');
+  const pagePreviewContent = document.getElementById('pagePreviewContent');
+  const pagePreviewOpen = document.getElementById('pagePreviewOpen');
+  let pagePreviewReturnFocus = null;
+  async function openPagePreview(trigger) {
+    if (!pagePreviewModal || !pagePreviewContent) return;
+    const rawUrl = trigger.dataset.openPagePreview;
+    if (!rawUrl) return;
+    const resolvedUrl = new URL(rawUrl, window.location.href);
+    if (resolvedUrl.origin !== window.location.origin || !/\.html$/i.test(resolvedUrl.pathname)) return;
+    pagePreviewReturnFocus = trigger;
+    if (pagePreviewTitle) pagePreviewTitle.textContent = trigger.dataset.previewTitle || 'Interactive page preview';
+    if (pagePreviewOpen) pagePreviewOpen.href = resolvedUrl.href;
+    pagePreviewContent.innerHTML = '';
+    if (pagePreviewStatus) pagePreviewStatus.textContent = 'Loading preview…';
+    pagePreviewModal.hidden = false;
+    pagePreviewModal.classList.add('is-open');
+    pagePreviewModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const close = pagePreviewModal.querySelector('[data-close-page-preview]');
+    if (close) close.focus();
+
+    try {
+      const response = await fetch(resolvedUrl.href, { headers: { Accept: 'text/html' } });
+      if (!response.ok) throw new Error(`Preview returned ${response.status}`);
+      const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const root = doc.querySelector('main') || doc.body;
+      if (!root) throw new Error('Preview has no page content');
+      const fragment = document.createElement('div');
+      fragment.innerHTML = root.innerHTML;
+      fragment.querySelectorAll('script, style, link, iframe, [data-close-booking], [data-open-booking]').forEach((el) => el.remove());
+      fragment.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+      pagePreviewContent.replaceChildren(fragment);
+      if (pagePreviewStatus) pagePreviewStatus.textContent = 'Preview loaded · interactions are available on the full page';
+    } catch (error) {
+      pagePreviewContent.innerHTML = '<p class="page-preview-error">This preview could not load. Open the full page to continue.</p>';
+      if (pagePreviewStatus) pagePreviewStatus.textContent = error instanceof Error ? error.message : 'Preview unavailable';
+    }
+  }
+  function closePagePreview() {
+    if (!pagePreviewModal || pagePreviewModal.hidden) return;
+    pagePreviewModal.classList.remove('is-open');
+    pagePreviewModal.setAttribute('aria-hidden', 'true');
+    pagePreviewModal.hidden = true;
+    if (pagePreviewContent) pagePreviewContent.innerHTML = '';
+    document.body.style.overflow = '';
+    if (pagePreviewReturnFocus && document.body.contains(pagePreviewReturnFocus)) pagePreviewReturnFocus.focus();
+    pagePreviewReturnFocus = null;
+  }
+  document.querySelectorAll('[data-open-page-preview]').forEach((trigger) => {
+    trigger.addEventListener('click', (event) => { event.preventDefault(); void openPagePreview(trigger); });
+  });
+  document.querySelectorAll('[data-close-page-preview]').forEach((trigger) => trigger.addEventListener('click', closePagePreview));
+  document.addEventListener('keydown', (e) => {
+    if (!pagePreviewModal || pagePreviewModal.hidden) return;
+    if (e.key === 'Escape') { closePagePreview(); return; }
+    if (e.key !== 'Tab') return;
+    const items = Array.from(pagePreviewModal.querySelectorAll('button, a[href]')).filter((el) => !el.disabled && el.offsetParent !== null);
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
   /* === BOOKING MODAL === */
   const bookingModal = document.getElementById('bookingModal');
   const bookingForm = document.getElementById('bookingForm');
@@ -3708,6 +3888,11 @@
     timesWrap.innerHTML = TIME_SLOTS.map(t => `<label class="btime"><input type="radio" name="bTime" value="${t}"/><span>${t}</span></label>`).join('');
   }
   buildDays(); buildTimes();
+  // Topic choices are role-specific. Clear a previous selection when the
+  // visitor switches modes so a hidden topic cannot leak into the request.
+  window.addEventListener('brainmodechange', () => {
+    document.querySelectorAll('input[name="bTopic"]').forEach((input) => { input.checked = false; });
+  });
 
   /* === CAL.COM CONFIGURATION ===
      Change these two lines to point at your Cal.com event type, or to a self-hosted cal.diy instance.
@@ -3994,7 +4179,7 @@
         .filter(([k]) => !k.startsWith('_'))
         .map(([k,v]) => `${k}: ${v}`)
         .join('\n') + `\n\nSent from bensachwitz.vercel.app`;
-      const mailtoHref = `mailto:bensachwitz@outlook.com?subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent(mailBody)}`;
+      const mailtoHref = `mailto:bensachwitz@gmail.com?subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent(mailBody)}`;
 
       let formDelivered = false;
       try {
@@ -4695,7 +4880,7 @@
       wrap.appendChild(col);
     }
     requestAnimationFrame(() => wrap.classList.add('on'));
-    showToast('✓ binding authority unlocked · bensachwitz@outlook.com');
+    showToast('✓ binding authority unlocked · bensachwitz@gmail.com');
     setTimeout(() => { wrap.classList.remove('on'); setTimeout(() => wrap.remove(), 700); }, 4800);
   }
 
@@ -4735,31 +4920,8 @@
     careerIo.observe(career);
   }
 
-  /* 12. SCROLL-SPY - highlight active nav link */
-  const navMap = {
-    about: '#about',
-    career: '#career',
-    expertise: '#expertise',
-    work: '#work',
-    arcade: '#arcade'
-  };
-  const navLinks = document.querySelectorAll('.nlink[data-nav]');
-  const sections = Object.entries(navMap)
-    .map(([k, sel]) => ({ key: k, el: document.querySelector(sel) }))
-    .filter(s => s.el);
-  const setActive = (key) => {
-    navLinks.forEach(l => l.classList.toggle('is-active', l.dataset.nav === key));
-  };
-  const spy = () => {
-    const y = window.scrollY + 120;
-    let active = null;
-    for (const s of sections) {
-      if (s.el.offsetTop <= y) active = s.key;
-    }
-    setActive(active);
-  };
-  window.addEventListener('scroll', spy, { passive: true });
-  spy();
+  /* 12. Navigation active state is initialized near the top of the app so
+     subpages get a URL-based state before their content is measured. */
 
   /* 13. Expose for mobile trigger (tap-tap-tap on chapter numeral VI) */
   const arcadeChapter = document.querySelector('#arcade .chapter-num');

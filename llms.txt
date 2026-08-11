@@ -5,7 +5,7 @@
 ## What I Do
 
 - Assistant Underwriter at Swamp Fox Agency (trucking and logging specialty risk)
-- Independent iOS app developer (3 apps on the App Store pipeline)
+- Independent app developer with two live iOS apps
 - Web platform builder (Next.js, React, static sites)
 - Carolina Executive brand: restrained typography, professional aesthetic
 
@@ -16,21 +16,21 @@
 - 22 daily milestones to track
 - Morning brief with weather, calendar, and tasks
 - 100% free, no ads, no subscription
-- URL: https://my-dailytool.vercel.app
+- URL: https://mydailytool.app
 
 ### Bar Crawl Golf
 - Plan bar crawl golf events with route mapping
 - Bar portal for bar managers to see upcoming crawls
 - Drink recommendations and score tracking
 - iOS app via Capacitor
-- URL: https://barcrawlgolf.vercel.app
+- URL: https://barcrawlgolf.xyz
 
 ### Greek Stack
 - White-label SaaS platform for fraternity chapter management
 - Rush QR sign-in, dues tracking, event calendar, announcements
 - Chapter website builder with custom domains
 - Pricing: Monthly $50, Yearly $800, Dues-Share (contact Ben), Custom
-- URL: https://greekstack.vercel.app
+- URL: https://greekstack.app
 
 ## My Website
 
@@ -43,7 +43,7 @@
 
 ## Contact
 
-- Email: bensachwitz@outlook.com
+- Email: bensachwitz@gmail.com
 - LinkedIn: linkedin.com/in/benjamin-sachwitz
 - GitHub: github.com/bensachwitz-ctrl
 - Book a call: https://bensachwitz.vercel.app/booking

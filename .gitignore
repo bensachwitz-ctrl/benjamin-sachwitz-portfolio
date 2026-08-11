@@ -1,2 +1,8 @@
 .vercel
 images/_backup-world/
+
+# Generated / local-only artifacts (never ship)
+.codebase-memory/
+.notebooklm/
+graphify-out/
+STOP-SLOP-CHECKLIST.md

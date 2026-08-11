@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greekstack · Multi-Tenant Fraternity & Sorority Management</title>
+  <title>Greekstack Â· Multi-Tenant Fraternity & Sorority Management</title>
   <meta name="description" content="The modern operating system for Greek chapters. Manage recruitment, dues, roster sync, and elections securely.">
   <meta name="theme-color" content="#ffffff">
 
-  <meta property="og:title" content="Greekstack · Multi-Tenant Fraternity & Sorority Management">
+  <meta property="og:title" content="Greekstack Â· Multi-Tenant Fraternity & Sorority Management">
   <meta property="og:description" content="The modern operating system for Greek chapters. Manage recruitment, dues, roster sync, and elections securely.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bensachwitz.vercel.app/greek-stack.html">
@@ -16,7 +16,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Greekstack Platform Preview">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Greekstack · Multi-Tenant Fraternity & Sorority Management">
+  <meta name="twitter:title" content="Greekstack Â· Multi-Tenant Fraternity & Sorority Management">
   <meta name="twitter:description" content="The modern operating system for Greek chapters. Manage recruitment, dues, roster sync, and elections securely.">
   <meta name="twitter:image" content="https://bensachwitz.vercel.app/og-projects.jpg">
   <meta name="twitter:image:alt" content="Greekstack Platform Preview">
@@ -77,6 +77,8 @@
   </style>
 </head>
 <body class="font-sans antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 focus:bg-white focus:text-black focus:px-4 focus:py-2">Skip to main content</a>
+  <main id="main-content">
 
   <!-- Pre-Hero 3D Letter Scroller Stage -->
   <section data-sw-section id="push-stage" class="h-[200vh] relative bg-greek-dark text-white viewport-stage">
@@ -202,6 +204,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer class="bg-greek-dark text-white py-16 px-6 relative z-10 text-center text-xs text-slate-400">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
@@ -288,7 +292,7 @@
             <div class="bg-white border border-slate-200 p-2 rounded-xl flex justify-between items-center shadow-sm">
               <div>
                 <div class="text-[10px] font-semibold text-greek-dark">${p.name}</div>
-                <div class="text-[8px] text-greek-slate">${p.school} · ${p.status}</div>
+                <div class="text-[8px] text-greek-slate">${p.school} Â· ${p.status}</div>
               </div>
               ${p.status === 'Undecided' ? `
                 <button onclick="voteBid(${idx})" class="px-2 py-0.5 rounded bg-greek-blue text-white text-[9px] font-semibold hover:bg-greek-blue/90 active:scale-95 transition-transform">Propose Bid</button>
@@ -301,7 +305,7 @@
 
         <div class="bg-white border border-slate-200 rounded-xl p-2.5 flex flex-col gap-1.5 shadow-sm">
           <span class="text-[8px] font-mono text-greek-slate uppercase tracking-widest font-semibold">TCPA-Compliant SMS Blast</span>
-          <input type="text" placeholder="Type invite message..." oninput="updateSmsCount(this.value)" class="w-full bg-slate-50 border border-slate-200 rounded p-1.5 text-[10px] text-greek-dark focus:outline-none focus:border-greek-blue">
+          <input type="text" aria-label="Invite message" placeholder="Type invite message..." oninput="updateSmsCount(this.value)" class="w-full bg-slate-50 border border-slate-200 rounded p-1.5 text-[10px] text-greek-dark focus:outline-none focus:border-greek-blue">
           <div class="flex justify-between items-center text-[8px] text-greek-slate">
             <span id="sms-count">0 characters</span>
             <button onclick="sendMockSms()" class="px-2 py-0.5 bg-greek-blue text-white rounded font-semibold active:scale-95 transition-transform">Send Blast</button>
@@ -484,5 +488,6 @@
     });
 
   </script>
-<script src="/scroll-world.js?v=mp41" defer></script>`n</body>
+<script src="/scroll-world.js?v=mp41" defer></script>
+</body>
 </html>

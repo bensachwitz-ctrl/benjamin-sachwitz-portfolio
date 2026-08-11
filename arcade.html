@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Arcade · 39 Browser Games · Benjamin Sachwitz</title>
-<meta name="description" content="The Arcade: 39 handcrafted browser games (Snake, Tetris, Wordle, 2048, Minesweeper and more) built in vanilla JavaScript by Benjamin Sachwitz." />
+<meta name="description" content="The Sachwitz Arcade: 39 handcrafted browser games, from Snake and Tetris to Wordle, 2048, Minesweeper, and two-player experiments built in vanilla JavaScript." />
 <meta name="keywords" content="Benjamin Sachwitz, Ben Sachwitz, Assistant Underwriter, Swamp Fox Agency, Commercial Trucking Insurance, Logging Insurance, Excess and Surplus Lines, Lloyd's of London, Price Forbes, Darla Moore School of Business, FMCSA, Specialty Risk, Insurance Technology, South Carolina" />
 <meta name="author" content="Benjamin Sachwitz" />
 <meta name="theme-color" content="#0A0A0A" />
@@ -71,11 +71,11 @@
     "addressRegion": "SC",
     "addressCountry": "US"
   },
-  "email": "mailto:bensachwitz@outlook.com",
+  "email": "mailto:bensachwitz@gmail.com",
   "telephone": "+1-571-385-5134",
   "image": "https://bensachwitz.vercel.app/headshot.png",
   "description": "Assistant Underwriter at Swamp Fox Agency. Darla Moore School of Business graduate (Dec 2025), Lloyd's of London market trained via Price Forbes. Specializing in commercial trucking and logging risk. Builds iOS apps and web projects on the side.",
-  "knowsAbout": ["Commercial Insurance","Risk Management","Lloyd's of London Market","Marine Insurance","Commercial Trucking","Logging Insurance","Loss Control","Underwriting","Excess & Surplus Lines","FMCSA Compliance","Insurance Technology","Artificial Intelligence","Data Analysis","Sales & Negotiation"],
+  "knowsAbout": ["Commercial Insurance","Risk Management","Lloyd's of London Market","Marine Insurance","Commercial Trucking","Logging Insurance","Product Delivery","Underwriting","Excess & Surplus Lines","FMCSA Compliance","Insurance Technology","Artificial Intelligence","Data Analysis","Sales & Negotiation"],
   "knowsLanguage": "en",
   "nationality": { "@type": "Country", "name": "United States" },
   "birthPlace": { "@type": "Place", "name": "McLean, Virginia" },
@@ -96,7 +96,7 @@
   "publisher": { "@id": "https://bensachwitz.vercel.app/#person" },
   "potentialAction": {
     "@type": "ContactAction",
-    "target": "mailto:bensachwitz@outlook.com",
+    "target": "mailto:bensachwitz@gmail.com",
     "name": "Contact Ben Sachwitz"
   }
 }
@@ -133,7 +133,6 @@
     "Commercial Trucking Insurance",
     "Logging & Forestry Insurance",
     "Excess & Surplus Lines Placement",
-    "Loss Control Consulting",
     "Specialty Risk Underwriting"
   ]
 }
@@ -211,12 +210,12 @@
     {
       "@type": "Question",
       "name": "What kinds of risk does Benjamin underwrite?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Specialty Property & Casualty risk, primarily commercial trucking (motor carriers, FMCSA-regulated fleets) and logging/forestry operations across the Southeast, plus excess & surplus lines, loss control, and binding-authority placements." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Specialty Property & Casualty risk, primarily commercial trucking (motor carriers, FMCSA-regulated fleets) and logging/forestry operations across the Southeast, plus excess & surplus lines and binding-authority placements." }
     },
     {
       "@type": "Question",
       "name": "How can I contact Benjamin Sachwitz?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Book a 30-minute call directly via the contact section at bensachwitz.vercel.app, email bensachwitz@outlook.com, or connect on LinkedIn at linkedin.com/in/benjamin-sachwitz." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Book a 30-minute call directly via the contact section at bensachwitz.vercel.app, email bensachwitz@gmail.com, or connect on LinkedIn at linkedin.com/in/benjamin-sachwitz." }
     }
   ]
 }
@@ -225,7 +224,7 @@
 <!-- Plausible analytics (privacy friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
 <script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
 <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
-<link rel="stylesheet" href="/styles.css?v=mp40" />
+<link rel="stylesheet" href="/styles.css?v=mp46" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
@@ -325,12 +324,12 @@
       Ben <span class="italic text-ox">Sachwitz</span>
     </a>
     <ul class="hidden md:flex items-center gap-8 text-[13px] font-medium tracking-wide">
-      <li><a href="/#about" class="nlink">About</a></li>
-      <li><a href="/career" class="nlink">Career</a></li>
-      <li><a href="/projects" class="nlink">Projects</a></li>
-      <li><a href="/apps" class="nlink">Apps</a></li>
-      <li><a href="/arcade" class="nlink text-gold-2">Arcade</a></li>
-      <li><a href="/booking" class="nlink">Booking</a></li>
+      <li><a href="/#about" class="nlink" data-nav="about">About</a></li>
+      <li><a href="/career" class="nlink" data-nav="career">Career</a></li>
+      <li><a href="/projects" class="nlink" data-nav="projects">Projects</a></li>
+      <li><a href="/apps" class="nlink" data-nav="apps">Apps</a></li>
+      <li><a href="/arcade" class="nlink text-gold-2" data-nav="arcade">Arcade</a></li>
+      <li><a href="/booking" class="nlink" data-nav="booking">Booking</a></li>
       <li><button type="button" class="btn-ink" data-open-booking>
         Book a call
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -343,12 +342,12 @@
   <!-- Mobile menu -->
   <div id="mmenu" class="mmenu md:hidden bg-bone border-t border-ink/10">
     <ul class="px-5 py-6 flex flex-col gap-4 text-[15px] font-medium">
-      <li><a href="/#about" class="mlink block py-3">About</a></li>
-      <li><a href="/career" class="mlink block py-3">Career</a></li>
-      <li><a href="/projects" class="mlink block py-3">Projects</a></li>
-      <li><a href="/apps" class="mlink block py-3">Apps</a></li>
-      <li><a href="/arcade" class="mlink block py-3 text-gold-2">The Arcade</a></li>
-      <li><a href="/booking" class="mlink block py-3">Booking</a></li>
+      <li><a href="/#about" class="mlink block py-3" data-nav="about">About</a></li>
+      <li><a href="/career" class="mlink block py-3" data-nav="career">Career</a></li>
+      <li><a href="/projects" class="mlink block py-3" data-nav="projects">Projects</a></li>
+      <li><a href="/apps" class="mlink block py-3" data-nav="apps">Apps</a></li>
+      <li><a href="/arcade" class="mlink block py-3 text-gold-2" data-nav="arcade">The Arcade</a></li>
+      <li><a href="/booking" class="mlink block py-3" data-nav="booking">Booking</a></li>
       <li><button type="button" class="mlink btn-ink w-full justify-center mt-2" data-open-booking>Book a call</button></li>
     </ul>
   </div>
@@ -366,6 +365,9 @@
     <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed mode-underwriter-only block-mode reveal d1">Taking a break from risk calculations. Thirty-nine classic games handcrafted in pure JavaScript. Try one out, then book a call.</p>
     <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed mode-builder-only block-mode reveal d1">Thirty-nine games, handcrafted in vanilla JavaScript, no engine, no frameworks. Pick a cabinet and play.</p>
     <a href="/" class="link-line eyebrow text-ink/50 inline-block mt-5">&larr; Back to home</a>
+    <nav class="page-tabs mt-7 reveal d2" data-page-tabs aria-label="Arcade sections">
+      <a class="page-tab is-active" href="#arcade" data-page-tab>Cabinet</a>
+    </nav>
   </div>
 </section>
 <section id="arcade" data-sw-section class="relative py-12 md:py-16 bg-ink text-bone overflow-hidden scene spotlight-host">
@@ -434,7 +436,7 @@
       <div class="arcade-marquee">
         <span class="arcade-marquee-title"><span class="arcade-marquee-dot"></span>Sachwitz Arcade</span>
         <span class="arcade-marquee-right">
-          <button class="arcade-fs" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">♥ Fullscreen</button>
+          <button class="arcade-fs" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">Fullscreen</button>
           <span class="arcade-marquee-credits" id="arcadeCredits">Credits&nbsp;&nbsp;‹</span>
         </span>
       </div>
@@ -446,7 +448,7 @@
         <div class="arcade-attract-creator">Created by Ben Sachwitz</div>
         <p class="arcade-attract-sub">Thirty-nine hand-built games, singles, two-player duels and tower defense. Beat my scores, then book the call. No quarters required.</p>
         <button class="arcade-start-btn" id="arcadeStartBtn" type="button">▶ Press Start</button>
-        <button class="arcade-fs arcade-back arcade-attract-fs" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">♥ Fullscreen</button>
+        <button class="arcade-fs arcade-back arcade-attract-fs" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">Fullscreen</button>
         <div class="arcade-attract-kicker arcade-blink" style="margin-top:.2rem">Press Enter or tap to begin</div>
       </div>
 
@@ -662,7 +664,7 @@
       <div class="arcade-playbar">
         <button class="arcade-back" id="arcadeToSelect" type="button" aria-label="Back to game selection">‹ Games</button>
         <span class="arcade-now-playing">Now playing · <b id="arcadeNowPlaying">Snake</b></span>
-        <button class="arcade-fs arcade-back" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">♥ Fullscreen</button>
+        <button class="arcade-fs arcade-back" type="button" aria-pressed="false" aria-label="Toggle fullscreen" title="Fullscreen (F)">Fullscreen</button>
       </div>
 
     <!-- Tab switcher -->
@@ -2142,6 +2144,19 @@
 
 <!-- ===== CHAPTER 03, EXPERTISE ===== -->
 
+<section class="app-store-strip" aria-label="Ben's apps on the App Store">
+  <div class="app-store-strip-inner">
+    <div>
+      <div class="eyebrow text-gold mb-2">Built for the pocket</div>
+      <h2 class="font-serif text-[24px] md:text-[30px] font-light text-bone leading-tight">Two shipped apps. One tap away.</h2>
+      <p class="mt-2 text-[13px] text-bone/60 max-w-[48ch]">The same habit of careful systems carries from underwriting into products people can use every day.</p>
+    </div>
+    <div class="app-store-strip-links">
+      <a href="https://apps.apple.com/us/app/bar-crawl-golf-bcg/id6766144112" target="_blank" rel="noopener noreferrer" title="Opens in new tab">Bar Crawl Golf <span>App Store&nbsp;→</span></a>
+      <a href="https://apps.apple.com/us/app/my-daily-tool/id6766240912" target="_blank" rel="noopener noreferrer" title="Opens in new tab">My Daily Tool <span>App Store&nbsp;→</span></a>
+    </div>
+  </div>
+</section>
 </main>
 <footer class="relative py-12 md:py-16 bg-bone">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10 grid grid-cols-12 gap-6 items-center">
@@ -2226,17 +2241,27 @@
             <div><label class="flabel" for="bPhone">Phone</label><input class="finput" id="bPhone" type="tel" placeholder="Optional" /></div>
             <div><label class="flabel" for="bCompany">Company</label><input class="finput" id="bCompany" type="text" placeholder="Optional" /></div>
           </div>
-          <div class="mb-4">
-            <label class="flabel mb-2">Topic</label>
+          <fieldset class="mb-4">
+            <legend class="flabel mb-2">Topic</legend>
             <div class="booking-chips" role="radiogroup" aria-label="Call topic">
-              <label class="bchip"><input type="radio" name="bTopic" value="Trucking / Logging"/><span>Trucking / Logging</span></label>
-              <label class="bchip"><input type="radio" name="bTopic" value="Commercial Insurance"/><span>Commercial Insurance</span></label>
-              <label class="bchip"><input type="radio" name="bTopic" value="Loss Control Tech"/><span>Loss Control Tech</span></label>
-              <label class="bchip"><input type="radio" name="bTopic" value="Partnership / Vendor"/><span>Partnership / Vendor</span></label>
-              <label class="bchip"><input type="radio" name="bTopic" value="Recruiting / Career"/><span>Recruiting / Career</span></label>
-              <label class="bchip"><input type="radio" name="bTopic" value="General Intro"/><span>General Intro</span></label>
+              <div class="mode-underwriter-only block-mode">
+                <label class="bchip"><input type="radio" name="bTopic" value="Trucking / Logging"/><span>Trucking / Logging</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="Commercial Insurance"/><span>Commercial Insurance</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="Market / Submission Review"/><span>Market / Submission Review</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="Claims / Loss Control"/><span>Claims / Loss Control</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="Producer / Agency Relationship"/><span>Producer / Agency Relationship</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="General Intro"/><span>General Intro</span></label>
+              </div>
+              <div class="mode-builder-only block-mode">
+                <label class="bchip"><input type="radio" name="bTopic" value="App / Product Discussion"/><span>App / Product Discussion</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="Web / UX Build"/><span>Web / UX Build</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="AI / Automation Systems"/><span>AI / Automation Systems</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="Technical Partnership"/><span>Technical Partnership</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="Recruiting / Career"/><span>Recruiting / Career</span></label>
+                <label class="bchip"><input type="radio" name="bTopic" value="General Intro"/><span>General Intro</span></label>
+              </div>
             </div>
-          </div>
+          </fieldset>
           <div class="booking-actions">
             <button type="button" class="btn-outline" data-close-booking>Cancel</button>
             <button type="button" aria-label="Continue to next step" class="btn-ink" data-booking-next="2">Continue <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg></button>
@@ -2283,7 +2308,7 @@
       </div>
       <h3 class="font-serif text-[26px] md:text-[30px] font-light mt-5 mb-2">Booked.</h3>
       <p class="text-ink/70 text-[14px] mb-2" id="successDetail">I'll confirm the time by email within 24 hours.</p>
-      <p class="eyebrow text-ink/45 mb-6">A copy of your request was sent to bensachwitz@outlook.com</p>
+      <p class="eyebrow text-ink/45 mb-6">A copy of your request was sent to bensachwitz@gmail.com</p>
       <button type="button" class="btn-ink" data-close-booking>Close</button>
     </div>
   </div>
@@ -2292,7 +2317,7 @@
 <!-- ============================================================
      INTERACTION LAYER
 ============================================================ -->
-<script src="/app.js?v=mp37"></script>
+<script src="/app.js?v=mp46"></script>
 
 <!-- ===== INTERACTIVE LAYER ===== -->
 
