@@ -542,7 +542,7 @@
   }
   @keyframes btnSpin { to { transform: rotate(360deg); } }
   .btn-ink[aria-busy="true"], .btn-gold[aria-busy="true"] { opacity: .8; cursor: progress; }
-  /* tactile press on primary CTAs (plan §4.3) */
+  /* tactile press on primary CTAs (plan Â§4.3) */
   .btn-ink:active, .btn-gold:active { transform: scale(.97); }
 
   /* Inline contact-success card (mirrors the booking success mark, scaled for the form column) */
@@ -677,7 +677,7 @@
     color: var(--ox);
   }
 
-  /* Mobile hamburger → X color fix when menu open */
+  /* Mobile hamburger â†’ X color fix when menu open */
   .hb.open span { background: var(--ink); }
 
   /* ===== ARCADE TABS ===== */
@@ -710,7 +710,7 @@
   @keyframes apanel-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
   .apanel.hidden { display: none; }
 
-  /* ===== ARCADE CABINET (attract → select → play) ===== */
+  /* ===== ARCADE CABINET (attract â†’ select â†’ play) ===== */
   .arcade-cabinet {
     position: relative; border: 1px solid rgba(245,242,236,.14);
     border-radius: 14px; overflow: hidden;
@@ -2130,7 +2130,7 @@
   .booking-cal-inline cal-inline,
   .booking-cal-inline iframe { width: 100% !important; height: 100% !important; border-radius: 10px; }
   .booking-cal-inline::before {
-    content: "Loading live calendar…";
+    content: "Loading live calendarâ€¦";
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
     font-family: 'JetBrains Mono', monospace;
@@ -2188,7 +2188,7 @@
     transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s, max-width .4s cubic-bezier(.2,.7,.2,1);
   }
   /* Calendar tab needs more room: Cal.com renders its flawless three-column
-     layout (event details | full month | time slots) only at iframe width ≥ ~768px.
+     layout (event details | full month | time slots) only at iframe width â‰¥ ~768px.
      The Request-a-Time form stays at the narrower 680px for readability. */
   .booking-panel.is-cal { max-width: min(940px, 94vw); }
   .booking-modal.is-open .booking-panel { transform: none; opacity: 1; }
@@ -2790,7 +2790,7 @@
   .ag-12 { top: 92%; left: 58%; animation: agDriftD 30s ease-in-out infinite; animation-delay: -26s; }
   .ag-13 { top: 28%; left: 48%; animation: agDriftA 35s ease-in-out infinite; animation-delay: -34s; }
   .ag-14 { top: 68%; left: 4%;  animation: agDriftB 38s ease-in-out infinite; animation-delay: -42s; }
-  /* New glyphs - more insurance/underwriting symbols (∑ aggregate, Δ change, ⊕ risk pool, ℓ loss, Ω limit, µ mean) */
+  /* New glyphs - more insurance/underwriting symbols (âˆ‘ aggregate, Î” change, âŠ• risk pool, â„“ loss, Î© limit, Âµ mean) */
   .ag-15 { top:  3%; left: 45%; animation: agDriftC 32s ease-in-out infinite; animation-delay: -5s; }
   .ag-16 { top: 18%; left: 55%; animation: agDriftD 36s ease-in-out infinite; animation-delay: -20s; }
   .ag-17 { top: 44%; left: 36%; animation: agDriftA 30s ease-in-out infinite; animation-delay: -48s; }
@@ -2839,7 +2839,7 @@
 
   /* Fade in / fade out in place - symbols materialize and dissolve (a soft scale,
      NO lateral drift). At the 0%/100% trough they're fully invisible, so JS can
-     relocate + re-pick the symbol there unseen → the field reads as symbols fading
+     relocate + re-pick the symbol there unseen â†’ the field reads as symbols fading
      in and out across the whole screen rather than sliding around. */
   @keyframes glyphBreathe {
     0%   { opacity: 0; transform: scale(0.9); }
@@ -2867,7 +2867,7 @@
   /* ===== Experience-symbol icons =====
      randomizeGlyphDrift() tags every glyph .xp-icon and sets --xp-ic to a masked
      SVG of one of Ben's experience symbols (Masters golf, Lloyd's anchor/columns,
-     underwriting scale/shield, trucking, logging, Darla Moore cap, his apps…). The
+     underwriting scale/shield, trucking, logging, Darla Moore cap, his appsâ€¦). The
      icon is painted by masking a solid fill, so it tints with the active mode and
      stays crisp at any drift size. The text glyph is the no-JS / no-mask fallback. */
   .ambient-glyph.xp-icon, .section-glyph.xp-icon {
@@ -3100,12 +3100,12 @@
 
   /* ============================================================
      TWO BRAINS TOGGLE - v1.1.0 signature feature
-     Underwriter (default) ↔ Builder modes swap palette, accents, voice
+     Underwriter (default) â†” Builder modes swap palette, accents, voice
   ============================================================ */
   :root {
     --mode-accent: var(--ox);
     --mode-accent-2: var(--gold);
-    --mode-emoji: "📋";
+    --mode-emoji: "ðŸ“‹";
   }
   html[data-mode="builder"] {
     --mode-accent: #14A05C;        /* terminal green */
@@ -3162,125 +3162,6 @@
 
   /* === The toggle pill - sits to the right of the "Ben Sachwitz" logo in the nav strip ===
        Premium refined styling: tighter padding, subtle elevation, premium feel */
-  .brains-toggle {
-    position: fixed;
-    top: 1.35rem;
-    /* Anchor to nav container: clears logo (~150px) + gap */
-    left: max(13rem, calc((100vw - 1400px) / 2 + 13rem));
-    right: auto;
-    bottom: auto;
-    transform: none;
-    z-index: 60;
-    display: inline-flex;
-    align-items: center;
-    padding: 3px;
-    background: rgba(245,242,236,.92);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid rgba(10,10,10,.10);
-    border-radius: 999px;
-    box-shadow: 0 1px 2px rgba(10,10,10,.04), 0 8px 24px rgba(10,10,10,.08);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 11.5px;
-    letter-spacing: .02em;
-    text-transform: none;
-    font-weight: 600;
-    user-select: none;
-    transition: box-shadow .35s, background-color .35s, border-color .35s, opacity .3s ease, transform .35s cubic-bezier(.2,.7,.2,1);
-  }
-  .brains-toggle:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(10,10,10,.05), 0 14px 32px rgba(10,10,10,.1); }
-  html[data-mode="builder"] .brains-toggle {
-    background: rgba(10,26,28,.86);
-    border-color: rgba(20,160,92,.30);
-    box-shadow: 0 4px 16px rgba(20,160,92,.18);
-  }
-  .brains-toggle:hover { box-shadow: 0 8px 24px rgba(10,10,10,.12); }
-  .brains-toggle-knob {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: calc(50% - 4px);
-    height: calc(100% - 8px);
-    background: var(--ink);
-    border-radius: 999px;
-    transition: transform .45s cubic-bezier(.32,1.5,.45,1), background-color .45s;
-    z-index: 0;
-  }
-  html[data-mode="builder"] .brains-toggle-knob {
-    transform: translateX(calc(100% + 0px));
-    background: var(--mode-accent);
-  }
-  .brains-toggle button {
-    position: relative;
-    z-index: 1;
-    background: transparent;
-    border: 0;
-    padding: 7px 16px;
-    color: rgba(10,10,10,.45);
-    cursor: pointer;
-    font: inherit;
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    transition: color .35s;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-  .brains-toggle button svg { opacity: .55; transition: opacity .35s; flex-shrink: 0; }
-  .brains-toggle button[aria-pressed="true"] svg { opacity: 1; }
-  .brains-toggle button[aria-pressed="true"] { color: var(--bone); }
-  html[data-mode="builder"] .brains-toggle button[aria-pressed="true"] { color: #fff; }
-  .brains-toggle button:focus-visible { outline: 2px solid var(--mode-accent-2); outline-offset: 3px; border-radius: 999px; }
-  .brains-toggle .bt-dot {
-    width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: .45rem;
-    background: currentColor; opacity: .55;
-    vertical-align: middle;
-  }
-  .brains-toggle button[aria-pressed="true"] .bt-dot { opacity: 1; }
-
-  /* Tablet + mobile (<1200px): the desktop nav is cramped or replaced by the burger.
-     Park the toggle BELOW the nav, centered, and fade it on scroll so it never lingers
-     over the hero copy. (It clears the logo + burger vertically since it sits under them;
-     the brief overlap with the hero headline at the very top resolves the instant you
-     scroll.) Uses 1199.98 to dodge subpixel rounding at exactly 1200. */
-  @media (max-width: 1199.98px) {
-    .brains-toggle {
-      top: 4.5rem !important;
-      left: 50% !important;
-      right: auto !important;
-      transform: translateX(-50%) !important;
-      font-size: 10.5px;
-      padding: 3px;
-    }
-    .brains-toggle:hover { transform: translateX(-50%) translateY(-1px) !important; }
-    .brains-toggle button { padding: 6px 13px; }
-  }
-  @media (max-width: 767.98px) {
-    .brains-toggle { font-size: 11px; }
-    .brains-toggle button { padding: 6px 14px; }
-  }
-  @media (max-width: 420px) {
-    .brains-toggle { font-size: 10px; }
-    .brains-toggle button { padding: 5px 11px; gap: .35rem; }
-  }
-  /* Hide the toggle when the mobile burger menu is open so they don't fight */
-  body:has(.mmenu.open) .brains-toggle { opacity: 0; pointer-events: none; }
-
-  /* The toggle is centered BELOW the 64px nav, so as the page scrolls it would float
-     over the hero/intro copy. Fade it out once scrolled (JS sets body.page-scrolled at
-     >40px); it returns at the top. On desktop the toggle lives inside the nav band, so
-     this never applies. */
-  @media (max-width: 1199.98px) {
-    body.page-scrolled .brains-toggle {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(-50%) translateY(-14px) !important;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .brains-toggle-knob,
-    .brains-toggle button { transition: none !important; }
     html, html[data-mode="builder"] { transition: none !important; }
   }
 
@@ -3912,7 +3793,7 @@
       linear-gradient(135deg, #2a0e0e 0%, #3a1010 50%, #1a0606 100%);
   }
   .site-mock-psk .site-mock-bg::before {
-    content: "ΦΣΚ";
+    content: "Î¦Î£Îš";
     position: absolute;
     right: -10%;
     top: 5%;
@@ -3948,9 +3829,9 @@
       radial-gradient(circle at 80% 75%, rgba(212,168,67,.28), transparent 55%),
       linear-gradient(135deg, #0d1628 0%, #1a2a4a 50%, #0a1020 100%);
   }
-  /* "Alpha to Omega" - any chapter, any school. Distinct from the Phi-Sig card's ΦΣΚ mark. */
+  /* "Alpha to Omega" - any chapter, any school. Distinct from the Phi-Sig card's Î¦Î£Îš mark. */
   .site-mock-greekstack .site-mock-bg::before {
-    content: "ΑΩ";
+    content: "Î‘Î©";
     position: absolute;
     left: -4%;
     top: -16%;
@@ -4123,7 +4004,7 @@
   }
 
   /* ============================================================
-     ACCESSIBILITY · TEXT CONTRAST FLOOR (WCAG 2.1 AA, 4.5:1)
+     ACCESSIBILITY Â· TEXT CONTRAST FLOOR (WCAG 2.1 AA, 4.5:1)
      The muted Tailwind text-opacity tiers used for eyebrows,
      mono captions and accent labels fell below 4.5:1 on the
      light "bone" ground (and a couple of bone tiers on the dark
