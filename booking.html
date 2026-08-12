@@ -224,7 +224,7 @@
 <!-- Plausible analytics (privacy friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
 <script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
 <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
-<link rel="stylesheet" href="/styles.css?v=mp46" />
+<link rel="stylesheet" href="/styles.css?v=mp47" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
@@ -278,17 +278,6 @@
 
 <!-- Signature cursor-follow ambient glow -->
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-
-<!-- v1.1.0 SIGNATURE: Two Brains Toggle · underwriter ↔ builder identity switch -->
-<div class="brains-toggle" id="brainsToggle" aria-label="Mode: Underwriter or Builder">
-  <div class="brains-toggle-knob" aria-hidden="true"></div>
-  <button type="button" data-brain-mode="underwriter" aria-pressed="true" aria-label="Underwriter mode: risk, Lloyd's, specialty trucking">
-    <span class="bt-dot"></span>Underwriter
-  </button>
-  <button type="button" data-brain-mode="builder" aria-pressed="false" aria-label="Developer mode: apps, code, ship logs">
-    <span class="bt-dot"></span>Developer
-  </button>
-</div>
 <div id="scrollProgress"></div>
 
 <!-- ===== LOADER ===== -->
@@ -473,25 +462,18 @@
             <div><label class="flabel" for="bCompany">Company</label><input class="finput" id="bCompany" type="text" placeholder="Optional" /></div>
           </div>
           <fieldset class="mb-4">
-            <legend class="flabel mb-2">Topic</legend>
-            <div class="booking-chips" role="radiogroup" aria-label="Call topic">
-              <div class="mode-underwriter-only block-mode">
-                <label class="bchip"><input type="radio" name="bTopic" value="Trucking / Logging"/><span>Trucking / Logging</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="Commercial Insurance"/><span>Commercial Insurance</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="Market / Submission Review"/><span>Market / Submission Review</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="Claims / Loss Control"/><span>Claims / Loss Control</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="Producer / Agency Relationship"/><span>Producer / Agency Relationship</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="General Intro"/><span>General Intro</span></label>
-              </div>
-              <div class="mode-builder-only block-mode">
-                <label class="bchip"><input type="radio" name="bTopic" value="App / Product Discussion"/><span>App / Product Discussion</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="Web / UX Build"/><span>Web / UX Build</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="AI / Automation Systems"/><span>AI / Automation Systems</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="Technical Partnership"/><span>Technical Partnership</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="Recruiting / Career"/><span>Recruiting / Career</span></label>
-                <label class="bchip"><input type="radio" name="bTopic" value="General Intro"/><span>General Intro</span></label>
-              </div>
-            </div>
+            <label class="flabel mb-2" for="bTopic">What do you want to talk about?</label>
+            <select class="finput" id="bTopic" name="bTopic" required>
+              <option value="" disabled selected>Choose a topic</option>
+              <option>Underwriting &amp; insurance</option>
+              <option>Bar Crawl Golf</option>
+              <option>My Daily Tool</option>
+              <option>Building an app or website</option>
+              <option>AI &amp; automation</option>
+              <option>Collaboration &amp; partnerships</option>
+              <option>General introduction</option>
+              <option>Something else</option>
+            </select>
           </fieldset>
           <div class="booking-actions">
             <button type="button" class="btn-outline" data-close-booking>Cancel</button>
@@ -548,7 +530,7 @@
 <!-- ============================================================
      INTERACTION LAYER
 ============================================================ -->
-<script src="/app.js?v=mp46"></script>
+<script src="/app.js?v=mp47"></script>
 
 <!-- ===== INTERACTIVE LAYER ===== -->
 

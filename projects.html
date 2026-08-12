@@ -224,7 +224,7 @@
 <!-- Plausible analytics (privacy friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
 <script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
 <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
-<link rel="stylesheet" href="/styles.css?v=mp46" />
+<link rel="stylesheet" href="/styles.css?v=mp47" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
@@ -278,17 +278,6 @@
 
 <!-- Signature cursor-follow ambient glow -->
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-
-<!-- v1.1.0 SIGNATURE: Two Brains Toggle · underwriter ↔ builder identity switch -->
-<div class="brains-toggle" id="brainsToggle" aria-label="Mode: Underwriter or Builder">
-  <div class="brains-toggle-knob" aria-hidden="true"></div>
-  <button type="button" data-brain-mode="underwriter" aria-pressed="true" aria-label="Underwriter mode: risk, Lloyd's, specialty trucking">
-    <span class="bt-dot"></span>Underwriter
-  </button>
-  <button type="button" data-brain-mode="builder" aria-pressed="false" aria-label="Developer mode: apps, code, ship logs">
-    <span class="bt-dot"></span>Developer
-  </button>
-</div>
 <div id="scrollProgress"></div>
 
 <!-- ===== LOADER ===== -->
@@ -360,10 +349,8 @@
 <section data-sw-section class="relative pt-16 pb-6 md:pt-20 md:pb-8 overflow-hidden">
   <div class="max-w-[1400px] mx-auto px-5 md:px-10">
     <div class="eyebrow text-ink/55 mb-3 reveal">Chapter · Projects</div>
-    <h1 class="display-h mode-underwriter-only block-mode reveal">Websites &amp; <em class="text-ox">Products</em>.</h1>
-    <h2 class="display-h mode-builder-only block-mode reveal">The <em class="text-ox">projects</em>.</h2>
-    <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed mode-underwriter-only block-mode reveal d1">Selected websites and product work, built with the same care I bring to a difficult account: clear decisions, useful details, and a reliable finish.</p>
-    <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed mode-builder-only block-mode reveal d1">A closer look at the websites and product work I have actually shipped. No placeholders, no imaginary roadmap.</p>
+    <h1 class="display-h reveal">Websites &amp; <em class="text-ox">Products</em>.</h1>
+    <p class="mt-4 max-w-2xl text-[15px] text-ink/70 leading-relaxed reveal d1">Selected websites and product work I have actually shipped - no placeholders, no imaginary roadmap. Built with the same care I bring to a difficult account: clear decisions, useful details, and a reliable finish.</p>
     <a href="/" class="link-line eyebrow text-ink/50 inline-block mt-5">&larr; Back to home</a>
     <nav class="page-tabs mt-7 reveal d2" data-page-tabs aria-label="Project sections">
       <a class="page-tab is-active" href="#websites" data-page-tab>Websites</a>
@@ -382,8 +369,8 @@
       <div>
         <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 05 · Websites</div>
         <h2 class="display-h reveal d1 scale-on-scroll">Sites I've <em>built</em>.</h2>
-        <p class="mt-4 text-ink/65 max-w-[60ch] text-[14.5px] md:text-[15.5px] reveal d2 mode-bio" data-bio-underwriter="Production websites I designed, shipped, and run for clients and organizations, reflecting the same attention to detail that underpins my work in risk analysis. Click any card to open the live site." data-bio-builder="Solo full stack web work: design, build, deploy, iterate. Each site below is live in production. Click any card to launch.">
-          Production websites I designed, shipped, and run for clients and organizations, reflecting the same attention to detail that underpins my work in risk analysis. Click any card to open the live site.
+        <p class="mt-4 text-ink/65 max-w-[60ch] text-[14.5px] md:text-[15.5px] reveal d2">
+          Three live products I designed, built, and run - Bar Crawl Golf, Greekstack, and My Daily Tool - each shipping to its own production domain. Click any card to open the live site.
         </p>
       </div>
       <div class="chapter-num hidden md:block reveal d2" aria-hidden="true">V</div>
@@ -391,96 +378,96 @@
 
     <div class="websites-grid grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
 
-      <!-- WarPlay Paintball -->
+      <!-- Bar Crawl Golf -->
       <article class="site-card reveal d1">
-        <a href="https://warplaypaintball.vercel.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab" aria-label="WarPlay Paintball · open live site" class="site-visual site-visual-warplay">
+        <a href="https://barcrawlgolf.xyz/" target="_blank" rel="noopener noreferrer" title="Opens in new tab" aria-label="Bar Crawl Golf · open live site" class="site-visual site-visual-bcg">
           <div class="site-frame" aria-hidden="true">
             <span class="site-frame-dot"></span><span class="site-frame-dot"></span><span class="site-frame-dot"></span>
-            <span class="site-frame-url">warplaypaintball.vercel.app</span>
+            <span class="site-frame-url">barcrawlgolf.xyz</span>
           </div>
-          <div class="site-mock site-mock-warplay">
+          <div class="site-mock site-mock-bcg">
             <div class="site-mock-bg"></div>
             <div class="site-mock-overlay"></div>
             <div class="site-mock-content">
-              <div class="site-mock-eyebrow">TACTICAL · RHOADESVILLE, VA</div>
-              <div class="site-mock-headline">War<span>Play</span></div>
-              <div class="site-mock-sub">50-second firefights. Hybrid arenas. Marine-veteran built.</div>
-              <div class="site-mock-cta">Book a Battle →</div>
+              <div class="site-mock-eyebrow">PARTY GAME · IPHONE + WEB</div>
+              <div class="site-mock-headline">Bar Crawl <span>Golf</span></div>
+              <div class="site-mock-sub">Every bar is a hole. Every sip is a stroke. Lowest score wins.</div>
+              <div class="site-mock-cta">Join a Crawl →</div>
             </div>
           </div>
           <span class="site-platform-pill">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
-            Live · Vercel
+            Live · barcrawlgolf.xyz
           </span>
         </a>
         <div class="site-meta">
           <div class="flex items-center justify-between mb-3">
-            <div class="eyebrow text-ox">Client Build · Live</div>
+            <div class="eyebrow text-ox">Party Game · Live</div>
             <div class="text-[11px] font-mono tracking-[.24em] uppercase text-ink/40">/ 01</div>
           </div>
-          <h3 class="font-serif text-[24px] md:text-[28px] font-light leading-tight mb-3 text-ink">WarPlay Paintball.</h3>
+          <h3 class="font-serif text-[24px] md:text-[28px] font-light leading-tight mb-3 text-ink">Bar Crawl Golf.</h3>
           <p class="text-[14px] text-ink/70 leading-relaxed mb-5 max-w-[52ch]">
-            Tactical paintball, laser-tag, and gellyball venue in Rhoadesville, Virginia, built by marine veterans. Full marketing site with booking funnel, group packages, and arena gallery. Mobile-first, fast TTFB.
+            The painted bar-crawl scorecard game. Live scorecards, AI route planning, crew chat, and Hall of Fame trophies - built with Next.js on a Supabase backend, and playable in the browser or the App Store app.
           </p>
           <div class="flex flex-wrap gap-1.5 mb-5">
-            <span class="ptag">Marketing Site</span>
-            <span class="ptag">Booking Funnel</span>
-            <span class="ptag">Vercel Edge</span>
-            <span class="ptag">Mobile-First</span>
+            <span class="ptag">Next.js</span>
+            <span class="ptag">Live Scorecard</span>
+            <span class="ptag">iOS + Web</span>
+            <span class="ptag">Supabase</span>
           </div>
           <div class="site-ctas">
-            <a class="btn-ink text-sm" href="https://warplaypaintball.vercel.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">
+            <a class="btn-ink text-sm" href="https://barcrawlgolf.xyz/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">
               Launch site
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
             </a>
-            <a class="link-line text-ink/65 text-[12px] font-mono tracking-widest uppercase" href="https://warplaypaintball.vercel.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">warplaypaintball.vercel.app</a>
+            <a class="link-line text-ink/65 text-[12px] font-mono tracking-widest uppercase" href="https://barcrawlgolf.xyz/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">barcrawlgolf.xyz</a>
           </div>
         </div>
       </article>
 
-      <!-- Phi Sigma Kappa Rush -->
+      <!-- My Daily Tool -->
       <article class="site-card reveal d2">
-        <a href="https://phisigmakappa.vercel.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab" aria-label="Phi Sigma Kappa Rush at USC · open live site" class="site-visual site-visual-psk">
+        <a href="https://mydailytool.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab" aria-label="My Daily Tool · open live site" class="site-visual site-visual-mdt">
           <div class="site-frame" aria-hidden="true">
             <span class="site-frame-dot"></span><span class="site-frame-dot"></span><span class="site-frame-dot"></span>
-            <span class="site-frame-url">phisigmakappa.vercel.app</span>
+            <span class="site-frame-url">mydailytool.app</span>
           </div>
-          <div class="site-mock site-mock-psk">
+          <div class="site-mock site-mock-mdt">
             <div class="site-mock-bg"></div>
             <div class="site-mock-overlay"></div>
             <div class="site-mock-content">
-              <div class="site-mock-eyebrow">EST. 1873 · GAMMA TRITON · USC</div>
-              <div class="site-mock-headline">ΦΣΚ <span>Rush</span></div>
-              <div class="site-mock-sub">Brotherhood. Scholarship. Character. Fall 2026.</div>
-              <div class="site-mock-cta">View Schedule →</div>
+              <div class="site-mock-eyebrow">FOR IPHONE · 60+ TOOLS</div>
+              <div class="site-mock-headline">My Daily <span>Tool</span></div>
+              <div class="site-mock-sub">Planner, health, habits, journal, arcade - one calm command center.</div>
+              <div class="site-mock-cta">Download Free →</div>
             </div>
           </div>
           <span class="site-platform-pill">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
-            Live · Vercel
+            Live · mydailytool.app
           </span>
         </a>
         <div class="site-meta">
           <div class="flex items-center justify-between mb-3">
-            <div class="eyebrow text-ox">Chapter Site · Live</div>
+            <div class="eyebrow text-ox">Daily Companion · Live</div>
             <div class="text-[11px] font-mono tracking-[.24em] uppercase text-ink/40">/ 02</div>
           </div>
-          <h3 class="font-serif text-[24px] md:text-[28px] font-light leading-tight mb-3 text-ink">Phi Sigma Kappa &middot; Rush.</h3>
+          <h3 class="font-serif text-[24px] md:text-[28px] font-light leading-tight mb-3 text-ink">My Daily Tool.</h3>
           <p class="text-[14px] text-ink/70 leading-relaxed mb-5 max-w-[52ch]">
-            Recruitment site for the Gamma Triton chapter at the University of South Carolina. Three-week rush schedule, brotherhood profiles, philanthropy showcase, and conversion-optimized RSVP flow.
+            A free all-in-one daily companion for iPhone - planner, health, habits, journal, finance, an AI assistant, and a 38-game arcade. Offline-first, private by design, live on the App Store.
           </p>
           <div class="flex flex-wrap gap-1.5 mb-5">
-            <span class="ptag">Chapter Site</span>
-            <span class="ptag">RSVP Flow</span>
-            <span class="ptag">USC Gamma Triton</span>
-            <span class="ptag">Fall 2026 Rush</span>
+            <span class="ptag">React</span>
+            <span class="ptag">Offline-First</span>
+            <span class="ptag">App Store</span>
+            <span class="ptag">PWA</span>
           </div>
           <div class="site-ctas">
-            <a class="btn-ink text-sm" href="https://phisigmakappa.vercel.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">
+            <a class="btn-ink text-sm" href="https://mydailytool.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">
               Launch site
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9L9 1M9 1H2M9 1V8" stroke="currentColor" stroke-width="1.3"/></svg>
             </a>
-            <a class="link-line text-ink/65 text-[12px] font-mono tracking-widest uppercase" href="https://phisigmakappa.vercel.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">phisigmakappa.vercel.app</a>
+            <a class="link-line text-ink/65 text-[12px] font-mono tracking-widest uppercase" href="https://mydailytool.app/" target="_blank" rel="noopener noreferrer" title="Opens in new tab">mydailytool.app</a>
           </div>
         </div>
       </article>
@@ -597,9 +584,9 @@
 
     <div class="flex items-end justify-between mb-6 md:mb-8">
       <div>
-        <div class="eyebrow text-ink/60 mb-4 reveal mode-eyebrow" data-eyebrow-underwriter="Chapter 04 · Portfolio" data-eyebrow-builder="Chapter 04 · Engagements">Chapter 04 · Portfolio</div>
-        <h2 class="display-h reveal d1 scale-on-scroll mode-title" data-title-underwriter="Selected work." data-title-builder="Selected ships.">Selected <em>work</em>.</h2>
-        <p class="mt-4 text-ink/65 max-w-[62ch] text-[14.5px] md:text-[15.5px] reveal d2 mode-bio" data-bio-underwriter="Professional milestones that shaped my career, including support operations at Augusta National, brand building, Lloyd's placement training, and client consulting." data-bio-builder="Every entry below is a real engagement: operations at Augusta, a brand built and sold, E&amp;S placement at Lloyd's, and a client consulting capstone delivered to leadership. Focused on clean execution, usability, and real-world utility.">Professional milestones that shaped my career, including support operations at Augusta National, brand building, Lloyd's placement training, and client consulting.</p>
+        <div class="eyebrow text-ink/60 mb-4 reveal">Chapter 04 · Portfolio</div>
+        <h2 class="display-h reveal d1 scale-on-scroll">Selected <em>work</em>.</h2>
+        <p class="mt-4 text-ink/65 max-w-[62ch] text-[14.5px] md:text-[15.5px] reveal d2">A short bio of the milestones that shaped me: support operations at Augusta National, a brand built and sold, E&amp;S placement training at Lloyd's, and a security consulting capstone for the Darla Moore School - a risk analysis and emergency action plan we presented to the heads of the school. The full reports live on LinkedIn; here it is just the story.</p>
       </div>
       <div class="chapter-num hidden md:block reveal d2" aria-hidden="true">IV</div>
     </div>
@@ -877,7 +864,7 @@
 <!-- ============================================================
      INTERACTION LAYER
 ============================================================ -->
-<script src="/app.js?v=mp46"></script>
+<script src="/app.js?v=mp47"></script>
 
 <!-- ===== INTERACTIVE LAYER ===== -->
 

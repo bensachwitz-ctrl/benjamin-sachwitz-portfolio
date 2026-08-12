@@ -4284,3 +4284,90 @@ html.js .intro-loader{
 @keyframes intro-fade{ to{ opacity:.85; } }
 @keyframes intro-failsafe{ to{ visibility:hidden; opacity:0; pointer-events:none; } }
 @media (prefers-reduced-motion: reduce){ .intro-loader{ display:none !important; } html.intro-lock, html.intro-lock body{ overflow:auto; } }
+
+/* ==========================================================================
+   ARCADE MOBILE FIX - the 39-game tab row wraps into an ~870px wall on
+   phones, pushing the active game panel below the fold (broken fullscreen
+   on iPhone). Tabs become a compact horizontal snap strip on mobile and
+   in fullscreen so the game sits directly under the playbar.
+   ========================================================================== */
+@media (max-width: 640px) {
+  .arcade-tabs {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.8rem !important;
+  }
+  .arcade-tabs::-webkit-scrollbar { display: none; }
+  .arcade-tabs .atab { scroll-snap-align: start; flex-shrink: 0; }
+}
+
+/* Fullscreen (real + iOS pseudo): always a single-row strip, whatever the
+   viewport, so the panel is visible the moment fullscreen engages. */
+.arcade-cabinet.is-fullscreen .arcade-tabs,
+.arcade-cabinet.is-pseudo-fs .arcade-tabs {
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  margin-bottom: 0.6rem;
+}
+.arcade-cabinet.is-fullscreen .arcade-tabs::-webkit-scrollbar,
+.arcade-cabinet.is-pseudo-fs .arcade-tabs::-webkit-scrollbar { display: none; }
+.arcade-cabinet.is-fullscreen .arcade-tabs .atab,
+.arcade-cabinet.is-pseudo-fs .arcade-tabs .atab { scroll-snap-align: start; flex-shrink: 0; }
+
+/* Slim the playbar in fullscreen so it never wraps into two rows on phones. */
+.arcade-cabinet.is-fullscreen .arcade-playbar,
+.arcade-cabinet.is-pseudo-fs .arcade-playbar {
+  flex-wrap: nowrap;
+  padding: 0.5rem 0.6rem;
+}
+.arcade-cabinet.is-fullscreen .arcade-playbar .arcade-now-playing,
+.arcade-cabinet.is-pseudo-fs .arcade-playbar .arcade-now-playing {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Worlds strip: photo tiles (v3.4.1) ===== */
+.world-tile.wt-photo img,
+.world-tile.wt-apps img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.world-tile.wt-photo:hover img,
+.world-tile.wt-apps:hover .wt-apps-row img { transform: scale(1.05); }
+.world-tile.wt-apps .wt-apps-row {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.world-tile.wt-apps .wt-apps-row img {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+.world-tile.wt-apps .wt-apps-row img:first-child { border-right: 1px solid rgba(212, 168, 67, 0.25); }
+.world-tile.wt-photo::after,
+.world-tile.wt-apps::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0) 42%, rgba(10, 10, 10, 0.74) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.world-tile.wt-photo figcaption,
+.world-tile.wt-apps figcaption { z-index: 2; }

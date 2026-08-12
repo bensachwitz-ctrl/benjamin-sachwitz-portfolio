@@ -5,79 +5,13 @@
 (function(){
   'use strict';
 
-  /* === TWO BRAINS TOGGLE - v1.1.0 signature feature === */
-  (function initBrainsToggle() {
-    const toggle = document.getElementById('brainsToggle');
-    if (!toggle) return;
-    const buttons = toggle.querySelectorAll('button[data-brain-mode]');
-    const STORAGE_KEY = 'ben:brain-mode';
-
-    function applyMode(mode, animate) {
-      const m = (mode === 'builder') ? 'builder' : 'underwriter';
-      // All DOM mutations live here so they're captured inside the View
-      // Transition snapshot (including copy swaps driven by the event listener).
-      const doSwap = () => {
-        document.documentElement.setAttribute('data-mode', m);
-        buttons.forEach(b => {
-          const isActive = b.dataset.brainMode === m;
-          b.setAttribute('aria-pressed', String(isActive));
-        });
-        // Dispatch a custom event so other widgets can react (copy, etc.)
-        window.dispatchEvent(new CustomEvent('brainmodechange', { detail: { mode: m } }));
-      };
-      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (animate && document.startViewTransition && !prefersReduced) {
-        // Originate the circular reveal from the toggle's on-screen position.
-        try {
-          const r = toggle.getBoundingClientRect();
-          const x = (((r.left + r.width / 2) / (window.innerWidth || 1)) * 100).toFixed(1) + '%';
-          const y = (((r.top + r.height / 2) / (window.innerHeight || 1)) * 100).toFixed(1) + '%';
-          document.documentElement.style.setProperty('--vt-x', x);
-          document.documentElement.style.setProperty('--vt-y', y);
-        } catch(_) {}
-        try { document.startViewTransition(doSwap); } catch(_) { doSwap(); }
-      } else {
-        doSwap();
-      }
-      try { localStorage.setItem(STORAGE_KEY, m); } catch(_) {}
-    }
-
-    // Owner directive: every fresh open STARTS in Underwriter (the
-    // professional / specialty-insurance first impression). The toggle still
-    // switches modes within the session, but we no longer rehydrate a
-    // previously-saved 'builder' on load, so opening the site is always the
-    // underwriter view.
-    applyMode('underwriter');
-
-    buttons.forEach(b => {
-      b.addEventListener('click', () => applyMode(b.dataset.brainMode, true));
-    });
-
-    // Global "M" keyboard shortcut to flip between modes - fast UX power-user trick
-    document.addEventListener('keydown', (e) => {
-      if (e.key !== 'm' && e.key !== 'M') return;
-      // Don't capture if user is typing in a field
-      const t = e.target;
-      const tag = t && t.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
-      const current = document.documentElement.getAttribute('data-mode') || 'underwriter';
-      applyMode(current === 'builder' ? 'underwriter' : 'builder', true);
-    });
-
-    // (The one-time "Swap mode / M" hint chip was removed - the toggle is
-    //  self-evident, and the floating chip read as clutter.) The M shortcut + the
-    //  arrow-key tab nav below remain for keyboard / power users.
-
-    // Keyboard arrow-key navigation between tabs
-    toggle.addEventListener('keydown', (e) => {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      e.preventDefault();
-      const current = document.documentElement.getAttribute('data-mode') || 'underwriter';
-      applyMode(current === 'underwriter' ? 'builder' : 'underwriter', true);
-      const next = toggle.querySelector('button[aria-pressed="true"]');
-      if (next) next.focus();
-    });
-  })();
+  /* === SINGLE-VERSION SITE - v3.4.1 ===
+     The Underwriter/Builder brains toggle is retired. The site is now ONE
+     unified version for Ben Sachwitz: an assistant underwriter who also
+     builds (Bar Crawl Golf, My Daily Tool, Greek Stack). data-mode stays
+     pinned to "underwriter" so the existing mode-scoped CSS keeps serving
+     the merged presentation without any toggle UI. */
+  try { document.documentElement.setAttribute('data-mode', 'underwriter'); } catch(_) {}
 
   /* === SCROLL TO TOP ON LOAD === */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -1002,6 +936,17 @@
       });
       // let the active game canvas re-fit to the new viewport
       requestAnimationFrame(() => { try { window.dispatchEvent(new Event('resize')); } catch(_){} });
+      // keep the active game tab visible in the compact strip so the player
+      // always sees which game is running after (pseudo)fullscreen engages
+      if (on) {
+        const strip = cabinet.querySelector('.arcade-tabs');
+        const activeTab = cabinet.querySelector('.atab.is-active');
+        if (strip && activeTab && strip.scrollTo) {
+          try {
+            strip.scrollTo({ left: Math.max(0, activeTab.offsetLeft - strip.clientWidth / 2 + activeTab.clientWidth / 2), behavior: 'smooth' });
+          } catch(_) {}
+        }
+      }
     }
     function enterPseudo(){
       clearFsRequestTimer();
@@ -3888,11 +3833,6 @@
     timesWrap.innerHTML = TIME_SLOTS.map(t => `<label class="btime"><input type="radio" name="bTime" value="${t}"/><span>${t}</span></label>`).join('');
   }
   buildDays(); buildTimes();
-  // Topic choices are role-specific. Clear a previous selection when the
-  // visitor switches modes so a hidden topic cannot leak into the request.
-  window.addEventListener('brainmodechange', () => {
-    document.querySelectorAll('input[name="bTopic"]').forEach((input) => { input.checked = false; });
-  });
 
   /* === CAL.COM CONFIGURATION ===
      Change these two lines to point at your Cal.com event type, or to a self-hosted cal.diy instance.
@@ -4073,7 +4013,7 @@
     if (step === 1) {
       const name = document.getElementById('bName').value.trim();
       const email = document.getElementById('bEmail').value.trim();
-      const topic = document.querySelector('input[name="bTopic"]:checked');
+      const topic = document.getElementById('bTopic')?.value || '';
       if (!name) { flashField('bName'); return false; }
       if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { flashField('bEmail'); return false; }
       if (!topic) { flash('Please pick a topic'); return false; }
@@ -4128,14 +4068,14 @@
 
   function fillReview() {
     const get = (id) => document.getElementById(id).value.trim() || '';
-    const topic = document.querySelector('input[name="bTopic"]:checked');
+    const topic = document.getElementById('bTopic');
     const day = document.querySelector('input[name="bDay"]:checked');
     const time = document.querySelector('input[name="bTime"]:checked');
     document.getElementById('rvName').textContent = get('bName');
     document.getElementById('rvEmail').textContent = get('bEmail');
     document.getElementById('rvPhone').textContent = get('bPhone');
     document.getElementById('rvCompany').textContent = get('bCompany');
-    document.getElementById('rvTopic').textContent = topic ? topic.value : '';
+    document.getElementById('rvTopic').textContent = topic && topic.value ? topic.value : '';
     document.getElementById('rvWhen').textContent = (day && time) ? `${day.dataset.label} · ${time.value} ET` : '';
   }
 
@@ -4152,7 +4092,7 @@
       const email = document.getElementById('bEmail').value.trim();
       const phone = document.getElementById('bPhone').value.trim();
       const company = document.getElementById('bCompany').value.trim();
-      const topic = document.querySelector('input[name="bTopic"]:checked')?.value || '';
+      const topic = document.getElementById('bTopic')?.value || '';
       const day = document.querySelector('input[name="bDay"]:checked');
       const time = document.querySelector('input[name="bTime"]:checked')?.value || '';
       const notes = document.getElementById('bNotes').value.trim();
@@ -4462,50 +4402,10 @@
         'prompt-engineering with Claude.'
       ]
     };
-    let phrases = PHRASES[document.documentElement.getAttribute('data-mode') || 'underwriter'];
+    // Single-version site: one merged phrase set (underwriter + builder
+    // work shown together). The old per-mode swap is retired.
+    let phrases = PHRASES.underwriter;
     let pi = 0;
-    // Listen for brain-mode changes and swap the phrase set
-    window.addEventListener('brainmodechange', (e) => {
-      phrases = PHRASES[e.detail.mode] || PHRASES.underwriter;
-      pi = 0;
-    });
-    // Mode-aware copy swap - handles plain text bios, HTML bios, eyebrows, and titles
-    function applyModeCopy(mode) {
-      const m = mode === 'builder' ? 'builder' : 'underwriter';
-      // Plain-text bios (paragraphs)
-      document.querySelectorAll('.mode-bio').forEach(el => {
-        const txt = m === 'builder' ? el.dataset.bioBuilder : el.dataset.bioUnderwriter;
-        if (txt) el.textContent = txt;
-      });
-      // HTML bios (preserves <strong>, <em>, etc.)
-      document.querySelectorAll('.mode-bio-html').forEach(el => {
-        const html = m === 'builder' ? el.dataset.bioHtmlBuilder : el.dataset.bioHtmlUnderwriter;
-        if (html) el.innerHTML = html;
-      });
-      // Eyebrow micro-labels
-      document.querySelectorAll('.mode-eyebrow').forEach(el => {
-        const txt = m === 'builder' ? el.dataset.eyebrowBuilder : el.dataset.eyebrowUnderwriter;
-        if (txt) el.textContent = txt;
-      });
-      // Subsection titles
-      document.querySelectorAll('.mode-title').forEach(el => {
-        const txt = m === 'builder' ? el.dataset.titleBuilder : el.dataset.titleUnderwriter;
-        if (txt) el.textContent = txt;
-      });
-      // Image swaps
-      document.querySelectorAll('.mode-img').forEach(el => {
-        const src = m === 'builder' ? el.dataset.imgBuilder : el.dataset.imgUnderwriter;
-        if (src) el.src = src;
-      });
-      // Caption swaps
-      document.querySelectorAll('.mode-caption').forEach(el => {
-        const cap = m === 'builder' ? el.dataset.captionBuilder : el.dataset.captionUnderwriter;
-        if (cap) el.setAttribute('data-caption', cap);
-      });
-    }
-    window.addEventListener('brainmodechange', (e) => applyModeCopy(e.detail.mode));
-    // Apply once on hydrate so persisted "builder" mode survives a refresh
-    applyModeCopy(document.documentElement.getAttribute('data-mode') || 'underwriter');
 
 
 

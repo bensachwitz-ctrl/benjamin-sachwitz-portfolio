@@ -224,7 +224,7 @@
 <!-- Plausible analytics (privacy friendly, cookieless). tagged-events build powers className="plausible-event-name=..." custom events. CSP allows plausible.io in script-src + connect-src. -->
 <script defer data-domain="bensachwitz.vercel.app" src="https://plausible.io/js/script.tagged-events.js"></script>
 <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};</script>
-<link rel="stylesheet" href="/styles.css?v=mp46" />
+<link rel="stylesheet" href="/styles.css?v=mp47" />
 </head>
 
 <body class="bg-bone text-ink antialiased">
@@ -278,17 +278,6 @@
 
 <!-- Signature cursor-follow ambient glow -->
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-
-<!-- v1.1.0 SIGNATURE: Two Brains Toggle · underwriter ↔ builder identity switch -->
-<div class="brains-toggle" id="brainsToggle" aria-label="Mode: Underwriter or Builder">
-  <div class="brains-toggle-knob" aria-hidden="true"></div>
-  <button type="button" data-brain-mode="underwriter" aria-pressed="true" aria-label="Underwriter mode: risk, Lloyd's, specialty trucking">
-    <span class="bt-dot"></span>Underwriter
-  </button>
-  <button type="button" data-brain-mode="builder" aria-pressed="false" aria-label="Developer mode: apps, code, ship logs">
-    <span class="bt-dot"></span>Developer
-  </button>
-</div>
 <div id="scrollProgress"></div>
 
 <!-- ===== LOADER ===== -->
@@ -562,24 +551,27 @@
         <div class="eyebrow text-bone/55 mb-3">The worlds I work in</div>
         <h2 class="font-serif text-[26px] md:text-[34px] font-light leading-tight text-bone">From <em class="text-gold italic">DC</em> to the <em class="text-gold italic">Lloyd's Room</em>.</h2>
       </div>
-      <div class="text-bone/45 text-[11px] font-mono tracking-[.22em] uppercase">Four markets, one underwriting standard</div>
+      <div class="text-bone/45 text-[11px] font-mono tracking-[.22em] uppercase">DC roots · Lloyd's markets · shipped apps</div>
     </div>
     <div class="worlds-grid">
-      <figure class="world-tile wt-art" data-caption="The Lloyd's Room · London EC3">
-        <img src="images/world-lloyds.svg?v=mp33" alt="The City of London skyline at dusk, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
-        <figcaption><span class="wtnum">01</span><span class="wttxt">Specialty &amp; binding authority</span></figcaption>
+      <figure class="world-tile wt-photo" data-caption="Swamp Fox Agency · Moncks Corner, SC">
+        <img src="images/swamp-fox-art.png" alt="The painted Swamp Fox Agency fox mark" width="568" height="682" loading="lazy" decoding="async" />
+        <figcaption><span class="wtnum">01</span><span class="wttxt">Assistant Underwriter · trucking &amp; forestry</span></figcaption>
       </figure>
-      <figure class="world-tile wt-art" data-caption="Commercial trucking · Southeast corridors">
-        <img src="images/world-trucking.svg" alt="A commercial truck on a Southern pine highway at golden hour, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
-        <figcaption><span class="wtnum">02</span><span class="wttxt">Motor carriers · FMCSA &amp; telematics</span></figcaption>
+      <figure class="world-tile wt-photo" data-caption="The Lloyd's Room · London EC3">
+        <img src="images/lloyds-interior.jpg" alt="Inside the Lloyd's of London underwriting Room" width="900" height="600" loading="lazy" decoding="async" />
+        <figcaption><span class="wtnum">02</span><span class="wttxt">Price Forbes · Marine &amp; Property</span></figcaption>
       </figure>
-      <figure class="world-tile wt-art" data-caption="Forestry &amp; logging · SC / GA / FL">
-        <img src="images/world-forestry.svg?v=mp33" alt="A Southern pine stand at dusk, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
-        <figcaption><span class="wtnum">03</span><span class="wttxt">SCTPA-endorsed forestry risks</span></figcaption>
+      <figure class="world-tile wt-photo" data-caption="Carahsoft · Reston, VA">
+        <img src="images/carahsoft-office.jpg" alt="Corporate office campus in Reston, Virginia" width="1200" height="801" loading="lazy" decoding="async" />
+        <figcaption><span class="wtnum">03</span><span class="wttxt">BDR Intern · Intel Team · DC roots</span></figcaption>
       </figure>
-      <figure class="world-tile wt-art" data-caption="Federal DC · Public-sector tech">
-        <img src="images/world-federal.svg" alt="The United States Capitol at dusk, illustrated in oxblood and bone" width="600" height="800" loading="lazy" decoding="async" />
-        <figcaption><span class="wtnum">04</span><span class="wttxt">DC roots · federal account exposure</span></figcaption>
+      <figure class="world-tile wt-apps" data-caption="Bar Crawl Golf · My Daily Tool">
+        <div class="wt-apps-row">
+          <img src="images/app-bcg-real.webp" alt="Bar Crawl Golf app screen" loading="lazy" decoding="async" />
+          <img src="images/app-dt-real.webp" alt="My Daily Tool app screen" loading="lazy" decoding="async" />
+        </div>
+        <figcaption><span class="wtnum">04</span><span class="wttxt">Two apps I built · live on the App Store</span></figcaption>
       </figure>
     </div>
     <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 border-t border-bone/10" id="statsStrip">
@@ -827,7 +819,7 @@
 <!-- ============================================================
      INTERACTION LAYER
 ============================================================ -->
-<script src="/app.js?v=mp46"></script>
+<script src="/app.js?v=mp47"></script>
 
 <!-- ===== INTERACTIVE LAYER ===== -->
 
